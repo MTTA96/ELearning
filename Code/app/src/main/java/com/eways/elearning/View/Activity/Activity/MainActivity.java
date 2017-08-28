@@ -1,4 +1,4 @@
-package com.eways.elearning.Presenter.View.Activity;
+package com.eways.elearning.View.Activity.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

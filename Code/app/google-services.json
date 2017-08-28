@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "975914760569",
+    "firebase_url": "https://elearning-4f3e2.firebaseio.com",
+    "project_id": "elearning-4f3e2",
+    "storage_bucket": "elearning-4f3e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975914760569:android:9582dd6527e39835",
+        "android_client_info": {
+          "package_name": "com.eways.elearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975914760569-bl3oq54b36tsoj7tshmju9fvrker4jj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeI4G6KT5uMN4T_ot2SYJryVvUVem0aFM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

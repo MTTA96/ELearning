@@ -65,7 +65,7 @@
       		},
       		"Email":"tuthien@gmail.com",
       		"SDT":"090 909 9999",
-      		"BaiDangCuaHocVien":
+      		"BaiDang":
       		{
         		"TimGiaSu":
         		{
@@ -92,24 +92,10 @@
             			"BaiN3",
             			"BaiN4"
           			]
-        		}
-      		},
-      		"YeuCauCuaHocVien":
-      		[
-        		{"IDBai":"BaiS5","TinhTrang":"Đang chờ"},
-        		{"IDBai":"BaiS6","TinhTrang":"Bị từ chối"},
-        		{"IDBai":"BaiS7","TinhTrang":"Được chấp thuận"}	
-      		],
-      		"TinhNang1":
-      		{
-        		"BangCap":
-        		[
-          			{"HinhAnh":"Link Ảnh","TenBang":"TOEIC 550"},
-          			{"HinhAnh":"Link Ảnh","TenBang":"Cử nhân CNTT"}
-        		],
-        		"BaiDangCuaGiaSu":
+        		},
+        		"TimHocVien":
         		{
-          			"ChuaAiNhan":
+					"ChuaAiNhan":
           			[
             			"BaiV1",
             			"BaiV2"
@@ -119,28 +105,45 @@
             			"BaiV3",
             			"BaiV4"
           			] 
-        		},
-        		"Rating":
-        		{
-          			"IDUser002":"RatingPoint",
-          			"IDUser003":"RatingPoint"
-        		},
-        		"YeuCauCuaGiaSu":
+        		}
+      		},
+      		"YeuCau":
+      		{
+      			"YeuCauCuaGiaSu":
         		[
         			{"IDBai":"BaiV5","TinhTrang":"Đang chờ"},
         			{"IDBai":"BaiV6","TinhTrang":"Bị từ chối"},
         			{"IDBai":"BaiV7","TinhTrang":"Được chấp thuận"}
         		],
-            "TaiLieu":
-            [
-              "IDTaiLieu005"
-            ],
-        		"ThongTinKhac":"Tôi là abcxyz...vân vân mây mây...."
+        		"YeuCauCuaHocVien":
+      			[
+        			{"IDBai":"BaiS5","TinhTrang":"Đang chờ"},
+        			{"IDBai":"BaiS6","TinhTrang":"Bị từ chối"},
+        			{"IDBai":"BaiS7","TinhTrang":"Được chấp thuận"}	
+      			]
+      		},      		
+      		"TinhNang1":
+      		{
+        		"BangCap":
+        		[
+          			{"HinhAnh":"Link Ảnh","TenBang":"TOEIC 550"},
+          			{"HinhAnh":"Link Ảnh","TenBang":"Cử nhân CNTT"}
+        		],
+        		"Rating":
+        		{
+          			"IDUser002":"RatingPoint",
+          			"IDUser003":"RatingPoint"
+        		},
+            	"TaiLieu":
+            	[
+              		"IDTaiLieu005"
+            	],
+        			"ThongTinKhac":"Tôi là abcxyz...vân vân mây mây...."
       		},
         	"LichSuHoatDong":
         	{
           		"IDBaiDang001":"Hoạt động 1",
-              "IDBaiDang002":"Hoạt động 2"
+              	"IDBaiDang002":"Hoạt động 2"
         	},
         	"Chat":
         	[
@@ -166,7 +169,7 @@
                 "IDUser002":"RatingPoint",
                 "IDUser003":"RatingPoint"
             },
-      		"BaiDangCuaDoanhNghiep":
+      		"BaiDang":
       		{
       			"TimGiaSu":
             {

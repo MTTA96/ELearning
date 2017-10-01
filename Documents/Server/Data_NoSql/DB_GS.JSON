@@ -1,4 +1,23 @@
 {
+  	"TinTuc":
+  	{
+  		"TinTrongNuoc":
+  		[
+  			{
+  				"NguoiDang":"UID",
+  				"TieuDe":"Hình thức thi đại học 2018",
+  				"NoiDung":"ABC DEF"
+  			}
+  		],
+  		"TinNuocNgoai":
+  		[
+			{
+  				"NguoiDang":"UID",
+  				"TieuDe":"Cơ hội du học Nhật Bản",
+  				"NoiDung":"ABC DEF"
+  			}
+  		]
+  	},
   	"DataApp":
   	{
   		"DiaChi":
@@ -11,6 +30,14 @@
   			[
   				"Hoàn Kiếm","Đống Đa"
   			]
+  		},
+  		"DanhMucMon":
+  		{
+  			"Toan":
+  			{
+  				"TenMon":"Toan",
+  				"HocPhi":"150000"
+  			}
   		}
   	},
   	"HopThoai":
@@ -37,7 +64,7 @@
         "NoiDung":"Link tài liệu",
         "Rating":
         {
-          "IUD":
+          "UID":
           {
             "RatingPoint":"4.5",
             "Comment":"Một con vịt xòe ra 2 cái cánh"
@@ -236,7 +263,7 @@
     				"HocPhi":"150000",
     				"LichHoc":
     				{
-    					"ThoiGian":"HH:MM:SS",
+    					"ThoiGian":"Buổi sáng",
     					"NgayHoc":
     					[
     						"Thứ hai","Thứ tư","Thứ 6"
@@ -273,7 +300,7 @@
     				"HocPhi":"350000",
     				"LichHoc":
     				{
-    					"ThoiGian":"HH:MM:SS",
+    					"ThoiGian":"Buổi tối",
     					"NgayHoc":
     					[
     						"Thứ hai","Thứ tư","Thứ 6"
@@ -310,7 +337,7 @@
     				"HocPhi":"150000",
     				"LichHoc":
     				{
-    					"ThoiGian":"HH:MM:SS",
+    					"ThoiGian":"Buổi sáng",
     					"NgayHoc":
     					[
     						"Thứ hai","Thứ tư","Thứ 6"
@@ -353,7 +380,7 @@
     				"HocPhi":"150000",
     				"LichHoc":
     				{
-    					"ThoiGian":"HH:MM:SS",
+    					"ThoiGian":"Buổi chiều",
     					"NgayHoc":
     					[
     						"Thứ hai","Thứ tư","Thứ 6"

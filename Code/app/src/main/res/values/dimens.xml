@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Fragment đăng nhập-->
+    <dimen name="LayoutTop">140dp</dimen>
+    <dimen name="Title_Login_Size">30sp</dimen>
+    <dimen name="EtUsernameandPass_width">350dp</dimen>
+    <dimen name="EtUsernameandPass_height">50dp</dimen>
+    <dimen name="EtUsername_margintop">70dp</dimen>
+    <dimen name="EtPass_margintop">10dp</dimen>
+    <dimen name="ForgetPass_textsize">15sp</dimen>
+    <dimen name="ForgetPass_margintop">10dp</dimen>
+    <dimen name="Layout_Button_DkDn_margintop">10dp</dimen>
+    <dimen name="Btn_DnDk_width">140dp</dimen>
+    <dimen name="Btn_DnDk_height">60dp</dimen>
+    <dimen name="Layout_btn_margintop">10dp</dimen>
+    <dimen name="layout_hoac_width">350dp</dimen>
+    <dimen name="layout_margin_top">25dp</dimen>
+    <dimen name="view_height">2dp</dimen>
+    <dimen name="btndn_marginleft">10dp</dimen>
+    <dimen name="etuserpass_textpadding">10dp</dimen>
+    <dimen name="btnLoginFB_width">137dp</dimen>
+    <dimen name="btnLoginFB_height">50dp</dimen>
+    <dimen name="btnLoginFB_paddingbottom">21dp</dimen>
+    <dimen name="btnLoginFB_layoutmargintop">5dp</dimen>
+    <dimen name="btnLoginGG_width">137dp</dimen>
+    <dimen name="btnLoginGG_height">50dp</dimen>
+    <!--Fragment Đăng Ký-->
+    <dimen name="LayoutTopDK">140dp</dimen>
+    <dimen name="Title_Signup_Size">30sp</dimen>
+    <dimen name="EtEmailPassDK_width">350dp</dimen>
+    <dimen name="EtEmailPassDK_height">50dp</dimen>
+    <dimen name="EtEmailDK_margintop">70dp</dimen>
+    <dimen name="EtPassDK_margintop">10dp</dimen>
+    <dimen name="Btn_DnDk_width_DK">140dp</dimen>
+    <dimen name="Btn_DnDk_height_DK">60dp</dimen>
+    <dimen name="tvdieukhoan_layoutmargintop">15dp</dimen>
+    <dimen name="Dieukhoan_textsize">20sp</dimen>
+    <dimen name="Dieukhoan_layoutwidth">350dp</dimen>
+    <dimen name="LayoutBtn_margintop">30dp</dimen>
+    <dimen name="btnhuy_marginleft">10dp</dimen>
+</resources>

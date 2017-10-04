@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.eways.elearning.View.Fragment.DangNhap.DangNhapFragment">
-
+    <!--Tiêu đề-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/LayoutTop"
@@ -19,6 +19,7 @@
             android:textColor="@color/Title_Color"
             />
     </LinearLayout>
+    <!--Tên đăng nhập-->
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="@dimen/EtUsernameandPass_width"
@@ -30,7 +31,7 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:layout_marginTop="@dimen/EtUsername_margintop"/>
-
+    <!--Nhập mật khẩu-->
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="@dimen/EtUsernameandPass_width"
@@ -43,14 +44,17 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:hint="@string/Hint_password" />
+    <!--Quên mật khẩu-->
     <TextView
         android:id="@+id/tvForgetPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ForgerPass"
         android:textSize="@dimen/ForgetPass_textsize"
+        android:textColor="@color/colorMain"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/ForgetPass_margintop"/>
+    <!--Nút đăng ký và đăng nhập-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,6 +77,7 @@
             android:background="@drawable/btnlogin_btndk_shape"
             android:layout_marginLeft="@dimen/btndn_marginleft"/>
     </LinearLayout>
+    <!--Nút đăng ký và đăng nhập Gmail và Facebook-->
     <LinearLayout
         android:layout_width="@dimen/layout_hoac_width"
         android:layout_height="wrap_content"

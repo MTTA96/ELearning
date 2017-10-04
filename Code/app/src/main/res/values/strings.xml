@@ -7,7 +7,7 @@
     <string name="Tittle_Login"><b>Đăng Nhập</b></string>
     <string name="Hint_username">Tên đăng nhập</string>
     <string name="Hint_password">Mật khẩu</string>
-    <string name="ForgerPass">Quên Mật Khẩu ?</string>
+    <string name="ForgerPass"><b><u>Quên Mật Khẩu ?</u></b></string>
     <string name="btnLogin">Đăng Nhập</string>
     <string name="btnSignup">Đăng Ký</string>
     <!--Fragment đăng ký-->
@@ -16,10 +16,8 @@
     <string name="Hint_passwordDK">Mật khẩu</string>
     <string name="Hint_confirmpasswordDK">Nhập lại mật khẩu</string>
     <string name="tv_dieukhoan1">Đồng ý với</string>
-    <string name="tv_dieukhoan2"><u><i> chính sách</i></u></string>
-    <string name="tv_dieukhoan3"> và</string>
-    <string name="tv_dieukhoan4"><u><i> quyền bảo mật</i></u></string>
-    <string name="tv_dieukhoan5">của Elearning</string>
-    <string name="btn_signup_DK">Đăng Ký</string>
+    <string name="tv_dieukhoan2"><u><i>điều khoản</i></u></string>
+    <string name="tv_dieukhoan3">ELearning</string>
+    <string name="btn_signup_DK">Xác nhận</string>
     <string name="btn_huy_DK">Hủy</string>
 </resources>

@@ -38,4 +38,6 @@
     <dimen name="Dieukhoan_layoutwidth">350dp</dimen>
     <dimen name="LayoutBtn_margintop">30dp</dimen>
     <dimen name="btnhuy_marginleft">10dp</dimen>
+    <dimen name="tvDieukhoan_Horizontalpadding">5dp</dimen>
+    <dimen name="LayoutDieuKhoan_margintop">15dp</dimen>
 </resources>

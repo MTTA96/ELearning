@@ -3,6 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <!--Fragment đăng nhập-->
     <string name="Tittle_Login"><b>Đăng Nhập</b></string>
     <string name="Hint_username">Tên đăng nhập</string>
@@ -10,6 +11,7 @@
     <string name="ForgerPass"><b><u>Quên Mật Khẩu ?</u></b></string>
     <string name="btnLogin">Đăng Nhập</string>
     <string name="btnSignup">Đăng Ký</string>
+
     <!--Fragment đăng ký-->
     <string name="Tittle_Signup"><b>Đăng Ký</b></string>
     <string name="Hint_EmailDK">Email</string>

@@ -1,4 +1,4 @@
-package com.eways.elearning.View.Fragment.DangKy;
+package com.eways.elearning.View.Fragment.TaiKhoan.DangKy;
 
 
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.eways.elearning.R;
-import com.eways.elearning.View.Fragment.DangNhap.DangNhapFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 
 /**
  * A simple {@link Fragment} subclass.

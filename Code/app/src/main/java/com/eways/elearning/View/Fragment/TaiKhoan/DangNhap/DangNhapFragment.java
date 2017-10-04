@@ -1,7 +1,6 @@
-package com.eways.elearning.View.Fragment.DangNhap;
+package com.eways.elearning.View.Fragment.TaiKhoan.DangNhap;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,11 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.eways.elearning.R;
-import com.eways.elearning.View.Activity.Activity.MainActivity;
-import com.eways.elearning.View.Fragment.DangKy.DangKyFragment;
-import com.facebook.FacebookSdk;
-
-import static com.facebook.FacebookSdk.getApplicationContext;
+import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -6,6 +6,7 @@
     <color name="colorMain">#00A6FF</color>
     <color name="Title_Color">#fafafa</color>
     <color name="colorHint">#cecece</color>
+
     <!--Fragment đăng nhập-->
     <color name="colorDivider">#cecece</color>
     <color name="colorTextBtnDkDn">#fcfcfc</color>

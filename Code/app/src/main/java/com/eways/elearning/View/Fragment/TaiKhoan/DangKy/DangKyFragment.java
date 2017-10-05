@@ -15,12 +15,11 @@ import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
  * A simple {@link Fragment} subclass.
  */
 public class DangKyFragment extends Fragment implements View.OnClickListener {
-
     Button btnHuy;
+
     public DangKyFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,6 +27,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View root=inflater.inflate(R.layout.fragment_dang_ky, container, false);
         btnHuy=(Button) root.findViewById(R.id.btnHuy_DK);
+
         btnHuy.setOnClickListener(this);
         return root;
     }

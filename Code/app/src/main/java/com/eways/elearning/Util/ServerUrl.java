@@ -7,4 +7,9 @@ package com.eways.elearning.Util;
  */
 
 public class ServerUrl {
+    //Link server
+    public static final String ServerUrl = "ttps://us-central1-elearning-6247b.cloudfunctions.net";
+
+    //Url api
+    public static final String ApiHelloWorld = ServerUrl + "/helloWorld";
 }

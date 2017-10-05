@@ -16,22 +16,17 @@ import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
  */
 public class DangNhapFragment extends Fragment implements View.OnClickListener{
     Button btnDangky;
+
     public DangNhapFragment() {
         // Required empty public constructor
     }
 
-    public void setContentView(int contentView) {
-
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_dang_nhap, container, false);
-        //Phần Ánh xạ
         btnDangky= (Button) root.findViewById(R.id.btnSignup);
 
-        //Phần khởi tạo
-        //Phần code
         btnDangky.setOnClickListener(this);
         return root;
     }

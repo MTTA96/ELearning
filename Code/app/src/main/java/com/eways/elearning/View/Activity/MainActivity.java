@@ -1,10 +1,9 @@
-package com.eways.elearning.View.Activity.Activity;
+package com.eways.elearning.View.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.eways.elearning.Model.Database.FireBaseHandler;
-import com.eways.elearning.Model.Database.FirebaseHandlerCallback;
 import com.eways.elearning.R;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 

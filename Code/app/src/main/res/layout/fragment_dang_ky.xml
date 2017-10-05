@@ -18,6 +18,7 @@
             android:layout_gravity="center"
             android:textColor="@color/Title_Color"/>
     </LinearLayout>
+
     <!--Nhập Email-->
     <EditText
         android:id="@+id/etEmail"
@@ -30,6 +31,7 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:layout_marginTop="@dimen/EtUsername_margintop"/>
+
     <!--Nhập mật khẩu-->
     <EditText
     android:id="@+id/etPasswordDK"
@@ -42,6 +44,7 @@
     android:focusable="false"
     android:focusableInTouchMode="false"
     android:hint="@string/Hint_password" />
+
     <!--Xác nhận mật khẩu-->
     <EditText
         android:id="@+id/etConfirmPassDK"
@@ -54,6 +57,7 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:hint="@string/Hint_confirmpasswordDK" />
+
     <!--Điều khoản-->
     <LinearLayout
         android:layout_width="wrap_content"
@@ -87,28 +91,29 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
     <!--Nút đăng ký và hủy -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/LayoutBtn_margintop">
+        <!-- Xác nhận -->
         <Button
             android:id="@+id/btnDK_DK"
             android:layout_width="@dimen/Btn_DnDk_width_DK"
             android:layout_height="@dimen/Btn_DnDk_height_DK"
             android:text="@string/btn_signup_DK"
-            android:background="@drawable/btndk_btnhuy_dk_shape"
+            android:background="@drawable/btn_shape"
             android:textColor="@color/Title_Color"/>
+        <!-- Hủy -->
         <Button
             android:id="@+id/btnHuy_DK"
             android:layout_width="@dimen/Btn_DnDk_width_DK"
             android:layout_height="@dimen/Btn_DnDk_height_DK"
             android:text="@string/btn_huy_DK"
-            android:background="@drawable/btndk_btnhuy_dk_shape"
+            android:background="@drawable/btn_shape"
             android:textColor="@color/Title_Color"
             android:layout_marginLeft="@dimen/btnhuy_marginleft"/>
     </LinearLayout>
-
-
 </LinearLayout>

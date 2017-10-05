@@ -1,8 +1,7 @@
 package com.eways.elearning.Model.Database;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
+import android.provider.CalendarContract;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -10,19 +9,22 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.eways.elearning.View.Activity.Activity.MainActivity;
+import com.eways.elearning.Util.Interfaces.DataCallBack;
 
 /**
- * Created by zzzzz on 8/28/2017.
+ * Created by Quang Trí on 8/28/2017.
+ *
+ * Description: Tương tác dữ liệu firenase
  */
-//Tuông tác dữ liệu với firebase
+
 public class FireBaseHandler {
     Context context;
-    FirebaseHandlerCallback firebaseHandlerCallback;
+    DataCallBack dataCallBack;
 
-    public FireBaseHandler(Context context, FirebaseHandlerCallback firebaseHandlerCallback) {
+    public FireBaseHandler(Context context, DataCallBack dataCallBack) {
         this.context = context;
-        this.firebaseHandlerCallback = firebaseHandlerCallback;
+
+        this.dataCallBack = dataCallBack;
     }
     //Lấy data từ firebase trả về
     public void GET(String url){
@@ -30,12 +32,13 @@ public class FireBaseHandler {
         StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                firebaseHandlerCallback.TransData(response);
+//                dataCallBack.TransData(response);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                firebaseHandlerCallback.TransData(error.toString());
+
+//                firebaseHandlerCallback.TransData("Loi");
             }
         });
         requestQueue.add(stringRequest);

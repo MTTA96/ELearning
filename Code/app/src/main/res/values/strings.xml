@@ -3,4 +3,23 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Fragment đăng nhập-->
+    <string name="Tittle_Login"><b>Đăng Nhập</b></string>
+    <string name="Hint_username">Tên đăng nhập</string>
+    <string name="Hint_password">Mật khẩu</string>
+    <string name="ForgerPass"><b><u>Quên Mật Khẩu ?</u></b></string>
+    <string name="btnLogin">Đăng Nhập</string>
+    <string name="btnSignup">Đăng Ký</string>
+
+    <!--Fragment đăng ký-->
+    <string name="Tittle_Signup"><b>Đăng Ký</b></string>
+    <string name="Hint_EmailDK">Email</string>
+    <string name="Hint_passwordDK">Mật khẩu</string>
+    <string name="Hint_confirmpasswordDK">Nhập lại mật khẩu</string>
+    <string name="tv_dieukhoan1">Đồng ý với</string>
+    <string name="tv_dieukhoan2"><u><i>điều khoản</i></u></string>
+    <string name="tv_dieukhoan3">ELearning</string>
+    <string name="btn_signup_DK">Xác nhận</string>
+    <string name="btn_huy_DK">Hủy</string>
 </resources>

@@ -1,7 +1,26 @@
 {
+  	"TinTuc":
+  	{
+  		"TinTrongNuoc":
+  		[
+  			{
+  				"NguoiDang":"UID",
+  				"TieuDe":"Hình thức thi đại học 2018",
+  				"NoiDung":"ABC DEF"
+  			}
+  		],
+  		"TinNuocNgoai":
+  		[
+			{
+  				"NguoiDang":"UID",
+  				"TieuDe":"Cơ hội du học Nhật Bản",
+  				"NoiDung":"ABC DEF"
+  			}
+  		]
+  	},
   	"DataApp":
   	{
-  		"DiaChi":
+  		"KhuVuc":
   		{
   			"TPHCM":
   			[
@@ -11,6 +30,14 @@
   			[
   				"Hoàn Kiếm","Đống Đa"
   			]
+  		},
+  		"DanhMucMon":
+  		{
+  			"Toan":
+  			{
+  				"TenMon":"Toan",
+  				"HocPhi":"150000"
+  			}
   		}
   	},
   	"HopThoai":
@@ -37,10 +64,10 @@
         "NoiDung":"Link tài liệu",
         "Rating":
         {
-          "IUD":
+          "UID":
           {
             "RatingPoint":"4.5",
-            "Comment":"Một con vịt xòe ra 2 cái cánh"
+            "Comment":"Nội dung rất dễ hiểu!"
           }
         }
       }
@@ -53,8 +80,9 @@
       		"LoaiTK":"Cá nhân",
       		"HoTen":"Thi Thi",
       		"Avatar":"Link Ảnh ",
+      		"CMND":"154273581",
       		"SinhNhat":"10/10/1990",
-      		"GioiTinh":"Nam",
+      		"GioiTinh":"Nữ",
       		"TrinhDo":"Đại học",
       		"NgheNghiep":"Giáo Viên THPT",
       		"DiaChi":
@@ -65,82 +93,72 @@
       		},
       		"Email":"tuthien@gmail.com",
       		"SDT":"090 909 9999",
-      		"BaiDangCuaHocVien":
+      		"BaiDang":
       		{
         		"TimGiaSu":
         		{
-          			"ChuaAiNhan":
+          			"ChuaHoanTat":
           			[
             			"BaiS1",
             			"BaiS2"
           			],
-          			"DaCoNguoiNhan":
+          			"DaHoanTat":
           			[
             			"BaiS3",
             			"BaiS4"
           			]
         		},
-        		"TimHocNhom":
-       			{
-          			"ChuaAiNhan":
+        		"TimHocVien":
+        		{
+					"ChuaHoanTat":
           			[
-            			"BaiN1",
-            			"BaiN2"
+            			"BaiV1",
+            			"BaiV2"
           			],
-          			"DaCoNguoiNhan":
+          			"DaHoanTat":
           			[
-            			"BaiN3",
-            			"BaiN4"
-          			]
+            			"BaiV3",
+            			"BaiV4"
+          			] 
         		}
       		},
-      		"YeuCauCuaHocVien":
-      		[
-        		{"IDBai":"BaiS5","TinhTrang":"Đang chờ"},
-        		{"IDBai":"BaiS6","TinhTrang":"Bị từ chối"},
-        		{"IDBai":"BaiS7","TinhTrang":"Được chấp thuận"}	
-      		],
-      		"TinhNang1":
+      		"YeuCau":
+      		{
+      			"YeuCauGuiHocVien":
+        		[
+        			{"IDBai":"BaiV5","TinhTrang":"Đang chờ"},
+        			{"IDBai":"BaiV6","TinhTrang":"Bị từ chối"},
+        			{"IDBai":"BaiV7","TinhTrang":"Được chấp thuận"}
+        		],
+        		"YeuCauGuiGiaSu":
+      			[
+        			{"IDBai":"BaiS5","TinhTrang":"Đang chờ"},
+        			{"IDBai":"BaiS6","TinhTrang":"Bị từ chối"},
+        			{"IDBai":"BaiS7","TinhTrang":"Được chấp thuận"}	
+      			]
+      		},      		
+      		"TinhNangGiaSu":
       		{
         		"BangCap":
         		[
           			{"HinhAnh":"Link Ảnh","TenBang":"TOEIC 550"},
           			{"HinhAnh":"Link Ảnh","TenBang":"Cử nhân CNTT"}
         		],
-        		"BaiDangCuaGiaSu":
-        		{
-          			"ChuaAiNhan":
-          			[
-            			"BaiV1",
-            			"BaiV2"
-          			],
-          			"DaCoNguoiNhan":
-          			[
-            			"BaiV3",
-            			"BaiV4"
-          			] 
-        		},
         		"Rating":
         		{
           			"IDUser002":"RatingPoint",
           			"IDUser003":"RatingPoint"
         		},
-        		"YeuCauCuaGiaSu":
-        		[
-        			{"IDBai":"BaiV5","TinhTrang":"Đang chờ"},
-        			{"IDBai":"BaiV6","TinhTrang":"Bị từ chối"},
-        			{"IDBai":"BaiV7","TinhTrang":"Được chấp thuận"}
-        		],
-            "TaiLieu":
-            [
-              "IDTaiLieu005"
-            ],
-        		"ThongTinKhac":"Tôi là abcxyz...vân vân mây mây...."
+            	"TaiLieu":
+            	[
+              		"IDTaiLieu005"
+            	],
+        			"ThongTinKhac":"Tôi là abcxyz...vân vân mây mây...."
       		},
         	"LichSuHoatDong":
         	{
           		"IDBaiDang001":"Hoạt động 1",
-              "IDBaiDang002":"Hoạt động 2"
+              	"IDBaiDang002":"Hoạt động 2"
         	},
         	"Chat":
         	[
@@ -149,9 +167,10 @@
       	},
       	"UIDDoanhNghiep":
       	{
-          "LoaiTK":"Doanh Nghiệp",
-			    "TenDoanhNghiep":"Trung tâm gia sư ABC",
+            "LoaiTK":"Doanh Nghiệp",
+			"TenDoanhNghiep":"Trung tâm gia sư ABC",
       		"Avatar":"Link Ảnh ",
+      		"MaSoThue":"010285948",
       		"DiaChi":
       		{
       			"DayDu":"123, D2, Bình Thạnh, TP HCM",
@@ -161,41 +180,41 @@
       		"Email":"trungtamABC@gmail.com",
       		"SDT":"090 808 8888",
       		"ThongTinKhac":"Chúng tôi là abcxyz...vân vân mây mây....",
-          "Rating":
+          	"Rating":
             {
                 "IDUser002":"RatingPoint",
                 "IDUser003":"RatingPoint"
             },
-      		"BaiDangCuaDoanhNghiep":
+      		"BaiDang":
       		{
       			"TimGiaSu":
-            {
-              "ChuaAiNhan":
-              [
-                "BaiS9"
-              ],
-              "DaCoNguoiNhan":
-              [
-                "BaiS10"
-              ]
-            },
-            "TimHocVien":
-            {
-              "ChuaAiNhan":
-              [
-                "BaiV9"
-              ],
-              "DaCoNguoiNhan":
-              [
-                "BaiV10"
-              ]
-            }
-          },
+            	{
+              		"ChuaHoanTat":
+              		[
+                		"BaiS9"
+              		],
+              		"DaHoanTat":
+              		[
+                		"BaiS10"
+              		]
+            	},
+            	"TimHocVien":
+            	{
+              		"ChuaHoanTat":
+              		[
+                		"BaiV9"
+              		],
+              		"DaHoanTat":
+              		[
+                		"BaiV10"
+              		]
+            	}
+          	},
       		"LichSuHoatDong":
-          {
+          	{
               "IDBaiDang003":"Hoạt động 1",
               "IDBaiDang004":"Hoạt động 2"
-          },
+         	},
       		"Chat":
       		[
 				    "IDHopThoai001","IDHopThoai002"
@@ -218,7 +237,7 @@
     				"ThoiGianDang":"HH:MM:SS dd/mm/yyyy",
     				"Lop":
     				[
-    					"Người đi làm"
+    					"Lớp 12"
     				],
     				"Mon":
     				[
@@ -233,19 +252,27 @@
     				"HocPhi":"150000",
     				"LichHoc":
     				{
-    					"ThoiGian":"HH:MM:SS",
+    					"ThoiGian":"Buổi sáng",
     					"NgayHoc":
     					[
     						"Thứ hai","Thứ tư","Thứ 6"
     					]
     				},
     				"SoLuongHocVien":"1",
-    				"ThongTinKhac":"Học viên là nữ, 45 tuổi",
-    				"YeuCauKhac":"Ưu tiên sinh viên nữ ngành ngôn ngữ Anh",
+    				"ThoiLuong":"90",
+    				"SoBuoi":"12",
+    				"ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
     				"DanhSachYeuCau":
-    				[
-    					"UID001","UID002"
-    				]
+    				{
+    					"DangCho":
+    					[
+    						"UID001","UID002"
+    					],
+    					"TamDuyet":
+    					[
+    						"UID003"
+    					]
+    				}
     			}
     		],
     		"DaHoanTat":
@@ -262,24 +289,28 @@
     					"Anh văn","Toán"
     				],
     				"DiaChi":
-             {
-                "DayDu":"Thỏa thuận",
-                "Quan":"Null",
-                "TP":"HCM"
-            },
+             		{
+                		"DayDu":"Thỏa thuận",
+                		"Quan":"Null",
+                		"TP":"HCM"
+            		},
     				"HocPhi":"350000",
     				"LichHoc":
     				{
-    					"ThoiGian":"HH:MM:SS",
+    					"ThoiGian":"Buổi tối",
     					"NgayHoc":
     					[
     						"Thứ hai","Thứ tư","Thứ 6"
     					]
     				},
     				"SoLuongHocVien":"2",
+    				"ThoiLuong":"90",
+    				"SoBuoi":"12",
     				"ThongTinKhac":"Anh 8, toán 12",
-    				"YeuCauKhac":"Ưu tiên sinh viên giỏi",
-    				"NguoiNhan":"UID003"
+    				"DanhSachNhan":
+    				[
+    					"UID003"
+    				]
     			}
     		]	
     	},
@@ -299,29 +330,31 @@
     					"Anh văn","Toán"
     				],
     				"DiaChi":
-            {
-                "DayDu":"Thỏa thuận",
-                "Quan":"Null",
-                "TP":"HCM"
-            },
+            		{
+                		"DayDu":"Thỏa thuận",
+                		"Quan":"Null",
+                		"TP":"HCM"
+            		},
     				"HocPhi":"150000",
     				"LichHoc":
     				{
-    					"ThoiGian":"HH:MM:SS",
+    					"ThoiGian":"Buổi sáng",
     					"NgayHoc":
     					[
     						"Thứ hai","Thứ tư","Thứ 6"
     					]
     				},
     				"SoLuongHocVien":"5",
+    				"ThoiLuong":"90",
+    				"SoBuoi":"12",
     				"ThongTinKhac":"Vui lòng chịu khó làm bài tập",
     				"DanhSachYeuCau":
     				{
-    					"ChuaDuyet":
+    					"DangCho":
     					[
     						"UID001","UID009","UID008"
     					],
-    					"DaDuyet":
+    					"TamDuyet":
     					[
     						"UID003","UID005"
     					]
@@ -342,39 +375,30 @@
     					"Anh văn","Toán"
     				],
     				"DiaChi":
-            {
-                "DayDu":"Thỏa thuận",
-                "Quan":"Null",
-                "TP":"HCM"
-            },
+            		{
+                		"DayDu":"Thỏa thuận",
+                		"Quan":"Null",
+                		"TP":"HCM"
+            		},
     				"HocPhi":"150000",
     				"LichHoc":
     				{
-    					"ThoiGian":"HH:MM:SS",
+    					"ThoiGian":"Buổi chiều",
     					"NgayHoc":
     					[
     						"Thứ hai","Thứ tư","Thứ 6"
     					]
     				},
     				"SoLuongHocVien":"3",
+    				"ThoiLuong":"120",
+    				"SoBuoi":"12",
     				"ThongTinKhac":"Vui lòng chịu khó làm bài tập",
-    				"DanhSachHocVien":
+    				"DanhSachNhan":
     				[
     					"UID006","UID007","UID001"
     				]
     			}
     		]
-    	},
-    	"BaiDangTimHocNhom":
-    	{
-        "ChuaHoanTat":
-        [
-
-        ],
-        "DaHoanTat":
-        [
-
-        ]
-    	}
-    }
+   	    }
+   	}    
 }

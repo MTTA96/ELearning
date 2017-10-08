@@ -1,7 +1,9 @@
 package com.eways.elearning.Model;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +13,8 @@ import com.google.firebase.database.Transaction;
 
 /**
  * Created by zzzzz on 10/8/2017.
+ *
+ * Description: Quản lý các fragment
  */
 
 public class FragmentHandler {

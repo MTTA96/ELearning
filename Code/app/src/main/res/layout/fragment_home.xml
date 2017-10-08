@@ -9,6 +9,7 @@
 
     <!-- Hình đại diện-->
     <ImageView
+        android:id="@+id/avatar_home"
         android:layout_width="@dimen/avatar_main_size"
         android:layout_height="@dimen/avatar_main_size"
         android:layout_marginTop="@dimen/avatar_main_margin_top"

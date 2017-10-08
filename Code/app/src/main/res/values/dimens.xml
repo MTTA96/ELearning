@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="toolbar_height">70dp</dimen>
+    <dimen name="horizontal_padding">16dp</dimen>
+    <dimen name="vertical_padding">16dp</dimen>
+    <!-- Slide menu -->
+    <dimen name="nav_header_main_height">160dp</dimen>
+    <dimen name="avatar_size">100dp</dimen>
+    <dimen name="name_size">22sp</dimen>
+    <dimen name="email_text_size">18sp</dimen>
+
     <!--Fragment đăng nhập-->
     <dimen name="LayoutTop">140dp</dimen>
     <dimen name="Title_Login_Size">30sp</dimen>
@@ -40,4 +49,7 @@
     <dimen name="btnhuy_marginleft">10dp</dimen>
     <dimen name="tvDieukhoan_Horizontalpadding">5dp</dimen>
     <dimen name="LayoutDieuKhoan_margintop">15dp</dimen>
+
+    <!-- Home -->
+
 </resources>

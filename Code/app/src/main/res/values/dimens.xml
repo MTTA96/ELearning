@@ -3,11 +3,26 @@
     <dimen name="toolbar_height">70dp</dimen>
     <dimen name="horizontal_padding">16dp</dimen>
     <dimen name="vertical_padding">16dp</dimen>
+    <dimen name="elevation">5dp</dimen>
+
     <!-- Slide menu -->
     <dimen name="nav_header_main_height">160dp</dimen>
-    <dimen name="avatar_size">100dp</dimen>
-    <dimen name="name_size">22sp</dimen>
-    <dimen name="email_text_size">18sp</dimen>
+    <dimen name="nav_header_horizontal_padding">14dp</dimen>
+    <dimen name="avatar_menu_width">90dp</dimen>
+    <dimen name="avatar_menu_vertical_margin">15dp</dimen>
+    <dimen name="info_header_menu_vertical_padding">20dp</dimen>
+    <dimen name="info_header_menu_horizontal_padding">9dp</dimen>
+    <dimen name="name_size">16sp</dimen>
+    <dimen name="email_text_size">12sp</dimen>
+
+    <!-- Home -->
+    <dimen name="avatar_main_size">120dp</dimen>
+    <dimen name="avatar_main_margin_top">50dp</dimen>
+    <dimen name="user_name_main_size">17sp</dimen>
+    <dimen name="user_info_margin_top">5dp</dimen>
+    <dimen name="danh_sach_chuc_nang_margion_top">70dp</dimen>
+    <dimen name="danh_sach_chuc_nang_horizontal_padding">35dp</dimen>
+    <dimen name="item_danh_sach_chuc_nang_margin_top">20dp</dimen>
 
     <!--Fragment đăng nhập-->
     <dimen name="LayoutTop">140dp</dimen>

@@ -6,6 +6,13 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height"
-        android:background="@color/colorMain"/>
+        android:layout_height="wrap_content"
+        android:background="@color/colorMain"
+        android:elevation="@dimen/elevation"/>
+
+    <!-- Content -->
+    <FrameLayout
+        android:id="@+id/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

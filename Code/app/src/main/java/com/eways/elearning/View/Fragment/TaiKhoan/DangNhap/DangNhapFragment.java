@@ -35,6 +35,6 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnSignup)
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.LoMain,new DangKyFragment()).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new DangKyFragment()).commit();
     }
 }

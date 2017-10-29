@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/MarginTopImg_BaiDang"
+        android:layout_marginLeft="@dimen/MarginLeftImg_BaiDang"
+        android:layout_marginBottom="@dimen/MarginBottomImg_BaiDang"
+        android:layout_marginRight="@dimen/MarginRightImg_BaiDang"
+        >
+        <ImageView
+            android:layout_width="@dimen/WidthImg_BaiDang"
+            android:layout_height="@dimen/HeightImg_BaiDang" />
+        <RatingBar
+            android:layout_width="@dimen/WidthRtb_BaiDang"
+            android:layout_height="@dimen/HeightRtb_BaiDang"
+            android:numStars="5"
+            android:stepSize="0.1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/MarginBottomInfo_BaiDang"
+        android:layout_marginRight="@dimen/MarginRightInfo_BaiDang"
+        android:layout_marginTop="@dimen/MarginTopInfo_BaiDang"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/HeightInfo_BaiDang"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Xem_Ten"
+                android:textSize="@dimen/TextSize_BaiDang" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Xem_Buoi"
+                android:textSize="@dimen/TextSize_BaiDang" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Xem_Mon"
+                android:textSize="@dimen/TextSize_BaiDang" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Xem_Them"
+                android:textSize="@dimen/TextSize_BaiDang" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/HeightInfoL2_BaiDang"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

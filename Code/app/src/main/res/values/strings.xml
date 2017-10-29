@@ -26,4 +26,10 @@
     <string name="tv_dieukhoan3">ELearning</string>
     <string name="btn_signup_DK">Xác nhận</string>
     <string name="btn_huy_DK">Hủy</string>
+
+    <!--Fragment Gia Sư-->
+    <string name="Xem_Them"><b>Xem thêm...</b></string>
+    <string name="Xem_Ten"><b>Tên</b></string>
+    <string name="Xem_Mon"><b>Môn</b></string>
+    <string name="Xem_Buoi"><b>Buổi</b></string>
 </resources>

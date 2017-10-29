@@ -67,4 +67,19 @@
 
     <!-- Home -->
 
+    <!--Fragment Gia Sư-->
+    <dimen name="WidthImg_BaiDang">120dp</dimen>
+    <dimen name="HeightImg_BaiDang">120dp</dimen>
+    <dimen name="WidthRtb_BaiDang">120dp</dimen>
+    <dimen name="HeightRtb_BaiDang">20dp</dimen>
+    <dimen name="MarginTopImg_BaiDang">10dp</dimen>
+    <dimen name="MarginLeftImg_BaiDang">10dp</dimen>
+    <dimen name="MarginRightImg_BaiDang">15dp</dimen>
+    <dimen name="MarginBottomImg_BaiDang">10dp</dimen>
+    <dimen name="HeightInfo_BaiDang">120dp</dimen>
+    <dimen name="MarginTopInfo_BaiDang">10dp</dimen>
+    <dimen name="MarginRightInfo_BaiDang">10dp</dimen>
+    <dimen name="MarginBottomInfo_BaiDang">10dp</dimen>
+    <dimen name="HeightInfoL2_BaiDang">20dp</dimen>
+    <dimen name="TextSize_BaiDang">20sp</dimen>
 </resources>

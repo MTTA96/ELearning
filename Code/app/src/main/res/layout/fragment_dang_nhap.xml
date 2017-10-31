@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".View.Fragment.TaiKhoan.DangNhap.DangNhapFragment">
+    tools:context="com.eways.elearning.View.Fragment.DangNhap.DangNhapFragment">
     <!--Tiêu đề-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,105 +19,97 @@
             android:textColor="@color/Title_Color"
             />
     </LinearLayout>
-
-    <!--Tên đăng nhập-->
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="@dimen/EtUsernameandPass_width"
-        android:layout_height="@dimen/EtUsernameandPass_height"
-        android:layout_gravity="center"
-        android:textColorHint="@color/colorHint"
-        android:background="@drawable/etusername_etpass_shape"
-        android:hint="@string/Hint_username"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:layout_marginTop="@dimen/EtUsername_margintop"/>
-
-    <!--Nhập mật khẩu-->
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="@dimen/EtUsernameandPass_width"
-        android:layout_height="@dimen/EtUsernameandPass_height"
-        android:layout_gravity="center"
-        android:textColorHint="@color/colorHint"
-        android:background="@drawable/etusername_etpass_shape"
-        android:layout_marginTop="@dimen/EtPass_margintop"
-        android:drawableRight="@android:drawable/ic_menu_view"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:hint="@string/Hint_password" />
-
-    <!--Quên mật khẩu-->
-    <TextView
-        android:id="@+id/tvForgetPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ForgerPass"
-        android:textSize="@dimen/ForgetPass_textsize"
-        android:textColor="@color/colorMain"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/ForgetPass_margintop"/>
-
-    <!--Nút đăng ký và đăng nhập-->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/LayoutDangNhap_width"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/Layout_btn_margintop">
-        <!-- Đăng ký -->
-        <Button
-            android:id="@+id/btnSignup"
-            android:text="@string/btnSignup"
-            android:textColor="@color/colorTextBtnDkDn"
-            android:layout_width="@dimen/Btn_DnDk_width"
-            android:layout_height="@dimen/Btn_DnDk_height"
-            android:background="@drawable/btn_shape"/>
-        <!-- Đăng nhập -->
-        <Button
-            android:id="@+id/btnLogin"
-            android:text="@string/btnLogin"
-            android:textColor="@color/colorTextBtnDkDn"
-            android:layout_width="@dimen/Btn_DnDk_width"
-            android:layout_height="@dimen/Btn_DnDk_height"
-            android:background="@drawable/btnlogin_btndk_shape"
-            android:layout_marginLeft="@dimen/btndn_marginleft"/>
-    </LinearLayout>
-
-    <!-- Divider -->
-    <LinearLayout
-        android:layout_width="@dimen/layout_hoac_width"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/layout_margin_top">
-        <View
+        android:layout_marginTop="@dimen/LayoutDangNhap_Margintop">
+        <!--Tên đăng nhập-->
+        <EditText
+            android:id="@+id/etUsername"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/view_height"
-            android:layout_weight="1"
-            android:background="@color/colorDivider"/>
+            android:layout_height="@dimen/ViewDangNhap_height"
+            android:layout_gravity="center"
+            android:textColorHint="@color/colorHint"
+            android:background="@drawable/etusername_etpass_shape"
+            android:hint="@string/Hint_username" />
+        <!--Nhập mật khẩu-->
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ViewDangNhap_height"
+            android:layout_gravity="center"
+            android:textColorHint="@color/colorHint"
+            android:background="@drawable/etusername_etpass_shape"
+            android:drawableRight="@android:drawable/ic_menu_view"
+            android:layout_marginTop="@dimen/ViewDangNhap_marginTop"
+            android:hint="@string/Hint_password" />
+        <!--Quên mật khẩu-->
         <TextView
+            android:id="@+id/tvForgetPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ForgerPass"
+            android:textSize="@dimen/ForgetPass_textsize"
+            android:textColor="@color/colorMain"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/ViewDangNhap_marginTop"/>
+        <!--Nút đăng ký và đăng nhập-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/ViewDangNhap_marginTop">
+            <Button
+                android:id="@+id/btnSignup"
+                android:text="@string/btnSignup"
+                android:textColor="@color/colorTextBtnDkDn"
+                android:layout_width="@dimen/ViewDangNhap_btnWidth"
+                android:layout_height="@dimen/ViewDangNhap_height"
+                android:background="@drawable/btnlogin_btndk_shape"/>
+            <Button
+                android:id="@+id/btnLogin"
+                android:text="@string/btnLogin"
+                android:textColor="@color/colorTextBtnDkDn"
+                android:layout_width="@dimen/ViewDangNhap_btnWidth"
+                android:layout_height="@dimen/ViewDangNhap_height"
+                android:layout_marginLeft="@dimen/BtnDangNhap_marginLeft"
+                android:background="@drawable/btnlogin_btndk_shape" />
+        </LinearLayout>
+        <!--Nút đăng ký và đăng nhập Gmail và Facebook-->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Hoặc"
-            android:gravity="center"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/view_height"
-            android:layout_weight="1"
-            android:background="@color/colorDivider"/>
-    </LinearLayout>
-
-    <!--Nút đăng ký và đăng nhập Gmail và Facebook-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/layout_margin_top">
-        <!--<com.facebook.login.widget.LoginButton-->
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/ViewDangNhap_marginTop">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height"
+                android:layout_weight="1"
+                android:background="@color/colorDivider"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hoặc"
+                android:gravity="center"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height"
+                android:layout_weight="1"
+                android:background="@color/colorDivider"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/ViewDangNhap_marginTop">
+            <!--<com.facebook.login.widget.LoginButton-->
             <!--android:id="@+id/btnLoginFB"-->
             <!--android:layout_width="@dimen/btnLoginFB_width"-->
             <!--android:layout_height="@dimen/btnLoginFB_height"-->
@@ -125,20 +117,25 @@
             <!--android:layout_marginTop="5dp"-->
             <!--android:layout_weight="1"/>-->
 
-        <Button
-            android:id="@+id/btnLoginFB"
-            android:layout_width="@dimen/btnLoginGG_width"
-            android:layout_height="@dimen/btnLoginGG_height"
-            android:layout_weight="1"
-            android:background="#0084ff"
-            android:text="Facebook"
-            android:textColor="#fffefe"/>
+            <Button
+                android:id="@+id/btnLoginFB"
+                android:layout_width="@dimen/ViewDangNhap_btnWidth"
+                android:layout_height="@dimen/ViewDangNhap_height"
+                android:layout_weight="1"
+                android:background="#0084ff"
+                android:text="Facebook"
+                android:textColor="#fffefe"/>
 
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/btnLoginGmail"
-            android:layout_width="@dimen/btnLoginGG_width"
-            android:layout_height="@dimen/btnLoginGG_height"
-            android:layout_weight="1"/>
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btnLoginGmail"
+                android:layout_width="@dimen/ViewDangNhap_btnWidth"
+                android:layout_height="@dimen/ViewDangNhap_height"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/BtnDangNhap_marginLeft"/>
+        </LinearLayout>
     </LinearLayout>
+
+
+
 </LinearLayout>

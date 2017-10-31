@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import com.eways.elearning.Model.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
+import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity{
     private FragmentHandler fragmentHandler;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseApp.initializeApp(this);
 
         //Thay Actionbar mặc định bằng toolbar
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_tool_bar);

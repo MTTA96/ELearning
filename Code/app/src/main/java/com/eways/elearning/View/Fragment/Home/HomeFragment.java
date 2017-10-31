@@ -4,6 +4,7 @@ package com.eways.elearning.View.Fragment.Home;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         root.findViewById(R.id.avatar_home).setOnClickListener(this);
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        super.onResume();
     }
 
     @Override

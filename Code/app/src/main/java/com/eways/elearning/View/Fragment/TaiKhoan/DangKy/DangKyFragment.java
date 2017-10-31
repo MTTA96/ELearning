@@ -2,7 +2,9 @@ package com.eways.elearning.View.Fragment.TaiKhoan.DangKy;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,12 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
 
     public DangKyFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+        super.onCreate(savedInstanceState);
     }
 
     @Override

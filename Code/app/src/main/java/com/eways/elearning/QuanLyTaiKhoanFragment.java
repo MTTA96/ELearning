@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuanLyTaiKhoan extends Fragment {
+public class QuanLyTaiKhoanFragment extends Fragment {
 
 
-    public QuanLyTaiKhoan() {
+    public QuanLyTaiKhoanFragment() {
         // Required empty public constructor
     }
 

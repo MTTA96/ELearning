@@ -8,13 +8,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 
-import com.eways.elearning.CapNhatThongTinTaiKhoan;
 import com.eways.elearning.Model.FragmentHandler;
+import com.eways.elearning.QuanLyTaiKhoanFragment;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -55,8 +56,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.act_quan_ly_tai_khoan){
-            fragmentHandler.ChuyenFragment(new );
+            fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
         }
+        ((DrawerLayout)findViewById(R.id.drawer_layout)).closeDrawer(Gravity.START);
         return false;
     }
 }

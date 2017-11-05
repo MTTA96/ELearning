@@ -11,4 +11,5 @@ public class SupportKeysList {
     public static final String TAG_HOME_FRAGMENT = "home_fragment";
     public static final String TAG_DANG_NHAP_FRAGMENT = "dang_nhap_fragment";
     public static final String TAG_DANG_KY_FRAGMENT = "dang_ky_fragment";
+    public static final String TAG_QUAN_LY_TAI_KHOAN_FRAGMENT = "quan_ly_tai_khoan_fragment";
 }

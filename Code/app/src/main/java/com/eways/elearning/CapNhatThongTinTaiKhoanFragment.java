@@ -19,13 +19,13 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CapNhatThongTinTaiKhoan extends Fragment  {
+public class CapNhatThongTinTaiKhoanFragment extends Fragment  {
 
     Toolbar toolbar;
     Spinner spNamsinh;
     Calendar calendar;
     ArrayList<String> danhsachNam;
-    public CapNhatThongTinTaiKhoan() {
+    public CapNhatThongTinTaiKhoanFragment() {
         // Required empty public constructor
     }
 

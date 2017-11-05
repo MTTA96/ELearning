@@ -10,19 +10,21 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.eways.elearning.CapNhatThongTinTaiKhoan;
 import com.eways.elearning.Model.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FragmentHandler fragmentHandler;
+    public FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FirebaseApp.initializeApp(this);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_tool_bar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -42,8 +44,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.getDrawerArrowDrawable().setColor(Color.WHITE);
         toggle.syncState();
 
+//        mAuth=FirebaseAuth.getInstance();
+
         fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
         fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
+
     }
 
 

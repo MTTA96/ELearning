@@ -7,8 +7,10 @@
     <color name="Title_Color">#fafafa</color>
     <color name="colorHint">#cecece</color>
     <color name="textColorDark">#343F4B</color>
+    <color name="White">#fcfcfc</color>
 
     <!--Fragment đăng nhập-->
     <color name="colorDivider">#cecece</color>
     <color name="colorTextBtnDkDn">#fcfcfc</color>
+
 </resources>

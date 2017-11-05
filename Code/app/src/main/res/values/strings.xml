@@ -34,5 +34,20 @@
     <string name="Xem_Ten"><b>Tên</b></string>
     <string name="Xem_Mon"><b>Môn</b></string>
     <string name="Xem_Buoi"><b>Buổi</b></string>
+    <!--Fragment QLTK-->
+    <string name="Dang_xuat_QLTK"><i><u>Đăng xuất</u></i></string>
+    <string name="ThongTinCaNhan"><b>Thông tin cá nhân</b></string>
+    <string name="KhoaHocCuaToi"><b>Khóa học của tôi</b></string>
+    <string name="CapNhatBangCap"><b>Cập nhật bằng cấp</b></string>
+    <string name="LinhVucQuanTam"><b>Lĩnh Vực Quan Tâm</b></string>
+    <string name="MoiBanBe"><b>Mời Bạn Bè</b></string>
+    <string name="TaiKhoanKhac"><b>Tài Khoản Khác</b></string>
+    <!--Fragment Cập nhật thông tin tài khoản-->
+    <string name="Hoten_CN"><b>Họ tên:</b></string>
+    <string name="Namsinh_CN"><b>Năm sinh:</b></string>
+    <string name="Gioitinh_CN"><b>Giới tính:</b></string>
+    <string name="Nghenghiep_CN"><b>Nghề nghiệp:</b></string>
+    <!--Fragment CNTTTK-->
+    <string name="Title_CNTTTK"><b>Thông tin cá nhân</b></string>
 
 </resources>

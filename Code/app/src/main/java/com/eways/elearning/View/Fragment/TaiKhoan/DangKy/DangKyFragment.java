@@ -1,6 +1,7 @@
 package com.eways.elearning.View.Fragment.TaiKhoan.DangKy;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,9 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.eways.elearning.Presenter.DangKy.DangKyImpPresenter;
 import com.eways.elearning.Presenter.DangKy.DangKyPresenter;
 import com.eways.elearning.R;
+import com.eways.elearning.View.Activity.MainActivity;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,9 +49,11 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
         etEmailDK=(EditText)root.findViewById(R.id.etEmail);
         etPasswordDK=(EditText) root.findViewById(R.id.etPasswordDK) ;
         etCPassword=(EditText) root.findViewById(R.id.etConfirmPassDK);
-        dangKyPresenter=new DangKyPresenter(getActivity());
+
+        dangKyPresenter=new DangKyPresenter();
+
         btnHuy.setOnClickListener(this);
-        btnDangKy_DK.setOnClickListener(this);
+//        btnDangKy_DK.setOnClickListener(this);
         return root;
     }
 
@@ -55,7 +62,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
         if (view.getId()==R.id.btnHuy_DK)
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new DangNhapFragment()).commit();
         if (view.getId()==R.id.btnDK_DK)
-            dangKyPresenter.NhanThongTinDangKy(etEmailDK.getText().toString(),etPasswordDK.getText().toString(),etCPassword.getText().toString());
+            dangKyPresenter.NhanThongTinDangKy(etEmailDK.getText().toString(),etPasswordDK.getText().toString(),etCPassword.getText().toString(),getActivity());
 
     }
 

@@ -13,4 +13,7 @@
     <color name="colorDivider">#cecece</color>
     <color name="colorTextBtnDkDn">#fcfcfc</color>
 
+    <!--Fragment Gia Sư -->
+    <color name="textColor">#FFFFFF</color>
+
 </resources>

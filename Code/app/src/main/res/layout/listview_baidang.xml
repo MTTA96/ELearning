@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Thành phần hiển thị của viewPager thuộc về fragment_gia_su-->
+<RelativeLayout
+    android:id="@+id/rl_fragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.eways.elearning.View.Activity.MainActivity$PlaceholderFragment_BaiDang">
+
+    <!--
+        ListView nhận thông tin danh sách bài đăng trả về
+        từ xử lý chọn trong PlaceholderFragment_BaiDang
+     -->
+    <ListView
+        android:id="@+id/baidang_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+</RelativeLayout>

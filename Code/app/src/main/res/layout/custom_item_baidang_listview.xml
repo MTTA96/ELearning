@@ -14,9 +14,11 @@
         android:layout_marginRight="@dimen/MarginRightImg_BaiDang"
         >
         <ImageView
+            android:id="@+id/imvAvatar"
             android:layout_width="@dimen/WidthImg_BaiDang"
             android:layout_height="@dimen/HeightImg_BaiDang" />
         <RatingBar
+            android:id="@+id/rbBaiDang"
             android:layout_width="@dimen/WidthRtb_BaiDang"
             android:layout_height="@dimen/HeightRtb_BaiDang"
             android:numStars="5"
@@ -37,24 +39,28 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvTenNguoiDang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Xem_Ten"
                 android:textSize="@dimen/TextSize_BaiDang" />
 
             <TextView
+                android:id="@+id/tvBuoiHoc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Xem_Buoi"
                 android:textSize="@dimen/TextSize_BaiDang" />
 
             <TextView
+                android:id="@+id/tvMonHoc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Xem_Mon"
                 android:textSize="@dimen/TextSize_BaiDang" />
 
             <TextView
+                android:id="@+id/tvXemThem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Xem_Them"

@@ -19,30 +19,26 @@ import com.google.firebase.auth.FirebaseAuth;
  * Created by Quang Tri on 27/10/2017.
  */
 
-public class DangKyModel implements DangKyImpModel {
-    private DangKyPresenter dangKyPresenter;
+public class DangKyModel implements DangKyImpModel{
+    DangKyImpPresenter dangKyImpPresenter;
     FirebaseAuth mAuth;
-    public DangKyModel() {
+
+    public DangKyModel(DangKyImpPresenter dangKyImpPresenter) {
+        this.dangKyImpPresenter = dangKyImpPresenter;
     }
 
     @Override
-    public void NhanTaiKhoan(TaiKhoan taiKhoan,Activity activity) {
-        dangKyPresenter=new DangKyPresenter();
+    public void NhanTaiKhoan(TaiKhoan taiKhoan, Activity activity) {
         mAuth=FirebaseAuth.getInstance(FirebaseApp.initializeApp(activity));
-        if (taiKhoan.getEmail().isEmpty() || taiKhoan.getPassword().isEmpty()) {
-            dangKyPresenter.KetQuaDangKy("emty");
-        } else {
-
-                mAuth.createUserWithEmailAndPassword(taiKhoan.getEmail().toString(), taiKhoan.getPassword().toString())
-                        .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    dangKyPresenter.KetQuaDangKy("thanhcong");
-                                } else
-                                    dangKyPresenter.KetQuaDangKy("thatbai");
-                            }
-                        });
-            }
-        }
+        mAuth.createUserWithEmailAndPassword(taiKhoan.getEmail(), taiKhoan.getPassword())
+                .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            dangKyImpPresenter.KetQuaDangKy("thanhcong");
+                        } else
+                            dangKyImpPresenter.KetQuaDangKy("thatbai");
+                    }
+                });
     }
+}

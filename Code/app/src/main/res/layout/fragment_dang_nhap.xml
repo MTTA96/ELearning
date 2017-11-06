@@ -44,7 +44,8 @@
             android:background="@drawable/etusername_etpass_shape"
             android:drawableRight="@android:drawable/ic_menu_view"
             android:layout_marginTop="@dimen/ViewDangNhap_marginTop"
-            android:hint="@string/Hint_password" />
+            android:hint="@string/Hint_password"
+            android:inputType="textPassword"/>
         <!--Quên mật khẩu-->
         <TextView
             android:id="@+id/tvForgetPass"

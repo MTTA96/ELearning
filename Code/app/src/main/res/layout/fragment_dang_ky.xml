@@ -43,7 +43,8 @@
             android:textColorHint="@color/colorHint"
             android:background="@drawable/etusername_etpass_shape"
             android:layout_marginTop="@dimen/ViewDangKy_marginTop"
-            android:hint="@string/Hint_password" />
+            android:hint="@string/Hint_password"
+            android:inputType="textPassword"/>
         <!--Xác nhận mật khẩu-->
         <EditText
             android:id="@+id/etConfirmPassDK"
@@ -53,7 +54,8 @@
             android:textColorHint="@color/colorHint"
             android:background="@drawable/etusername_etpass_shape"
             android:layout_marginTop="@dimen/ViewDangKy_marginTop"
-            android:hint="@string/Hint_confirmpasswordDK" />
+            android:hint="@string/Hint_confirmpasswordDK"
+            android:inputType="textPassword"/>
         <!--Điều khoản-->
         <LinearLayout
             android:layout_width="wrap_content"

@@ -19,7 +19,7 @@ import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private FragmentHandler fragmentHandler;
+    public FragmentHandler fragmentHandler;
     public FirebaseAuth mAuth;
 
     @Override

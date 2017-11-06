@@ -28,7 +28,7 @@ public class FragmentHandler {
         fragmentManager = fm;
     }
 
-    public void ChuyenFragment(Fragment toFragment, boolean toBackStack, @Nullable String tag){
+    public void  ChuyenFragment(Fragment toFragment, boolean toBackStack, @Nullable String tag){
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if(toBackStack)
             transaction.replace(R.id.content_main, toFragment).addToBackStack(tag).commit();

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.eways.elearning.DataModel.TaiKhoan;
 import com.eways.elearning.Presenter.DangKy.DangKyImpPresenter;
@@ -14,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 
 /**
  * Created by Quang Tri on 27/10/2017.
@@ -21,7 +23,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class DangKyModel implements DangKyImpModel{
     DangKyImpPresenter dangKyImpPresenter;
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
+
 
     public DangKyModel(DangKyImpPresenter dangKyImpPresenter) {
         this.dangKyImpPresenter = dangKyImpPresenter;
@@ -36,8 +39,9 @@ public class DangKyModel implements DangKyImpModel{
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             dangKyImpPresenter.KetQuaDangKy("thanhcong");
-                        } else
-                            dangKyImpPresenter.KetQuaDangKy("thatbai");
+                        } else{
+
+                            dangKyImpPresenter.KetQuaDangKy("thatbai");}
                     }
                 });
     }

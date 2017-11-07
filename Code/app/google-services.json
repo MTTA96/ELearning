@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "176201881931",
-    "firebase_url": "https://elearning-6247b.firebaseio.com",
-    "project_id": "elearning-6247b",
-    "storage_bucket": "elearning-6247b.appspot.com"
+    "project_number": "530552329273",
+    "firebase_url": "https://elearning-da847.firebaseio.com",
+    "project_id": "elearning-da847",
+    "storage_bucket": "elearning-da847.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:176201881931:android:9582dd6527e39835",
+        "mobilesdk_app_id": "1:530552329273:android:9582dd6527e39835",
         "android_client_info": {
           "package_name": "com.eways.elearning"
         }
       },
       "oauth_client": [
         {
-          "client_id": "176201881931-pgq1jnqnjdk63n9n3r8e7f5qsl864gbs.apps.googleusercontent.com",
+          "client_id": "530552329273-c2gpb4najv6jvnjaqsv7raib5p06if2n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB6Rv9W7HsZG8x2DhK8h9_fT0uA26VXeIU"
+          "current_key": "AIzaSyAuVUMyqmPng4GgXuUkZiIOr1tF1Z_Zrus"
         }
       ],
       "services": {

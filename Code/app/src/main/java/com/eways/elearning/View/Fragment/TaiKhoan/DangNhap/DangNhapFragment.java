@@ -85,7 +85,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
 
     @Override
     public void NhanKetQuaDN(String ketqua) {
-        if (ketqua=="thanhcong"){
+        if (ketqua.compareTo("thanhcong")==0){
             Toast.makeText(getActivity(),"Đăng Nhập Thành Công",Toast.LENGTH_SHORT).show();
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
         }

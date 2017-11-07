@@ -40,7 +40,7 @@
     <!-- Chức năng -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingLeft="@dimen/danh_sach_chuc_nang_horizontal_padding"
         android:paddingRight="@dimen/danh_sach_chuc_nang_horizontal_padding"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/item_danh_sach_chuc_nang_margin_top"
             android:background="@drawable/btn_shape"
-            android:text="@string/tim_kiem_bai_dang"
+            android:text="@string/tao_khoa_hoc"
             android:textColor="@android:color/white"/>
         <!-- Đăng tin -->
         <Button
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/item_danh_sach_chuc_nang_margin_top"
             android:background="@drawable/btn_shape"
-            android:text="@string/dang_bai"
+            android:text="@string/hoi_dap"
             android:textColor="@android:color/white"/>
     </LinearLayout>
 </LinearLayout>

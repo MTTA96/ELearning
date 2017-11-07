@@ -44,7 +44,8 @@ import java.util.concurrent.Executor;
  * A simple {@link Fragment} subclass.
  *
  * Note:
- * 1. Chăn
+ * 1. Chặn lỗi đăng nhập
+ * 2. Chuyển thông báo vào string.xml.
  */
 public class DangNhapFragment extends Fragment implements View.OnClickListener,DangNhapImpView{
     Button btnDangky,btnDangNhap;

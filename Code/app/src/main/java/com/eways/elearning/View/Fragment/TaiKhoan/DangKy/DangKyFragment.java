@@ -24,6 +24,7 @@ import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.

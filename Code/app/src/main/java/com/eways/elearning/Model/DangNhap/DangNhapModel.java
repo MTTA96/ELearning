@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class DangNhapModel implements DangNhapImpModel{
     DangNhapImpPresenter dangNhapImpPresenter;
-    FirebaseAuth mAuth;
+
 
     public DangNhapModel(DangNhapImpPresenter dangNhapImpPresenter) {
         this.dangNhapImpPresenter = dangNhapImpPresenter;
@@ -26,16 +26,17 @@ public class DangNhapModel implements DangNhapImpModel{
 
     @Override
     public void NhanTaiKhoanDN(TaiKhoan taiKhoan, Activity activity) {
-            mAuth=FirebaseAuth.getInstance(FirebaseApp.initializeApp(activity));
-            mAuth.signInWithEmailAndPassword(taiKhoan.getEmail(), taiKhoan.getPassword()).addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        dangNhapImpPresenter.KetQuaDangNhap("thanhcong");
-                    } else
-                        dangNhapImpPresenter.KetQuaDangNhap("thatbai");
+        final FirebaseAuth mAuth;
+        mAuth=FirebaseAuth.getInstance(FirebaseApp.initializeApp(activity));
+        mAuth.signInWithEmailAndPassword(taiKhoan.getEmail().toString(), taiKhoan.getPassword().toString()).addOnCompleteListener(activity,new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    dangNhapImpPresenter.KetQuaDangNhap("thanhcong",mAuth);
+                } else
+                    dangNhapImpPresenter.KetQuaDangNhap("thatbai",mAuth);
 
-                }
-            });
+            }
+        });
     }
 }

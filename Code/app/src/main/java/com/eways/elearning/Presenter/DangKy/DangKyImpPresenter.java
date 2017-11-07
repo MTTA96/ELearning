@@ -13,6 +13,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public interface DangKyImpPresenter {
     public void NhanThongTinDangKy(String Email, String Password, String CPassword, Activity activity);
-    public void KetQuaDangKy(String ketqua);
+    public void KetQuaDangKy(String ketqua );
 
 }

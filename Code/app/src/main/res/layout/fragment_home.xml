@@ -17,6 +17,7 @@
 
     <!-- Tên -->
     <TextView
+        android:id="@+id/tvTen_Home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -28,6 +29,7 @@
 
     <!-- Message -->
     <TextView
+        android:id="@+id/tvGioiThieu_Home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

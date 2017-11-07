@@ -4,12 +4,17 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Messages -->
+    <string name="msg_dang_nhap_thanh_cong">Xin chào </string>
+
     <!-- Nav Menu -->
     <string name="quan_ly_tai_khoan">Quản lý tài khoản</string>
+
     <!-- Home -->
     <string name="xem_danh_sach_bai_dang">Danh sách khóa học</string>
     <string name="tao_khoa_hoc">Tạo khóa học</string>
     <string name="hoi_dap">Hỏi - Đáp</string>
+
     <!--Fragment đăng nhập-->
     <string name="Tittle_Login"><b>Đăng Nhập</b></string>
     <string name="Hint_username">Tên đăng nhập</string>

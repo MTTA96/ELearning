@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public FragmentHandler fragmentHandler;
-    public FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +44,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.getDrawerArrowDrawable().setColor(Color.WHITE);
         toggle.syncState();
 
-//        mAuth=FirebaseAuth.getInstance();
 
         fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
         fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
-
     }
 
 
+    //Set event cho slide menu
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.act_quan_ly_tai_khoan){

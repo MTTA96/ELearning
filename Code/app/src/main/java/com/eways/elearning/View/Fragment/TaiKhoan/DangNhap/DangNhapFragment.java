@@ -89,7 +89,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser()!=null){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment());
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
                 }
 
             }
@@ -145,6 +145,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
             } else {
                 // Google Sign In failed, update UI appropriately
                 // ...

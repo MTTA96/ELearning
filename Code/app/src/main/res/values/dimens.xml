@@ -36,7 +36,7 @@
     <dimen name="BtnDangNhap_marginLeft">5dp</dimen>
     <dimen name="LayoutDangNhap_Margintop">50dp</dimen>
     <dimen name="etuserpass_textpadding">10dp</dimen>
-    <dimen name="loi_textsizeDN">10sp</dimen>
+
     <dimen name="view_height">2dp</dimen>
 
     <!--Fragment Đăng Ký-->
@@ -46,12 +46,11 @@
     <dimen name="LayoutDangKy_width">350dp</dimen>
     <dimen name="ViewDangKy_height">50dp</dimen>
     <dimen name="ViewDangKy_btnWidth">140dp</dimen>
-    <dimen name="ViewDangKy_marginTop">10dp</dimen>
+    <dimen name="ViewDangKy_marginTop">15dp</dimen>
     <dimen name="BtnDangKy_marginLeft">5dp</dimen>
     <dimen name="LayoutDangKy_Margintop">50dp</dimen>
     <dimen name="etuserpassDK_textpadding">10dp</dimen>
     <dimen name="Dieukhoan_textsize">20sp</dimen>
-    <dimen name="loi_textsizeDK">10sp</dimen>
 
     <dimen name="tvDieukhoan_Horizontalpadding">5dp</dimen>
     <dimen name="LayoutDieuKhoan_margintop">15dp</dimen>

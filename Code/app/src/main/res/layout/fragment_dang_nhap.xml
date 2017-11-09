@@ -25,13 +25,6 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/LayoutDangNhap_Margintop">
-        <!--Lỗi-->
-        <TextView
-            android:id="@+id/tvLoiDN"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/loi_textsizeDN"
-            android:textColor="@color/colorError"/>
         <!--Tên đăng nhập-->
         <EditText
             android:id="@+id/etUsername"
@@ -39,7 +32,6 @@
             android:layout_height="@dimen/ViewDangNhap_height"
             android:layout_gravity="center"
             android:textColorHint="@color/colorHint"
-            android:layout_marginTop="@dimen/ViewDangNhap_marginTop"
             android:background="@drawable/etusername_etpass_shape"
             android:hint="@string/Hint_username" />
         <!--Nhập mật khẩu-->

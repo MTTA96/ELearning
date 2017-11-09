@@ -26,29 +26,15 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/LayoutDangKy_Margintop">
         <!--Nhập Email-->
-        <TextView
-            android:id="@+id/tvLoiEmailDK"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorError"
-            android:textSize="@dimen/loi_textsizeDK"/>
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/ViewDangKy_height"
             android:layout_gravity="center"
-
             android:textColorHint="@color/colorHint"
             android:background="@drawable/etusername_etpass_shape"
             android:hint="@string/Hint_username" />
         <!--Nhập mật khẩu-->
-        <TextView
-            android:id="@+id/tvLoiPasswordDK"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/ViewDangKy_marginTop"
-            android:textColor="@color/colorError"
-            android:textSize="@dimen/loi_textsizeDK"/>
         <EditText
             android:id="@+id/etPasswordDK"
             android:layout_width="match_parent"
@@ -56,17 +42,10 @@
             android:layout_gravity="center"
             android:textColorHint="@color/colorHint"
             android:background="@drawable/etusername_etpass_shape"
-
+            android:layout_marginTop="@dimen/ViewDangKy_marginTop"
             android:hint="@string/Hint_password"
             android:inputType="textPassword"/>
         <!--Xác nhận mật khẩu-->
-        <TextView
-            android:id="@+id/tvLoiCPasswordDK"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorError"
-            android:layout_marginTop="@dimen/ViewDangKy_marginTop"
-            android:textSize="@dimen/loi_textsizeDK"/>
         <EditText
             android:id="@+id/etConfirmPassDK"
             android:layout_width="match_parent"
@@ -74,6 +53,7 @@
             android:layout_gravity="center"
             android:textColorHint="@color/colorHint"
             android:background="@drawable/etusername_etpass_shape"
+            android:layout_marginTop="@dimen/ViewDangKy_marginTop"
             android:hint="@string/Hint_confirmpasswordDK"
             android:inputType="textPassword"/>
         <!--Điều khoản-->

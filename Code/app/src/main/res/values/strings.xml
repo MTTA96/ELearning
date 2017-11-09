@@ -18,11 +18,6 @@
     <string name="btnLogin">Đăng Nhập</string>
     <string name="btnSignup">Đăng Ký</string>
 
-    <string name="loi_EmailDN">Chưa đăng nhập Email</string>
-    <string name="loi_PasswordDN">Chưa nhập mật khẩu</string>
-    <string name="loi_SaiDinhDangEmailDN">Email không đúng</string>
-    <string name="loi_SaiMatKhauDN">Mật khẩu không hợp lệ </string>
-
     <!--Fragment đăng ký-->
     <string name="Tittle_Signup"><b>Đăng Ký</b></string>
     <string name="Hint_EmailDK">Email</string>
@@ -33,12 +28,6 @@
     <string name="tv_dieukhoan3">ELearning</string>
     <string name="btn_signup_DK">Xác nhận</string>
     <string name="btn_huy_DK">Hủy</string>
-    <string name="emtyEmailDK">* Chưa nhập Email</string>
-    <string name="emtyPasswordDK">* Chưa nhập mật khẩu</string>
-    <string name="emtyCPasswordDK">* Chưa xác nhận mật khẩu</string>
-    <string name="SaiEmailDK">* Email không đúng định dạng</string>
-    <string name="SaiXacNhanMatKhauDK">* Xác nhận mật không đúng</string>
-    <string name="SaiMatKhauDK">* Mật khẩu phải từ 6 ký tự trở lên</string>
 
     <!--Fragment Gia Sư-->
     <string name="Xem_Them"><b>Xem thêm...</b></string>

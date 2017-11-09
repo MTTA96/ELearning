@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Model.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;

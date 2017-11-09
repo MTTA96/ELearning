@@ -10,5 +10,5 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public interface DangNhapImpPresenter {
     public void NhanThongTinDN(String email,String Password ,Activity activity);
-    public void KetQuaDangNhap(String ketqua, FirebaseAuth mAuth);
+    public void KetQuaDangNhap(String ketqua);
 }

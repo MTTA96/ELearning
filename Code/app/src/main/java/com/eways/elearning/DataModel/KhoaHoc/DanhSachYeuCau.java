@@ -1,4 +1,4 @@
-package com.eways.elearning.DataModel.BaiDang;
+package com.eways.elearning.DataModel.KhoaHoc;
 
 import java.util.ArrayList;
 

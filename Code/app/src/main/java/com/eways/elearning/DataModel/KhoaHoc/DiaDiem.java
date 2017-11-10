@@ -1,4 +1,4 @@
-package com.eways.elearning.DataModel.BaiDang;
+package com.eways.elearning.DataModel.KhoaHoc;
 
 /**
  * Created by Tien Phat on 02/11/2017.

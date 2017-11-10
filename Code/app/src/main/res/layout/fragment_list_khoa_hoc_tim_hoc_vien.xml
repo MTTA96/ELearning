@@ -1,0 +1,18 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocTimHocVienFragment">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srlKhoaHocTimHocVien"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lvKhoaHocTimHocVien"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>

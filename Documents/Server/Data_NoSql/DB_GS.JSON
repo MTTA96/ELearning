@@ -1,404 +1,476 @@
 {
-  	"TinTuc":
-  	{
-  		"TinTrongNuoc":
-  		[
-  			{
-  				"NguoiDang":"UID",
-  				"TieuDe":"Hình thức thi đại học 2018",
-  				"NoiDung":"ABC DEF"
-  			}
-  		],
-  		"TinNuocNgoai":
-  		[
-			{
-  				"NguoiDang":"UID",
-  				"TieuDe":"Cơ hội du học Nhật Bản",
-  				"NoiDung":"ABC DEF"
-  			}
-  		]
-  	},
-  	"DataApp":
-  	{
-  		"KhuVuc":
-  		{
-  			"TPHCM":
-  			[
-  				"Bình Thạnh","Gò Vấp"
-  			],
-  			"HaNoi":
-  			[
-  				"Hoàn Kiếm","Đống Đa"
-  			]
-  		},
-  		"DanhMucMon":
-  		{
-  			"Toan":
-  			{
-  				"TenMon":"Toan",
-  				"HocPhi":"150000"
-  			}
-  		}
-  	},
-  	"HopThoai":
-  	[
-  		[
-  			{
-  				"NguoiGui":"UID001",
-  				"ThoiGianGui":"HH:MM:SS dd/mm/yyyy",
-  				"NoiDung":"Hello!"
-  			},
-  			{
-  				"NguoiGui":"UID002",
-  				"ThoiGianGui":"HH:MM:SS dd/mm/yyyy",
-  				"NoiDung":"Hi!"
-  			}
-  		]
-  	],
-  	"TaiLieu":
-  	[
-  		{
-        "NguoiGui":"UID",
-        "TieuDe":"Toán số 12" ,
-        "MoTa":"Cách làm bài tập nhanh...",
-        "NoiDung":"Link tài liệu",
-        "Rating":
+    "TinTuc":
+    {
+      "TinTrongNuoc":
+      [
         {
-          "UID":
+          "NguoiDang":"UserIDxxx",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "TieuDe":"Hình thức thi đại học 2018",
+          "NoiDung":"ABC DEF"
+        }
+      ],
+      "TinNuocNgoai":
+      [
+      {
+          "NguoiDang":"UserIDxxx",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "TieuDe":"Cơ hội du học Nhật Bản",
+          "NoiDung":"ABC DEF"
+        }
+      ]
+    },
+    "DataApp":
+    {
+      "KhuVuc":
+      {
+        "TPHCM":
+        [
+          "Quận 1",
+          "Quận 2",
+          "Quận 3",
+          "Quận 4",
+          "Quận 5",
+          "Quận 6",
+          "Quận 7",
+          "Quận 8",
+          "Quận 9",
+          "Quận 10",
+          "Quận 11",
+          "Quận 12",
+          "Quận Thủ Đức",
+          "Quận Gò Vấp",
+          "Quận Bình Thạnh",
+          "Quận Tân Bình",
+          "Quận Tân Phú",
+          "Quận Phú Nhuận",
+          "Quận Bình Tân",
+          "Quận Củ Chi",
+          "Quận Hóc Môn",
+          "Quận Bình Chánh",
+          "Quận Nhà Bè",
+          "Quận Cần Giờ"
+        ]
+      },
+      "DanhMucLinhVuc":
+      [
+        "Kiến thức tiểu học",
+        "Kiến thức trung học cơ sở",
+        "Kiến thức trung học phổ thông",
+        "Toán",
+        "Lý",
+        "Hóa",
+        "Văn học",
+        "Lịch sử",
+        "Địa lý",
+        "Thể thao",
+        "Hội họa",
+        "Âm nhạc",
+        "Ẩm thực",
+        "Kỹ năng mềm",
+        "Mẹo vặt" 
+      ]
+    },
+    "HopThoai":
+    [
+      [
+        {
+          "NguoiGui":"UserID001",
+          "NgayGui":" dd/mm/yyyy",
+          "GioGui":"HH:MM:SS",
+          "NoiDung":"Hello!"
+        },
+
+        {
+          "NguoiGui":"UserID002",
+          "NgayGui":" dd/mm/yyyy",
+          "GioGui":"HH:MM:SS",
+          "NoiDung":"Hi!"
+        }
+      ],
+
+      [
+        {
+          "NguoiGui":"UserID003",
+          "NgayGui":" dd/mm/yyyy",
+          "GioGui":"HH:MM:SS",
+          "NoiDung":"Xin chào!"
+        },
+
+        {
+          "NguoiGui":"UserID004",
+          "NgayGui":" dd/mm/yyyy",
+          "GioGui":"HH:MM:SS",
+          "NoiDung":"Chào!"
+        }
+      ]
+    ],
+    "TaiLieu":
+    [
+      {
+          "NguoiGui":"UserIDxxx",
+          "TieuDe":"Toán số 12" ,
+          "MoTa":"Cách làm bài tập nhanh...",
+          "NoiDung":"Link tài liệu",
+          "Rating":
           {
-            "RatingPoint":"4.5",
-            "Comment":"Nội dung rất dễ hiểu!"
+              "UserIDxxx":
+              {
+                "RatingPoint":"4.5",
+                "Comment":"Nội dung rất dễ hiểu!"
+              }
           }
         }
-      }
-  	],
-  	"TaiKhoan":
-  	{
+    ],
+    "TaiKhoan":
+    {
     
-    	"UIDCaNhan":
-    	{
-      		"LoaiTK":"Cá nhân",
-      		"HoTen":"Thi Thi",
-      		"Avatar":"Link Ảnh ",
-      		"CMND":"154273581",
-      		"SinhNhat":"10/10/1990",
-      		"GioiTinh":"Nữ",
-      		"TrinhDo":"Đại học",
-      		"NgheNghiep":"Giáo Viên THPT",
-      		"DiaChi":
-      		{
-      			"DayDu":"123, D2, Bình Thạnh, TP HCM",
-      			"Quan":"Bình Thạnh",
-      			"TP":"HCM"
-      		},
-      		"Email":"tuthien@gmail.com",
-      		"SDT":"090 909 9999",
-      		"BaiDang":
-      		{
-        		"TimGiaSu":
-        		{
-          			"ChuaHoanTat":
-          			[
-            			"BaiS1",
-            			"BaiS2"
-          			],
-          			"DaHoanTat":
-          			[
-            			"BaiS3",
-            			"BaiS4"
-          			]
-        		},
-        		"TimHocVien":
-        		{
-					"ChuaHoanTat":
-          			[
-            			"BaiV1",
-            			"BaiV2"
-          			],
-          			"DaHoanTat":
-          			[
-            			"BaiV3",
-            			"BaiV4"
-          			] 
-        		}
-      		},
-      		"YeuCau":
-      		{
-      			"YeuCauGuiHocVien":
-        		[
-        			{"IDBai":"BaiV5","TinhTrang":"Đang chờ"},
-        			{"IDBai":"BaiV6","TinhTrang":"Bị từ chối"},
-        			{"IDBai":"BaiV7","TinhTrang":"Được chấp thuận"}
-        		],
-        		"YeuCauGuiGiaSu":
-      			[
-        			{"IDBai":"BaiS5","TinhTrang":"Đang chờ"},
-        			{"IDBai":"BaiS6","TinhTrang":"Bị từ chối"},
-        			{"IDBai":"BaiS7","TinhTrang":"Được chấp thuận"}	
-      			]
-      		},      		
-      		"TinhNangGiaSu":
-      		{
-        		"BangCap":
-        		[
-          			{"HinhAnh":"Link Ảnh","TenBang":"TOEIC 550"},
-          			{"HinhAnh":"Link Ảnh","TenBang":"Cử nhân CNTT"}
-        		],
-        		"Rating":
-        		{
-          			"IDUser002":"RatingPoint",
-          			"IDUser003":"RatingPoint"
-        		},
-            	"TaiLieu":
-            	[
-              		"IDTaiLieu005"
-            	],
-        			"ThongTinKhac":"Tôi là abcxyz...vân vân mây mây...."
-      		},
-        	"LichSuHoatDong":
-        	{
-          		"IDBaiDang001":"Hoạt động 1",
-              	"IDBaiDang002":"Hoạt động 2"
-        	},
-        	"Chat":
-        	[
-        		"IDHopThoai001","IDHopThoai002"
-        	]
-      	},
-      	"UIDDoanhNghiep":
-      	{
-            "LoaiTK":"Doanh Nghiệp",
-			"TenDoanhNghiep":"Trung tâm gia sư ABC",
-      		"Avatar":"Link Ảnh ",
-      		"MaSoThue":"010285948",
-      		"DiaChi":
-      		{
-      			"DayDu":"123, D2, Bình Thạnh, TP HCM",
-      			"Quan":"Bình Thạnh",
-      			"TP":"HCM"
-      		},
-      		"Email":"trungtamABC@gmail.com",
-      		"SDT":"090 808 8888",
-      		"ThongTinKhac":"Chúng tôi là abcxyz...vân vân mây mây....",
-          	"Rating":
+      "UIDCaNhan":
+      {
+          "LoaiTK":"Cá nhân",
+          "HoTen":"Thi Thi",
+          "Avatar":"Link Ảnh ",
+          "CMND":"154273581",
+          "SinhNhat":"10/10/1990",
+          "GioiTinh":"Nữ",
+          "TrinhDo":"Đại học",
+          "NgheNghiep":"Giáo Viên THPT",
+          "DiaChi":
+          {
+            "DayDu":"123, D2, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "Email":"tuthien@gmail.com",
+          "SDT":"090 909 9999",
+          "KhoaHoc":
+          {
+            "TimGiaSu":
+            {
+                "ChuaHoanTat":
+                [
+                  "BaiS1",
+                  "BaiS2"
+                ],
+                "DaHoanTat":
+                [
+                  "BaiS3",
+                  "BaiS4"
+                ]
+            },
+            "TimHocVien":
+            {
+          "ChuaHoanTat":
+                [
+                  "BaiV1",
+                  "BaiV2"
+                ],
+                "DaHoanTat":
+                [
+                  "BaiV3",
+                  "BaiV4"
+                ] 
+            }
+          },
+          "YeuCau":
+          {
+            "YeuCauGuiHocVien":
+            [
+              {"IDBai":"BaiV5","TinhTrang":"Đang chờ"},
+              {"IDBai":"BaiV6","TinhTrang":"Bị từ chối"},
+              {"IDBai":"BaiV7","TinhTrang":"Được chấp thuận"}
+            ],
+            "YeuCauGuiGiaSu":
+            [
+              {"IDBai":"BaiS5","TinhTrang":"Đang chờ"},
+              {"IDBai":"BaiS6","TinhTrang":"Bị từ chối"},
+              {"IDBai":"BaiS7","TinhTrang":"Được chấp thuận"} 
+            ]
+          },          
+          "TinhNangGiaSu":
+          {
+            "BangCap":
+            [
+                {"HinhAnh":"Link Ảnh","TenBang":"TOEIC 550"},
+                {"HinhAnh":"Link Ảnh","TenBang":"Cử nhân CNTT"}
+            ],
+            "Rating":
             {
                 "IDUser002":"RatingPoint",
                 "IDUser003":"RatingPoint"
             },
-      		"BaiDang":
-      		{
-      			"TimGiaSu":
-            	{
-              		"ChuaHoanTat":
-              		[
-                		"BaiS9"
-              		],
-              		"DaHoanTat":
-              		[
-                		"BaiS10"
-              		]
-            	},
-            	"TimHocVien":
-            	{
-              		"ChuaHoanTat":
-              		[
-                		"BaiV9"
-              		],
-              		"DaHoanTat":
-              		[
-                		"BaiV10"
-              		]
-            	}
-          	},
-      		"LichSuHoatDong":
-          	{
+              "TaiLieu":
+              [
+                  "IDTaiLieu005"
+              ],
+            "ThongTinKhac":"Tôi là abcxyz...vân vân mây mây...."
+          },
+          "LichSuHoatDong":
+          {
+              "IDBaiDang001":"Hoạt động 1",
+                "IDBaiDang002":"Hoạt động 2"
+          },
+          "Chat":
+          [
+            "IDHopThoai001",
+            "IDHopThoai002"
+          ]
+        },
+        "UIDDoanhNghiep":
+        {
+            "LoaiTK":"Doanh Nghiệp",
+      "TenDoanhNghiep":"Trung tâm gia sư ABC",
+          "Avatar":"Link Ảnh ",
+          "MaSoThue":"010285948",
+          "DiaChi":
+          {
+            "DayDu":"123, D2, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "Email":"trungtamABC@gmail.com",
+          "SDT":"090 808 8888",
+          "ThongTinKhac":"Chúng tôi là abcxyz...vân vân mây mây....",
+            "Rating":
+            {
+                "IDUser002":"RatingPoint",
+                "IDUser003":"RatingPoint"
+            },
+          "KhoaHOc":
+          {
+            "TimGiaSu":
+              {
+                  "ChuaHoanTat":
+                  [
+                    "BaiS9"
+                  ],
+                  "DaHoanTat":
+                  [
+                    "BaiS10"
+                  ]
+              },
+              "TimHocVien":
+              {
+                  "ChuaHoanTat":
+                  [
+                    "BaiV9"
+                  ],
+                  "DaHoanTat":
+                  [
+                    "BaiV10"
+                  ]
+              }
+            },
+          "LichSuHoatDong":
+            {
               "IDBaiDang003":"Hoạt động 1",
               "IDBaiDang004":"Hoạt động 2"
-         	},
-      		"Chat":
-      		[
-				    "IDHopThoai001","IDHopThoai002"
-      		],
-      		"TaiLieu":
-      		[
-      			"IDTaiLieu005"
-      		]
-      	}
+          },
+          "Chat":
+          [
+            "IDHopThoai001",
+            "IDHopThoai002"
+          ],
+          "TaiLieu":
+          [
+            "IDTaiLieu005"
+          ]
+        }
     },
 
-    "BaiDang":
+    "KhoaHoc":
     {
-    	"BaiDangTimGiaSu":
-    	{
-    		"ChuaHoanTat":
-    		[
-    			{
-    				"NguoiDang":"UID",
-    				"ThoiGianDang":"HH:MM:SS dd/mm/yyyy",
-    				"Lop":
-    				[
-    					"Lớp 12"
-    				],
-    				"Mon":
-    				[
-    					"Anh văn giao tiếp"
-    				],
-    				"DiaChi":
-    				{
-      					"DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
-      					"Quan":"Bình Thạnh",
-      					"TP":"HCM"
-      				},
-    				"HocPhi":"150000",
-    				"LichHoc":
-    				{
-    					"ThoiGian":"Buổi sáng",
-    					"NgayHoc":
-    					[
-    						"Thứ hai","Thứ tư","Thứ 6"
-    					]
-    				},
-    				"SoLuongHocVien":"1",
-    				"ThoiLuong":"90",
-    				"SoBuoi":"12",
-    				"ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
-    				"DanhSachYeuCau":
-    				{
-    					"DangCho":
-    					[
-    						"UID001","UID002"
-    					],
-    					"TamDuyet":
-    					[
-    						"UID003"
-    					]
-    				}
-    			}
-    		],
-    		"DaHoanTat":
-    		[
-    			{
-					"NguoiDang":"UID",
-    				"ThoiGianDang":"HH:MM:SS dd/mm/yyyy",
-    				"Lop":
-    				[
-    					"Lớp 8","Lớp 12"
-    				],
-    				"Mon":
-    				[
-    					"Anh văn","Toán"
-    				],
-    				"DiaChi":
-             		{
-                		"DayDu":"Thỏa thuận",
-                		"Quan":"Null",
-                		"TP":"HCM"
-            		},
-    				"HocPhi":"350000",
-    				"LichHoc":
-    				{
-    					"ThoiGian":"Buổi tối",
-    					"NgayHoc":
-    					[
-    						"Thứ hai","Thứ tư","Thứ 6"
-    					]
-    				},
-    				"SoLuongHocVien":"2",
-    				"ThoiLuong":"90",
-    				"SoBuoi":"12",
-    				"ThongTinKhac":"Anh 8, toán 12",
-    				"DanhSachNhan":
-    				[
-    					"UID003"
-    				]
-    			}
-    		]	
-    	},
-    	"BaiDangTimHocVien":
-    	{
-    		"ChuaHoanTat":
-    		[
-    			{
-    				"NguoiDang":"UID",
-    				"ThoiGianDang":"HH:MM:SS dd/mm/yyyy",
-    				"Lop":
-    				[
-    					"Lớp 12"
-    				],
-    				"Mon":
-    				[
-    					"Anh văn","Toán"
-    				],
-    				"DiaChi":
-            		{
-                		"DayDu":"Thỏa thuận",
-                		"Quan":"Null",
-                		"TP":"HCM"
-            		},
-    				"HocPhi":"150000",
-    				"LichHoc":
-    				{
-    					"ThoiGian":"Buổi sáng",
-    					"NgayHoc":
-    					[
-    						"Thứ hai","Thứ tư","Thứ 6"
-    					]
-    				},
-    				"SoLuongHocVien":"5",
-    				"ThoiLuong":"90",
-    				"SoBuoi":"12",
-    				"ThongTinKhac":"Vui lòng chịu khó làm bài tập",
-    				"DanhSachYeuCau":
-    				{
-    					"DangCho":
-    					[
-    						"UID001","UID009","UID008"
-    					],
-    					"TamDuyet":
-    					[
-    						"UID003","UID005"
-    					]
-    				}
-    			}
-    		],
-    		"DaHoanTat":
-    		[
-    			{
-    				"NguoiDang":"UID",
-    				"ThoiGianDang":"HH:MM:SS dd/mm/yyyy",
-    				"Lop":
-    				[
-    					"Lớp 12"
-    				],
-    				"Mon":
-    				[
-    					"Anh văn","Toán"
-    				],
-    				"DiaChi":
-            		{
-                		"DayDu":"Thỏa thuận",
-                		"Quan":"Null",
-                		"TP":"HCM"
-            		},
-    				"HocPhi":"150000",
-    				"LichHoc":
-    				{
-    					"ThoiGian":"Buổi chiều",
-    					"NgayHoc":
-    					[
-    						"Thứ hai","Thứ tư","Thứ 6"
-    					]
-    				},
-    				"SoLuongHocVien":"3",
-    				"ThoiLuong":"120",
-    				"SoBuoi":"12",
-    				"ThongTinKhac":"Vui lòng chịu khó làm bài tập",
-    				"DanhSachNhan":
-    				[
-    					"UID006","UID007","UID001"
-    				]
-    			}
-    		]
-   	    }
-   	}    
+      "KhoaHocTimGiaSu":
+      {
+        "ChuaHoanTat":
+        [
+          {
+            "NguoiDang":"UID",
+            "NgayDang":"dd/mm/yyyy",
+            "GioDang":"HH:MM:SS",
+            "Lop":
+            [
+              "Lớp 12"
+            ],
+            "Mon":
+            [
+              "Anh văn giao tiếp"
+            ],
+            "DiaChi":
+            {
+                "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+                "Quan":"Bình Thạnh",
+                "TP":"HCM"
+              },
+            "HocPhi":"150000",
+            "LichHoc":
+            {
+              "ThoiGian":"Buổi sáng",
+              "NgayHoc":
+              [
+                "Thứ hai",
+                "Thứ tư",
+                "Thứ sáu"
+              ]
+            },
+            "SoLuongHocVien":"1",
+            "ThoiLuongBuoiHoc":"90",
+            "SoBuoiHoc":"12",
+            "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
+            "DanhSachYeuCau":
+            {
+              "DangCho":
+              [
+                "UID001",
+                "UID002"
+              ],
+              "TamDuyet":
+              [
+                "UID003"
+              ]
+            }
+          }
+        ],
+        "DaHoanTat":
+        [
+          {
+          "NguoiDang":"UID",
+            "NgayDang":"dd/mm/yyyy",
+            "GioDang":"HH:MM:SS",
+            "Lop":
+            [
+              "Lớp 8","Lớp 12"
+            ],
+            "Mon":
+            [
+              "Anh văn","Toán"
+            ],
+            "DiaChi":
+                {
+                    "DayDu":"Thỏa thuận",
+                    "Quan":"Null",
+                    "TP":"HCM"
+                },
+            "HocPhi":"350000",
+            "LichHoc":
+            {
+              "ThoiGian":"Buổi tối",
+              "NgayHoc":
+              [
+                "Thứ hai",
+                "Thứ tư",
+                "Thứ sáu"
+              ]
+            },
+            "SoLuongHocVien":"2",
+            "ThoiLuongBuoiHoc":"90",
+            "SoBuoiHoc":"12",
+            "ThongTinKhac":"Anh 8, toán 12",
+            "DanhSachNhan":
+            [
+              "UID003"
+            ]
+          }
+        ] 
+      },
+      "KhoaHocTimHocVien":
+      {
+        "ChuaHoanTat":
+        [
+          {
+            "NguoiDang":"UID",
+            "NgayDang":"dd/mm/yyyy",
+            "GioDang":"HH:MM:SS",
+            "Lop":
+            [
+              "Lớp 12"
+            ],
+            "Mon":
+            [
+              "Anh văn","Toán"
+            ],
+            "DiaChi":
+                {
+                    "DayDu":"Thỏa thuận",
+                    "Quan":"Null",
+                    "TP":"HCM"
+                },
+            "HocPhi":"150000",
+            "LichHoc":
+            {
+              "ThoiGian":"Buổi sáng",
+              "NgayHoc":
+              [
+                "Thứ hai",
+                "Thứ tư",
+                "Thứ sáu"
+              ]
+            },
+            "SoLuongHocVien":"5",
+            "ThoiLuongBuoiHoc":"90",
+            "SoBuoiHoc":"12",
+            "ThongTinKhac":"Vui lòng chịu khó làm bài tập",
+            "DanhSachYeuCau":
+            {
+              "DangCho":
+              [
+                "UID001",
+                "UID009",
+                "UID008"
+              ],
+              "TamDuyet":
+              [
+                "UID003",
+                "UID005"
+              ]
+            }
+          }
+        ],
+        "DaHoanTat":
+        [
+          {
+            "NguoiDang":"UID",
+            "NgayDang":"dd/mm/yyyy",
+            "GioDang":"HH:MM:SS",
+            "Lop":
+            [
+              "Lớp 12"
+            ],
+            "Mon":
+            [
+              "Anh văn","Toán"
+            ],
+            "DiaChi":
+                {
+                    "DayDu":"Thỏa thuận",
+                    "Quan":"Null",
+                    "TP":"HCM"
+                },
+            "HocPhi":"150000",
+            "LichHoc":
+            {
+              "ThoiGian":"Buổi chiều",
+              "NgayHoc":
+              [
+                "Thứ hai",
+                "Thứ tư",
+                "Thứ sáu"
+              ]
+            },
+            "SoLuongHocVien":"3",
+            "ThoiLuongBuoiHoc":"120",
+            "SoBuoiHoc":"12",
+            "ThongTinKhac":"Vui lòng chịu khó làm bài tập",
+            "DanhSachNhan":
+            [
+              "UID006",
+              "UID007",
+              "UID001"
+            ]
+          }
+        ]
+        }
+    }    
 }

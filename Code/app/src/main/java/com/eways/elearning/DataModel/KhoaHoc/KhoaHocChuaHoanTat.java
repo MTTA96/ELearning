@@ -1,43 +1,44 @@
-package com.eways.elearning.DataModel.BaiDang;
+package com.eways.elearning.DataModel.KhoaHoc;
 
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 
 /**
- * Created by Tien Phat on 02/11/2017.
+ * Created by yowin on 10/11/2017.
  */
 
-public class BaiDangDaHoanTat {
+public class KhoaHocChuaHoanTat {
     String NguoiDang;
-    int SoBuoi;
+    int SoBuoiHoc;
     int SoLuongHocVien;
     Date NgayDang;
     Time GioDang;
-    float ThoiLuong;
+    float ThoiLuongBuoiHoc;
     float HocPhi;
     String ThongTinKhac;
     ArrayList<String> Mon;
     ArrayList<String> LinhVuc;
     ArrayList<String> Lop;
-    LichHoc LichHoc;
-    DiaDiem DiaDiem;
-    ArrayList<String> DanhSachNhan;
+    com.eways.elearning.DataModel.KhoaHoc.LichHoc LichHoc;
+    com.eways.elearning.DataModel.KhoaHoc.DiaDiem DiaDiem;
+    DanhSachYeuCau DanhSachYeuCau;
 
-    public BaiDangDaHoanTat() {
+    public KhoaHocChuaHoanTat() {
     }
 
-    public BaiDangDaHoanTat(String nguoiDang, int soBuoi, int soLuongHocVien, Date ngayDang, Time gioDang,
-                            float thoiLuong, float hocPhi, String thongTinKhac, ArrayList<String> mon,
-                            ArrayList<String> linhVuc, ArrayList<String> lop, LichHoc lichHoc, DiaDiem diaDiem,
-                            ArrayList<String> danhSachNhan)
+    public KhoaHocChuaHoanTat(String nguoiDang, int soBuoiHoc, int soLuongHocVien,
+                              Date ngayDang, Time gioDang, float thoiLuongBuoiHoc,
+                              float hocPhi, String thongTinKhac, ArrayList<String> mon,
+                              ArrayList<String> linhVuc, ArrayList<String> lop,
+                              com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem, DanhSachYeuCau danhSachYeuCau)
     {
         NguoiDang = nguoiDang;
-        SoBuoi = soBuoi;
+        SoBuoiHoc = soBuoiHoc;
         SoLuongHocVien = soLuongHocVien;
         NgayDang = ngayDang;
         GioDang = gioDang;
-        ThoiLuong = thoiLuong;
+        ThoiLuongBuoiHoc = thoiLuongBuoiHoc;
         HocPhi = hocPhi;
         ThongTinKhac = thongTinKhac;
         Mon = mon;
@@ -45,7 +46,7 @@ public class BaiDangDaHoanTat {
         Lop = lop;
         LichHoc = lichHoc;
         DiaDiem = diaDiem;
-        DanhSachNhan = danhSachNhan;
+        DanhSachYeuCau = danhSachYeuCau;
     }
 
     public String getNguoiDang() {
@@ -56,12 +57,12 @@ public class BaiDangDaHoanTat {
         NguoiDang = nguoiDang;
     }
 
-    public int getSoBuoi() {
-        return SoBuoi;
+    public int getSoBuoiHoc() {
+        return SoBuoiHoc;
     }
 
-    public void setSoBuoi(int soBuoi) {
-        SoBuoi = soBuoi;
+    public void setSoBuoiHoc(int soBuoiHoc) {
+        SoBuoiHoc = soBuoiHoc;
     }
 
     public int getSoLuongHocVien() {
@@ -88,12 +89,12 @@ public class BaiDangDaHoanTat {
         GioDang = gioDang;
     }
 
-    public float getThoiLuong() {
-        return ThoiLuong;
+    public float getThoiLuongBuoiHoc() {
+        return ThoiLuongBuoiHoc;
     }
 
-    public void setThoiLuong(float thoiLuong) {
-        ThoiLuong = thoiLuong;
+    public void setThoiLuongBuoiHoc(float thoiLuongBuoiHoc) {
+        ThoiLuongBuoiHoc = thoiLuongBuoiHoc;
     }
 
     public float getHocPhi() {
@@ -136,27 +137,27 @@ public class BaiDangDaHoanTat {
         Lop = lop;
     }
 
-    public LichHoc getLichHoc() {
+    public com.eways.elearning.DataModel.KhoaHoc.LichHoc getLichHoc() {
         return LichHoc;
     }
 
-    public void setLichHoc(LichHoc lichHoc) {
+    public void setLichHoc(com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc) {
         LichHoc = lichHoc;
     }
 
-    public DiaDiem getDiaDiem() {
+    public com.eways.elearning.DataModel.KhoaHoc.DiaDiem getDiaDiem() {
         return DiaDiem;
     }
 
-    public void setDiaDiem(DiaDiem diaDiem) {
+    public void setDiaDiem(com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem) {
         DiaDiem = diaDiem;
     }
 
-    public ArrayList<String> getDanhSachNhan() {
-        return DanhSachNhan;
+    public com.eways.elearning.DataModel.KhoaHoc.DanhSachYeuCau getDanhSachYeuCau() {
+        return DanhSachYeuCau;
     }
 
-    public void setDanhSachNhan(ArrayList<String> danhSachNhan) {
-        DanhSachNhan = danhSachNhan;
+    public void setDanhSachYeuCau(com.eways.elearning.DataModel.KhoaHoc.DanhSachYeuCau danhSachYeuCau) {
+        DanhSachYeuCau = danhSachYeuCau;
     }
 }

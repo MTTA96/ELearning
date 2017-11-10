@@ -1,6 +1,6 @@
 package com.eways.elearning.Model.ListKhoaHoc;
 
-import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuImpPresenter;
+import com.eways.elearning.Presenter.DangKy.ListKhoaHoc.ListKhoaHocTimGiaSuImpPresenter;
 
 import org.json.JSONArray;
 

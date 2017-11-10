@@ -22,7 +22,7 @@
     <dimen name="user_info_margin_top">5dp</dimen>
     <dimen name="danh_sach_chuc_nang_margion_top">70dp</dimen>
     <dimen name="danh_sach_chuc_nang_horizontal_padding">35dp</dimen>
-    <dimen name="item_danh_sach_chuc_nang_margin_top">20dp</dimen>
+    <dimen name="item_danh_sach_chuc_nang_margin_top">40dp</dimen>
 
     <!--Fragment đăng nhập-->
     <dimen name="LayoutTop">130dp</dimen>

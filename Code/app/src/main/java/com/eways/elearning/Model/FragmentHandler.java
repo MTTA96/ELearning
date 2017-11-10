@@ -45,4 +45,12 @@ public class FragmentHandler {
             fragmentManager.popBackStack();
         }
     }
+
+    public void XoaTatCaFragment(){
+        int count = fragmentManager.getBackStackEntryCount();
+        while(count > 0 ){
+            XoaFragment();
+            count--;
+        }
+    }
 }

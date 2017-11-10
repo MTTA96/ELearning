@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Model.FragmentHandler;
 import com.eways.elearning.QuanLyTaiKhoanFragment;
 import com.eways.elearning.R;
@@ -19,7 +20,8 @@ import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    public FragmentHandler fragmentHandler;
+    private FragmentHandler fragmentHandler;
+    private SharedPreferencesHandler mySharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.getDrawerArrowDrawable().setColor(Color.WHITE);
         toggle.syncState();
 
-
+        mySharedPref = new SharedPreferencesHandler();
         fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
         fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
     }
@@ -53,9 +55,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Set event cho slide menu
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        fragmentHandler.XoaTatCaFragment();
+
         if (item.getItemId() == R.id.act_quan_ly_tai_khoan){
             fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
         }
+
         ((DrawerLayout)findViewById(R.id.drawer_layout)).closeDrawer(Gravity.START);
         return false;
     }

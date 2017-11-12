@@ -1,7 +1,9 @@
 package com.eways.elearning;
 
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -81,10 +83,25 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
             dialog.show();
         }
         if (v.getId()==R.id.LoTaiKhoanKhac){
-            FirebaseAuth.getInstance().signOut();
-            fragmentHandler.ChuyenFragment(new HomeFragment(),false,null);
-            sharedPreferencesHandler.DangXuat();
-
+            AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+            builder.setMessage(R.string.DiaLogDangXuat);
+            builder.setNegativeButton(R.string.BtnDongY_DX, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    FirebaseAuth.getInstance().signOut();
+                    fragmentHandler.ChuyenFragment(new HomeFragment(),false,null);
+                    sharedPreferencesHandler.DangXuat();
+                }
+            });
+            builder.setPositiveButton(R.string.BtnHuy_DX, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            Dialog dialog=new Dialog(getContext());
+            dialog=builder.create();
+            dialog.show();
         }
     }
 }

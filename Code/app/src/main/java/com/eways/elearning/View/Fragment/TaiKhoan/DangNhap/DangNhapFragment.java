@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.eways.elearning.Handler.LoginGmailHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Model.FragmentHandler;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapImpPresenter;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapPresenter;
 import com.eways.elearning.R;
@@ -56,7 +57,9 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
     DangNhapImpPresenter dangNhapImpPresenter;
     TextView tvLoiDangNhap;
     SignInButton btnGmailLogin;
-    LoginGmailHandler loginGmailHandler;
+
+    private LoginGmailHandler loginGmailHandler;
+    private FragmentHandler fragmentHandler;
 
     public DangNhapFragment() {
         // Required empty public constructor
@@ -67,7 +70,12 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         dangNhapImpPresenter=new DangNhapPresenter(this);
+<<<<<<< HEAD
         loginGmailHandler=new LoginGmailHandler(getActivity(),this,this);
+=======
+        loginGmailHandler=new LoginGmailHandler(getActivity(),this);
+        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+>>>>>>> f0d23f4a7324eae0385e2399ada4039f80d96409
     }
 
     @Override
@@ -140,7 +148,8 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
             return;
         }
         if (ketqua.compareTo("thanhcong")==0){
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
+            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
+            fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
         }
     }
 

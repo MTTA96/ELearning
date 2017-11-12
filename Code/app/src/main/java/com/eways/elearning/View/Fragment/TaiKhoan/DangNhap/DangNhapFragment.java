@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -99,6 +100,8 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         btnDangky.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
 
+
+
         return root;
     }
 
@@ -114,7 +117,37 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         }
 
     }
-
+//    //Xử lý bật tắt mật khẩu
+//    public void AnHienMatKhau(final EditText etPassword){
+//        etPassword.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                final int DRAWABLE_LEFT = 0;
+//                final int DRAWABLE_TOP = 1;
+//                final int DRAWABLE_RIGHT = 2;
+//                final int DRAWABLE_BOTTOM = 3;
+//
+//                boolean status=false;
+//
+//                if(event.getAction() == MotionEvent.ACTION_UP) {
+//                    if(event.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+//                        // your action her
+//                        if (status==false){
+//                            etPasswordDN.setInputType(View.TEXT_ALIGNMENT_TEXT_START);
+//                            status=true;
+//                        }
+//                        else {
+//                            etPasswordDN.setInputType(View.);
+//                        }
+//
+//                        return true;
+//                    }
+//                }
+//                return false;
+//            }
+//        });
+//
+//    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -108,4 +108,13 @@ public class SharedPreferencesHandler {
         setDaDangNhap(dadangnhap);
         setLoaiTaiKhoan(loaiTK);
     }
+    public void DangXuat(){
+        setID(null);
+        setEmail(null);
+        setHo(null);
+        setTen(null);
+        setTenTaiKhoan(null);
+        setDaDangNhap(false);
+        setLoaiTaiKhoan(null);
+    }
 }

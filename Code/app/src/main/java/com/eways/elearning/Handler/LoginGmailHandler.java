@@ -44,18 +44,14 @@ public class LoginGmailHandler  {
     private DangNhapFragment dangNhapFragment;
     private Intent data;
     private SharedPreferencesHandler sharedPreferencesHandler;
+    private static final int RC_SIGN_IN=1;
+    private GoogleApiClient mGoogleApiClient;
+    private String TAG="MAIN_ACTIVITY";
 
     public LoginGmailHandler(Activity activity, DangNhapFragment dangNhapFragment) {
         this.activity = activity;
         this.dangNhapFragment = dangNhapFragment;
     }
-
-    SignInButton btnGsignin;
-    private static final int RC_SIGN_IN=1;
-    private GoogleApiClient mGoogleApiClient;
-    private FirebaseAuth mAuth;
-    private String TAG="MAIN_ACTIVITY";
-    private FirebaseAuth.AuthStateListener mAuthListener;
 
     public void ConnectGmail(){
         // Configure Google Sign In

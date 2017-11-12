@@ -16,6 +16,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 
 
 /**
@@ -63,6 +65,19 @@ public class LoginGmailHandler  {
             dangNhapFragment.startActivityForResult(signInIntent, RC_SIGN_IN);
         }
     }
+
+//    public void signOut(){
+//        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+//                new ResultCallback<Status>() {
+//                    @Override
+//                    public void onResult(@NonNull Status status) {
+//                        requestCode = 0;
+//                        mGoogleApiClient.stopAutoManage((FragmentActivity)activity);
+//                        mGoogleApiClient.disconnect();
+////                            dataCallBack.KetQua(SupportKeyList.DANG_XUAT_THANH_CONG, null);
+//                    }
+//                });
+//    }
 
     public void onResult(int requestCode, int resultCode, Intent data) {
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);

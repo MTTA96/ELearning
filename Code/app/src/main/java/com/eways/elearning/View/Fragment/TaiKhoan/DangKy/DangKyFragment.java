@@ -28,6 +28,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
     Button btnHuy,btnDangKy_DK;
     EditText etEmailDK,etPasswordDK,etCPassword;
     TextView tvLoiEmail,tvLoiPassword,tvLoiCPassword;
+
     private DangKyPresenterImp dangKyImpPresenter;
     private FragmentHandler fragmentHandler;
     CheckBox cbDieuKhoan;

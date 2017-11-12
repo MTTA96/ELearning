@@ -8,17 +8,26 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    TextView tvUserName;
+    TextView tvUserEmail;
+
     private FragmentHandler fragmentHandler;
     private SharedPreferencesHandler mySharedPref;
 
@@ -34,20 +43,51 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Set sự kiện
         navigationView.setNavigationItemSelectedListener(this);
 
+        setUpActionBar(drawer, myToolbar);
+        mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
+        fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
+        fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
+
+    }
+
+    private void setUpActionBar(DrawerLayout drawer, Toolbar myToolbar) {
         //Thay Actionbar mặc định bằng toolbar
         setSupportActionBar(myToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //Đồng bộ toolbar và slide menu
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, myToolbar, 0, 0);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, myToolbar, 0, 0){
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                if (slideOffset == 0) {
+                    // drawer closed
+                    Log.d("MainActivity", String.valueOf(slideOffset));
+                } else if (slideOffset > 0.3) {
+                    // started opening
+                    Log.d("MainActivity", String.valueOf(slideOffset));
+                    tvUserName = (TextView) findViewById(R.id.user_name_nav_menu);
+                    tvUserEmail = (TextView) findViewById(R.id.user_email_nav_menu);
+                    //Set data
+                    if (mySharedPref.getDaDangNhap()){
+                        tvUserEmail.setText(mySharedPref.getEmail());
+                        if (mySharedPref.getTen().length()==0)
+                            tvUserName.setVisibility(View.INVISIBLE);
+                        else
+                            tvUserName.setText(mySharedPref.getHo() + " " + mySharedPref.getTen());
+                    }
+                    else {
+                        tvUserName.setText(R.string.header_msg_chua_dang_nhap);
+                        tvUserEmail.setText("");
+                    }
+                }
+                super.onDrawerSlide(drawerView, slideOffset);
+            }
+
+        };
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawer.addDrawerListener(toggle);
         toggle.getDrawerArrowDrawable().setColor(Color.WHITE);
         toggle.syncState();
-
-        mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
-        fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
-        fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
     }
 
 
@@ -57,7 +97,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentHandler.XoaTatCaFragment();
 
         if (item.getItemId() == R.id.act_quan_ly_tai_khoan){
-            fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
+            if (mySharedPref.getDaDangNhap())
+                fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
+            else
+                fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
         }
 
         ((DrawerLayout)findViewById(R.id.drawer_layout)).closeDrawer(Gravity.START);

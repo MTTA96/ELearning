@@ -15,6 +15,7 @@ import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,15 +55,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onResume() {
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
         super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        if (mySharedPref.getDaDangNhap()){
+            gioiThieuHome.setText(mySharedPref.getEmail());
+            if (mySharedPref.getTen().length()==0)
+                tenHome.setVisibility(View.INVISIBLE);
+            else
+                tenHome.setText(mySharedPref.getHo() + " " + mySharedPref.getTen());
+        }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.avatar_home:
-                fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
+                if (!mySharedPref.getDaDangNhap())
+                    fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
+                else
+                    fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
                 break;
             case R.id.btn_xem_danh_sach_khoa_hoc:
                 fragmentHandler.ChuyenFragment(new ListKhoaHocFragment(), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);

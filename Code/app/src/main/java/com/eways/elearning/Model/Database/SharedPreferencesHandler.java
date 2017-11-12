@@ -10,9 +10,9 @@ import android.content.SharedPreferences;
 public class SharedPreferencesHandler {
     private SharedPreferences sharedPreferences;
     private  SharedPreferences.Editor editor;
-
     private Context context;
 
+    private final String KEY_FIRST_RUN = "first_run";
     private final String KEY_ID="id";
     private final String KEY_EMAIL="email";
     private final String KEY_TEN="ten";
@@ -27,6 +27,25 @@ public class SharedPreferencesHandler {
 
         sharedPreferences = context.getSharedPreferences(tenFile,Context.MODE_PRIVATE);
         editor=sharedPreferences.edit();
+    }
+
+    //Constructor for the first time using this app
+    public SharedPreferencesHandler(){
+        setID("");
+        setEmail("");
+        setHo("");
+        setTen("");
+        setTenTaiKhoan("");
+        setDaDangNhap(false);
+        setLoaiTaiKhoan("");
+    }
+
+    public boolean checkFirstRun(){
+        return sharedPreferences.contains(KEY_FIRST_RUN);
+    }
+    public void setFirstRun(){
+        editor.putBoolean(KEY_FIRST_RUN, true);
+        editor.commit();
     }
 
     public String getID(){
@@ -109,12 +128,12 @@ public class SharedPreferencesHandler {
         setLoaiTaiKhoan(loaiTK);
     }
     public void DangXuat(){
-        setID(null);
-        setEmail(null);
-        setHo(null);
-        setTen(null);
-        setTenTaiKhoan(null);
+        setID("");
+        setEmail("");
+        setHo("");
+        setTen("");
+        setTenTaiKhoan("");
         setDaDangNhap(false);
-        setLoaiTaiKhoan(null);
+        setLoaiTaiKhoan("");
     }
 }

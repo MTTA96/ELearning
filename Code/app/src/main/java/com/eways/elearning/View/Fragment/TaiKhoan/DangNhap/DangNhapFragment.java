@@ -70,12 +70,9 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         dangNhapImpPresenter=new DangNhapPresenter(this);
-<<<<<<< HEAD
         loginGmailHandler=new LoginGmailHandler(getActivity(),this,this);
-=======
-        loginGmailHandler=new LoginGmailHandler(getActivity(),this);
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
->>>>>>> f0d23f4a7324eae0385e2399ada4039f80d96409
+
     }
 
     @Override

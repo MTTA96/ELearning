@@ -25,6 +25,7 @@ import com.eways.elearning.Model.FragmentHandler;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapImpPresenter;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapPresenter;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Activity.MainActivity;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
@@ -101,7 +102,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnSignup)
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new DangKyFragment()).commit();
+            fragmentHandler.ChuyenFragment(new DangKyFragment(), true, SupportKeysList.TAG_DANG_KY_FRAGMENT);
         if (view.getId() == R.id.btnLogin)
             dangNhapImpPresenter.NhanThongTinDN(etEmailDN.getText().toString(),etPasswordDN.getText().toString(),getActivity());
         if (view.getId() == R.id.btnLoginGmail){

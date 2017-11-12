@@ -85,7 +85,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
     @Override
     public void onResume() {
         super.onResume();
-        fragmentHandler=new FragmentHandler(getActivity(), getChildFragmentManager());
+        fragmentHandler=new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
     }
 
     @Override
@@ -189,7 +189,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
         }
         if (result.compareTo(SIGN_UP_SUCCESS)==0){
             Toast.makeText(getActivity(),"Đăng ký thành công",Toast.LENGTH_SHORT).show();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new DangNhapFragment()).commit();
+            fragmentHandler.ChuyenFragment(new DangNhapFragment(), false, null);
         }else {
             tvLoiEmail.setText("Tài khoản đã tồn tại");
             tvLoiPassword.setText("");

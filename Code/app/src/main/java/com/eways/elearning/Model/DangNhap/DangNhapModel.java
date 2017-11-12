@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class DangNhapModel implements DangNhapImpModel{
     DangNhapImpPresenter dangNhapImpPresenter;
-    SharedPreferencesHandler sharedPreferencesHandler;
+
 
     public DangNhapModel(DangNhapImpPresenter dangNhapImpPresenter) {
         this.dangNhapImpPresenter = dangNhapImpPresenter;
@@ -36,13 +36,11 @@ public class DangNhapModel implements DangNhapImpModel{
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
-                    FirebaseUser firebaseUser=mAuth.getCurrentUser();
-                    sharedPreferencesHandler.DangNhapThanhCong(firebaseUser.getUid(),firebaseUser.getEmail(),null,null,firebaseUser.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG);
-                    dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS);
+                    FirebaseUser user=mAuth.getCurrentUser();
+                    dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,user,activity);
 
                 } else
-                    dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_FAILED);
+                    dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_FAILED,null,activity);
 
             }
         });

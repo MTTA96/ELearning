@@ -9,9 +9,11 @@ import com.eways.elearning.DataModel.TaiKhoan;
 import com.eways.elearning.Model.DangNhap.DangNhapImpModel;
 import com.eways.elearning.Model.DangNhap.DangNhapModel;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapImpView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -21,9 +23,10 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class DangNhapPresenter implements DangNhapImpPresenter {
 
-    DangNhapImpView dangNhapImpView;
-    SharedPreferencesHandler sharedPreferencesHandler;
-    DangNhapImpModel dangNhapImpModel=new DangNhapModel(this);
+    private DangNhapImpView dangNhapImpView;
+    private SharedPreferencesHandler sharedPreferencesHandler;
+    private DangNhapImpModel dangNhapImpModel=new DangNhapModel(this);
+
     public DangNhapPresenter(DangNhapImpView dangNhapImpView) {
         this.dangNhapImpView = dangNhapImpView;
     }
@@ -72,7 +75,13 @@ public class DangNhapPresenter implements DangNhapImpPresenter {
     }
 
     @Override
-    public void KetQuaDangNhap(String ketqua) {
-        dangNhapImpView.NhanKetQuaDN(ketqua);
+    public void KetQuaDangNhap(String ketqua,FirebaseUser user,Activity activity) {
+        if (ketqua.compareTo(DangNhapFragment.LOGIN_SUCCESS)==0){
+            sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
+            sharedPreferencesHandler.DangNhapThanhCong(user.getUid(),user.getEmail(),null,null,user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG);
+            dangNhapImpView.NhanKetQuaDN(ketqua);
+        }else
+            dangNhapImpView.NhanKetQuaDN(ketqua);
+
     }
 }

@@ -6,6 +6,7 @@ import android.content.Context;
 import com.eways.elearning.DataModel.TaiKhoan;
 import com.eways.elearning.Model.FragmentHandler;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * Created by Quang Tri on 27/10/2017.
@@ -13,6 +14,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public interface DangKyImpPresenter {
     public void NhanThongTinDangKy(String Email, String Password, String CPassword, Activity activity);
-    public void KetQuaDangKy(String ketqua );
+    public void KetQuaDangKy(String ketqua);
 
 }

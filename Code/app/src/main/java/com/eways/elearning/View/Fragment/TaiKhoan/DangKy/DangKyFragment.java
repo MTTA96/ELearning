@@ -37,8 +37,21 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
     Button btnHuy,btnDangKy_DK;
     EditText etEmailDK,etPasswordDK,etCPassword;
     TextView tvLoiEmail,tvLoiPassword,tvLoiCPassword;
+
     private DangKyImpPresenter dangKyImpPresenter;
     private FragmentHandler fragmentHandler;
+    public static final String ERROR_MSG_THIEU_EMAIL_PW = "thieu_email_pw";
+    public static final String ERROR_MSG_THIEU_EMAIL = "thieu_email";
+    public static final String ERROR_MSG_THIEU_PW = "thieu_pw";
+    public static final String ERROR_MSG_THIEU_CPW = "thieu_cpw";
+    public static final String ERROR_MSG_THIEU_EMAIL_CPW = "thieu_email_cpw";
+    public static final String ERROR_MSG_THIEU_PW_CPW = "thieu_pw_cpw";
+    public static final String ERROR_MSG_THIEU_EMAIL_PW_CPW = "thieu_email_pw_cpw";
+    public static final String ERROR_MSG_SAI_DINH_DANG_EMAIL = "sai_dinh_dang_email";
+    public static final String ERROR_MSG_SAI_CPW = "sai_cpw";
+    public static final String ERROR_MSG_PW_SAI_YEU_CAU = "pw_sai_yeu_cau";
+    public static final String SIGN_UP_SUCCESS = "sign_up_success";
+    public static final String SIGN_UP_FAILED = "sign_up_failed";
 
     public DangKyFragment( ) {
 
@@ -85,7 +98,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
     }
     @Override
     public void NhanKetQuaTuPresenter(String result) {
-        if(result.compareTo("emtyEmail")==0){
+        if(result.compareTo(ERROR_MSG_THIEU_EMAIL)==0){
             tvLoiEmail.setText(R.string.emtyEmailDK);
             tvLoiPassword.setText("");
             tvLoiCPassword.setText("");
@@ -94,7 +107,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
             etCPassword.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (result.compareTo("emtyPassword")==0){
+        if (result.compareTo(ERROR_MSG_THIEU_PW)==0){
             tvLoiPassword.setText(R.string.emtyPasswordDK);
             tvLoiEmail.setText("");
             tvLoiCPassword.setText("");
@@ -103,7 +116,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
             etCPassword.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (result.compareTo("emtyCPassword")==0){
+        if (result.compareTo(ERROR_MSG_THIEU_CPW)==0){
             tvLoiCPassword.setText(R.string.emtyCPasswordDK);
             tvLoiEmail.setText("");
             tvLoiPassword.setText("");
@@ -112,7 +125,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
             etPasswordDK.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (result.compareTo("emtyEmailPassword")==0){
+        if (result.compareTo(ERROR_MSG_THIEU_EMAIL_PW)==0){
             tvLoiPassword.setText(R.string.emtyPasswordDK);
             tvLoiEmail.setText(R.string.emtyEmailDK);
             tvLoiCPassword.setText("");
@@ -121,7 +134,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
             etCPassword.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (result.compareTo("emtyEmailCPassword")==0){
+        if (result.compareTo(ERROR_MSG_THIEU_EMAIL_CPW)==0){
             tvLoiEmail.setText(R.string.emtyEmailDK);
             tvLoiCPassword.setText(R.string.emtyCPasswordDK);
             tvLoiPassword.setText("");
@@ -130,7 +143,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
             etPasswordDK.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (result.compareTo("emtyPasswordCPassword")==0){
+        if (result.compareTo(ERROR_MSG_THIEU_PW_CPW)==0){
             tvLoiPassword.setText(R.string.emtyPasswordDK);
             tvLoiCPassword.setText(R.string.emtyCPasswordDK);
             tvLoiEmail.setText("");
@@ -139,7 +152,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
             etEmailDK.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (result.compareTo("emtyEmailPasswordCPassword")==0){
+        if (result.compareTo(ERROR_MSG_THIEU_EMAIL_PW_CPW)==0){
             tvLoiEmail.setText(R.string.emtyEmailDK);
             tvLoiPassword.setText(R.string.emtyPasswordDK);
             tvLoiCPassword.setText(R.string.emtyCPasswordDK);
@@ -148,7 +161,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
             etCPassword.setBackgroundResource(R.drawable.loi_shape);
             return;
         }
-        if (result.compareTo("khongdungdinhdangEmail")==0){
+        if (result.compareTo(ERROR_MSG_SAI_DINH_DANG_EMAIL)==0){
             tvLoiEmail.setText(R.string.SaiEmailDK);
             tvLoiPassword.setText("");
             tvLoiCPassword.setText("");
@@ -157,7 +170,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
             etCPassword.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (result.compareTo("Pass#Cpass")==0){
+        if (result.compareTo(ERROR_MSG_SAI_CPW)==0){
             tvLoiCPassword.setText(R.string.SaiXacNhanMatKhauDK);
             tvLoiEmail.setText("");
             tvLoiPassword.setText("");
@@ -165,7 +178,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
             etEmailDK.setBackgroundResource(R.drawable.et_shape);
             etPasswordDK.setBackgroundResource(R.drawable.et_shape);
         }
-        if (result.compareTo("pass<6")==0){
+        if (result.compareTo(ERROR_MSG_PW_SAI_YEU_CAU)==0){
             tvLoiPassword.setText(R.string.SaiMatKhauDK);
             tvLoiEmail.setText("");
             tvLoiCPassword.setText("");
@@ -174,7 +187,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
             etCPassword.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (result=="thanhcong"){
+        if (result.compareTo(SIGN_UP_SUCCESS)==0){
             Toast.makeText(getActivity(),"Đăng ký thành công",Toast.LENGTH_SHORT).show();
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new DangNhapFragment()).commit();
         }else {

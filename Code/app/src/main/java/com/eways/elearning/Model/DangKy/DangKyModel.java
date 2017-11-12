@@ -10,6 +10,7 @@ import com.eways.elearning.DataModel.TaiKhoan;
 import com.eways.elearning.Presenter.DangKy.DangKyImpPresenter;
 import com.eways.elearning.Presenter.DangKy.DangKyPresenter;
 import com.eways.elearning.View.Activity.MainActivity;
+import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -38,9 +39,10 @@ public class DangKyModel implements DangKyImpModel{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            dangKyImpPresenter.KetQuaDangKy("thanhcong");
+                            dangKyImpPresenter.KetQuaDangKy(DangKyFragment.SIGN_UP_SUCCESS);
                         } else{
-                            dangKyImpPresenter.KetQuaDangKy("thatbai");}
+                            dangKyImpPresenter.KetQuaDangKy(DangKyFragment.SIGN_UP_FAILED);
+                        }
                     }
                 });
     }

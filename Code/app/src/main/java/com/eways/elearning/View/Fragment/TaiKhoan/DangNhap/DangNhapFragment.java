@@ -10,11 +10,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +61,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
     DangNhapImpPresenter dangNhapImpPresenter;
     TextView tvLoiDangNhap;
     SignInButton btnGmailLogin;
+    CheckBox cbDieuKhoan;
 
     private LoginGmailHandler loginGmailHandler;
     private FragmentHandler fragmentHandler;
@@ -96,6 +100,9 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         btnGmailLogin.setOnClickListener(this);
         btnDangky.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
+
+
+
         return root;
     }
 
@@ -111,7 +118,37 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         }
 
     }
-
+//    //Xử lý bật tắt mật khẩu
+//    public void AnHienMatKhau(final EditText etPassword){
+//        etPassword.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                final int DRAWABLE_LEFT = 0;
+//                final int DRAWABLE_TOP = 1;
+//                final int DRAWABLE_RIGHT = 2;
+//                final int DRAWABLE_BOTTOM = 3;
+//
+//                boolean status=false;
+//
+//                if(event.getAction() == MotionEvent.ACTION_UP) {
+//                    if(event.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+//                        // your action her
+//                        if (status==false){
+//                            etPasswordDN.setInputType(View.TEXT_ALIGNMENT_TEXT_START);
+//                            status=true;
+//                        }
+//                        else {
+//                            etPasswordDN.setInputType(View.);
+//                        }
+//
+//                        return true;
+//                    }
+//                }
+//                return false;
+//            }
+//        });
+//
+//    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -133,7 +170,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
             return;
         }
         if (ketqua.compareTo(ERROR_MSG_THIEU_EMAIL_PW)==0){
-            tvLoiDangNhap.setText(R.string.loi_EmailDN +"-"+R.string.loi_PasswordDN);
+            tvLoiDangNhap.setText(R.string.loi_EmailPasswordDN);
             etEmailDN.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDN.setBackgroundResource(R.drawable.loi_shape);
             return;

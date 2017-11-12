@@ -1,26 +1,23 @@
-package com.eways.elearning.Presenter.DangKy;
+package com.eways.elearning.Presenter.TaiKhoan.DangKy;
 
 import android.app.Activity;
-import android.content.Context;
 
 import com.eways.elearning.DataModel.TaiKhoan;
-import com.eways.elearning.Model.DangKy.DangKyImpModel;
-import com.eways.elearning.Model.DangKy.DangKyModel;
-import com.eways.elearning.Model.FragmentHandler;
+import com.eways.elearning.Model.TaiKhoan.DangKy.DangKyImpModel;
+import com.eways.elearning.Model.TaiKhoan.DangKy.DangKyModel;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyImpView;
-import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
-import com.google.firebase.auth.FirebaseAuth;
+import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyViewImp;
 
 /**
  * Created by Quang Tri on 27/10/2017.
  */
 
-public class DangKyPresenter implements DangKyImpPresenter {
+public class DangKyPresenter implements DangKyPresenterImp {
     DangKyImpModel dangKyImpModel=new DangKyModel(this);
-    DangKyImpView dangKyImpView;
+    DangKyViewImp dangKyImpView;
 
-    public DangKyPresenter(DangKyImpView dangKyImpView) {
+    public DangKyPresenter(DangKyViewImp dangKyImpView) {
         this.dangKyImpView = dangKyImpView;
     }
 

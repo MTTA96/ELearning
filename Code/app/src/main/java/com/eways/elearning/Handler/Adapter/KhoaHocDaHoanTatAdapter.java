@@ -1,4 +1,4 @@
-package com.eways.elearning.Handler;
+package com.eways.elearning.Handler.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

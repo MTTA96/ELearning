@@ -1,33 +1,27 @@
-package com.eways.elearning.Presenter.DangKy.DangNhap;
+package com.eways.elearning.Presenter.TaiKhoan.DangNhap;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.content.SharedPreferences;
-import android.os.Bundle;
 
 import com.eways.elearning.DataModel.TaiKhoan;
-import com.eways.elearning.Model.DangNhap.DangNhapImpModel;
-import com.eways.elearning.Model.DangNhap.DangNhapModel;
+import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapImpModel;
+import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapModel;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
-import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapImpView;
-import com.google.firebase.auth.FirebaseAuth;
+import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapViewImp;
 import com.google.firebase.auth.FirebaseUser;
-
-import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by ADMIN on 11/5/2017.
  */
 
-public class DangNhapPresenter implements DangNhapImpPresenter {
+public class DangNhapPresenter implements DangNhapPresenterImp {
 
-    private DangNhapImpView dangNhapImpView;
+    private DangNhapViewImp dangNhapImpView;
     private SharedPreferencesHandler sharedPreferencesHandler;
     private DangNhapImpModel dangNhapImpModel=new DangNhapModel(this);
 
-    public DangNhapPresenter(DangNhapImpView dangNhapImpView) {
+    public DangNhapPresenter(DangNhapViewImp dangNhapImpView) {
         this.dangNhapImpView = dangNhapImpView;
     }
 

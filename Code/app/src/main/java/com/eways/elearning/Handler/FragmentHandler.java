@@ -1,4 +1,4 @@
-package com.eways.elearning.Model;
+package com.eways.elearning.Handler;
 
 import android.app.Activity;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.eways.elearning;
+package com.eways.elearning.View.Fragment.TaiKhoan;
 
 
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.support.v7.widget.Toolbar;
+
+import com.eways.elearning.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;

@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.Handler.ViewPagerKhoaHocAdapter;
+import com.eways.elearning.Handler.Adapter.ViewPagerKhoaHocAdapter;
 import com.eways.elearning.R;
 
 /**

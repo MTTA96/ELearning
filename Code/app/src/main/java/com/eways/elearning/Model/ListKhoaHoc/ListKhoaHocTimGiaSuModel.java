@@ -1,6 +1,6 @@
 package com.eways.elearning.Model.ListKhoaHoc;
 
-import com.eways.elearning.Presenter.DangKy.ListKhoaHoc.ListKhoaHocTimGiaSuImpPresenter;
+import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenter;
 
 import org.json.JSONArray;
 
@@ -10,9 +10,9 @@ import org.json.JSONArray;
 
 public class ListKhoaHocTimGiaSuModel implements ListKhoaHocTimGiaSuImpModel {
 
-    ListKhoaHocTimGiaSuImpPresenter listKhoaHocTimGiaSuImpPresenter;
+    ListKhoaHocTimGiaSuPresenter listKhoaHocTimGiaSuImpPresenter;
 
-    public ListKhoaHocTimGiaSuModel(ListKhoaHocTimGiaSuImpPresenter listKhoaHocTimGiaSuImpPresenter) {
+    public ListKhoaHocTimGiaSuModel(ListKhoaHocTimGiaSuPresenter listKhoaHocTimGiaSuImpPresenter) {
         this.listKhoaHocTimGiaSuImpPresenter = listKhoaHocTimGiaSuImpPresenter;
     }
 

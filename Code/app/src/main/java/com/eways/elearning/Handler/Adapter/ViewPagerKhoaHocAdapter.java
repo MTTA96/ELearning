@@ -1,4 +1,4 @@
-package com.eways.elearning.Handler;
+package com.eways.elearning.Handler.Adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

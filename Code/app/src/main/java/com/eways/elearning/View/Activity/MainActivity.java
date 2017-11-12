@@ -12,12 +12,11 @@ import android.view.Gravity;
 import android.view.MenuItem;
 
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
-import com.eways.elearning.Model.FragmentHandler;
-import com.eways.elearning.QuanLyTaiKhoanFragment;
+import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FragmentHandler fragmentHandler;

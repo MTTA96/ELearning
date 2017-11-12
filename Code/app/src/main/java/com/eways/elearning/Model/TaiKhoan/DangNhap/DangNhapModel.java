@@ -1,13 +1,11 @@
-package com.eways.elearning.Model.DangNhap;
+package com.eways.elearning.Model.TaiKhoan.DangNhap;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
 
 import com.eways.elearning.DataModel.TaiKhoan;
-import com.eways.elearning.Model.Database.SharedPreferencesHandler;
-import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapImpPresenter;
-import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapPresenter;
-import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapImpPresenter;
+import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,10 +19,10 @@ import com.google.firebase.auth.FirebaseUser;
  */
 
 public class DangNhapModel implements DangNhapImpModel{
-    DangNhapImpPresenter dangNhapImpPresenter;
+    DangNhapPresenterImp dangNhapImpPresenter;
 
 
-    public DangNhapModel(DangNhapImpPresenter dangNhapImpPresenter) {
+    public DangNhapModel(DangNhapPresenterImp dangNhapImpPresenter) {
         this.dangNhapImpPresenter = dangNhapImpPresenter;
     }
 

@@ -1,4 +1,4 @@
-package com.eways.elearning;
+package com.eways.elearning.View.Fragment.TaiKhoan;
 
 
 import android.app.AlertDialog;
@@ -17,15 +17,13 @@ import android.view.Window;
 import android.widget.LinearLayout;
 
 import com.eways.elearning.DataModel.BaiDang.LinhVucBaiDang;
-import com.eways.elearning.Handler.LinhVucQuanTamAdapter;
-import com.eways.elearning.Model.Database.FireBaseHandler;
+import com.eways.elearning.Handler.Adapter.LinhVucQuanTamAdapter;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
-import com.eways.elearning.Model.FragmentHandler;
+import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
-import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 

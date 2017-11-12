@@ -1,16 +1,10 @@
 package com.eways.elearning.View.Fragment.TaiKhoan.DangKy;
 
 
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,25 +15,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.eways.elearning.Model.FragmentHandler;
-import com.eways.elearning.Presenter.DangKy.DangKyImpPresenter;
-import com.eways.elearning.Presenter.DangKy.DangKyPresenter;
+import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.Presenter.TaiKhoan.DangKy.DangKyPresenter;
+import com.eways.elearning.Presenter.TaiKhoan.DangKy.DangKyPresenterImp;
 import com.eways.elearning.R;
-import com.eways.elearning.View.Activity.MainActivity;
-import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DangKyFragment extends Fragment implements View.OnClickListener,DangKyImpView {
+public class DangKyFragment extends Fragment implements View.OnClickListener,DangKyViewImp {
     Button btnHuy,btnDangKy_DK;
     EditText etEmailDK,etPasswordDK,etCPassword;
     TextView tvLoiEmail,tvLoiPassword,tvLoiCPassword;
-    private DangKyImpPresenter dangKyImpPresenter;
+    private DangKyPresenterImp dangKyImpPresenter;
     private FragmentHandler fragmentHandler;
     CheckBox cbDieuKhoan;
     boolean trangThaicbDieuKhoan;
@@ -211,6 +200,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
             return;
         }
         if (result.compareTo(SIGN_UP_SUCCESS)==0){
+
             Toast.makeText(getActivity(),"Đăng ký thành công",Toast.LENGTH_SHORT).show();
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new DangNhapFragment()).commit();
         }else {

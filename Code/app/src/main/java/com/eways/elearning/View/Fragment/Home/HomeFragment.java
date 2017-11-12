@@ -10,13 +10,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
-import com.eways.elearning.Model.FragmentHandler;
+import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
-
-        import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.

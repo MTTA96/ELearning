@@ -99,4 +99,13 @@ public class SharedPreferencesHandler {
         editor.putString(KEY_TEN,ho);
         editor.commit();
     }
+    public void DangNhapThanhCong(String id,String email,String ho,String ten,String tenTK,boolean dadangnhap,String loaiTK){
+        setID(id);
+        setEmail(email);
+        setHo(ho);
+        setTen(ten);
+        setTenTaiKhoan(tenTK);
+        setDaDangNhap(dadangnhap);
+        setLoaiTaiKhoan(loaiTK);
+    }
 }

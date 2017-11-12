@@ -36,13 +36,7 @@ public class DangNhapModel implements DangNhapImpModel{
                 if (task.isSuccessful()) {
                     sharedPreferencesHandler=new SharedPreferencesHandler(activity,"TrangThaiDangNhap");
                     FirebaseUser firebaseUser=mAuth.getCurrentUser();
-                    sharedPreferencesHandler.setID(firebaseUser.getUid());
-                    sharedPreferencesHandler.setEmail(firebaseUser.getEmail());
-                    sharedPreferencesHandler.setHo(null);
-                    sharedPreferencesHandler.setTen(firebaseUser.getDisplayName());
-                    sharedPreferencesHandler.setTenTaiKhoan(null);
-                    sharedPreferencesHandler.setDaDangNhap(true);
-                    sharedPreferencesHandler.setLoaiTaiKhoan(firebaseUser.getProviderId());
+                    sharedPreferencesHandler.DangNhapThanhCong(firebaseUser.getUid(),firebaseUser.getEmail(),null,null,firebaseUser.getDisplayName(),true,"Email");
                     dangNhapImpPresenter.KetQuaDangNhap("thanhcong");
 
                 } else

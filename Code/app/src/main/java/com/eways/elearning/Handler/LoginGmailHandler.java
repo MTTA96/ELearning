@@ -11,11 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.eways.elearning.Model.DangNhap.DangNhapImpModel;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapImpPresenter;
+import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapImpView;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -44,10 +48,12 @@ public class LoginGmailHandler  {
     private DangNhapFragment dangNhapFragment;
     private Intent data;
     private SharedPreferencesHandler sharedPreferencesHandler;
+    private DangNhapImpView dangNhapImpView;
 
-    public LoginGmailHandler(Activity activity, DangNhapFragment dangNhapFragment) {
+    public LoginGmailHandler(Activity activity, DangNhapFragment dangNhapFragment, DangNhapImpView dangNhapImpView) {
         this.activity = activity;
         this.dangNhapFragment = dangNhapFragment;
+        this.dangNhapImpView = dangNhapImpView;
     }
 
     SignInButton btnGsignin;
@@ -89,15 +95,8 @@ public class LoginGmailHandler  {
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity,"TrangThaiDangNhap");
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
-                sharedPreferencesHandler.setID(account.getId());
-                sharedPreferencesHandler.setEmail(account.getEmail());
-                sharedPreferencesHandler.setHo(account.getFamilyName());
-                sharedPreferencesHandler.setTen(account.getGivenName());
-                sharedPreferencesHandler.setTenTaiKhoan(account.getDisplayName());
-                sharedPreferencesHandler.setDaDangNhap(true);
-                sharedPreferencesHandler.setLoaiTaiKhoan(account.getIdToken());
-                dangNhapFragment.getFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
-
+                sharedPreferencesHandler.DangNhapThanhCong(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),account.getDisplayName(),true,"Gmail");
+                dangNhapImpView.NhanKetQuaDN("thanhcong");
             } else {
                 // Google Sign In failed, update UI appropriately
                 // ...

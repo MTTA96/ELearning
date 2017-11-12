@@ -15,6 +15,8 @@ public class SharedPreferencesHandler {
 
     private final String KEY_ID="id";
     private final String KEY_EMAIL="email";
+    private final String KEY_TEN="ten";
+    private final String KEY_HO="ho";
     private final String KEY_TEN_TAIKHOAN="tentaikhoan";
     private final String KEY_LOAI_TAIKHOAN="loaitaikhoan";
     private final String KEY_DA_DANGNHAP="dadangnhap";
@@ -76,6 +78,25 @@ public class SharedPreferencesHandler {
 
     public void setAvarta(String avarta){
         editor.putString(KEY_AVARTA, avarta);
+        editor.commit();
+    }
+
+    public String getTen(){
+        return sharedPreferences.getString(KEY_TEN, "");
+    }
+
+    public void setTen(String loaiTK){
+        editor.putString(KEY_TEN, loaiTK);
+        editor.commit();
+    }
+
+    //Ho
+    public String getHo(){
+        return sharedPreferences.getString(KEY_HO, "");
+    }
+
+    public void setHo(String ho){
+        editor.putString(KEY_TEN,ho);
         editor.commit();
     }
 }

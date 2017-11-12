@@ -9,7 +9,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,6 +19,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eways.elearning.Handler.LoginGmailHandler;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapImpPresenter;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapPresenter;
 import com.eways.elearning.R;
@@ -51,14 +55,8 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
     EditText etEmailDN,etPasswordDN;
     DangNhapImpPresenter dangNhapImpPresenter;
     TextView tvLoiDangNhap;
-
-    //Đăng nhập bằng Gmail
-    SignInButton btnGsignin;
-    private static final int RC_SIGN_IN=1;
-    private GoogleApiClient mGoogleApiClient;
-    private FirebaseAuth mAuth;
-    private String TAG="MAIN_ACTIVITY";
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    SignInButton btnGmailLogin;
+    LoginGmailHandler loginGmailHandler;
 
     public DangNhapFragment() {
         // Required empty public constructor
@@ -69,7 +67,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         dangNhapImpPresenter=new DangNhapPresenter(this);
-
+        loginGmailHandler=new LoginGmailHandler(getActivity(),this);
     }
 
     @Override
@@ -81,42 +79,13 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         etEmailDN= (EditText) root.findViewById(R.id.etUsername);
         etPasswordDN= (EditText) root.findViewById(R.id.etPassword);
         tvLoiDangNhap= (TextView) root.findViewById(R.id.tvLoiDN);
+        btnGmailLogin=(SignInButton)root.findViewById(R.id.btnLoginGmail);
 
-//        Đăng nhập bằng Gmail
-        btnGsignin= (SignInButton) root.findViewById(R.id.btnLoginGmail);
-        mAuth=FirebaseAuth.getInstance();
-        mAuthListener=new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser()!=null){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
-                }
-
-            }
-        };
-        // Configure Google Sign In
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        mGoogleApiClient=new GoogleApiClient.Builder(getContext())
-                .enableAutoManage(getActivity(), new GoogleApiClient.OnConnectionFailedListener() {
-                    @Override
-                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                        Toast.makeText(getActivity(),"Error",Toast.LENGTH_SHORT).show();
-
-                    }
-                })
-                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
-                .build();
-        btnGsignin.setOnClickListener(this);
-
+        btnGmailLogin.setOnClickListener(this);
         btnDangky.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
-
         return root;
     }
-
 
     @Override
     public void onClick(View view) {
@@ -124,58 +93,17 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new DangKyFragment()).commit();
         if (view.getId() == R.id.btnLogin)
             dangNhapImpPresenter.NhanThongTinDN(etEmailDN.getText().toString(),etPasswordDN.getText().toString(),getActivity());
-        if (view.getId() == R.id.btnLoginGmail)
-            signIn();
-    }
+        if (view.getId() == R.id.btnLoginGmail){
+            loginGmailHandler.ConnectGmail();
+            loginGmailHandler.signIn();
+        }
 
-    //Đăng nhập với Gmail
-    private void signIn() {
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            if (result.isSuccess()) {
-                // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = result.getSignInAccount();
-                firebaseAuthWithGoogle(account);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
-            } else {
-                // Google Sign In failed, update UI appropriately
-                // ...
-            }
-        }
-    }
-
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-//        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-//                            Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
-                            //updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-//                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(getActivity(), "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
-                        }
-                    }
-                });
+        loginGmailHandler.onResult(requestCode,resultCode,data);
     }
 
     @Override

@@ -177,6 +177,14 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
         if (result=="thanhcong"){
             Toast.makeText(getActivity(),"Đăng ký thành công",Toast.LENGTH_SHORT).show();
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new DangNhapFragment()).commit();
+        }else {
+            tvLoiEmail.setText("Tài khoản đã tồn tại");
+            tvLoiPassword.setText("");
+            tvLoiCPassword.setText("");
+            etEmailDK.setBackgroundResource(R.drawable.loi_shape);
+            etCPassword.setBackgroundResource(R.drawable.et_shape);
+            etPasswordDK.setBackgroundResource(R.drawable.et_shape);
+            return;
         }
 
     }

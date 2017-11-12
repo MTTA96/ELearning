@@ -40,7 +40,6 @@ public class DangKyModel implements DangKyImpModel{
                         if (task.isSuccessful()) {
                             dangKyImpPresenter.KetQuaDangKy("thanhcong");
                         } else{
-
                             dangKyImpPresenter.KetQuaDangKy("thatbai");}
                     }
                 });

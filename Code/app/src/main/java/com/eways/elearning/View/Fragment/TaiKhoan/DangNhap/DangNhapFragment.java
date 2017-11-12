@@ -60,6 +60,13 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
 
     private LoginGmailHandler loginGmailHandler;
     private FragmentHandler fragmentHandler;
+    public static final String ERROR_MSG_THIEU_EMAIL_PW = "thieu_email_pw";
+    public static final String ERROR_MSG_THIEU_EMAIL = "thieu_email";
+    public static final String ERROR_MSG_SAI_EMAIL = "sai_email";
+    public static final String ERROR_MSG_THIEU_PW = "thieu_pw";
+    public static final String ERROR_MSG_SAI_PW = "sai_pw";
+    public static final String LOGIN_SUCCESS = "login_success";
+    public static final String LOGIN_FAILED = "login_failed";
 
     public DangNhapFragment() {
         // Required empty public constructor
@@ -72,7 +79,6 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         dangNhapImpPresenter=new DangNhapPresenter(this);
         loginGmailHandler=new LoginGmailHandler(getActivity(),this,this);
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
-
     }
 
     @Override
@@ -113,38 +119,38 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
 
     @Override
     public void NhanKetQuaDN(String ketqua) {
-        if (ketqua.compareTo("emtyEmail")==0){
+        if (ketqua.compareTo(ERROR_MSG_THIEU_EMAIL)==0){
             tvLoiDangNhap.setText(R.string.loi_EmailDN);
             etEmailDN.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDN.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (ketqua.compareTo("emtyPassword")==0){
+        if (ketqua.compareTo(ERROR_MSG_THIEU_PW)==0){
             tvLoiDangNhap.setText(R.string.loi_PasswordDN);
             etPasswordDN.setBackgroundResource(R.drawable.loi_shape);
             etEmailDN.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (ketqua.compareTo("emtyEmailPassword")==0){
+        if (ketqua.compareTo(ERROR_MSG_THIEU_EMAIL_PW)==0){
             tvLoiDangNhap.setText(R.string.loi_EmailDN +"-"+R.string.loi_PasswordDN);
             etEmailDN.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDN.setBackgroundResource(R.drawable.loi_shape);
             return;
         }
 
-        if (ketqua.compareTo("SaiEmail")==0){
+        if (ketqua.compareTo(ERROR_MSG_SAI_EMAIL)==0){
             tvLoiDangNhap.setText(R.string.loi_SaiDinhDangEmailDN);
             etEmailDN.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDN.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (ketqua.compareTo("SaiPassword")==0){
+        if (ketqua.compareTo(ERROR_MSG_SAI_PW)==0){
             tvLoiDangNhap.setText(R.string.loi_SaiMatKhauDN);
             etPasswordDN.setBackgroundResource(R.drawable.loi_shape);
             etEmailDN.setBackgroundResource(R.drawable.et_shape);
             return;
         }
-        if (ketqua.compareTo("thanhcong")==0){
+        if (ketqua.compareTo(LOGIN_SUCCESS)==0){
             //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
             fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
         }

@@ -16,6 +16,7 @@ import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapImpPresenter;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapPresenter;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
@@ -48,13 +49,10 @@ public class LoginGmailHandler  {
     private DangNhapFragment dangNhapFragment;
     private Intent data;
     private SharedPreferencesHandler sharedPreferencesHandler;
-<<<<<<< HEAD
     private DangNhapImpView dangNhapImpView;
-=======
     private static final int RC_SIGN_IN=1;
     private GoogleApiClient mGoogleApiClient;
     private String TAG="MAIN_ACTIVITY";
->>>>>>> f0d23f4a7324eae0385e2399ada4039f80d96409
 
     public LoginGmailHandler(Activity activity, DangNhapFragment dangNhapFragment, DangNhapImpView dangNhapImpView) {
         this.activity = activity;
@@ -91,11 +89,11 @@ public class LoginGmailHandler  {
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
-                sharedPreferencesHandler=new SharedPreferencesHandler(activity,"TrangThaiDangNhap");
+                sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
-                sharedPreferencesHandler.DangNhapThanhCong(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),account.getDisplayName(),true,"Gmail");
-                dangNhapImpView.NhanKetQuaDN("thanhcong");
+                sharedPreferencesHandler.DangNhapThanhCong(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),account.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL);
+                dangNhapImpView.NhanKetQuaDN(DangNhapFragment.LOGIN_SUCCESS);
             } else {
                 // Google Sign In failed, update UI appropriately
                 // ...

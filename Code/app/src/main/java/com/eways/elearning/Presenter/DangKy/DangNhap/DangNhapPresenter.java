@@ -31,24 +31,24 @@ public class DangNhapPresenter implements DangNhapImpPresenter {
     @Override
     public void NhanThongTinDN(String email, String Password, Activity activity) {
         if (email.compareTo("")==0 && Password.compareTo("")==0){
-            dangNhapImpView.NhanKetQuaDN("emtyEmailPassword");
+            dangNhapImpView.NhanKetQuaDN(DangNhapFragment.ERROR_MSG_THIEU_EMAIL_PW);
             return;
         }
         if (email.compareTo("")==0){
-            dangNhapImpView.NhanKetQuaDN("emtyEmailDN");
+            dangNhapImpView.NhanKetQuaDN(DangNhapFragment.ERROR_MSG_THIEU_EMAIL);
             return;
         }
         if (Password.compareTo("")==0){
-            dangNhapImpView.NhanKetQuaDN("emtyPassword");
+            dangNhapImpView.NhanKetQuaDN(DangNhapFragment.ERROR_MSG_THIEU_PW);
             return;
         }
-        if (KiemTraDinhDangEmail(email)==false){
-            dangNhapImpView.NhanKetQuaDN("SaiEmail");
+        if (!KiemTraDinhDangEmail(email)){
+            dangNhapImpView.NhanKetQuaDN(DangNhapFragment.ERROR_MSG_SAI_EMAIL);
             return;
         }
         if (DemKyTu(Password)<6)
         {
-            dangNhapImpView.NhanKetQuaDN("SaiPassword");
+            dangNhapImpView.NhanKetQuaDN(DangNhapFragment.ERROR_MSG_SAI_PW);
             return;
         }
 

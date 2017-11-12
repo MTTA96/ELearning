@@ -7,6 +7,12 @@ package com.eways.elearning.Util;
  */
 
 public class SupportKeysList {
+
+    //Key data
+    public static final String SHARED_PREF_FILE_NAME = "MySharedPref";
+    public static final String TAI_KHOAN_THUONG = "email_acc";
+    public static final String TAI_KHOAN_GMAIL = "gmail_acc";
+
     //Fragment's tag
     public static final String TAG_HOME_FRAGMENT = "home_fragment";
     public static final String TAG_DANG_NHAP_FRAGMENT = "dang_nhap_fragment";

@@ -7,6 +7,8 @@ import com.eways.elearning.DataModel.TaiKhoan;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapImpPresenter;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapPresenter;
+import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -34,13 +36,13 @@ public class DangNhapModel implements DangNhapImpModel{
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    sharedPreferencesHandler=new SharedPreferencesHandler(activity,"TrangThaiDangNhap");
+                    sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
                     FirebaseUser firebaseUser=mAuth.getCurrentUser();
-                    sharedPreferencesHandler.DangNhapThanhCong(firebaseUser.getUid(),firebaseUser.getEmail(),null,null,firebaseUser.getDisplayName(),true,"Email");
-                    dangNhapImpPresenter.KetQuaDangNhap("thanhcong");
+                    sharedPreferencesHandler.DangNhapThanhCong(firebaseUser.getUid(),firebaseUser.getEmail(),null,null,firebaseUser.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG);
+                    dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS);
 
                 } else
-                    dangNhapImpPresenter.KetQuaDangNhap("thatbai");
+                    dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_FAILED);
 
             }
         });

@@ -96,6 +96,8 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         tvLoiDangNhap= (TextView) root.findViewById(R.id.tvLoiDN);
         btnGmailLogin=(SignInButton)root.findViewById(R.id.btnLoginGmail);
 
+        AnHienMatKhau(etPasswordDN);
+
         btnGmailLogin.setOnClickListener(this);
         btnDangky.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
@@ -117,37 +119,33 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         }
 
     }
-//    //Xử lý bật tắt mật khẩu
-//    public void AnHienMatKhau(final EditText etPassword){
-//        etPassword.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                final int DRAWABLE_LEFT = 0;
-//                final int DRAWABLE_TOP = 1;
-//                final int DRAWABLE_RIGHT = 2;
-//                final int DRAWABLE_BOTTOM = 3;
-//
-//                boolean status=false;
-//
-//                if(event.getAction() == MotionEvent.ACTION_UP) {
-//                    if(event.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-//                        // your action her
-//                        if (status==false){
-//                            etPasswordDN.setInputType(View.TEXT_ALIGNMENT_TEXT_START);
-//                            status=true;
-//                        }
-//                        else {
-//                            etPasswordDN.setInputType(View.);
-//                        }
-//
-//                        return true;
-//                    }
-//                }
-//                return false;
-//            }
-//        });
-//
-//    }
+    //Xử lý bật tắt mật khẩu
+    public void AnHienMatKhau(final EditText etMatKhau){
+        etMatKhau.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if (etMatKhau.getText().toString().isEmpty()){
+                    return false;
+                }
+                else {
+                    if(event.getAction() == MotionEvent.ACTION_UP) {
+                        boolean status=false;
+                        if(event.getRawX() >= (etMatKhau.getRight() - etMatKhau.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                            // your action here
+                            etMatKhau.setInputType(InputType.TYPE_CLASS_TEXT);
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+        });
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

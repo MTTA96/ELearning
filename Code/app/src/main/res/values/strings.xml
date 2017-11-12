@@ -54,6 +54,9 @@
     <string name="LinhVucQuanTam"><b>Lĩnh Vực Quan Tâm</b></string>
     <string name="MoiBanBe"><b>Mời Bạn Bè</b></string>
     <string name="TaiKhoanKhac"><b>Tài Khoản Khác</b></string>
+    <string name="DiaLogDangXuat">Bạn có muốn thoát</string>
+    <string name="BtnDongY_DX">Đồng ý</string>
+    <string name="BtnHuy_DX">Hủy</string>
     <!--Fragment Cập nhật thông tin tài khoản-->
     <string name="Hoten_CN"><b>Họ tên:</b></string>
     <string name="Namsinh_CN"><b>Năm sinh:</b></string>

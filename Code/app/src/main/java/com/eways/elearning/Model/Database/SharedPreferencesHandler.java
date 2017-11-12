@@ -20,7 +20,7 @@ public class SharedPreferencesHandler {
     private final String KEY_TEN_TAIKHOAN="tentaikhoan";
     private final String KEY_LOAI_TAIKHOAN="loaitaikhoan";
     private final String KEY_DA_DANGNHAP="dadangnhap";
-    private final String KEY_AVARTA="avarta";
+    private final String KEY_AVATAR ="avatar";
 
     public SharedPreferencesHandler(Context context,String tenFile) {
         this.context = context;
@@ -91,12 +91,12 @@ public class SharedPreferencesHandler {
         editor.commit();
     }
     //Key avarta
-    public String getAvarta(){
-        return sharedPreferences.getString(KEY_AVARTA, "");
+    public String getAvatar(){
+        return sharedPreferences.getString(KEY_AVATAR, "");
     }
 
-    public void setAvarta(String avarta){
-        editor.putString(KEY_AVARTA, avarta);
+    public void setAvatar(String avarta){
+        editor.putString(KEY_AVATAR, avarta);
         editor.commit();
     }
 
@@ -118,13 +118,14 @@ public class SharedPreferencesHandler {
         editor.putString(KEY_TEN,ho);
         editor.commit();
     }
-    public void DangNhapThanhCong(String id,String email,String ho,String ten,String tenTK,boolean dadangnhap,String loaiTK){
+    public void DangNhapThanhCong(String id, String email, String ho, String ten, String avatar, String tenTK,boolean daDangNhap, String loaiTK){
         setID(id);
         setEmail(email);
         setHo(ho);
         setTen(ten);
+        setAvatar(avatar);
         setTenTaiKhoan(tenTK);
-        setDaDangNhap(dadangnhap);
+        setDaDangNhap(daDangNhap);
         setLoaiTaiKhoan(loaiTK);
     }
     public void DangXuat(){

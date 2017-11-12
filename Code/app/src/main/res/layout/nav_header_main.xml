@@ -9,6 +9,7 @@
 
     <!-- Hình đại diện -->
     <ImageView
+        android:id="@+id/user_ava_nav_menu"
         android:layout_width="@dimen/avatar_menu_width"
         android:layout_height="match_parent"
         android:background="@drawable/avatar_shape"

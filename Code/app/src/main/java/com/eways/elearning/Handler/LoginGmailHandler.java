@@ -87,7 +87,9 @@ public class LoginGmailHandler  {
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
-                sharedPreferencesHandler.DangNhapThanhCong(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),account.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL);
+                sharedPreferencesHandler.DangNhapThanhCong(account.getId(),account.getEmail(),account.getFamilyName(), account.getGivenName(),
+                        account.getPhotoUrl() != null ? account.getPhotoUrl().toString():null,
+                        account.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL);
                 dangNhapImpView.NhanKetQuaDN(DangNhapFragment.LOGIN_SUCCESS);
             } else {
                 // Google Sign In failed, update UI appropriately

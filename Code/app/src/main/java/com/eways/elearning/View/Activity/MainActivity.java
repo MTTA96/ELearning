@@ -13,9 +13,11 @@ import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
@@ -27,9 +29,11 @@ import com.eways.elearning.View.Fragment.Home.HomeFragment;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     TextView tvUserName;
     TextView tvUserEmail;
+    ImageView imgUser;
 
     private FragmentHandler fragmentHandler;
     private SharedPreferencesHandler mySharedPref;
+    private ImageHandler imageHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setUpActionBar(drawer, myToolbar);
         mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
+        imageHandler = new ImageHandler(this);
         fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
         fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
 
@@ -67,8 +72,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Log.d("MainActivity", String.valueOf(slideOffset));
                     tvUserName = (TextView) findViewById(R.id.user_name_nav_menu);
                     tvUserEmail = (TextView) findViewById(R.id.user_email_nav_menu);
+                    imgUser = (ImageView) findViewById(R.id.user_ava_nav_menu);
+
                     //Set data
                     if (mySharedPref.getDaDangNhap()){
+                        if (mySharedPref.getAvatar() != null && mySharedPref.getAvatar().compareTo("") != 0)
+                            imageHandler.loadImage(mySharedPref.getAvatar(), imgUser);
                         tvUserEmail.setText(mySharedPref.getEmail());
                         if (mySharedPref.getTen().length()==0)
                             tvUserName.setVisibility(View.INVISIBLE);

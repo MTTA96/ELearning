@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +41,8 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
     TextView tvLoiEmail,tvLoiPassword,tvLoiCPassword;
     private DangKyImpPresenter dangKyImpPresenter;
     private FragmentHandler fragmentHandler;
+    CheckBox cbDieuKhoan;
+    boolean trangThaicbDieuKhoan;
 
     public DangKyFragment( ) {
 
@@ -64,8 +68,27 @@ public class DangKyFragment extends Fragment implements View.OnClickListener,Dan
         tvLoiEmail= (TextView) root.findViewById(R.id.tvLoiEmailDK);
         tvLoiPassword= (TextView) root.findViewById(R.id.tvLoiPasswordDK);
         tvLoiCPassword= (TextView) root.findViewById(R.id.tvLoiCPasswordDK);
+        cbDieuKhoan= (CheckBox) root.findViewById(R.id.cbDieuKhoan);
+        trangThaicbDieuKhoan=cbDieuKhoan.isChecked();
         btnHuy.setOnClickListener(this);
         btnDangKy_DK.setOnClickListener(this);
+        if (cbDieuKhoan.isChecked()==false){
+            btnDangKy_DK.setEnabled(false);
+            btnDangKy_DK.setBackgroundResource(R.drawable.disablebtn_shape);
+        }
+        cbDieuKhoan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked==true){
+                        btnDangKy_DK.setEnabled(true);
+                        btnDangKy_DK.setBackgroundResource(R.drawable.btn_shape);
+                    }
+                    else{
+                        btnDangKy_DK.setEnabled(false);
+                        btnDangKy_DK.setBackgroundResource(R.drawable.disablebtn_shape);
+                    }
+                }
+        });
         return root;
     }
 

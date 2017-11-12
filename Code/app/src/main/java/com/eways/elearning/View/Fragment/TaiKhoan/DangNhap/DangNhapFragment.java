@@ -15,6 +15,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,6 +59,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
     DangNhapImpPresenter dangNhapImpPresenter;
     TextView tvLoiDangNhap;
     SignInButton btnGmailLogin;
+    CheckBox cbDieuKhoan;
 
     private LoginGmailHandler loginGmailHandler;
     private FragmentHandler fragmentHandler;
@@ -95,6 +98,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         btnGmailLogin.setOnClickListener(this);
         btnDangky.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
+
         return root;
     }
 
@@ -132,7 +136,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
             return;
         }
         if (ketqua.compareTo(ERROR_MSG_THIEU_EMAIL_PW)==0){
-            tvLoiDangNhap.setText(R.string.loi_EmailDN +"-"+R.string.loi_PasswordDN);
+            tvLoiDangNhap.setText(R.string.loi_EmailPasswordDN);
             etEmailDN.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDN.setBackgroundResource(R.drawable.loi_shape);
             return;

@@ -22,6 +22,7 @@
     <string name="loi_PasswordDN">Chưa nhập mật khẩu</string>
     <string name="loi_SaiDinhDangEmailDN">Email không đúng</string>
     <string name="loi_SaiMatKhauDN">Mật khẩu không hợp lệ </string>
+    <string name="loi_EmailPasswordDN">Chưa nhập Email và mật khẩu</string>
 
     <!--Fragment đăng ký-->
     <string name="Tittle_Signup"><b>Đăng Ký</b></string>

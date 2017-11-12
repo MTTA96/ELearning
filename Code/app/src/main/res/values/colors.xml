@@ -8,6 +8,8 @@
     <color name="colorHint">#cecece</color>
     <color name="textColorDark">#343F4B</color>
     <color name="White">#fcfcfc</color>
+    <color name="colorError">#ff0505</color>
+    <color name="colorEnable">#b5cddb</color>
 
     <!--Fragment đăng nhập-->
     <color name="colorDivider">#cecece</color>

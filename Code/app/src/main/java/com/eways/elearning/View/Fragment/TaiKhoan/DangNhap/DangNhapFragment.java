@@ -9,16 +9,26 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eways.elearning.Handler.LoginGmailHandler;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Model.FragmentHandler;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapImpPresenter;
 import com.eways.elearning.Presenter.DangKy.DangNhap.DangNhapPresenter;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Activity.MainActivity;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
@@ -38,6 +48,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.w3c.dom.Text;
+
 import java.util.concurrent.Executor;
 
 /**
@@ -51,6 +63,19 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
     Button btnDangky,btnDangNhap;
     EditText etEmailDN,etPasswordDN;
     DangNhapImpPresenter dangNhapImpPresenter;
+    TextView tvLoiDangNhap;
+    SignInButton btnGmailLogin;
+    CheckBox cbDieuKhoan;
+
+    private LoginGmailHandler loginGmailHandler;
+    private FragmentHandler fragmentHandler;
+    public static final String ERROR_MSG_THIEU_EMAIL_PW = "thieu_email_pw";
+    public static final String ERROR_MSG_THIEU_EMAIL = "thieu_email";
+    public static final String ERROR_MSG_SAI_EMAIL = "sai_email";
+    public static final String ERROR_MSG_THIEU_PW = "thieu_pw";
+    public static final String ERROR_MSG_SAI_PW = "sai_pw";
+    public static final String LOGIN_SUCCESS = "login_success";
+    public static final String LOGIN_FAILED = "login_failed";
 
     public DangNhapFragment() {
         // Required empty public constructor
@@ -61,7 +86,8 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         dangNhapImpPresenter=new DangNhapPresenter(this);
-
+        loginGmailHandler=new LoginGmailHandler(getActivity(),this,this);
+        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
     }
 
     @Override
@@ -72,29 +98,102 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         btnDangNhap=(Button) root.findViewById(R.id.btnLogin);
         etEmailDN= (EditText) root.findViewById(R.id.etUsername);
         etPasswordDN= (EditText) root.findViewById(R.id.etPassword);
+        tvLoiDangNhap= (TextView) root.findViewById(R.id.tvLoiDN);
+        btnGmailLogin=(SignInButton)root.findViewById(R.id.btnLoginGmail);
 
+        AnHienMatKhau(etPasswordDN);
+
+        btnGmailLogin.setOnClickListener(this);
         btnDangky.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
+
+
+
         return root;
     }
-
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnSignup)
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new DangKyFragment()).commit();
+            fragmentHandler.ChuyenFragment(new DangKyFragment(), true, SupportKeysList.TAG_DANG_KY_FRAGMENT);
         if (view.getId() == R.id.btnLogin)
             dangNhapImpPresenter.NhanThongTinDN(etEmailDN.getText().toString(),etPasswordDN.getText().toString(),getActivity());
+        if (view.getId() == R.id.btnLoginGmail){
+            loginGmailHandler.ConnectGmail();
+            loginGmailHandler.signIn();
+        }
+
+    }
+    //Xử lý bật tắt mật khẩu
+    public void AnHienMatKhau(final EditText etMatKhau){
+        etMatKhau.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if (etMatKhau.getText().toString().isEmpty()){
+                    return false;
+                }
+                else {
+                    if(event.getAction() == MotionEvent.ACTION_UP) {
+                        boolean status=false;
+                        if(event.getRawX() >= (etMatKhau.getRight() - etMatKhau.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                            // your action here
+                            etMatKhau.setInputType(InputType.TYPE_CLASS_TEXT);
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+        });
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        loginGmailHandler.onResult(requestCode,resultCode,data);
     }
 
     @Override
     public void NhanKetQuaDN(String ketqua) {
-        if (ketqua.compareTo("thanhcong")==0){
-            Toast.makeText(getActivity(),"Đăng Nhập Thành Công",Toast.LENGTH_SHORT).show();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
+        if (ketqua.compareTo(ERROR_MSG_THIEU_EMAIL)==0){
+            tvLoiDangNhap.setText(R.string.loi_EmailDN);
+            etEmailDN.setBackgroundResource(R.drawable.loi_shape);
+            etPasswordDN.setBackgroundResource(R.drawable.et_shape);
+            return;
         }
-        else
-            Toast.makeText(getActivity(),"Đăng Nhập Thất Bại",Toast.LENGTH_SHORT).show();
+        if (ketqua.compareTo(ERROR_MSG_THIEU_PW)==0){
+            tvLoiDangNhap.setText(R.string.loi_PasswordDN);
+            etPasswordDN.setBackgroundResource(R.drawable.loi_shape);
+            etEmailDN.setBackgroundResource(R.drawable.et_shape);
+            return;
+        }
+        if (ketqua.compareTo(ERROR_MSG_THIEU_EMAIL_PW)==0){
+            tvLoiDangNhap.setText(R.string.loi_EmailPasswordDN);
+            etEmailDN.setBackgroundResource(R.drawable.loi_shape);
+            etPasswordDN.setBackgroundResource(R.drawable.loi_shape);
+            return;
+        }
+
+        if (ketqua.compareTo(ERROR_MSG_SAI_EMAIL)==0){
+            tvLoiDangNhap.setText(R.string.loi_SaiDinhDangEmailDN);
+            etEmailDN.setBackgroundResource(R.drawable.loi_shape);
+            etPasswordDN.setBackgroundResource(R.drawable.et_shape);
+            return;
+        }
+        if (ketqua.compareTo(ERROR_MSG_SAI_PW)==0){
+            tvLoiDangNhap.setText(R.string.loi_SaiMatKhauDN);
+            etPasswordDN.setBackgroundResource(R.drawable.loi_shape);
+            etEmailDN.setBackgroundResource(R.drawable.et_shape);
+            return;
+        }
+        if (ketqua.compareTo(LOGIN_SUCCESS)==0){
+            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
+            fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
+        }
     }
 
 }

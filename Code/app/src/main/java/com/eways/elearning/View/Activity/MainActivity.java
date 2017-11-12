@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.getDrawerArrowDrawable().setColor(Color.WHITE);
         toggle.syncState();
 
-        mySharedPref = new SharedPreferencesHandler();
+        mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
         fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
         fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
     }

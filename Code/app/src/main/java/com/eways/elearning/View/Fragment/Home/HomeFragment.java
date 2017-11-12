@@ -1,22 +1,20 @@
 package com.eways.elearning.View.Fragment.Home;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-        import android.os.Bundle;
-        import android.support.annotation.Nullable;
-        import android.support.v4.app.Fragment;
-        import android.support.v7.app.AppCompatActivity;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.Button;
-        import android.widget.TextView;
-
-        import com.eways.elearning.Model.Database.SharedPreferencesHandler;
-        import com.eways.elearning.Model.FragmentHandler;
-        import com.eways.elearning.R;
-        import com.eways.elearning.Util.SupportKeysList;
-        import com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocFragment;
-        import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Model.FragmentHandler;
+import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 
         import org.w3c.dom.Text;
 
@@ -39,7 +37,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
 
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
-        mySharedPref = new SharedPreferencesHandler();
+        mySharedPref = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
     }
 
     @Override

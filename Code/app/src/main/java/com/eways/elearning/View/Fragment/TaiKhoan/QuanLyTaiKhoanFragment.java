@@ -70,14 +70,15 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
             ArrayList<LinhVucBaiDang> DanhSachLVBD=new ArrayList<>();
             DanhSachLVBD.add(new LinhVucBaiDang(1,"Ẩm Thực",R.drawable.at));
             DanhSachLVBD.add(new LinhVucBaiDang(2,"Học Tập",R.drawable.ht));
+            DanhSachLVBD.add(new LinhVucBaiDang(3,"Âm Nhạc",R.drawable.an));
+            DanhSachLVBD.add(new LinhVucBaiDang(4,"Vận Tải",R.drawable.vt));
             linhVucQuanTamAdapter=new LinhVucQuanTamAdapter(DanhSachLVBD);
             DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(getContext(),gridLayoutManager.getOrientation());
             rcDanhSachLVQT.addItemDecoration(dividerItemDecoration);
             rcDanhSachLVQT.setLayoutManager(gridLayoutManager);
             rcDanhSachLVQT.setAdapter(linhVucQuanTamAdapter);
-            dialog.show();
             Window window = dialog.getWindow();
-            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
             dialog.show();
         }
         if (v.getId()==R.id.LoTaiKhoanKhac){

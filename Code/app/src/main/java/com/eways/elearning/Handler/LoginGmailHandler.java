@@ -1,12 +1,16 @@
 package com.eways.elearning.Handler;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Presenter.TaiKhoan.DangKy.DangKyPresenterImp;
+import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapImpPresenter;
+import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapViewImp;
@@ -18,6 +22,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.firebase.auth.FirebaseUser;
 
 
 /**
@@ -31,15 +36,17 @@ public class LoginGmailHandler  {
     private DangNhapFragment dangNhapFragment;
     private Intent data;
     private SharedPreferencesHandler sharedPreferencesHandler;
-    private DangNhapViewImp dangNhapImpView;
+
+    private DangNhapPresenterImp dangNhapPresenterImp;
+
     private static final int RC_SIGN_IN=1;
     private GoogleApiClient mGoogleApiClient;
     private String TAG="MAIN_ACTIVITY";
 
-    public LoginGmailHandler(Activity activity, DangNhapFragment dangNhapFragment, DangNhapViewImp dangNhapImpView) {
+    public LoginGmailHandler(Activity activity, DangNhapFragment dangNhapFragment, DangNhapPresenterImp dangNhapPresenterImp) {
         this.activity = activity;
         this.dangNhapFragment = dangNhapFragment;
-        this.dangNhapImpView = dangNhapImpView;
+        this.dangNhapPresenterImp = dangNhapPresenterImp;
     }
 
     public void ConnectGmail(){
@@ -87,10 +94,7 @@ public class LoginGmailHandler  {
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
-                sharedPreferencesHandler.DangNhapThanhCong(account.getId(),account.getEmail(),account.getFamilyName(), account.getGivenName(),
-                        account.getPhotoUrl() != null ? account.getPhotoUrl().toString():null,
-                        account.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL);
-                dangNhapImpView.NhanKetQuaDN(DangNhapFragment.LOGIN_SUCCESS);
+                dangNhapPresenterImp.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity);
             } else {
                 // Google Sign In failed, update UI appropriately
                 // ...
@@ -99,6 +103,13 @@ public class LoginGmailHandler  {
         this.requestCode=requestCode;
         this.data=data;
         this.resultCode=resultCode;
+    }
+
+    public void onStop(Context context){
+        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.stopAutoManage((FragmentActivity) context);
+            mGoogleApiClient.disconnect();
+        }
     }
 
 }

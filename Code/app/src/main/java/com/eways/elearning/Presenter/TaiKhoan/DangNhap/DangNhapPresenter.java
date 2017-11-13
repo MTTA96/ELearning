@@ -9,6 +9,7 @@ import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapViewImp;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseUser;
 
 /**
@@ -69,11 +70,19 @@ public class DangNhapPresenter implements DangNhapPresenterImp {
     }
 
     @Override
-    public void KetQuaDangNhap(String ketqua,FirebaseUser user,Activity activity) {
+    public void KetQuaDangNhap(String ketqua, FirebaseUser user,GoogleSignInAccount Guser, Activity activity) {
         if (ketqua.compareTo(DangNhapFragment.LOGIN_SUCCESS)==0){
-            sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
-            sharedPreferencesHandler.DangNhapThanhCong(user.getUid(), user.getEmail(),null,null, user.getPhotoUrl() != null ? user.getPhotoUrl().toString():null, user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG);
-            dangNhapImpView.NhanKetQuaDN(ketqua);
+            if (user!=null){
+                sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
+                sharedPreferencesHandler.DangNhapThanhCong(user.getUid(), user.getEmail(),null,null, user.getPhotoUrl() != null ? user.getPhotoUrl().toString():null, user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG);
+                dangNhapImpView.NhanKetQuaDN(ketqua);
+            }
+            if (Guser!=null)
+            {
+                sharedPreferencesHandler=new SharedPreferencesHandler(activity,SupportKeysList.SHARED_PREF_FILE_NAME);
+                sharedPreferencesHandler.DangNhapThanhCong(Guser.getId(),Guser.getEmail(),Guser.getFamilyName(),Guser.getGivenName(),Guser.getPhotoUrl() != null ? Guser.getPhotoUrl().toString():null,Guser.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL);
+                dangNhapImpView.NhanKetQuaDN(ketqua);
+            }
         }else
             dangNhapImpView.NhanKetQuaDN(ketqua);
 

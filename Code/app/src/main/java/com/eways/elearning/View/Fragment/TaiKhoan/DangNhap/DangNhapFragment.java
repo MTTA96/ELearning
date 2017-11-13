@@ -61,6 +61,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         dangNhapImpPresenter=new DangNhapPresenter(this);
+        loginGmailHandler=new LoginGmailHandler(getActivity(),this,dangNhapImpPresenter);
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
     }
 
@@ -93,7 +94,6 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         if (view.getId() == R.id.btnLogin)
             dangNhapImpPresenter.NhanThongTinDN(etEmailDN.getText().toString(),etPasswordDN.getText().toString(),getActivity());
         if (view.getId() == R.id.btnLoginGmail){
-            loginGmailHandler=new LoginGmailHandler(getActivity(),this,this);
             loginGmailHandler.ConnectGmail();
             loginGmailHandler.signIn();
         }
@@ -171,4 +171,9 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         }
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        loginGmailHandler.onStop(getContext());
+    }
 }

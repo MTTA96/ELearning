@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.eways.elearning.Handler.LoginGmailHandler;
 import com.eways.elearning.Handler.FragmentHandler;
-import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapImpPresenter;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenter;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.R;

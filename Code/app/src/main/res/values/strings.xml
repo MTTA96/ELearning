@@ -21,7 +21,7 @@
     <string name="Tittle_Login"><b>Đăng Nhập</b></string>
     <string name="Hint_username">Tên đăng nhập</string>
     <string name="Hint_password">Mật khẩu</string>
-    <string name="ForgerPass"><b><u>Quên Mật Khẩu ?</u></b></string>
+    <string name="ForgerPass"><b><u>Quên mật khẩu ?</u></b></string>
     <string name="btnLogin">Đăng Nhập</string>
     <string name="btnSignup">Đăng Ký</string>
 

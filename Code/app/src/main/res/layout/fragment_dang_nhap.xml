@@ -56,7 +56,6 @@
             android:hint="@string/Hint_password"
             android:inputType="textPassword"/>
 
-
         <!--Quên mật khẩu-->
         <TextView
             android:id="@+id/tvForgetPass"
@@ -65,32 +64,37 @@
             android:text="@string/ForgerPass"
             android:textSize="@dimen/ForgetPass_textsize"
             android:textColor="@color/colorMain"
-            android:layout_gravity="center"
+            android:layout_gravity="right"
             android:layout_marginTop="@dimen/ViewDangNhap_marginTop"/>
         <!--Nút đăng ký và đăng nhập-->
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ViewDangNhap_height"
             android:orientation="horizontal"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_marginTop="@dimen/ViewDangNhap_marginTop">
+            <!-- Đăng ký -->
             <Button
                 android:id="@+id/btnSignup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btnlogin_btndk_shape"
                 android:text="@string/btnSignup"
-                android:textColor="@color/colorTextBtnDkDn"
-                android:layout_width="@dimen/ViewDangNhap_btnWidth"
-                android:layout_height="@dimen/ViewDangNhap_height"
-                android:background="@drawable/btnlogin_btndk_shape"/>
+                android:textColor="@color/colorTextBtnDkDn"/>
+            <!-- Đăng nhập -->
             <Button
                 android:id="@+id/btnLogin"
-                android:text="@string/btnLogin"
-                android:textColor="@color/colorTextBtnDkDn"
-                android:layout_width="@dimen/ViewDangNhap_btnWidth"
-                android:layout_height="@dimen/ViewDangNhap_height"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:layout_marginLeft="@dimen/BtnDangNhap_marginLeft"
-                android:background="@drawable/btnlogin_btndk_shape" />
+                android:background="@drawable/btnlogin_btndk_shape"
+                android:text="@string/btnLogin"
+                android:textColor="@color/colorTextBtnDkDn"/>
         </LinearLayout>
-        <!--Nút đăng ký và đăng nhập Gmail và Facebook-->
+
+        <!-- Divider -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,8 +119,10 @@
                 android:layout_weight="1"
                 android:background="@color/colorDivider"/>
         </LinearLayout>
+
+        <!--Nút đăng ký và đăng nhập Gmail và Facebook-->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
@@ -131,7 +137,7 @@
 
             <Button
                 android:id="@+id/btnLoginFB"
-                android:layout_width="@dimen/ViewDangNhap_btnWidth"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/ViewDangNhap_height"
                 android:layout_weight="1"
                 android:background="#0084ff"
@@ -141,7 +147,7 @@
 
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/btnLoginGmail"
-                android:layout_width="@dimen/ViewDangNhap_btnWidth"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/ViewDangNhap_height"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/BtnDangNhap_marginLeft"/>

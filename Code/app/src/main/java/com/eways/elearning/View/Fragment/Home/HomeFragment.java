@@ -1,6 +1,5 @@
 package com.eways.elearning.View.Fragment.Home;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
@@ -66,7 +64,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
         if (mySharedPref.getDaDangNhap()){
             if (mySharedPref.getAvatar() != null && mySharedPref.getAvatar().compareTo("") != 0)
-                imageHandler.loadImage(mySharedPref.getAvatar(), imgUserAvatar);
+                imageHandler.loadImageRound(mySharedPref.getAvatar(), imgUserAvatar);
             gioiThieuHome.setText(mySharedPref.getEmail());
             if (mySharedPref.getTen().length()==0)
                 tenHome.setVisibility(View.INVISIBLE);

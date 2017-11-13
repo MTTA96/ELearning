@@ -9,13 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
@@ -77,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     //Set data
                     if (mySharedPref.getDaDangNhap()){
                         if (mySharedPref.getAvatar() != null && mySharedPref.getAvatar().compareTo("") != 0)
-                            imageHandler.loadImage(mySharedPref.getAvatar(), imgUser);
+                            imageHandler.loadImageRound(mySharedPref.getAvatar(), imgUser);
                         tvUserEmail.setText(mySharedPref.getEmail());
                         if (mySharedPref.getTen().length()==0)
                             tvUserName.setVisibility(View.INVISIBLE);

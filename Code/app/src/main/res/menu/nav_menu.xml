@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Action home -->
     <item
-        android:id="@+id/act_quan_ly_tai_khoan"
-        android:title="@string/quan_ly_tai_khoan"
+        android:id="@+id/nav_home"
+        android:title="@string/nav_home"
+        android:icon="@mipmap/ic_launcher"/>
+
+    <!-- Action quản lý tài khoản -->
+    <item
+        android:id="@+id/nav_quan_ly_tai_khoan"
+        android:title="@string/nav_quan_ly_tai_khoan"
         android:icon="@mipmap/ic_launcher"/>
 </menu>

@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.eways.elearning.R;
+import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.google.firebase.database.Transaction;
 
@@ -30,6 +31,10 @@ public class FragmentHandler {
 
     public void  ChuyenFragment(Fragment toFragment, boolean toBackStack, @Nullable String tag){
         FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        if(toFragment instanceof HomeFragment)
+            XoaTatCaFragment();
+
         if(toBackStack)
             transaction.replace(R.id.content_main, toFragment).addToBackStack(tag).commit();
         else

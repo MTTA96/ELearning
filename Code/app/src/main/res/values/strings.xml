@@ -9,7 +9,8 @@
 
     <!-- Nav Menu -->
     <string name="header_msg_chua_dang_nhap">Đăng nhập</string>
-    <string name="quan_ly_tai_khoan">Quản lý tài khoản</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_quan_ly_tai_khoan">Quản lý tài khoản</string>
 
     <!-- Home -->
     <string name="xem_danh_sach_bai_dang">Danh sách khóa học</string>

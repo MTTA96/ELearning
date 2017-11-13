@@ -103,11 +103,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         fragmentHandler.XoaTatCaFragment();
 
-        if (item.getItemId() == R.id.act_quan_ly_tai_khoan){
-            if (mySharedPref.getDaDangNhap())
-                fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
-            else
-                fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
+                break;
+            case R.id.nav_quan_ly_tai_khoan:
+                if (mySharedPref.getDaDangNhap())
+                    fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
+                else
+                    fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
+                break;
         }
 
         ((DrawerLayout)findViewById(R.id.drawer_layout)).closeDrawer(Gravity.START);

@@ -8,7 +8,7 @@
     <!-- Slide menu -->
     <dimen name="nav_header_main_height">160dp</dimen>
     <dimen name="nav_header_horizontal_padding">14dp</dimen>
-    <dimen name="avatar_menu_width">90dp</dimen>
+    <dimen name="avatar_menu_width">100dp</dimen>
     <dimen name="avatar_menu_vertical_margin">15dp</dimen>
     <dimen name="info_header_menu_vertical_padding">20dp</dimen>
     <dimen name="info_header_menu_horizontal_padding">9dp</dimen>
@@ -16,7 +16,7 @@
     <dimen name="email_text_size">12sp</dimen>
 
     <!-- Home -->
-    <dimen name="avatar_main_size">120dp</dimen>
+    <dimen name="avatar_main_size">135dp</dimen>
     <dimen name="avatar_main_margin_top">50dp</dimen>
     <dimen name="user_name_main_size">17sp</dimen>
     <dimen name="user_info_margin_top">5dp</dimen>
@@ -25,16 +25,15 @@
     <dimen name="item_danh_sach_chuc_nang_margin_top">40dp</dimen>
 
     <!--Fragment đăng nhập-->
-    <dimen name="LayoutTop">130dp</dimen>
+    <dimen name="LayoutTop">150dp</dimen>
     <dimen name="Title_Login_Size">30sp</dimen>
     <dimen name="ForgetPass_textsize">15sp</dimen>
 
     <dimen name="LayoutDangNhap_width">350dp</dimen>
     <dimen name="ViewDangNhap_height">50dp</dimen>
-    <dimen name="ViewDangNhap_btnWidth">140dp</dimen>
-    <dimen name="ViewDangNhap_marginTop">15dp</dimen>
+    <dimen name="ViewDangNhap_marginTop">20dp</dimen>
     <dimen name="BtnDangNhap_marginLeft">5dp</dimen>
-    <dimen name="LayoutDangNhap_Margintop">50dp</dimen>
+    <dimen name="LayoutDangNhap_Margintop">30dp</dimen>
     <dimen name="etuserpass_textpadding">10dp</dimen>
     <dimen name="loi_textsizeDN">10sp</dimen>
     <dimen name="view_height">2dp</dimen>

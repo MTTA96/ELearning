@@ -9,7 +9,8 @@
 
     <!-- Nav Menu -->
     <string name="header_msg_chua_dang_nhap">Đăng nhập</string>
-    <string name="quan_ly_tai_khoan">Quản lý tài khoản</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_quan_ly_tai_khoan">Quản lý tài khoản</string>
 
     <!-- Home -->
     <string name="xem_danh_sach_bai_dang">Danh sách khóa học</string>
@@ -20,7 +21,7 @@
     <string name="Tittle_Login"><b>Đăng Nhập</b></string>
     <string name="Hint_username">Tên đăng nhập</string>
     <string name="Hint_password">Mật khẩu</string>
-    <string name="ForgerPass"><b><u>Quên Mật Khẩu ?</u></b></string>
+    <string name="ForgerPass"><b><u>Quên mật khẩu ?</u></b></string>
     <string name="btnLogin">Đăng Nhập</string>
     <string name="btnSignup">Đăng Ký</string>
 

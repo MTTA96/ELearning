@@ -1,6 +1,7 @@
 package com.eways.elearning.View.Fragment.TaiKhoan;
 
 
+import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -36,6 +37,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
     private LinhVucQuanTamAdapter linhVucQuanTamAdapter;
     LinearLayout loLinhVucQuanTam,loTaiKhoanKhac;
     private FragmentHandler fragmentHandler;
+    private AccountManager accountManager;
     private SharedPreferencesHandler sharedPreferencesHandler;
     public QuanLyTaiKhoanFragment() {
         // Required empty public constructor
@@ -90,6 +92,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
                 public void onClick(DialogInterface dialog, int which) {
                     FirebaseAuth.getInstance().signOut();
                     fragmentHandler.ChuyenFragment(new HomeFragment(),false,null);
+                    accountManager.re
                     sharedPreferencesHandler.DangXuat();
                 }
             });

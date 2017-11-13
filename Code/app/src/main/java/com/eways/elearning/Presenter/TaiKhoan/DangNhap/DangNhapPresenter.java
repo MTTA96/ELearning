@@ -1,5 +1,6 @@
 package com.eways.elearning.Presenter.TaiKhoan.DangNhap;
 
+import android.accounts.AccountManager;
 import android.app.Activity;
 
 import com.eways.elearning.DataModel.TaiKhoan;
@@ -21,7 +22,6 @@ public class DangNhapPresenter implements DangNhapPresenterImp {
     private DangNhapViewImp dangNhapImpView;
     private SharedPreferencesHandler sharedPreferencesHandler;
     private DangNhapImpModel dangNhapImpModel=new DangNhapModel(this);
-
     public DangNhapPresenter(DangNhapViewImp dangNhapImpView) {
         this.dangNhapImpView = dangNhapImpView;
     }

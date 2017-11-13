@@ -10,9 +10,9 @@ import android.content.SharedPreferences;
 public class SharedPreferencesHandler {
     private SharedPreferences sharedPreferences;
     private  SharedPreferences.Editor editor;
-
     private Context context;
 
+    private final String KEY_FIRST_RUN = "first_run";
     private final String KEY_ID="id";
     private final String KEY_EMAIL="email";
     private final String KEY_TEN="ten";
@@ -20,13 +20,32 @@ public class SharedPreferencesHandler {
     private final String KEY_TEN_TAIKHOAN="tentaikhoan";
     private final String KEY_LOAI_TAIKHOAN="loaitaikhoan";
     private final String KEY_DA_DANGNHAP="dadangnhap";
-    private final String KEY_AVARTA="avarta";
+    private final String KEY_AVATAR ="avatar";
 
     public SharedPreferencesHandler(Context context,String tenFile) {
         this.context = context;
 
         sharedPreferences = context.getSharedPreferences(tenFile,Context.MODE_PRIVATE);
         editor=sharedPreferences.edit();
+    }
+
+    //Constructor for the first time using this app
+    public SharedPreferencesHandler(){
+        setID("");
+        setEmail("");
+        setHo("");
+        setTen("");
+        setTenTaiKhoan("");
+        setDaDangNhap(false);
+        setLoaiTaiKhoan("");
+    }
+
+    public boolean checkFirstRun(){
+        return sharedPreferences.contains(KEY_FIRST_RUN);
+    }
+    public void setFirstRun(){
+        editor.putBoolean(KEY_FIRST_RUN, true);
+        editor.commit();
     }
 
     public String getID(){
@@ -72,12 +91,12 @@ public class SharedPreferencesHandler {
         editor.commit();
     }
     //Key avarta
-    public String getAvarta(){
-        return sharedPreferences.getString(KEY_AVARTA, "");
+    public String getAvatar(){
+        return sharedPreferences.getString(KEY_AVATAR, "");
     }
 
-    public void setAvarta(String avarta){
-        editor.putString(KEY_AVARTA, avarta);
+    public void setAvatar(String avarta){
+        editor.putString(KEY_AVATAR, avarta);
         editor.commit();
     }
 
@@ -99,22 +118,23 @@ public class SharedPreferencesHandler {
         editor.putString(KEY_TEN,ho);
         editor.commit();
     }
-    public void DangNhapThanhCong(String id,String email,String ho,String ten,String tenTK,boolean dadangnhap,String loaiTK){
+    public void DangNhapThanhCong(String id, String email, String ho, String ten, String avatar, String tenTK,boolean daDangNhap, String loaiTK){
         setID(id);
         setEmail(email);
         setHo(ho);
         setTen(ten);
+        setAvatar(avatar);
         setTenTaiKhoan(tenTK);
-        setDaDangNhap(dadangnhap);
+        setDaDangNhap(daDangNhap);
         setLoaiTaiKhoan(loaiTK);
     }
     public void DangXuat(){
-        setID(null);
-        setEmail(null);
-        setHo(null);
-        setTen(null);
-        setTenTaiKhoan(null);
+        setID("");
+        setEmail("");
+        setHo("");
+        setTen("");
+        setTenTaiKhoan("");
         setDaDangNhap(false);
-        setLoaiTaiKhoan(null);
+        setLoaiTaiKhoan("");
     }
 }

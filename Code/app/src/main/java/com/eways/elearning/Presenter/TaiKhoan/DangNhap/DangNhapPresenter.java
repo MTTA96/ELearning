@@ -72,7 +72,7 @@ public class DangNhapPresenter implements DangNhapPresenterImp {
     public void KetQuaDangNhap(String ketqua,FirebaseUser user,Activity activity) {
         if (ketqua.compareTo(DangNhapFragment.LOGIN_SUCCESS)==0){
             sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
-            sharedPreferencesHandler.DangNhapThanhCong(user.getUid(),user.getEmail(),null,null,user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG);
+            sharedPreferencesHandler.DangNhapThanhCong(user.getUid(), user.getEmail(),null,null, user.getPhotoUrl() != null ? user.getPhotoUrl().toString():null, user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG);
             dangNhapImpView.NhanKetQuaDN(ketqua);
         }else
             dangNhapImpView.NhanKetQuaDN(ketqua);

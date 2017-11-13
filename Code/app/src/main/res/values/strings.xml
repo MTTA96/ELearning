@@ -8,6 +8,7 @@
     <string name="msg_dang_nhap_thanh_cong">Xin chào </string>
 
     <!-- Nav Menu -->
+    <string name="header_msg_chua_dang_nhap">Đăng nhập</string>
     <string name="quan_ly_tai_khoan">Quản lý tài khoản</string>
 
     <!-- Home -->

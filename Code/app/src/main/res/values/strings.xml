@@ -71,5 +71,6 @@
     <string name="Nghenghiep_CN"><b>Nghề nghiệp:</b></string>
     <!--Fragment CNTTTK-->
     <string name="Title_CNTTTK"><b>Thông tin cá nhân</b></string>
+    <!--Dialog Lĩnh vực yêu thích-->
 
 </resources>

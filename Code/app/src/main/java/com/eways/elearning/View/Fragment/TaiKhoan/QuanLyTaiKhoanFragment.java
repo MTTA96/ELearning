@@ -1,6 +1,7 @@
 package com.eways.elearning.View.Fragment.TaiKhoan;
 
 
+import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -37,8 +38,8 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
     private LinhVucQuanTamAdapter linhVucQuanTamAdapter;
     LinearLayout loLinhVucQuanTam,loTaiKhoanKhac;
     private FragmentHandler fragmentHandler;
-    private AccountManager accountManager;
     private SharedPreferencesHandler sharedPreferencesHandler;
+    private AccountManager accountManager;
     public QuanLyTaiKhoanFragment() {
         // Required empty public constructor
     }
@@ -48,6 +49,8 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
         super.onCreate(savedInstanceState);
         sharedPreferencesHandler=new SharedPreferencesHandler(getContext(), SupportKeysList.SHARED_PREF_FILE_NAME);
         fragmentHandler=new FragmentHandler(getContext(),getActivity().getSupportFragmentManager());
+        accountManager=AccountManager.get(getActivity());
+
     }
 
     @Override
@@ -76,8 +79,6 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
             DanhSachLVBD.add(new LinhVucBaiDang(3,"Âm Nhạc",R.drawable.an));
             DanhSachLVBD.add(new LinhVucBaiDang(4,"Vận Tải",R.drawable.vt));
             linhVucQuanTamAdapter=new LinhVucQuanTamAdapter(DanhSachLVBD);
-            DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(getContext(),gridLayoutManager.getOrientation());
-            rcDanhSachLVQT.addItemDecoration(dividerItemDecoration);
             rcDanhSachLVQT.setLayoutManager(gridLayoutManager);
             rcDanhSachLVQT.setAdapter(linhVucQuanTamAdapter);
             Window window = dialog.getWindow();
@@ -92,7 +93,6 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
                 public void onClick(DialogInterface dialog, int which) {
                     FirebaseAuth.getInstance().signOut();
                     fragmentHandler.ChuyenFragment(new HomeFragment(),false,null);
-                    accountManager.re
                     sharedPreferencesHandler.DangXuat();
                 }
             });

@@ -19,4 +19,11 @@ public class SupportKeysList {
     public static final String TAG_DANG_KY_FRAGMENT = "dang_ky_fragment";
     public static final String TAG_QUAN_LY_TAI_KHOAN_FRAGMENT = "quan_ly_tai_khoan_fragment";
     public static final String TAG_DANH_SACH_KHOA_HOC = "danh_sach_khoa_hoc_fragment";
+
+    //Key child database
+    public static final String CHILD_KHOAHOC = "KhoaHoc";
+    public static final String CHILD_KHOAHOC_CHUAHOANTAT = "ChuaHoanTat";
+    public static final String CHILD_KHOAHOC_DAHOANTAT = "DaHoanTat";
+    public static final String CHILD_KHOAHOC_TIMGIASU = "KhoaHocTimGiaSu";
+    public static final String CHILD_KHOAHOC_TIMHOCVIEN = "KhoaHocTimHocVien";
 }

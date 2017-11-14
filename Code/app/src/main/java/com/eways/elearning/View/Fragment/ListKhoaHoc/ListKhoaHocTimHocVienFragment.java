@@ -2,6 +2,7 @@ package com.eways.elearning.View.Fragment.ListKhoaHoc;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
@@ -9,7 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
+import com.eways.elearning.Handler.Adapter.KhoaHocChuaHoanTatAdapter;
+import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenter;
+import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenterImp;
 import com.eways.elearning.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,10 +26,18 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
     SwipeRefreshLayout srlKhoaHocTimHocVien;
     ListView lvKhoaHocTimHocVien;
 
+    KhoaHocChuaHoanTatAdapter khoaHocChuaHoanTatAdapter;
+    ListKhoaHocTimHocVienPresenterImp listKhoaHocTimHocVienPresenterImp;
+
     public ListKhoaHocTimHocVienFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        listKhoaHocTimHocVienPresenterImp = new ListKhoaHocTimHocVienPresenter(this);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,4 +58,13 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
         return root;
     }
 
+    @Override
+    public void nhanDanhSach(ArrayList<KhoaHocChuaHoanTat> khoaHocChuaHoanTatList) {
+        khoaHocChuaHoanTatAdapter = new KhoaHocChuaHoanTatAdapter(
+                getActivity(),
+                R.layout.custom_item_baidang_listview,
+                khoaHocChuaHoanTatList
+        );
+        lvKhoaHocTimHocVien.setAdapter(khoaHocChuaHoanTatAdapter);
+    }
 }

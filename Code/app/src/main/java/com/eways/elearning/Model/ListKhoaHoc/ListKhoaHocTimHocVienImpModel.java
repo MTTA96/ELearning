@@ -5,4 +5,5 @@ package com.eways.elearning.Model.ListKhoaHoc;
  */
 
 public interface ListKhoaHocTimHocVienImpModel {
+    public void getDanhSachKhoaHocTimHocVien();
 }

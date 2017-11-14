@@ -18,7 +18,7 @@ import com.eways.elearning.R;
  * Note:
  * 1. Đổi màu tab khi user tương tác
  * 2. Khai báo biến title trên cùng để dễ  thay đổi
- * 3.
+ * 3. Bỏ tablayout trong viewpager -> không cần set tablayout trong java
  */
 public class ListKhoaHocFragment extends Fragment {
     private ViewPager viewPagerKhoaHoc;

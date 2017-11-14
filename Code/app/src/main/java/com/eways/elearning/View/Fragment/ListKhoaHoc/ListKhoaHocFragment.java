@@ -14,11 +14,19 @@ import com.eways.elearning.R;
 
 /**
  * A simple {@link Fragment} subclass.
+ *
+ * Note:
+ * 1. Đổi màu tab khi user tương tác
+ * 2. Khai báo biến title trên cùng để dễ  thay đổi
+ * 3. Bỏ tablayout trong viewpager -> không cần set tablayout trong java
  */
 public class ListKhoaHocFragment extends Fragment {
-
     private ViewPager viewPagerKhoaHoc;
     private TabLayout tabLayoutKhoaHoc;
+
+    private final String titleTab1 = "Tìm gia sư";
+    private final String titleTab2 = "Tìm học viên";
+
     public ListKhoaHocFragment() {
         // Required empty public constructor
     }
@@ -34,13 +42,12 @@ public class ListKhoaHocFragment extends Fragment {
         tabLayoutKhoaHoc = (TabLayout)root.findViewById(R.id.tablayoutKhoaHoc);
 
         setUpViewPager(viewPagerKhoaHoc);
-        tabLayoutKhoaHoc.setupWithViewPager(viewPagerKhoaHoc);
         return root;
     }
     private void setUpViewPager(ViewPager pager) {
         ViewPagerKhoaHocAdapter adapter = new ViewPagerKhoaHocAdapter(getFragmentManager());
-        adapter.addFragment(new ListKhoaHocTimGiaSuFragment(), "TÌM GIA SƯ");
-        adapter.addFragment(new ListKhoaHocTimHocVienFragment(), "TÌM HỌC VIÊN");
+        adapter.addFragment(new ListKhoaHocTimGiaSuFragment(), titleTab1);
+        adapter.addFragment(new ListKhoaHocTimHocVienFragment(), titleTab2);
         pager.setAdapter(adapter);
     }
 }

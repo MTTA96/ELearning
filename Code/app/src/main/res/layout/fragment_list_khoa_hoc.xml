@@ -1,43 +1,25 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocFragment">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbarKhoaHoc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbarKhoaHoc"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/toolbar_height"
-            android:background="@color/colorPrimaryDark" />
-    </android.support.design.widget.AppBarLayout>
-
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpagerKhoaHoc"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/viewPagerHeight"
-        android:layout_weight="@dimen/viewPagerWeight"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tablayoutKhoaHoc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        app:tabGravity="fill"
-        app:tabMode="fixed"
-        app:tabTextColor="@color/textColor" />
-    </LinearLayout>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tablayoutKhoaHoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimaryDark"
+            app:tabGravity="fill"
+            app:tabMode="fixed"
+            app:tabTextColor="@color/textColor" />
+    </android.support.v4.view.ViewPager>
 
-</FrameLayout>
+</LinearLayout>

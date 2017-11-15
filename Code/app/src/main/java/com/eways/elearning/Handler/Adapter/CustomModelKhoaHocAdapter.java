@@ -9,30 +9,31 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
+import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by yowin on 10/11/2017.
+ * Created by Tran Tien Phat on 14/11/2017.
  */
 
-public class KhoaHocChuaHoanTatAdapter extends BaseAdapter {
+public class CustomModelKhoaHocAdapter extends BaseAdapter {
 
     Context mContext;
     int mLayout;
-    List<KhoaHocChuaHoanTat> khoaHocChuaHoanTatList;
+    List<CustomModelKhoaHoc> customModelKhoaHocList;
 
-    public KhoaHocChuaHoanTatAdapter(Context mContext, int mLayout, List<KhoaHocChuaHoanTat> khoaHocChuaHoanTatList) {
+    public CustomModelKhoaHocAdapter(Context mContext, int mLayout, List<CustomModelKhoaHoc> customModelKhoaHocList) {
         this.mContext = mContext;
         this.mLayout = mLayout;
-        this.khoaHocChuaHoanTatList = khoaHocChuaHoanTatList;
+        this.customModelKhoaHocList = customModelKhoaHocList;
     }
 
     @Override
     public int getCount() {
-        return khoaHocChuaHoanTatList.size();
+        return customModelKhoaHocList.size();
     }
 
     @Override
@@ -47,35 +48,31 @@ public class KhoaHocChuaHoanTatAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(mLayout, null);
 
-        ImageView imvAvatar = (ImageView) convertView.findViewById(R.id.imvAvatar);
+        ImageView imvAvatar = (ImageView) convertView.findViewById(R.id.img_KhoaHoc);
 //        imvAvatar.setImageURI(url);
 //        lấy UserID của người đăng khóa học => lấy link avatar trong tài khoản
 
-        RatingBar rbBaiDang = (RatingBar) convertView.findViewById(R.id.rbBaiDang);
+        RatingBar rbBaiDang = (RatingBar) convertView.findViewById(R.id.rtb_KhoaHoc);
 //        rbBaiDang.setRating( );
 //        lấy UserID của người đăng khóa học => lấy rating trong tài khoản
 
-        TextView tvTenNguoiDang = (TextView) convertView.findViewById(R.id.tvTenNguoiDang);
-        tvTenNguoiDang.setText(khoaHocChuaHoanTatList.get(position).getNguoiDang());
+        TextView tvTenNguoiDang = (TextView) convertView.findViewById(R.id.tvTen_KhoaHoc);
+        tvTenNguoiDang.setText(customModelKhoaHocList.get(position).getTenNguoiDang());
 
-        TextView tvBuoiHoc = (TextView) convertView.findViewById(R.id.tvBuoiHoc);
-        tvTenNguoiDang.setText(khoaHocChuaHoanTatList.get(position).getSoBuoiHoc());
+        TextView tvBuoiHoc = (TextView) convertView.findViewById(R.id.tvBuoi_KhoaHoc);
+        tvTenNguoiDang.setText(customModelKhoaHocList.get(position).getBuoiHoc());
 
-        TextView tvMonHoc = (TextView) convertView.findViewById(R.id.tvMonHoc);
+        TextView tvMonHoc = (TextView) convertView.findViewById(R.id.tvMon_KhoaHoc);
+        ArrayList<String> listMon = customModelKhoaHocList.get(position).getMonHoc();
+        String danhSachMon = "";
+        for (String mon : listMon) { danhSachMon += mon; }
+        tvMonHoc.setText(danhSachMon);
 //        tvTenNguoiDang.setText(Arrays.toString(khoaHocChuaHoanTatList.get(position).getMon().toArray()));
 //        non-recommended! Không chắc đúng hay không? Với lại hiện thị kiểu này hông đẹp
-//        ArrayList<String> listMon = khoaHocChuaHoanTatList.get(position).getMon();
-//        String x = null;
-//        for(int i =0;i<listMon.size();i++)
-//        {
-//            x += listMon.get(i);
-//        }
-        tvMonHoc.setText("a");
-
-        TextView tvXemThem = (TextView) convertView.findViewById(R.id.tvXemThem);
 
         return convertView;
     }

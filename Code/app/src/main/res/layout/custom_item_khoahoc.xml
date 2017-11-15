@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/MarginTop_itemKhoaHoc"
+            android:layout_marginBottom="@dimen/MarginBottom_itemKhoaHoc"
+            android:layout_marginLeft="@dimen/MarginLeft_itemKhoaHoc_BlockImg"
+            android:layout_marginRight="@dimen/MarginRight_itemKhoaHoc_BlockImg">
+
+            <ImageView
+                android:id="@+id/img_KhoaHoc"
+                android:layout_width="@dimen/Width_KhoaHoc"
+                android:layout_height="@dimen/Height_KhoaHoc"
+                />
+            <RatingBar
+                android:id="@+id/rtb_KhoaHoc"
+                android:layout_width="@dimen/Width_KhoaHoc"
+                android:layout_height="@dimen/Height_Rtb_KhoaHoc" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/Height_BlockInfo_KhoaHoc"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/MarginTop_itemKhoaHoc"
+            android:layout_marginBottom="@dimen/MarginBottom_itemKhoaHoc"
+            android:layout_marginLeft="@dimen/MarginLeft_itemKhoaHoc_BlockInfo"
+            android:layout_marginRight="@dimen/MarginRight_itemKhoaHoc_BlockInfo">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Height_KhoaHoc"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTen_KhoaHoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Xem_Ten"
+                    android:textSize="@dimen/TextSize_KhoaHoc"
+                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"/>
+                <TextView
+                    android:id="@+id/tvMon_KhoaHoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Xem_Mon"
+                    android:textSize="@dimen/TextSize_KhoaHoc"
+                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"/>
+                <TextView
+                    android:id="@+id/tvBuoi_KhoaHoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Xem_Buoi"
+                    android:textSize="@dimen/TextSize_KhoaHoc"
+                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"/>
+                <TextView
+                    android:id="@+id/tvChiTiet_KhoaHoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Xem_ChiTiet"
+                    android:textSize="@dimen/TextSizeCT_KhoaHoc"
+                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"/>
+                <TextView
+                    android:id="@+id/tvGia_KhoaHoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Xem_Gia"
+                    android:textSize="@dimen/TextSize_KhoaHoc"
+                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/MarginLeft_BtnChat_KhoaHoc"/>
+
+        </LinearLayout>
+
+
+</LinearLayout>

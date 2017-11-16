@@ -1,6 +1,6 @@
 package com.eways.elearning.Presenter.ListKhoaHoc;
 
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
+import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 
 import java.util.ArrayList;
 
@@ -9,6 +9,6 @@ import java.util.ArrayList;
  */
 
 public interface ListKhoaHocTimGiaSuPresenterImp {
-    public void nhanDanhSachKhoaHoc(ArrayList<KhoaHocChuaHoanTat> listKhoaHocChuaHoanTat);
+    public void nhanDanhSachKhoaHoc(ArrayList<CustomModelKhoaHoc> listKhoaHoc);
     public void yeuCauDanhSachKhoaHoc();
 }

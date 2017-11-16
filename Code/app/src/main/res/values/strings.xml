@@ -49,10 +49,11 @@
     <string name="SaiMatKhauDK">* Mật khẩu phải từ 6 ký tự trở lên</string>
 
     <!--Fragment Gia Sư-->
-    <string name="Xem_Them"><b>Xem thêm...</b></string>
-    <string name="Xem_Ten"><b>Tên</b></string>
-    <string name="Xem_Mon"><b>Môn</b></string>
-    <string name="Xem_Buoi"><b>Buổi</b></string>
+    <string name="Xem_ChiTiet"><b>Chi tiết...</b></string>
+    <string name="Xem_Ten"><b>Tên: </b></string>
+    <string name="Xem_Mon"><b>Môn: </b></string>
+    <string name="Xem_Buoi"><b>Buổi: </b></string>
+    <string name="Xem_Gia">Học phí: </string>
     <!--Fragment QLTK-->
     <string name="Dang_xuat_QLTK"><i><u>Đăng xuất</u></i></string>
     <string name="ThongTinCaNhan"><b>Thông tin cá nhân</b></string>

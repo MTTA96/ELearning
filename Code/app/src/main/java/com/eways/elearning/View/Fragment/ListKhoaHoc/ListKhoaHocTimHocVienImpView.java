@@ -1,6 +1,6 @@
 package com.eways.elearning.View.Fragment.ListKhoaHoc;
 
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
+import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 
 import java.util.ArrayList;
 
@@ -9,5 +9,5 @@ import java.util.ArrayList;
  */
 
 public interface ListKhoaHocTimHocVienImpView {
-    public void nhanDanhSach(ArrayList<KhoaHocChuaHoanTat> khoaHocChuaHoanTatList);
+    public void nhanDanhSach(ArrayList<CustomModelKhoaHoc> khoaHocChuaHoanTatList);
 }

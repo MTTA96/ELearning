@@ -10,7 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
+import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Handler.Adapter.CustomModelKhoaHocAdapter;
 import com.eways.elearning.Handler.Adapter.KhoaHocChuaHoanTatAdapter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenterImp;
@@ -48,6 +49,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
         srlKhoaHocTimGiaSu = (SwipeRefreshLayout)root.findViewById(R.id.srlKhoaHocTimGiaSu);
         lvKhoaHocTimGiaSu = (ListView)root.findViewById(R.id.lvKhoaHocTimGiaSu);
 
+        listKhoaHocTimGiaSuPresenterImp.yeuCauDanhSachKhoaHoc();
         srlKhoaHocTimGiaSu.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             /**
              * Called when a swipe gesture triggers a refresh.
@@ -62,12 +64,12 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
     }
 
     @Override
-    public void nhanDanhSach(ArrayList<KhoaHocChuaHoanTat> khoaHocChuaHoanTatList) {
-        khoaHocChuaHoanTatAdapter = new KhoaHocChuaHoanTatAdapter(
+    public void nhanDanhSach(ArrayList<CustomModelKhoaHoc> khoaHocList) {
+        CustomModelKhoaHocAdapter customModelKhoaHocAdapter = new CustomModelKhoaHocAdapter(
                 getActivity(),
-                R.layout.custom_item_baidang_listview,
-                khoaHocChuaHoanTatList
+                R.layout.custom_item_khoahoc,
+                khoaHocList
         );
-        lvKhoaHocTimGiaSu.setAdapter(khoaHocChuaHoanTatAdapter);
+        lvKhoaHocTimGiaSu.setAdapter(customModelKhoaHocAdapter);
     }
 }

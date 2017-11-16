@@ -26,4 +26,13 @@ public class SupportKeysList {
     public static final String CHILD_KHOAHOC_DAHOANTAT = "DaHoanTat";
     public static final String CHILD_KHOAHOC_TIMGIASU = "KhoaHocTimGiaSu";
     public static final String CHILD_KHOAHOC_TIMHOCVIEN = "KhoaHocTimHocVien";
+
+    //API
+    public static final String API_GET_KHOAHOC = "API_KHOAHOC";
+    public static final String API_GET_KHOAHOC_GS = "API_KHOAHOC_TIMGIASU";
+    public static final String API_GET_KHOAHOC_HV = "API_KHOAHOC_TIMHOCVIEN";
+
+    // ???
+    public static final String GET_DATA_LOI = "GET_DATA_LOI";
+    public static final String GET_DATA_THANHCONG = "GET_DATA_THANHCONG";
 }

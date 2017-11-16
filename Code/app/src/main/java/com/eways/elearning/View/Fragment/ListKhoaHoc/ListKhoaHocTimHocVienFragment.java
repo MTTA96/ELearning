@@ -10,7 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
+import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Handler.Adapter.CustomModelKhoaHocAdapter;
 import com.eways.elearning.Handler.Adapter.KhoaHocChuaHoanTatAdapter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenterImp;
@@ -48,10 +49,12 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
         srlKhoaHocTimHocVien = (SwipeRefreshLayout)root.findViewById(R.id.srlKhoaHocTimHocVien);
         lvKhoaHocTimHocVien = (ListView)root.findViewById(R.id.lvKhoaHocTimHocVien);
 
+        listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc();
+
         srlKhoaHocTimHocVien.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
+                
             }
         });
 
@@ -59,12 +62,12 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
     }
 
     @Override
-    public void nhanDanhSach(ArrayList<KhoaHocChuaHoanTat> khoaHocChuaHoanTatList) {
-        khoaHocChuaHoanTatAdapter = new KhoaHocChuaHoanTatAdapter(
+    public void nhanDanhSach(ArrayList<CustomModelKhoaHoc> khoaHocList) {
+        CustomModelKhoaHocAdapter customModelKhoaHocAdapter = new CustomModelKhoaHocAdapter(
                 getActivity(),
-                R.layout.custom_item_baidang_listview,
-                khoaHocChuaHoanTatList
+                R.layout.custom_item_khoahoc,
+                khoaHocList
         );
-        lvKhoaHocTimHocVien.setAdapter(khoaHocChuaHoanTatAdapter);
+        lvKhoaHocTimHocVien.setAdapter(customModelKhoaHocAdapter);
     }
 }

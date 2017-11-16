@@ -12,4 +12,6 @@ public class ServerUrl {
 
     //Url api
     public static final String ApiHelloWorld = ServerUrl + "/helloWorld";
+    public static final String ApiGetKhoaHocGS = ServerUrl + "/GetListAllTimGiaSu";
+    public static final String ApiGetKhoaHocHV = ServerUrl + "/GetListAllTimHocVien";
 }

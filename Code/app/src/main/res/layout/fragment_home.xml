@@ -53,9 +53,9 @@
             android:background="@drawable/btn_shape"
             android:text="@string/xem_danh_sach_bai_dang"
             android:textColor="@android:color/white"/>
-        <!-- Tìm kiếm -->
+        <!-- Tạo khóa học -->
         <Button
-            android:id="@+id/btn_tim_kiem"
+            android:id="@+id/btn_tao_khoa_hoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/item_danh_sach_chuc_nang_margin_top"

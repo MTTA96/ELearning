@@ -73,9 +73,10 @@
     <dimen name="MarginLeft_Tv_KhoaHoc">5dp</dimen>
 
     <!-- Tạo khóa học -->
-    <dimen name="tao_khoa_hoc_vertical_padding">15dp</dimen>
-    <dimen name="tao_khoa_hoc_horizontal_padding">20dp</dimen>
-    <dimen name="view_tao_khoa_hoc_margin_top">10dp</dimen>
+    <dimen name="tao_khoa_hoc_vertical_padding">30dp</dimen>
+    <dimen name="tao_khoa_hoc_horizontal_padding">25dp</dimen>
+    <dimen name="khung_content_tao_khoa_hoc_margin_top">40dp</dimen>
+    <dimen name="view_tao_khoa_hoc_margin_top">25dp</dimen>
 
     <!--Quản lý cá nhân-->
     <dimen name="avarta_size_QLTK">110dp</dimen>

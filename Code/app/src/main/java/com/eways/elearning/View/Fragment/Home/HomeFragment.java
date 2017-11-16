@@ -15,6 +15,7 @@ import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHocFragment;
 import com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
@@ -54,6 +55,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         imgUserAvatar = (ImageView) root.findViewById(R.id.avatar_home);
 
         root.findViewById(R.id.btn_xem_danh_sach_khoa_hoc).setOnClickListener(this);
+        root.findViewById(R.id.btn_tao_khoa_hoc).setOnClickListener(this);
 
         return root;
     }
@@ -84,6 +86,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_xem_danh_sach_khoa_hoc:
                 fragmentHandler.ChuyenFragment(new ListKhoaHocFragment(), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
+                break;
+            case R.id.btn_tao_khoa_hoc:
+                fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
                 break;
         }
     }

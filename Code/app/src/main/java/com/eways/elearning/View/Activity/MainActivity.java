@@ -64,10 +64,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 if (slideOffset == 0) {
                     // drawer closed
-                    Log.d("MainActivity", String.valueOf(slideOffset));
                 } else if (slideOffset > 0.3) {
                     // started opening
-                    Log.d("MainActivity", String.valueOf(slideOffset));
                     tvUserName = (TextView) findViewById(R.id.user_name_nav_menu);
                     tvUserEmail = (TextView) findViewById(R.id.user_email_nav_menu);
                     imgUser = (ImageView) findViewById(R.id.user_ava_nav_menu);
@@ -76,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     if (mySharedPref.getDaDangNhap()){
                         if (mySharedPref.getAvatar() != null && mySharedPref.getAvatar().compareTo("") != 0)
                             imageHandler.loadImageRound(mySharedPref.getAvatar(), imgUser);
+                        else
+                            imgUser.setImageBitmap(null);
                         tvUserEmail.setText(mySharedPref.getEmail());
                         if (mySharedPref.getTen().length()==0)
                             tvUserName.setVisibility(View.INVISIBLE);

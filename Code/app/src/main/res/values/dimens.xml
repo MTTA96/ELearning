@@ -28,7 +28,6 @@
     <!--Fragment đăng nhập-->
     <dimen name="Title_Login_Size">30sp</dimen>
     <dimen name="ForgetPass_textsize">15sp</dimen>
-
     <dimen name="LayoutDangNhap_width">350dp</dimen>
     <dimen name="ViewDangNhap_height">50dp</dimen>
     <dimen name="khung_dang_nhap_horizontal_padding">25dp</dimen>
@@ -41,7 +40,6 @@
 
     <!--Fragment Đăng Ký-->
     <dimen name="Title_Signup_Size">30sp</dimen>
-
     <dimen name="ViewDangKy_height">50dp</dimen>
     <dimen name="khung_dang_ky_horizontal_padding">25dp</dimen>
     <dimen name="khung_dang_ky_margin_top">30dp</dimen>
@@ -51,11 +49,8 @@
     <dimen name="etuserpassDK_textpadding">10dp</dimen>
     <dimen name="Dieukhoan_textsize">17sp</dimen>
     <dimen name="loi_textsizeDK">10sp</dimen>
-
     <dimen name="tvDieukhoan_Horizontalpadding">5dp</dimen>
     <dimen name="LayoutDieuKhoan_margintop">15dp</dimen>
-
-    <!-- Home -->
 
     <!--Fragment Gia Sư-->
     <dimen name="MarginBottom_TabHost">0dp</dimen>
@@ -76,6 +71,12 @@
     <dimen name="MarginLeft_BtnChat_KhoaHoc">105dp</dimen>
     <dimen name="MarginTop_Tv_KhoaHoc">2dp</dimen>
     <dimen name="MarginLeft_Tv_KhoaHoc">5dp</dimen>
+
+    <!-- Tạo khóa học -->
+    <dimen name="tao_khoa_hoc_vertical_padding">30dp</dimen>
+    <dimen name="tao_khoa_hoc_horizontal_padding">25dp</dimen>
+    <dimen name="khung_content_tao_khoa_hoc_margin_top">40dp</dimen>
+    <dimen name="view_tao_khoa_hoc_margin_top">25dp</dimen>
 
     <!--Quản lý cá nhân-->
     <dimen name="avarta_size_QLTK">110dp</dimen>

@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/tao_khoa_hoc_vertical_padding"
+    android:paddingLeft="@dimen/tao_khoa_hoc_horizontal_padding"
+    android:paddingRight="@dimen/tao_khoa_hoc_horizontal_padding"
+    android:background="@android:color/white"
+    tools:context="com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHocFragment">
+
+    <!-- Phân mục -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/shape_btn_white">
+        <!-- Tìm gia sư -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorMain"
+            android:text="Tìm gia sư"/>
+        <!-- Tìm học viên -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_btn_white"
+            android:text="Tìm học viên"/>
+    </LinearLayout>
+
+    <!-- Tên môn -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/view_tao_khoa_hoc_margin_top"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Tên môn:"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/shape_btn_white"
+            android:hint="Lập trình C"/>
+    </LinearLayout>
+</LinearLayout>

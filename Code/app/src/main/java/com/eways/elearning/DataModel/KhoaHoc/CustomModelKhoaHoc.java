@@ -13,17 +13,27 @@ public class CustomModelKhoaHoc {
     private String UIDNguoiDang;
     private String LinkAvatar;
     private String BuoiHoc;
+    private String Rating;
     private ArrayList<String> MonHoc;
     private ArrayList<String> Lop;
+
+    public String getRating() {
+        return Rating;
+    }
+
+    public void setRating(String rating) {
+        Rating = rating;
+    }
 
     public CustomModelKhoaHoc() {
     }
 
-    public CustomModelKhoaHoc(String tenNguoiDang, String UIDNguoiDang, String linkAvatar, String buoiHoc, ArrayList<String> monHoc, ArrayList<String> lop) {
+    public CustomModelKhoaHoc(String tenNguoiDang, String UIDNguoiDang, String linkAvatar, String buoiHoc, String rating, ArrayList<String> monHoc, ArrayList<String> lop) {
         TenNguoiDang = tenNguoiDang;
         this.UIDNguoiDang = UIDNguoiDang;
         LinkAvatar = linkAvatar;
         BuoiHoc = buoiHoc;
+        Rating = rating;
         MonHoc = monHoc;
         Lop = lop;
     }

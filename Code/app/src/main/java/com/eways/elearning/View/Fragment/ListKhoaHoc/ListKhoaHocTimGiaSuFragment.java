@@ -12,7 +12,6 @@ import android.widget.ListView;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.Handler.Adapter.CustomModelKhoaHocAdapter;
-import com.eways.elearning.Handler.Adapter.KhoaHocChuaHoanTatAdapter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenterImp;
 import com.eways.elearning.R;
@@ -27,7 +26,6 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
     SwipeRefreshLayout srlKhoaHocTimGiaSu;
     ListView lvKhoaHocTimGiaSu;
 
-    KhoaHocChuaHoanTatAdapter khoaHocChuaHoanTatAdapter;
     ListKhoaHocTimGiaSuPresenterImp listKhoaHocTimGiaSuPresenterImp;
 
     public ListKhoaHocTimGiaSuFragment() {
@@ -50,15 +48,15 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
         lvKhoaHocTimGiaSu = (ListView)root.findViewById(R.id.lvKhoaHocTimGiaSu);
 
         listKhoaHocTimGiaSuPresenterImp.yeuCauDanhSachKhoaHoc();
-        srlKhoaHocTimGiaSu.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            /**
-             * Called when a swipe gesture triggers a refresh.
-             */
-            @Override
-            public void onRefresh() {
-
-            }
-        });
+//        srlKhoaHocTimGiaSu.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            /**
+//             * Called when a swipe gesture triggers a refresh.
+//             */
+//            @Override
+//            public void onRefresh() {
+//
+//            }
+//        });
 
         return root;
     }

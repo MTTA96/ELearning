@@ -8,10 +8,10 @@ package com.eways.elearning.Util;
 
 public class ServerUrl {
     //Link server
-    public static final String ServerUrl = "ttps://us-central1-elearning-6247b.cloudfunctions.net";
+    public static final String ServerUrl = "https://us-central1-elearning-da847.cloudfunctions.net";
 
     //Url api
     public static final String ApiHelloWorld = ServerUrl + "/helloWorld";
-    public static final String ApiGetKhoaHocGS = ServerUrl + "/GetListAllTimGiaSu";
-    public static final String ApiGetKhoaHocHV = ServerUrl + "/GetListAllTimHocVien";
+    public static final String ApiGetKhoaHocGS = "https://us-central1-elearning-da847.cloudfunctions.net/GetListAllTimGiaSu";
+    public static final String ApiGetKhoaHocHV = "https://us-central1-elearning-da847.cloudfunctions.net/GetListAllTimHocVien";
 }

@@ -41,9 +41,9 @@ public class ParseData {
                     JSONObject objectLichHoc = object.getJSONObject("LichHoc");
                     String BuoiHoc = objectLichHoc.getString("ThoiGian");
 
-//                    String TenNguoiDang = object.getString("Key");
+                    String TenNguoiDang = object.getString("HoTen");
                     //Truyền UID vào NODEJS để lấy về tên người đăng
-//                    String LinkAnh = object.getString("Key");
+                    String LinkAnh = object.getString("Avatar");
                     //Truyền UID vào NODEJS để lấy về Avatar người đăng
 
                     JSONArray objectLop = object.getJSONArray("Lop");
@@ -60,7 +60,9 @@ public class ParseData {
                         Mon.add(objectLop.getString(i));
                     }
 
-                    CustomModelKhoaHoc kht = new CustomModelKhoaHoc();
+                    String rating = object.getString("Rating");
+
+                    CustomModelKhoaHoc kht = new CustomModelKhoaHoc(TenNguoiDang,UIDNguoiDang,LinkAnh,BuoiHoc,rating,Mon,Lop);
                     khoaHocArrayList.add(kht);
                 }
 

@@ -238,7 +238,7 @@
                 "IDUser002":"RatingPoint",
                 "IDUser003":"RatingPoint"
             },
-          "KhoaHOc":
+          "KhoaHoc":
           {
             "TimGiaSu":
               {
@@ -288,7 +288,10 @@
         {
           "Khoa001":
           {
+            "Rating":"5",
             "NguoiDang":"UID",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":
@@ -336,6 +339,9 @@
 
           "Khoa002":
           {
+            "Rating":"5",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NguoiDang":"UID",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
@@ -387,6 +393,9 @@
           "Khoa004":
           {
           "NguoiDang":"UID",
+          "Rating":"5",
+          "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":
@@ -427,6 +436,9 @@
           "Khoa003":
           {
           "NguoiDang":"UID",
+          "Rating":"5",
+          "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":
@@ -472,6 +484,9 @@
           "Khoa005":
           {
             "NguoiDang":"UID",
+            "Rating":"5",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":
@@ -522,6 +537,9 @@
           "Khoa006":
           {
             "NguoiDang":"UID",
+            "Rating":"5",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":
@@ -574,6 +592,9 @@
           "Khoa007":
           {
             "NguoiDang":"UID",
+            "Rating":"5",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":
@@ -616,6 +637,9 @@
           "Khoa009":
            {
             "NguoiDang":"UID",
+            "Rating":"5",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":

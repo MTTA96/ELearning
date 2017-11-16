@@ -10,6 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.R;
 
 import java.util.ArrayList;
@@ -50,13 +51,17 @@ public class CustomModelKhoaHocAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(mLayout, null);
+        convertView = inflater.inflate(mLayout,null);
 
         ImageView imvAvatar = (ImageView) convertView.findViewById(R.id.img_KhoaHoc);
+//        Picasso.with(mContext).load(customModelKhoaHocList.get(position).getLinkAvatar()).into(imvAvatar);
+        ImageHandler imageHandler = new ImageHandler(mContext);
+        imageHandler.loadImageRound(customModelKhoaHocList.get(position).getLinkAvatar(),imvAvatar);
 //        imvAvatar.setImageURI(url);
 //        lấy UserID của người đăng khóa học => lấy link avatar trong tài khoản
 
         RatingBar rbBaiDang = (RatingBar) convertView.findViewById(R.id.rtb_KhoaHoc);
+        rbBaiDang.setRating(Float.parseFloat(customModelKhoaHocList.get(position).getRating()));
 //        rbBaiDang.setRating( );
 //        lấy UserID của người đăng khóa học => lấy rating trong tài khoản
 
@@ -69,11 +74,13 @@ public class CustomModelKhoaHocAdapter extends BaseAdapter {
         TextView tvMonHoc = (TextView) convertView.findViewById(R.id.tvMon_KhoaHoc);
         ArrayList<String> listMon = customModelKhoaHocList.get(position).getMonHoc();
         String danhSachMon = "";
-        for (String mon : listMon) { danhSachMon += mon; }
+        for (String mon : listMon) { danhSachMon = danhSachMon + mon; }
         tvMonHoc.setText(danhSachMon);
 //        tvTenNguoiDang.setText(Arrays.toString(khoaHocChuaHoanTatList.get(position).getMon().toArray()));
 //        non-recommended! Không chắc đúng hay không? Với lại hiện thị kiểu này hông đẹp
 
         return convertView;
     }
+
+
 }

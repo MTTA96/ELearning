@@ -12,7 +12,6 @@ import android.widget.ListView;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.Handler.Adapter.CustomModelKhoaHocAdapter;
-import com.eways.elearning.Handler.Adapter.KhoaHocChuaHoanTatAdapter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenterImp;
 import com.eways.elearning.R;
@@ -27,7 +26,6 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
     SwipeRefreshLayout srlKhoaHocTimHocVien;
     ListView lvKhoaHocTimHocVien;
 
-    KhoaHocChuaHoanTatAdapter khoaHocChuaHoanTatAdapter;
     ListKhoaHocTimHocVienPresenterImp listKhoaHocTimHocVienPresenterImp;
 
     public ListKhoaHocTimHocVienFragment() {
@@ -51,12 +49,12 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
 
         listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc();
 
-        srlKhoaHocTimHocVien.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                
-            }
-        });
+//        srlKhoaHocTimHocVien.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                srlKhoaHocTimHocVien.setRefreshing(true);
+//            }
+//        });
 
         return root;
     }

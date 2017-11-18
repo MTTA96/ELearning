@@ -288,6 +288,10 @@
         {
           "Khoa001":
           {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
             "Rating":"5",
             "NguoiDang":"UID",
             "HoTen":"Nguyễn A",
@@ -339,10 +343,14 @@
 
           "Khoa002":
           {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
             "Rating":"5",
+            "NguoiDang":"UID",
             "HoTen":"Nguyễn A",
             "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
-            "NguoiDang":"UID",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":
@@ -392,6 +400,10 @@
         {
           "Khoa004":
           {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
           "NguoiDang":"UID",
           "Rating":"5",
           "HoTen":"Nguyễn A",
@@ -435,6 +447,10 @@
 
           "Khoa003":
           {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
           "NguoiDang":"UID",
           "Rating":"5",
           "HoTen":"Nguyễn A",
@@ -483,8 +499,12 @@
         {
           "Khoa005":
           {
-            "NguoiDang":"UID",
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
             "Rating":"5",
+            "NguoiDang":"UID",
             "HoTen":"Nguyễn A",
             "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
@@ -495,14 +515,14 @@
             ],
             "Mon":
             [
-              "Anh văn","Toán"
+              "Anh văn giao tiếp"
             ],
             "DiaChi":
-                {
-                    "DayDu":"Thỏa thuận",
-                    "Quan":"Null",
-                    "TP":"HCM"
-                },
+            {
+                "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+                "Quan":"Bình Thạnh",
+                "TP":"HCM"
+              },
             "HocPhi":"150000",
             "LichHoc":
             {
@@ -514,30 +534,32 @@
                 "Thứ sáu"
               ]
             },
-            "SoLuongHocVien":"5",
+            "SoLuongHocVien":"1",
             "ThoiLuongBuoiHoc":"90",
             "SoBuoiHoc":"12",
-            "ThongTinKhac":"Vui lòng chịu khó làm bài tập",
+            "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
             "DanhSachYeuCau":
             {
               "DangCho":
               [
                 "UID001",
-                "UID009",
-                "UID008"
+                "UID002"
               ],
               "TamDuyet":
               [
-                "UID003",
-                "UID005"
+                "UID003"
               ]
             }
           },
 
           "Khoa006":
           {
-            "NguoiDang":"UID",
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
             "Rating":"5",
+            "NguoiDang":"UID",
             "HoTen":"Nguyễn A",
             "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
@@ -548,14 +570,14 @@
             ],
             "Mon":
             [
-              "Anh văn","Toán"
+              "Anh văn giao tiếp"
             ],
             "DiaChi":
-                {
-                    "DayDu":"Thỏa thuận",
-                    "Quan":"Null",
-                    "TP":"HCM"
-                },
+            {
+                "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+                "Quan":"Bình Thạnh",
+                "TP":"HCM"
+              },
             "HocPhi":"150000",
             "LichHoc":
             {
@@ -567,22 +589,20 @@
                 "Thứ sáu"
               ]
             },
-            "SoLuongHocVien":"5",
+            "SoLuongHocVien":"1",
             "ThoiLuongBuoiHoc":"90",
             "SoBuoiHoc":"12",
-            "ThongTinKhac":"Vui lòng chịu khó làm bài tập",
+            "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
             "DanhSachYeuCau":
             {
               "DangCho":
               [
                 "UID001",
-                "UID009",
-                "UID008"
+                "UID002"
               ],
               "TamDuyet":
               [
-                "UID003",
-                "UID005"
+                "UID003"
               ]
             }
           }
@@ -591,6 +611,10 @@
         {
           "Khoa007":
           {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
             "NguoiDang":"UID",
             "Rating":"5",
             "HoTen":"Nguyễn A",
@@ -636,6 +660,10 @@
 
           "Khoa009":
            {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
             "NguoiDang":"UID",
             "Rating":"5",
             "HoTen":"Nguyễn A",

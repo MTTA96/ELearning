@@ -37,35 +37,35 @@ public class GetData extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... strings) {
         try {
+
             URL url = new URL(strings[1]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             API = strings[0]; // lưu lại api để xử lý kết quả ở postexcute
 
-            switch (strings[2]){
+            switch (strings[2]) {
                 case "GET":
                     //Cài đặt các thiết lập gửi server
                     conn.setRequestProperty("Accept", "application/json");
                     conn.setRequestMethod("GET");
                     conn.connect();
 
-                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK || conn.getResponseCode() == HttpURLConnection.HTTP_CREATED){
+                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK || conn.getResponseCode() == HttpURLConnection.HTTP_CREATED) {
                         InputStream inputStream = conn.getInputStream();
                         ByteArrayOutputStream result = new ByteArrayOutputStream();
                         byte[] buffer = new byte[1024];
                         int length;
-                        while((length = inputStream.read(buffer)) != -1){
+                        while ((length = inputStream.read(buffer)) != -1) {
                             result.write(buffer, 0, length);
                         }
 
                         JSONObject object = new JSONObject(result.toString("UTF-8"));
-                        if (object.getInt("Status") == 1){
-                            return result.toString("UTF-8");
-                        }
+                        //Data nhận duoc từ server
+                        return result.toString("UTF-8");
                     }
-                    return SupportKeysList.GET_DATA_LOI;
+                    return SupportKeysList.LOI_DATA;
             }
         } catch (IOException e) {
-            return SupportKeysList.LOI_KET_NOI;
+            return SupportKeysList.LOI_DATA;
         } catch (JSONException e) {
             return SupportKeysList.LOI_DATA;
         }

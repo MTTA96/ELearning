@@ -7,30 +7,14 @@ import java.util.ArrayList;
  */
 
 public class LichHoc {
-    ArrayList<String> NgayHoc;
-    ArrayList<String> BuoiHoc;
+    public ArrayList<String> NgayHoc;
+    public String ThoiGian;
 
     public LichHoc() {
     }
 
-    public LichHoc(ArrayList<String> ngayHoc, ArrayList<String> buoiHoc) {
+    public LichHoc(ArrayList<String> ngayHoc, String thoiGian) {
         NgayHoc = ngayHoc;
-        BuoiHoc = buoiHoc;
-    }
-
-    public ArrayList<String> getNgayHoc() {
-        return NgayHoc;
-    }
-
-    public void setNgayHoc(ArrayList<String> ngayHoc) {
-        NgayHoc = ngayHoc;
-    }
-
-    public ArrayList<String> getBuoiHoc() {
-        return BuoiHoc;
-    }
-
-    public void setBuoiHoc(ArrayList<String> buoiHoc) {
-        BuoiHoc = buoiHoc;
+        ThoiGian = thoiGian;
     }
 }

@@ -11,22 +11,31 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 import com.eways.elearning.Handler.Adapter.CustomModelKhoaHocAdapter;
-import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenter;
-import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenterImp;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaHocTimHocVienImpView{
+public class ListKhoaHocTimHocVienFragment extends Fragment {
+//implements ListKhoaHocTimHocVienImpView
+    private SwipeRefreshLayout srlKhoaHocTimHocVien;
+    private ListView lvKhoaHocTimHocVien;
 
-    SwipeRefreshLayout srlKhoaHocTimHocVien;
-    ListView lvKhoaHocTimHocVien;
+    private ArrayList<CustomModelKhoaHoc> khoaHocArrayListhv;
+    private CustomModelKhoaHocAdapter khoaHocAdapterhv;
 
-    ListKhoaHocTimHocVienPresenterImp listKhoaHocTimHocVienPresenterImp;
+    private DatabaseReference mDatabase;
+//    ListKhoaHocTimHocVienPresenterImp listKhoaHocTimHocVienPresenterImp;
 
     public ListKhoaHocTimHocVienFragment() {
         // Required empty public constructor
@@ -35,7 +44,8 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listKhoaHocTimHocVienPresenterImp = new ListKhoaHocTimHocVienPresenter(this);
+//        listKhoaHocTimHocVienPresenterImp = new ListKhoaHocTimHocVienPresenter(this);
+
     }
 
     @Override
@@ -47,7 +57,9 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
         srlKhoaHocTimHocVien = (SwipeRefreshLayout)root.findViewById(R.id.srlKhoaHocTimHocVien);
         lvKhoaHocTimHocVien = (ListView)root.findViewById(R.id.lvKhoaHocTimHocVien);
 
-        listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        khoaHocArrayListhv = new ArrayList<CustomModelKhoaHoc>();
+//        listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc();
 
 //        srlKhoaHocTimHocVien.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 //            @Override
@@ -56,16 +68,55 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
 //            }
 //        });
 
+
+        khoaHocAdapterhv = new CustomModelKhoaHocAdapter(
+                getActivity().getApplicationContext(),
+                R.layout.custom_item_khoahoc,
+                khoaHocArrayListhv
+        );
+        mDatabase.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMHOCVIEN).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                KhoaHocChuaHoanTat kh = new KhoaHocChuaHoanTat();
+                kh = dataSnapshot.getValue(KhoaHocChuaHoanTat.class);
+                CustomModelKhoaHoc ckh = new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop);
+                khoaHocArrayListhv.add(ckh);
+                khoaHocAdapterhv.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        lvKhoaHocTimHocVien.setAdapter(khoaHocAdapterhv);
         return root;
     }
 
-    @Override
-    public void nhanDanhSach(ArrayList<CustomModelKhoaHoc> khoaHocList) {
-        CustomModelKhoaHocAdapter customModelKhoaHocAdapter = new CustomModelKhoaHocAdapter(
-                getActivity(),
-                R.layout.custom_item_khoahoc,
-                khoaHocList
-        );
-        lvKhoaHocTimHocVien.setAdapter(customModelKhoaHocAdapter);
-    }
+//    @Override
+//    public void nhanDanhSach(ArrayList<CustomModelKhoaHoc> khoaHocList) {
+//        CustomModelKhoaHocAdapter customModelKhoaHocAdapter = new CustomModelKhoaHocAdapter(
+//                getActivity(),
+//                R.layout.custom_item_khoahoc,
+//                khoaHocList
+//        );
+//        lvKhoaHocTimHocVien.setAdapter(customModelKhoaHocAdapter);
+//    }
 }

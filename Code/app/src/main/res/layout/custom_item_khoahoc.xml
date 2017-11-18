@@ -19,10 +19,18 @@
                 android:layout_width="@dimen/Width_KhoaHoc"
                 android:layout_height="@dimen/Height_KhoaHoc"
                 />
-            <RatingBar
-                android:id="@+id/rtb_KhoaHoc"
-                android:layout_width="@dimen/Width_KhoaHoc"
-                android:layout_height="@dimen/Height_Rtb_KhoaHoc" />
+                <RatingBar
+                    android:id="@+id/rtb_KhoaHoc"
+                    style="@style/ratingbarCustom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/MarginBottom_Rtb"
+                    android:layout_marginLeft="@dimen/MarginLeft_Rtb"
+                    android:layout_marginTop="@dimen/MarginTop_Rtb"
+                    android:numStars="5"
+                    android:stepSize="0.5"
+                    />
+
         </LinearLayout>
 
         <LinearLayout
@@ -70,7 +78,8 @@
                     android:text="@string/Xem_ChiTiet"
                     android:textSize="@dimen/TextSizeCT_KhoaHoc"
                     android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
-                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"/>
+                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                    android:textColor="@color/colorAccent"/>
                 <TextView
                     android:id="@+id/tvGia_KhoaHoc"
                     android:layout_width="match_parent"

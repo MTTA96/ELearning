@@ -90,7 +90,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 fragmentHandler.ChuyenFragment(new ListKhoaHocFragment(), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
                 break;
             case R.id.btn_tao_khoa_hoc:
-                fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
+                if (!mySharedPref.getDaDangNhap())
+                    fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
+                else
+                    fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
                 break;
         }
     }

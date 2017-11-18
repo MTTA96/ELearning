@@ -56,26 +56,30 @@ public class CustomModelKhoaHocAdapter extends BaseAdapter {
         ImageView imvAvatar = (ImageView) convertView.findViewById(R.id.img_KhoaHoc);
 //        Picasso.with(mContext).load(customModelKhoaHocList.get(position).getLinkAvatar()).into(imvAvatar);
         ImageHandler imageHandler = new ImageHandler(mContext);
-        imageHandler.loadImageRound(customModelKhoaHocList.get(position).getLinkAvatar(),imvAvatar);
+        imageHandler.loadImageRound(customModelKhoaHocList.get(position).LinkAvatar,imvAvatar);
 //        imvAvatar.setImageURI(url);
 //        lấy UserID của người đăng khóa học => lấy link avatar trong tài khoản
 
         RatingBar rbBaiDang = (RatingBar) convertView.findViewById(R.id.rtb_KhoaHoc);
-        rbBaiDang.setRating(Float.parseFloat(customModelKhoaHocList.get(position).getRating()));
+        float rt = Float.parseFloat(customModelKhoaHocList.get(position).Rating);
+        rbBaiDang.setRating(rt);
 //        rbBaiDang.setRating( );
 //        lấy UserID của người đăng khóa học => lấy rating trong tài khoản
 
         TextView tvTenNguoiDang = (TextView) convertView.findViewById(R.id.tvTen_KhoaHoc);
-        tvTenNguoiDang.setText(customModelKhoaHocList.get(position).getTenNguoiDang());
+        tvTenNguoiDang.setText(tvTenNguoiDang.getText()+ " " +customModelKhoaHocList.get(position).TenNguoiDang);
 
         TextView tvBuoiHoc = (TextView) convertView.findViewById(R.id.tvBuoi_KhoaHoc);
-        tvTenNguoiDang.setText(customModelKhoaHocList.get(position).getBuoiHoc());
+        tvBuoiHoc.setText(tvBuoiHoc.getText()+ " " +customModelKhoaHocList.get(position).BuoiHoc);
 
         TextView tvMonHoc = (TextView) convertView.findViewById(R.id.tvMon_KhoaHoc);
-        ArrayList<String> listMon = customModelKhoaHocList.get(position).getMonHoc();
+        ArrayList<String> listMon = customModelKhoaHocList.get(position).MonHoc;
         String danhSachMon = "";
         for (String mon : listMon) { danhSachMon = danhSachMon + mon; }
-        tvMonHoc.setText(danhSachMon);
+        tvMonHoc.setText(tvMonHoc.getText()+ " " +danhSachMon);
+
+        TextView tvHocPhi = (TextView)convertView.findViewById(R.id.tvGia_KhoaHoc);
+        tvHocPhi.setText(tvHocPhi.getText()+ " " +customModelKhoaHocList.get(position).HocPhi);
 //        tvTenNguoiDang.setText(Arrays.toString(khoaHocChuaHoanTatList.get(position).getMon().toArray()));
 //        non-recommended! Không chắc đúng hay không? Với lại hiện thị kiểu này hông đẹp
 

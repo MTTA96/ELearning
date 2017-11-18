@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 
 public class DanhSachYeuCau {
-    ArrayList<String> DangCho;
-    ArrayList<String> TamDuyet;
+    public ArrayList<String> DangCho;
+    public ArrayList<String> TamDuyet;
 
     public DanhSachYeuCau() {
     }
@@ -18,19 +18,4 @@ public class DanhSachYeuCau {
         TamDuyet = tamDuyet;
     }
 
-    public ArrayList<String> getDangCho() {
-        return DangCho;
-    }
-
-    public void setDangCho(ArrayList<String> dangCho) {
-        DangCho = dangCho;
-    }
-
-    public ArrayList<String> getTamDuyet() {
-        return TamDuyet;
-    }
-
-    public void setTamDuyet(ArrayList<String> tamDuyet) {
-        TamDuyet = tamDuyet;
-    }
 }

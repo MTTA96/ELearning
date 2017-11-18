@@ -5,40 +5,16 @@ package com.eways.elearning.DataModel.KhoaHoc;
  */
 
 public class DiaDiem {
-    String DiaChi;
-    String Quan;
-    String ThanhPho;
+    public String DayDu;
+    public String Quan;
+    public String TP;
 
     public DiaDiem() {
     }
 
-    public DiaDiem(String diaChi, String quan, String thanhPho) {
-        DiaChi = diaChi;
+    public DiaDiem(String dayDu, String quan, String TP) {
+        DayDu = dayDu;
         Quan = quan;
-        ThanhPho = thanhPho;
-    }
-
-    public String getDiaChi() {
-        return DiaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        DiaChi = diaChi;
-    }
-
-    public String getQuan() {
-        return Quan;
-    }
-
-    public void setQuan(String quan) {
-        Quan = quan;
-    }
-
-    public String getThanhPho() {
-        return ThanhPho;
-    }
-
-    public void setThanhPho(String thanhPho) {
-        ThanhPho = thanhPho;
+        this.TP = TP;
     }
 }

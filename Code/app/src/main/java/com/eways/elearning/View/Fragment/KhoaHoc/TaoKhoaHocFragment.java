@@ -1,33 +1,30 @@
 package com.eways.elearning.View.Fragment.KhoaHoc;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
+import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachBuoiAdapter;
+import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachThuAdapter;
 import com.eways.elearning.R;
+import com.eways.elearning.View.Activity.MainActivity;
 
 /**
  *  Created by Tuấn Anh 11/16/2017
  */
-public class TaoKhoaHocFragment extends Fragment {
-    Button btnTimGiaSu, btnTimHocVien;
-    Button btnTaoKhoaHoc, btnHuy;
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private final String TAB_TITLE1 = "Tìm gia sư";
-    private final String TAB_TITLE2 = "Tìm học viên";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
+    Button btnTaoKhoaHoc;
+    CheckBox cbSang, cbChieu, cbToi;
+    CheckBox cbThu2, cbThu3, cbThu4, cbThu5, cbThu6, cbThu7, cbChuNhat;
 
     public TaoKhoaHocFragment() {
         // Required empty public constructor
@@ -37,16 +34,12 @@ public class TaoKhoaHocFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment TaoKhoaHocFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TaoKhoaHocFragment newInstance(String param1, String param2) {
+    public static TaoKhoaHocFragment newInstance() {
         TaoKhoaHocFragment fragment = new TaoKhoaHocFragment();
         Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,8 +48,6 @@ public class TaoKhoaHocFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -65,8 +56,41 @@ public class TaoKhoaHocFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_tao_khoa_hoc, container, false);
+        cbSang = (CheckBox) root.findViewById(R.id.checkBox_Sang);
+        cbChieu = (CheckBox) root.findViewById(R.id.checkBox_Chieu);
+        cbToi = (CheckBox) root.findViewById(R.id.checkBox_Toi);
+        cbThu2 = (CheckBox) root.findViewById(R.id.checkBox_Thu2);
+        cbThu3 = (CheckBox) root.findViewById(R.id.checkBox_Thu3);
+        cbThu4 = (CheckBox) root.findViewById(R.id.checkBox_Thu4);
+        cbThu5 = (CheckBox) root.findViewById(R.id.checkBox_Thu5);
+        cbThu6 = (CheckBox) root.findViewById(R.id.checkBox_Thu6);
+        cbThu7 = (CheckBox) root.findViewById(R.id.checkBox_Thu7);
+        cbChuNhat = (CheckBox) root.findViewById(R.id.checkBox_Chu_Nhat);
 
+        cbSang.setOnCheckedChangeListener(this);
+        cbChieu.setOnCheckedChangeListener(this);
+        cbToi.setOnCheckedChangeListener(this);
+        cbThu2.setOnCheckedChangeListener(this);
+        cbThu3.setOnCheckedChangeListener(this);
+        cbThu4.setOnCheckedChangeListener(this);
+        cbThu5.setOnCheckedChangeListener(this);
+        cbThu6.setOnCheckedChangeListener(this);
+        cbThu7.setOnCheckedChangeListener(this);
+        cbChuNhat.setOnCheckedChangeListener(this);
+
+        ((MainActivity)getActivity()).tvScreenTitle.setText("Tạo khóa học");
         return root;
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            buttonView.setBackgroundResource(R.drawable.btn_color_main_corners_shape);
+            buttonView.setTextColor(Color.WHITE);
+        }
+        else {
+            buttonView.setBackgroundResource(R.drawable.btn_white_corners_shape);
+            buttonView.setTextColor(Color.BLACK);
+        }
+    }
 }

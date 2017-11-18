@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Danh sách buổi học -->
+    <string-array name="danh_sach_buoi">
+        <item>Sáng</item>
+        <item>Chiều</item>
+        <item>Tối</item>
+    </string-array>
+
+    <!-- Danh sách thứ -->
+    <string-array name="danh_sach_thu">
+        <item>T2</item>
+        <item>T3</item>
+        <item>T4</item>
+        <item>T5</item>
+        <item>T6</item>
+        <item>T7</item>
+        <item>CN</item>
+    </string-array>
+</resources>

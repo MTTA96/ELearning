@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,10 +25,10 @@ import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    TextView tvUserName;
-    TextView tvUserEmail;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+    TextView tvUserName, tvUserEmail;
     ImageView imgUser;
+    public TextView tvScreenTitle;
 
     private FragmentHandler fragmentHandler;
     private SharedPreferencesHandler mySharedPref;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_tool_bar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
+        tvScreenTitle = (TextView) findViewById(R.id.textView_Title_Actionbar);
         //Set sự kiện
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -91,12 +92,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         };
+        myToolbar.setNavigationOnClickListener(this);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawer.addDrawerListener(toggle);
         toggle.getDrawerArrowDrawable().setColor(Color.WHITE);
         toggle.syncState();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            this.onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     //Set event cho slide menu
     @Override
@@ -117,5 +132,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         ((DrawerLayout)findViewById(R.id.drawer_layout)).closeDrawer(Gravity.START);
         return false;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == -1){
+            if (!(getSupportFragmentManager().findFragmentById(R.id.content_main) instanceof HomeFragment))
+                this.onBackPressed();
+            else
+                ((DrawerLayout)findViewById(R.id.drawer_layout)).openDrawer(Gravity.START);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        tvScreenTitle.setText("");
     }
 }

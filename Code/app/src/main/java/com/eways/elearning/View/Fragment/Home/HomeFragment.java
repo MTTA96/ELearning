@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         mySharedPref = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
         imageHandler = new ImageHandler(getActivity());
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -64,6 +65,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu);
         if (mySharedPref.getDaDangNhap()){
             if (mySharedPref.getAvatar() != null && mySharedPref.getAvatar().compareTo("") != 0)
                 imageHandler.loadImageRound(mySharedPref.getAvatar(), imgUserAvatar);

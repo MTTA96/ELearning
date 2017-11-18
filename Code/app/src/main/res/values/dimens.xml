@@ -5,6 +5,8 @@
     <dimen name="horizontal_padding">16dp</dimen>
     <dimen name="vertical_padding">16dp</dimen>
     <dimen name="elevation">5dp</dimen>
+    <dimen name="title_text_size">25sp</dimen>
+    <dimen name="text_height">30dp</dimen>
 
     <!-- Slide menu -->
     <dimen name="nav_header_main_height">160dp</dimen>
@@ -72,11 +74,16 @@
     <dimen name="MarginTop_Tv_KhoaHoc">2dp</dimen>
     <dimen name="MarginLeft_Tv_KhoaHoc">5dp</dimen>
 
-    <!-- Tạo khóa học -->
+    <!-- Tạo/Tìm kiếm khóa học -->
     <dimen name="tao_khoa_hoc_vertical_padding">30dp</dimen>
     <dimen name="tao_khoa_hoc_horizontal_padding">25dp</dimen>
     <dimen name="khung_content_tao_khoa_hoc_margin_top">40dp</dimen>
     <dimen name="view_tao_khoa_hoc_margin_top">25dp</dimen>
+    <dimen name="button_thu_margin_top">10dp</dimen>
+    <dimen name="button_buoi_va_thu_margin_left">10dp</dimen>
+    <dimen name="button_buoi_va_thu_width">45dp</dimen>
+    <dimen name="button_buoi_va_thu_height">30dp</dimen>
+    <dimen name="text_thong_tin_them_height">80dp</dimen>
 
     <!--Quản lý cá nhân-->
     <dimen name="avarta_size_QLTK">110dp</dimen>
@@ -98,7 +105,7 @@
     <dimen name="ItemCNTTTK_height">30dp</dimen>
     <dimen name="BtnCNTTTK_width">170dp</dimen>
     <dimen name="BtnCNTTTK_height">50dp</dimen>
-    
+
     <!--Dialog Linh vuc quan tam-->
     <dimen name="TitleLVQT_textsize">30sp</dimen>
     <dimen name="itemLVQT_marginTop">10dp</dimen>

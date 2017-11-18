@@ -1,48 +1,26 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/tao_khoa_hoc_horizontal_padding"
-    android:paddingRight="@dimen/tao_khoa_hoc_horizontal_padding"
-    android:paddingTop="@dimen/tao_khoa_hoc_vertical_padding"
     tools:context="com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHocFragment">
-
-    <!-- Phân mục -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_btn_white"
-        android:orientation="horizontal">
-        <!-- Tìm gia sư -->
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorMain"
-            android:text="Tìm gia sư"
-            android:textColor="@android:color/white" />
-        <!-- Tìm học viên -->
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/shape_btn_white"
-            android:text="Tìm học viên" />
-    </LinearLayout>
 
     <!-- Content -->
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/content_tao_khoa_hoc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttons_tao_khoa_hoc"
+        android:fillViewport="true"
+        android:paddingLeft="@dimen/tao_khoa_hoc_horizontal_padding"
+        android:paddingRight="@dimen/tao_khoa_hoc_horizontal_padding"
+        android:paddingTop="@dimen/tao_khoa_hoc_vertical_padding">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/khung_content_tao_khoa_hoc_margin_top"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
             <!-- Tên môn -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,11 +32,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Tên môn:" />
+                    android:text="@string/title_ten_mon_tao_khoa_hoc" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
                     android:background="@drawable/et_shape"
                     android:hint="Lập trình C"
@@ -77,11 +55,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Địa điểm:" />
+                    android:text="@string/title_dia_diem_tao_khoa_hoc" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
                     android:background="@drawable/et_shape"
                     android:hint="Lập trình C"
@@ -100,11 +78,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Học phí:" />
+                    android:text="@string/title_hoc_phi_tao_khoa_hoc" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
                     android:background="@drawable/et_shape"
                     android:hint="Lập trình C"
@@ -123,25 +101,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Giới tính:" />
+                    android:text="@string/title_gioi_tinh_tao_khoa_hoc" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal">
-
-                    <RadioButton
+                    <!-- Nam -->
+                    <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Nam" />
-
-                    <RadioButton
+                        android:text="@string/text_gioi_tinh_nam" />
+                    <!-- Nữ -->
+                    <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Nữ" />
+                        android:text="@string/text_gioi_tinh_nu" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -157,11 +135,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Bằng cấp:" />
+                    android:text="@string/title_bang_cap_tao_khoa_hoc" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
                     android:background="@drawable/et_shape"
                     android:hint="Lập trình C"
@@ -169,180 +147,197 @@
             </LinearLayout>
 
             <!-- Buổi -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/view_tao_khoa_hoc_margin_top">
-
-                <!-- List options -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shape_btn_white"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="30dp">
-                    <!-- Sáng -->
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/shape_btn_white"
-                        android:text="Sáng" />
-                    <!-- Trưa -->
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_btn_white"
-                        android:text="Trưa" />
-                    <!-- Chiều -->
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/shape_btn_white"
-                        android:text="Chiều" />
-                </LinearLayout>
-                <!-- Title -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:background="@android:color/white"
-                    android:text="Buổi" />
-            </FrameLayout>
-
-            <!-- Thứ -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/view_height">
-
-                <!-- List options -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shape_btn_white"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="30dp">
-                    <!-- Thứ 2 - 4 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp">
-                        <!-- Thứ 2 -->
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:background="@drawable/shape_btn_white"
-                            android:text="T2" />
-                        <!-- Thứ 3 -->
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/shape_btn_white"
-                            android:text="T3" />
-                        <!-- Thứ 4 -->
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:background="@drawable/shape_btn_white"
-                            android:text="T4" />
-                    </LinearLayout>
-
-                    <!-- Thứ 5 - CN -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                        <!-- Thứ 5 -->
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:background="@drawable/shape_btn_white"
-                            android:text="T5" />
-                        <!-- Thứ 6 -->
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/shape_btn_white"
-                            android:text="T6" />
-                        <!-- Thứ 7 -->
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:background="@drawable/shape_btn_white"
-                            android:text="T7" />
-                        <!-- Chủ nhật -->
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:background="@drawable/shape_btn_white"
-                            android:text="CN" />
-                    </LinearLayout>
-                </LinearLayout>
-                <!-- Title -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:background="@android:color/white"
-                    android:text="Buổi" />
-            </FrameLayout>
-
-            <!-- Buttons -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/khung_content_tao_khoa_hoc_margin_top"
+                android:layout_marginTop="@dimen/view_tao_khoa_hoc_margin_top"
                 android:orientation="horizontal">
-                <!-- Hủy -->
-                <Button
+                <!-- Title -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:text="@string/title_buoi_tao_khoa_hoc" />
+                <!-- Danh sách -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorMain"
-                    android:text="Hủy" />
-                <!-- Tạo -->
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Tạo" />
+                    android:orientation="horizontal">
+                    <!-- Sáng -->
+                    <CheckBox
+                        android:id="@+id/checkBox_Sang"
+                        android:layout_width="@dimen/button_buoi_va_thu_width"
+                        android:layout_height="@dimen/button_buoi_va_thu_height"
+                        android:layout_marginRight="@dimen/button_thu_margin_top"
+                        android:background="@drawable/btn_white_corners_shape"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/text_buoi_sang" />
+                    <!-- Chiều -->
+                    <CheckBox
+                        android:id="@+id/checkBox_Chieu"
+                        android:layout_width="@dimen/button_buoi_va_thu_width"
+                        android:layout_height="@dimen/button_buoi_va_thu_height"
+                        android:layout_marginRight="@dimen/button_thu_margin_top"
+                        android:background="@drawable/btn_white_corners_shape"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/text_buoi_chieu" />
+                    <!-- Tối -->
+                    <CheckBox
+                        android:id="@+id/checkBox_Toi"
+                        android:layout_width="@dimen/button_buoi_va_thu_width"
+                        android:layout_height="@dimen/button_buoi_va_thu_height"
+                        android:background="@drawable/btn_white_corners_shape"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/text_buoi_toi" />
+                </LinearLayout>
             </LinearLayout>
+
+            <!-- Thứ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_tao_khoa_hoc_margin_top"
+                android:orientation="horizontal">
+                <!-- Title -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/title_thu_tao_khoa_hoc" />
+                <!-- Danh sách -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <!-- T2 - T4 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+                        <!-- T2 -->
+                        <CheckBox
+                            android:id="@+id/checkBox_Thu2"
+                            android:layout_width="@dimen/button_buoi_va_thu_width"
+                            android:layout_height="@dimen/button_buoi_va_thu_height"
+                            android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
+                            android:background="@drawable/btn_white_corners_shape"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="@string/text_thu_2" />
+                        <!-- T3 -->
+                        <CheckBox
+                            android:id="@+id/checkBox_Thu3"
+                            android:layout_width="@dimen/button_buoi_va_thu_width"
+                            android:layout_height="@dimen/button_buoi_va_thu_height"
+                            android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
+                            android:background="@drawable/btn_white_corners_shape"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="@string/text_thu_3" />
+                        <!-- T4 -->
+                        <CheckBox
+                            android:id="@+id/checkBox_Thu4"
+                            android:layout_width="@dimen/button_buoi_va_thu_width"
+                            android:layout_height="@dimen/button_buoi_va_thu_height"
+                            android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
+                            android:background="@drawable/btn_white_corners_shape"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="@string/text_thu_4" />
+                        <!-- T5 -->
+                        <CheckBox
+                            android:id="@+id/checkBox_Thu5"
+                            android:layout_width="@dimen/button_buoi_va_thu_width"
+                            android:layout_height="@dimen/button_buoi_va_thu_height"
+                            android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
+                            android:background="@drawable/btn_white_corners_shape"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="@string/text_thu_5" />
+                    </LinearLayout>
+                    <!-- T6 - CN -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/button_thu_margin_top"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+                        <!-- T6 -->
+                        <CheckBox
+                            android:id="@+id/checkBox_Thu6"
+                            android:layout_width="@dimen/button_buoi_va_thu_width"
+                            android:layout_height="@dimen/button_buoi_va_thu_height"
+                            android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
+                            android:background="@drawable/btn_white_corners_shape"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="@string/text_thu_6" />
+                        <!-- T7 -->
+                        <CheckBox
+                            android:id="@+id/checkBox_Thu7"
+                            android:layout_width="@dimen/button_buoi_va_thu_width"
+                            android:layout_height="@dimen/button_buoi_va_thu_height"
+                            android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
+                            android:background="@drawable/btn_white_corners_shape"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="@string/text_thu_7" />
+                        <!-- CN -->
+                        <CheckBox
+                            android:id="@+id/checkBox_Chu_Nhat"
+                            android:layout_width="@dimen/button_buoi_va_thu_width"
+                            android:layout_height="@dimen/button_buoi_va_thu_height"
+                            android:background="@drawable/btn_white_corners_shape"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="@string/text_chu_nhat" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Thông tin thêm -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_tao_khoa_hoc_margin_top"
+                android:layout_weight="3"
+                android:text="@string/title_thong_tin_them_tao_khoa_hoc" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_thong_tin_them_height"
+                android:layout_weight="1"
+                android:background="@drawable/et_shape"
+                android:inputType="textMultiLine"
+                android:lines="8"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="@dimen/etuserpass_textpadding"
+                android:scrollbars="vertical"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
-</LinearLayout>
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:id="@+id/buttons_tao_khoa_hoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorMain"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <!-- Tạo -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="@string/button_tiep_tuc_tao_khoa_hoc"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</RelativeLayout>

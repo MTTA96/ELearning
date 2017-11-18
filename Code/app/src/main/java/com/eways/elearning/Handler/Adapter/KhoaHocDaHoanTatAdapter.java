@@ -3,7 +3,6 @@ package com.eways.elearning.Handler.Adapter;
 /**
  * Created by yowin on 10/11/2017.
  */
-<<<<<<< HEAD
 //xtends BaseAdapter
 public class KhoaHocDaHoanTatAdapter {
 
@@ -34,38 +33,7 @@ public class KhoaHocDaHoanTatAdapter {
 //
 //    @Override
 //    public View getView(int position, View convertView, ViewGroup parent) {
-=======
 
-public class KhoaHocDaHoanTatAdapter extends BaseAdapter {
-
-    Context mContext;
-    int mLayout;
-    List<KhoaHocDaHoanTat> khoaHocDaHoanTatList;
-
-    public KhoaHocDaHoanTatAdapter(Context mContext, int mLayout, List<KhoaHocDaHoanTat> khoaHocDaHoanTatList) {
-        this.mContext = mContext;
-        this.mLayout = mLayout;
-        this.khoaHocDaHoanTatList = khoaHocDaHoanTatList;
-    }
-
-    @Override
-    public int getCount() {
-        return khoaHocDaHoanTatList.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
->>>>>>> d05a5ab0b035229301d499e6d0b953eeb4ff8c9c
 //        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //        convertView = inflater.inflate(mLayout, null);
 //
@@ -88,13 +56,7 @@ public class KhoaHocDaHoanTatAdapter extends BaseAdapter {
 ////        non-recommended! Không chắc đúng hay không? Với lại hiện thị kiểu này hông đẹp
 //
 //        TextView tvXemThem = (TextView) convertView.findViewById(R.id.tvXemThem);
-<<<<<<< HEAD
 //
 //        return convertView;
 //    }
-=======
-
-        return convertView;
-    }
->>>>>>> d05a5ab0b035229301d499e6d0b953eeb4ff8c9c
 }

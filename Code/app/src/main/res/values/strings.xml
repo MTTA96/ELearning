@@ -48,12 +48,40 @@
     <string name="SaiXacNhanMatKhauDK">* Xác nhận mật không đúng</string>
     <string name="SaiMatKhauDK">* Mật khẩu phải từ 6 ký tự trở lên</string>
 
+    <!-- Tạo khóa học -->
+    <string name="title_ten_mon_tao_khoa_hoc">Môn:</string>
+    <string name="title_dia_diem_tao_khoa_hoc">Địa điểm:</string>
+    <string name="title_hoc_phi_tao_khoa_hoc">Học phí:</string>
+    <string name="title_gioi_tinh_tao_khoa_hoc">Giới tính:</string>
+    <string name="title_bang_cap_tao_khoa_hoc">Bằng cấp:</string>
+    <string name="title_buoi_tao_khoa_hoc">Buổi:</string>
+    <string name="title_thu_tao_khoa_hoc">Thứ:</string>
+    <string name="title_thong_tin_them_tao_khoa_hoc">Thông tin thêm:</string>
+    <string name="button_tiep_tuc_tao_khoa_hoc">Tiếp tục</string>
+    <string name="text_gioi_tinh_nam">Nam</string>
+    <string name="text_gioi_tinh_nu">Nữ</string>
+    <string name="text_buoi_sang">Sáng</string>
+    <string name="text_buoi_chieu">Chiều</string>
+    <string name="text_buoi_toi">Tối</string>
+    <string name="text_thu_2">T2</string>
+    <string name="text_thu_3">T3</string>
+    <string name="text_thu_4">T4</string>
+    <string name="text_thu_5">T5</string>
+    <string name="text_thu_6">T6</string>
+    <string name="text_thu_7">T7</string>
+    <string name="text_chu_nhat">CN</string>
+    <!-- Tìm gia sư -->
+    <string name="title_tim_gia_su">Tìm gia sư</string>
+    <!-- Tìm học viên -->
+    <string name="title_tim_hoc_vien">Tìm học viên</string>
+
     <!--Fragment Gia Sư-->
     <string name="Xem_ChiTiet"><b>Chi tiết...</b></string>
     <string name="Xem_Ten"><b>Tên: </b></string>
     <string name="Xem_Mon"><b>Môn: </b></string>
     <string name="Xem_Buoi"><b>Buổi: </b></string>
     <string name="Xem_Gia">Học phí: </string>
+
     <!--Fragment QLTK-->
     <string name="Dang_xuat_QLTK"><i><u>Đăng xuất</u></i></string>
     <string name="ThongTinCaNhan"><b>Thông tin cá nhân</b></string>

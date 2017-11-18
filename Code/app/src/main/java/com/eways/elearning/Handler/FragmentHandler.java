@@ -8,8 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 
 import com.eways.elearning.R;
+import com.eways.elearning.View.Activity.MainActivity;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.google.firebase.database.Transaction;
@@ -31,10 +35,12 @@ public class FragmentHandler {
 
     public void  ChuyenFragment(Fragment toFragment, boolean toBackStack, @Nullable String tag){
         FragmentTransaction transaction = fragmentManager.beginTransaction();
+        ((MainActivity)context).tvScreenTitle.setText("");
 
         if(toFragment instanceof HomeFragment)
             XoaTatCaFragment();
-
+        else
+            ((AppCompatActivity)context).getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         if(toBackStack)
             transaction.replace(R.id.content_main, toFragment).addToBackStack(tag).commit();
         else
@@ -58,4 +64,5 @@ public class FragmentHandler {
             count--;
         }
     }
+
 }

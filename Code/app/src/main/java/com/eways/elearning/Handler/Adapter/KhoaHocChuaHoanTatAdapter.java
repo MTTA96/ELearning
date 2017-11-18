@@ -3,7 +3,7 @@ package com.eways.elearning.Handler.Adapter;
 /**
  * Created by yowin on 10/11/2017.
  */
-<<<<<<< HEAD
+
 //extends BaseAdapter
 public class KhoaHocChuaHoanTatAdapter  {
 
@@ -34,38 +34,6 @@ public class KhoaHocChuaHoanTatAdapter  {
 //
 //    @Override
 //    public View getView(int position, View convertView, ViewGroup parent) {
-=======
-
-public class KhoaHocChuaHoanTatAdapter extends BaseAdapter {
-
-    Context mContext;
-    int mLayout;
-    List<KhoaHocChuaHoanTat> khoaHocChuaHoanTatList;
-
-    public KhoaHocChuaHoanTatAdapter(Context mContext, int mLayout, List<KhoaHocChuaHoanTat> khoaHocChuaHoanTatList) {
-        this.mContext = mContext;
-        this.mLayout = mLayout;
-        this.khoaHocChuaHoanTatList = khoaHocChuaHoanTatList;
-    }
-
-    @Override
-    public int getCount() {
-        return khoaHocChuaHoanTatList.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
->>>>>>> d05a5ab0b035229301d499e6d0b953eeb4ff8c9c
 //        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //        convertView = inflater.inflate(mLayout, null);
 //
@@ -95,13 +63,7 @@ public class KhoaHocChuaHoanTatAdapter extends BaseAdapter {
 //        tvMonHoc.setText("a");
 //
 //        TextView tvXemThem = (TextView) convertView.findViewById(R.id.tvXemThem);
-<<<<<<< HEAD
 //
 //        return convertView;
 //    }
-=======
-
-        return convertView;
-    }
->>>>>>> d05a5ab0b035229301d499e6d0b953eeb4ff8c9c
 }

@@ -62,8 +62,8 @@ public class ParseData {
 
                     String rating = object.getString("Rating");
 
-                    CustomModelKhoaHoc kht = new CustomModelKhoaHoc(TenNguoiDang,UIDNguoiDang,LinkAnh,BuoiHoc,rating,Mon,Lop);
-                    khoaHocArrayList.add(kht);
+//                    CustomModelKhoaHoc kht = new CustomModelKhoaHoc(TenNguoiDang,UIDNguoiDang,LinkAnh,BuoiHoc,rating,Mon,Lop);
+//                    khoaHocArrayList.add(kht);
                 }
 
             }

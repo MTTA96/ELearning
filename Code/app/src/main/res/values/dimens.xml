@@ -59,8 +59,8 @@
     <dimen name="MarginTop_itemKhoaHoc">15dp</dimen>
     <dimen name="MarginBottom_itemKhoaHoc">15dp</dimen>
     <dimen name="MarginLeft_itemKhoaHoc_BlockImg">15dp</dimen>
-    <dimen name="MarginRight_itemKhoaHoc_BlockImg">7.5</dimen>
-    <dimen name="MarginLeft_itemKhoaHoc_BlockInfo">7.5</dimen>
+    <dimen name="MarginRight_itemKhoaHoc_BlockImg">7.5dp</dimen>
+    <dimen name="MarginLeft_itemKhoaHoc_BlockInfo">7.5dp</dimen>
     <dimen name="MarginRight_itemKhoaHoc_BlockInfo">15dp</dimen>
     <dimen name="Width_KhoaHoc">135dp</dimen>
     <dimen name="Height_KhoaHoc">120dp</dimen>
@@ -71,6 +71,9 @@
     <dimen name="MarginLeft_BtnChat_KhoaHoc">105dp</dimen>
     <dimen name="MarginTop_Tv_KhoaHoc">2dp</dimen>
     <dimen name="MarginLeft_Tv_KhoaHoc">5dp</dimen>
+    <dimen name="MarginBottom_Rtb">12dp</dimen>
+    <dimen name="MarginLeft_Rtb">17dp</dimen>
+    <dimen name="MarginTop_Rtb">10dp</dimen>
 
     <!-- Tạo khóa học -->
     <dimen name="tao_khoa_hoc_vertical_padding">30dp</dimen>

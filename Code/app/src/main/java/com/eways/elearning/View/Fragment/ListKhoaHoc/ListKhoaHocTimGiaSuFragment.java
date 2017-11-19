@@ -32,7 +32,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment {
 //implements ListKhoaHocTimGiaSuImpView
     private SwipeRefreshLayout srlKhoaHocTimGiaSu;
 //    private ListView lvKhoaHocTimGiaSu;
-    private RecyclerView lvKhoaHocTimGiaSu;
+    private RecyclerView rvKhoaHocTimGiaSu;
 
     private ArrayList<CustomModelKhoaHoc> khoaHocArrayList;
 //    private CustomModelKhoaHocAdapter khoaHocAdapter;
@@ -61,7 +61,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment {
 
         srlKhoaHocTimGiaSu = (SwipeRefreshLayout)root.findViewById(R.id.srlKhoaHocTimGiaSu);
 //        lvKhoaHocTimGiaSu = (ListView)root.findViewById(R.id.lvKhoaHocTimGiaSu);
-        lvKhoaHocTimGiaSu = (RecyclerView)root.findViewById(R.id.lvKhoaHocTimGiaSu);
+        rvKhoaHocTimGiaSu = (RecyclerView)root.findViewById(R.id.lvKhoaHocTimGiaSu);
 
         imageHandler = new ImageHandler(getActivity());
 
@@ -88,8 +88,8 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment {
                 khoaHocArrayList,
                 imageHandler
         );
-       lvKhoaHocTimGiaSu.setLayoutManager(new GridLayoutManager(getActivity(),1));
-        lvKhoaHocTimGiaSu.setAdapter(khoaHocAdapter);
+       rvKhoaHocTimGiaSu.setLayoutManager(new GridLayoutManager(getActivity(),1));
+        rvKhoaHocTimGiaSu.setAdapter(khoaHocAdapter);
         mDatabase.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMGIASU).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

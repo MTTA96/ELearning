@@ -238,7 +238,7 @@
                 "IDUser002":"RatingPoint",
                 "IDUser003":"RatingPoint"
             },
-          "KhoaHOc":
+          "KhoaHoc":
           {
             "TimGiaSu":
               {
@@ -285,9 +285,72 @@
       "KhoaHocTimGiaSu":
       {
         "ChuaHoanTat":
-        [
+        {
+          "Khoa001":
           {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
+            "Rating":"5",
             "NguoiDang":"UID",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
+            "NgayDang":"dd/mm/yyyy",
+            "GioDang":"HH:MM:SS",
+            "Lop":
+            [
+              "Lớp 12"
+            ],
+            "Mon":
+            [
+              "Anh văn giao tiếp"
+            ],
+            "DiaChi":
+            {
+                "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+                "Quan":"Bình Thạnh",
+                "TP":"HCM"
+              },
+            "HocPhi":"150000",
+            "LichHoc":
+            {
+              "ThoiGian":"Buổi sáng",
+              "NgayHoc":
+              [
+                "Thứ hai",
+                "Thứ tư",
+                "Thứ sáu"
+              ]
+            },
+            "SoLuongHocVien":"1",
+            "ThoiLuongBuoiHoc":"90",
+            "SoBuoiHoc":"12",
+            "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
+            "DanhSachYeuCau":
+            {
+              "DangCho":
+              [
+                "UID001",
+                "UID002"
+              ],
+              "TamDuyet":
+              [
+                "UID003"
+              ]
+            }
+          },
+
+          "Khoa002":
+          {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
+            "Rating":"5",
+            "NguoiDang":"UID",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":
@@ -332,11 +395,66 @@
               ]
             }
           }
-        ],
+        },
         "DaHoanTat":
-        [
+        {
+          "Khoa004":
           {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
           "NguoiDang":"UID",
+          "Rating":"5",
+          "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
+            "NgayDang":"dd/mm/yyyy",
+            "GioDang":"HH:MM:SS",
+            "Lop":
+            [
+              "Lớp 8","Lớp 12"
+            ],
+            "Mon":
+            [
+              "Anh văn","Toán"
+            ],
+            "DiaChi":
+                {
+                    "DayDu":"Thỏa thuận",
+                    "Quan":"Null",
+                    "TP":"HCM"
+                },
+            "HocPhi":"350000",
+            "LichHoc":
+            {
+              "ThoiGian":"Buổi tối",
+              "NgayHoc":
+              [
+                "Thứ hai",
+                "Thứ tư",
+                "Thứ sáu"
+              ]
+            },
+            "SoLuongHocVien":"2",
+            "ThoiLuongBuoiHoc":"90",
+            "SoBuoiHoc":"12",
+            "ThongTinKhac":"Anh 8, toán 12",
+            "DanhSachNhan":
+            [
+              "UID003"
+            ]
+          },
+
+          "Khoa003":
+          {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
+          "NguoiDang":"UID",
+          "Rating":"5",
+          "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":
@@ -373,14 +491,134 @@
               "UID003"
             ]
           }
-        ] 
+        } 
       },
       "KhoaHocTimHocVien":
       {
         "ChuaHoanTat":
-        [
+        {
+          "Khoa005":
           {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
+            "Rating":"5",
             "NguoiDang":"UID",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
+            "NgayDang":"dd/mm/yyyy",
+            "GioDang":"HH:MM:SS",
+            "Lop":
+            [
+              "Lớp 12"
+            ],
+            "Mon":
+            [
+              "Anh văn giao tiếp"
+            ],
+            "DiaChi":
+            {
+                "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+                "Quan":"Bình Thạnh",
+                "TP":"HCM"
+              },
+            "HocPhi":"150000",
+            "LichHoc":
+            {
+              "ThoiGian":"Buổi sáng",
+              "NgayHoc":
+              [
+                "Thứ hai",
+                "Thứ tư",
+                "Thứ sáu"
+              ]
+            },
+            "SoLuongHocVien":"1",
+            "ThoiLuongBuoiHoc":"90",
+            "SoBuoiHoc":"12",
+            "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
+            "DanhSachYeuCau":
+            {
+              "DangCho":
+              [
+                "UID001",
+                "UID002"
+              ],
+              "TamDuyet":
+              [
+                "UID003"
+              ]
+            }
+          },
+
+          "Khoa006":
+          {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
+            "Rating":"5",
+            "NguoiDang":"UID",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
+            "NgayDang":"dd/mm/yyyy",
+            "GioDang":"HH:MM:SS",
+            "Lop":
+            [
+              "Lớp 12"
+            ],
+            "Mon":
+            [
+              "Anh văn giao tiếp"
+            ],
+            "DiaChi":
+            {
+                "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+                "Quan":"Bình Thạnh",
+                "TP":"HCM"
+              },
+            "HocPhi":"150000",
+            "LichHoc":
+            {
+              "ThoiGian":"Buổi sáng",
+              "NgayHoc":
+              [
+                "Thứ hai",
+                "Thứ tư",
+                "Thứ sáu"
+              ]
+            },
+            "SoLuongHocVien":"1",
+            "ThoiLuongBuoiHoc":"90",
+            "SoBuoiHoc":"12",
+            "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
+            "DanhSachYeuCau":
+            {
+              "DangCho":
+              [
+                "UID001",
+                "UID002"
+              ],
+              "TamDuyet":
+              [
+                "UID003"
+              ]
+            }
+          }
+        },
+        "DaHoanTat":
+        {
+          "Khoa007":
+          {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
+            "NguoiDang":"UID",
+            "Rating":"5",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":
@@ -400,7 +638,7 @@
             "HocPhi":"150000",
             "LichHoc":
             {
-              "ThoiGian":"Buổi sáng",
+              "ThoiGian":"Buổi chiều",
               "NgayHoc":
               [
                 "Thứ hai",
@@ -408,30 +646,28 @@
                 "Thứ sáu"
               ]
             },
-            "SoLuongHocVien":"5",
-            "ThoiLuongBuoiHoc":"90",
+            "SoLuongHocVien":"3",
+            "ThoiLuongBuoiHoc":"120",
             "SoBuoiHoc":"12",
             "ThongTinKhac":"Vui lòng chịu khó làm bài tập",
-            "DanhSachYeuCau":
-            {
-              "DangCho":
-              [
-                "UID001",
-                "UID009",
-                "UID008"
-              ],
-              "TamDuyet":
-              [
-                "UID003",
-                "UID005"
-              ]
-            }
-          }
-        ],
-        "DaHoanTat":
-        [
-          {
+            "DanhSachNhan":
+            [
+              "UID006",
+              "UID007",
+              "UID001"
+            ]
+          },
+
+          "Khoa009":
+           {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoại ngữ"
+            ],
             "NguoiDang":"UID",
+            "Rating":"5",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
             "NgayDang":"dd/mm/yyyy",
             "GioDang":"HH:MM:SS",
             "Lop":
@@ -470,7 +706,7 @@
               "UID001"
             ]
           }
-        ]
+        }
         }
     }    
 }

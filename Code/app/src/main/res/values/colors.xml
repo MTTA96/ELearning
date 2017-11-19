@@ -11,7 +11,7 @@
     <color name="Scrim">#66000000</color>
     <color name="colorError">#ff0505</color>
     <color name="colorEnable">#b5cddb</color>
-
+    <color name="Black">#000000</color>
     <!--Fragment đăng nhập-->
     <color name="colorDivider">#cecece</color>
     <color name="colorTextBtnDkDn">#fcfcfc</color>

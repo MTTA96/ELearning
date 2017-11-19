@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.eways.elearning.Handler.Adapter.ViewPagerKhoaHocAdapter;
 import com.eways.elearning.R;
+import com.eways.elearning.View.Activity.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,8 +43,16 @@ public class ListKhoaHocFragment extends Fragment {
         tabLayoutKhoaHoc = (TabLayout)root.findViewById(R.id.tablayoutKhoaHoc);
 
         setUpViewPager(viewPagerKhoaHoc);
+        getActivity().supportInvalidateOptionsMenu();
         return root;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity)getActivity()).tvScreenTitle.setText(getResources().getString(R.string.title_danh_sach_khoa_hoc));
+    }
+
     private void setUpViewPager(ViewPager pager) {
         ViewPagerKhoaHocAdapter adapter = new ViewPagerKhoaHocAdapter(getFragmentManager());
         adapter.addFragment(new ListKhoaHocTimGiaSuFragment(), titleTab1);

@@ -57,7 +57,6 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         dangNhapImpPresenter=new DangNhapPresenter(this);
         loginGmailHandler=new LoginGmailHandler(getActivity(),this,dangNhapImpPresenter);
@@ -75,13 +74,12 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         tvLoiDangNhap= (TextView) root.findViewById(R.id.tvLoiDN);
         btnGmailLogin=(SignInButton)root.findViewById(R.id.btnLoginGmail);
 
-        AnHienMatKhau(etPasswordDN);
-
         btnGmailLogin.setOnClickListener(this);
         btnDangky.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
 
-
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
+        AnHienMatKhau(etPasswordDN);
 
         return root;
     }

@@ -43,7 +43,7 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
         imageHandler.loadImageSquare(khoaHocArrayList.get(position).LinkAvatar,holder.imvAvatar);
 
         float rt = Float.parseFloat(khoaHocArrayList.get(position).Rating);
-        holder.rbBaiDang.setRating(rt);
+        holder.rtbBaiDang.setRating(rt);
 
         String ten = "<b>"+holder.tvTenNguoiDang.getText()+"</b>"+" " +khoaHocArrayList.get(position).TenNguoiDang;
         holder.tvTenNguoiDang.setText(Html.fromHtml(ten));
@@ -69,7 +69,7 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imvAvatar;
-        RatingBar rbBaiDang;
+        RatingBar rtbBaiDang;
         TextView tvTenNguoiDang;
         TextView tvBuoiHoc;
         TextView tvMonHoc;
@@ -77,7 +77,7 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
         public ViewHolder(View itemView) {
             super(itemView);
             imvAvatar = (ImageView) itemView.findViewById(R.id.img_KhoaHoc);
-            rbBaiDang = (RatingBar) itemView.findViewById(R.id.rtb_KhoaHoc);
+            rtbBaiDang = (RatingBar) itemView.findViewById(R.id.rtb_KhoaHoc);
             tvTenNguoiDang = (TextView) itemView.findViewById(R.id.tvTen_KhoaHoc);
             tvBuoiHoc = (TextView) itemView.findViewById(R.id.tvBuoi_KhoaHoc);
             tvMonHoc = (TextView) itemView.findViewById(R.id.tvMon_KhoaHoc);

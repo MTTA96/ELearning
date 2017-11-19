@@ -5,14 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
-import com.eways.elearning.Handler.Adapter.CustomModelKhoaHocAdapter;
+import com.eways.elearning.Handler.Adapter.KhoaHocRCAdapter;
+import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.google.firebase.database.ChildEventListener;
@@ -29,12 +31,15 @@ import java.util.ArrayList;
 public class ListKhoaHocTimHocVienFragment extends Fragment {
 //implements ListKhoaHocTimHocVienImpView
     private SwipeRefreshLayout srlKhoaHocTimHocVien;
-    private ListView lvKhoaHocTimHocVien;
+//    private ListView lvKhoaHocTimHocVien;
+    private RecyclerView rvKhoaHocTimHocVien;
 
     private ArrayList<CustomModelKhoaHoc> khoaHocArrayListhv;
-    private CustomModelKhoaHocAdapter khoaHocAdapterhv;
+//    private CustomModelKhoaHocAdapter khoaHocAdapterhv;
+    private KhoaHocRCAdapter khoaHocAdapterhv;
 
     private DatabaseReference mDatabase;
+    private ImageHandler imageHandler;
 //    ListKhoaHocTimHocVienPresenterImp listKhoaHocTimHocVienPresenterImp;
 
     public ListKhoaHocTimHocVienFragment() {
@@ -55,7 +60,9 @@ public class ListKhoaHocTimHocVienFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_list_khoa_hoc_tim_hoc_vien, container, false);
 
         srlKhoaHocTimHocVien = (SwipeRefreshLayout)root.findViewById(R.id.srlKhoaHocTimHocVien);
-        lvKhoaHocTimHocVien = (ListView)root.findViewById(R.id.lvKhoaHocTimHocVien);
+        rvKhoaHocTimHocVien = (RecyclerView)root.findViewById(R.id.lvKhoaHocTimHocVien);
+
+        imageHandler = new ImageHandler(getActivity());
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         khoaHocArrayListhv = new ArrayList<CustomModelKhoaHoc>();
@@ -68,13 +75,19 @@ public class ListKhoaHocTimHocVienFragment extends Fragment {
 //            }
 //        });
 
-
-        khoaHocAdapterhv = new CustomModelKhoaHocAdapter(
-                getActivity().getApplicationContext(),
-                R.layout.custom_item_khoahoc,
-                khoaHocArrayListhv
+//
+//        khoaHocAdapterhv = new CustomModelKhoaHocAdapter(
+//                getActivity().getApplicationContext(),
+//                R.layout.custom_item_khoahoc,
+//                khoaHocArrayListhv
+//        );
+//        lvKhoaHocTimHocVien.setAdapter(khoaHocAdapterhv);
+        khoaHocAdapterhv = new KhoaHocRCAdapter(
+                khoaHocArrayListhv,
+                imageHandler
         );
-        lvKhoaHocTimHocVien.setAdapter(khoaHocAdapterhv);
+        rvKhoaHocTimHocVien.setLayoutManager(new GridLayoutManager(getActivity(),1));
+        rvKhoaHocTimHocVien.setAdapter(khoaHocAdapterhv);
         mDatabase.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMHOCVIEN).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

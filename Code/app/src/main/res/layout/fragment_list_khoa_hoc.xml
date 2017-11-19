@@ -16,10 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@drawable/shape_btn_white"
+            app:tabBackground="@drawable/tab_color_selector"
             app:tabGravity="fill"
             app:tabMode="fixed"
-            app:tabTextColor="@color/textColor" />
+            app:tabTextColor="@color/Black"
+            app:tabSelectedTextColor="@color/White"/>
     </android.support.v4.view.ViewPager>
 
 </LinearLayout>

@@ -67,10 +67,16 @@
     <!--Fragment Cập nhật thông tin tài khoản-->
     <string name="Hoten_CN"><b>Họ tên:</b></string>
     <string name="Namsinh_CN"><b>Năm sinh:</b></string>
-    <string name="Gioitinh_CN"><b>Giới tính:</b></string>
+    <string name="Gioitinh_CN"><b>Giới tính: </b></string>
     <string name="Nghenghiep_CN"><b>Nghề nghiệp:</b></string>
     <!--Fragment CNTTTK-->
     <string name="Title_CNTTTK"><b>Thông tin cá nhân</b></string>
+    <string-array name="ListGioiTinh">
+        <item>Nam</item>
+        <item>Nữ</item>
+    </string-array>
+    <string name="Message_CapNhatThanhCong">Cập nhật thành công</string>
     <!--Dialog Lĩnh vực yêu thích-->
+
 
 </resources>

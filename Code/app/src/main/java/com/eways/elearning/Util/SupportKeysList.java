@@ -26,4 +26,7 @@ public class SupportKeysList {
     public static final String CHILD_KHOAHOC_DAHOANTAT = "DaHoanTat";
     public static final String CHILD_KHOAHOC_TIMGIASU = "KhoaHocTimGiaSu";
     public static final String CHILD_KHOAHOC_TIMHOCVIEN = "KhoaHocTimHocVien";
+
+    //Key Cập nhật tài khoan
+    public static final String TAG_CAPNHATTHANHCONG = "thanhcong";
 }

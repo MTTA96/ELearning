@@ -20,6 +20,10 @@ public class SharedPreferencesHandler {
     private final String KEY_TEN_TAIKHOAN="tentaikhoan";
     private final String KEY_LOAI_TAIKHOAN="loaitaikhoan";
     private final String KEY_DA_DANGNHAP="dadangnhap";
+    private final String KEY_MATKHAU="matkhau";
+    private final String KEY_NGHENGHIEP="nghenghiep";
+    private final String KEY_NGAYSINH="ngaysinh";
+    private final String KEY_GIOITINH="gioitinh";
     private final String KEY_AVATAR ="avatar";
 
     public SharedPreferencesHandler(Context context,String tenFile) {
@@ -118,7 +122,42 @@ public class SharedPreferencesHandler {
         editor.putString(KEY_TEN,ho);
         editor.commit();
     }
-    public void DangNhapThanhCong(String id, String email, String ho, String ten, String avatar, String tenTK,boolean daDangNhap, String loaiTK){
+
+    public String getMatKhau(){
+        return sharedPreferences.getString(KEY_MATKHAU, "");
+    }
+
+    public void setMatKhau(String matKhau){
+        editor.putString(KEY_MATKHAU, matKhau);
+        editor.commit();
+    }
+    public String getNgheNghiep(){
+        return sharedPreferences.getString(KEY_NGHENGHIEP, "");
+    }
+
+    public void setNgheNghiep(String ngheNghiep){
+        editor.putString(KEY_NGHENGHIEP, ngheNghiep);
+        editor.commit();
+    }
+    public String getNamSinh(){
+        return sharedPreferences.getString(KEY_NGAYSINH, "");
+    }
+
+    public void setNamSinh(String namSinh){
+        editor.putString(KEY_NGAYSINH, namSinh);
+        editor.commit();
+    }
+
+    public String getGioiTinh(){
+        return sharedPreferences.getString(KEY_GIOITINH, "");
+    }
+
+    public void setGioiTinh(String gioiTinh){
+        editor.putString(KEY_GIOITINH, gioiTinh);
+        editor.commit();
+    }
+
+    public void DangNhapThanhCong(String id, String email, String ho, String ten, String avatar, String tenTK,boolean daDangNhap, String loaiTK,String ngheNghiep,String namSinh,String gioiTinh){
         setID(id);
         setEmail(email);
         setHo(ho);
@@ -127,6 +166,9 @@ public class SharedPreferencesHandler {
         setTenTaiKhoan(tenTK);
         setDaDangNhap(daDangNhap);
         setLoaiTaiKhoan(loaiTK);
+        setNgheNghiep(ngheNghiep);
+        setNamSinh(namSinh);
+        setGioiTinh(gioiTinh);
     }
     public void DangXuat(){
         setID("");

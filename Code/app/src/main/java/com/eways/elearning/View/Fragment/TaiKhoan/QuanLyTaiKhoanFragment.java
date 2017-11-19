@@ -1,7 +1,6 @@
 package com.eways.elearning.View.Fragment.TaiKhoan;
 
 
-import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,7 +8,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,13 +17,13 @@ import android.view.Window;
 import android.widget.LinearLayout;
 
 import com.eways.elearning.DataModel.BaiDang.LinhVucBaiDang;
-import com.eways.elearning.Handler.Adapter.LinhVucQuanTamAdapter;
-import com.eways.elearning.Handler.LoginGmailHandler;
+import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucQuanTamAdapter;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -36,7 +34,7 @@ import java.util.ArrayList;
  */
 public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickListener {
     private LinhVucQuanTamAdapter linhVucQuanTamAdapter;
-    LinearLayout loLinhVucQuanTam,loTaiKhoanKhac;
+    LinearLayout loLinhVucQuanTam,loTaiKhoanKhac,loCapNhatThongCN;
     private FragmentHandler fragmentHandler;
     private SharedPreferencesHandler sharedPreferencesHandler;
     private AccountManager accountManager;
@@ -59,8 +57,10 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
         View root=inflater.inflate(R.layout.fragment_quan_ly_tai_khoan, container, false);
         loLinhVucQuanTam= (LinearLayout) root.findViewById(R.id.LoLinhVucQuanTam);
         loTaiKhoanKhac= (LinearLayout) root.findViewById(R.id.LoTaiKhoanKhac);
+        loCapNhatThongCN=(LinearLayout) root.findViewById(R.id.LoThongTinCaNhan);
         loTaiKhoanKhac.setOnClickListener(this);
         loLinhVucQuanTam.setOnClickListener(this);
+        loCapNhatThongCN.setOnClickListener(this);
 
         return root;
     }
@@ -78,7 +78,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
             DanhSachLVBD.add(new LinhVucBaiDang(2,"Học Tập",R.drawable.ht));
             DanhSachLVBD.add(new LinhVucBaiDang(3,"Âm Nhạc",R.drawable.an));
             DanhSachLVBD.add(new LinhVucBaiDang(4,"Vận Tải",R.drawable.vt));
-            linhVucQuanTamAdapter=new LinhVucQuanTamAdapter(DanhSachLVBD);
+            linhVucQuanTamAdapter=new LinhVucQuanTamAdapter(DanhSachLVBD,getContext());
             rcDanhSachLVQT.setLayoutManager(gridLayoutManager);
             rcDanhSachLVQT.setAdapter(linhVucQuanTamAdapter);
             Window window = dialog.getWindow();
@@ -105,6 +105,9 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
             Dialog dialog=new Dialog(getContext());
             dialog=builder.create();
             dialog.show();
+        }
+        if (v.getId()==R.id.LoThongTinCaNhan){
+            fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanView(),false,null);
         }
     }
 }

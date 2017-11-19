@@ -74,17 +74,23 @@ public class DangNhapPresenter implements DangNhapPresenterImp {
         if (ketqua.compareTo(DangNhapFragment.LOGIN_SUCCESS)==0){
             if (user!=null){
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
-                sharedPreferencesHandler.DangNhapThanhCong(user.getUid(), user.getEmail(),null,null, user.getPhotoUrl() != null ? user.getPhotoUrl().toString():null, user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG);
+                sharedPreferencesHandler.DangNhapThanhCong(user.getUid(), user.getEmail(),null,null, user.getPhotoUrl() != null ? user.getPhotoUrl().toString():null, user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG,null,null,null);
                 dangNhapImpView.NhanKetQuaDN(ketqua);
             }
             if (Guser!=null)
             {
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity,SupportKeysList.SHARED_PREF_FILE_NAME);
-                sharedPreferencesHandler.DangNhapThanhCong(Guser.getId(),Guser.getEmail(),Guser.getFamilyName(),Guser.getGivenName(),Guser.getPhotoUrl() != null ? Guser.getPhotoUrl().toString():null,Guser.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL);
+                sharedPreferencesHandler.DangNhapThanhCong(Guser.getId(),Guser.getEmail(),Guser.getFamilyName(),Guser.getGivenName(),Guser.getPhotoUrl() != null ? Guser.getPhotoUrl().toString():null,Guser.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL,null,null,null);
                 dangNhapImpView.NhanKetQuaDN(ketqua);
             }
         }else
             dangNhapImpView.NhanKetQuaDN(ketqua);
+
+    }
+
+    @Override
+    public void ChuyenTaiKhoanGmai(GoogleSignInAccount account,Activity activity) {
+        dangNhapImpModel.DangNhapGmail(account,activity);
 
     }
 }

@@ -9,6 +9,10 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Model.TaiKhoan.DangKy.DangKyImpModel;
+import com.eways.elearning.Model.TaiKhoan.DangKy.DangKyModel;
+import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapImpModel;
+import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapModel;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
@@ -19,6 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.auth.FirebaseUser;
 
 
 /**
@@ -32,6 +37,7 @@ public class LoginGmailHandler  {
     private DangNhapFragment dangNhapFragment;
     private Intent data;
     private SharedPreferencesHandler sharedPreferencesHandler;
+    DangNhapImpModel dangNhapImpModel;
 
     private DangNhapPresenterImp dangNhapPresenterImp;
 
@@ -90,6 +96,7 @@ public class LoginGmailHandler  {
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
+                dangNhapPresenterImp.ChuyenTaiKhoanGmai(account,activity);
                 dangNhapPresenterImp.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity);
             } else {
                 // Google Sign In failed, update UI appropriately

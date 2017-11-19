@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
 import com.eways.elearning.R;
@@ -128,7 +129,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.act_search:
-
+                fragmentHandler.ChuyenFragment(new TimKiemFragment(), true, SupportKeysList.TAG_TIM_KIEM);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

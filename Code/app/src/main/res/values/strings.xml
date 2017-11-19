@@ -52,6 +52,7 @@
     <string name="title_danh_sach_khoa_hoc">Danh sách khóa học</string>
 
     <!-- Tạo khóa học -->
+    <string name="title_linh_vuc">Lĩnh vực:</string>
     <string name="title_ten_mon_tao_khoa_hoc">Môn:</string>
     <string name="title_dia_diem_tao_khoa_hoc">Địa điểm:</string>
     <string name="title_hoc_phi_tao_khoa_hoc">Học phí:</string>

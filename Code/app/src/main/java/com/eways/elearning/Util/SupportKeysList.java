@@ -20,6 +20,7 @@ public class SupportKeysList {
     public static final String TAG_QUAN_LY_TAI_KHOAN_FRAGMENT = "quan_ly_tai_khoan_fragment";
     public static final String TAG_DANH_SACH_KHOA_HOC = "danh_sach_khoa_hoc_fragment";
     public static final String TAG_TAO_KHOA_HOC = "tao_khoa_hoc_fragment";
+    public static final String TAG_TIM_KIEM = "tim_kiem_fragment";
 
     //Key child database
     public static final String CHILD_KHOAHOC = "KhoaHoc";

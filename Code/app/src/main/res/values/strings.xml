@@ -48,6 +48,9 @@
     <string name="SaiXacNhanMatKhauDK">* Xác nhận mật không đúng</string>
     <string name="SaiMatKhauDK">* Mật khẩu phải từ 6 ký tự trở lên</string>
 
+    <!-- Danh sách khóa học -->
+    <string name="title_danh_sach_khoa_hoc">Danh sách khóa học</string>
+
     <!-- Tạo khóa học -->
     <string name="title_ten_mon_tao_khoa_hoc">Môn:</string>
     <string name="title_dia_diem_tao_khoa_hoc">Địa điểm:</string>

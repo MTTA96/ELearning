@@ -10,8 +10,8 @@
         android:layout_height="@dimen/layouttopQLTK_height"
         android:orientation="vertical"
         android:background="@color/colorMain">
-        <ImageButton
-            android:id="@+id/ibAvatar_QLTK"
+        <ImageView
+            android:id="@+id/ivAvatar_QLTK"
             android:layout_marginTop="@dimen/ItemQLTK_margintop"
             android:layout_gravity="center"
             android:layout_width="@dimen/avarta_size_QLTK"

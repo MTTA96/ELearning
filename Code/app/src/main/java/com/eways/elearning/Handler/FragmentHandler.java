@@ -47,7 +47,9 @@ public class FragmentHandler {
             transaction.replace(R.id.content_main, toFragment).commit();
     }
 
-    //Xóa fragment hiện tại
+    /**
+     * Xóa fragment hiện tại
+     * */
     public void XoaFragment(){
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment currentFragment = fragmentManager.findFragmentById(R.id.content_main);

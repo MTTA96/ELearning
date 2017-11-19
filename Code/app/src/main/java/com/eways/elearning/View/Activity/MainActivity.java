@@ -1,8 +1,10 @@
 package com.eways.elearning.View.Activity;
 
 import android.graphics.Color;
+import android.opengl.Visibility;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -102,13 +104,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_bar_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.content_main);
+        if(currentFragment!=null && currentFragment.getTag()!=null) {
+            switch (currentFragment.getTag()) {
+                case SupportKeysList.TAG_DANH_SACH_KHOA_HOC:
+                    menu.findItem(R.id.act_search).setVisible(true);
+                    break;
+                default:
+                    menu.findItem(R.id.act_search).setVisible(false);
+                    break;
+            }
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home){
-            this.onBackPressed();
+        switch (item.getItemId()){
+            case R.id.act_search:
+
         }
         return super.onOptionsItemSelected(item);
     }

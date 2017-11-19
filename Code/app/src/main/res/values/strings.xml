@@ -53,13 +53,16 @@
 
     <!-- Tạo khóa học -->
     <string name="title_linh_vuc">Lĩnh vực:</string>
-    <string name="title_ten_mon_tao_khoa_hoc">Môn:</string>
-    <string name="title_dia_diem_tao_khoa_hoc">Địa điểm:</string>
-    <string name="title_hoc_phi_tao_khoa_hoc">Học phí:</string>
-    <string name="title_gioi_tinh_tao_khoa_hoc">Giới tính:</string>
-    <string name="title_bang_cap_tao_khoa_hoc">Bằng cấp:</string>
-    <string name="title_buoi_tao_khoa_hoc">Buổi:</string>
-    <string name="title_thu_tao_khoa_hoc">Thứ:</string>
+    <string name="title_ten_mon">Môn:</string>
+    <string name="title_dia_diem">Địa điểm:</string>
+    <string name="title_hoc_phi">Học phí:</string>
+    <string name="title_gioi_tinh">Giới tính:</string>
+    <string name="title_bang_cap">Bằng cấp:</string>
+    <string name="title_so_hoc_vien">Số học viên:</string>
+    <string name="title_so_buoi">Số buổi:</string>
+    <string name="title_thoi_lượng">Thời lượng:</string>
+    <string name="title_buoi">Buổi:</string>
+    <string name="title_thu">Thứ:</string>
     <string name="title_thong_tin_them_tao_khoa_hoc">Thông tin thêm:</string>
     <string name="button_tiep_tuc_tao_khoa_hoc">Tiếp tục</string>
     <string name="text_gioi_tinh_nam">Nam</string>

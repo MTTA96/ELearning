@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachBuoiAdapter;
 import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachThuAdapter;
 import com.eways.elearning.R;
@@ -21,7 +22,7 @@ import com.eways.elearning.View.Activity.MainActivity;
 /**
  *  Created by Tuấn Anh 11/16/2017
  */
-public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
+public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
     Button btnTaoKhoaHoc;
     CheckBox cbSang, cbChieu, cbToi;
     CheckBox cbThu2, cbThu3, cbThu4, cbThu5, cbThu6, cbThu7, cbChuNhat;
@@ -67,6 +68,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbThu7 = (CheckBox) root.findViewById(R.id.checkBox_Thu7);
         cbChuNhat = (CheckBox) root.findViewById(R.id.checkBox_Chu_Nhat);
 
+        root.findViewById(R.id.button_TiepTuc_TaoKhoaHoc).setOnClickListener(this);
         cbSang.setOnCheckedChangeListener(this);
         cbChieu.setOnCheckedChangeListener(this);
         cbToi.setOnCheckedChangeListener(this);
@@ -91,6 +93,14 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         else {
             buttonView.setBackgroundResource(R.drawable.btn_white_corners_shape);
             buttonView.setTextColor(Color.BLACK);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.button_TiepTuc_TaoKhoaHoc){
+            KhoaHoc khoaHoc = new KhoaHoc();
+
         }
     }
 }

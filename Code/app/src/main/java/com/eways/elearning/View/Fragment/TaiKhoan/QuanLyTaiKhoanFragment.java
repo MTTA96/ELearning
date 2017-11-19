@@ -22,7 +22,6 @@ import android.widget.TextView;
 
 import com.eways.elearning.DataModel.BaiDang.LinhVucBaiDang;
 import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucQuanTamAdapter;
-import com.eways.elearning.Handler.Adapter.LinhVucQuanTamAdapter;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Handler.LoginGmailHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
@@ -40,7 +39,6 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickListener {
-    LinearLayout loLinhVucQuanTam, loTaiKhoanKhac;
     TextView tvTenUser, tvUserEmail;
     ImageView imgUser;
 

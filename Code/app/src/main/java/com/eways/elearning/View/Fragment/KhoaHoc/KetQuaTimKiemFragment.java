@@ -18,18 +18,30 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class KetQuaTimKiemFragment extends Fragment {
-    private ArrayList<KhoaHoc> listKhoaHoc = new ArrayList<>();
+    private static final String paramRequestKhoaHoc = "RequestKhoaHoc";
+    private static final String paramRequestGiaSu = "RequestGiaSu";
+    private static final String paramRequestBangCap = "RequestBangCap";
 
-    private static final String param1 = "param1";
+    private KhoaHoc requestKhoaHoc;
+    private boolean requestGiaSu;
+    private String requestBangCap;
 
     public KetQuaTimKiemFragment() {
         // Required empty public constructor
     }
 
-    public static KetQuaTimKiemFragment newInstance(ArrayList<KhoaHoc> listKhoaHoc) {
+    /**
+     * @param requestKhoaHoc chứa thông tin khóa học user tìm kiếm
+     * @param timGiaSu true: tìm gia sư
+     *                 false: tìm học viên
+     * @param bangCap bằng cấp yêu cầu
+     * */
+    public static KetQuaTimKiemFragment newInstance(boolean timGiaSu, KhoaHoc requestKhoaHoc, String bangCap) {
 
         Bundle args = new Bundle();
-        args.putSerializable(param1, listKhoaHoc);
+        args.putSerializable(paramRequestKhoaHoc, requestKhoaHoc);
+        args.putBoolean(paramRequestGiaSu, timGiaSu);
+        args.putString(paramRequestBangCap, bangCap);
         KetQuaTimKiemFragment fragment = new KetQuaTimKiemFragment();
         fragment.setArguments(args);
         return fragment;
@@ -38,8 +50,10 @@ public class KetQuaTimKiemFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getArguments()!=null){
-            this.listKhoaHoc = (ArrayList<KhoaHoc>) getArguments().getSerializable(param1);
+        if (getArguments() != null) {
+            requestKhoaHoc = (KhoaHoc) getArguments().getSerializable(paramRequestKhoaHoc);
+            requestGiaSu = getArguments().getBoolean(paramRequestGiaSu);
+            requestBangCap = getArguments().getString(paramRequestBangCap, null);
         }
     }
 
@@ -47,7 +61,8 @@ public class KetQuaTimKiemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ket_qua_tim_kiem, container, false);
+        View root = inflater.inflate(R.layout.fragment_ket_qua_tim_kiem, container, false);
+        return root;
     }
 
 }

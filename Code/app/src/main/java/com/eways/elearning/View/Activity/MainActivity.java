@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         tvScreenTitle.setText("");
+        super.onBackPressed();
     }
 }

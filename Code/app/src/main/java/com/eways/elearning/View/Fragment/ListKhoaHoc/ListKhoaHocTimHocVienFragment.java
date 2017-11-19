@@ -74,6 +74,7 @@ public class ListKhoaHocTimHocVienFragment extends Fragment {
                 R.layout.custom_item_khoahoc,
                 khoaHocArrayListhv
         );
+        lvKhoaHocTimHocVien.setAdapter(khoaHocAdapterhv);
         mDatabase.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMHOCVIEN).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -106,7 +107,7 @@ public class ListKhoaHocTimHocVienFragment extends Fragment {
         });
 
 
-        lvKhoaHocTimHocVien.setAdapter(khoaHocAdapterhv);
+
         return root;
     }
 

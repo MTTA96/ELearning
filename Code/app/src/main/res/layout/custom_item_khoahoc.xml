@@ -1,102 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/btn_white_corners_shape"
+    android:orientation="horizontal">
 
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:layout_marginBottom="@dimen/MarginBottom_itemKhoaHoc"
+        android:layout_marginLeft="@dimen/MarginLeft_itemKhoaHoc_BlockImg"
+        android:layout_marginRight="@dimen/MarginRight_itemKhoaHoc_BlockImg"
+        android:layout_marginTop="@dimen/MarginTop_itemKhoaHoc"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:orientation="vertical"
+        android:background="@drawable/btn_white_corners_shape">
+
+        <ImageView
+            android:id="@+id/img_KhoaHoc"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/Height_KhoaHoc"
+            android:scaleType="centerCrop"/>
+
+        <RatingBar
+            android:id="@+id/rtb_KhoaHoc"
+            style="@style/ratingbarCustom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="@dimen/MarginTop_itemKhoaHoc"
-            android:layout_marginBottom="@dimen/MarginBottom_itemKhoaHoc"
-            android:layout_marginLeft="@dimen/MarginLeft_itemKhoaHoc_BlockImg"
-            android:layout_marginRight="@dimen/MarginRight_itemKhoaHoc_BlockImg">
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="5dp"
+            android:numStars="5"
+            android:stepSize="0.5" />
 
-            <ImageView
-                android:id="@+id/img_KhoaHoc"
-                android:layout_width="@dimen/Width_KhoaHoc"
-                android:layout_height="@dimen/Height_KhoaHoc"
-                />
-                <RatingBar
-                    android:id="@+id/rtb_KhoaHoc"
-                    style="@style/ratingbarCustom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/MarginBottom_Rtb"
-                    android:layout_marginLeft="@dimen/MarginLeft_Rtb"
-                    android:layout_marginTop="@dimen/MarginTop_Rtb"
-                    android:numStars="5"
-                    android:stepSize="0.5"
-                    />
+    </LinearLayout>
 
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/Height_BlockInfo_KhoaHoc"
+        android:layout_weight="1"
+        android:layout_marginBottom="@dimen/MarginBottom_itemKhoaHoc"
+        android:layout_marginLeft="@dimen/MarginLeft_itemKhoaHoc_BlockInfo"
+        android:layout_marginRight="@dimen/MarginRight_itemKhoaHoc_BlockInfo"
+        android:layout_marginTop="@dimen/MarginTop_itemKhoaHoc"
+        android:orientation="vertical"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/Height_BlockInfo_KhoaHoc"
+            android:layout_height="@dimen/Height_KhoaHoc"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/MarginTop_itemKhoaHoc"
-            android:layout_marginBottom="@dimen/MarginBottom_itemKhoaHoc"
-            android:layout_marginLeft="@dimen/MarginLeft_itemKhoaHoc_BlockInfo"
-            android:layout_marginRight="@dimen/MarginRight_itemKhoaHoc_BlockInfo">
+            android:background="@drawable/btn_white_corners_shape"
+            >
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvTen_KhoaHoc"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/Height_KhoaHoc"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvTen_KhoaHoc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Xem_Ten"
-                    android:textSize="@dimen/TextSize_KhoaHoc"
-                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
-                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"/>
-                <TextView
-                    android:id="@+id/tvMon_KhoaHoc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Xem_Mon"
-                    android:textSize="@dimen/TextSize_KhoaHoc"
-                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
-                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"/>
-                <TextView
-                    android:id="@+id/tvBuoi_KhoaHoc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Xem_Buoi"
-                    android:textSize="@dimen/TextSize_KhoaHoc"
-                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
-                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"/>
-                <TextView
-                    android:id="@+id/tvChiTiet_KhoaHoc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Xem_ChiTiet"
-                    android:textSize="@dimen/TextSizeCT_KhoaHoc"
-                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
-                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
-                    android:textColor="@color/colorAccent"/>
-                <TextView
-                    android:id="@+id/tvGia_KhoaHoc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Xem_Gia"
-                    android:textSize="@dimen/TextSize_KhoaHoc"
-                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
-                    android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"/>
-
-            </LinearLayout>
-
-            <Button
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/MarginLeft_BtnChat_KhoaHoc"/>
+                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                android:text="@string/Xem_Ten"
+                android:textSize="@dimen/TextSize_KhoaHoc" />
+
+            <TextView
+                android:id="@+id/tvMon_KhoaHoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                android:text="@string/Xem_Mon"
+                android:textSize="@dimen/TextSize_KhoaHoc" />
+
+            <TextView
+                android:id="@+id/tvBuoi_KhoaHoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                android:text="@string/Xem_Buoi"
+                android:textSize="@dimen/TextSize_KhoaHoc" />
+
+            <TextView
+                android:id="@+id/tvChiTiet_KhoaHoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                android:text="@string/Xem_ChiTiet"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/TextSizeCT_KhoaHoc" />
+
+            <TextView
+                android:id="@+id/tvGia_KhoaHoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                android:text="@string/Xem_Gia"
+                android:textSize="@dimen/TextSize_KhoaHoc" />
 
         </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/MarginLeft_BtnChat_KhoaHoc" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

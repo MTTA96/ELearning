@@ -1,6 +1,7 @@
 package com.eways.elearning.Handler.Adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,7 +68,9 @@ public class CustomModelKhoaHocAdapter extends BaseAdapter {
 //        lấy UserID của người đăng khóa học => lấy rating trong tài khoản
 
         TextView tvTenNguoiDang = (TextView) convertView.findViewById(R.id.tvTen_KhoaHoc);
-        tvTenNguoiDang.setText(tvTenNguoiDang.getText()+ " " +customModelKhoaHocList.get(position).TenNguoiDang);
+        String x = "<b>"+tvTenNguoiDang.getText()+"</b>"+" " +customModelKhoaHocList.get(position).TenNguoiDang;
+        tvTenNguoiDang.setText(Html.fromHtml(x));
+
 
         TextView tvBuoiHoc = (TextView) convertView.findViewById(R.id.tvBuoi_KhoaHoc);
         tvBuoiHoc.setText(tvBuoiHoc.getText()+ " " +customModelKhoaHocList.get(position).BuoiHoc);

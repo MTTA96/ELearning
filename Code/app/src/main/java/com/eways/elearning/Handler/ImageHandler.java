@@ -29,4 +29,11 @@ public class ImageHandler {
             imageView.setBackground(null);
         Picasso.with(context).load(url).transform(transformationRound).transform(new CropCircleTransformation()).into(imageView);
     }
+
+    @TargetApi(16)
+    public void loadImageSquare(String url, ImageView imageView){
+        if (Build.VERSION.SDK_INT > 15)
+            imageView.setBackground(null);
+        Picasso.with(context).load(url).into(imageView);
+    }
 }

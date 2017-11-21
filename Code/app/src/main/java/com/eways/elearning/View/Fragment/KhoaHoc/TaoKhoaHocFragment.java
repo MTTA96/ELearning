@@ -25,14 +25,17 @@ import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Activity.MainActivity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
- *  Created by Tuấn Anh 11/16/2017
+ * Created by Tuấn Anh 11/16/2017
  */
 public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
     Button btnTaoKhoaHoc;
-    EditText etMon, etDiaDiem, etHocPhi, etBangCap, etSoHocVien, etSoBuoi, etThoiLuong;
+    EditText etLinhVuc, etMon, etDiaDiem, etHocPhi, etBangCap, etSoHocVien, etSoBuoi, etThoiLuong, etThongTinThem;
     CheckBox cbGioiTinhNam, cbGioiTinhNu;
     CheckBox cbSang, cbChieu, cbToi;
     CheckBox cbThu2, cbThu3, cbThu4, cbThu5, cbThu6, cbThu7, cbChuNhat;
@@ -77,6 +80,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         etSoHocVien = (EditText) root.findViewById(R.id.editText_SoHocVien_TaoKhoaHoc);
         etSoBuoi = (EditText) root.findViewById(R.id.editText_SoBuoi_TaoKhoaHoc);
         etThoiLuong = (EditText) root.findViewById(R.id.editText_ThoiLuong_TaoKhoaHoc);
+        etThongTinThem = (EditText) root.findViewById(R.id.editText_ThongTinKhac_TaoKhoaHoc);
         cbSang = (CheckBox) root.findViewById(R.id.checkBox_Sang);
         cbChieu = (CheckBox) root.findViewById(R.id.checkBox_Chieu);
         cbToi = (CheckBox) root.findViewById(R.id.checkBox_Toi);
@@ -100,7 +104,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbThu7.setOnCheckedChangeListener(this);
         cbChuNhat.setOnCheckedChangeListener(this);
 
-        ((MainActivity)getActivity()).tvScreenTitle.setText("Tạo khóa học");
+        ((MainActivity) getActivity()).tvScreenTitle.setText("Tạo khóa học");
         return root;
     }
 
@@ -109,8 +113,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         if (isChecked) {
             buttonView.setBackgroundResource(R.drawable.btn_color_main_corners_shape);
             buttonView.setTextColor(Color.WHITE);
-        }
-        else {
+        } else {
             buttonView.setBackgroundResource(R.drawable.btn_white_corners_shape);
             buttonView.setTextColor(Color.BLACK);
         }
@@ -118,12 +121,11 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button_TiepTuc_TaoKhoaHoc){
-            if (checkData()){
+        if (v.getId() == R.id.button_TiepTuc_TaoKhoaHoc) {
+            if (checkData()) {
                 KhoaHoc khoaHoc = setUpData();
 
-            }
-            else
+            } else
                 Toast.makeText(getActivity(), "Thiếu thông tin!", Toast.LENGTH_LONG).show();
 
         }
@@ -131,47 +133,92 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
     private KhoaHoc setUpData() {
         KhoaHoc khoaHoc = new KhoaHoc();
-        ArrayList dataKhocHoc = new ArrayList<String>();
-        dataKhocHoc.add(etMon.getText().toString());
-        khoaHoc.setMon(dataKhocHoc);
-        khoaHoc.setDiaDiem(new DiaDiem(etDiaDiem.getText().toString(), null, null));
-        khoaHoc.setHocPhi(etHocPhi.getText().toString());
-//                NguoiDang;
+        ArrayList dataKhoaHoc = new ArrayList<String>();
+
+        //NguoiDang;
         khoaHoc.setNguoiDang(sharedPreferencesHandler.getID());
-//                SoBuoiHoc;
+
+        //SoBuoiHoc;
         khoaHoc.setSoBuoiHoc(etSoBuoi.getText().toString());
-//                SoLuongHocVien;
+
+        //SoLuongHocVien;
         khoaHoc.setSoLuongHocVien(etSoHocVien.getText().toString());
-//                ArrayList<String> Buoi;
-        dataKhocHoc.clear();
+
+        //ArrayList<String> Buoi;
+        ArrayList dataBuoi = new ArrayList();
         if (cbSang.isChecked())
-            dataKhocHoc.add("Sang");
+            dataBuoi.add("Sang");
         if (cbChieu.isChecked())
-            dataKhocHoc.add("Chieu");
+            dataBuoi.add("Chieu");
         if (cbToi.isChecked())
-            dataKhocHoc.add("Toi");
-//                ArrayList<String> Thu;
-//                GioiTinh;
+            dataBuoi.add("Toi");
 
-//                NgayDang;
+        //ArrayList<String> Thu;
+         ArrayList dataThu = new ArrayList();
+        if (cbThu2.isChecked())
+            dataThu.add("T2");
+        if (cbThu3.isChecked())
+            dataThu.add("T3");
+        if (cbThu4.isChecked())
+            dataThu.add("T4");
+        if (cbThu5.isChecked())
+            dataThu.add("T5");
+        if (cbThu6.isChecked())
+            dataThu.add("T6");
+        if (cbThu7.isChecked())
+            dataThu.add("T7");
+        if (cbChuNhat.isChecked())
+            dataThu.add("CN");
+        khoaHoc.setLichHoc(new LichHoc());
 
-//                GioDang;
-//                ThoiLuongBuoiHoc;
+        //GioiTinh;
+        if (cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
+            khoaHoc.setGioiTinh("Nam, Nu");
+        if (cbGioiTinhNam.isChecked() && !cbGioiTinhNu.isChecked())
+            khoaHoc.setGioiTinh("Nam");
+        if (!cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
+            khoaHoc.setGioiTinh("Nu");
 
-//                HocPhi;
-//                ThongTinKhac;
-//                ArrayList<String> BangCap;
-//                ArrayList<String> Mon;
-//                ArrayList<String> LinhVuc;
-//                ArrayList<String> Lop;
+        //NgayDang;
+        String formatDateTime = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(DateFormat.getDateTimeInstance());
+        khoaHoc.setNgayDang(formatDateTime.split(" ")[0]);
+        //GioDang;
+        khoaHoc.setNgayDang(formatDateTime.split(" ")[1]);
+
+        //ThoiLuongBuoiHoc;
+        khoaHoc.setThoiLuongBuoiHoc(etThoiLuong.getText().toString());
+
+        //HocPhi;
+        khoaHoc.setHocPhi(etHocPhi.getText().toString());
+
+        //ThongTinKhac;
+        khoaHoc.setThongTinKhac(etThongTinThem.getText() != null ? etThongTinThem.getText().toString() : "");
+
+        //ArrayList<String> BangCap;
+        if (etBangCap.getText() != null) {
+            dataKhoaHoc = new ArrayList();
+            dataKhoaHoc.add(etMon.getText().toString());
+            khoaHoc.setMon(dataKhoaHoc);
+        }
+
+        //ArrayList<String> Mon;
+        dataKhoaHoc = new ArrayList();
+        dataKhoaHoc.add(etMon.getText().toString());
+        khoaHoc.setMon(dataKhoaHoc);
+
+        //ArrayList<String> LinhVuc;
+//        dataKhocHoc.add(etLinhVuc.getText().toString());
+//        khoaHoc.setLinhVuc(dataKhocHoc);
+
 //                LichHoc LichHoc;
-//                DiaDiem DiaDiem;
+        //DiaDiem DiaDiem;
+        khoaHoc.setDiaDiem(new DiaDiem(etDiaDiem.getText().toString(), null, null));
         return khoaHoc;
     }
 
     private boolean checkData() {
-        if (etMon.getText()!=null && etDiaDiem.getText()!=null && etHocPhi!=null && etBangCap.getText()!=null
-                && etSoBuoi.getText()!=null && etSoHocVien.getText()!=null && etThoiLuong.getText()!=null )
+        if (etMon.getText() != null && etDiaDiem.getText() != null && etHocPhi != null
+                && etSoBuoi.getText() != null && etSoHocVien.getText() != null && etThoiLuong.getText() != null)
             if (cbGioiTinhNam.isChecked() || cbGioiTinhNu.isChecked()
                     && cbSang.isChecked() || cbChieu.isChecked() || cbToi.isChecked()
                     && cbThu2.isChecked() || cbThu3.isChecked() || cbThu4.isChecked() || cbThu5.isChecked() || cbThu6.isChecked() || cbThu7.isChecked() || cbChuNhat.isChecked())

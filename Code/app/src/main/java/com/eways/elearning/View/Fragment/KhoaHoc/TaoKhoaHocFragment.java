@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachBuoiAdapter;
@@ -24,6 +25,8 @@ import com.eways.elearning.View.Activity.MainActivity;
  */
 public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
     Button btnTaoKhoaHoc;
+    EditText etMon, etDiaDiem, etHocPhi, etBangCap, etSoHocVien, etSoBuoi, etThoiLuong;
+    CheckBox cbGioiTinh;
     CheckBox cbSang, cbChieu, cbToi;
     CheckBox cbThu2, cbThu3, cbThu4, cbThu5, cbThu6, cbThu7, cbChuNhat;
 
@@ -57,6 +60,13 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_tao_khoa_hoc, container, false);
+        etMon = (EditText) root.findViewById(R.id.editText_TenMon_TaoKhoaHoc);
+        etDiaDiem = (EditText) root.findViewById(R.id.editText_DiaDiem_TaoKhoaHoc);
+        etHocPhi = (EditText) root.findViewById(R.id.editText_HocPhi_TaoKhoaHoc);
+        etBangCap = (EditText) root.findViewById(R.id.editText_BangCap_TaoKhoaHoc);
+        etSoHocVien = (EditText) root.findViewById(R.id.editText_SoHocVien_TaoKhoaHoc);
+        etSoBuoi = (EditText) root.findViewById(R.id.editText_SoBuoi_TaoKhoaHoc);
+        etThoiLuong = (EditText) root.findViewById(R.id.editText_ThoiLuong_TaoKhoaHoc);
         cbSang = (CheckBox) root.findViewById(R.id.checkBox_Sang);
         cbChieu = (CheckBox) root.findViewById(R.id.checkBox_Chieu);
         cbToi = (CheckBox) root.findViewById(R.id.checkBox_Toi);

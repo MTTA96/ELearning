@@ -35,6 +35,7 @@
                     android:text="@string/title_ten_mon" />
 
                 <EditText
+                    android:id="@+id/editText_TenMon_TaoKhoaHoc"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
@@ -58,6 +59,7 @@
                     android:text="@string/title_dia_diem" />
 
                 <EditText
+                    android:id="@+id/editText_DiaDiem_TaoKhoaHoc"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
@@ -81,6 +83,7 @@
                     android:text="@string/title_hoc_phi" />
 
                 <EditText
+                    android:id="@+id/editText_HocPhi_TaoKhoaHoc"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/text_height"
                     android:layout_weight="2"
@@ -148,6 +151,7 @@
                     android:text="@string/title_bang_cap" />
 
                 <EditText
+                    android:id="@+id/editText_BangCap_TaoKhoaHoc"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
@@ -171,6 +175,7 @@
                     android:text="@string/title_so_hoc_vien" />
 
                 <EditText
+                    android:id="@+id/editText_SoHocVien_TaoKhoaHoc"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
@@ -195,6 +200,7 @@
                     android:text="@string/title_so_buoi" />
 
                 <EditText
+                    android:id="@+id/editText_SoBuoi_TaoKhoaHoc"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
@@ -219,6 +225,7 @@
                     android:text="@string/title_thoi_lượng" />
 
                 <EditText
+                    android:id="@+id/editText_ThoiLuong_TaoKhoaHoc"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/text_height"
                     android:layout_weight="2"

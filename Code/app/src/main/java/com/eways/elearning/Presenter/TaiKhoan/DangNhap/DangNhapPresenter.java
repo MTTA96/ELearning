@@ -49,8 +49,8 @@ public class DangNhapPresenter implements DangNhapPresenterImp {
             dangNhapImpView.NhanKetQuaDN(DangNhapFragment.ERROR_MSG_SAI_PW);
             return;
         }
+            dangNhapImpModel.NhanTaiKhoanDN(new TaiKhoan(email,Password),activity);
 
-        dangNhapImpModel.NhanTaiKhoanDN(new TaiKhoan(email,Password),activity);
     }
     //Đếm số chữ trong chuỗi
     public static int DemKyTu(String s){

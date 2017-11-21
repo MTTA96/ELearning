@@ -25,7 +25,6 @@ public class KhoaHoc implements Serializable {
     private ArrayList<String> BangCap;
     private ArrayList<String> Mon;
     private ArrayList<String> LinhVuc;
-    private ArrayList<String> Lop;
     private LichHoc LichHoc;
     private DiaDiem DiaDiem;
 
@@ -34,24 +33,6 @@ public class KhoaHoc implements Serializable {
     public KhoaHoc() {
     }
 
-    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> mon, ArrayList<String> linhVuc, ArrayList<String> lop, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, DiaDiem diaChi) {
-        Avatar = avatar;
-        Rating = rating;
-        HoTen = hoTen;
-        NguoiDang = nguoiDang;
-        SoBuoiHoc = soBuoiHoc;
-        SoLuongHocVien = soLuongHocVien;
-        NgayDang = ngayDang;
-        GioDang = gioDang;
-        ThoiLuongBuoiHoc = thoiLuongBuoiHoc;
-        HocPhi = hocPhi;
-        ThongTinKhac = thongTinKhac;
-        Mon = mon;
-        LinhVuc = linhVuc;
-        Lop = lop;
-        LichHoc = lichHoc;
-        DiaDiem = diaChi;
-    }
 
     public String getAvatar() {
         return Avatar;
@@ -187,14 +168,6 @@ public class KhoaHoc implements Serializable {
 
     public void setLinhVuc(ArrayList<String> linhVuc) {
         LinhVuc = linhVuc;
-    }
-
-    public ArrayList<String> getLop() {
-        return Lop;
-    }
-
-    public void setLop(ArrayList<String> lop) {
-        Lop = lop;
     }
 
     public com.eways.elearning.DataModel.KhoaHoc.LichHoc getLichHoc() {

@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 public class LichHoc {
     public ArrayList<String> NgayHoc;
-    public String ThoiGian;
+    public ArrayList <String> ThoiGian;
 
     public LichHoc() {
     }
 
-    public LichHoc(ArrayList<String> ngayHoc, String thoiGian) {
+    public LichHoc(ArrayList<String> ngayHoc, ArrayList<String> thoiGian) {
         NgayHoc = ngayHoc;
         ThoiGian = thoiGian;
     }

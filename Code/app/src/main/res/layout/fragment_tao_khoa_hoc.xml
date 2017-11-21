@@ -407,6 +407,7 @@
                 android:layout_weight="3"
                 android:text="@string/title_thong_tin_them_tao_khoa_hoc" />
             <EditText
+                android:id="@+id/editText_ThongTinKhac_TaoKhoaHoc"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/text_thong_tin_them_height"
                 android:layout_marginTop="5dp"

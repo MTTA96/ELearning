@@ -394,6 +394,60 @@
                 "UID003"
               ]
             }
+          },
+          "Khoa010":
+          {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoai Ngu"
+            ],
+            "Rating":"5",
+            "NguoiDang":"UID",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
+            "NgayDang":"dd/mm/yyyy",
+            "GioDang":"HH:MM:SS",
+            "Lop":
+            [
+              "Lớp 12"
+            ],
+            "Mon":
+            [
+              "Anh van giao tiep"
+            ],
+            "DiaChi":
+            {
+                "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+                "Quan":"Bình Thạnh",
+                "TP":"HCM"
+              },
+            "HocPhi":"150000",
+            "LichHoc":
+            {
+              "ThoiGian":"Toi",
+              "NgayHoc":
+              [
+                "T2",
+                "T4",
+                "T6"
+              ]
+            },
+            "SoLuongHocVien":"1",
+            "ThoiLuongBuoiHoc":"90",
+            "SoBuoiHoc":"12",
+            "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
+            "DanhSachYeuCau":
+            {
+              "DangCho":
+              [
+                "UID001",
+                "UID002"
+              ],
+              "TamDuyet":
+              [
+                "UID003"
+              ]
+            }
           }
         },
         "DaHoanTat":
@@ -496,7 +550,60 @@
       "KhoaHocTimHocVien":
       {
         "ChuaHoanTat":
-        {
+        {"Khoa011":
+          {
+            "LinhVuc":
+            [
+              "Âm nhạc","Ngoai Ngu"
+            ],
+            "Rating":"5",
+            "NguoiDang":"UID",
+            "HoTen":"Nguyễn A",
+            "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
+            "NgayDang":"dd/mm/yyyy",
+            "GioDang":"HH:MM:SS",
+            "Lop":
+            [
+              "Lớp 12"
+            ],
+            "Mon":
+            [
+              "Anh van giao tiep"
+            ],
+            "DiaChi":
+            {
+                "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+                "Quan":"Bình Thạnh",
+                "TP":"HCM"
+              },
+            "HocPhi":"150000",
+            "LichHoc":
+            {
+              "ThoiGian":"Toi",
+              "NgayHoc":
+              [
+                "T2",
+                "T4",
+                "T6"
+              ]
+            },
+            "SoLuongHocVien":"1",
+            "ThoiLuongBuoiHoc":"90",
+            "SoBuoiHoc":"12",
+            "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
+            "DanhSachYeuCau":
+            {
+              "DangCho":
+              [
+                "UID001",
+                "UID002"
+              ],
+              "TamDuyet":
+              [
+                "UID003"
+              ]
+            }
+          },
           "Khoa005":
           {
             "LinhVuc":

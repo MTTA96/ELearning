@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Switch;
 
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
@@ -26,6 +25,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class TimKiemFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+
     Switch switchTimKiem;
     EditText etLinhVuc, etMon, etDiaDiem, etHocPhi, etBangCap;
     CheckBox cbGioiTinhNam, cbGioiTinhNu;

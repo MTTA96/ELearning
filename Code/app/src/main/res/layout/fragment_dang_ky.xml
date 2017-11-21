@@ -28,12 +28,28 @@
         android:orientation="vertical"
         android:paddingLeft="@dimen/khung_dang_ky_horizontal_padding"
         android:paddingRight="@dimen/khung_dang_ky_horizontal_padding">
+        <TextView
+            android:id="@+id/tvLoiHoten"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorError"
+            android:textSize="@dimen/loi_textsizeDK" />
+
+        <EditText
+            android:id="@+id/etHoTen"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ViewDangKy_height"
+            android:layout_gravity="center"
+            android:background="@drawable/etusername_etpass_shape"
+            android:hint="@string/Hint_Hoten"
+            android:textColorHint="@color/colorHint" />
         <!--Nhập Email-->
         <TextView
             android:id="@+id/tvLoiEmailDK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorError"
+            android:layout_marginTop="@dimen/ViewDangKy_marginTop"
             android:textSize="@dimen/loi_textsizeDK" />
 
         <EditText

@@ -77,20 +77,32 @@ public class CapNhatThongTinTaiKhoanView extends Fragment implements CapNhatTaiK
         Resources res=getResources();
         String[] danhSachGioiTinh=res.getStringArray(R.array.ListGioiTinh);
         ArrayAdapter<String> GTadapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,danhSachGioiTinh);
-
+        spGiotinh.setAdapter(GTadapter);
+        LoadData();
+        btnLuuCapNhat.setOnClickListener(this);
+        Toast.makeText(getActivity(),sharedPreferencesHandler.getEmail(),Toast.LENGTH_SHORT).show();
         return view;
     }
 
     @Override
     public void KetQuaCapNhat(String ketquacapnhat) {
-        Toast.makeText(getActivity(),R.string.messenger_send_button_text,Toast.LENGTH_SHORT).show();
-        fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(),false,null);
+        if (ketquacapnhat.compareTo(SupportKeysList.TAG_CAPNHATTHANHCONG)==0){
+            Toast.makeText(getActivity(),"Cập nhật thành công ",Toast.LENGTH_SHORT).show();
+            fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(),false,null);
+        }
     }
 
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.btnLuuCNTTTK){
-            capNhatTaiKhoanPresenterImp.NhanDataUpdate(new TaiKhoan(sharedPreferencesHandler.getID(),sharedPreferencesHandler.getEmail(),null,etHoTen.getText().toString(),sharedPreferencesHandler.getTenTaiKhoan(),sharedPreferencesHandler.getDaDangNhap(),sharedPreferencesHandler.getLoaiTaiKhoan(),sharedPreferencesHandler.getMatKhau(),sharedPreferencesHandler.getNgheNghiep(),sharedPreferencesHandler.getNamSinh(),sharedPreferencesHandler.getGioiTinh()),getActivity());
+            capNhatTaiKhoanPresenterImp.NhanDataUpdate(new TaiKhoan(sharedPreferencesHandler.getID(),sharedPreferencesHandler.getEmail(),null,etHoTen.getText().toString(),sharedPreferencesHandler.getTenTaiKhoan(),sharedPreferencesHandler.getDaDangNhap(),sharedPreferencesHandler.getLoaiTaiKhoan(),sharedPreferencesHandler.getMatKhau(),etNgheNghiep.getText().toString(),spNamsinh.getSelectedItem().toString(),spGiotinh.getSelectedItem().toString()),getActivity());
+//            fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanView(),false,null);
         }
+    }
+
+    //Load Data tài khoản
+    public void LoadData (){
+        etHoTen.setText(sharedPreferencesHandler.getTen().toString());
+
     }
 }

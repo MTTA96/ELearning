@@ -19,10 +19,15 @@ public class TaiKhoan {
 
     public TaiKhoan() {
     }
-
     public TaiKhoan(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+    public TaiKhoan(String email, String password,String ho,String ten) {
+        this.email = email;
+        this.password = password;
+        this.ho=ho;
+        this.ten=ten;
     }
 
     public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh) {

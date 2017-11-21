@@ -7,6 +7,6 @@ import android.app.Activity;
  */
 
 public interface DangKyPresenterImp {
-    public void NhanThongTinDangKy(String Email, String Password, String CPassword, Activity activity);
+    public void NhanThongTinDangKy(String Email, String Password, String CPassword,String Hoten, Activity activity);
     public void KetQuaDangKy(String ketqua);
 }

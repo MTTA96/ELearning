@@ -42,19 +42,14 @@ public class ListKhoaHocFragment extends Fragment {
         viewPagerKhoaHoc = (ViewPager) root.findViewById(R.id.viewpagerKhoaHoc);
         tabLayoutKhoaHoc = (TabLayout)root.findViewById(R.id.tablayoutKhoaHoc);
 
+        ((MainActivity)getActivity()).tvScreenTitle.setText(getResources().getString(R.string.title_danh_sach_khoa_hoc));
         setUpViewPager(viewPagerKhoaHoc);
         getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        ((MainActivity)getActivity()).tvScreenTitle.setText(getResources().getString(R.string.title_danh_sach_khoa_hoc));
-    }
-
     private void setUpViewPager(ViewPager pager) {
-        ViewPagerKhoaHocAdapter adapter = new ViewPagerKhoaHocAdapter(getFragmentManager());
+        ViewPagerKhoaHocAdapter adapter = new ViewPagerKhoaHocAdapter(getChildFragmentManager());
         adapter.addFragment(new ListKhoaHocTimGiaSuFragment(), titleTab1);
         adapter.addFragment(new ListKhoaHocTimHocVienFragment(), titleTab2);
         pager.setAdapter(adapter);

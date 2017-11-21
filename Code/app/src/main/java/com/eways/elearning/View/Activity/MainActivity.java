@@ -118,7 +118,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     menu.findItem(R.id.act_search).setVisible(true);
                     break;
                 default:
-                    menu.findItem(R.id.act_search).setVisible(false);
                     break;
             }
         }
@@ -168,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         tvScreenTitle.setText("");
+        super.onBackPressed();
     }
 }

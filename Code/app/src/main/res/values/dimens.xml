@@ -7,6 +7,7 @@
     <dimen name="elevation">5dp</dimen>
     <dimen name="title_text_size">23sp</dimen>
     <dimen name="text_height">30dp</dimen>
+    <dimen name="editText_padding_left">10dp</dimen>
 
     <!-- Slide menu -->
     <dimen name="nav_header_main_height">160dp</dimen>
@@ -36,7 +37,6 @@
     <dimen name="khung_dang_nhap_margin_top">30dp</dimen>
     <dimen name="ViewDangNhap_marginTop">20dp</dimen>
     <dimen name="BtnDangNhap_marginLeft">5dp</dimen>
-    <dimen name="etuserpass_textpadding">10dp</dimen>
     <dimen name="loi_textsizeDN">10sp</dimen>
     <dimen name="view_height">2dp</dimen>
 

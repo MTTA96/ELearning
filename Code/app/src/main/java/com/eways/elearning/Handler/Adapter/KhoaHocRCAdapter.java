@@ -45,19 +45,22 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
         float rt = Float.parseFloat(khoaHocArrayList.get(position).Rating);
         holder.rtbBaiDang.setRating(rt);
 
-        String ten = "<b>"+holder.tvTenNguoiDang.getText()+"</b>"+" " +khoaHocArrayList.get(position).TenNguoiDang;
+        String ten = "<b>Tên: </b>"+" " +khoaHocArrayList.get(position).TenNguoiDang;
         holder.tvTenNguoiDang.setText(Html.fromHtml(ten));
 
         ArrayList<String> listMon = khoaHocArrayList.get(position).MonHoc;
         String danhSachMon = "";
         for (String mon : listMon) { danhSachMon = danhSachMon + mon; }
-        String mon = "<b>"+holder.tvMonHoc.getText()+"</b>"+" " +danhSachMon;
+        String mon = "<b>Môn: </b>"+" " +danhSachMon;
         holder.tvMonHoc.setText(Html.fromHtml(mon));
 
-        String buoi = "<b>"+holder.tvBuoiHoc.getText()+"</b>"+" " +khoaHocArrayList.get(position).BuoiHoc;
+        ArrayList<String> listBuoi = khoaHocArrayList.get(position).BuoiHoc;
+        String dsbuoi = "";
+        for (String buoi : listBuoi) { dsbuoi = buoi + mon; }
+        String buoi = "<b>Buổi: </b>"+" " +dsbuoi;
         holder.tvBuoiHoc.setText(Html.fromHtml(buoi));
 
-        String hocPhi = "<b>"+holder.tvHocPhi.getText()+"<b>"+" "+khoaHocArrayList.get(position).HocPhi;
+        String hocPhi = "<b>Học phí: <b>"+" "+khoaHocArrayList.get(position).HocPhi;
         holder.tvHocPhi.setText(Html.fromHtml(hocPhi));
     }
 

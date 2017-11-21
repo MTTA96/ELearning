@@ -88,8 +88,18 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment {
                 khoaHocArrayList,
                 imageHandler
         );
-       rvKhoaHocTimGiaSu.setLayoutManager(new GridLayoutManager(getActivity(),1));
+        rvKhoaHocTimGiaSu.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rvKhoaHocTimGiaSu.setAdapter(khoaHocAdapter);
+
+        srlKhoaHocTimGiaSu.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                srlKhoaHocTimGiaSu.setRefreshing(true);
+//                refeshLayout();
+                srlKhoaHocTimGiaSu.setRefreshing(false);
+            }
+        });
         mDatabase.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMGIASU).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -103,6 +113,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
+//                refeshLayout();
             }
 
             @Override
@@ -124,6 +135,11 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment {
 
         return root;
     }
+//    private void refeshLayout(){
+//        ListKhoaHocTimGiaSuFragment rSum = new ListKhoaHocTimGiaSuFragment();
+//        getActivity().getSupportFragmentManager().beginTransaction().remove(rSum).commit();
+//
+//    }
 
 //    @Override
 //    public void nhanDanhSach(ArrayList<CustomModelKhoaHoc> khoaHocList) {

@@ -88,8 +88,23 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment {
                 khoaHocArrayList,
                 imageHandler
         );
-       rvKhoaHocTimGiaSu.setLayoutManager(new GridLayoutManager(getActivity(),1));
+        rvKhoaHocTimGiaSu.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rvKhoaHocTimGiaSu.setAdapter(khoaHocAdapter);
+
+        srlKhoaHocTimGiaSu.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                srlKhoaHocTimGiaSu.setRefreshing(true);
+                khoaHocAdapter = new KhoaHocRCAdapter(
+                        khoaHocArrayList,
+                        imageHandler
+                );
+                rvKhoaHocTimGiaSu.setLayoutManager(new GridLayoutManager(getActivity(),1));
+                rvKhoaHocTimGiaSu.setAdapter(khoaHocAdapter);
+                srlKhoaHocTimGiaSu.setRefreshing(false);
+            }
+        });
         mDatabase.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMGIASU).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

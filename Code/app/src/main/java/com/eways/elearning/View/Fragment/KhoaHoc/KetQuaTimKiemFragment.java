@@ -4,6 +4,7 @@ package com.eways.elearning.View.Fragment.KhoaHoc;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,6 +92,7 @@ public class KetQuaTimKiemFragment extends Fragment {
                 rsKhoaHocChinhXac,
                 imageHandler
         );
+        rcKetQua.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rcKetQua.setAdapter(adapterChinhXac);
         if(requestGiaSu == true )
         {

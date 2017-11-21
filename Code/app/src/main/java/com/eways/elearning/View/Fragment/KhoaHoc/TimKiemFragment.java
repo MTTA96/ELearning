@@ -126,7 +126,7 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
 
         //Môn
         if (etMon.getText()!=null) {
-            data.clear();
+            data = new ArrayList();
             data.add(etMon.getText().toString());
             requestKhoaHoc.setMon(data);
         }
@@ -150,7 +150,7 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
             requestKhoaHoc.setGioiTinh("Nu");
 
         //Buổi
-        data.clear();
+        data = new ArrayList();
         if (cbSang.isChecked())
             data.add("Sang");
         if (cbChieu.isChecked())
@@ -160,7 +160,7 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
         requestKhoaHoc.setBuoi(data);
 
         //Thứ
-        data.clear();
+        data = new ArrayList();
         if (cbThu2.isChecked())
             data.add("T2");
         if (cbThu3.isChecked())

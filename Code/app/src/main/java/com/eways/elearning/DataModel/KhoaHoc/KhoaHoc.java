@@ -22,6 +22,7 @@ public class KhoaHoc implements Serializable {
     private String ThoiLuongBuoiHoc;
     private String HocPhi;
     private String ThongTinKhac;
+    private ArrayList<String> BangCap;
     private ArrayList<String> Mon;
     private ArrayList<String> LinhVuc;
     private ArrayList<String> Lop;
@@ -82,6 +83,14 @@ public class KhoaHoc implements Serializable {
 
     public void setNguoiDang(String nguoiDang) {
         NguoiDang = nguoiDang;
+    }
+
+    public ArrayList<String> getBangCap() {
+        return BangCap;
+    }
+
+    public void setBangCap(ArrayList<String> bangCap) {
+        BangCap = bangCap;
     }
 
     public String getSoBuoiHoc() {

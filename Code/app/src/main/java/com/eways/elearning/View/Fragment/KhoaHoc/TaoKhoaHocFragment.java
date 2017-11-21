@@ -13,12 +13,19 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.DataModel.KhoaHoc.LichHoc;
 import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachBuoiAdapter;
 import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachThuAdapter;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Activity.MainActivity;
+
+import java.util.ArrayList;
 
 /**
  *  Created by Tuấn Anh 11/16/2017
@@ -26,9 +33,11 @@ import com.eways.elearning.View.Activity.MainActivity;
 public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
     Button btnTaoKhoaHoc;
     EditText etMon, etDiaDiem, etHocPhi, etBangCap, etSoHocVien, etSoBuoi, etThoiLuong;
-    CheckBox cbGioiTinh;
+    CheckBox cbGioiTinhNam, cbGioiTinhNu;
     CheckBox cbSang, cbChieu, cbToi;
     CheckBox cbThu2, cbThu3, cbThu4, cbThu5, cbThu6, cbThu7, cbChuNhat;
+
+    private SharedPreferencesHandler sharedPreferencesHandler;
 
     public TaoKhoaHocFragment() {
         // Required empty public constructor
@@ -53,6 +62,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
+        sharedPreferencesHandler = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
     }
 
     @Override
@@ -109,8 +119,63 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.button_TiepTuc_TaoKhoaHoc){
-            KhoaHoc khoaHoc = new KhoaHoc();
+            if (checkData()){
+                KhoaHoc khoaHoc = setUpData();
+
+            }
+            else
+                Toast.makeText(getActivity(), "Thiếu thông tin!", Toast.LENGTH_LONG).show();
 
         }
+    }
+
+    private KhoaHoc setUpData() {
+        KhoaHoc khoaHoc = new KhoaHoc();
+        ArrayList dataKhocHoc = new ArrayList<String>();
+        dataKhocHoc.add(etMon.getText().toString());
+        khoaHoc.setMon(dataKhocHoc);
+        khoaHoc.setDiaDiem(new DiaDiem(etDiaDiem.getText().toString(), null, null));
+        khoaHoc.setHocPhi(etHocPhi.getText().toString());
+//                NguoiDang;
+        khoaHoc.setNguoiDang(sharedPreferencesHandler.getID());
+//                SoBuoiHoc;
+        khoaHoc.setSoBuoiHoc(etSoBuoi.getText().toString());
+//                SoLuongHocVien;
+        khoaHoc.setSoLuongHocVien(etSoHocVien.getText().toString());
+//                ArrayList<String> Buoi;
+        dataKhocHoc.clear();
+        if (cbSang.isChecked())
+            dataKhocHoc.add("Sang");
+        if (cbChieu.isChecked())
+            dataKhocHoc.add("Chieu");
+        if (cbToi.isChecked())
+            dataKhocHoc.add("Toi");
+//                ArrayList<String> Thu;
+//                GioiTinh;
+
+//                NgayDang;
+
+//                GioDang;
+//                ThoiLuongBuoiHoc;
+
+//                HocPhi;
+//                ThongTinKhac;
+//                ArrayList<String> BangCap;
+//                ArrayList<String> Mon;
+//                ArrayList<String> LinhVuc;
+//                ArrayList<String> Lop;
+//                LichHoc LichHoc;
+//                DiaDiem DiaDiem;
+        return khoaHoc;
+    }
+
+    private boolean checkData() {
+        if (etMon.getText()!=null && etDiaDiem.getText()!=null && etHocPhi!=null && etBangCap.getText()!=null
+                && etSoBuoi.getText()!=null && etSoHocVien.getText()!=null && etThoiLuong.getText()!=null )
+            if (cbGioiTinhNam.isChecked() || cbGioiTinhNu.isChecked()
+                    && cbSang.isChecked() || cbChieu.isChecked() || cbToi.isChecked()
+                    && cbThu2.isChecked() || cbThu3.isChecked() || cbThu4.isChecked() || cbThu5.isChecked() || cbThu6.isChecked() || cbThu7.isChecked() || cbChuNhat.isChecked())
+                return true;
+        return false;
     }
 }

@@ -12,7 +12,7 @@ public class CustomModelKhoaHoc {
     public String TenNguoiDang;
     public String UIDNguoiDang;
     public String LinkAvatar;
-    public String BuoiHoc;
+    public ArrayList<String> BuoiHoc;
     public String Rating;
     public String HocPhi;
     public ArrayList<String> MonHoc;
@@ -21,7 +21,7 @@ public class CustomModelKhoaHoc {
     public CustomModelKhoaHoc() {
     }
 
-    public CustomModelKhoaHoc(String tenNguoiDang, String UIDNguoiDang, String linkAvatar, String buoiHoc, String rating, String hocPhi, ArrayList<String> monHoc, ArrayList<String> lop) {
+    public CustomModelKhoaHoc(String tenNguoiDang, String UIDNguoiDang, String linkAvatar, ArrayList<String> buoiHoc, String rating, String hocPhi, ArrayList<String> monHoc, ArrayList<String> lop) {
         TenNguoiDang = tenNguoiDang;
         this.UIDNguoiDang = UIDNguoiDang;
         LinkAvatar = linkAvatar;

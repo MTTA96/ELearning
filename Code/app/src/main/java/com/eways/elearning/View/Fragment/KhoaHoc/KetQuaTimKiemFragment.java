@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
@@ -88,12 +89,21 @@ public class KetQuaTimKiemFragment extends Fragment {
         gioiHanLichHoc = (requestKhoaHoc.getThu().size())/2;
         rcKetQua = (RecyclerView)root.findViewById(R.id.rcKetQuaTimKiem);
         imageHandler = new ImageHandler(getActivity());
-        adapterChinhXac = new KhoaHocRCAdapter(
-                rsKhoaHocChinhXac,
-                imageHandler
-        );
-        rcKetQua.setLayoutManager(new GridLayoutManager(getActivity(),1));
-        rcKetQua.setAdapter(adapterChinhXac);
+        if(rsKhoaHocChinhXac==null)
+        {
+            Toast.makeText(getActivity(), "Null", Toast.LENGTH_SHORT).show();
+
+        }
+        else
+        {
+            adapterChinhXac = new KhoaHocRCAdapter(
+                    rsKhoaHocChinhXac,
+                    imageHandler
+            );
+            rcKetQua.setLayoutManager(new GridLayoutManager(getActivity(),1));
+            rcKetQua.setAdapter(adapterChinhXac);
+        }
+
         if(requestGiaSu == true )
         {
 
@@ -101,9 +111,9 @@ public class KetQuaTimKiemFragment extends Fragment {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     KhoaHocChuaHoanTat kh = dataSnapshot.getValue(KhoaHocChuaHoanTat.class);
-                    if(kh.LichHoc.NgayHoc.size() <= requestKhoaHoc.getLichHoc().NgayHoc.size())
+                    if(kh.LichHoc.NgayHoc.size() <= requestKhoaHoc.getThu().size())
                     {
-                        sizeLichHoc = requestKhoaHoc.getLichHoc().NgayHoc.size();
+                        sizeLichHoc = requestKhoaHoc.getThu().size();
                     }
                     else
                     {
@@ -125,7 +135,7 @@ public class KetQuaTimKiemFragment extends Fragment {
                                             adapterGanChinhXac.notifyDataSetChanged();
                                             for(int k =0;k<=sizeLichHoc;k++)
                                             {
-                                                if(kh.LichHoc.NgayHoc.get(i).equals(requestKhoaHoc.getLichHoc().NgayHoc.get(i)))
+                                                if(kh.LichHoc.NgayHoc.get(i).equals(requestKhoaHoc.getThu().get(i)))
                                                 {
                                                     countLichHoc+=1;
                                                     if(countLichHoc == gioiHanLichHoc)
@@ -178,7 +188,7 @@ public class KetQuaTimKiemFragment extends Fragment {
                     {
                         sizeLichHoc = kh.LichHoc.NgayHoc.size();
                     }
-                    for(int i =0;i<kh.Mon.size();i++)
+                    for(int i =0;i<=kh.Mon.size();i++)
                     {
                         if(kh.Mon.get(i).equals(requestKhoaHoc.getMon().get(0))) //vì chỉ lấy 1 môn nên get(0)
                         {
@@ -194,7 +204,7 @@ public class KetQuaTimKiemFragment extends Fragment {
                                             adapterGanChinhXac.notifyDataSetChanged();
                                             for(int k =0;k<=sizeLichHoc;k++)
                                             {
-                                                if(kh.LichHoc.NgayHoc.get(i).equals(requestKhoaHoc.getLichHoc().NgayHoc.get(i)))
+                                                if(kh.LichHoc.NgayHoc.get(i).equals(requestKhoaHoc.getThu().get(i)))
                                                 {
                                                     countLichHoc+=1;
                                                     if(countLichHoc == gioiHanLichHoc)

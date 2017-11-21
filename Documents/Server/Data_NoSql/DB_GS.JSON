@@ -406,7 +406,8 @@
           "HocPhi":"150000",
           "LichHoc":
           {
-            "ThoiGian":"Buổi sáng",
+            "ThoiGian":
+            ["Buổi sáng"],
             "NgayHoc":
             [
               "Thứ hai",
@@ -460,7 +461,8 @@
           "HocPhi":"150000",
           "LichHoc":
           {
-            "ThoiGian":"Buổi sáng",
+            "ThoiGian":
+            ["Buổi sáng"],
             "NgayHoc":
             [
               "Thứ hai",
@@ -514,7 +516,8 @@
           "HocPhi":"150000",
           "LichHoc":
           {
-            "ThoiGian":"Buổi sáng",
+            "ThoiGian":
+            ["Buổi sáng"],
             "NgayHoc":
             [
               "Thứ hai",
@@ -568,7 +571,8 @@
           "HocPhi":"150000",
           "LichHoc":
           {
-            "ThoiGian":"Toi",
+            "ThoiGian":
+            ["Toi"],
             "NgayHoc":
             [
               "T2",
@@ -625,7 +629,8 @@
           "HocPhi":"350000",
           "LichHoc":
           {
-            "ThoiGian":"Buổi tối",
+            "ThoiGian":
+            ["Buổi sáng"],
             "NgayHoc":
             [
               "Thứ hai",
@@ -672,7 +677,8 @@
           "HocPhi":"350000",
           "LichHoc":
           {
-            "ThoiGian":"Buổi tối",
+            "ThoiGian":
+            ["Buổi sáng"],
             "NgayHoc":
             [
               "Thứ hai",
@@ -723,7 +729,8 @@
           "HocPhi":"150000",
           "LichHoc":
           {
-            "ThoiGian":"Toi",
+            "ThoiGian":
+            ["Toi"],
             "NgayHoc":
             [
               "T2",
@@ -777,7 +784,8 @@
           "HocPhi":"150000",
           "LichHoc":
           {
-            "ThoiGian":"Buổi sáng",
+            "ThoiGian":
+            ["Buổi sáng"],
             "NgayHoc":
             [
               "Thứ hai",
@@ -832,7 +840,8 @@
           "HocPhi":"150000",
           "LichHoc":
           {
-            "ThoiGian":"Buổi sáng",
+            "ThoiGian":
+            ["Buổi sáng"],
             "NgayHoc":
             [
               "Thứ hai",
@@ -889,7 +898,8 @@
           "HocPhi":"150000",
           "LichHoc":
           {
-            "ThoiGian":"Buổi chiều",
+            "ThoiGian":
+            ["Buổi sáng"],
             "NgayHoc":
             [
               "Thứ hai",
@@ -938,7 +948,8 @@
           "HocPhi":"150000",
           "LichHoc":
           {
-            "ThoiGian":"Buổi chiều",
+            "ThoiGian":
+            ["Buổi sáng"],
             "NgayHoc":
             [
               "Thứ hai",

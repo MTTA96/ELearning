@@ -35,6 +35,7 @@
     <string name="Tittle_Signup"><b>Đăng Ký</b></string>
     <string name="Hint_EmailDK">Email</string>
     <string name="Hint_passwordDK">Mật khẩu</string>
+    <string name="Hint_Hoten">Họ và tên</string>
     <string name="Hint_confirmpasswordDK">Nhập lại mật khẩu</string>
     <string name="tv_dieukhoan1">Đồng ý với</string>
     <string name="tv_dieukhoan2"><u><i>điều khoản</i></u></string>
@@ -47,6 +48,7 @@
     <string name="SaiEmailDK">* Email không đúng định dạng</string>
     <string name="SaiXacNhanMatKhauDK">* Xác nhận mật không đúng</string>
     <string name="SaiMatKhauDK">* Mật khẩu phải từ 6 ký tự trở lên</string>
+    <string name="thieu_hoten">* Chưa nhập họ tên</string>
 
     <!-- Danh sách khóa học -->
     <string name="title_danh_sach_khoa_hoc">Danh sách khóa học</string>

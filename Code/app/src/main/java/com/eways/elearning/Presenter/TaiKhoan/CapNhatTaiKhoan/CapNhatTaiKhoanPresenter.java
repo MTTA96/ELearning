@@ -21,7 +21,7 @@ public class CapNhatTaiKhoanPresenter implements CapNhatTaiKhoanPresenterImp {
 
     @Override
     public void NhanDataUpdate(TaiKhoan taiKhoan, Activity activity) {
-
+        capNhatTaiKhoanModelImp.CapNhatTaiKhoan(taiKhoan,activity);
     }
 
     @Override

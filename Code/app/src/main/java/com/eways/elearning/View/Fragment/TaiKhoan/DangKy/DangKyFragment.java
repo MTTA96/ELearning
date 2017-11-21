@@ -26,16 +26,25 @@ import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
  */
 public class DangKyFragment extends Fragment implements View.OnClickListener, DangKyViewImp {
     Button btnHuy, btnDangKy_DK;
-    EditText etEmailDK, etPasswordDK, etCPassword;
-    TextView tvLoiEmail, tvLoiPassword, tvLoiCPassword;
+    EditText etEmailDK, etPasswordDK, etCPassword,etHoten;
+    TextView tvLoiEmail, tvLoiPassword, tvLoiCPassword,tvLoiHoten;
 
     private DangKyPresenterImp dangKyImpPresenter;
     private FragmentHandler fragmentHandler;
     CheckBox cbDieuKhoan;
     boolean trangThaicbDieuKhoan;
 
+
     public static final String ERROR_MSG_THIEU_EMAIL_PW = "thieu_email_pw";
     public static final String ERROR_MSG_THIEU_EMAIL = "thieu_email";
+    public static final String ERROR_MSG_THIEU_HOTEN="thieu_hoten";
+    public static final String ERROR_MSG_THIEU_EMAIL_HOTEN="thieu_email_hoten";
+    public static final String ERROR_MSG_THIEU_HOTEN_PW="thieu_hoten_pw";
+    public static final String ERROR_MSG_THIEU_HOTEN_CPW="thieu_hoten_pw";
+    public static final String ERROR_MSG_THIEU_EMAIL_HOTEN_PW="thieu_email_hoten_pw";
+    public static final String ERROR_MSG_THIEU_EMAIL_HOTEN_CPW="thieu_email_hoten_cpw";
+    public static final String ERROR_MSG_THIEU_EMAIL_HOTEN_PW_CPW="thieu_email_hoten_pw_cpw";
+    public static final String ERROR_MSG_THIEU_HOTEN_PW_CPW="thieu_hoten_pw_cpw";
     public static final String ERROR_MSG_THIEU_PW = "thieu_pw";
     public static final String ERROR_MSG_THIEU_CPW = "thieu_cpw";
     public static final String ERROR_MSG_THIEU_EMAIL_CPW = "thieu_email_cpw";
@@ -67,9 +76,11 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
         etEmailDK = (EditText) root.findViewById(R.id.etEmail);
         etPasswordDK = (EditText) root.findViewById(R.id.etPasswordDK);
         etCPassword = (EditText) root.findViewById(R.id.etConfirmPassDK);
+        etHoten= (EditText) root.findViewById(R.id.etHoTen);
         tvLoiEmail = (TextView) root.findViewById(R.id.tvLoiEmailDK);
         tvLoiPassword = (TextView) root.findViewById(R.id.tvLoiPasswordDK);
         tvLoiCPassword = (TextView) root.findViewById(R.id.tvLoiCPasswordDK);
+        tvLoiHoten= (TextView) root.findViewById(R.id.tvLoiHoten);
         cbDieuKhoan = (CheckBox) root.findViewById(R.id.cbDieuKhoan);
 
         btnHuy.setOnClickListener(this);
@@ -107,7 +118,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
         if (view.getId() == R.id.btnHuy_DK)
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new DangNhapFragment()).commit();
         if (view.getId() == R.id.btnDK_DK) {
-            dangKyImpPresenter.NhanThongTinDangKy(etEmailDK.getText().toString(), etPasswordDK.getText().toString(), etCPassword.getText().toString(), getActivity());
+            dangKyImpPresenter.NhanThongTinDangKy(etEmailDK.getText().toString(), etPasswordDK.getText().toString(), etCPassword.getText().toString(),etHoten.getText().toString(),getActivity());
         }
     }
 
@@ -117,6 +128,8 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
             tvLoiEmail.setText(R.string.emtyEmailDK);
             tvLoiPassword.setText("");
             tvLoiCPassword.setText("");
+            tvLoiHoten.setText("");
+            etHoten.setBackgroundResource(R.drawable.et_shape);
             etEmailDK.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDK.setBackgroundResource(R.drawable.et_shape);
             etCPassword.setBackgroundResource(R.drawable.et_shape);
@@ -126,6 +139,8 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
             tvLoiPassword.setText(R.string.emtyPasswordDK);
             tvLoiEmail.setText("");
             tvLoiCPassword.setText("");
+            tvLoiHoten.setText("");
+            etHoten.setBackgroundResource(R.drawable.et_shape);
             etPasswordDK.setBackgroundResource(R.drawable.loi_shape);
             etEmailDK.setBackgroundResource(R.drawable.et_shape);
             etCPassword.setBackgroundResource(R.drawable.et_shape);
@@ -135,6 +150,8 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
             tvLoiCPassword.setText(R.string.emtyCPasswordDK);
             tvLoiEmail.setText("");
             tvLoiPassword.setText("");
+            tvLoiHoten.setText("");
+            etHoten.setBackgroundResource(R.drawable.et_shape);
             etCPassword.setBackgroundResource(R.drawable.loi_shape);
             etEmailDK.setBackgroundResource(R.drawable.et_shape);
             etPasswordDK.setBackgroundResource(R.drawable.et_shape);
@@ -144,6 +161,8 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
             tvLoiPassword.setText(R.string.emtyPasswordDK);
             tvLoiEmail.setText(R.string.emtyEmailDK);
             tvLoiCPassword.setText("");
+            tvLoiHoten.setText("");
+            etHoten.setBackgroundResource(R.drawable.et_shape);
             etEmailDK.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDK.setBackgroundResource(R.drawable.loi_shape);
             etCPassword.setBackgroundResource(R.drawable.et_shape);
@@ -153,6 +172,8 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
             tvLoiEmail.setText(R.string.emtyEmailDK);
             tvLoiCPassword.setText(R.string.emtyCPasswordDK);
             tvLoiPassword.setText("");
+            tvLoiHoten.setText("");
+            etHoten.setBackgroundResource(R.drawable.et_shape);
             etEmailDK.setBackgroundResource(R.drawable.loi_shape);
             etCPassword.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDK.setBackgroundResource(R.drawable.et_shape);
@@ -162,6 +183,8 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
             tvLoiPassword.setText(R.string.emtyPasswordDK);
             tvLoiCPassword.setText(R.string.emtyCPasswordDK);
             tvLoiEmail.setText("");
+            tvLoiHoten.setText("");
+            etHoten.setBackgroundResource(R.drawable.et_shape);
             etPasswordDK.setBackgroundResource(R.drawable.loi_shape);
             etCPassword.setBackgroundResource(R.drawable.loi_shape);
             etEmailDK.setBackgroundResource(R.drawable.et_shape);
@@ -171,6 +194,8 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
             tvLoiEmail.setText(R.string.emtyEmailDK);
             tvLoiPassword.setText(R.string.emtyPasswordDK);
             tvLoiCPassword.setText(R.string.emtyCPasswordDK);
+            tvLoiHoten.setText("");
+            etHoten.setBackgroundResource(R.drawable.et_shape);
             etEmailDK.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDK.setBackgroundResource(R.drawable.loi_shape);
             etCPassword.setBackgroundResource(R.drawable.loi_shape);
@@ -180,6 +205,8 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
             tvLoiEmail.setText(R.string.SaiEmailDK);
             tvLoiPassword.setText("");
             tvLoiCPassword.setText("");
+            tvLoiHoten.setText("");
+            etHoten.setBackgroundResource(R.drawable.et_shape);
             etEmailDK.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDK.setBackgroundResource(R.drawable.et_shape);
             etCPassword.setBackgroundResource(R.drawable.et_shape);
@@ -189,6 +216,8 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
             tvLoiCPassword.setText(R.string.SaiXacNhanMatKhauDK);
             tvLoiEmail.setText("");
             tvLoiPassword.setText("");
+            tvLoiHoten.setText("");
+            etHoten.setBackgroundResource(R.drawable.et_shape);
             etCPassword.setBackgroundResource(R.drawable.loi_shape);
             etEmailDK.setBackgroundResource(R.drawable.et_shape);
             etPasswordDK.setBackgroundResource(R.drawable.et_shape);
@@ -197,23 +226,104 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
             tvLoiPassword.setText(R.string.SaiMatKhauDK);
             tvLoiEmail.setText("");
             tvLoiCPassword.setText("");
+            tvLoiHoten.setText("");
+            etHoten.setBackgroundResource(R.drawable.et_shape);
             etPasswordDK.setBackgroundResource(R.drawable.loi_shape);
             etEmailDK.setBackgroundResource(R.drawable.et_shape);
             etCPassword.setBackgroundResource(R.drawable.et_shape);
             return;
         }
+        if (result.compareTo(ERROR_MSG_THIEU_HOTEN)==0){
+            tvLoiPassword.setText("");
+            tvLoiEmail.setText("");
+            tvLoiCPassword.setText("");
+            tvLoiHoten.setText(R.string.thieu_hoten);
+            etHoten.setBackgroundResource(R.drawable.loi_shape);
+            etPasswordDK.setBackgroundResource(R.drawable.et_shape);
+            etEmailDK.setBackgroundResource(R.drawable.et_shape);
+            etCPassword.setBackgroundResource(R.drawable.et_shape);
+            return;
+        }
+        if (result.compareTo(ERROR_MSG_THIEU_EMAIL_HOTEN)==0){
+            tvLoiPassword.setText("");
+            tvLoiEmail.setText(R.string.emtyEmailDK);
+            tvLoiCPassword.setText("");
+            tvLoiHoten.setText(R.string.thieu_hoten);
+            etHoten.setBackgroundResource(R.drawable.loi_shape);
+            etPasswordDK.setBackgroundResource(R.drawable.et_shape);
+            etEmailDK.setBackgroundResource(R.drawable.loi_shape);
+            etCPassword.setBackgroundResource(R.drawable.et_shape);
+            return;
+        }
+        if (result.compareTo(ERROR_MSG_THIEU_HOTEN_PW )==0){
+            tvLoiPassword.setText(R.string.emtyPasswordDK);
+            tvLoiEmail.setText("");
+            tvLoiCPassword.setText("");
+            tvLoiHoten.setText(R.string.thieu_hoten);
+            etHoten.setBackgroundResource(R.drawable.loi_shape);
+            etPasswordDK.setBackgroundResource(R.drawable.loi_shape);
+            etEmailDK.setBackgroundResource(R.drawable.et_shape);
+            etCPassword.setBackgroundResource(R.drawable.et_shape);
+            return;
+        }
+        if (result.compareTo(ERROR_MSG_THIEU_HOTEN_CPW)==0)
+        {
+            tvLoiPassword.setText("");
+            tvLoiEmail.setText("");
+            tvLoiCPassword.setText(R.string.emtyCPasswordDK);
+            tvLoiHoten.setText(R.string.thieu_hoten);
+            etHoten.setBackgroundResource(R.drawable.loi_shape);
+            etPasswordDK.setBackgroundResource(R.drawable.et_shape);
+            etEmailDK.setBackgroundResource(R.drawable.et_shape);
+            etCPassword.setBackgroundResource(R.drawable.loi_shape);
+            return;
+        }
+        if(result.compareTo(ERROR_MSG_THIEU_EMAIL_HOTEN_PW)==0){
+            tvLoiPassword.setText(R.string.emtyPasswordDK);
+            tvLoiEmail.setText(R.string.emtyEmailDK);
+            tvLoiCPassword.setText("");
+            tvLoiHoten.setText(R.string.thieu_hoten);
+            etHoten.setBackgroundResource(R.drawable.loi_shape);
+            etPasswordDK.setBackgroundResource(R.drawable.loi_shape);
+            etEmailDK.setBackgroundResource(R.drawable.loi_shape);
+            etCPassword.setBackgroundResource(R.drawable.et_shape);
+            return;
+        }
+        if (result.compareTo(ERROR_MSG_THIEU_EMAIL_HOTEN_CPW)==0){
+            tvLoiPassword.setText("");
+            tvLoiEmail.setText(R.string.emtyEmailDK);
+            tvLoiCPassword.setText(R.string.emtyCPasswordDK);
+            tvLoiHoten.setText(R.string.thieu_hoten);
+            etHoten.setBackgroundResource(R.drawable.loi_shape);
+            etPasswordDK.setBackgroundResource(R.drawable.et_shape);
+            etEmailDK.setBackgroundResource(R.drawable.loi_shape);
+            etCPassword.setBackgroundResource(R.drawable.loi_shape);
+            return;
+        }
+        if (result.compareTo(ERROR_MSG_THIEU_EMAIL_HOTEN_PW_CPW)==0){
+            tvLoiPassword.setText(R.string.emtyPasswordDK);
+            tvLoiEmail.setText(R.string.emtyEmailDK);
+            tvLoiCPassword.setText(R.string.emtyCPasswordDK);
+            tvLoiHoten.setText(R.string.thieu_hoten);
+            etHoten.setBackgroundResource(R.drawable.loi_shape);
+            etPasswordDK.setBackgroundResource(R.drawable.loi_shape);
+            etEmailDK.setBackgroundResource(R.drawable.loi_shape);
+            etCPassword.setBackgroundResource(R.drawable.loi_shape);
+            return;
+        }
         if (result.compareTo(SIGN_UP_SUCCESS) == 0) {
-
             Toast.makeText(getActivity(), "Đăng ký thành công", Toast.LENGTH_SHORT).show();
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new DangNhapFragment()).commit();
         } else {
             tvLoiEmail.setText("Tài khoản đã tồn tại");
             tvLoiPassword.setText("");
             tvLoiCPassword.setText("");
+            tvLoiHoten.setText("");
+            etHoten.setBackgroundResource(R.drawable.et_shape);
             etEmailDK.setBackgroundResource(R.drawable.loi_shape);
             etCPassword.setBackgroundResource(R.drawable.et_shape);
             etPasswordDK.setBackgroundResource(R.drawable.et_shape);
-            return;
+            return ;
         }
 
     }

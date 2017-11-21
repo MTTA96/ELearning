@@ -63,6 +63,7 @@ public class DangNhapModel implements DangNhapImpModel{
                         mData.getReference().child("TaiKhoan").child(account.getId().toString()).setValue(new TaiKhoan(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),account.getDisplayName(),false, SupportKeysList.TAI_KHOAN_GMAIL,null,null,null,null));
                     }
                 }
+
             }
 
             @Override

@@ -20,6 +20,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingBottom="10dp">
+            <!-- Switch tìm kiếm -->
+            <Switch
+                android:id="@+id/switch_tao_khoa_hoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tìm gia sư"
+                android:layout_marginTop="@dimen/tao_khoa_hoc_vertical_padding"/>
             <!-- Tên môn -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -140,6 +147,7 @@
 
             <!-- Bằng cấp -->
             <LinearLayout
+                android:id="@+id/layout_BangCap_TaoKhoaHoc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/view_tao_khoa_hoc_margin_top"

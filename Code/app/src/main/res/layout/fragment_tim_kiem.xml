@@ -195,6 +195,7 @@
 
             <!-- Bằng cấp -->
             <LinearLayout
+                android:id="@+id/layout_BangCap_TimKiem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/view_tao_khoa_hoc_margin_top"

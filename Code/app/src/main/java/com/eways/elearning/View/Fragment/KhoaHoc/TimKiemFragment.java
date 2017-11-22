@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class TimKiemFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
-
+    View root;
     Switch switchTimKiem;
     EditText etLinhVuc, etMon, etDiaDiem, etHocPhi, etBangCap;
     CheckBox cbGioiTinhNam, cbGioiTinhNu;
@@ -49,7 +49,7 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_tim_kiem, container, false);
+        root = inflater.inflate(R.layout.fragment_tim_kiem, container, false);
         switchTimKiem = (Switch) root.findViewById(R.id.switch_tim_kiem);
         etLinhVuc = (EditText) root.findViewById(R.id.editText_LinhVuc_TimKiem);
         etMon = (EditText) root.findViewById(R.id.editText_Mon_TimKiem);
@@ -79,6 +79,7 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
         cbThu6.setOnCheckedChangeListener(this);
         cbThu7.setOnCheckedChangeListener(this);
         cbChuNhat.setOnCheckedChangeListener(this);
+        switchTimKiem.setOnCheckedChangeListener(this);
         root.findViewById(R.id.button_Cancel_TimKiem).setOnClickListener(this);
         root.findViewById(R.id.button_Tim_Kiem).setOnClickListener(this);
         return root;
@@ -86,13 +87,24 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-            buttonView.setBackgroundResource(R.drawable.btn_color_main_corners_shape);
-            buttonView.setTextColor(Color.WHITE);
+        if (buttonView.getId() == R.id.switch_tim_kiem){
+            if (isChecked) {
+                buttonView.setText("Tìm học viên");
+                root.findViewById(R.id.layout_BangCap_TimKiem).setVisibility(View.GONE);
+            }
+            else {
+                buttonView.setText("Tìm gia sư");
+                root.findViewById(R.id.layout_BangCap_TimKiem).setVisibility(View.VISIBLE);
+            }
         }
         else {
-            buttonView.setBackgroundResource(R.drawable.btn_white_corners_shape);
-            buttonView.setTextColor(Color.BLACK);
+            if (isChecked) {
+                buttonView.setBackgroundResource(R.drawable.btn_color_main_corners_shape);
+                buttonView.setTextColor(Color.WHITE);
+            } else {
+                buttonView.setBackgroundResource(R.drawable.btn_white_corners_shape);
+                buttonView.setTextColor(Color.BLACK);
+            }
         }
     }
 
@@ -112,7 +124,7 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
                 KhoaHoc requestKhoaHoc = new KhoaHoc();
                 setUpDataRequestKhoaHoc(requestKhoaHoc);
                 String bangCap = etBangCap.getText()!=null ? etBangCap.getText().toString():null;
-                fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(switchTimKiem.isActivated(), requestKhoaHoc, bangCap), false, null);
+                fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(switchTimKiem.isChecked(), requestKhoaHoc, bangCap), false, null);
                 break;
         }
     }

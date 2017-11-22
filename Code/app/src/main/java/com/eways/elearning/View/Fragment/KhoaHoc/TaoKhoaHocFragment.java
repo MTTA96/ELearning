@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
@@ -34,6 +35,8 @@ import java.util.Calendar;
  * Created by Tuấn Anh 11/16/2017
  */
 public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+    View root;
+    Switch switchTaoKhoaHoc;
     Button btnTaoKhoaHoc;
     EditText etLinhVuc, etMon, etDiaDiem, etHocPhi, etBangCap, etSoHocVien, etSoBuoi, etThoiLuong, etThongTinThem;
     CheckBox cbGioiTinhNam, cbGioiTinhNu;
@@ -72,7 +75,8 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_tao_khoa_hoc, container, false);
+        root = inflater.inflate(R.layout.fragment_tao_khoa_hoc, container, false);
+        switchTaoKhoaHoc = (Switch) root.findViewById(R.id.switch_tao_khoa_hoc);
         etMon = (EditText) root.findViewById(R.id.editText_TenMon_TaoKhoaHoc);
         etDiaDiem = (EditText) root.findViewById(R.id.editText_DiaDiem_TaoKhoaHoc);
         etHocPhi = (EditText) root.findViewById(R.id.editText_HocPhi_TaoKhoaHoc);
@@ -93,6 +97,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbChuNhat = (CheckBox) root.findViewById(R.id.checkBox_Chu_Nhat);
 
         root.findViewById(R.id.button_TiepTuc_TaoKhoaHoc).setOnClickListener(this);
+        switchTaoKhoaHoc.setOnCheckedChangeListener(this);
         cbSang.setOnCheckedChangeListener(this);
         cbChieu.setOnCheckedChangeListener(this);
         cbToi.setOnCheckedChangeListener(this);
@@ -110,12 +115,24 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-            buttonView.setBackgroundResource(R.drawable.btn_color_main_corners_shape);
-            buttonView.setTextColor(Color.WHITE);
-        } else {
-            buttonView.setBackgroundResource(R.drawable.btn_white_corners_shape);
-            buttonView.setTextColor(Color.BLACK);
+        if (buttonView.getId() == R.id.switch_tim_kiem){
+            if (isChecked) {
+                buttonView.setText("Tìm học viên");
+                root.findViewById(R.id.layout_BangCap_TaoKhoaHoc).setVisibility(View.GONE);
+            }
+            else {
+                buttonView.setText("Tìm gia sư");
+                root.findViewById(R.id.layout_BangCap_TaoKhoaHoc).setVisibility(View.VISIBLE);
+            }
+        }
+        else {
+            if (isChecked) {
+                buttonView.setBackgroundResource(R.drawable.btn_color_main_corners_shape);
+                buttonView.setTextColor(Color.WHITE);
+            } else {
+                buttonView.setBackgroundResource(R.drawable.btn_white_corners_shape);
+                buttonView.setTextColor(Color.BLACK);
+            }
         }
     }
 

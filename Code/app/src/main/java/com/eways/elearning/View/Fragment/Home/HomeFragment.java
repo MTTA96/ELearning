@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.eways.elearning.DataModel.BaiDang.LinhVucBaiDang;
+import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucDialog;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
@@ -19,6 +21,8 @@ import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHocFragment;
 import com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -93,8 +97,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_tao_khoa_hoc:
                 if (!mySharedPref.getDaDangNhap())
                     fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
-                else
-                    fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
+                else {
+//                    ArrayList<LinhVucBaiDang> DanhSachLVBD=new ArrayList<>();
+//                    DanhSachLVBD.add(new LinhVucBaiDang(1,"Ẩm Thực",R.drawable.at));
+//                    DanhSachLVBD.add(new LinhVucBaiDang(2,"Học Tập",R.drawable.ht));
+//                    DanhSachLVBD.add(new LinhVucBaiDang(3,"Âm Nhạc",R.drawable.an));
+//                    DanhSachLVBD.add(new LinhVucBaiDang(4,"Vận Tải",R.drawable.vt));
+////                    fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
+//                    LinhVucDialog linhVucDialog=new LinhVucDialog(getContext(),DanhSachLVBD);
+//                    linhVucDialog.ShowDialogLinhVuc();
+                    fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(),true,null);
+                }
                 break;
         }
     }

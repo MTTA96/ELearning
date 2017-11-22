@@ -80,7 +80,6 @@ public class CapNhatThongTinTaiKhoanView extends Fragment implements CapNhatTaiK
         spGiotinh.setAdapter(GTadapter);
         LoadData();
         btnLuuCapNhat.setOnClickListener(this);
-        Toast.makeText(getActivity(),sharedPreferencesHandler.getEmail(),Toast.LENGTH_SHORT).show();
         return view;
     }
 

@@ -56,7 +56,7 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
 
         ArrayList<String> listBuoi = khoaHocArrayList.get(position).BuoiHoc;
         String dsbuoi = "";
-        for (String buoi : listBuoi) { dsbuoi = buoi + mon; }
+        for (String buoi : listBuoi) { dsbuoi = dsbuoi + buoi; }
         String buoi = "<b>Buổi: </b>"+" " +dsbuoi;
         holder.tvBuoiHoc.setText(Html.fromHtml(buoi));
 

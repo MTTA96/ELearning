@@ -81,7 +81,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
 
             //Xóa sau demo
             sharedPreferencesHandler.setTen(etHoTen.getText().toString());
-            
+
             fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), false, null);
         }
     }

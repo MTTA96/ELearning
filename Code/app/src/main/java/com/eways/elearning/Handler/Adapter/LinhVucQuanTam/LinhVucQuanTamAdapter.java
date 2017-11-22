@@ -1,11 +1,13 @@
 package com.eways.elearning.Handler.Adapter.LinhVucQuanTam;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 
 public class LinhVucQuanTamAdapter extends RecyclerView.Adapter<LinhVucQuanTamAdapter.ViewHolder>  {
     ArrayList<LinhVucBaiDang> DanhSachLinhVucBD;
+
     Context context;
 
 //    public LinhVucQuanTamAdapter(ArrayList<LinhVucBaiDang> danhSachLinhVucBD) {
@@ -44,14 +47,9 @@ public class LinhVucQuanTamAdapter extends RecyclerView.Adapter<LinhVucQuanTamAd
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
+        final ArrayList<Integer> DanhSachChon=new ArrayList<>();
         holder.ivHinhLVQT.setBackgroundResource(DanhSachLinhVucBD.get(position).getHinhLinhVuc());
         holder.tvTenLVQT.setText(DanhSachLinhVucBD.get(position).getTenLinhVuc());
-        holder.flLVQT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.cbLVQT.setChecked(true);
-            }
-        });
     }
 
     @Override
@@ -64,12 +62,14 @@ public class LinhVucQuanTamAdapter extends RecyclerView.Adapter<LinhVucQuanTamAd
         TextView tvTenLVQT;
         CheckBox cbLVQT;
         FrameLayout flLVQT;
+        Button btnXacNhanLinhVuc;
         public ViewHolder(View itemView) {
             super(itemView);
             ivHinhLVQT= (ImageView) itemView.findViewById(R.id.ivHinh_LVYT);
             tvTenLVQT= (TextView) itemView.findViewById(R.id.tvTen_LVYT);
             cbLVQT= (CheckBox) itemView.findViewById(R.id.cbChon_LVYT);
             flLVQT= (FrameLayout) itemView.findViewById(R.id.flItem_LVQT);
+            btnXacNhanLinhVuc=(Button) itemView.findViewById(R.id.btnXacNhanLinhVucQuanTam);
         }
     }
 }

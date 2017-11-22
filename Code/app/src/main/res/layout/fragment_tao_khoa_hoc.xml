@@ -130,12 +130,14 @@
                     android:orientation="horizontal">
                     <!-- Nam -->
                     <CheckBox
+                        android:id="@+id/cbGioiTinhNam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/text_gioi_tinh_nam" />
                     <!-- Nữ -->
                     <CheckBox
+                        android:id="@+id/cbGioiTinhNu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

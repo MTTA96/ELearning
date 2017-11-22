@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.eways.elearning.DataModel.BaiDang.LinhVucBaiDang;
+import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucDialog;
 import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucQuanTamAdapter;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Handler.LoginGmailHandler;
@@ -99,24 +100,15 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.LoLinhVucQuanTam) {
-            Dialog dialog = new Dialog(getActivity());
-            dialog.setContentView(R.layout.dialog_linhvuc_yeuthich);
-            RecyclerView rcDanhSachLVQT = (RecyclerView) dialog.findViewById(R.id.rcLinhVucYeuThich);
-            rcDanhSachLVQT.setHasFixedSize(true);
-			
-            GridLayoutManager gridLayoutManager=new GridLayoutManager(getActivity(),2);
+
             ArrayList<LinhVucBaiDang> DanhSachLVBD=new ArrayList<>();
             DanhSachLVBD.add(new LinhVucBaiDang(1,"Ẩm Thực",R.drawable.at));
             DanhSachLVBD.add(new LinhVucBaiDang(2,"Học Tập",R.drawable.ht));
             DanhSachLVBD.add(new LinhVucBaiDang(3,"Âm Nhạc",R.drawable.an));
             DanhSachLVBD.add(new LinhVucBaiDang(4,"Vận Tải",R.drawable.vt));
-            linhVucQuanTamAdapter=new LinhVucQuanTamAdapter(DanhSachLVBD,getContext());
 
-            rcDanhSachLVQT.setLayoutManager(gridLayoutManager);
-            rcDanhSachLVQT.setAdapter(linhVucQuanTamAdapter);
-            Window window = dialog.getWindow();
-            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            dialog.show();
+            LinhVucDialog linhVucDialog=new LinhVucDialog(getContext(),DanhSachLVBD);
+            linhVucDialog.ShowDialogLinhVuc();
         }
         if (v.getId() == R.id.LoTaiKhoanKhac) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());

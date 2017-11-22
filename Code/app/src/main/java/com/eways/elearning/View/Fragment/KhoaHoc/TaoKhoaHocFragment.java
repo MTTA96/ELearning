@@ -91,6 +91,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbThu6 = (CheckBox) root.findViewById(R.id.checkBox_Thu6);
         cbThu7 = (CheckBox) root.findViewById(R.id.checkBox_Thu7);
         cbChuNhat = (CheckBox) root.findViewById(R.id.checkBox_Chu_Nhat);
+        btnTaoKhoaHoc= (Button) root.findViewById(R.id.btn_tao_khoa_hoc);
 
         root.findViewById(R.id.button_TiepTuc_TaoKhoaHoc).setOnClickListener(this);
         cbSang.setOnCheckedChangeListener(this);

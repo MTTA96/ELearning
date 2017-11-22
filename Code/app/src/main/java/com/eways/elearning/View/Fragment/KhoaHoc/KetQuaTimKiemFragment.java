@@ -119,33 +119,41 @@ public class KetQuaTimKiemFragment extends Fragment {
                     {
                         sizeLichHoc = kh.LichHoc.NgayHoc.size();
                     }
-                    for(int i =0;i<=kh.Mon.size();i++)
+                    for(String mon : kh.Mon)
                     {
-                        if(kh.Mon.get(i).equals(requestKhoaHoc.getMon().get(0))) //vì chỉ lấy 1 môn nên get(0)
+                        if(mon.equals(requestKhoaHoc.getMon().get(0))) //vì chỉ lấy 1 môn nên get(0)
                         {
-                            for(int j =0;j<=kh.LinhVuc.size();j++)
+                            for(String linhVuc : kh.LinhVuc)
                             {
-                                if(kh.LinhVuc.get(j).equals(requestKhoaHoc.getLinhVuc().get(0)))
+                                if(linhVuc.equals(requestKhoaHoc.getLinhVuc().get(0))) //Vì chỉ lấy 1 lĩnh vực 1 lần nên get(0)
                                 {
-                                    for(int z=0;z<=requestKhoaHoc.getBuoi().size();z++)
+                                    for(String rqBuoi : requestKhoaHoc.getBuoi())
                                     {
-                                        if(requestKhoaHoc.getBuoi().get(z).equals(kh.LichHoc.ThoiGian))
+                                        for(String rsBuoi : kh.LichHoc.ThoiGian)
                                         {
-                                            rsKhoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
-                                            adapterGanChinhXac.notifyDataSetChanged();
-                                            for(int k =0;k<=sizeLichHoc;k++)
+                                            if(rqBuoi.equals(rsBuoi))
                                             {
-                                                if(kh.LichHoc.NgayHoc.get(i).equals(requestKhoaHoc.getThu().get(i)))
+                                                rsKhoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
+                                                adapterGanChinhXac.notifyDataSetChanged();
+                                                for(int i =0;i<=sizeLichHoc;i++)
                                                 {
-                                                    countLichHoc+=1;
-                                                    if(countLichHoc == gioiHanLichHoc)
+                                                    for(int j = 0;j<=sizeLichHoc;j++ )
                                                     {
-                                                        rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
-                                                        adapterChinhXac.notifyDataSetChanged();
+                                                        if(kh.LichHoc.NgayHoc.get(i).equals(requestKhoaHoc.getThu().get(j)))
+                                                        {
+                                                            countLichHoc+=1;
+                                                            if(countLichHoc == gioiHanLichHoc)
+                                                            {
+                                                                rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
+                                                                adapterChinhXac.notifyDataSetChanged();
+                                                            }
+                                                        }
                                                     }
+
                                                 }
                                             }
                                         }
+
                                     }
                                 }
                             }
@@ -188,33 +196,41 @@ public class KetQuaTimKiemFragment extends Fragment {
                     {
                         sizeLichHoc = kh.LichHoc.NgayHoc.size();
                     }
-                    for(int i =0;i<=kh.Mon.size();i++)
+                    for(String mon : kh.Mon)
                     {
-                        if(kh.Mon.get(i).equals(requestKhoaHoc.getMon().get(0))) //vì chỉ lấy 1 môn nên get(0)
+                        if(mon.equals(requestKhoaHoc.getMon().get(0))) //vì chỉ lấy 1 môn nên get(0)
                         {
-                            for(int j =0;j<=kh.LinhVuc.size();j++)
+                            for(String linhVuc : kh.LinhVuc)
                             {
-                                if(kh.LinhVuc.get(j).equals(requestKhoaHoc.getLinhVuc().get(0)))
+                                if(linhVuc.equals(requestKhoaHoc.getLinhVuc().get(0))) //Vì chỉ lấy 1 lĩnh vực 1 lần nên get(0)
                                 {
-                                    for(int z=0;z<=requestKhoaHoc.getBuoi().size();z++)
+                                    for(String rqBuoi : requestKhoaHoc.getBuoi())
                                     {
-                                        if(requestKhoaHoc.getBuoi().get(z).equals(kh.LichHoc.ThoiGian))
+                                        for(String rsBuoi : kh.LichHoc.ThoiGian)
                                         {
-                                            rsKhoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
-                                            adapterGanChinhXac.notifyDataSetChanged();
-                                            for(int k =0;k<=sizeLichHoc;k++)
+                                            if(rqBuoi.equals(rsBuoi))
                                             {
-                                                if(kh.LichHoc.NgayHoc.get(i).equals(requestKhoaHoc.getThu().get(i)))
+                                                rsKhoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
+                                                adapterGanChinhXac.notifyDataSetChanged();
+                                                for(int i =0;i<=sizeLichHoc;i++)
                                                 {
-                                                    countLichHoc+=1;
-                                                    if(countLichHoc == gioiHanLichHoc)
+                                                    for(int j = 0;j<=sizeLichHoc;j++ )
                                                     {
-                                                        rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
-                                                        adapterChinhXac.notifyDataSetChanged();
+                                                        if(kh.LichHoc.NgayHoc.get(i).equals(requestKhoaHoc.getThu().get(j)))
+                                                        {
+                                                            countLichHoc+=1;
+                                                            if(countLichHoc == gioiHanLichHoc)
+                                                            {
+                                                                rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
+                                                                adapterChinhXac.notifyDataSetChanged();
+                                                            }
+                                                        }
                                                     }
+
                                                 }
                                             }
                                         }
+
                                     }
                                 }
                             }

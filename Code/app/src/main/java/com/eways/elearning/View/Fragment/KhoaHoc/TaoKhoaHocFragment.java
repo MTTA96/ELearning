@@ -115,7 +115,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (buttonView.getId() == R.id.switch_tim_kiem){
+        if (buttonView.getId() == R.id.switch_tao_khoa_hoc){
             if (isChecked) {
                 buttonView.setText("Tìm học viên");
                 root.findViewById(R.id.layout_BangCap_TaoKhoaHoc).setVisibility(View.GONE);

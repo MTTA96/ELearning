@@ -1,4 +1,4 @@
-package com.eways.elearning.Model.TaiKhoan.CapNhatTaiKhoan;
+package com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;

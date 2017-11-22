@@ -9,13 +9,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,13 +20,12 @@ import com.eways.elearning.DataModel.BaiDang.LinhVucBaiDang;
 import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucDialog;
 import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucQuanTamAdapter;
 import com.eways.elearning.Handler.ImageHandler;
-import com.eways.elearning.Handler.LoginGmailHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
-import com.eways.elearning.View.Fragment.TaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanView;
+import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.ThongTinCaNhanFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -92,12 +87,6 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.LoLinhVucQuanTam) {
 
@@ -132,7 +121,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
             dialog.show();
         }
         if (v.getId()==R.id.LoThongTinCaNhan){
-            fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanView(),false,null);
+            fragmentHandler.ChuyenFragment(new ThongTinCaNhanFragment(),false,null);
         }
     }
 }

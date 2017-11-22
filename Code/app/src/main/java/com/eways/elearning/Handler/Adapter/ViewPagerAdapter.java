@@ -10,12 +10,12 @@ import java.util.ArrayList;
  * Created by yowin on 09/11/2017.
  */
 
-public class ViewPagerKhoaHocAdapter extends FragmentStatePagerAdapter {
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private ArrayList<Fragment> listFragment = new ArrayList<>();
     private ArrayList<String> listTitles = new ArrayList<>();
 
-    public ViewPagerKhoaHocAdapter(FragmentManager fm) {
+    public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 

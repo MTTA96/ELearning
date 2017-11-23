@@ -18,4 +18,5 @@ public class KhoaHocChuaHoanTat extends KhoaHoc{
     public void setDanhSachYeuCau(com.eways.elearning.DataModel.KhoaHoc.DanhSachYeuCau danhSachYeuCau) {
         DanhSachYeuCau = danhSachYeuCau;
     }
+    
 }

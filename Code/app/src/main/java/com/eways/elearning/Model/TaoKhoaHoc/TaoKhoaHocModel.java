@@ -1,7 +1,11 @@
 package com.eways.elearning.Model.TaoKhoaHoc;
 
+import android.app.Activity;
+
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenterImp;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -13,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class TaoKhoaHocModel implements TaoKhoaHocModelImp {
 
     TaoKhoaHocPresenterImp taoKhoaHocPresenterImp;
-    DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
+    FirebaseDatabase mData ;
     FirebaseAuth mAuth;
 
 
@@ -22,8 +26,8 @@ public class TaoKhoaHocModel implements TaoKhoaHocModelImp {
     }
 
     @Override
-    public void postKhoaHoc(KhoaHocChuaHoanTat khoaHoc) {
-        String khoahoc = mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").push().getKey();
-        mData.child("TaiKhoan").child(mAuth.getCurrentUser().getUid()).child("KhoaHoc").child("TimGiaSu").setValue(khoahoc);
+    public void postKhoaHoc(KhoaHoc khoaHoc, Activity activity) {
+        mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
+        mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").push().setValue(khoaHoc);
     }
 }

@@ -1,11 +1,8 @@
-package com.eways.elearning.View.Fragment.KhoaHoc;
+package com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +15,15 @@ import android.widget.Toast;
 
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 import com.eways.elearning.DataModel.KhoaHoc.LichHoc;
-import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachBuoiAdapter;
-import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachThuAdapter;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenter;
+import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Activity.MainActivity;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,7 +31,7 @@ import java.util.Calendar;
 /**
  * Created by Tuấn Anh 11/16/2017
  */
-public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener,TaoKhoaHocViewImp {
     View root;
     Switch switchTaoKhoaHoc;
     Button btnTaoKhoaHoc;
@@ -42,6 +39,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     CheckBox cbGioiTinhNam, cbGioiTinhNu;
     CheckBox cbSang, cbChieu, cbToi;
     CheckBox cbThu2, cbThu3, cbThu4, cbThu5, cbThu6, cbThu7, cbChuNhat;
+    TaoKhoaHocPresenterImp taoKhoaHocPresenterImp;
 
     private SharedPreferencesHandler sharedPreferencesHandler;
 
@@ -68,6 +66,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
+        taoKhoaHocPresenterImp=new TaoKhoaHocPresenter(this);
         sharedPreferencesHandler = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
     }
 
@@ -85,6 +84,8 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         etSoBuoi = (EditText) root.findViewById(R.id.editText_SoBuoi_TaoKhoaHoc);
         etThoiLuong = (EditText) root.findViewById(R.id.editText_ThoiLuong_TaoKhoaHoc);
         etThongTinThem = (EditText) root.findViewById(R.id.editText_ThongTinKhac_TaoKhoaHoc);
+        cbGioiTinhNam= (CheckBox) root.findViewById(R.id.cbGioiTinhNam);
+        cbGioiTinhNu= (CheckBox) root.findViewById(R.id.cbGioiTinhNu);
         cbSang = (CheckBox) root.findViewById(R.id.checkBox_Sang);
         cbChieu = (CheckBox) root.findViewById(R.id.checkBox_Chieu);
         cbToi = (CheckBox) root.findViewById(R.id.checkBox_Toi);
@@ -96,6 +97,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbThu7 = (CheckBox) root.findViewById(R.id.checkBox_Thu7);
         cbChuNhat = (CheckBox) root.findViewById(R.id.checkBox_Chu_Nhat);
         btnTaoKhoaHoc= (Button) root.findViewById(R.id.btn_tao_khoa_hoc);
+
 
         root.findViewById(R.id.button_TiepTuc_TaoKhoaHoc).setOnClickListener(this);
         switchTaoKhoaHoc.setOnCheckedChangeListener(this);
@@ -141,7 +143,8 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     public void onClick(View v) {
         if (v.getId() == R.id.button_TiepTuc_TaoKhoaHoc) {
             if (checkData()) {
-                KhoaHoc khoaHoc = setUpData();
+                KhoaHoc khoaHoc=setUpData();
+                taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc,getActivity());
 
             } else
                 Toast.makeText(getActivity(), "Thiếu thông tin!", Toast.LENGTH_LONG).show();
@@ -198,7 +201,9 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
             khoaHoc.setGioiTinh("Nu");
 
         //NgayDang;
-        String formatDateTime = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(DateFormat.getDateTimeInstance());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Calendar tempCalHienTai = Calendar.getInstance();
+        String formatDateTime=dateFormat.format(tempCalHienTai.getTime());
         khoaHoc.setNgayDang(formatDateTime.split(" ")[0]);
         //GioDang;
         khoaHoc.setNgayDang(formatDateTime.split(" ")[1]);
@@ -242,5 +247,10 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
                     && cbThu2.isChecked() || cbThu3.isChecked() || cbThu4.isChecked() || cbThu5.isChecked() || cbThu6.isChecked() || cbThu7.isChecked() || cbChuNhat.isChecked())
                 return true;
         return false;
+    }
+
+    @Override
+    public void KetQuaTaoKhoaHoc(String result) {
+
     }
 }

@@ -1,5 +1,8 @@
 package com.eways.elearning.Presenter.TaoKhoaHoc;
 
+import android.app.Activity;
+
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 
 /**
@@ -7,6 +10,6 @@ import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
  */
 
 public interface TaoKhoaHocPresenterImp {
-    public void nhanThongTinKhoaHoc(KhoaHocChuaHoanTat khoaHoc);
+    public void nhanThongTinKhoaHoc(KhoaHoc khoaHoc, Activity activity);
     public void ketQua(String ketQua);
 }

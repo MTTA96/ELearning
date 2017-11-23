@@ -1,5 +1,7 @@
 package com.eways.elearning.Presenter.TaoKhoaHoc;
 
+import android.app.Activity;
+
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 import com.eways.elearning.Model.TaoKhoaHoc.TaoKhoaHocModel;
@@ -20,8 +22,8 @@ public class TaoKhoaHocPresenter implements TaoKhoaHocPresenterImp {
     }
 
     @Override
-    public void nhanThongTinKhoaHoc(KhoaHoc khoaHoc) {
-        taoKhoaHocModelImp.postKhoaHoc(khoaHoc);
+    public void nhanThongTinKhoaHoc(KhoaHoc khoaHoc, Activity activity) {
+        taoKhoaHocModelImp.postKhoaHoc(khoaHoc,activity);
     }
 
     @Override

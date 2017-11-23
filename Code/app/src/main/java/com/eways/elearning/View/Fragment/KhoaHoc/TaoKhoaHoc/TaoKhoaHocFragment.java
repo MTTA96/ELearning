@@ -144,7 +144,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         if (v.getId() == R.id.button_TiepTuc_TaoKhoaHoc) {
             if (checkData()) {
                 KhoaHoc khoaHoc=setUpData();
-                taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc);
+                taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc,getActivity());
 
             } else
                 Toast.makeText(getActivity(), "Thiếu thông tin!", Toast.LENGTH_LONG).show();

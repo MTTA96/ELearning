@@ -1,5 +1,7 @@
 package com.eways.elearning.Model.TaoKhoaHoc;
 
+import android.app.Activity;
+
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 
@@ -8,5 +10,5 @@ import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
  */
 
 public interface TaoKhoaHocModelImp {
-    public void postKhoaHoc(KhoaHoc khoaHoc);
+    public void postKhoaHoc(KhoaHoc khoaHoc, Activity activity);
 }

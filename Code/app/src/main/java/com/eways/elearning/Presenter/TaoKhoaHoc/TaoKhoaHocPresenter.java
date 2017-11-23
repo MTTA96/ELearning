@@ -1,5 +1,6 @@
 package com.eways.elearning.Presenter.TaoKhoaHoc;
 
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 import com.eways.elearning.Model.TaoKhoaHoc.TaoKhoaHocModel;
 import com.eways.elearning.Model.TaoKhoaHoc.TaoKhoaHocModelImp;
@@ -19,7 +20,7 @@ public class TaoKhoaHocPresenter implements TaoKhoaHocPresenterImp {
     }
 
     @Override
-    public void nhanThongTinKhoaHoc(KhoaHocChuaHoanTat khoaHoc) {
+    public void nhanThongTinKhoaHoc(KhoaHoc khoaHoc) {
         taoKhoaHocModelImp.postKhoaHoc(khoaHoc);
     }
 

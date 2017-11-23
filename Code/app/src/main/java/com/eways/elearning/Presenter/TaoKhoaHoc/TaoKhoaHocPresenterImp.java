@@ -1,5 +1,6 @@
 package com.eways.elearning.Presenter.TaoKhoaHoc;
 
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 
 /**
@@ -7,6 +8,6 @@ import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
  */
 
 public interface TaoKhoaHocPresenterImp {
-    public void nhanThongTinKhoaHoc(KhoaHocChuaHoanTat khoaHoc);
+    public void nhanThongTinKhoaHoc(KhoaHoc khoaHoc);
     public void ketQua(String ketQua);
 }

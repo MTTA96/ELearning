@@ -1,5 +1,6 @@
 package com.eways.elearning.Model.TaoKhoaHoc;
 
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenterImp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +23,7 @@ public class TaoKhoaHocModel implements TaoKhoaHocModelImp {
     }
 
     @Override
-    public void postKhoaHoc(KhoaHocChuaHoanTat khoaHoc) {
+    public void postKhoaHoc(KhoaHoc khoaHoc) {
         String khoahoc = mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").push().getKey();
         mData.child("TaiKhoan").child(mAuth.getCurrentUser().getUid()).child("KhoaHoc").child("TimGiaSu").setValue(khoahoc);
     }

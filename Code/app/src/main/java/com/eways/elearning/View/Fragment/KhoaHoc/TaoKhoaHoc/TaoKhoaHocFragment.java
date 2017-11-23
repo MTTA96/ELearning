@@ -143,8 +143,8 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     public void onClick(View v) {
         if (v.getId() == R.id.button_TiepTuc_TaoKhoaHoc) {
             if (checkData()) {
-                KhoaHocChuaHoanTat khoaHocChuaHoanTat=setUpData();
-                taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHocChuaHoanTat);
+                KhoaHoc khoaHoc=setUpData();
+                taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc);
 
             } else
                 Toast.makeText(getActivity(), "Thiếu thông tin!", Toast.LENGTH_LONG).show();
@@ -152,8 +152,8 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         }
     }
 
-    private KhoaHocChuaHoanTat setUpData() {
-        KhoaHocChuaHoanTat khoaHoc = new KhoaHoc();
+    private KhoaHoc setUpData() {
+        KhoaHoc khoaHoc = new KhoaHoc();
         ArrayList dataKhoaHoc = new ArrayList<String>();
 
         //NguoiDang;

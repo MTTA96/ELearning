@@ -22,15 +22,15 @@ public class LichHoc {
         return NgayHoc;
     }
 
-    public void setNgayHoc(ArrayList<String> ngayHoc) {
-        NgayHoc = ngayHoc;
+    public void setNgayHoc(ArrayList<String> NgayHoc) {
+        this.NgayHoc = NgayHoc;
     }
 
     public ArrayList<String> getThoiGian() {
         return ThoiGian;
     }
 
-    public void setThoiGian(ArrayList<String> thoiGian) {
-        ThoiGian = thoiGian;
+    public void setThoiGian(ArrayList<String> ThoiGian) {
+        this.ThoiGian = ThoiGian;
     }
 }

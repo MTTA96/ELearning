@@ -22,15 +22,15 @@ public class DanhSachYeuCau {
         return DangCho;
     }
 
-    public void setDangCho(ArrayList<String> dangCho) {
-        DangCho = dangCho;
+    public void setDangCho(ArrayList<String> DangCho) {
+        this.DangCho = DangCho;
     }
 
     public ArrayList<String> getTamDuyet() {
         return TamDuyet;
     }
 
-    public void setTamDuyet(ArrayList<String> tamDuyet) {
-        TamDuyet = tamDuyet;
+    public void setTamDuyet(ArrayList<String> TamDuyet) {
+        this.TamDuyet = TamDuyet;
     }
 }

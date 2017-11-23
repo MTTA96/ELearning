@@ -64,6 +64,17 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
         listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc();
 
 
+        srlKhoaHocTimHocVien.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                srlKhoaHocTimHocVien.setRefreshing(true);
+                khoaHocArrayListhv.clear();
+                listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc();
+                srlKhoaHocTimHocVien.setRefreshing(false);
+            }
+        });
+
 
         /**Get khóa học Non-MVP*/
 //        mDatabase.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMHOCVIEN).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {

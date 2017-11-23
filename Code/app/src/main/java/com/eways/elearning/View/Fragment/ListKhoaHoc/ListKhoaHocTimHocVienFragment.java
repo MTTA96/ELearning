@@ -65,15 +65,15 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
         khoaHocArrayListhv = new ArrayList<CustomModelKhoaHoc>();
         listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc();
 
-
-        rcvKhoaHocTimHocVien.addOnScrollListener(new RecyclerView.OnScrollListener() {
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-            }
-        });
+//
+//        rcvKhoaHocTimHocVien.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//
+//            }
+//        });
 
         srlKhoaHocTimHocVien.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

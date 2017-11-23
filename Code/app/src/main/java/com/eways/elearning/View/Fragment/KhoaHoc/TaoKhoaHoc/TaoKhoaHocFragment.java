@@ -31,7 +31,7 @@ import java.util.Calendar;
 /**
  * Created by Tuấn Anh 11/16/2017
  */
-public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener,TaoKhoaHocViewImp {
+public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, TaoKhoaHocViewImp {
     View root;
     Switch switchTaoKhoaHoc;
     Button btnTaoKhoaHoc;
@@ -66,7 +66,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
-        taoKhoaHocPresenterImp=new TaoKhoaHocPresenter(this);
+        taoKhoaHocPresenterImp = new TaoKhoaHocPresenter(this);
         sharedPreferencesHandler = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
     }
 
@@ -84,8 +84,8 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         etSoBuoi = (EditText) root.findViewById(R.id.editText_SoBuoi_TaoKhoaHoc);
         etThoiLuong = (EditText) root.findViewById(R.id.editText_ThoiLuong_TaoKhoaHoc);
         etThongTinThem = (EditText) root.findViewById(R.id.editText_ThongTinKhac_TaoKhoaHoc);
-        cbGioiTinhNam= (CheckBox) root.findViewById(R.id.cbGioiTinhNam);
-        cbGioiTinhNu= (CheckBox) root.findViewById(R.id.cbGioiTinhNu);
+        cbGioiTinhNam = (CheckBox) root.findViewById(R.id.cbGioiTinhNam);
+        cbGioiTinhNu = (CheckBox) root.findViewById(R.id.cbGioiTinhNu);
         cbSang = (CheckBox) root.findViewById(R.id.checkBox_Sang);
         cbChieu = (CheckBox) root.findViewById(R.id.checkBox_Chieu);
         cbToi = (CheckBox) root.findViewById(R.id.checkBox_Toi);
@@ -96,7 +96,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbThu6 = (CheckBox) root.findViewById(R.id.checkBox_Thu6);
         cbThu7 = (CheckBox) root.findViewById(R.id.checkBox_Thu7);
         cbChuNhat = (CheckBox) root.findViewById(R.id.checkBox_Chu_Nhat);
-        btnTaoKhoaHoc= (Button) root.findViewById(R.id.btn_tao_khoa_hoc);
+        btnTaoKhoaHoc = (Button) root.findViewById(R.id.btn_tao_khoa_hoc);
 
 
         root.findViewById(R.id.button_TiepTuc_TaoKhoaHoc).setOnClickListener(this);
@@ -118,17 +118,15 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (buttonView.getId() == R.id.switch_tao_khoa_hoc){
+        if (buttonView.getId() == R.id.switch_tao_khoa_hoc) {
             if (isChecked) {
                 buttonView.setText("Tìm học viên");
                 root.findViewById(R.id.layout_BangCap_TaoKhoaHoc).setVisibility(View.GONE);
-            }
-            else {
+            } else {
                 buttonView.setText("Tìm gia sư");
                 root.findViewById(R.id.layout_BangCap_TaoKhoaHoc).setVisibility(View.VISIBLE);
             }
-        }
-        else {
+        } else {
             if (isChecked) {
                 buttonView.setBackgroundResource(R.drawable.btn_color_main_corners_shape);
                 buttonView.setTextColor(Color.WHITE);
@@ -143,8 +141,8 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     public void onClick(View v) {
         if (v.getId() == R.id.button_TiepTuc_TaoKhoaHoc) {
             if (checkData()) {
-                KhoaHoc khoaHoc=setUpData();
-                taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc,getActivity());
+                KhoaHoc khoaHoc = setUpData();
+                taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc, getActivity());
 
             } else
                 Toast.makeText(getActivity(), "Thiếu thông tin!", Toast.LENGTH_LONG).show();
@@ -175,7 +173,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
             dataBuoi.add("Toi");
 
         //ArrayList<String> Thu;
-         ArrayList dataThu = new ArrayList();
+        ArrayList dataThu = new ArrayList();
         if (cbThu2.isChecked())
             dataThu.add("T2");
         if (cbThu3.isChecked())
@@ -203,10 +201,10 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         //NgayDang;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Calendar tempCalHienTai = Calendar.getInstance();
-        String formatDateTime=dateFormat.format(tempCalHienTai.getTime());
+        String formatDateTime = dateFormat.format(tempCalHienTai.getTime());
         khoaHoc.setNgayDang(formatDateTime.split(" ")[0]);
         //GioDang;
-        khoaHoc.setNgayDang(formatDateTime.split(" ")[1]);
+        khoaHoc.setGioDang(formatDateTime.split(" ")[1]);
 
         //ThoiLuongBuoiHoc;
         khoaHoc.setThoiLuongBuoiHoc(etThoiLuong.getText().toString());
@@ -220,7 +218,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         //ArrayList<String> BangCap;
         if (etBangCap.getText() != null) {
             dataKhoaHoc = new ArrayList();
-            dataKhoaHoc.add(etMon.getText().toString());
+            dataKhoaHoc.add(etBangCap.getText().toString());
             khoaHoc.setMon(dataKhoaHoc);
         }
 
@@ -242,10 +240,10 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     private boolean checkData() {
         if (etMon.getText() != null && etDiaDiem.getText() != null && etHocPhi != null
                 && etSoBuoi.getText() != null && etSoHocVien.getText() != null && etThoiLuong.getText() != null)
-            if (cbGioiTinhNam.isChecked() || cbGioiTinhNu.isChecked()
-                    && cbSang.isChecked() || cbChieu.isChecked() || cbToi.isChecked()
-                    && cbThu2.isChecked() || cbThu3.isChecked() || cbThu4.isChecked() || cbThu5.isChecked() || cbThu6.isChecked() || cbThu7.isChecked() || cbChuNhat.isChecked())
-                return true;
+            if (cbGioiTinhNam.isChecked() || cbGioiTinhNu.isChecked())
+                if (cbSang.isChecked() || cbChieu.isChecked() || cbToi.isChecked())
+                    if (cbThu2.isChecked() || cbThu3.isChecked() || cbThu4.isChecked() || cbThu5.isChecked() || cbThu6.isChecked() || cbThu7.isChecked() || cbChuNhat.isChecked())
+                        return true;
         return false;
     }
 

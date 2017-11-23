@@ -248,7 +248,6 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
                 return true;
         return false;
     }
-
     @Override
     public void KetQuaTaoKhoaHoc(String result) {
 

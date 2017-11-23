@@ -397,7 +397,7 @@
           [
             "Anh văn giao tiếp"
           ],
-          "DiaChi":
+          "DiaDiem":
           {
             "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
             "Quan":"Bình Thạnh",
@@ -432,7 +432,7 @@
             ]
           }
         },
-"Khoa050":
+        "Khoa050":
         {
           "LinhVuc":
           [
@@ -452,7 +452,7 @@
           [
             "Anh văn giao tiếp"
           ],
-          "DiaChi":
+          "DiaDiem":
           {
             "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
             "Quan":"Bình Thạnh",
@@ -507,7 +507,7 @@
           [
             "Anh văn giao tiếp"
           ],
-          "DiaChi":
+          "DiaDiem":
           {
             "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
             "Quan":"Bình Thạnh",
@@ -562,7 +562,7 @@
           [
             "Anh van giao tiep"
           ],
-          "DiaChi":
+          "DiaDiem":
           {
             "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
             "Quan":"Bình Thạnh",
@@ -620,7 +620,7 @@
           [
             "Anh văn","Toán"
           ],
-          "DiaChi":
+         "DiaDiem":
           {
             "DayDu":"Thỏa thuận",
             "Quan":"Null",
@@ -668,7 +668,7 @@
           [
             "Anh văn","Toán"
           ],
-          "DiaChi":
+         "DiaDiem":
           {
             "DayDu":"Thỏa thuận",
             "Quan":"Null",
@@ -720,7 +720,7 @@
           [
             "Anh van giao tiep"
           ],
-          "DiaChi":
+         "DiaDiem":
           {
             "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
             "Quan":"Bình Thạnh",
@@ -775,7 +775,7 @@
           [
             "Anh văn giao tiếp"
           ],
-          "DiaChi":
+         "DiaDiem":
           {
             "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
             "Quan":"Bình Thạnh",
@@ -831,7 +831,7 @@
           [
             "Anh văn giao tiếp"
           ],
-          "DiaChi":
+         "DiaDiem":
           {
             "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
             "Quan":"Bình Thạnh",
@@ -889,7 +889,7 @@
           [
             "Anh văn","Toán"
           ],
-          "DiaChi":
+         "DiaDiem":
           {
             "DayDu":"Thỏa thuận",
             "Quan":"Null",
@@ -939,7 +939,7 @@
           [
             "Anh văn","Toán"
           ],
-          "DiaChi":
+         "DiaDiem":
           {
             "DayDu":"Thỏa thuận",
             "Quan":"Null",

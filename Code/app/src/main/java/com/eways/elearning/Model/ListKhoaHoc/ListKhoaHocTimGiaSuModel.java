@@ -47,7 +47,7 @@ public class ListKhoaHocTimGiaSuModel implements ListKhoaHocTimGiaSuImpModel {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
-                CustomModelKhoaHoc ckh = new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon(),kh.getLop());
+                CustomModelKhoaHoc ckh = new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon());
                 listKhoaHoc.add(ckh);
                 listKhoaHocTimGiaSuPresenterImp.nhanDanhSachKhoaHoc(listKhoaHoc);
             }

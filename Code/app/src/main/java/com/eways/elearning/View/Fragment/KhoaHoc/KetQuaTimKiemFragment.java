@@ -126,7 +126,7 @@ public class KetQuaTimKiemFragment extends Fragment {
                                                         if (rqThu.equals(rsThu)) {
                                                             countLichHoc += 1;
                                                             if (countLichHoc == gioiHanLichHoc) {
-                                                                rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon(),kh.getLop()));
+                                                                rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon()));
                                                                 adapterChinhXac.notifyDataSetChanged();
                                                             }
                                                         }
@@ -186,7 +186,7 @@ public class KetQuaTimKiemFragment extends Fragment {
                                                         if (rqThu.equals(rsThu)) {
                                                             countLichHoc += 1;
                                                             if (countLichHoc == gioiHanLichHoc) {
-                                                                rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon(),kh.getLop()));
+                                                                rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon()));
                                                                 adapterChinhXac.notifyDataSetChanged();
                                                             }
                                                         }

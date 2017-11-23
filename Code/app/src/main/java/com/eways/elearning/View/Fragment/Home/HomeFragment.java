@@ -10,19 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.eways.elearning.DataModel.BaiDang.LinhVucBaiDang;
-import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucDialog;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
-import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHocFragment;
+import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc.TaoKhoaHocFragment;
 import com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.

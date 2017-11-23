@@ -49,4 +49,5 @@ public class KhoaHocChuaHoanTat {
         DanhSachYeuCau = danhSachYeuCau;
         DiaChi = diaChi;
     }
+    
 }

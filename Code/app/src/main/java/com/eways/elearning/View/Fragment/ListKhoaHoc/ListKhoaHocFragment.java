@@ -8,8 +8,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
 
-import com.eways.elearning.Handler.Adapter.ViewPagerKhoaHocAdapter;
+import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
 import com.eways.elearning.R;
 import com.eways.elearning.View.Activity.MainActivity;
 
@@ -49,7 +50,7 @@ public class ListKhoaHocFragment extends Fragment {
     }
 
     private void setUpViewPager(ViewPager pager) {
-        ViewPagerKhoaHocAdapter adapter = new ViewPagerKhoaHocAdapter(getChildFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
         adapter.addFragment(new ListKhoaHocTimGiaSuFragment(), titleTab1);
         adapter.addFragment(new ListKhoaHocTimHocVienFragment(), titleTab2);
         pager.setAdapter(adapter);

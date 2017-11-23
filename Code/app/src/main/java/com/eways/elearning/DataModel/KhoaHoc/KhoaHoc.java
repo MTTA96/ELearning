@@ -8,14 +8,13 @@ import java.util.ArrayList;
  */
 
 public class KhoaHoc implements Serializable {
+
     private String Avatar;
     private String Rating;
     private String HoTen;
     private String NguoiDang;
     private String SoBuoiHoc;
     private String SoLuongHocVien;
-    private ArrayList<String> Buoi;
-    private ArrayList<String> Thu;
     private String GioiTinh;
     private String NgayDang;
     private String GioDang;
@@ -33,6 +32,25 @@ public class KhoaHoc implements Serializable {
     public KhoaHoc() {
     }
 
+    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem) {
+        Avatar = avatar;
+        Rating = rating;
+        HoTen = hoTen;
+        NguoiDang = nguoiDang;
+        SoBuoiHoc = soBuoiHoc;
+        SoLuongHocVien = soLuongHocVien;
+        GioiTinh = gioiTinh;
+        NgayDang = ngayDang;
+        GioDang = gioDang;
+        ThoiLuongBuoiHoc = thoiLuongBuoiHoc;
+        HocPhi = hocPhi;
+        ThongTinKhac = thongTinKhac;
+        BangCap = bangCap;
+        Mon = mon;
+        LinhVuc = linhVuc;
+        LichHoc = lichHoc;
+        DiaDiem = diaDiem;
+    }
 
     public String getAvatar() {
         return Avatar;
@@ -66,14 +84,6 @@ public class KhoaHoc implements Serializable {
         NguoiDang = nguoiDang;
     }
 
-    public ArrayList<String> getBangCap() {
-        return BangCap;
-    }
-
-    public void setBangCap(ArrayList<String> bangCap) {
-        BangCap = bangCap;
-    }
-
     public String getSoBuoiHoc() {
         return SoBuoiHoc;
     }
@@ -90,20 +100,12 @@ public class KhoaHoc implements Serializable {
         SoLuongHocVien = soLuongHocVien;
     }
 
-    public ArrayList<String> getBuoi() {
-        return Buoi;
+    public String getGioiTinh() {
+        return GioiTinh;
     }
 
-    public void setBuoi(ArrayList<String> buoi) {
-        Buoi = buoi;
-    }
-
-    public ArrayList<String> getThu() {
-        return Thu;
-    }
-
-    public void setThu(ArrayList<String> thu) {
-        Thu = thu;
+    public void setGioiTinh(String gioiTinh) {
+        GioiTinh = gioiTinh;
     }
 
     public String getNgayDang() {
@@ -120,14 +122,6 @@ public class KhoaHoc implements Serializable {
 
     public void setGioDang(String gioDang) {
         GioDang = gioDang;
-    }
-
-    public String getGioiTinh() {
-        return GioiTinh;
-    }
-
-    public void setGioiTinh(String gioiTinh) {
-        GioiTinh = gioiTinh;
     }
 
     public String getThoiLuongBuoiHoc() {
@@ -154,6 +148,14 @@ public class KhoaHoc implements Serializable {
         ThongTinKhac = thongTinKhac;
     }
 
+    public ArrayList<String> getBangCap() {
+        return BangCap;
+    }
+
+    public void setBangCap(ArrayList<String> bangCap) {
+        BangCap = bangCap;
+    }
+
     public ArrayList<String> getMon() {
         return Mon;
     }
@@ -178,11 +180,11 @@ public class KhoaHoc implements Serializable {
         LichHoc = lichHoc;
     }
 
-    public DiaDiem getDiaDiem() {
+    public com.eways.elearning.DataModel.KhoaHoc.DiaDiem getDiaDiem() {
         return DiaDiem;
     }
 
-    public void setDiaDiem(DiaDiem diaChi) {
-        DiaDiem = diaChi;
+    public void setDiaDiem(com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem) {
+        DiaDiem = diaDiem;
     }
 }

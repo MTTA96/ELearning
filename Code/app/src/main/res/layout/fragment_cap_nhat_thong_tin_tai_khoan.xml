@@ -2,112 +2,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.Fragment.TaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanView"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="@color/colorMain"
-        android:layout_height="@dimen/big_toolbar_height">
-        <ImageButton
-            android:id="@+id/ibAvartaCNTTTK"
-            android:layout_width="@dimen/avarta_size_CNTTTK"
-            android:layout_height="@dimen/avarta_size_CNTTTK"
-            android:background="@drawable/avatar_shape"
-            android:layout_gravity="center"/>
-    </LinearLayout>
+    <!-- Họ tên -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/ItemCNTTTK_margintop">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/ItemCNTTTK_textsize"
-                android:text="@string/Hoten_CN"
-                android:layout_marginRight="@dimen/ItemCNTTTK_marginRight"/>
-            <EditText
-                android:id="@+id/etHoten_CNTTTK"
-                android:layout_width="255dp"
-                android:layout_height="@dimen/ItemCNTTTK_height"
-                android:background="@drawable/et_shape"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/ItemCNTTTK_margintop">
+        android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/ItemCNTTTK_textsize"
+            android:layout_marginRight="@dimen/ItemCNTTTK_marginRight"
+            android:text="@string/Hoten_CN"
+            android:textSize="@dimen/ItemCNTTTK_textsize" />
+
+        <EditText
+            android:id="@+id/etHoten_CNTTTK"
+            android:layout_width="255dp"
+            android:layout_height="@dimen/ItemCNTTTK_height"
+            android:background="@drawable/et_shape" />
+    </LinearLayout>
+
+    <!-- Giới tính, Năm sinh-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
+        android:orientation="horizontal">
+        <!-- Giới tính -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:text="@string/Gioitinh_CN" />
+            android:text="@string/Gioitinh_CN"
+            android:textSize="@dimen/ItemCNTTTK_textsize" />
+
         <Spinner
             android:id="@+id/spGioiTinh"
             android:layout_width="70dp"
             android:layout_height="@dimen/ItemCNTTTK_height"
             android:layout_marginRight="@dimen/ItemCNTTTK_marginRight"
-            android:background="@drawable/et_shape"></Spinner>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/ItemCNTTTK_textsize"
-            android:text="@string/Namsinh_CN"
-            android:layout_marginRight="5dp"/>
-        <Spinner
-            android:id="@+id/spNamsinh_CNTTTK"
-            android:layout_width="70dp"
-            android:layout_height="@dimen/ItemCNTTTK_height"
-            android:background="@drawable/et_shape"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/ItemCNTTTK_margintop">
+            android:background="@drawable/et_shape" />
+        <!-- Năm sinh -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:textSize="@dimen/ItemCNTTTK_textsize"
-            android:text="@string/Nghenghiep_CN"  />
-        <EditText
-            android:id="@+id/etNghenghiep_CNTTTK"
-            android:background="@drawable/et_shape"
-            android:layout_width="215dp"
-            android:layout_height="@dimen/ItemCNTTTK_height"
-            android:orientation="vertical"/>
+            android:text="@string/Namsinh_CN"
+            android:textSize="@dimen/ItemCNTTTK_textsize" />
+
+        <Spinner
+            android:id="@+id/spNamsinh_CNTTTK"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_shape" />
 
     </LinearLayout>
+
+    <!-- Nghề nghiệp -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
-        android:layout_gravity="center">
-        <Button
-            android:id="@+id/btnHuyCNTTTK"
-            android:text="Hủy"
-            android:textColor="@color/White"
-            android:background="@drawable/btn_shape"
-            android:layout_width="@dimen/BtnCNTTTK_width"
-            android:layout_height="@dimen/BtnCNTTTK_height"
-            android:layout_marginRight="@dimen/ItemCNTTTK_marginRight"/>
-        <Button
-            android:id="@+id/btnLuuCNTTTK"
-            android:text="Lưu"
-            android:layout_width="@dimen/BtnCNTTTK_width"
-            android:layout_height="@dimen/BtnCNTTTK_height"
-            android:background="@drawable/btn_shape"
-            android:textColor="@color/White" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="@string/Nghenghiep_CN"
+            android:textSize="@dimen/ItemCNTTTK_textsize" />
+
+        <EditText
+            android:id="@+id/etNghenghiep_CNTTTK"
+            android:layout_width="215dp"
+            android:layout_height="@dimen/ItemCNTTTK_height"
+            android:background="@drawable/et_shape"
+            android:orientation="vertical" />
+
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/ItemCNTTTK_margintop">
+
+        <Button
+            android:id="@+id/btnHuyCNTTTK"
+            android:layout_width="@dimen/BtnCNTTTK_width"
+            android:layout_height="@dimen/BtnCNTTTK_height"
+            android:layout_marginRight="@dimen/ItemCNTTTK_marginRight"
+            android:background="@drawable/btn_shape"
+            android:text="Hủy"
+            android:textColor="@color/White" />
+
+        <Button
+            android:id="@+id/btnLuuCNTTTK"
+            android:layout_width="@dimen/BtnCNTTTK_width"
+            android:layout_height="@dimen/BtnCNTTTK_height"
+            android:background="@drawable/btn_shape"
+            android:text="Lưu"
+            android:textColor="@color/White" />
+    </LinearLayout>
 
 
 </LinearLayout>

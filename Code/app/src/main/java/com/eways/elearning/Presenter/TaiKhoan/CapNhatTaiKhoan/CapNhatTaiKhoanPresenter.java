@@ -3,9 +3,9 @@ package com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan;
 import android.app.Activity;
 
 import com.eways.elearning.DataModel.TaiKhoan;
-import com.eways.elearning.Model.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModel;
-import com.eways.elearning.Model.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModelImp;
-import com.eways.elearning.View.Fragment.TaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanView;
+import com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModel;
+import com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModelImp;
+import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment;
 
 /**
  * Created by ADMIN on 11/19/2017.
@@ -13,10 +13,10 @@ import com.eways.elearning.View.Fragment.TaiKhoan.CapNhatTaiKhoan.CapNhatThongTi
 
 public class CapNhatTaiKhoanPresenter implements CapNhatTaiKhoanPresenterImp {
     CapNhatTaiKhoanModelImp capNhatTaiKhoanModelImp=new CapNhatTaiKhoanModel(this);
-    CapNhatThongTinTaiKhoanView capNhatThongTinTaiKhoanView;
+    CapNhatThongTinTaiKhoanFragment capNhatThongTinTaiKhoanFragment;
 
-    public CapNhatTaiKhoanPresenter(CapNhatThongTinTaiKhoanView capNhatThongTinTaiKhoanView) {
-        this.capNhatThongTinTaiKhoanView = capNhatThongTinTaiKhoanView;
+    public CapNhatTaiKhoanPresenter(CapNhatThongTinTaiKhoanFragment capNhatThongTinTaiKhoanFragment) {
+        this.capNhatThongTinTaiKhoanFragment = capNhatThongTinTaiKhoanFragment;
     }
 
     @Override
@@ -26,6 +26,6 @@ public class CapNhatTaiKhoanPresenter implements CapNhatTaiKhoanPresenterImp {
 
     @Override
     public void KetQuaCapNhat(String ketquacapnhat) {
-        capNhatThongTinTaiKhoanView.KetQuaCapNhat(ketquacapnhat);
+        capNhatThongTinTaiKhoanFragment.KetQuaCapNhat(ketquacapnhat);
     }
 }

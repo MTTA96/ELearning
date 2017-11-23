@@ -21,8 +21,8 @@ import java.util.ArrayList;
 
 public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.ViewHolder>  {
 
-    private ArrayList<CustomModelKhoaHoc> khoaHocArrayList;
-    private ImageHandler imageHandler;
+    ArrayList<CustomModelKhoaHoc> khoaHocArrayList;
+    ImageHandler imageHandler;
 
     public KhoaHocRCAdapter(ArrayList<CustomModelKhoaHoc> khoaHocArrayList, ImageHandler imageHandler) {
         this.khoaHocArrayList = khoaHocArrayList;
@@ -87,5 +87,4 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
             tvHocPhi = (TextView) itemView.findViewById(R.id.tvGia_KhoaHoc);
         }
     }
-
 }

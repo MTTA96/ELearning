@@ -1,7 +1,7 @@
 package com.eways.elearning.Model.ListKhoaHoc;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.google.firebase.database.ChildEventListener;
@@ -46,7 +46,7 @@ public class ListKhoaHocTimGiaSuModel implements ListKhoaHocTimGiaSuImpModel {
         mData.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMGIASU).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                KhoaHocChuaHoanTat kh = dataSnapshot.getValue(KhoaHocChuaHoanTat.class);
+                KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
                 CustomModelKhoaHoc ckh = new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon(),kh.getLop());
                 listKhoaHoc.add(ckh);
                 listKhoaHocTimGiaSuPresenterImp.nhanDanhSachKhoaHoc(listKhoaHoc);

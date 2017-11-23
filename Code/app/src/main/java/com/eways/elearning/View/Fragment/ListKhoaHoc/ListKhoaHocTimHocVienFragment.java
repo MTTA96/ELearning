@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaHocTimHocVienImpView{
 
     private SwipeRefreshLayout srlKhoaHocTimHocVien;
-    private RecyclerView rcvKhoaHocTimHocVien;
+    private RecyclerView rvKhoaHocTimHocVien;
     private ListKhoaHocTimHocVienPresenterImp listKhoaHocTimHocVienPresenterImp;
 
     private ArrayList<CustomModelKhoaHoc> khoaHocArrayListhv;
@@ -37,8 +37,6 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
     private DatabaseReference mDatabase;
     private ImageHandler imageHandler;
 
-    private int sizeOld = 0;
-    private int sizeNew = 0;
     public ListKhoaHocTimHocVienFragment() {
         // Required empty public constructor
     }
@@ -57,7 +55,7 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
         View root = inflater.inflate(R.layout.fragment_list_khoa_hoc_tim_hoc_vien, container, false);
 
         srlKhoaHocTimHocVien = (SwipeRefreshLayout)root.findViewById(R.id.srlKhoaHocTimHocVien);
-        rcvKhoaHocTimHocVien = (RecyclerView)root.findViewById(R.id.rcvKhoaHocTimHocVien);
+        rvKhoaHocTimHocVien = (RecyclerView)root.findViewById(R.id.lvKhoaHocTimHocVien);
 
         imageHandler = new ImageHandler(getActivity());
 
@@ -65,15 +63,6 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
         khoaHocArrayListhv = new ArrayList<CustomModelKhoaHoc>();
         listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc();
 
-//
-//        rcvKhoaHocTimHocVien.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//
-//            }
-//        });
 
         srlKhoaHocTimHocVien.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -85,6 +74,7 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
                 srlKhoaHocTimHocVien.setRefreshing(false);
             }
         });
+
 
         /**Get khóa học Non-MVP*/
 //        mDatabase.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMHOCVIEN).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
@@ -131,8 +121,7 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
                 khoaHocArrayListhv,
                 imageHandler
         );
-        rcvKhoaHocTimHocVien.setLayoutManager(new GridLayoutManager(getActivity(),1));
-        rcvKhoaHocTimHocVien.setAdapter(khoaHocAdapterhv);
+        rvKhoaHocTimHocVien.setLayoutManager(new GridLayoutManager(getActivity(),1));
+        rvKhoaHocTimHocVien.setAdapter(khoaHocAdapterhv);
     }
-
 }

@@ -21,18 +21,23 @@ public class KhoaHoc implements Serializable {
     private String ThoiLuongBuoiHoc;
     private String HocPhi;
     private String ThongTinKhac;
+    private ArrayList<String> Lop;
     private ArrayList<String> BangCap;
     private ArrayList<String> Mon;
     private ArrayList<String> LinhVuc;
     private LichHoc LichHoc;
     private DiaDiem DiaDiem;
 
+    //Custom
+
+    private ArrayList<String> Buoi;
+    private ArrayList<String> Thu;
 
 
     public KhoaHoc() {
     }
 
-    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem) {
+    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> lop, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem, ArrayList<String> buoi, ArrayList<String> thu) {
         Avatar = avatar;
         Rating = rating;
         HoTen = hoTen;
@@ -45,11 +50,14 @@ public class KhoaHoc implements Serializable {
         ThoiLuongBuoiHoc = thoiLuongBuoiHoc;
         HocPhi = hocPhi;
         ThongTinKhac = thongTinKhac;
+        Lop = lop;
         BangCap = bangCap;
         Mon = mon;
         LinhVuc = linhVuc;
         LichHoc = lichHoc;
         DiaDiem = diaDiem;
+        Buoi = buoi;
+        Thu = thu;
     }
 
     public String getAvatar() {
@@ -186,5 +194,29 @@ public class KhoaHoc implements Serializable {
 
     public void setDiaDiem(com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem) {
         DiaDiem = diaDiem;
+    }
+
+    public ArrayList<String> getLop() {
+        return Lop;
+    }
+
+    public void setLop(ArrayList<String> lop) {
+        Lop = lop;
+    }
+
+    public ArrayList<String> getBuoi() {
+        return Buoi;
+    }
+
+    public void setBuoi(ArrayList<String> buoi) {
+        Buoi = buoi;
+    }
+
+    public ArrayList<String> getThu() {
+        return Thu;
+    }
+
+    public void setThu(ArrayList<String> thu) {
+        Thu = thu;
     }
 }

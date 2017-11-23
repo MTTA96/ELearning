@@ -110,24 +110,24 @@ public class KetQuaTimKiemFragment extends Fragment {
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     KhoaHocChuaHoanTat kh = dataSnapshot.getValue(KhoaHocChuaHoanTat.class);
 
-                    for (String mon : kh.Mon) {
+                    for (String mon : kh.getMon()) {
                         if (mon.equals(requestKhoaHoc.getMon().get(0))) //vì chỉ lấy 1 môn nên get(0)
                         {
-                            for (String linhVuc : kh.LinhVuc) {
+                            for (String linhVuc : kh.getLinhVuc()) {
                                 if (linhVuc.equals(requestKhoaHoc.getLinhVuc().get(0))) //Vì chỉ lấy 1 lĩnh vực 1 lần nên get(0)
                                 {
                                     for (String rqBuoi : requestKhoaHoc.getBuoi()) {
-                                        for (String rsBuoi : kh.LichHoc.ThoiGian) {
+                                        for (String rsBuoi : kh.getLichHoc().getThoiGian()) {
                                             if (rqBuoi.equals(rsBuoi)) {
 //                                                rsKhoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
 //                                                adapterGanChinhXac.notifyDataSetChanged();
 
                                                 for (String rqThu : requestKhoaHoc.getThu()) {
-                                                    for (String rsThu : kh.LichHoc.NgayHoc) {
+                                                    for (String rsThu : kh.getLichHoc().getNgayHoc()) {
                                                         if (rqThu.equals(rsThu)) {
                                                             countLichHoc += 1;
                                                             if (countLichHoc == gioiHanLichHoc) {
-                                                                rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.HoTen, kh.NguoiDang, kh.Avatar, kh.LichHoc.ThoiGian, kh.Rating, kh.HocPhi, kh.Mon, kh.Lop));
+                                                                rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon(),kh.getLop()));
                                                                 adapterChinhXac.notifyDataSetChanged();
                                                             }
                                                         }
@@ -170,24 +170,24 @@ public class KetQuaTimKiemFragment extends Fragment {
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     KhoaHocChuaHoanTat kh = dataSnapshot.getValue(KhoaHocChuaHoanTat.class);
 
-                    for (String mon : kh.Mon) {
+                    for (String mon : kh.getMon()) {
                         if (mon.equals(requestKhoaHoc.getMon().get(0))) //vì chỉ lấy 1 môn nên get(0)
                         {
-                            for (String linhVuc : kh.LinhVuc) {
+                            for (String linhVuc : kh.getLinhVuc()) {
                                 if (linhVuc.equals(requestKhoaHoc.getLinhVuc().get(0))) //Vì chỉ lấy 1 lĩnh vực 1 lần nên get(0)
                                 {
                                     for (String rqBuoi : requestKhoaHoc.getBuoi()) {
-                                        for (String rsBuoi : kh.LichHoc.ThoiGian) {
+                                        for (String rsBuoi : kh.getLichHoc().getThoiGian()) {
                                             if (rqBuoi.equals(rsBuoi)) {
 //                                                rsKhoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
 //                                                adapterGanChinhXac.notifyDataSetChanged();
 
                                                 for (String rqThu : requestKhoaHoc.getThu()) {
-                                                    for (String rsThu : kh.LichHoc.NgayHoc) {
+                                                    for (String rsThu : kh.getLichHoc().getNgayHoc()) {
                                                         if (rqThu.equals(rsThu)) {
                                                             countLichHoc += 1;
                                                             if (countLichHoc == gioiHanLichHoc) {
-                                                                rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.HoTen, kh.NguoiDang, kh.Avatar, kh.LichHoc.ThoiGian, kh.Rating, kh.HocPhi, kh.Mon, kh.Lop));
+                                                                rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon(),kh.getLop()));
                                                                 adapterChinhXac.notifyDataSetChanged();
                                                             }
                                                         }

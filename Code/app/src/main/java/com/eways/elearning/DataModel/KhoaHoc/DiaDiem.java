@@ -22,16 +22,16 @@ public class DiaDiem {
         return DayDu;
     }
 
-    public void setDayDu(String dayDu) {
-        DayDu = dayDu;
+    public void setDayDu(String DayDu) {
+        this.DayDu = DayDu;
     }
 
     public String getQuan() {
         return Quan;
     }
 
-    public void setQuan(String quan) {
-        Quan = quan;
+    public void setQuan(String Quan) {
+        this.Quan = Quan;
     }
 
     public String getTP() {

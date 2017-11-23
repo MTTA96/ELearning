@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 import com.eways.elearning.Handler.Adapter.KhoaHocRCAdapter;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.R;
@@ -108,7 +107,7 @@ public class KetQuaTimKiemFragment extends Fragment {
             mData.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMGIASU).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    KhoaHocChuaHoanTat kh = dataSnapshot.getValue(KhoaHocChuaHoanTat.class);
+                    KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
 
                     for (String mon : kh.getMon()) {
                         if (mon.equals(requestKhoaHoc.getMon().get(0))) //vì chỉ lấy 1 môn nên get(0)
@@ -168,7 +167,7 @@ public class KetQuaTimKiemFragment extends Fragment {
             mData.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMHOCVIEN).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    KhoaHocChuaHoanTat kh = dataSnapshot.getValue(KhoaHocChuaHoanTat.class);
+                    KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
 
                     for (String mon : kh.getMon()) {
                         if (mon.equals(requestKhoaHoc.getMon().get(0))) //vì chỉ lấy 1 môn nên get(0)

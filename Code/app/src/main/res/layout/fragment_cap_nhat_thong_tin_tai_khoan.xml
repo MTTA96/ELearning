@@ -10,15 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
-
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp">
-            <!-- Tên -->
+            android:paddingBottom="10dp"
+            android:layout_gravity="center">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -29,13 +26,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/ItemCNTTTK_marginRight"
                     android:text="@string/Hoten_CN"
                     android:textSize="@dimen/ItemCNTTTK_textsize" />
 
                 <EditText
                     android:id="@+id/etHoten_CNTTTK"
                     android:layout_width="255dp"
-                    android:layout_height="@dimen/text_height"
+                    android:layout_height="@dimen/ItemCNTTTK_height"
                     android:background="@drawable/et_shape" />
             </LinearLayout>
 
@@ -58,7 +56,7 @@
                     android:id="@+id/spGioiTinh"
                     android:layout_width="70dp"
                     android:layout_height="@dimen/ItemCNTTTK_height"
-                    android:layout_marginRight="@dimen/text_height"
+                    android:layout_marginRight="@dimen/ItemCNTTTK_marginRight"
                     android:background="@drawable/et_shape" />
                 <!-- Năm sinh -->
                 <TextView
@@ -99,36 +97,31 @@
                     android:orientation="vertical" />
 
             </LinearLayout>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
                 android:text="Tài liệu xác minh:"
-                android:textSize="@dimen/ItemCNTTTK_textsize" />
-
+                android:textSize="@dimen/ItemCNTTTK_textsize"
+                android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
+                android:layout_marginLeft="20dp"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:orientation="horizontal"
                 android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
-                android:orientation="horizontal">
-
+                android:layout_gravity="center">
                 <ImageView
                     android:id="@+id/ivTaiLieuXacMinh_mt"
                     android:layout_width="180dp"
                     android:layout_height="150dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/et_shape" />
-
+                    android:background="@drawable/et_shape"/>
                 <ImageView
                     android:id="@+id/ivTaiLieuXacMinh_ms"
                     android:layout_width="180dp"
                     android:layout_height="150dp"
-                    android:background="@drawable/et_shape" />
+                    android:background="@drawable/et_shape"/>
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,6 +132,7 @@
                     android:id="@+id/btnHuyCNTTTK"
                     android:layout_width="@dimen/BtnCNTTTK_width"
                     android:layout_height="@dimen/BtnCNTTTK_height"
+                    android:layout_marginRight="@dimen/ItemCNTTTK_marginRight"
                     android:background="@drawable/btn_shape"
                     android:text="Hủy"
                     android:textColor="@color/White" />

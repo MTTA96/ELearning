@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 import com.eways.elearning.DataModel.KhoaHoc.LichHoc;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenter;
@@ -152,7 +151,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
     private KhoaHoc setUpData() {
         KhoaHoc khoaHoc = new KhoaHoc();
-        ArrayList dataKhoaHoc = new ArrayList<String>();
+        ArrayList dataKhoaHoc = new ArrayList<>();
 
         //NguoiDang;
         khoaHoc.setNguoiDang(sharedPreferencesHandler.getID());
@@ -188,7 +187,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
             dataThu.add("T7");
         if (cbChuNhat.isChecked())
             dataThu.add("CN");
-        khoaHoc.setLichHoc(new LichHoc());
+        khoaHoc.setLichHoc(new LichHoc(dataThu,dataBuoi));
 
         //GioiTinh;
         if (cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())

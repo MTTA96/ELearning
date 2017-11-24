@@ -103,7 +103,6 @@
     <dimen name="avarta_size_CNTTTK">110dp</dimen>
     <dimen name="ItemCNTTTK_margintop">20dp</dimen>
     <dimen name="AvartaCNTTTK_margintop">40dp</dimen>
-    <dimen name="ItemCNTTTK_marginRight">20dp</dimen>
     <dimen name="ItemCNTTTK_textsize">20dp</dimen>
     <dimen name="LayoutItemCNTTTK_width">230dp</dimen>
     <dimen name="ItemCNTTTK_height">30dp</dimen>

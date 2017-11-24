@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     Spinner spNamsinh, spGiotinh;
     Button btnLuuCapNhat;
     EditText etHoTen, etNgheNghiep;
+    ImageView imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms;
     Calendar calendar;
     ArrayList<String> danhsachNam;
     SharedPreferencesHandler sharedPreferencesHandler;
@@ -66,6 +68,8 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         etHoTen = (EditText) view.findViewById(R.id.etHoten_CNTTTK);
         etNgheNghiep = (EditText) view.findViewById(R.id.etNghenghiep_CNTTTK);
         btnLuuCapNhat = (Button) view.findViewById(R.id.btnLuuCNTTTK);
+        imTaiLieuXacMinh_mt= (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_mt);
+        imTaiLieuXacMinh_ms= (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_ms);
 
         btnLuuCapNhat.setOnClickListener(this);
 
@@ -110,5 +114,12 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         spNamsinh.setAdapter(namSinhAdapter);
         ArrayAdapter<String> gioiTinhAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ListGioiTinh));
         spGiotinh.setAdapter(gioiTinhAdapter);
+        imTaiLieuXacMinh_mt.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
+        imTaiLieuXacMinh_mt.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
+    }
+
+    //Load thông tin tài khoản
+    public void LoadAccount(){
+
     }
 }

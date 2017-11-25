@@ -115,7 +115,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         ArrayAdapter<String> gioiTinhAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ListGioiTinh));
         spGiotinh.setAdapter(gioiTinhAdapter);
         imTaiLieuXacMinh_mt.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
-        imTaiLieuXacMinh_mt.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
+        imTaiLieuXacMinh_ms.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
     }
 
     //Load thông tin tài khoản

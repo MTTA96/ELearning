@@ -42,26 +42,40 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
 
         imageHandler.loadImageSquare(khoaHocArrayList.get(position).LinkAvatar,holder.imvAvatar);
 
-        float rt = Float.parseFloat(khoaHocArrayList.get(position).Rating);
-        holder.rtbBaiDang.setRating(rt);
+        if(khoaHocArrayList.get(position).Rating != null) {
+            float rt = Float.parseFloat(khoaHocArrayList.get(position).Rating);
+            holder.rtbBaiDang.setRating(rt);
+        }
 
-        String ten = "<b>Tên: </b>"+" " +khoaHocArrayList.get(position).TenNguoiDang;
-        holder.tvTenNguoiDang.setText(Html.fromHtml(ten));
+        if(khoaHocArrayList.get(position).TenNguoiDang != null) {
+            String ten = "<b>Tên: </b>" + " " + khoaHocArrayList.get(position).TenNguoiDang;
+            holder.tvTenNguoiDang.setText(Html.fromHtml(ten));
+        }
 
-        ArrayList<String> listMon = khoaHocArrayList.get(position).MonHoc;
-        String danhSachMon = "";
-        for (String mon : listMon) { danhSachMon = danhSachMon + mon; }
-        String mon = "<b>Môn: </b>"+" " +danhSachMon;
-        holder.tvMonHoc.setText(Html.fromHtml(mon));
+        if(khoaHocArrayList.get(position).MonHoc != null) {
+            ArrayList<String> listMon = khoaHocArrayList.get(position).MonHoc;
+            String danhSachMon = "";
+            for (String mon : listMon) {
+                danhSachMon = danhSachMon + mon;
+            }
+            String mon = "<b>Môn: </b>" + " " + danhSachMon;
+            holder.tvMonHoc.setText(Html.fromHtml(mon));
+        }
 
-        ArrayList<String> listBuoi = khoaHocArrayList.get(position).BuoiHoc;
-        String dsbuoi = "";
-        for (String buoi : listBuoi) { dsbuoi = dsbuoi + buoi; }
-        String buoi = "<b>Buổi: </b>"+" " +dsbuoi;
-        holder.tvBuoiHoc.setText(Html.fromHtml(buoi));
+        if(khoaHocArrayList.get(position).BuoiHoc != null) {
+            ArrayList<String> listBuoi = khoaHocArrayList.get(position).BuoiHoc;
+            String dsbuoi = "";
+            for (String buoi : listBuoi) {
+                dsbuoi = dsbuoi + buoi;
+            }
+            String buoi = "<b>Buổi: </b>" + " " + dsbuoi;
+            holder.tvBuoiHoc.setText(Html.fromHtml(buoi));
+        }
 
-        String hocPhi = "<b>Học phí: <b>"+" "+khoaHocArrayList.get(position).HocPhi;
-        holder.tvHocPhi.setText(Html.fromHtml(hocPhi));
+        if(khoaHocArrayList.get(position).HocPhi != null) {
+            String hocPhi = "<b>Học phí: <b>" + " " + khoaHocArrayList.get(position).HocPhi;
+            holder.tvHocPhi.setText(Html.fromHtml(hocPhi));
+        }
     }
 
     @Override

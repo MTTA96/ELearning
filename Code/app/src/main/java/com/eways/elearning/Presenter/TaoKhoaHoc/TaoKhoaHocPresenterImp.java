@@ -10,6 +10,6 @@ import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
  */
 
 public interface TaoKhoaHocPresenterImp {
-    public void nhanThongTinKhoaHoc(KhoaHoc khoaHoc, Activity activity);
+    public void nhanThongTinKhoaHoc(KhoaHoc khoaHoc, boolean checked, Activity activity);
     public void ketQua(String ketQua);
 }

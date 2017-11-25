@@ -31,6 +31,7 @@ import java.util.Calendar;
  * Created by Tuấn Anh 11/16/2017
  */
 public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, TaoKhoaHocViewImp {
+
     View root;
     Switch switchTaoKhoaHoc;
     Button btnTaoKhoaHoc;
@@ -117,15 +118,17 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (buttonView.getId() == R.id.switch_tao_khoa_hoc) {
+        if (buttonView.getId() == R.id.switch_tao_khoa_hoc){
             if (isChecked) {
                 buttonView.setText("Tìm học viên");
                 root.findViewById(R.id.layout_BangCap_TaoKhoaHoc).setVisibility(View.GONE);
-            } else {
+            }
+            else {
                 buttonView.setText("Tìm gia sư");
                 root.findViewById(R.id.layout_BangCap_TaoKhoaHoc).setVisibility(View.VISIBLE);
             }
-        } else {
+        }
+        else {
             if (isChecked) {
                 buttonView.setBackgroundResource(R.drawable.btn_color_main_corners_shape);
                 buttonView.setTextColor(Color.WHITE);
@@ -141,7 +144,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         if (v.getId() == R.id.button_TiepTuc_TaoKhoaHoc) {
             if (checkData()) {
                 KhoaHoc khoaHoc = setUpData();
-                taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc, getActivity());
+                taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc, switchTaoKhoaHoc.isChecked() ,getActivity());
 
             } else
                 Toast.makeText(getActivity(), "Thiếu thông tin!", Toast.LENGTH_LONG).show();
@@ -165,11 +168,11 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         //ArrayList<String> Buoi;
         ArrayList dataBuoi = new ArrayList();
         if (cbSang.isChecked())
-            dataBuoi.add("Sang");
+            dataBuoi.add("Sáng");
         if (cbChieu.isChecked())
-            dataBuoi.add("Chieu");
+            dataBuoi.add("Chiều");
         if (cbToi.isChecked())
-            dataBuoi.add("Toi");
+            dataBuoi.add("Tối");
 
         //ArrayList<String> Thu;
         ArrayList dataThu = new ArrayList();
@@ -191,11 +194,11 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
         //GioiTinh;
         if (cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
-            khoaHoc.setGioiTinh("Nam, Nu");
+            khoaHoc.setGioiTinh("Nam, Nữ");
         if (cbGioiTinhNam.isChecked() && !cbGioiTinhNu.isChecked())
             khoaHoc.setGioiTinh("Nam");
         if (!cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
-            khoaHoc.setGioiTinh("Nu");
+            khoaHoc.setGioiTinh("Nữ");
 
         //NgayDang;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

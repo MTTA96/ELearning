@@ -19,6 +19,8 @@ import android.widget.TextView;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
+import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc.TaoKhoaHocFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.TimKiemFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
@@ -51,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
         imageHandler = new ImageHandler(this);
         fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
-        fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
-
+//        fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
+        fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, null);
     }
 
     private void setUpActionBar(DrawerLayout drawer, Toolbar myToolbar) {
@@ -87,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     else {
                         tvUserName.setText(R.string.header_msg_chua_dang_nhap);
                         tvUserEmail.setText("");
+                        imgUser.setImageBitmap(null);
                     }
                 }
                 super.onDrawerSlide(drawerView, slideOffset);
@@ -112,10 +115,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.content_main);
         if(currentFragment!=null && currentFragment.getTag()!=null) {
             switch (currentFragment.getTag()) {
-                case SupportKeysList.TAG_DANH_SACH_KHOA_HOC:
-                    menu.findItem(R.id.act_search).setVisible(true);
+                case SupportKeysList.TAG_DANG_NHAP_FRAGMENT:
+                case SupportKeysList.TAG_DANG_KY_FRAGMENT:
+                case SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT:
+                case SupportKeysList.TAG_TAO_KHOA_HOC:
+                    menu.findItem(R.id.act_search).setVisible(false);
                     break;
                 default:
+                    menu.findItem(R.id.act_search).setVisible(true);
                     break;
             }
         }
@@ -139,13 +146,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()){
             case R.id.nav_home:
-                fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
+                fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, null);
                 break;
             case R.id.nav_quan_ly_tai_khoan:
                 if (mySharedPref.getDaDangNhap())
                     fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
                 else
                     fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
+                break;
+            case R.id.nav_tao_khoa_hoc:
+                if (!mySharedPref.getDaDangNhap())
+                    fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
+                else
+                    fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(),true,SupportKeysList.TAG_TAO_KHOA_HOC);
                 break;
         }
 
@@ -156,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onClick(View v) {
         if (v.getId() == -1){
-            if (!(getSupportFragmentManager().findFragmentById(R.id.content_main) instanceof HomeFragment))
+            if (!(getSupportFragmentManager().findFragmentById(R.id.content_main) instanceof NewHomeFragment))
                 this.onBackPressed();
             else
                 ((DrawerLayout)findViewById(R.id.drawer_layout)).openDrawer(Gravity.START);

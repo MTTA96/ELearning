@@ -25,6 +25,7 @@ import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
+import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.ThongTinCaNhanFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -119,7 +120,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     FirebaseAuth.getInstance().signOut();
-                    fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
+                    fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, null);
                     sharedPreferencesHandler.DangXuat();
                 }
             });

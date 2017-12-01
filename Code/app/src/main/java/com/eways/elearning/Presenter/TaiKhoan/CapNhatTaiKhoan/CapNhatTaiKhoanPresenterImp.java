@@ -10,5 +10,5 @@ import com.eways.elearning.DataModel.TaiKhoan;
 
 public interface CapNhatTaiKhoanPresenterImp {
     public void NhanDataUpdate (TaiKhoan taiKhoan, Activity activity);
-    public void KetQuaCapNhat(String ketquacapnhat);
+    public void KetQuaCapNhat(String ketquacapnhat,TaiKhoan taiKhoan,Activity activity);
 }

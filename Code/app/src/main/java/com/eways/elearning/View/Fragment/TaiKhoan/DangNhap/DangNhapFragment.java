@@ -163,7 +163,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
             return;
         }
         if (ketqua.compareTo(LOGIN_SUCCESS)==0){
-            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
+//            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
             fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
         }
     }

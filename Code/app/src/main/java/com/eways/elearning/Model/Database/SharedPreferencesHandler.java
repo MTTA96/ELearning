@@ -25,6 +25,8 @@ public class SharedPreferencesHandler {
     private final String KEY_NGAYSINH="ngaysinh";
     private final String KEY_GIOITINH="gioitinh";
     private final String KEY_AVATAR ="avatar";
+    private final String KEY_TAILIEUXACMINH_MT="tailieuxacminh_mt";
+    private final String KEY_TAILIEUXACMINH_MS="tailieuxacminh_ms";
 
     public SharedPreferencesHandler(Context context,String tenFile) {
         this.context = context;
@@ -156,8 +158,25 @@ public class SharedPreferencesHandler {
         editor.putString(KEY_GIOITINH, gioiTinh);
         editor.commit();
     }
+    public String getTaiLieuXacMinh_mt(){
+        return sharedPreferences.getString(KEY_TAILIEUXACMINH_MT, "");
+    }
 
-    public void DangNhapThanhCong(String id, String email, String ho, String ten, String avatar, String tenTK,boolean daDangNhap, String loaiTK,String ngheNghiep,String namSinh,String gioiTinh){
+    public void setTaiLieuXacMinh_mt(String tailieuxacminh_mt){
+        editor.putString(KEY_TAILIEUXACMINH_MT,tailieuxacminh_mt);
+        editor.commit();
+    }
+
+    public String getTaiLieuXacMinh_ms(){
+        return sharedPreferences.getString(KEY_TAILIEUXACMINH_MS, "");
+    }
+
+    public void setTaiLieuXacMinh_ms(String taiLieuXacMinh_ms){
+        editor.putString(KEY_TAILIEUXACMINH_MS,taiLieuXacMinh_ms);
+        editor.commit();
+    }
+
+    public void DangNhapThanhCong(String id, String email, String ho, String ten, String avatar, String tenTK,boolean daDangNhap, String loaiTK,String ngheNghiep,String namSinh,String gioiTinh,String taiLieuXacMinh_mt,String taiLieuXacMinh_ms){
         setID(id);
         setEmail(email);
         setHo(ho);
@@ -169,6 +188,8 @@ public class SharedPreferencesHandler {
         setNgheNghiep(ngheNghiep);
         setNamSinh(namSinh);
         setGioiTinh(gioiTinh);
+        setTaiLieuXacMinh_mt(taiLieuXacMinh_mt);
+        setTaiLieuXacMinh_ms(taiLieuXacMinh_ms);
     }
     public void DangXuat(){
         setID("");

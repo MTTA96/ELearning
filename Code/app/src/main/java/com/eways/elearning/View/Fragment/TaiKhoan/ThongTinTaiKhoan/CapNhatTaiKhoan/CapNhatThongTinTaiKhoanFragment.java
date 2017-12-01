@@ -1,8 +1,13 @@
 package com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan;
 
 
+import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +22,10 @@ import android.widget.Spinner;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
+import com.eways.elearning.DataModel.LayHinhModel;
 import com.eways.elearning.DataModel.TaiKhoan;
+import com.eways.elearning.Handler.Adapter.ChonHinhAdapter;
+import com.eways.elearning.Handler.DialogPlusHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPresenter;
@@ -26,8 +34,12 @@ import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -44,6 +56,13 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     FragmentHandler fragmentHandler;
     CapNhatTaiKhoanPresenterImp capNhatTaiKhoanPresenterImp;
 
+    ChonHinhAdapter adDanhSachChonHinh;
+    ArrayList<LayHinhModel> danhSachChon;
+    DialogPlusHandler dialogPlusHandler;
+
+    int RESULT_LOAD_HINHMT=1;
+    int RESULT_LOAD_HINHMS=2;
+
     public CapNhatThongTinTaiKhoanFragment() {
         // Required empty public constructor
     }
@@ -54,6 +73,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         danhsachNam = new ArrayList<>();
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         sharedPreferencesHandler = new SharedPreferencesHandler(getContext(), SupportKeysList.SHARED_PREF_FILE_NAME);
+
         capNhatTaiKhoanPresenterImp = new CapNhatTaiKhoanPresenter(this);
     }
 
@@ -73,6 +93,16 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
 
         btnLuuCapNhat.setOnClickListener(this);
 
+        imTaiLieuXacMinh_mt.setOnClickListener(this);
+        imTaiLieuXacMinh_ms.setOnClickListener(this);
+
+        //cai đặt dialogplus
+        danhSachChon=new ArrayList<>();
+        danhSachChon.add(new LayHinhModel(1,R.drawable.camera_icon,"Máy ảnh"));
+        danhSachChon.add(new LayHinhModel(2,R.drawable.gallery_icon,"Bộ sưu tập"));
+        adDanhSachChonHinh=new ChonHinhAdapter(getActivity(),R.layout.item_chonhinh_cntttk,danhSachChon);
+        dialogPlusHandler=new DialogPlusHandler(getActivity(),adDanhSachChonHinh);
+
         LoadData();
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
         return view;
@@ -81,11 +111,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     @Override
     public void KetQuaCapNhat(String ketQuaCapNhat) {
         if (ketQuaCapNhat.compareTo(SupportKeysList.TAG_CAPNHATTHANHCONG) == 0) {
-            Toast.makeText(getActivity(), "Cập nhật thành công ", Toast.LENGTH_SHORT).show();
-
-            //Xóa sau demo
-            sharedPreferencesHandler.setTen(etHoTen.getText().toString());
-
+            Toast.makeText(getContext(),"Cập Nhật Thành Công",Toast.LENGTH_SHORT).show();
             fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), false, null);
         }
     }
@@ -94,32 +120,79 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     public void onClick(View v) {
         if (v.getId() == R.id.btnLuuCNTTTK) {
             capNhatTaiKhoanPresenterImp.NhanDataUpdate(new TaiKhoan(sharedPreferencesHandler.getID(), sharedPreferencesHandler.getEmail(),
-                    null, etHoTen.getText().toString(), sharedPreferencesHandler.getTenTaiKhoan(),
+                    sharedPreferencesHandler.getHo(), etHoTen.getText().toString(), sharedPreferencesHandler.getTenTaiKhoan(),
                     sharedPreferencesHandler.getDaDangNhap(), sharedPreferencesHandler.getLoaiTaiKhoan(),
                     sharedPreferencesHandler.getMatKhau(), etNgheNghiep.getText().toString(), spNamsinh.getSelectedItem().toString(),
-                    spGiotinh.getSelectedItem().toString()), getActivity());
-//            fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(),false,null);
+                    spGiotinh.getSelectedItem().toString(),sharedPreferencesHandler.getTaiLieuXacMinh_mt(),sharedPreferencesHandler.getTaiLieuXacMinh_ms()), getActivity());
+        }
+        if (v.getId() == R.id.ivTaiLieuXacMinh_mt){
+            dialogPlusHandler.ShowDialogChonHinh();
+        }
+        if (v.getId() == R.id.ivTaiLieuXacMinh_ms){
+            dialogPlusHandler.ShowDialogChonHinh();
         }
     }
 
     //Load Data tài khoản
     public void LoadData() {
-        etHoTen.setText(sharedPreferencesHandler.getTen().toString());
-        calendar = Calendar.getInstance();
-        int currentYear = calendar.get(Calendar.YEAR);
-        for (int i = 1960; i <= currentYear; i++) {
-            danhsachNam.add(String.valueOf(i));
+
+        if(sharedPreferencesHandler.getHo().isEmpty() && sharedPreferencesHandler.getTen().isEmpty()){
+            etHoTen.setText("");
         }
-        ArrayAdapter<String> namSinhAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, danhsachNam);
-        spNamsinh.setAdapter(namSinhAdapter);
-        ArrayAdapter<String> gioiTinhAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ListGioiTinh));
-        spGiotinh.setAdapter(gioiTinhAdapter);
+        else
+            etHoTen.setText(sharedPreferencesHandler.getHo().toString()+sharedPreferencesHandler.getTen().toString());
+        if (sharedPreferencesHandler.getNamSinh().toString().isEmpty()){
+            calendar = Calendar.getInstance();
+            int currentYear = calendar.get(Calendar.YEAR);
+            for (int i = 1960; i <= currentYear; i++) {
+                danhsachNam.add(String.valueOf(i));
+            }
+            ArrayAdapter adDanhSachNam=new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,danhsachNam);
+            spNamsinh.setAdapter(adDanhSachNam);
+
+        }else{
+            calendar = Calendar.getInstance();
+            int currentYear = calendar.get(Calendar.YEAR);
+            for (int i = 1960; i <= currentYear; i++) {
+                danhsachNam.add(String.valueOf(i));
+            }
+            ArrayAdapter adDanhSachNam=new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,danhsachNam);
+            spNamsinh.setAdapter(adDanhSachNam);
+            int spinnerPosition=adDanhSachNam.getPosition(sharedPreferencesHandler.getNamSinh());
+            spNamsinh.setSelection(spinnerPosition);
+        }
+        if (sharedPreferencesHandler.getGioiTinh().isEmpty()) {
+            ArrayAdapter adDanhSachGioiTinh = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ListGioiTinh));
+            spGiotinh.setAdapter(adDanhSachGioiTinh);
+        }else{
+            ArrayAdapter adDanhSachGioiTinh = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.ListGioiTinh));
+            spGiotinh.setAdapter(adDanhSachGioiTinh);
+            int spinnerPosition=adDanhSachGioiTinh.getPosition(sharedPreferencesHandler.getGioiTinh());
+            spGiotinh.setSelection(spinnerPosition);
+        }
+        if(sharedPreferencesHandler.getNgheNghiep().isEmpty()){
+            etNgheNghiep.setText("");
+        }
+        else {
+            etNgheNghiep.setText(sharedPreferencesHandler.getNgheNghiep().toString());
+        }
         imTaiLieuXacMinh_mt.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
         imTaiLieuXacMinh_ms.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
     }
+    //Nhân hình từ gallery
 
-    //Load thông tin tài khoản
-    public void LoadAccount(){
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        dialogPlusHandler.onActivityResult(requestCode,resultCode,data,imTaiLieuXacMinh_mt);
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        dialogPlusHandler.onRequestPermissionResult(requestCode,permissions,grantResults);
     }
 }

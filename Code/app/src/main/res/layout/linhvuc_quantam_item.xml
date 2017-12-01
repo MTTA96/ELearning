@@ -5,11 +5,11 @@
     android:layout_height="wrap_content">
     <FrameLayout
         android:id="@+id/flItem_LVQT"
-        android:layout_gravity="center"
-        android:layout_marginLeft="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp">
         <!--android:layout_marginLeft="5dp"-->
         <ImageView
             android:id="@+id/ivHinh_LVYT"
@@ -36,5 +36,13 @@
         </FrameLayout>
 
     </FrameLayout>
+    <ListView
+        android:id="@+id/lsvChiTietLinhVuc"
+        android:layout_width="165dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:visibility="visible"/>
 
 </LinearLayout>

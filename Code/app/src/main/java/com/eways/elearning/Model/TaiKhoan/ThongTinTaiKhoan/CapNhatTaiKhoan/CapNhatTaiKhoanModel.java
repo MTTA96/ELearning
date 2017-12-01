@@ -10,6 +10,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
@@ -26,15 +29,34 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp {
     }
 
     @Override
-    public void CapNhatTaiKhoan(TaiKhoan taiKhoan, Activity activity) {
+    public void CapNhatTaiKhoan(TaiKhoan taiKhoan, final Activity activity) {
         mAuth=FirebaseAuth.getInstance(FirebaseApp.initializeApp(activity));
         mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
-        mData.getReference().child("TaiKhoan").child(taiKhoan.getId()).setValue(taiKhoan).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mData.getReference().child("TaiKhoan").child(taiKhoan.getId()).setValue(taiKhoan);
+        mData.getReference().child("TaiKhoan").orderByKey().equalTo(taiKhoan.getId()).addChildEventListener(new ChildEventListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    capNhatTaiKhoanPresenterImp.KetQuaCapNhat(SupportKeysList.TAG_CAPNHATTHANHCONG);
-                }
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                capNhatTaiKhoanPresenterImp.KetQuaCapNhat(SupportKeysList.TAG_CAPNHATTHANHCONG,dataSnapshot.getValue(TaiKhoan.class),activity);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

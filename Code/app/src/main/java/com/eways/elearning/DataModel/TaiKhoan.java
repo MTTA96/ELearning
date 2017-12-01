@@ -16,6 +16,8 @@ public class TaiKhoan {
     String nghenghiep;
     String namsinh;
     String gioitinh;
+    String tailieuxacminh_mt;
+    String tailieuxacminh_ms;
 
     public TaiKhoan() {
     }
@@ -30,7 +32,7 @@ public class TaiKhoan {
         this.ten=ten;
     }
 
-    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh) {
+    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms) {
         this.id = id;
         this.email = email;
         this.ho = ho;
@@ -42,6 +44,8 @@ public class TaiKhoan {
         this.nghenghiep = nghenghiep;
         this.namsinh = namsinh;
         this.gioitinh = gioitinh;
+        this.tailieuxacminh_mt = tailieuxacminh_mt;
+        this.tailieuxacminh_ms = tailieuxacminh_ms;
     }
 
     public String getId() {
@@ -130,5 +134,21 @@ public class TaiKhoan {
 
     public void setGioitinh(String gioitinh) {
         this.gioitinh = gioitinh;
+    }
+
+    public String getTailieuxacminh_mt() {
+        return tailieuxacminh_mt;
+    }
+
+    public void setTailieuxacminh_mt(String tailieuxacminh_mt) {
+        this.tailieuxacminh_mt = tailieuxacminh_mt;
+    }
+
+    public String getTailieuxacminh_ms() {
+        return tailieuxacminh_ms;
+    }
+
+    public void setTailieuxacminh_ms(String tailieuxacminh_ms) {
+        this.tailieuxacminh_ms = tailieuxacminh_ms;
     }
 }

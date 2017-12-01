@@ -11,7 +11,9 @@ import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapViewImp;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by ADMIN on 11/5/2017.
@@ -52,6 +54,13 @@ public class DangNhapPresenter implements DangNhapPresenterImp {
             dangNhapImpModel.NhanTaiKhoanDN(new TaiKhoan(email,Password),activity);
 
     }
+
+    @Override
+    public void ChuyenTaiKhoanGmai(GoogleSignInAccount account, Activity activity) {
+        dangNhapImpModel.DangNhapGmail(account,activity);
+    }
+
+
     //Đếm số chữ trong chuỗi
     public static int DemKyTu(String s){
         int count=0;
@@ -70,27 +79,21 @@ public class DangNhapPresenter implements DangNhapPresenterImp {
     }
 
     @Override
-    public void KetQuaDangNhap(String ketqua, FirebaseUser user,GoogleSignInAccount Guser, Activity activity) {
+    public void KetQuaDangNhap(String ketqua, FirebaseUser user,GoogleSignInAccount Guser, Activity activity,TaiKhoan taiKhoan) {
         if (ketqua.compareTo(DangNhapFragment.LOGIN_SUCCESS)==0){
             if (user!=null){
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
-                sharedPreferencesHandler.DangNhapThanhCong(user.getUid(), user.getEmail(),null,null, user.getPhotoUrl() != null ? user.getPhotoUrl().toString():null, user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG,null,null,null);
+                sharedPreferencesHandler.DangNhapThanhCong(user.getUid(), user.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(), user.getPhotoUrl() != null ? user.getPhotoUrl().toString():null, user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms());
                 dangNhapImpView.NhanKetQuaDN(ketqua);
             }
             if (Guser!=null)
             {
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity,SupportKeysList.SHARED_PREF_FILE_NAME);
-                sharedPreferencesHandler.DangNhapThanhCong(Guser.getId(),Guser.getEmail(),Guser.getFamilyName(),Guser.getGivenName(),Guser.getPhotoUrl() != null ? Guser.getPhotoUrl().toString():null,Guser.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL,null,null,null);
+                sharedPreferencesHandler.DangNhapThanhCong(Guser.getId(),Guser.getEmail(),Guser.getFamilyName(),Guser.getGivenName(),Guser.getPhotoUrl() != null ? Guser.getPhotoUrl().toString():null,Guser.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms());
                 dangNhapImpView.NhanKetQuaDN(ketqua);
             }
         }else
             dangNhapImpView.NhanKetQuaDN(ketqua);
-
-    }
-
-    @Override
-    public void ChuyenTaiKhoanGmai(GoogleSignInAccount account,Activity activity) {
-        dangNhapImpModel.DangNhapGmail(account,activity);
 
     }
 }

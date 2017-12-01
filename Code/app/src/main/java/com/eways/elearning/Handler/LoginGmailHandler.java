@@ -24,22 +24,27 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
  * Created by ADMIN on 11/10/2017.
  */
 
-public class LoginGmailHandler  {
+public class LoginGmailHandler   {
     private Activity activity;
     private int requestCode;
     private int resultCode;
     private DangNhapFragment dangNhapFragment;
     private Intent data;
     private SharedPreferencesHandler sharedPreferencesHandler;
-    DangNhapImpModel dangNhapImpModel;
 
     private DangNhapPresenterImp dangNhapPresenterImp;
+    private DangNhapImpModel dangNhapImpModel=new DangNhapModel(dangNhapPresenterImp);
+
+    private FirebaseDatabase mData;
+
+
 
     private static final int RC_SIGN_IN=1;
     private GoogleApiClient mGoogleApiClient;
@@ -54,7 +59,6 @@ public class LoginGmailHandler  {
     public void ConnectGmail(){
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken("0x7f0d006a")
                 .requestEmail()
                 .build();
         mGoogleApiClient=new GoogleApiClient.Builder(activity)
@@ -97,7 +101,7 @@ public class LoginGmailHandler  {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 dangNhapPresenterImp.ChuyenTaiKhoanGmai(account,activity);
-                dangNhapPresenterImp.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity);
+
             } else {
                 // Google Sign In failed, update UI appropriately
                 // ...

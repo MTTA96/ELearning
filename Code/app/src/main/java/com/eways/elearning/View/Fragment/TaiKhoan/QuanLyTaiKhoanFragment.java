@@ -89,12 +89,25 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.LoLinhVucQuanTam) {
-
+            ArrayList<String> listAmThucCT=new ArrayList();
+            listAmThucCT.add("At2");
+            listAmThucCT.add("At3");
+            ArrayList<String> listHocTapCT=new ArrayList<>();
+            listHocTapCT.add("HT1");
+            listHocTapCT.add("HT2");
+            ArrayList<String> listAmNhacCT=new ArrayList<>();
+            listAmNhacCT.add("AN1");
+            listAmNhacCT.add("AN2");
+            ArrayList<String> listVanTai=new ArrayList<>();
+            listVanTai.add("VT1");
+            listVanTai.add("VT2");
             ArrayList<LinhVucBaiDang> DanhSachLVBD=new ArrayList<>();
-            DanhSachLVBD.add(new LinhVucBaiDang(1,"Ẩm Thực",R.drawable.at));
-            DanhSachLVBD.add(new LinhVucBaiDang(2,"Học Tập",R.drawable.ht));
-            DanhSachLVBD.add(new LinhVucBaiDang(3,"Âm Nhạc",R.drawable.an));
-            DanhSachLVBD.add(new LinhVucBaiDang(4,"Vận Tải",R.drawable.vt));
+            DanhSachLVBD.add(new LinhVucBaiDang(1,"Ẩm Thực",R.drawable.at,listAmThucCT));
+            DanhSachLVBD.add(new LinhVucBaiDang(2,"Học Tập",R.drawable.ht,listHocTapCT));
+            DanhSachLVBD.add(new LinhVucBaiDang(3,"Âm Nhạc",R.drawable.an,listAmNhacCT));
+            DanhSachLVBD.add(new LinhVucBaiDang(4,"Vận Tải",R.drawable.vt,listVanTai));
+
+
 
             LinhVucDialog linhVucDialog=new LinhVucDialog(getContext(),DanhSachLVBD);
             linhVucDialog.ShowDialogLinhVuc();

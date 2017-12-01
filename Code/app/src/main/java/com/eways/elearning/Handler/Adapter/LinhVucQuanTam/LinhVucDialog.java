@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
  * Created by ADMIN on 11/22/2017.
  */
 
-public class LinhVucDialog  {
+public class LinhVucDialog {
     Context context;
     ArrayList<LinhVucBaiDang> DanhSachLinhVuc;
 
@@ -43,4 +44,5 @@ public class LinhVucDialog  {
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.show();
     }
+
 }

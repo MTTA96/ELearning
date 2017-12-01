@@ -1,4 +1,4 @@
-package com.eways.elearning.View.Fragment.KhoaHoc;
+package com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc;
 
 
 import android.graphics.Color;
@@ -16,6 +16,7 @@ import android.widget.Switch;
 
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.DataModel.KhoaHoc.LichHoc;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 
@@ -155,38 +156,37 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
 
         //Giới tính
         if(cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
-            requestKhoaHoc.setGioiTinh("Nam, Nu");
+            requestKhoaHoc.setGioiTinh("Nam, Nữ");
         if(cbGioiTinhNam.isChecked() && !cbGioiTinhNu.isChecked())
             requestKhoaHoc.setGioiTinh("Nam");
         if(!cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
-            requestKhoaHoc.setGioiTinh("Nu");
+            requestKhoaHoc.setGioiTinh("Nữ");
 
-        //Buổi
-        data = new ArrayList();
+        //ArrayList<String> Buoi;
+        ArrayList dataBuoi = new ArrayList();
         if (cbSang.isChecked())
-            data.add("Sang");
+            dataBuoi.add("Sáng");
         if (cbChieu.isChecked())
-            data.add("Chieu");
+            dataBuoi.add("Chiều");
         if (cbToi.isChecked())
-            data.add("Toi");
-        requestKhoaHoc.setBuoi(data);
+            dataBuoi.add("Tối");
 
-        //Thứ
-        data = new ArrayList();
+        //ArrayList<String> Thu;
+        ArrayList dataThu = new ArrayList();
         if (cbThu2.isChecked())
-            data.add("T2");
+            dataThu.add("T2");
         if (cbThu3.isChecked())
-            data.add("T3");
+            dataThu.add("T3");
         if (cbThu4.isChecked())
-            data.add("T4");
+            dataThu.add("T4");
         if (cbThu5.isChecked())
-            data.add("T5");
+            dataThu.add("T5");
         if (cbThu6.isChecked())
-            data.add("T6");
+            dataThu.add("T6");
         if (cbThu7.isChecked())
-            data.add("T7");
+            dataThu.add("T7");
         if (cbChuNhat.isChecked())
-            data.add("CN");
-        requestKhoaHoc.setThu(data);
+            dataThu.add("CN");
+        requestKhoaHoc.setLichHoc(new LichHoc(dataThu,dataBuoi));
     }
 }

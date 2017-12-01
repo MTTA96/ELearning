@@ -10,5 +10,5 @@ import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
  */
 
 public interface TaoKhoaHocModelImp {
-    public void postKhoaHoc(KhoaHoc khoaHoc, Activity activity);
+    public void postKhoaHoc(KhoaHoc khoaHoc, boolean loai, Activity activity);
 }

@@ -3,7 +3,6 @@ package com.eways.elearning.Presenter.TaoKhoaHoc;
 import android.app.Activity;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 import com.eways.elearning.Model.TaoKhoaHoc.TaoKhoaHocModel;
 import com.eways.elearning.Model.TaoKhoaHoc.TaoKhoaHocModelImp;
 import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc.TaoKhoaHocFragment;
@@ -22,8 +21,8 @@ public class TaoKhoaHocPresenter implements TaoKhoaHocPresenterImp {
     }
 
     @Override
-    public void nhanThongTinKhoaHoc(KhoaHoc khoaHoc, Activity activity) {
-        taoKhoaHocModelImp.postKhoaHoc(khoaHoc,activity);
+    public void nhanThongTinKhoaHoc(KhoaHoc khoaHoc,boolean loai ,Activity activity) {
+        taoKhoaHocModelImp.postKhoaHoc(khoaHoc,loai,activity);
     }
 
     @Override

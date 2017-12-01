@@ -208,4 +208,6 @@ public class KhoaHoc implements Serializable {
     public void setThu(ArrayList<String> Thu) {
         this.Thu = Thu;
     }
+
+
 }

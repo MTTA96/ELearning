@@ -55,23 +55,45 @@
       ]
     },
     "DanhMucLinhVuc":
-    [
-      "Kiến thức tiểu học",
-      "Kiến thức trung học cơ sở",
-      "Kiến thức trung học phổ thông",
-      "Toán",
-      "Lý",
-      "Hóa",
-      "Văn học",
-      "Lịch sử",
-      "Địa lý",
-      "Thể thao",
-      "Hội họa",
-      "Âm nhạc",
-      "Ẩm thực",
-      "Kỹ năng mềm",
-      "Mẹo vặt" 
-    ]
+    {
+
+      "NgoaiNgu":
+      {
+        "TenLinhVuc":"Ngoại ngữ",
+        "DanhMucMon":
+        [
+          "TOEIC","ielts","Anh văn giao tiếp","TESOL","<CELTA></CELTA>"
+        ],
+        "DanhMucBangCap":
+        [
+            "TOEIC","ielts"
+        ]
+      },
+      "ToanHoc":
+      {
+        "TenLinhVuc":"Toán học",
+        "DanhMucMon":
+        [
+          "Toán cấp 1","Toán cấp 2","Toán cao cấp"
+        ],
+        "DanhMucBangCap":
+        [
+            "Sưu phạm Đại học","Sưu phạm Cao đẳng"
+        ]
+      },
+      "AmNhac":
+      {
+        "TenLinhVuc":"Âm nhạc",
+        "DanhMucMon":
+        [
+          "Dương cầm","Thanh nhạc căn bản"
+        ],
+        "DanhMucBangCap":
+        [
+            "Sưu phạm Đại học","Sưu phạm Cao đẳng"
+        ]
+      }
+    }
   },
   "HopThoai":
   [
@@ -389,10 +411,6 @@
           "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/10552573_209395612750503_8876221089496445441_n.jpg?oh=9dc5bda323d234a4228609a38aba0b89&oe=5AA35067",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
-          "Lop":
-          [
-            "Lớp 12"
-          ],
           "Mon":
           [
             "Anh văn giao tiếp"
@@ -407,12 +425,12 @@
           "LichHoc":
           {
             "ThoiGian":
-            ["Buổi sáng"],
+            ["Sáng"],
             "NgayHoc":
             [
-              "Thứ hai",
-              "Thứ tư",
-              "Thứ sáu"
+              "T2",
+              "T4",
+              "T6"
             ]
           },
           "SoLuongHocVien":"1",
@@ -444,10 +462,6 @@
           "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/10552573_209395612750503_8876221089496445441_n.jpg?oh=9dc5bda323d234a4228609a38aba0b89&oe=5AA35067",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
-          "Lop":
-          [
-            "Lớp 12"
-          ],
           "Mon":
           [
             "Anh văn giao tiếp"
@@ -462,12 +476,12 @@
           "LichHoc":
           {
             "ThoiGian":
-            ["Buổi sáng"],
+            ["Sáng"],
             "NgayHoc":
             [
-              "Thứ hai",
-              "Thứ tư",
-              "Thứ sáu"
+              "T2",
+              "T4",
+              "T6"
             ]
           },
           "SoLuongHocVien":"1",
@@ -499,10 +513,6 @@
           "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/20374454_1477375532369865_6052979908697223421_n.jpg?oh=56e202b720764be8bfe613b90668b579&oe=5A9629AA",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
-          "Lop":
-          [
-            "Lớp 12"
-          ],
           "Mon":
           [
             "Anh văn giao tiếp"
@@ -517,12 +527,12 @@
           "LichHoc":
           {
             "ThoiGian":
-            ["Buổi sáng"],
+            ["Sáng"],
             "NgayHoc":
             [
-              "Thứ hai",
-              "Thứ tư",
-              "Thứ sáu"
+              "T2",
+              "T4",
+              "T6"
             ]
           },
           "SoLuongHocVien":"1",
@@ -554,10 +564,6 @@
           "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/22851924_1518421024909182_252239229946743023_n.jpg?oh=2ee0fd8cdfd8dc9ec287c03500c1f0bf&oe=5A9A6833",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
-          "Lop":
-          [
-            "Lớp 12"
-          ],
           "Mon":
           [
             "Anh van giao tiep"
@@ -572,7 +578,7 @@
           "LichHoc":
           {
             "ThoiGian":
-            ["Toi"],
+            ["Sáng"],
             "NgayHoc":
             [
               "T2",
@@ -612,10 +618,6 @@
           "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
-          "Lop":
-          [
-            "Lớp 8","Lớp 12"
-          ],
           "Mon":
           [
             "Anh văn","Toán"
@@ -630,12 +632,12 @@
           "LichHoc":
           {
             "ThoiGian":
-            ["Buổi sáng"],
+            ["Sáng"],
             "NgayHoc":
             [
-              "Thứ hai",
-              "Thứ tư",
-              "Thứ sáu"
+              "T2",
+              "T4",
+              "T6"
             ]
           },
           "SoLuongHocVien":"2",
@@ -660,10 +662,6 @@
           "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
-          "Lop":
-          [
-            "Lớp 8","Lớp 12"
-          ],
           "Mon":
           [
             "Anh văn","Toán"
@@ -678,12 +676,12 @@
           "LichHoc":
           {
             "ThoiGian":
-            ["Buổi sáng"],
+            ["Sáng"],
             "NgayHoc":
             [
-              "Thứ hai",
-              "Thứ tư",
-              "Thứ sáu"
+              "T2",
+              "T4",
+              "T6"
             ]
           },
           "SoLuongHocVien":"2",
@@ -712,10 +710,6 @@
           "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
-          "Lop":
-          [
-            "Lớp 12"
-          ],
           "Mon":
           [
             "Anh van giao tiep"
@@ -730,7 +724,7 @@
           "LichHoc":
           {
             "ThoiGian":
-            ["Toi"],
+            ["Sáng"],
             "NgayHoc":
             [
               "T2",
@@ -767,10 +761,6 @@
           "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
-          "Lop":
-          [
-            "Lớp 12"
-          ],
           "Mon":
           [
             "Anh văn giao tiếp"
@@ -785,12 +775,12 @@
           "LichHoc":
           {
             "ThoiGian":
-            ["Buổi sáng"],
+            ["Sáng"],
             "NgayHoc":
             [
-              "Thứ hai",
-              "Thứ tư",
-              "Thứ sáu"
+              "T2",
+              "T4",
+              "T6"
             ]
           },
           "SoLuongHocVien":"1",
@@ -823,10 +813,6 @@
           "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
-          "Lop":
-          [
-            "Lớp 12"
-          ],
           "Mon":
           [
             "Anh văn giao tiếp"
@@ -841,12 +827,12 @@
           "LichHoc":
           {
             "ThoiGian":
-            ["Buổi sáng"],
+            ["Sáng"],
             "NgayHoc":
             [
-              "Thứ hai",
-              "Thứ tư",
-              "Thứ sáu"
+              "T2",
+              "T4",
+              "T6"
             ]
           },
           "SoLuongHocVien":"1",
@@ -881,10 +867,6 @@
           "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
-          "Lop":
-          [
-            "Lớp 12"
-          ],
           "Mon":
           [
             "Anh văn","Toán"
@@ -899,12 +881,12 @@
           "LichHoc":
           {
             "ThoiGian":
-            ["Buổi sáng"],
+            ["Sáng"],
             "NgayHoc":
             [
-              "Thứ hai",
-              "Thứ tư",
-              "Thứ sáu"
+              "T2",
+              "T4",
+              "T6"
             ]
           },
           "SoLuongHocVien":"3",
@@ -931,10 +913,6 @@
           "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
-          "Lop":
-          [
-            "Lớp 12"
-          ],
           "Mon":
           [
             "Anh văn","Toán"
@@ -949,12 +927,12 @@
           "LichHoc":
           {
             "ThoiGian":
-            ["Buổi sáng"],
+            ["Sáng"],
             "NgayHoc":
             [
-              "Thứ hai",
-              "Thứ tư",
-              "Thứ sáu"
+              "T2",
+              "T4",
+              "T6"
             ]
           },
           "SoLuongHocVien":"3",

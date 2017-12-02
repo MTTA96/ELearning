@@ -122,7 +122,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
                     sharedPreferencesHandler.getHo(), etHoTen.getText().toString(), sharedPreferencesHandler.getTenTaiKhoan(),
                     sharedPreferencesHandler.getDaDangNhap(), sharedPreferencesHandler.getLoaiTaiKhoan(),
                     sharedPreferencesHandler.getMatKhau(), etNgheNghiep.getText().toString(), spNamsinh.getSelectedItem().toString(),
-                    spGiotinh.getSelectedItem().toString(),sharedPreferencesHandler.getTaiLieuXacMinh_mt(),sharedPreferencesHandler.getTaiLieuXacMinh_ms()), getActivity());
+                    spGiotinh.getSelectedItem().toString(),sharedPreferencesHandler.getTaiLieuXacMinh_mt(),sharedPreferencesHandler.getTaiLieuXacMinh_ms()), getActivity(),imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms);
         }
         if (v.getId() == R.id.ivTaiLieuXacMinh_mt){
             dialogPlusHandler.ShowDialogChonHinh();

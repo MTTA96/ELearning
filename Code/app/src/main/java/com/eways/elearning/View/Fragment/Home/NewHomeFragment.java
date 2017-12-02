@@ -61,7 +61,7 @@ public class NewHomeFragment extends Fragment implements View.OnClickListener,Ne
         root.findViewById(R.id.textView_XemDanhSachKhoaHocAnhVan_Home).setOnClickListener(this);
 
 
-        newHomeFragmentPresenter.guiYeuCau("Ngoại ngữ", "Toán", "Khác");
+//        newHomeFragmentPresenter.guiYeuCau("Ngoại ngữ", "Toán", "Khác");
         return root;
     }
 

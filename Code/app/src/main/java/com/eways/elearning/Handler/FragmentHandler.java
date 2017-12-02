@@ -14,10 +14,7 @@ import android.widget.TextView;
 
 import com.eways.elearning.R;
 import com.eways.elearning.View.Activity.MainActivity;
-import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
-import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
-import com.google.firebase.database.Transaction;
 
 /**
  * Created by zzzzz on 10/8/2017.

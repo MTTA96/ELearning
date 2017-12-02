@@ -26,7 +26,6 @@ import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
-import com.eways.elearning.View.Fragment.Home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     TextView tvUserName, tvUserEmail;

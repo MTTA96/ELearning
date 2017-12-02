@@ -12,7 +12,9 @@ import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Handler.ViewHolder.ItemListKhoaHocHomeViewHolder;
 import com.eways.elearning.R;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by zzzzz on 12/1/2017.
@@ -39,11 +41,17 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
     public void onBindViewHolder(ItemListKhoaHocHomeViewHolder holder, int position) {
         imageHandler.loadImageRound(listKhoaHoc.get(holder.getLayoutPosition()).LinkAvatar, holder.imgUserImage);
         holder.tvMon.setText(listKhoaHoc.get(holder.getLayoutPosition()).MonHoc.toString());
-        holder.tvGia.setText(listKhoaHoc.get(holder.getLayoutPosition()).HocPhi);
+        holder.tvGia.setText(chuyenGia(Long.parseLong(listKhoaHoc.get(holder.getLayoutPosition()).HocPhi)));
     }
 
     @Override
     public int getItemCount() {
         return listKhoaHoc.size();
     }
+
+    public static String chuyenGia(long gia){
+        NumberFormat formatGia = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        return formatGia.format(gia);
+    }
+
 }

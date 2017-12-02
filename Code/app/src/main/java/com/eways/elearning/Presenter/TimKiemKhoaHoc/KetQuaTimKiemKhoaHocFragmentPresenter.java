@@ -21,15 +21,7 @@ public class KetQuaTimKiemKhoaHocFragmentPresenter implements KetQuaTimKiemKhoaH
         this.ketQuaTimKiemFragmentViewImp = ketQuaTimKiemFragmentViewImp;
     }
 
-    @Override
-    public void nhanListKhoaHocGanChinhXac(ArrayList<CustomModelKhoaHoc> khoaHocGanChinhXac) {
-        ketQuaTimKiemFragmentViewImp.nhanListKhoaHocGanChinhXac(khoaHocGanChinhXac);
-    }
 
-    @Override
-    public void nhanListKhoaHocChinhXac(ArrayList<CustomModelKhoaHoc> khoaHocs) {
-        ketQuaTimKiemFragmentViewImp.nhanListKhoaHocChinhXac(khoaHocs);
-    }
 
     @Override
     public void guiYeuCauListKhoaHoc(KhoaHoc khoaHoc, boolean loai) {

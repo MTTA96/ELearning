@@ -150,10 +150,30 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
         }
 
         //Học phí
-        if (etHocPhi.getText()!=null){
-            requestKhoaHoc.setHocPhi(etHocPhi.getText().toString());
+//        String x = etHocPhi.getText().toString();
+//        if(!x.isEmpty())
+//        {
+//            requestKhoaHoc.setHocPhi(x);
+//        }
+//        else
+//        {
+//            requestKhoaHoc.setHocPhi("0");
+//        }
+        try {
+            requestKhoaHoc.setHocPhi(etHocPhi.getText().toString().isEmpty()? "0":etHocPhi.getText().toString());
+        }
+        catch (NumberFormatException ex)//bug
+        {
+            requestKhoaHoc.setHocPhi("0");
         }
 
+
+        //Bằng Cấp
+        if (etBangCap.getText()!=null) {
+            data = new ArrayList();
+            data.add(etBangCap.getText().toString());
+            requestKhoaHoc.setBangCap(data);
+        }
         //Giới tính
         if(cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
             requestKhoaHoc.setGioiTinh("Nam, Nữ");
@@ -161,6 +181,8 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
             requestKhoaHoc.setGioiTinh("Nam");
         if(!cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
             requestKhoaHoc.setGioiTinh("Nữ");
+        if(!cbGioiTinhNam.isChecked() && !cbGioiTinhNu.isChecked())
+            requestKhoaHoc.setGioiTinh("Nam, Nữ");
 
         //ArrayList<String> Buoi;
         ArrayList dataBuoi = new ArrayList();

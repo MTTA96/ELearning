@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Handler.ViewHolder.ItemListKhoaHocHomeViewHolder;
 import com.eways.elearning.R;
 
@@ -18,11 +20,13 @@ import java.util.ArrayList;
 
 public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKhoaHocHomeViewHolder> {
     private Context context;
-    private ArrayList listKhoaHoc = new ArrayList();
+    private ArrayList<CustomModelKhoaHoc> listKhoaHoc = new ArrayList();
+    private ImageHandler imageHandler;
 
-    public DanhSachKhoaHocHomeAdapter(Context context) {
+    public DanhSachKhoaHocHomeAdapter(Context context, ArrayList<CustomModelKhoaHoc> listKhoaHoc, ImageHandler imageHanlder) {
         this.context = context;
-//        this.listKhoaHoc = listKhoaHoc;
+        this.listKhoaHoc = listKhoaHoc;
+        this.imageHandler = imageHanlder;
     }
 
     @Override
@@ -33,10 +37,13 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
 
     @Override
     public void onBindViewHolder(ItemListKhoaHocHomeViewHolder holder, int position) {
+        imageHandler.loadImageRound(listKhoaHoc.get(holder.getLayoutPosition()).LinkAvatar, holder.imgUserImage);
+        holder.tvMon.setText(listKhoaHoc.get(holder.getLayoutPosition()).MonHoc.toString());
+        holder.tvGia.setText(listKhoaHoc.get(holder.getLayoutPosition()).HocPhi);
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return listKhoaHoc.size();
     }
 }

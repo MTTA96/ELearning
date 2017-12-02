@@ -5,6 +5,6 @@ package com.eways.elearning.Model.Home;
  */
 
 public interface NewHomeFragmentModelImp {
-    public void getListkhoaHoc(String linhVuc1,String linhVuc2,String linhVuc3);
+    public void getListkhoaHoc(boolean loai,String linhVuc1,String linhVuc2,String linhVuc3);
 
 }

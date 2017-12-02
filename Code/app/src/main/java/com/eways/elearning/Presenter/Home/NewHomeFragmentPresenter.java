@@ -21,8 +21,8 @@ public class NewHomeFragmentPresenter implements NewHomeFragmentPresenterImp {
     }
 
     @Override
-    public void guiYeuCau(String linhVuc1,String linhVuc2,String linhVuc3) {
-        newHomeFragmentModelImp.getListkhoaHoc(linhVuc1,linhVuc2,linhVuc3);
+    public void guiYeuCau(boolean loai,String linhVuc1,String linhVuc2,String linhVuc3) {
+        newHomeFragmentModelImp.getListkhoaHoc(loai,linhVuc1,linhVuc2,linhVuc3);
     }
 
     @Override

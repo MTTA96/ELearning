@@ -9,6 +9,6 @@ import java.util.ArrayList;
  */
 
 public interface NewHomeFragmentPresenterImp {
-    public void guiYeuCau(String linhVuc1,String linhVuc2,String linhVuc3);
+    public void guiYeuCau(boolean loai,String linhVuc1,String linhVuc2,String linhVuc3);
     public void getListKhoaHoc(ArrayList<CustomModelKhoaHoc> khoaHocs1,ArrayList<CustomModelKhoaHoc> khoaHocs2,ArrayList<CustomModelKhoaHoc> khoaHocs3);
 }

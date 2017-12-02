@@ -15,6 +15,7 @@ import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachKhoaHocHomeAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Presenter.Home.NewHomeFragmentPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocFragment;
@@ -28,6 +29,7 @@ public class NewHomeFragment extends Fragment implements View.OnClickListener,Ne
     RecyclerView rvDanhSachKhoaHocAnhVan, rvDanhSachKhoaHocToan, rvDanhSachKhoaHocKhac;
 
     private FragmentHandler fragmentHandler;
+    private NewHomeFragmentPresenter newHomeFragmentPresenter;
     private SharedPreferencesHandler mySharedPref;
     private ImageHandler imageHandler;
     private ArrayList danhSachKhoaHocAnhVan, danhSachKhoaHocToan, danhSachKhoaHocKhac;
@@ -41,6 +43,7 @@ public class NewHomeFragment extends Fragment implements View.OnClickListener,Ne
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+        newHomeFragmentPresenter = new NewHomeFragmentPresenter(this);
         mySharedPref = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
         imageHandler = new ImageHandler(getActivity());
         setHasOptionsMenu(true);
@@ -56,18 +59,20 @@ public class NewHomeFragment extends Fragment implements View.OnClickListener,Ne
         rvDanhSachKhoaHocKhac = (RecyclerView) root.findViewById(R.id.recyclerView_DanhSachKhoaHocKhac_Home);
 
         root.findViewById(R.id.textView_XemDanhSachKhoaHocAnhVan_Home).setOnClickListener(this);
-        setUpDanhSach();
+
+
+        newHomeFragmentPresenter.guiYeuCau("Ngoại ngữ", "Toán", "Khác");
         return root;
     }
 
-    private void setUpDanhSach() {
+    private void setUpDanhSach(ArrayList danhSachKhoaHocAnhVan, ArrayList danhSachKhoaHocToan, ArrayList danhSachKhoaHocKhac) {
         rvDanhSachKhoaHocAnhVan.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rvDanhSachKhoaHocToan.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rvDanhSachKhoaHocKhac.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        rvDanhSachKhoaHocAnhVan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity()));
-        rvDanhSachKhoaHocToan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity()));
-        rvDanhSachKhoaHocKhac.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity()));
+        rvDanhSachKhoaHocAnhVan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocAnhVan, imageHandler));
+        rvDanhSachKhoaHocToan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocToan, imageHandler));
+        rvDanhSachKhoaHocKhac.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocKhac, imageHandler));
     }
 
     @Override
@@ -91,6 +96,7 @@ public class NewHomeFragment extends Fragment implements View.OnClickListener,Ne
 
     @Override
     public void nhanListKhoaHoc(ArrayList<CustomModelKhoaHoc> khoaHocs1, ArrayList<CustomModelKhoaHoc> khoaHocs2, ArrayList<CustomModelKhoaHoc> khoaHocs3) {
-        
+        setUpDanhSach(khoaHocs1, khoaHocs2, khoaHocs3);
+
     }
 }

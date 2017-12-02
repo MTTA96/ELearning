@@ -11,6 +11,7 @@
     <string name="header_msg_chua_dang_nhap">Đăng nhập</string>
     <string name="nav_home">Home</string>
     <string name="nav_quan_ly_tai_khoan">Quản lý tài khoản</string>
+    <string name="nav_tao_khoa_hoc">Tạo khóa học</string>
 
     <!-- Home -->
     <string name="xem_danh_sach_bai_dang">Danh sách khóa học</string>
@@ -42,18 +43,19 @@
     <string name="tv_dieukhoan3">ELearning</string>
     <string name="btn_signup_DK">Xác nhận</string>
     <string name="btn_huy_DK">Hủy</string>
-    <string name="emtyEmailDK">* Chưa nhập Email</string>
-    <string name="emtyPasswordDK">* Chưa nhập mật khẩu</string>
-    <string name="emtyCPasswordDK">* Chưa xác nhận mật khẩu</string>
-    <string name="SaiEmailDK">* Email không đúng định dạng</string>
-    <string name="SaiXacNhanMatKhauDK">* Xác nhận mật không đúng</string>
-    <string name="SaiMatKhauDK">* Mật khẩu phải từ 6 ký tự trở lên</string>
-    <string name="thieu_hoten">* Chưa nhập họ tên</string>
+    <string name="emtyEmailDK">*Chưa nhập Email</string>
+    <string name="emtyPasswordDK">*Chưa nhập mật khẩu</string>
+    <string name="emtyCPasswordDK">*Chưa xác nhận mật khẩu</string>
+    <string name="SaiEmailDK">*Email không đúng định dạng</string>
+    <string name="SaiXacNhanMatKhauDK">*Xác nhận mật không đúng</string>
+    <string name="SaiMatKhauDK">*Mật khẩu phải từ 6 ký tự trở lên</string>
+    <string name="thieu_hoten">*Chưa nhập họ tên</string>
 
     <!-- Danh sách khóa học -->
     <string name="title_danh_sach_khoa_hoc">Danh sách khóa học</string>
 
     <!-- Tạo khóa học -->
+    <string name="title_tao_khoa_hoc">Tạo khóa học</string>
     <string name="title_linh_vuc">Lĩnh vực:</string>
     <string name="title_ten_mon">Môn:</string>
     <string name="title_dia_diem">Địa điểm:</string>

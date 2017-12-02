@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
@@ -31,17 +32,17 @@ import java.util.Calendar;
  * Created by Tuấn Anh 11/16/2017
  */
 public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, TaoKhoaHocViewImp {
-
     View root;
     Switch switchTaoKhoaHoc;
     Button btnTaoKhoaHoc;
-    EditText etLinhVuc, etMon, etDiaDiem, etHocPhi, etBangCap, etSoHocVien, etSoBuoi, etThoiLuong, etThongTinThem;
+    TextView tvLinhVuc, tvDiaDiem;
+    EditText etMon, etHocPhi, etBangCap, etSoHocVien, etSoBuoi, etThoiLuong, etThongTinThem;
     CheckBox cbGioiTinhNam, cbGioiTinhNu;
     CheckBox cbSang, cbChieu, cbToi;
     CheckBox cbThu2, cbThu3, cbThu4, cbThu5, cbThu6, cbThu7, cbChuNhat;
-    TaoKhoaHocPresenterImp taoKhoaHocPresenterImp;
 
     private SharedPreferencesHandler sharedPreferencesHandler;
+    private TaoKhoaHocPresenterImp taoKhoaHocPresenterImp;
 
     public TaoKhoaHocFragment() {
         // Required empty public constructor
@@ -76,8 +77,9 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_tao_khoa_hoc, container, false);
         switchTaoKhoaHoc = (Switch) root.findViewById(R.id.switch_tao_khoa_hoc);
+        tvLinhVuc = (TextView) root.findViewById(R.id.textView_LinhVuc_TaoKhoaHoc);
+        tvDiaDiem = (TextView) root.findViewById(R.id.textView_DiaDiem_TaoKhoaHoc);
         etMon = (EditText) root.findViewById(R.id.editText_TenMon_TaoKhoaHoc);
-        etDiaDiem = (EditText) root.findViewById(R.id.editText_DiaDiem_TaoKhoaHoc);
         etHocPhi = (EditText) root.findViewById(R.id.editText_HocPhi_TaoKhoaHoc);
         etBangCap = (EditText) root.findViewById(R.id.editText_BangCap_TaoKhoaHoc);
         etSoHocVien = (EditText) root.findViewById(R.id.editText_SoHocVien_TaoKhoaHoc);
@@ -113,6 +115,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbChuNhat.setOnCheckedChangeListener(this);
 
         ((MainActivity) getActivity()).tvScreenTitle.setText("Tạo khóa học");
+        getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 
@@ -235,12 +238,12 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
 //                LichHoc LichHoc;
         //DiaDiem DiaDiem;
-        khoaHoc.setDiaDiem(new DiaDiem(etDiaDiem.getText().toString(), null, null));
+        khoaHoc.setDiaDiem(new DiaDiem(tvDiaDiem.getText().toString(), null, null));
         return khoaHoc;
     }
 
     private boolean checkData() {
-        if (etMon.getText() != null && etDiaDiem.getText() != null && etHocPhi != null
+        if (etMon.getText() != null && tvDiaDiem.getText() != null && etHocPhi != null
                 && etSoBuoi.getText() != null && etSoHocVien.getText() != null && etThoiLuong.getText() != null)
             if (cbGioiTinhNam.isChecked() || cbGioiTinhNu.isChecked())
                 if (cbSang.isChecked() || cbChieu.isChecked() || cbToi.isChecked())

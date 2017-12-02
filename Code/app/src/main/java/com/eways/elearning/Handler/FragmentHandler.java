@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.eways.elearning.R;
 import com.eways.elearning.View.Activity.MainActivity;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
+import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.google.firebase.database.Transaction;
 
@@ -37,14 +38,21 @@ public class FragmentHandler {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         ((MainActivity)context).tvScreenTitle.setText("");
 
-        if(toFragment instanceof HomeFragment)
+        //Kiểm tra fragment chuyển tiếp
+        if(toFragment instanceof NewHomeFragment)
             XoaTatCaFragment();
         else
             ((AppCompatActivity)context).getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+
+        //Kiểm tra lưu vào backstack
         if(toBackStack)
-            transaction.replace(R.id.content_main, toFragment).addToBackStack(tag).commit();
-        else
-            transaction.replace(R.id.content_main, toFragment).commit();
+            transaction.replace(R.id.content_main, toFragment, tag).addToBackStack(tag).commit();
+        else {
+            if (tag != null)
+                transaction.replace(R.id.content_main, toFragment, tag).commit();
+            else
+                transaction.replace(R.id.content_main, toFragment).commit();
+        }
     }
 
     /**

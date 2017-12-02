@@ -2,6 +2,7 @@ package com.eways.elearning.Handler;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.widget.ImageView;
 
@@ -36,4 +37,5 @@ public class ImageHandler {
             imageView.setBackground(null);
         Picasso.with(context).load(url).into(imageView);
     }
+
 }

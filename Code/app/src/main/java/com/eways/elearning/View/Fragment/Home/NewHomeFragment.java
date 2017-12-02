@@ -91,6 +91,6 @@ public class NewHomeFragment extends Fragment implements View.OnClickListener,Ne
 
     @Override
     public void nhanListKhoaHoc(ArrayList<CustomModelKhoaHoc> khoaHocs1, ArrayList<CustomModelKhoaHoc> khoaHocs2, ArrayList<CustomModelKhoaHoc> khoaHocs3) {
-        
+
     }
 }

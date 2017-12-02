@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 public interface KetQuaTimKiemKhoaHocFragmentPresenterImp {
 
-    public void nhanListKhoaHocGanChinhXac(ArrayList<CustomModelKhoaHoc> khoaHocs);
-    public void nhanListKhoaHocChinhXac(ArrayList<CustomModelKhoaHoc> khoaHocs);
     public void guiYeuCauListKhoaHoc(KhoaHoc khoaHoc,boolean loai);
     public void nhanListKhoaHoc(ArrayList<CustomModelKhoaHoc> chinhxac,ArrayList<CustomModelKhoaHoc> ganChinhXac);
 }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class CustomModelKhoaHoc {
 
+    public String KeyKhoaHoc;
     public String TenNguoiDang;
     public String UIDNguoiDang;
     public String LinkAvatar;
@@ -21,6 +22,17 @@ public class CustomModelKhoaHoc {
     }
 
     public CustomModelKhoaHoc(String tenNguoiDang, String UIDNguoiDang, String linkAvatar, ArrayList<String> buoiHoc, String rating, String hocPhi, ArrayList<String> monHoc) {
+        TenNguoiDang = tenNguoiDang;
+        this.UIDNguoiDang = UIDNguoiDang;
+        LinkAvatar = linkAvatar;
+        BuoiHoc = buoiHoc;
+        Rating = rating;
+        HocPhi = hocPhi;
+        MonHoc = monHoc;
+    }
+
+    public CustomModelKhoaHoc(String keyKhoaHoc, String tenNguoiDang, String UIDNguoiDang, String linkAvatar, ArrayList<String> buoiHoc, String rating, String hocPhi, ArrayList<String> monHoc) {
+        KeyKhoaHoc = keyKhoaHoc;
         TenNguoiDang = tenNguoiDang;
         this.UIDNguoiDang = UIDNguoiDang;
         LinkAvatar = linkAvatar;

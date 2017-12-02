@@ -29,14 +29,12 @@ public class KhoaHoc implements Serializable {
 
     //Custom
 
-    private ArrayList<String> Buoi;
-    private ArrayList<String> Thu;
 
 
     public KhoaHoc() {
     }
 
-    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> lop, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem) {
+    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem) {
         Avatar = avatar;
         Rating = rating;
         HoTen = hoTen;
@@ -124,14 +122,6 @@ public class KhoaHoc implements Serializable {
         return DiaDiem;
     }
 
-    public ArrayList<String> getBuoi() {
-        return Buoi;
-    }
-
-    public ArrayList<String> getThu() {
-        return Thu;
-    }
-
     public void setAvatar(String Avatar) {
         this.Avatar = Avatar;
     }
@@ -200,14 +190,5 @@ public class KhoaHoc implements Serializable {
     public void setDiaDiem(com.eways.elearning.DataModel.KhoaHoc.DiaDiem DiaDiem) {
         this.DiaDiem = DiaDiem;
     }
-
-    public void setBuoi(ArrayList<String> Buoi) {
-        this.Buoi = Buoi;
-    }
-
-    public void setThu(ArrayList<String> Thu) {
-        this.Thu = Thu;
-    }
-
 
 }

@@ -57,40 +57,70 @@
     "DanhMucLinhVuc":
     {
 
-      "NgoaiNgu":
+      "Ngoại ngữ":
       {
-        "TenLinhVuc":"Ngoại ngữ",
+        "TenLinhVuc":"Ngoai ngữ",
+        "LinkAnh":"Ngoại ngữ",
         "DanhMucMon":
         [
-          "TOEIC","ielts","Anh văn giao tiếp","TESOL","<CELTA></CELTA>"
-        ],
-        "DanhMucBangCap":
-        [
-            "TOEIC","ielts"
+          
+          {
+            "TenMon":"Anh văn giao tiếp",
+            "DanhMucBangCap":
+            [
+              "TOEIC","ielts"
+            ]
+          },
+          {
+            "TenMon":"TOEIC",
+            "DanhMucBangCap":
+            [
+              "TOEIC","ielts"
+            ]
+          }
         ]
       },
-      "ToanHoc":
+      "Toán":
       {
-        "TenLinhVuc":"Toán học",
+        "TenLinhVuc":"Toán",
+        "LinkAnh":"Toán học",
         "DanhMucMon":
         [
-          "Toán cấp 1","Toán cấp 2","Toán cao cấp"
-        ],
-        "DanhMucBangCap":
-        [
-            "Sưu phạm Đại học","Sưu phạm Cao đẳng"
+          {
+            "TenMon":"Toán lớp 1",
+            "DanhMucBangCap":
+            [
+              "Đại học", "Cao đẳng"
+            ]
+          },
+          {
+            "TenMon":"Toán lớp 12",
+            "DanhMucBangCap":
+            [
+              "Đại học","Cao đẳng"
+            ]
+          }
         ]
       },
-      "AmNhac":
+      "Other":
       {
-        "TenLinhVuc":"Âm nhạc",
-        "DanhMucMon":
+        "TenLinhVuc":"Other",
+        "LinhAnh":"Other",
+         "DanhMucMon":
         [
-          "Dương cầm","Thanh nhạc căn bản"
-        ],
-        "DanhMucBangCap":
-        [
-            "Sưu phạm Đại học","Sưu phạm Cao đẳng"
+          {
+            "TenMon":"Hóa học vật lý ứng dụng",
+            "DanhMucBangCap":
+            [
+              "Đại học", "Cao đẳng"
+            ]
+          },
+          {
+            "TenMon":"Làm túi xách da",
+            "DanhMucBangCap":
+            [
+            ]
+          }
         ]
       }
     }
@@ -159,6 +189,34 @@
       "GioiTinh":"Nữ",
       "TrinhDo":"Đại học",
       "NgheNghiep":"Giáo Viên THPT",
+      "LinhVuc":
+      {
+        "LinhVucQuanTam":
+        [
+          "Toán","Ngoại ngữ"
+        ],
+        "LinhVucChuyenMon":
+        {
+          "Toán":
+            {
+              "Toán lớp 1":
+              [
+                "id bằng Đại học"
+              ]
+            },
+          "Ngoại ngữ":
+          {
+            "Anh văn giao tiếp":
+            [
+              "id bằng TOEIC"
+            ],
+            "TOEIC":
+            [
+              "id bằng TOEIC","id bằng ĐẠi học"
+            ]
+          }
+        }
+      },
       "DiaChi":
       {
         "DayDu":"123, D2, Bình Thạnh, TP HCM",
@@ -401,13 +459,18 @@
       {
         "Khoa001":
         {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
           "LinhVuc":
           [
             "Âm nhạc","Ngoại ngữ"
           ],
           "Rating":"5",
           "NguoiDang":"UID",
-          "HoTen":"Nguyễn A",
+          "HoTen":"MAI TRẦN TUẤN ANH",
           "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/10552573_209395612750503_8876221089496445441_n.jpg?oh=9dc5bda323d234a4228609a38aba0b89&oe=5AA35067",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
@@ -452,13 +515,18 @@
         },
         "Khoa050":
         {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
           "LinhVuc":
           [
             "Âm nhạc","Ngoại ngữ"
           ],
           "Rating":"5",
           "NguoiDang":"UID",
-          "HoTen":"Nguyễn ABCD",
+          "HoTen":"HÀNG QUANG TRÍ",
           "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/10552573_209395612750503_8876221089496445441_n.jpg?oh=9dc5bda323d234a4228609a38aba0b89&oe=5AA35067",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
@@ -503,13 +571,18 @@
         },
         "Khoa002":
         {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
           "LinhVuc":
           [
             "Âm nhạc","Ngoại ngữ"
           ],
           "Rating":"5",
           "NguoiDang":"UID",
-          "HoTen":"Nguyễn A",
+          "HoTen":"HÀNG QUANG TRÍ",
           "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/20374454_1477375532369865_6052979908697223421_n.jpg?oh=56e202b720764be8bfe613b90668b579&oe=5A9629AA",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
@@ -554,13 +627,18 @@
         },
         "Khoa010":
         {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
           "LinhVuc":
           [
             "Âm nhạc","Ngoai Ngu"
           ],
           "Rating":"5",
           "NguoiDang":"UID",
-          "HoTen":"Nguyễn A",
+          "HoTen":"TRẦN TIẾN PHÁT",
           "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/22851924_1518421024909182_252239229946743023_n.jpg?oh=2ee0fd8cdfd8dc9ec287c03500c1f0bf&oe=5A9A6833",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
@@ -608,6 +686,11 @@
       {
         "Khoa004":
         {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
           "LinhVuc":
           [
             "Âm nhạc","Ngoại ngữ"
@@ -652,6 +735,11 @@
 
         "Khoa003":
         {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
           "LinhVuc":
           [
             "Âm nhạc","Ngoại ngữ"
@@ -700,6 +788,11 @@
       "ChuaHoanTat":
       {"Khoa011":
         {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
           "LinhVuc":
           [
             "Âm nhạc","Ngoai Ngu"
@@ -751,6 +844,11 @@
         },
         "Khoa005":
         {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
           "LinhVuc":
           [
             "Âm nhạc","Ngoại ngữ"
@@ -803,6 +901,11 @@
 
         "Khoa006":
         {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
           "LinhVuc":
           [
             "Âm nhạc","Ngoại ngữ"
@@ -855,6 +958,11 @@
       },
       "DaHoanTat":
       {
+        "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
         "Khoa007":
         {
           "LinhVuc":
@@ -903,6 +1011,11 @@
 
         "Khoa009":
         {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
           "LinhVuc":
           [
             "Âm nhạc","Ngoại ngữ"

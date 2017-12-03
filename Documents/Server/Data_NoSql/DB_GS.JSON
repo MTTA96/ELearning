@@ -62,8 +62,8 @@
         "TenLinhVuc":"Ngoai ngữ",
         "LinkAnh":"Ngoại ngữ",
         "DanhMucMon":
-        {
-          "Anh văn giao tiếp":
+        [
+          
           {
             "TenMon":"Anh văn giao tiếp",
             "DanhMucBangCap":
@@ -71,7 +71,6 @@
               "TOEIC","ielts"
             ]
           },
-          "TOEIC":
           {
             "TenMon":"TOEIC",
             "DanhMucBangCap":
@@ -79,15 +78,14 @@
               "TOEIC","ielts"
             ]
           }
-        }
+        ]
       },
       "Toán":
       {
         "TenLinhVuc":"Toán",
         "LinkAnh":"Toán học",
         "DanhMucMon":
-        {
-          "Toán lớp 1":
+        [
           {
             "TenMon":"Toán lớp 1",
             "DanhMucBangCap":
@@ -95,7 +93,6 @@
               "Đại học", "Cao đẳng"
             ]
           },
-          "Toán lớp 12":
           {
             "TenMon":"Toán lớp 12",
             "DanhMucBangCap":
@@ -103,15 +100,14 @@
               "Đại học","Cao đẳng"
             ]
           }
-        }
+        ]
       },
       "Other":
       {
         "TenLinhVuc":"Other",
         "LinhAnh":"Other",
          "DanhMucMon":
-        {
-          "Hóa học vật lý ứng dụng":
+        [
           {
             "TenMon":"Hóa học vật lý ứng dụng",
             "DanhMucBangCap":
@@ -119,14 +115,13 @@
               "Đại học", "Cao đẳng"
             ]
           },
-          "Làm túi xách da":
           {
             "TenMon":"Làm túi xách da",
             "DanhMucBangCap":
             [
             ]
           }
-        }
+        ]
       }
     }
   },

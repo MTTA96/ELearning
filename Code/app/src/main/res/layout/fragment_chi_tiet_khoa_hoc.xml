@@ -1,0 +1,90 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/White"
+    tools:context="com.eways.elearning.View.Fragment.KhoaHoc.ChiTietKhoaHocFragment">
+
+    <!--Big actionbar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layouttopQLTK_height"
+        android:background="@color/colorMain"
+        android:orientation="vertical">
+        <!--User avatar-->
+        <ImageView
+            android:id="@+id/ivAvatar_ChiTietKhoaHoc"
+            android:layout_width="@dimen/avarta_size_QLTK"
+            android:layout_height="@dimen/avarta_size_QLTK"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/user_avatar_action_bar_margin_top"
+            android:background="@drawable/avatar_shape" />
+        <!--Username-->
+        <TextView
+            android:id="@+id/tvName_QLTK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/username_action_bar_margin_top"
+            android:text="Elearning"
+            android:textColor="@color/White"
+            android:textSize="@dimen/normal_text_size"/>
+        <!--Email-->
+        <TextView
+            android:id="@+id/tvEmail_QLTK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="eways.elearning.com"
+            android:textColor="@color/White"/>
+    </LinearLayout>
+
+    <!--Thông tin cá nhân-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/btn_corner_white_shape"
+            android:layout_margin="10dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Năm sinh: "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giới tính: "
+                android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nghề nghiệp: "
+                android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trình độ: "
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Thông tin cá nhân"
+            android:background="@color/White"
+            android:textSize="@dimen/normal_text_size"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+    </FrameLayout>
+    <!--Thông tin khóa học-->
+
+</LinearLayout>

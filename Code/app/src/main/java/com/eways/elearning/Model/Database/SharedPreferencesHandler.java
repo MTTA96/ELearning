@@ -199,5 +199,10 @@ public class SharedPreferencesHandler {
         setTenTaiKhoan("");
         setDaDangNhap(false);
         setLoaiTaiKhoan("");
+        setNgheNghiep("");
+        setNamSinh("");
+        setGioiTinh("");
+        setTaiLieuXacMinh_mt("");
+        setTaiLieuXacMinh_ms("");
     }
 }

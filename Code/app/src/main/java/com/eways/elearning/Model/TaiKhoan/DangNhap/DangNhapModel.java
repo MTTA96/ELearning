@@ -18,6 +18,7 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by ADMIN on 11/5/2017.
@@ -27,6 +28,7 @@ public class DangNhapModel implements DangNhapImpModel{
     DangNhapPresenterImp dangNhapImpPresenter;
     FirebaseDatabase mDataNhanTaiKhoanDN;
     FirebaseDatabase mDataDangNhapGmail;
+    FirebaseAuth mAuth ;
 
 
 
@@ -37,17 +39,17 @@ public class DangNhapModel implements DangNhapImpModel{
 
     @Override
     public void NhanTaiKhoanDN(final TaiKhoan taiKhoan, final Activity activity) {
-        final FirebaseAuth mAuth;
-        mDataNhanTaiKhoanDN=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
         mAuth=FirebaseAuth.getInstance(FirebaseApp.initializeApp(activity));
+        mDataNhanTaiKhoanDN=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
         mAuth.signInWithEmailAndPassword(taiKhoan.getEmail().toString(), taiKhoan.getPassword().toString()).addOnCompleteListener(activity,new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     final FirebaseUser user=mAuth.getCurrentUser();
-                    mDataNhanTaiKhoanDN.getReference().child("TaiKhoan").orderByKey().equalTo(user.getUid().toString()).addChildEventListener(new ChildEventListener() {
+                    mDataNhanTaiKhoanDN.getReference().child("TaiKhoan").orderByChild("id").equalTo(user.getUid().toString()).addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            TaiKhoan temp=dataSnapshot.getValue(TaiKhoan.class);
                             dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,user,null,activity,dataSnapshot.getValue(TaiKhoan.class));
                         }
 
@@ -82,25 +84,65 @@ public class DangNhapModel implements DangNhapImpModel{
     @Override
     public void DangNhapGmail(final GoogleSignInAccount account, final Activity activity) {
         mDataDangNhapGmail=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
-        mDataDangNhapGmail.getReference().orderByKey().equalTo(account.getId()).addChildEventListener(new ChildEventListener() {
+        mDataDangNhapGmail.getReference().child("TaiKhoan").child("TaiKhoan").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                String temp=dataSnapshot.toString();
-            }
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild(account.getId())){
+                    mDataDangNhapGmail.getReference().child("TaiKhoan").child(account.getId().toString()).setValue(new TaiKhoan(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),account.getDisplayName(),true, SupportKeysList.TAI_KHOAN_GMAIL,null,null,null,null,null,null));
+                    mDataDangNhapGmail.getReference().child("TaiKhoan").orderByKey().equalTo(account.getId()).addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,dataSnapshot.getValue(TaiKhoan.class));
+                        }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-            }
+                        }
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-            }
+                        }
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }else {
+                    mDataDangNhapGmail.getReference().child("TaiKhoan").addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,dataSnapshot.getValue(TaiKhoan.class));
+                        }
+
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
             }
 
             @Override
@@ -108,5 +150,6 @@ public class DangNhapModel implements DangNhapImpModel{
 
             }
         });
+
     }
 }

@@ -169,9 +169,9 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         }
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        loginGmailHandler.onStop(getContext());
-    }
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        loginGmailHandler.onStop(getContext());
+//    }
 }

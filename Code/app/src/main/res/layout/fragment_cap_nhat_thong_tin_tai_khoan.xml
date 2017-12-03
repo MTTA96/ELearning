@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/White"
     android:orientation="vertical"
     tools:context=".View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment">
 
@@ -10,119 +11,264 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="5dp"
-            android:paddingBottom="6dp">
+            android:paddingBottom="@dimen/min_vertical_padding"
+            android:paddingLeft="@dimen/vertical_padding"
+            android:paddingRight="@dimen/vertical_padding"
+            android:paddingTop="@dimen/min_vertical_padding">
             <!-- Tên -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/ItemCNTTTK_marginRight"
-                    android:text="@string/Hoten_CN"
-                    android:textSize="@dimen/ItemCNTTTK_textsize" />
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:text="@string/ho_ten_cap_nhat_thong_tin_ca_nhan"
+                    android:textSize="@dimen/normal_text_size" />
 
                 <EditText
                     android:id="@+id/etHoten_CNTTTK"
-                    android:layout_width="255dp"
-                    android:layout_height="@dimen/ItemCNTTTK_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_height"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/text_padding_left"
                     android:background="@drawable/et_shape" />
             </LinearLayout>
 
-            <!-- Giới tính, Năm sinh-->
+            <!-- Giới tính -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
                 android:orientation="horizontal">
                 <!-- Giới tính -->
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="@string/Gioitinh_CN"
-                    android:textSize="@dimen/ItemCNTTTK_textsize" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:text="@string/gioi_tinh_cap_nhat_thong_tin_ca_nhan"
+                    android:textSize="@dimen/normal_text_size" />
 
                 <Spinner
                     android:id="@+id/spGioiTinh"
-                    android:layout_width="70dp"
-                    android:layout_height="@dimen/ItemCNTTTK_height"
-                    android:layout_marginRight="@dimen/ItemCNTTTK_marginRight"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_height"
+                    android:layout_weight="1"
                     android:background="@drawable/et_shape" />
-                <!-- Năm sinh -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="@string/Namsinh_CN"
-                    android:textSize="@dimen/ItemCNTTTK_textsize" />
-
-                <Spinner
-                    android:id="@+id/spNamsinh_CNTTTK"
-                    android:layout_width="70dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/et_shape" />
-
             </LinearLayout>
+            <!-- Năm sinh -->
 
-            <!-- Nghề nghiệp -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:text="@string/nam_sinh_cap_nhat_thong_tin_ca_nhan"
+                    android:textSize="@dimen/normal_text_size" />
+
+                <Spinner
+                    android:id="@+id/spNamsinh_CNTTTK"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/et_shape" />
+            </LinearLayout>
+            <!-- Nghề nghiệp -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="@string/Nghenghiep_CN"
-                    android:textSize="@dimen/ItemCNTTTK_textsize" />
+                    android:layout_weight="3"
+                    android:text="@string/nghe_nghiep_cap_nhat_thong_tin_ca_nhan"
+                    android:textSize="@dimen/normal_text_size"/>
 
                 <EditText
                     android:id="@+id/etNghenghiep_CNTTTK"
-                    android:layout_width="215dp"
-                    android:layout_height="@dimen/ItemCNTTTK_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_height"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/text_padding_left"
                     android:background="@drawable/et_shape"
                     android:orientation="vertical" />
 
             </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tài liệu xác minh:"
-                android:textSize="@dimen/ItemCNTTTK_textsize"
-                android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
-                android:layout_marginLeft="20dp"/>
+            <!-- Trình độ -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
-                android:layout_gravity="center">
-                <ImageView
-                    android:id="@+id/ivTaiLieuXacMinh_mt"
-                    android:layout_width="160dp"
-                    android:layout_height="120dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/et_shape"/>
-                <ImageView
-                    android:id="@+id/ivTaiLieuXacMinh_ms"
-                    android:layout_width="160dp"
-                    android:layout_height="120dp"
-                    android:background="@drawable/et_shape"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/trinh_do_cap_nhat_thong_tin_ca_nhan"
+                    android:textSize="@dimen/normal_text_size"/>
+
+                <EditText
+                    android:id="@+id/etTrinhDo_CNTTTK"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_height"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/text_padding_left"
+                    android:background="@drawable/et_shape"
+                    android:orientation="vertical" />
+
             </LinearLayout>
+
+            <!--Địa chỉ-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/dia_chi_cap_nhat_thong_tin_ca_nhan"
+                    android:textSize="@dimen/normal_text_size" />
+
+                <EditText
+                    android:id="@+id/etDiaChi_CNTTTK"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_height"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/text_padding_left"
+                    android:background="@drawable/et_shape"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <!-- Sđt -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/sdt_cap_nhat_thong_tin_ca_nhan"
+                    android:textSize="@dimen/normal_text_size" />
+
+                <EditText
+                    android:id="@+id/etSDT_CNTTTK"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_height"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/text_padding_left"
+                    android:background="@drawable/et_shape"
+                    android:inputType="phone"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <!-- EMail -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/email_cap_nhat_thong_tin_ca_nhan"
+                    android:textSize="@dimen/normal_text_size" />
+
+                <EditText
+                    android:id="@+id/etEmail_CNTTTK"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_height"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/text_padding_left"
+                    android:inputType="textEmailAddress"
+                    android:background="@drawable/et_shape"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+            <!-- Tài liệu xác minh -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ItemCNTTTK_margintop"
+                android:text="@string/tai_lieu_xac_minh_thong_tin_ca_nhan"
+                android:textSize="@dimen/normal_text_size" />
+            <!--Hình-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+                <!--Mặt trước-->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp">
+
+                    <ImageView
+                        android:id="@+id/ivTaiLieuXacMinh_mt"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/add_image_shape" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:hint="Mặt trước" />
+                </FrameLayout>
+                <!--Mặt sau-->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp">
+
+                    <ImageView
+                        android:id="@+id/ivTaiLieuXacMinh_ms"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/add_image_shape" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:hint="Mặt sau" />
+                </FrameLayout>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

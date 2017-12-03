@@ -6,4 +6,9 @@
         android:icon="@drawable/search"
         android:title="seach"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/act_save"
+        android:icon="@drawable/save"
+        android:title="seach"
+        app:showAsAction="always"/>
 </menu>

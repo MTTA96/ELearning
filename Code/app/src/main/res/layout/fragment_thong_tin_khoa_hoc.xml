@@ -295,7 +295,7 @@
                         android:background="@drawable/et_shape"
                         android:inputType="textMultiLine"
                         android:lines="8"
-                        android:paddingLeft="@dimen/editText_padding_left"
+                        android:paddingLeft="@dimen/text_padding_left"
                         android:scrollbars="vertical" />
                 </LinearLayout>
 

@@ -29,11 +29,11 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
 
-    public DanhSachKhoaHocHomeAdapter(Context context, ArrayList<CustomModelKhoaHoc> listKhoaHoc, ImageHandler imageHanlder) {
+    public DanhSachKhoaHocHomeAdapter(Context context, ArrayList<CustomModelKhoaHoc> listKhoaHoc, ImageHandler imageHanlder, FragmentHandler fragmentHandler) {
         this.context = context;
         this.listKhoaHoc = listKhoaHoc;
         this.imageHandler = imageHanlder;
-        fragmentHandler = new FragmentHandler(context,((AppCompatActivity)context).getSupportFragmentManager());
+        this.fragmentHandler = fragmentHandler;
     }
 
     @Override

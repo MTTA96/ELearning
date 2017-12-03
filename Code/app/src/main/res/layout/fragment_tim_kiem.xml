@@ -82,7 +82,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/et_shape"
                     android:hint="Lập trình C"
-                    android:paddingLeft="@dimen/editText_padding_left" />
+                    android:paddingLeft="@dimen/text_padding_left" />
             </LinearLayout>
 
             <!-- Tên môn -->
@@ -106,7 +106,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/et_shape"
                     android:hint="Lập trình C"
-                    android:paddingLeft="@dimen/editText_padding_left" />
+                    android:paddingLeft="@dimen/text_padding_left" />
             </LinearLayout>
 
             <!-- Địa điểm -->
@@ -136,7 +136,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/text_height"
                         android:background="@drawable/et_shape"
-                        android:paddingLeft="@dimen/editText_padding_left"
+                        android:paddingLeft="@dimen/text_padding_left"
                         android:textSize="@dimen/normal_text_size" />
 
                     <!--Quận, thành phố-->
@@ -152,7 +152,7 @@
                             android:layout_height="@dimen/text_height"
                             android:layout_weight="1"
                             android:background="@drawable/et_shape"
-                            android:paddingLeft="@dimen/editText_padding_left"
+                            android:paddingLeft="@dimen/text_padding_left"
                             android:layout_marginRight="@dimen/info_quan_thanh_pho_tao_khoa_hoc_horizontal_margin"
                             android:textSize="@dimen/normal_text_size" />
                         <!--Thành phố-->
@@ -163,7 +163,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/et_shape"
                             android:layout_marginLeft="@dimen/info_quan_thanh_pho_tao_khoa_hoc_horizontal_margin"
-                            android:paddingLeft="@dimen/editText_padding_left"
+                            android:paddingLeft="@dimen/text_padding_left"
                             android:textSize="@dimen/normal_text_size" />
                     </LinearLayout>
                 </LinearLayout>
@@ -190,7 +190,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/et_shape"
                     android:hint="Lập trình C"
-                    android:paddingLeft="@dimen/editText_padding_left" />
+                    android:paddingLeft="@dimen/text_padding_left" />
             </LinearLayout>
 
             <!-- Giới tính -->
@@ -251,7 +251,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/et_shape"
                     android:hint="Lập trình C"
-                    android:paddingLeft="@dimen/editText_padding_left" />
+                    android:paddingLeft="@dimen/text_padding_left" />
             </LinearLayout>
 
             <!-- Buổi -->

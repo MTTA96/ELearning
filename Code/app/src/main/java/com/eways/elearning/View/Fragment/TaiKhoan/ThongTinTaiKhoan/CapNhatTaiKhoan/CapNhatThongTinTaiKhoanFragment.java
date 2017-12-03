@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -103,7 +104,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         dialogPlusHandler=new DialogPlusHandler(getActivity(),adDanhSachChonHinh,this);
 
         LoadData();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         return view;
     }
 
@@ -175,8 +176,6 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         else {
             etNgheNghiep.setText(sharedPreferencesHandler.getNgheNghiep().toString());
         }
-        imTaiLieuXacMinh_mt.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
-        imTaiLieuXacMinh_ms.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
     }
     //Nhân hình từ gallery
 

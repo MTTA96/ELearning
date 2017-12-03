@@ -73,9 +73,9 @@ public class HomeTimHocVienFragment extends Fragment implements View.OnClickList
         rvDanhSachKhoaHocToan.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rvDanhSachKhoaHocKhac.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        rvDanhSachKhoaHocAnhVan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocAnhVan, imageHandler));
-        rvDanhSachKhoaHocToan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocToan, imageHandler));
-        rvDanhSachKhoaHocKhac.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocKhac, imageHandler));
+        rvDanhSachKhoaHocAnhVan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocAnhVan, imageHandler, fragmentHandler));
+        rvDanhSachKhoaHocToan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocToan, imageHandler, fragmentHandler));
+        rvDanhSachKhoaHocKhac.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocKhac, imageHandler, fragmentHandler));
     }
 
     @Override

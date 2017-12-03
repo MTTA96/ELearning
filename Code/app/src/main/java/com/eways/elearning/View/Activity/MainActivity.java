@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         imageHandler = new ImageHandler(this);
         fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
 //        fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
-        fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, null);
+        fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
     }
 
     private void setUpActionBar(DrawerLayout drawer, Toolbar myToolbar) {
@@ -114,15 +114,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.content_main);
         if(currentFragment!=null && currentFragment.getTag()!=null) {
             switch (currentFragment.getTag()) {
+                case SupportKeysList.TAG_THONG_TIN_CA_NHAN:
+                    menu.findItem(R.id.act_save).setVisible(true);
+                    menu.findItem(R.id.act_search).setVisible(false);
+                    break;
                 case SupportKeysList.TAG_DANG_NHAP_FRAGMENT:
                 case SupportKeysList.TAG_DANG_KY_FRAGMENT:
                 case SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT:
                 case SupportKeysList.TAG_THONG_TIN_KHOA_HOC:
                 case SupportKeysList.TAG_TAO_KHOA_HOC:
                     menu.findItem(R.id.act_search).setVisible(false);
+                    menu.findItem(R.id.act_save).setVisible(false);
                     break;
                 default:
                     menu.findItem(R.id.act_search).setVisible(true);
+                    menu.findItem(R.id.act_save).setVisible(false);
                     break;
             }
         }
@@ -146,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()){
             case R.id.nav_home:
-                fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, null);
+                fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
                 break;
             case R.id.nav_quan_ly_tai_khoan:
                 if (mySharedPref.getDaDangNhap())

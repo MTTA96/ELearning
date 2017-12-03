@@ -68,6 +68,7 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp, ChildEvent
                 mData.getReference().child("TaiKhoan").child(taiKhoan.getId()).setValue(taiKhoan);
             }
         });
+
         //luu hinh len firebase storage mat sau
         UploadTask uploadTask1=TaiLieuXacMinh_ms.putBytes(data_ms);
         uploadTask1.addOnFailureListener(new OnFailureListener() {

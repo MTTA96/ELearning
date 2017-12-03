@@ -135,7 +135,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
             dialog.show();
         }
         if (v.getId()==R.id.LoThongTinCaNhan){
-            fragmentHandler.ChuyenFragment(new ThongTinCaNhanFragment(),false,null);
+            fragmentHandler.ChuyenFragment(new ThongTinCaNhanFragment(),true, SupportKeysList.TAG_THONG_TIN_CA_NHAN);
         }
     }
 }

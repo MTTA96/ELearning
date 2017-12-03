@@ -18,9 +18,11 @@ public class SupportKeysList {
     public static final String TAG_DANG_NHAP_FRAGMENT = "dang_nhap_fragment";
     public static final String TAG_DANG_KY_FRAGMENT = "dang_ky_fragment";
     public static final String TAG_QUAN_LY_TAI_KHOAN_FRAGMENT = "quan_ly_tai_khoan_fragment";
+    public static final String TAG_THONG_TIN_CA_NHAN = "thong_tin_ca_nhan_fragment";
     public static final String TAG_DANH_SACH_KHOA_HOC = "danh_sach_khoa_hoc_fragment";
     public static final String TAG_TAO_KHOA_HOC = "tao_khoa_hoc_fragment";
     public static final String TAG_TIM_KIEM = "tim_kiem_fragment";
+    public static final String TAG_THONG_TIN_KHOA_HOC = "thong_tin_khoa_hoc_fragment";
 
     //Key child database
     public static final String CHILD_KHOAHOC = "KhoaHoc";

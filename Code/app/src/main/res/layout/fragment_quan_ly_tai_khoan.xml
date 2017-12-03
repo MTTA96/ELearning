@@ -7,12 +7,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layouttopQLTK_height"
+        android:layout_height="@dimen/big_toolbar_height"
         android:orientation="vertical"
         android:background="@color/colorMain">
         <ImageView
             android:id="@+id/ivAvatar_QLTK"
-            android:layout_marginTop="@dimen/ItemQLTK_margintop"
             android:layout_gravity="center"
             android:layout_width="@dimen/avarta_size_QLTK"
             android:layout_height="@dimen/avarta_size_QLTK"

@@ -54,12 +54,13 @@ public class DialogPlusHandler {
     public ImageView hinhMatTruoc;
     public ImageView hinhMatSau;
 
-    private int vitrichon;
+    public static int vitrichon;
     private String selectedImagePath;
     private String filemanagerstring;
+    private DialogPlus dialogPlus;
 
-    public int REQUEST_CODE_CAMERA=1;
-    private int REQUEST_CODE_GALLERY=2;
+    public static int REQUEST_CODE_CAMERA=1;
+    public static int REQUEST_CODE_GALLERY=2;
 
 //    public DialogPlusHandler(Activity activity, ArrayAdapter arrayAdapter) {
 //        this.activity = activity;
@@ -73,7 +74,7 @@ public class DialogPlusHandler {
     }
 
     public void ShowDialogChonHinh(int vitrichon){
-        DialogPlusBuilder dialog = DialogPlus.newDialog(activity);
+        DialogPlusBuilder dialog = dialog = DialogPlus.newDialog(activity);
         dialog.setContentHolder(new GridHolder(2));
         dialog.setContentHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setAdapter(arrayAdapter);
@@ -91,11 +92,14 @@ public class DialogPlusHandler {
 
             }
         });
-        DialogPlus dialogPlus=dialog.create();
+        dialogPlus=dialog.create();
         dialogPlus.show();
         this.vitrichon=vitrichon;
     }
 
+    public void dissMissDialog(){
+        dialogPlus.dismiss();
+    }
 //    @Override
 //    public void onItemClick(DialogPlus dialog, Object item, View view, int position) {
 //        if (position==0){

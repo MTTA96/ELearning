@@ -106,10 +106,15 @@
     <string name="BtnDongY_DX">Đồng ý</string>
     <string name="BtnHuy_DX">Hủy</string>
     <!--Fragment Cập nhật thông tin tài khoản-->
-    <string name="Hoten_CN"><b>Họ tên:</b></string>
-    <string name="Namsinh_CN"><b>Năm sinh:</b></string>
-    <string name="Gioitinh_CN"><b>Giới tính: </b></string>
-    <string name="Nghenghiep_CN"><b>Nghề nghiệp:</b></string>
+    <string name="ho_ten_cap_nhat_thong_tin_ca_nhan"><b>Họ tên:</b></string>
+    <string name="nam_sinh_cap_nhat_thong_tin_ca_nhan"><b>Năm sinh:</b></string>
+    <string name="gioi_tinh_cap_nhat_thong_tin_ca_nhan"><b>Giới tính:</b></string>
+    <string name="nghe_nghiep_cap_nhat_thong_tin_ca_nhan"><b>Công việc:</b></string>
+    <string name="trinh_do_cap_nhat_thong_tin_ca_nhan"><b>Trình độ:</b></string>
+    <string name="dia_chi_cap_nhat_thong_tin_ca_nhan"><b>Địa chỉ:</b></string>
+    <string name="sdt_cap_nhat_thong_tin_ca_nhan"><b>Sđt:</b></string>
+    <string name="email_cap_nhat_thong_tin_ca_nhan"><b>Email:</b></string>
+    <string name="tai_lieu_xac_minh_thong_tin_ca_nhan"><b>Tài liệu xác minh:</b></string>
     <!--Fragment CNTTTK-->
     <string name="Title_CNTTTK"><b>Thông tin cá nhân</b></string>
     <string-array name="ListGioiTinh">

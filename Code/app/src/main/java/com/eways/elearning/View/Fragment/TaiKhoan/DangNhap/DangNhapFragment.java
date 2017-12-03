@@ -79,7 +79,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         btnDangky.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
+//        ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
         AnHienMatKhau(etPasswordDN);
 
         return root;

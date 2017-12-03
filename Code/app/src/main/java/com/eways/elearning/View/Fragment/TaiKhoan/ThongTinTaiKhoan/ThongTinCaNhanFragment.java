@@ -34,7 +34,7 @@ public class ThongTinCaNhanFragment extends Fragment {
         ViewPager viewPager = (ViewPager) root.findViewById(R.id.viewPager_ThongTinTaiKhoan);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
+        getActivity().supportInvalidateOptionsMenu();
         seUpViewpager(viewPager);
         return root;
     }

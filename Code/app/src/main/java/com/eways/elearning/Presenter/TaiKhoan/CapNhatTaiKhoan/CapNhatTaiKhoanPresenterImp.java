@@ -1,6 +1,7 @@
 package com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan;
 
 import android.app.Activity;
+import android.widget.ImageView;
 
 import com.eways.elearning.DataModel.TaiKhoan;
 
@@ -9,6 +10,6 @@ import com.eways.elearning.DataModel.TaiKhoan;
  */
 
 public interface CapNhatTaiKhoanPresenterImp {
-    public void NhanDataUpdate (TaiKhoan taiKhoan, Activity activity);
+    public void NhanDataUpdate (TaiKhoan taiKhoan, Activity activity, ImageView ivTaiLieuXacMinh_MT,ImageView ivTaiLieuXacMinh_MS);
     public void KetQuaCapNhat(String ketquacapnhat,TaiKhoan taiKhoan,Activity activity);
 }

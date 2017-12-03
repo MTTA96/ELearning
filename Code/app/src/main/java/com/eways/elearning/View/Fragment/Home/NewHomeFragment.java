@@ -51,8 +51,11 @@ public class NewHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_new_home, container, false);
-
+//        root.findViewById(R.id.textView_XemDanhSachKhoaHocAnhVan_Home).setOnClickListener(this);
         setUpViewPager((ViewPager) root.findViewById(R.id.viewPager_PhanMuc_Home));
+
+//        newHomeFragmentPresenter.guiYeuCau("Ngoại ngữ", "Toán", "Khác");
+
         return root;
     }
 

@@ -23,6 +23,7 @@ import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
+import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
 import com.google.android.gms.common.SignInButton;
 
@@ -164,7 +165,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         }
         if (ketqua.compareTo(LOGIN_SUCCESS)==0){
 //            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
-            fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
+            fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, null);
         }
     }
 

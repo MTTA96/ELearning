@@ -32,8 +32,8 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp {
     CapNhatTaiKhoanPresenterImp capNhatTaiKhoanPresenterImp;
     FirebaseStorage storage;
 
-    String uriNhanHinhMT=null;
-    String uriNhanHinhMS=null;
+    public String uriNhanHinhMT;
+    public String uriNhanHinhMS;
     TruyenHinhTaiLieuXacMinh truyenHinhTaiLieuXacMinh=new TruyenHinhTaiLieuXacMinh(this);
 
     public CapNhatTaiKhoanModel(CapNhatTaiKhoanPresenterImp capNhatTaiKhoanPresenterImp) {

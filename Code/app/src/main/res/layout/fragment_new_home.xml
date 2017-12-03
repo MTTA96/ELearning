@@ -2,163 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#f6f6f6"
     android:orientation="vertical">
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
 
-        <LinearLayout
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager_PhanMuc_Home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout_PhanMuc_Home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Anh văn -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/horizontal_margin"
-                android:layout_marginRight="@dimen/horizontal_margin"
-                android:layout_marginTop="@dimen/home_danh_sach_khoa_hoc_vertical_margin"
-                android:background="@color/White"
-                android:elevation="@dimen/home_danh_sach_khoa_hoc_elevation"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/home_danh_sach_khoa_hoc_vertical_padding">
-                <!-- Title -->
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/home_danh_sach_khoa_hoc_vertical_padding"
-                    android:paddingLeft="@dimen/home_title_danh_sach_khoa_hoc_horizontal_padding"
-                    android:paddingRight="@dimen/home_title_danh_sach_khoa_hoc_horizontal_padding"
-                    android:paddingTop="@dimen/home_danh_sach_khoa_hoc_vertical_padding">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/White"
-                        android:text="Anh Văn"
-                        android:textSize="@dimen/normal_text_size"
-                        android:textStyle="bold" />
-                    <!-- Xem thêm -->
-                    <TextView
-                        android:id="@+id/textView_XemDanhSachKhoaHocAnhVan_Home"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="Xem thêm"
-                        android:textColor="@color/colorMain" />
-                </RelativeLayout>
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView_DanhSachKhoaHocAnhVan_Home"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/White" />
-
-            </LinearLayout>
-
-            <!-- Toán -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/horizontal_margin"
-                android:layout_marginRight="@dimen/horizontal_margin"
-                android:layout_marginTop="@dimen/home_danh_sach_khoa_hoc_vertical_margin"
-                android:background="@color/White"
-                android:elevation="@dimen/home_danh_sach_khoa_hoc_elevation"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/home_danh_sach_khoa_hoc_vertical_padding">
-                <!-- Title -->
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/home_danh_sach_khoa_hoc_vertical_padding"
-                    android:paddingLeft="@dimen/home_title_danh_sach_khoa_hoc_horizontal_padding"
-                    android:paddingRight="@dimen/home_title_danh_sach_khoa_hoc_horizontal_padding"
-                    android:paddingTop="@dimen/home_danh_sach_khoa_hoc_vertical_padding">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/White"
-                        android:text="Toán"
-                        android:textSize="@dimen/normal_text_size"
-                        android:textStyle="bold" />
-                    <!-- Xem thêm -->
-                    <TextView
-                        android:id="@+id/textView_XemDanhSachKhoaHocToan_Home"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="Xem thêm"
-                        android:textColor="@color/colorMain" />
-                </RelativeLayout>
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView_DanhSachKhoaHocToan_Home"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/White" />
-
-            </LinearLayout>
-
-            <!-- Khác -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/horizontal_margin"
-                android:layout_marginRight="@dimen/horizontal_margin"
-                android:layout_marginTop="@dimen/home_danh_sach_khoa_hoc_vertical_margin"
-                android:background="@color/White"
-                android:elevation="@dimen/home_danh_sach_khoa_hoc_elevation"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/home_danh_sach_khoa_hoc_vertical_padding">
-                <!-- Title -->
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/home_danh_sach_khoa_hoc_vertical_padding"
-                    android:paddingLeft="@dimen/home_title_danh_sach_khoa_hoc_horizontal_padding"
-                    android:paddingRight="@dimen/home_title_danh_sach_khoa_hoc_horizontal_padding"
-                    android:paddingTop="@dimen/home_danh_sach_khoa_hoc_vertical_padding">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/White"
-                        android:text="Khác"
-                        android:textSize="@dimen/normal_text_size"
-                        android:textStyle="bold" />
-                    <!-- Xem thêm -->
-                    <TextView
-                        android:id="@+id/textView_XemDanhSachKhoaHocKhac_Home"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="Xem thêm"
-                        android:textColor="@color/colorMain" />
-                </RelativeLayout>
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView_DanhSachKhoaHocKhac_Home"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/White" />
-
-            </LinearLayout>
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-
+            android:background="@color/colorMain"
+            app:tabIndicatorColor="@color/White"
+            app:tabSelectedTextColor="@color/White"/>
+    </android.support.v4.view.ViewPager>
 </LinearLayout>

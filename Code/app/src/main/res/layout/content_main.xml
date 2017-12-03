@@ -9,8 +9,7 @@
         android:id="@+id/my_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorMain"
-        android:elevation="@dimen/elevation">
+        android:background="@color/colorMain">
         <!-- Title -->
         <TextView
             android:id="@+id/textView_Title_Actionbar"

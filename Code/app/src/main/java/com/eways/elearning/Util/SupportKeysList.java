@@ -21,6 +21,7 @@ public class SupportKeysList {
     public static final String TAG_DANH_SACH_KHOA_HOC = "danh_sach_khoa_hoc_fragment";
     public static final String TAG_TAO_KHOA_HOC = "tao_khoa_hoc_fragment";
     public static final String TAG_TIM_KIEM = "tim_kiem_fragment";
+    public static final String TAG_THONG_TIN_KHOA_HOC = "thong_tin_khoa_hoc_fragment";
 
     //Key child database
     public static final String CHILD_KHOAHOC = "KhoaHoc";

@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 case SupportKeysList.TAG_DANG_NHAP_FRAGMENT:
                 case SupportKeysList.TAG_DANG_KY_FRAGMENT:
                 case SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT:
+                case SupportKeysList.TAG_THONG_TIN_KHOA_HOC:
                 case SupportKeysList.TAG_TAO_KHOA_HOC:
                     menu.findItem(R.id.act_search).setVisible(false);
                     break;

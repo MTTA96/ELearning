@@ -8,9 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Handler.ViewHolder.ItemListKhoaHocHomeViewHolder;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinKhoaHocFragment;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -24,11 +27,13 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
     private Context context;
     private ArrayList<CustomModelKhoaHoc> listKhoaHoc = new ArrayList();
     private ImageHandler imageHandler;
+    private FragmentHandler fragmentHandler;
 
     public DanhSachKhoaHocHomeAdapter(Context context, ArrayList<CustomModelKhoaHoc> listKhoaHoc, ImageHandler imageHanlder) {
         this.context = context;
         this.listKhoaHoc = listKhoaHoc;
         this.imageHandler = imageHanlder;
+        fragmentHandler = new FragmentHandler(context,((AppCompatActivity)context).getSupportFragmentManager());
     }
 
     @Override
@@ -42,6 +47,13 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
         imageHandler.loadImageRound(listKhoaHoc.get(holder.getLayoutPosition()).LinkAvatar, holder.imgUserImage);
         holder.tvMon.setText(listKhoaHoc.get(holder.getLayoutPosition()).MonHoc.get(0).toString());
         holder.tvGia.setText(chuyenGia(Long.parseLong(listKhoaHoc.get(holder.getLayoutPosition()).HocPhi)));
+
+        holder.imgUserImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentHandler.ChuyenFragment(new ThongTinKhoaHocFragment(), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
+            }
+        });
     }
 
     @Override

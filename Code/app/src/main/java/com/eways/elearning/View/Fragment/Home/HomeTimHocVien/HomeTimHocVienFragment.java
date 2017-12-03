@@ -34,6 +34,10 @@ public class HomeTimHocVienFragment extends Fragment implements View.OnClickList
     private NewHomeFragmentPresenter newHomeFragmentPresenter;
     private SharedPreferencesHandler mySharedPref;
     private ImageHandler imageHandler;
+    private ArrayList danhSachKhoaHocAnhVan = new ArrayList();
+    private ArrayList danhSachKhoaHocToan = new ArrayList();
+    private ArrayList danhSachKhoaHocKhac = new ArrayList();
+
 
     public HomeTimHocVienFragment() {
         // Required empty public constructor
@@ -59,7 +63,6 @@ public class HomeTimHocVienFragment extends Fragment implements View.OnClickList
         rvDanhSachKhoaHocKhac = (RecyclerView) root.findViewById(R.id.recyclerView_DanhSachKhoaHocKhac_HomeTimHocVien);
 
         root.findViewById(R.id.textView_XemDanhSachKhoaHocAnhVan_HomeTimHocVien).setOnClickListener(this);
-
 
         newHomeFragmentPresenter.guiYeuCau(false,"Ngoại ngữ", "Toán", "Khác");
         return root;

@@ -30,6 +30,9 @@ public class NewHomeFragmentModel implements NewHomeFragmentModelImp {
 
     @Override
     public void getListkhoaHoc(boolean loai,final String linhVuc1, final String linhVuc2, final String linhVuc3) {
+        listKhoaHoc1 = new ArrayList<>();
+        listKhoaHoc2 = new ArrayList<>();
+        listKhoaHoc3 = new ArrayList<>();
         if (loai) {
             mData.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMGIASU).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
                 @Override

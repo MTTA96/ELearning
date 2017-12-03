@@ -6,6 +6,7 @@
 
     <!-- Messages -->
     <string name="msg_dang_nhap_thanh_cong">Xin chào </string>
+    <string name="thieu_thong_tin">Thiếu thông tin</string>
 
     <!-- Nav Menu -->
     <string name="header_msg_chua_dang_nhap">Đăng nhập</string>

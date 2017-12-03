@@ -32,6 +32,7 @@ import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPre
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -175,8 +176,18 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         else {
             etNgheNghiep.setText(sharedPreferencesHandler.getNgheNghiep().toString());
         }
-        imTaiLieuXacMinh_mt.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
-        imTaiLieuXacMinh_ms.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
+        String temp=sharedPreferencesHandler.getTaiLieuXacMinh_mt();
+        if (sharedPreferencesHandler.getTaiLieuXacMinh_mt()==null){
+            imTaiLieuXacMinh_mt.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
+        }
+        else {
+            Picasso.with(getContext()).load(sharedPreferencesHandler.getTaiLieuXacMinh_mt()).into(imTaiLieuXacMinh_mt);
+        }
+        if (sharedPreferencesHandler.getTaiLieuXacMinh_ms()==null){
+            imTaiLieuXacMinh_ms.setBackgroundResource(R.drawable.iv_capnhatthongtin_shape);
+        }else {
+            Picasso.with(getContext()).load(sharedPreferencesHandler.getTaiLieuXacMinh_ms()).into(imTaiLieuXacMinh_ms);
+        }
     }
     //Nhân hình từ gallery
 

@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
@@ -24,11 +26,15 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
+ * <p>
+ * Note:
+ * 1. Load data cho spinner trong hàm loadData (line 222)
  */
 public class TimKiemFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
     View root;
     Switch switchTimKiem;
-    EditText etLinhVuc, etMon, etDiaDiem, etHocPhi, etBangCap;
+    Spinner spnLinhVuc, spnQuan, spnThanhPho;
+    EditText etMon, etDiaDiem, etHocPhi, etBangCap;
     CheckBox cbGioiTinhNam, cbGioiTinhNu;
     CheckBox cbSang, cbChieu, cbToi;
     CheckBox cbThu2, cbThu3, cbThu4, cbThu5, cbThu6, cbThu7, cbChuNhat;
@@ -42,7 +48,7 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
     }
 
@@ -52,7 +58,9 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_tim_kiem, container, false);
         switchTimKiem = (Switch) root.findViewById(R.id.switch_tim_kiem);
-        etLinhVuc = (EditText) root.findViewById(R.id.editText_LinhVuc_TimKiem);
+        spnLinhVuc = (Spinner) root.findViewById(R.id.spinner_LinhVuc_TimKiem);
+        spnQuan = (Spinner) root.findViewById(R.id.spinner_Quan_TimKiem);
+        spnThanhPho = (Spinner) root.findViewById(R.id.spinner_ThanhPho_TimKiem);
         etMon = (EditText) root.findViewById(R.id.editText_Mon_TimKiem);
         etDiaDiem = (EditText) root.findViewById(R.id.editText_DiaDiem_TimKiem);
         etHocPhi = (EditText) root.findViewById(R.id.editText_HocPhi_TimKiem);
@@ -88,17 +96,15 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (buttonView.getId() == R.id.switch_tim_kiem){
+        if (buttonView.getId() == R.id.switch_tim_kiem) {
             if (isChecked) {
                 buttonView.setText("Tìm học viên");
                 root.findViewById(R.id.layout_BangCap_TimKiem).setVisibility(View.GONE);
-            }
-            else {
+            } else {
                 buttonView.setText("Tìm gia sư");
                 root.findViewById(R.id.layout_BangCap_TimKiem).setVisibility(View.VISIBLE);
             }
-        }
-        else {
+        } else {
             if (isChecked) {
                 buttonView.setBackgroundResource(R.drawable.btn_color_main_corners_shape);
                 buttonView.setTextColor(Color.WHITE);
@@ -112,20 +118,23 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
     @Override
     public void onDestroy() {
         super.onDestroy();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.button_Cancel_TimKiem:
                 fragmentHandler.XoaFragment();
                 break;
             case R.id.button_Tim_Kiem:
-                KhoaHoc requestKhoaHoc = new KhoaHoc();
-                setUpDataRequestKhoaHoc(requestKhoaHoc);
-                String bangCap = etBangCap.getText()!=null ? etBangCap.getText().toString():null;
-                fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(switchTimKiem.isChecked(), requestKhoaHoc, bangCap), false, null);
+                if (checkData()) {
+                    KhoaHoc requestKhoaHoc = new KhoaHoc();
+                    setUpDataRequestKhoaHoc(requestKhoaHoc);
+                    String bangCap = etBangCap.getText() != null ? etBangCap.getText().toString() : null;
+                    fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(switchTimKiem.isChecked(), requestKhoaHoc, bangCap), false, null);
+                } else
+                    Toast.makeText(getActivity(), getString(R.string.thieu_thong_tin), Toast.LENGTH_LONG).show();
                 break;
         }
     }
@@ -134,19 +143,21 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
         ArrayList data = new ArrayList<>();
 
         //Lĩnh vực
-        data.add(etLinhVuc.getText().toString());
-        requestKhoaHoc.setLinhVuc(data);
+        if (spnLinhVuc.getSelectedItemPosition() != -1) {
+            data.add(spnLinhVuc.getSelectedItem().toString());
+            requestKhoaHoc.setLinhVuc(data);
+        }
 
         //Môn
-        if (etMon.getText()!=null) {
+        if (etMon.getText() != null) {
             data = new ArrayList();
             data.add(etMon.getText().toString());
             requestKhoaHoc.setMon(data);
         }
 
         //Địa điểm
-        if (etDiaDiem.getText()!=null){
-            requestKhoaHoc.setDiaDiem(new DiaDiem(etDiaDiem.getText().toString(), null,null));
+        if (etDiaDiem.getText() != null) {
+            requestKhoaHoc.setDiaDiem(new DiaDiem(etDiaDiem.getText().toString(), null, null));
         }
 
         //Học phí
@@ -160,28 +171,27 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
 //            requestKhoaHoc.setHocPhi("0");
 //        }
         try {
-            requestKhoaHoc.setHocPhi(etHocPhi.getText().toString().isEmpty()? "0":etHocPhi.getText().toString());
-        }
-        catch (NumberFormatException ex)//bug
+            requestKhoaHoc.setHocPhi(etHocPhi.getText().toString().isEmpty() ? "0" : etHocPhi.getText().toString());
+        } catch (NumberFormatException ex)//bug
         {
             requestKhoaHoc.setHocPhi("0");
         }
 
 
         //Bằng Cấp
-        if (etBangCap.getText()!=null) {
+        if (etBangCap.getText() != null) {
             data = new ArrayList();
             data.add(etBangCap.getText().toString());
             requestKhoaHoc.setBangCap(data);
         }
         //Giới tính
-        if(cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
+        if (cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
             requestKhoaHoc.setGioiTinh("Nam, Nữ");
-        if(cbGioiTinhNam.isChecked() && !cbGioiTinhNu.isChecked())
+        if (cbGioiTinhNam.isChecked() && !cbGioiTinhNu.isChecked())
             requestKhoaHoc.setGioiTinh("Nam");
-        if(!cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
+        if (!cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
             requestKhoaHoc.setGioiTinh("Nữ");
-        if(!cbGioiTinhNam.isChecked() && !cbGioiTinhNu.isChecked())
+        if (!cbGioiTinhNam.isChecked() && !cbGioiTinhNu.isChecked())
             requestKhoaHoc.setGioiTinh("Nam, Nữ");
 
         //ArrayList<String> Buoi;
@@ -209,6 +219,23 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
             dataThu.add("T7");
         if (cbChuNhat.isChecked())
             dataThu.add("CN");
-        requestKhoaHoc.setLichHoc(new LichHoc(dataThu,dataBuoi));
+        requestKhoaHoc.setLichHoc(new LichHoc(dataThu, dataBuoi));
+    }
+
+    private boolean checkData() {
+        if (etMon.getText().toString().equals("") && etDiaDiem.getText().toString().equals("") && etHocPhi.getText().toString().equals("") && etBangCap.getText().toString().equals("")
+                && spnLinhVuc.getSelectedItemPosition() == -1 && spnQuan.getSelectedItemPosition() == -1 && spnThanhPho.getSelectedItemPosition() == -1
+                && !cbGioiTinhNam.isChecked() && !cbGioiTinhNu.isChecked()
+                && !cbSang.isChecked() && !cbChieu.isChecked() && !cbToi.isChecked()
+                && !cbThu2.isChecked() && !cbThu3.isChecked() && !cbThu4.isChecked() && !cbThu5.isChecked() && !cbThu6.isChecked()
+                && !cbThu7.isChecked() && !cbChuNhat.isChecked())
+            return false;
+        return true;
+    }
+
+    private void loadData() {
+//        spnLinhVuc.setAdapter();
+//        spnThanhPho.setAdapter();
+//        spnQuan.setAdapter();
     }
 }

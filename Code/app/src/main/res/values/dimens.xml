@@ -91,6 +91,8 @@
     <dimen name="tao_khoa_hoc_vertical_padding">30dp</dimen>
     <dimen name="tao_khoa_hoc_horizontal_padding">25dp</dimen>
     <dimen name="khung_content_tao_khoa_hoc_margin_top">40dp</dimen>
+    <dimen name="info_quan_thanh_pho_tao_khoa_hoc_margin_top">10dp</dimen>
+    <dimen name="info_quan_thanh_pho_tao_khoa_hoc_horizontal_margin">2.5dp</dimen>
     <dimen name="view_tao_khoa_hoc_margin_top">25dp</dimen>
     <dimen name="button_thu_margin_top">10dp</dimen>
     <dimen name="button_buoi_va_thu_margin_left">10dp</dimen>

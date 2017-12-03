@@ -1,8 +1,10 @@
 package com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan;
 
 import android.app.Activity;
+import android.widget.ImageView;
 
 import com.eways.elearning.DataModel.TaiKhoan;
+import com.eways.elearning.Handler.XuLyHinhAnh_FirebaseStorage;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModel;
 import com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModelImp;
@@ -17,14 +19,16 @@ public class CapNhatTaiKhoanPresenter implements CapNhatTaiKhoanPresenterImp {
     CapNhatTaiKhoanModelImp capNhatTaiKhoanModelImp=new CapNhatTaiKhoanModel(this);
     CapNhatThongTinTaiKhoanFragment capNhatThongTinTaiKhoanFragment;
     SharedPreferencesHandler sharedPreferencesHandler;
+    XuLyHinhAnh_FirebaseStorage xuLyHinhAnh_firebaseStorage;
 
     public CapNhatTaiKhoanPresenter(CapNhatThongTinTaiKhoanFragment capNhatThongTinTaiKhoanFragment) {
         this.capNhatThongTinTaiKhoanFragment = capNhatThongTinTaiKhoanFragment;
+        xuLyHinhAnh_firebaseStorage=new XuLyHinhAnh_FirebaseStorage();
     }
 
     @Override
-    public void NhanDataUpdate(TaiKhoan taiKhoan, Activity activity) {
-        capNhatTaiKhoanModelImp.CapNhatTaiKhoan(taiKhoan,activity);
+    public void NhanDataUpdate(TaiKhoan taiKhoan, Activity activity, ImageView ivTaiLieuXacMinh_MT, ImageView ivTaiLieuXacMinh_MS) {
+        capNhatTaiKhoanModelImp.CapNhatTaiKhoan(taiKhoan,activity,xuLyHinhAnh_firebaseStorage.XuLy(ivTaiLieuXacMinh_MT),xuLyHinhAnh_firebaseStorage.XuLy(ivTaiLieuXacMinh_MS));
     }
 
     @Override

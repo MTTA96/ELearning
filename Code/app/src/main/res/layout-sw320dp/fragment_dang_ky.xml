@@ -1,0 +1,167 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.eways.elearning.View.Activity.MainActivity">
+    <!--Tiêu đề-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/big_toolbar_height"
+        android:background="@color/colorMain">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Tittle_Signup"
+            android:textSize="@dimen/Title_Signup_Size"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/Title_Color"/>
+    </LinearLayout>
+
+    <!-- Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/khung_dang_ky_margin_top"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/khung_dang_ky_horizontal_padding"
+        android:paddingRight="@dimen/khung_dang_ky_horizontal_padding">
+        <TextView
+            android:id="@+id/tvLoiHoten"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorError"
+            android:textSize="@dimen/loi_textsizeDK" />
+
+        <EditText
+            android:id="@+id/etHoTen"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ViewDangKy_height"
+            android:layout_gravity="center"
+            android:background="@drawable/etusername_etpass_shape"
+            android:hint="@string/Hint_Hoten"
+            android:textColorHint="@color/colorHint" />
+        <!--Nhập Email-->
+        <TextView
+            android:id="@+id/tvLoiEmailDK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorError"
+            android:layout_marginTop="@dimen/ViewDangKy_marginTop"
+            android:textSize="@dimen/loi_textsizeDK" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ViewDangKy_height"
+            android:layout_gravity="center"
+            android:background="@drawable/etusername_etpass_shape"
+            android:hint="@string/Hint_username"
+            android:textColorHint="@color/colorHint" />
+        <!--Nhập mật khẩu-->
+        <TextView
+            android:id="@+id/tvLoiPasswordDK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ViewDangKy_marginTop"
+            android:textColor="@color/colorError"
+            android:textSize="@dimen/loi_textsizeDK" />
+
+        <EditText
+            android:id="@+id/etPasswordDK"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ViewDangKy_height"
+            android:layout_gravity="center"
+            android:background="@drawable/etusername_etpass_shape"
+            android:hint="@string/Hint_password"
+
+            android:inputType="textPassword"
+            android:textColorHint="@color/colorHint" />
+        <!--Xác nhận mật khẩu-->
+        <TextView
+            android:id="@+id/tvLoiCPasswordDK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ViewDangKy_marginTop"
+            android:textColor="@color/colorError"
+            android:textSize="@dimen/loi_textsizeDK" />
+
+        <EditText
+            android:id="@+id/etConfirmPassDK"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ViewDangKy_height"
+            android:layout_gravity="center"
+            android:background="@drawable/etusername_etpass_shape"
+            android:hint="@string/Hint_confirmpasswordDK"
+            android:inputType="textPassword"
+            android:textColorHint="@color/colorHint" />
+        <!--Điều khoản-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/dieu_khoan_dang_ky_margin_top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/tvDieukhoan_Horizontalpadding"
+                android:text="@string/tv_dieukhoan1"
+                android:textSize="@dimen/Dieukhoan_textsize" />
+
+            <TextView
+                android:id="@+id/tvDieuKhoan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/tvDieukhoan_Horizontalpadding"
+                android:text="@string/tv_dieukhoan2"
+                android:textColor="@color/colorMain"
+                android:textSize="@dimen/Dieukhoan_textsize" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/tvDieukhoan_Horizontalpadding"
+                android:text="@string/tv_dieukhoan3"
+                android:textSize="@dimen/Dieukhoan_textsize" />
+
+            <CheckBox
+                android:id="@+id/cbDieuKhoan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <!--Nút đăng ký và hủy -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/khung_dang_ky_margin_top"
+            android:gravity="center">
+            <!-- Xác nhận -->
+            <Button
+                android:id="@+id/btnDK_DK"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ViewDangKy_height"
+                android:layout_weight="1"
+                android:background="@drawable/btndk_btnhuy_dk_shape"
+                android:text="@string/btn_signup_DK"
+                android:textColor="@color/Title_Color" />
+            <!-- Hủy -->
+            <Button
+                android:id="@+id/btnHuy_DK"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ViewDangKy_height"
+                android:layout_marginLeft="@dimen/BtnDangKy_marginLeft"
+                android:layout_weight="1"
+                android:background="@drawable/btndk_btnhuy_dk_shape"
+                android:text="@string/btn_huy_DK"
+                android:textColor="@color/Title_Color" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

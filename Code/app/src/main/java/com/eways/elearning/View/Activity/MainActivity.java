@@ -1,5 +1,6 @@
 package com.eways.elearning.View.Activity;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;

@@ -38,27 +38,30 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import static android.app.Activity.RESULT_OK;
+import static com.eways.elearning.Handler.DialogPlusHandler.REQUEST_CODE_CAMERA;
+import static com.eways.elearning.Handler.DialogPlusHandler.REQUEST_CODE_GALLERY;
+import static com.eways.elearning.Handler.DialogPlusHandler.vitrichon;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhatTaiKhoanViewImp, View.OnClickListener{
+    View view;
     Spinner spNamsinh, spGiotinh;
     Button btnLuuCapNhat;
     EditText etHoTen, etNgheNghiep;
     ImageView imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms;
-    Calendar calendar;
-    ArrayList<String> danhsachNam;
-    SharedPreferencesHandler sharedPreferencesHandler;
-    FragmentHandler fragmentHandler;
-    CapNhatTaiKhoanPresenterImp capNhatTaiKhoanPresenterImp;
 
-
-
-    ChonHinhAdapter adDanhSachChonHinh;
-    ArrayList<LayHinhModel> danhSachChon;
-    DialogPlusHandler dialogPlusHandler;
+    private Calendar calendar;
+    private ArrayList<String> danhsachNam;
+    private SharedPreferencesHandler sharedPreferencesHandler;
+    private FragmentHandler fragmentHandler;
+    private CapNhatTaiKhoanPresenterImp capNhatTaiKhoanPresenterImp;
+    private ChonHinhAdapter adDanhSachChonHinh;
+    private ArrayList<LayHinhModel> danhSachChon;
+    private DialogPlusHandler dialogPlusHandler;
+    private ImageHandler imageHandler;
 
     int RESULT_LOAD_HINHMT=1;
     int RESULT_LOAD_HINHMS=2;
@@ -73,7 +76,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         danhsachNam = new ArrayList<>();
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         sharedPreferencesHandler = new SharedPreferencesHandler(getContext(), SupportKeysList.SHARED_PREF_FILE_NAME);
-
+        imageHandler = new ImageHandler(getActivity());
         capNhatTaiKhoanPresenterImp = new CapNhatTaiKhoanPresenter(this);
     }
 
@@ -81,7 +84,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cap_nhat_thong_tin_tai_khoan, container, false);
+        view = inflater.inflate(R.layout.fragment_cap_nhat_thong_tin_tai_khoan, container, false);
 
         spNamsinh = (Spinner) view.findViewById(R.id.spNamsinh_CNTTTK);
         spGiotinh = (Spinner) view.findViewById(R.id.spGioiTinh);
@@ -183,9 +186,30 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        dialogPlusHandler.onActivityResult(requestCode,resultCode,data,imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms);
-
-
+//        dialogPlusHandler.onActivityResult(requestCode,resultCode,data,imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms);
+        if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data!= null){
+            Bitmap bitmap=(Bitmap) data.getExtras().get("data");
+            if (vitrichon==0) {
+                view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
+                imTaiLieuXacMinh_mt.setImageBitmap(bitmap);
+            }
+            else {
+                view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
+                imTaiLieuXacMinh_ms.setImageBitmap(bitmap);
+            }
+            dialogPlusHandler.dissMissDialog();
+        }
+        if (requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null) {
+            if (vitrichon==0) {
+                view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
+                imageHandler.loadImageRound(String.valueOf(data.getData()), imTaiLieuXacMinh_mt);
+            }
+            else {
+                view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
+                imageHandler.loadImageRound(String.valueOf(data.getData()), imTaiLieuXacMinh_ms);
+            }
+            dialogPlusHandler.dissMissDialog();
+        }
     }
 
     @Override

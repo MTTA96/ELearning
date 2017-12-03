@@ -243,6 +243,7 @@
                         android:background="@drawable/add_image_shape" />
 
                     <TextView
+                        android:id="@+id/textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -262,6 +263,7 @@
                         android:background="@drawable/add_image_shape" />
 
                     <TextView
+                        android:id="@+id/textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

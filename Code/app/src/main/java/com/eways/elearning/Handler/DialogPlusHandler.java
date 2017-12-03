@@ -54,6 +54,7 @@ public class DialogPlusHandler {
     public ImageView hinhMatTruoc;
     public ImageView hinhMatSau;
 
+    private int vitrichon;
     private String selectedImagePath;
     private String filemanagerstring;
 
@@ -71,7 +72,7 @@ public class DialogPlusHandler {
         this.fragment = fragment;
     }
 
-    public void ShowDialogChonHinh(){
+    public void ShowDialogChonHinh(int vitrichon){
         DialogPlusBuilder dialog = DialogPlus.newDialog(activity);
         dialog.setContentHolder(new GridHolder(2));
         dialog.setContentHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -80,8 +81,9 @@ public class DialogPlusHandler {
         dialog.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(DialogPlus dialog, Object item, View view, int position) {
-                if (position==0)
+                if (position==0){
                     fragment.requestPermissions(new String[]{android.Manifest.permission.CAMERA},REQUEST_CODE_CAMERA);
+                }
                 if (position==1){
                     Intent intent=new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                     fragment.startActivityForResult(intent,REQUEST_CODE_GALLERY);
@@ -91,6 +93,7 @@ public class DialogPlusHandler {
         });
         DialogPlus dialogPlus=dialog.create();
         dialogPlus.show();
+        this.vitrichon=vitrichon;
     }
 
 //    @Override
@@ -112,10 +115,16 @@ public class DialogPlusHandler {
         ImageHandler imageHandler=new ImageHandler(activity);
         if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data!= null){
             bitmap=(Bitmap) data.getExtras().get("data");
-            hinhMatSau.setImageBitmap(bitmap);
+            if (vitrichon==0)
+                hinhMatTruoc.setImageBitmap(bitmap);
+            else
+                hinhMatSau.setImageBitmap(bitmap);
         }
         if (requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null) {
-            imageHandler.loadImageRound(String.valueOf(data.getData()) ,hinhMatSau);
+            if (vitrichon==0)
+                imageHandler.loadImageRound(String.valueOf(data.getData()) ,hinhMatTruoc);
+            else
+                imageHandler.loadImageRound(String.valueOf(data.getData()),hinhMatSau);
         }
         this.requestCode=requestCode;
         this.resultCode=resultCode;

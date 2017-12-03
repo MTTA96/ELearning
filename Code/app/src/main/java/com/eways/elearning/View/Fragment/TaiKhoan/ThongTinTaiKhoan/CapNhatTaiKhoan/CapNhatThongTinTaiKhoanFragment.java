@@ -125,10 +125,10 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
                     spGiotinh.getSelectedItem().toString(),sharedPreferencesHandler.getTaiLieuXacMinh_mt(),sharedPreferencesHandler.getTaiLieuXacMinh_ms()), getActivity(),imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms);
         }
         if (v.getId() == R.id.ivTaiLieuXacMinh_mt){
-            dialogPlusHandler.ShowDialogChonHinh();
+            dialogPlusHandler.ShowDialogChonHinh(0);
         }
         if (v.getId() == R.id.ivTaiLieuXacMinh_ms){
-            dialogPlusHandler.ShowDialogChonHinh();
+            dialogPlusHandler.ShowDialogChonHinh(1);
         }
     }
 

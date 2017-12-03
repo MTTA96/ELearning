@@ -10,8 +10,7 @@
     <dimen name="text_height">30dp</dimen>
     <dimen name="editText_padding_left">10dp</dimen>
     <!--Big Actionbar-->
-    <dimen name="big_toolbar_height">150dp</dimen>
-    <dimen name="user_avatar_action_bar_margin_top">15dp</dimen>
+    <dimen name="big_toolbar_height">180dp</dimen>
     <dimen name="username_action_bar_margin_top">10dp</dimen>
 
     <!-- Slide menu -->
@@ -107,7 +106,6 @@
 
     <!--Quản lý cá nhân-->
     <dimen name="avarta_size_QLTK">110dp</dimen>
-    <dimen name="layouttopQLTK_height">220dp</dimen>
     <dimen name="ItemQLTK_margintop">15dp</dimen>
     <dimen name="ItemQLTK_textsize">18sp</dimen>
     <dimen name="EmailDangXuatQLTK_textsize">15sp</dimen>

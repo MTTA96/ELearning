@@ -12,10 +12,10 @@ import com.eways.elearning.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChiTietKhoaHocFragment extends Fragment {
+public class ThongTinKhoaHocFragment extends Fragment {
 
 
-    public ChiTietKhoaHocFragment() {
+    public ThongTinKhoaHocFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class ChiTietKhoaHocFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chi_tiet_khoa_hoc, container, false);
+        return inflater.inflate(R.layout.fragment_thong_tin_khoa_hoc, container, false);
     }
 
 }

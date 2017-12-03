@@ -19,8 +19,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingBottom="10dp"
-            android:layout_marginLeft="@dimen/tao_khoa_hoc_horizontal_padding"
-            android:layout_marginRight="@dimen/tao_khoa_hoc_horizontal_padding">
+            android:paddingLeft="@dimen/tao_khoa_hoc_horizontal_padding"
+            android:paddingRight="@dimen/tao_khoa_hoc_horizontal_padding">
             <!-- Switch tìm kiếm -->
             <Switch
                 android:id="@+id/switch_tao_khoa_hoc"

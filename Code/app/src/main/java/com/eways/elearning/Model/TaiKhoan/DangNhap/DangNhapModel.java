@@ -2,13 +2,16 @@ package com.eways.elearning.Model.TaiKhoan.DangNhap;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.eways.elearning.DataModel.TaiKhoan;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
@@ -25,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class DangNhapModel implements DangNhapImpModel{
     DangNhapPresenterImp dangNhapImpPresenter;
-    FirebaseDatabase mDataNhanTaiKhoanDN;
+
     FirebaseDatabase mDataDangNhapGmail;
 
 
@@ -38,9 +41,10 @@ public class DangNhapModel implements DangNhapImpModel{
     @Override
     public void NhanTaiKhoanDN(final TaiKhoan taiKhoan, final Activity activity) {
         final FirebaseAuth mAuth;
+        final FirebaseDatabase mDataNhanTaiKhoanDN;
         mDataNhanTaiKhoanDN=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
         mAuth=FirebaseAuth.getInstance(FirebaseApp.initializeApp(activity));
-        mAuth.signInWithEmailAndPassword(taiKhoan.getEmail().toString(), taiKhoan.getPassword().toString()).addOnCompleteListener(activity,new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(taiKhoan.getEmail().toString(), taiKhoan.getPassword().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
@@ -75,6 +79,11 @@ public class DangNhapModel implements DangNhapImpModel{
                 } else
                     dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_FAILED,null,null,activity,null);
 
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("loidn", e.toString());
             }
         });
     }

@@ -116,7 +116,6 @@ public class LoginGmailHandler   {
         if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
             mGoogleApiClient.stopAutoManage((FragmentActivity) context);
             mGoogleApiClient.disconnect();
-
         }
     }
 }

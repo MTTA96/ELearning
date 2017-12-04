@@ -33,6 +33,7 @@ import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPre
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -184,6 +185,19 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         }
         else {
             etNgheNghiep.setText(sharedPreferencesHandler.getNgheNghiep().toString());
+        }
+
+        String temp=sharedPreferencesHandler.getTaiLieuXacMinh_mt();
+        if (sharedPreferencesHandler.getTaiLieuXacMinh_mt()==null){
+            return;
+        }
+        else {
+            Picasso.with(getContext()).load(sharedPreferencesHandler.getTaiLieuXacMinh_mt()).into(imTaiLieuXacMinh_mt);
+        }
+        if (sharedPreferencesHandler.getTaiLieuXacMinh_ms()==null){
+            return;
+        }else {
+            Picasso.with(getContext()).load(sharedPreferencesHandler.getTaiLieuXacMinh_ms()).into(imTaiLieuXacMinh_ms);
         }
     }
     //Nhân hình từ gallery

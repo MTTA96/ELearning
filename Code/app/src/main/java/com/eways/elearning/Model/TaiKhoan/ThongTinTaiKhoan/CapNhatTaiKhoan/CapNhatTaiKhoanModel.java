@@ -46,6 +46,7 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp, ChildEvent
 
     @Override
     public void CapNhatTaiKhoan(final TaiKhoan taiKhoan, final Activity activity, byte[] data_mt, byte[] data_ms) {
+        TaiKhoan taiKhoanTemp;
         activityModel=activity;
         mAuth=FirebaseAuth.getInstance(FirebaseApp.initializeApp(activity));
         mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
@@ -62,8 +63,9 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp, ChildEvent
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                truyenHinhTaiLieuXacMinhImp.TruyenHinhMT(String.valueOf(downloadUrl));
+                String downloadUrl = taskSnapshot.getDownloadUrl().toString();
+                taiKhoan.setTailieuxacminh_mt(downloadUrl);
+                mData.getReference().child("TaiKhoan").child(taiKhoan.getId()).setValue(taiKhoan);
             }
         });
 
@@ -76,13 +78,12 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp, ChildEvent
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                truyenHinhTaiLieuXacMinhImp.TruyenHinhMS(String.valueOf(downloadUrl));
+                String downloadUrl = taskSnapshot.getDownloadUrl().toString();
+                taiKhoan.setTailieuxacminh_ms(downloadUrl);
+                mData.getReference().child("TaiKhoan").child(taiKhoan.getId()).setValue(taiKhoan);
             }
         });
-        taiKhoan.setTailieuxacminh_mt(uriNhanHinhMT);
-        taiKhoan.setTailieuxacminh_ms(uriNhanHinhMS);
-        mData.getReference().child("TaiKhoan").child(taiKhoan.getId()).setValue(taiKhoan);
+
         //Lay data cua tai khoan
         mData.getReference().child("TaiKhoan").orderByKey().equalTo(taiKhoan.getId()).addChildEventListener(this);
     }

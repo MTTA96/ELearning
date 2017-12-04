@@ -3,10 +3,12 @@ package com.eways.elearning.View.Fragment.TaiKhoan.DangNhap;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,7 +27,10 @@ import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,7 +84,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         btnDangky.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
+//        ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
         AnHienMatKhau(etPasswordDN);
 
         return root;
@@ -89,8 +94,9 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
     public void onClick(View view) {
         if (view.getId() == R.id.btnSignup)
             fragmentHandler.ChuyenFragment(new DangKyFragment(), true, SupportKeysList.TAG_DANG_KY_FRAGMENT);
-        if (view.getId() == R.id.btnLogin)
-            dangNhapImpPresenter.NhanThongTinDN(etEmailDN.getText().toString(),etPasswordDN.getText().toString(),getActivity());
+        if (view.getId() == R.id.btnLogin){
+            dangNhapImpPresenter.NhanThongTinDN(etEmailDN.getText().toString().trim(),etPasswordDN.getText().toString().trim(),getActivity());
+        }
         if (view.getId() == R.id.btnLoginGmail){
             loginGmailHandler.ConnectGmail();
             loginGmailHandler.signIn();

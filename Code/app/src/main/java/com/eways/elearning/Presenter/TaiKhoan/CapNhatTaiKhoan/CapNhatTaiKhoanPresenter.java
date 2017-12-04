@@ -33,8 +33,8 @@ public class CapNhatTaiKhoanPresenter implements CapNhatTaiKhoanPresenterImp {
 
     @Override
     public void KetQuaCapNhat(String ketquacapnhat,TaiKhoan taiKhoan,Activity activity) {
-        capNhatThongTinTaiKhoanFragment.KetQuaCapNhat(ketquacapnhat);
         sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
         sharedPreferencesHandler.DangNhapThanhCong(taiKhoan.getId(), taiKhoan.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(), sharedPreferencesHandler.getAvatar() != null ? sharedPreferencesHandler.getAvatar():null, taiKhoan.getTentaikhoan(),true,SupportKeysList.TAI_KHOAN_THUONG,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms());
+        capNhatThongTinTaiKhoanFragment.KetQuaCapNhat(ketquacapnhat);
     }
 }

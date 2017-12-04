@@ -4,6 +4,7 @@ package com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKh
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -94,7 +95,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         btnLuuCapNhat = (Button) view.findViewById(R.id.btnLuuCNTTTK);
         imTaiLieuXacMinh_mt= (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_mt);
         imTaiLieuXacMinh_ms= (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_ms);
-
+        LoadData();
         btnLuuCapNhat.setOnClickListener(this);
 
         imTaiLieuXacMinh_mt.setOnClickListener(this);
@@ -107,8 +108,8 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         adDanhSachChonHinh=new ChonHinhAdapter(getActivity(),R.layout.item_chonhinh_cntttk,danhSachChon);
         dialogPlusHandler=new DialogPlusHandler(getActivity(),adDanhSachChonHinh,this);
 
-        LoadData();
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
         return view;
     }
 
@@ -168,7 +169,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
             }
             ArrayAdapter adDanhSachNam=new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,danhsachNam);
             spNamsinh.setAdapter(adDanhSachNam);
-            int spinnerPosition=adDanhSachNam.getPosition(sharedPreferencesHandler.getNamSinh());
+            int spinnerPosition=adDanhSachNam.getPosition(sharedPreferencesHandler.getNamSinh().toString());
             spNamsinh.setSelection(spinnerPosition);
         }
         if (sharedPreferencesHandler.getGioiTinh().isEmpty()) {
@@ -192,16 +193,14 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
             return;
         }
         else {
-            Picasso.with(getContext()).load(sharedPreferencesHandler.getTaiLieuXacMinh_mt()).into(imTaiLieuXacMinh_mt);
+            Picasso.with(getContext()).load(Uri.parse(sharedPreferencesHandler.getTaiLieuXacMinh_mt())).into(imTaiLieuXacMinh_mt);
         }
         if (sharedPreferencesHandler.getTaiLieuXacMinh_ms()==null){
             return;
         }else {
-            Picasso.with(getContext()).load(sharedPreferencesHandler.getTaiLieuXacMinh_ms()).into(imTaiLieuXacMinh_ms);
+            Picasso.with(getContext()).load(Uri.parse(sharedPreferencesHandler.getTaiLieuXacMinh_ms())).into(imTaiLieuXacMinh_ms);
         }
     }
-    //Nhân hình từ gallery
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

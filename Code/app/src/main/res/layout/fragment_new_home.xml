@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
 
-    <android.support.v4.view.ViewPager
+    <com.eways.elearning.Model.CustomClasses.CustomViewPager
         android:id="@+id/viewPager_PhanMuc_Home"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,5 +19,5 @@
             android:background="@color/colorMain"
             app:tabIndicatorColor="@color/White"
             app:tabSelectedTextColor="@color/White"/>
-    </android.support.v4.view.ViewPager>
+    </com.eways.elearning.Model.CustomClasses.CustomViewPager>
 </LinearLayout>

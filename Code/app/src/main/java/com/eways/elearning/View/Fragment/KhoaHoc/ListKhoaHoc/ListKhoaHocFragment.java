@@ -1,4 +1,4 @@
-package com.eways.elearning.View.Fragment.ListKhoaHoc;
+package com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc;
 
 
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
 
 import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
 import com.eways.elearning.R;

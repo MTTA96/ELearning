@@ -16,7 +16,7 @@ import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc.TaoKhoaHocFragment;
-import com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocFragment;
+import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
 

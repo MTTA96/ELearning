@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
+import com.eways.elearning.Model.CustomClasses.CustomViewPager;
 import com.eways.elearning.R;
 import com.eways.elearning.View.Fragment.Home.HomeTimGiaSu.HomeTimGiaSuFragment;
 import com.eways.elearning.View.Fragment.Home.HomeTimHocVien.HomeTimHocVienFragment;
@@ -40,15 +41,13 @@ public class NewHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_new_home, container, false);
-//        root.findViewById(R.id.textView_XemDanhSachKhoaHocAnhVan_Home).setOnClickListener(this);
-        setUpViewPager((ViewPager) root.findViewById(R.id.viewPager_PhanMuc_Home));
 
-//        newHomeFragmentPresenter.guiYeuCau("Ngoại ngữ", "Toán", "Khác");
-
+        setUpViewPager((CustomViewPager) root.findViewById(R.id.viewPager_PhanMuc_Home));
         return root;
     }
 
-    private void setUpViewPager(ViewPager viewPager) {
+    private void setUpViewPager(CustomViewPager viewPager) {
+        viewPager.setPagingEnabled(false);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
         viewPagerAdapter.addFragment(new HomeTimGiaSuFragment(), titleTab1);
         viewPagerAdapter.addFragment(new HomeTimHocVienFragment(), titleTab2);

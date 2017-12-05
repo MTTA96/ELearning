@@ -3,10 +3,13 @@ package com.eways.elearning.Presenter.TaoKhoaHoc;
 import android.app.Activity;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.Model.TaoKhoaHoc.TaoKhoaHocModel;
 import com.eways.elearning.Model.TaoKhoaHoc.TaoKhoaHocModelImp;
 import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc.TaoKhoaHocFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc.TaoKhoaHocViewImp;
+
+import java.util.ArrayList;
 
 /**
  * Created by yowin on 19/11/2017.
@@ -28,5 +31,15 @@ public class TaoKhoaHocPresenter implements TaoKhoaHocPresenterImp {
     @Override
     public void ketQua(String ketQua) {
 
+    }
+
+    @Override
+    public void loaddataLinhvuc(Activity activity) {
+        taoKhoaHocModelImp.loaddataLinhvuc(activity);
+    }
+
+    @Override
+    public void nhanDanhSachLinhVuc(ArrayList<LinhVuc> danhSachLinhVuc) {
+        taoKhoaHocViewImp.NhanDanhSachLinhVuc(danhSachLinhVuc);
     }
 }

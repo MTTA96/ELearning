@@ -4,6 +4,9 @@ import android.app.Activity;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
+import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
+
+import java.util.ArrayList;
 
 /**
  * Created by yowin on 19/11/2017.
@@ -12,4 +15,6 @@ import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 public interface TaoKhoaHocPresenterImp {
     public void nhanThongTinKhoaHoc(KhoaHoc khoaHoc, boolean checked, Activity activity);
     public void ketQua(String ketQua);
+    public void loaddataLinhvuc(Activity activity);
+    public void nhanDanhSachLinhVuc(ArrayList<LinhVuc> danhSachLinhVuc);
 }

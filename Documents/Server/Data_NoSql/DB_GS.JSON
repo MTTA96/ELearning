@@ -27,8 +27,11 @@
     "KhuVuc":
     {
       "TPHCM":
-      [
-        "Quận 1",
+      {
+        "TenThanhPho":"TP.HCM",
+        "DanhSachQuan":
+        [
+            "Quận 1",
         "Quận 2",
         "Quận 3",
         "Quận 4",
@@ -52,7 +55,8 @@
         "Quận Bình Chánh",
         "Quận Nhà Bè",
         "Quận Cần Giờ"
-      ]
+        ]
+      }
     },
     "DanhMucLinhVuc":
     {

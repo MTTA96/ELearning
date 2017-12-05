@@ -3,7 +3,7 @@ package com.eways.elearning.Presenter.ListKhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.Model.ListKhoaHoc.ListKhoaHocTimHocVienImpModel;
 import com.eways.elearning.Model.ListKhoaHoc.ListKhoaHocTimHocVienModel;
-import com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocTimHocVienImpView;
+import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocTimHocVienImpView;
 
 import java.util.ArrayList;
 

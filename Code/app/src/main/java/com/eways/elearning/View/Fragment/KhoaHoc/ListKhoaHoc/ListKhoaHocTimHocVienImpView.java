@@ -1,4 +1,4 @@
-package com.eways.elearning.View.Fragment.ListKhoaHoc;
+package com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 

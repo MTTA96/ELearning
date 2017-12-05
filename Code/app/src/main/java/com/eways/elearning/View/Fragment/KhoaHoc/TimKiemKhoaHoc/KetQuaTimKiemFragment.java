@@ -13,7 +13,8 @@ import android.widget.Toast;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.Handler.Adapter.KhoaHocRCAdapter;
+import com.eways.elearning.Handler.Adapter.KhoaHoc.KhoaHocRCAdapter;
+import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.TimKiemKhoaHoc.KetQuaTimKiemKhoaHocFragmentPresenter;
 import com.eways.elearning.Presenter.TimKiemKhoaHoc.KetQuaTimKiemKhoaHocFragmentPresenterImp;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFragmentViewImp{
+public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFragmentViewImp {
 
     private static final String paramRequestKhoaHoc = "RequestKhoaHoc";
     private static final String paramRequestGiaSu = "RequestGiaSu";
@@ -48,6 +49,8 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
     ImageHandler imageHandler;
     KetQuaTimKiemKhoaHocFragmentPresenterImp ketQuaTimKiemKhoaHocFragmentPresenterImp;
     KhoaHocRCAdapter adapterKhoaHoc;
+    private FragmentHandler fragmentHandler;
+
     public KetQuaTimKiemFragment() {
         // Required empty public constructor
     }
@@ -76,6 +79,7 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
             requestKhoaHoc = (KhoaHoc) getArguments().getSerializable(paramRequestKhoaHoc);
             requestGiaSu = getArguments().getBoolean(paramRequestGiaSu);
             requestBangCap = getArguments().getString(paramRequestBangCap, null);
+            fragmentHandler = new FragmentHandler(getActivity(), getChildFragmentManager());
             ketQuaTimKiemKhoaHocFragmentPresenterImp = new KetQuaTimKiemKhoaHocFragmentPresenter(this);
         }
     }
@@ -91,7 +95,7 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
         imageHandler = new ImageHandler(getActivity());
         rsKhoaHocChinhXac = new ArrayList<CustomModelKhoaHoc>();
         rsKhoaHocGanChinhXac = new ArrayList<CustomModelKhoaHoc>();
-        ketQuaTimKiemKhoaHocFragmentPresenterImp.guiYeuCauListKhoaHoc(requestKhoaHoc,requestGiaSu);
+        ketQuaTimKiemKhoaHocFragmentPresenterImp.guiYeuCauListKhoaHoc(requestKhoaHoc, requestGiaSu);
 //        if (rsKhoaHocChinhXac.size() == 0) {
 //            if(rsKhoaHocGanChinhXac.size() == 0)
 //            {
@@ -264,24 +268,15 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
         rsKhoaHocChinhXac = chinhxac;
         rsKhoaHocGanChinhXac = ganchinhxac;
         if (rsKhoaHocChinhXac.size() == 0) {
-            if(rsKhoaHocGanChinhXac.size() == 0)
-            {
+            if (rsKhoaHocGanChinhXac.size() == 0) {
                 Toast.makeText(getActivity(), "Không tìm thấy kết quả!", Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                adapterKhoaHoc = new KhoaHocRCAdapter(
-                        rsKhoaHocGanChinhXac,
-                        imageHandler
-                );
+            } else {
+                adapterKhoaHoc = new KhoaHocRCAdapter(getActivity(), rsKhoaHocGanChinhXac, imageHandler, fragmentHandler);
                 rcKetQua.setLayoutManager(new GridLayoutManager(getActivity(), 1));
                 rcKetQua.setAdapter(adapterKhoaHoc);
             }
         } else {
-            adapterKhoaHoc = new KhoaHocRCAdapter(
-                    rsKhoaHocChinhXac,
-                    imageHandler
-            );
+            adapterKhoaHoc = new KhoaHocRCAdapter(getActivity(), rsKhoaHocChinhXac, imageHandler, fragmentHandler);
             rcKetQua.setLayoutManager(new GridLayoutManager(getActivity(), 1));
             rcKetQua.setAdapter(adapterKhoaHoc);
         }

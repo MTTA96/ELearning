@@ -4,7 +4,6 @@ package com.eways.elearning.View.Fragment.Home.HomeTimGiaSu;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +19,7 @@ import com.eways.elearning.Presenter.Home.NewHomeFragmentPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragmentImp;
-import com.eways.elearning.View.Fragment.ListKhoaHoc.ListKhoaHocFragment;
+import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocFragment;
 
 import java.util.ArrayList;
 

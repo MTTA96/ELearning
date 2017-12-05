@@ -1,4 +1,4 @@
-package com.eways.elearning.View.Fragment.ListKhoaHoc;
+package com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc;
 
 
 import android.os.Bundle;
@@ -12,7 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
-import com.eways.elearning.Handler.Adapter.KhoaHocRCAdapter;
+import com.eways.elearning.Handler.Adapter.KhoaHoc.KhoaHocRCAdapter;
+import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenterImp;
@@ -36,6 +37,7 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
 
     private DatabaseReference mDatabase;
     private ImageHandler imageHandler;
+    private FragmentHandler fragmentHandler;
 
     public ListKhoaHocTimHocVienFragment() {
         // Required empty public constructor
@@ -117,10 +119,7 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
     public void nhanDanhSach(ArrayList<CustomModelKhoaHoc> khoaHocList) {
 
         khoaHocArrayListhv = khoaHocList;
-        khoaHocAdapterhv = new KhoaHocRCAdapter(
-                khoaHocArrayListhv,
-                imageHandler
-        );
+        khoaHocAdapterhv = new KhoaHocRCAdapter(getActivity(), khoaHocArrayListhv, imageHandler, fragmentHandler);
         rvKhoaHocTimHocVien.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rvKhoaHocTimHocVien.setAdapter(khoaHocAdapterhv);
     }

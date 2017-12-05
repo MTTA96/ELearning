@@ -1,4 +1,4 @@
-package com.eways.elearning.View.Fragment.ListKhoaHoc;
+package com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc;
 
 
 import android.os.Bundle;
@@ -12,7 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
-import com.eways.elearning.Handler.Adapter.KhoaHocRCAdapter;
+import com.eways.elearning.Handler.Adapter.KhoaHoc.KhoaHocRCAdapter;
+import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenterImp;
@@ -33,10 +34,9 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
 
     private ArrayList<CustomModelKhoaHoc> khoaHocArrayList;
     private KhoaHocRCAdapter khoaHocAdapter;
-
     private DatabaseReference mDatabase;
     private ImageHandler imageHandler;
-
+    private FragmentHandler fragmentHandler;
 
     public ListKhoaHocTimGiaSuFragment() {
         // Required empty public constructor
@@ -46,7 +46,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         listKhoaHocTimGiaSuPresenterImp = new ListKhoaHocTimGiaSuPresenter(this);
-
+        fragmentHandler = new FragmentHandler(getActivity(), getChildFragmentManager());
     }
 
     @Override
@@ -124,10 +124,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
     public void nhanDanhSach(ArrayList<CustomModelKhoaHoc> khoaHocList) {
 
         khoaHocArrayList = khoaHocList;
-        khoaHocAdapter = new KhoaHocRCAdapter(
-                khoaHocArrayList,
-                imageHandler
-        );
+        khoaHocAdapter = new KhoaHocRCAdapter(getActivity(), khoaHocArrayList, imageHandler, fragmentHandler);
         rcvKhoaHocTimGiaSu.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rcvKhoaHocTimGiaSu.setAdapter(khoaHocAdapter);
     }

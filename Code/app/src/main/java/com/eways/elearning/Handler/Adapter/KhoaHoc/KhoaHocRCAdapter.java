@@ -1,17 +1,24 @@
-package com.eways.elearning.Handler.Adapter;
+package com.eways.elearning.Handler.Adapter.KhoaHoc;
 
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinKhoaHocFragment;
 
 import java.util.ArrayList;
 
@@ -19,14 +26,17 @@ import java.util.ArrayList;
  * Created by ADMIN on 11/9/2017.
  */
 
-public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.ViewHolder>  {
+public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.ViewHolder> implements View.OnClickListener {
+    private Context context;
+    private ArrayList<CustomModelKhoaHoc> khoaHocArrayList;
+    private ImageHandler imageHandler;
+    private FragmentHandler fragmentHandler;
 
-    ArrayList<CustomModelKhoaHoc> khoaHocArrayList;
-    ImageHandler imageHandler;
-
-    public KhoaHocRCAdapter(ArrayList<CustomModelKhoaHoc> khoaHocArrayList, ImageHandler imageHandler) {
+    public KhoaHocRCAdapter(Context context, ArrayList<CustomModelKhoaHoc> khoaHocArrayList, ImageHandler imageHandler, FragmentHandler fragmentHandler) {
+        this.context = context;
         this.khoaHocArrayList = khoaHocArrayList;
         this.imageHandler = imageHandler;
+        this.fragmentHandler = fragmentHandler;
     }
 
     @Override
@@ -39,7 +49,12 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.vUserInfo.setOnClickListener(this);
+        holder.vCourseInfo.setOnClickListener(this);
+        loadData(holder, position);
+    }
 
+    private void loadData(ViewHolder holder, int position) {
         imageHandler.loadImageSquare(khoaHocArrayList.get(position).LinkAvatar,holder.imvAvatar);
 
         if(khoaHocArrayList.get(position).Rating != null) {
@@ -83,8 +98,22 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
         return khoaHocArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.view_UserInfo_DanhSachKhoaHoc:
+                Toast.makeText(context, "User info!", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.view_CourseInfo_DanhSachKhoaHoc:
+                Toast.makeText(context, "Course info!", Toast.LENGTH_SHORT).show();
+//                fragmentHandler.ChuyenFragment(new ThongTinKhoaHocFragment(), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
+                break;
+        }
 
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        LinearLayout vUserInfo, vCourseInfo;
         ImageView imvAvatar;
         RatingBar rtbBaiDang;
         TextView tvTenNguoiDang;
@@ -93,6 +122,8 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
         TextView tvHocPhi;
         public ViewHolder(View itemView) {
             super(itemView);
+            vUserInfo = (LinearLayout) itemView.findViewById(R.id.view_UserInfo_DanhSachKhoaHoc);
+            vCourseInfo = (LinearLayout) itemView.findViewById(R.id.view_CourseInfo_DanhSachKhoaHoc);
             imvAvatar = (ImageView) itemView.findViewById(R.id.img_KhoaHoc);
             rtbBaiDang = (RatingBar) itemView.findViewById(R.id.rtb_KhoaHoc);
             tvTenNguoiDang = (TextView) itemView.findViewById(R.id.tvTen_KhoaHoc);

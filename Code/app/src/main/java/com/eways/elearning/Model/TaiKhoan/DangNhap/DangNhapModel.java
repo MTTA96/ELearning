@@ -95,7 +95,7 @@ public class DangNhapModel implements DangNhapImpModel{
                     dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,dataSnapshot.getValue(TaiKhoan.class));
 
                 }else {
-                    mDataDangNhapGmail.getReference().child("TaiKhoan").child(account.getId().toString()).setValue(new TaiKhoan(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),account.getDisplayName(),true, SupportKeysList.TAI_KHOAN_GMAIL,null,null,null,null,null,null));
+                    mDataDangNhapGmail.getReference().child("TaiKhoan").child(account.getId().toString()).setValue(new TaiKhoan(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),account.getDisplayName(),true, SupportKeysList.TAI_KHOAN_GMAIL,null,null,null,null,null,null,null,null,null));
                     mDataDangNhapGmail.getReference().child("TaiKhoan").orderByKey().equalTo(account.getId().toString().trim()).addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(DataSnapshot dataSnapshot, String s) {

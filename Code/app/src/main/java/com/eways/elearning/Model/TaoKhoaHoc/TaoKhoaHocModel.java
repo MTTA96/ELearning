@@ -3,6 +3,7 @@ package com.eways.elearning.Model.TaoKhoaHoc;
 import android.app.Activity;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.DataModel.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenterImp;
 import com.google.firebase.FirebaseApp;
@@ -74,5 +75,38 @@ public class TaoKhoaHocModel implements TaoKhoaHocModelImp {
             }
         });
 
+    }
+
+    @Override
+    public void loadDataKhuVuc(Activity activity) {
+        mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
+        final ArrayList<KhuVuc> danhSachKhuVuc=new ArrayList<>();
+        mData.getReference().child("DataApp").child("KhuVuc").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                danhSachKhuVuc.add(dataSnapshot.getValue(KhuVuc.class));
+                taoKhoaHocPresenterImp.nhanDanhSachKhuVuc(danhSachKhuVuc);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

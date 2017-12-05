@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.LichHoc;
+import com.eways.elearning.DataModel.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.DataModel.LinhVuc.Mon;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
@@ -130,6 +131,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbThu7.setOnCheckedChangeListener(this);
         cbChuNhat.setOnCheckedChangeListener(this);
         taoKhoaHocPresenterImp.loaddataLinhvuc(getActivity());
+        taoKhoaHocPresenterImp.loaddataKhuVuc(getActivity());
         ((MainActivity) getActivity()).tvScreenTitle.setText("Tạo khóa học");
         getActivity().supportInvalidateOptionsMenu();
         return root;
@@ -240,7 +242,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         if (etBangCap.getText() != null) {
             dataKhoaHoc = new ArrayList();
             dataKhoaHoc.add(etBangCap.getText().toString());
-            khoaHoc.setMon(dataKhoaHoc);
+            khoaHoc.setBangCap(dataKhoaHoc);
         }
 
         //ArrayList<String> Mon;
@@ -248,13 +250,12 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         dataKhoaHoc.add(etMon.getText().toString());
         khoaHoc.setMon(dataKhoaHoc);
 
-        //ArrayList<String> LinhVuc;
-//        dataKhocHoc.add(etLinhVuc.getText().toString());
-//        khoaHoc.setLinhVuc(dataKhocHoc);
-
+        dataKhoaHoc=new ArrayList();
+        dataKhoaHoc.add(spnLinhVuc.getSelectedItem().toString());
+        khoaHoc.setLinhVuc(dataKhoaHoc);
 //                LichHoc LichHoc;
         //DiaDiem DiaDiem;
-        khoaHoc.setDiaDiem(new DiaDiem(etDiaDiem.getText().toString(), null, null));
+        khoaHoc.setDiaDiem(new DiaDiem(etDiaDiem.getText().toString(), spnQuan.getSelectedItem().toString(), spnThanhPho.getSelectedItem().toString()));
         return khoaHoc;
     }
 
@@ -274,11 +275,41 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
     @Override
     public void NhanDanhSachLinhVuc(ArrayList<LinhVuc> danhSachLinhVuc) {
-        LoadDataSpinner(danhSachLinhVuc);
+        LoadDataLinhVuc(danhSachLinhVuc);
     }
 
-    //Load data cho spinner
-    public void LoadDataSpinner(final ArrayList<LinhVuc> danhSachLinhVucView){
+    @Override
+    public void NhanDanhSachKhuVuc(ArrayList<KhuVuc> danhSachKhuVuc) {
+        LoadDataKhuVuc(danhSachKhuVuc);
+    }
+
+    //Load data cho khu vực
+    public void LoadDataKhuVuc(final ArrayList<KhuVuc> danhSachKhuVuc){
+        ArrayList<String> danhSachTenKhuVuc=new ArrayList<>();
+        for (int i=0;i<danhSachKhuVuc.size();i++){
+            danhSachTenKhuVuc.add(danhSachKhuVuc.get(i).getTenThanhPho());
+        }
+        final ArrayAdapter adDanhSachKhuVuc=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachTenKhuVuc);
+        spnThanhPho.setAdapter(adDanhSachKhuVuc);
+
+        spnThanhPho.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ArrayList<String> danhSachQuan=new ArrayList<>();
+                danhSachQuan=danhSachKhuVuc.get(position).getDanhSachQuan();
+                ArrayAdapter adDanhSachQuan=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachQuan);
+                spnQuan.setAdapter(adDanhSachQuan);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    //Load data cho Linh Vực
+    public void LoadDataLinhVuc(final ArrayList<LinhVuc> danhSachLinhVucView){
         ArrayList<String> danhSachTenLinhVuc= new ArrayList<>();
         for (int i=0;i<danhSachLinhVucView.size();i++){
             danhSachTenLinhVuc.add(danhSachLinhVucView.get(i).getTenLinhVuc());

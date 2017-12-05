@@ -52,7 +52,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     View view;
     Spinner spNamsinh, spGiotinh;
     Button btnLuuCapNhat;
-    EditText etHoTen, etNgheNghiep;
+    EditText etHoTen, etNgheNghiep,etTrinhDo,etDiaChi,etSoDienThoai;
     ImageView imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms;
 
     private Calendar calendar;
@@ -95,6 +95,9 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         btnLuuCapNhat = (Button) view.findViewById(R.id.btnLuuCNTTTK);
         imTaiLieuXacMinh_mt= (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_mt);
         imTaiLieuXacMinh_ms= (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_ms);
+        etTrinhDo=(EditText) view.findViewById(R.id.etTrinhDo_CNTTTK);
+        etDiaChi=(EditText) view.findViewById(R.id.etDiaChi_CNTTTK);
+        etSoDienThoai=(EditText) view.findViewById(R.id.etSDT_CNTTTK);
         LoadData();
         btnLuuCapNhat.setOnClickListener(this);
 
@@ -128,7 +131,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
                     sharedPreferencesHandler.getHo(), etHoTen.getText().toString(), sharedPreferencesHandler.getTenTaiKhoan(),
                     sharedPreferencesHandler.getDaDangNhap(), sharedPreferencesHandler.getLoaiTaiKhoan(),
                     sharedPreferencesHandler.getMatKhau(), etNgheNghiep.getText().toString(), spNamsinh.getSelectedItem().toString(),
-                    spGiotinh.getSelectedItem().toString(),sharedPreferencesHandler.getTaiLieuXacMinh_mt(),sharedPreferencesHandler.getTaiLieuXacMinh_ms()), getActivity(),imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms);
+                    spGiotinh.getSelectedItem().toString(),sharedPreferencesHandler.getTaiLieuXacMinh_mt(),sharedPreferencesHandler.getTaiLieuXacMinh_ms(),etTrinhDo.getText().toString(),etDiaChi.getText().toString(),etSoDienThoai.getText().toString()), getActivity(),imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms);
         }
         if (v.getId() == R.id.ivTaiLieuXacMinh_mt){
             dialogPlusHandler.ShowDialogChonHinh(0);
@@ -208,6 +211,18 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
 
             }
         }
+        if (sharedPreferencesHandler.getTrinhDo()==null)
+            etTrinhDo.setText("");
+        else
+            etTrinhDo.setText(sharedPreferencesHandler.getTrinhDo().toString());
+        if (sharedPreferencesHandler.getDiaChi()==null)
+            etTrinhDo.setText("");
+        else
+            etDiaChi.setText(sharedPreferencesHandler.getDiaChi().toString());
+        if (sharedPreferencesHandler.getSoDienThoai()==null)
+            etSoDienThoai.setText("");
+        else
+            etSoDienThoai.setText(sharedPreferencesHandler.getSoDienThoai());
     }
 
     @Override

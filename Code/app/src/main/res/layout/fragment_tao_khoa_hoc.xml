@@ -113,16 +113,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginTop="10dp">
-                        <!--Quận-->
-                        <Spinner
-                            android:id="@+id/spinner_Quan_TaoKhoaHoc"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/text_height"
-                            android:layout_weight="1"
-                            android:background="@drawable/et_shape"
-                            android:paddingLeft="@dimen/text_padding_left"
-                            android:layout_marginRight="@dimen/info_quan_thanh_pho_tao_khoa_hoc_horizontal_margin"
-                            android:textSize="@dimen/normal_text_size" />
+
                         <!--Thành phố-->
                         <Spinner
                             android:id="@+id/spinner_ThanhPho_TaoKhoaHoc"
@@ -131,6 +122,16 @@
                             android:layout_weight="1"
                             android:background="@drawable/et_shape"
                             android:layout_marginLeft="@dimen/info_quan_thanh_pho_tao_khoa_hoc_horizontal_margin"
+                            android:paddingLeft="@dimen/text_padding_left"
+                            android:layout_marginRight="@dimen/info_quan_thanh_pho_tao_khoa_hoc_horizontal_margin"
+                            android:textSize="@dimen/normal_text_size" />
+                        <!--Quận-->
+                        <Spinner
+                            android:id="@+id/spinner_Quan_TaoKhoaHoc"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_height"
+                            android:layout_weight="1"
+                            android:background="@drawable/et_shape"
                             android:paddingLeft="@dimen/text_padding_left"
                             android:textSize="@dimen/normal_text_size" />
                     </LinearLayout>

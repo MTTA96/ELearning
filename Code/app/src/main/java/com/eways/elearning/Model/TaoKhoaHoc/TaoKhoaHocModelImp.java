@@ -16,4 +16,5 @@ import java.util.ArrayList;
 public interface TaoKhoaHocModelImp {
     public void postKhoaHoc(KhoaHoc khoaHoc, boolean loai, Activity activity);
     public void loaddataLinhvuc(Activity activity);
+    public void loadDataKhuVuc(Activity activity);
 }

@@ -187,18 +187,26 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         else {
             etNgheNghiep.setText(sharedPreferencesHandler.getNgheNghiep().toString());
         }
+        if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().isEmpty() && sharedPreferencesHandler.getTaiLieuXacMinh_ms().toString().trim().isEmpty()){
+            return;
+        }else{
+            if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().isEmpty() && !sharedPreferencesHandler.getTaiLieuXacMinh_ms().isEmpty()){
+                imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(),imTaiLieuXacMinh_ms);
+            }else {
+                if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().isEmpty() && !sharedPreferencesHandler.getTaiLieuXacMinh_ms().isEmpty()){
+                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(),imTaiLieuXacMinh_ms);
+                    return;
+                }
+                if (sharedPreferencesHandler.getTaiLieuXacMinh_ms().isEmpty() && !sharedPreferencesHandler.getTaiLieuXacMinh_mt().isEmpty()){
+                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_mt(),imTaiLieuXacMinh_mt);
+                    return;
+                }
+                if (!sharedPreferencesHandler.getTaiLieuXacMinh_mt().isEmpty() && !sharedPreferencesHandler.getTaiLieuXacMinh_ms().isEmpty()){
+                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_mt(),imTaiLieuXacMinh_mt);
+                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(),imTaiLieuXacMinh_ms);
+                }
 
-        String temp=sharedPreferencesHandler.getTaiLieuXacMinh_mt();
-        if (sharedPreferencesHandler.getTaiLieuXacMinh_mt()==null){
-            return;
-        }
-        else {
-            Picasso.with(getContext()).load(Uri.parse(sharedPreferencesHandler.getTaiLieuXacMinh_mt())).into(imTaiLieuXacMinh_mt);
-        }
-        if (sharedPreferencesHandler.getTaiLieuXacMinh_ms()==null){
-            return;
-        }else {
-            Picasso.with(getContext()).load(Uri.parse(sharedPreferencesHandler.getTaiLieuXacMinh_ms())).into(imTaiLieuXacMinh_ms);
+            }
         }
     }
 

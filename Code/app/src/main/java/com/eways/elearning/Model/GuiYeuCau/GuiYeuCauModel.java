@@ -3,6 +3,7 @@ package com.eways.elearning.Model.GuiYeuCau;
 import com.eways.elearning.DataModel.YeuCau;
 import com.eways.elearning.Presenter.GuiYeuCau.GuiYeuCauPresenterImp;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by yowin on 05/12/2017.
@@ -12,7 +13,7 @@ public class GuiYeuCauModel implements GuiYeuCauModelImp{
 
     private GuiYeuCauPresenterImp guiYeuCauPresenterImp;
     private KiemTraTinhTrangKhoaHocImp kiemTraTinhTrangKhoaHocImp = new KiemTraTinhTrangKhoaHoc(this);
-    private DatabaseReference mData;
+    private DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
 
     private boolean loaiKH = false;
     private String keyKhoaHoc, uidChu,uidKhach;

@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tvScreenTitle = (TextView) findViewById(R.id.textView_Title_Actionbar);
         //Set sự kiện
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getHeaderView(0).setOnClickListener(this);
 
         setUpActionBar(drawer, myToolbar);
         mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
@@ -81,10 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         else
                             imgUser.setImageBitmap(null);
                         tvUserEmail.setText(mySharedPref.getEmail());
-                        if (mySharedPref.getTen().length()==0)
-                            tvUserName.setVisibility(View.INVISIBLE);
-                        else
-                            tvUserName.setText(mySharedPref.getHo() + " " + mySharedPref.getTen());
+                        tvUserName.setText(mySharedPref.getHo() + " " + mySharedPref.getTen());
                     }
                     else {
                         tvUserName.setText(R.string.header_msg_chua_dang_nhap);
@@ -179,7 +178,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (!(getSupportFragmentManager().findFragmentById(R.id.content_main) instanceof NewHomeFragment))
                 this.onBackPressed();
             else
-                ((DrawerLayout)findViewById(R.id.drawer_layout)).openDrawer(Gravity.START);
+                ((DrawerLayout) findViewById(R.id.drawer_layout)).openDrawer(Gravity.START);
+        }
+        else {
+            if (v.getId() == R.id.nav_header) {
+                if (mySharedPref.getDaDangNhap())
+                    fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
+                else
+                    fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
+                ((DrawerLayout) findViewById(R.id.drawer_layout)).closeDrawer(Gravity.START);
+            }
         }
     }
 

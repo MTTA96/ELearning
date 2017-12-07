@@ -19,6 +19,7 @@ import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinKhoaHocFragment;
+import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinNguoiDang.ThongTinNguoiDangFragment;
 
 import java.util.ArrayList;
 
@@ -48,8 +49,13 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.vUserInfo.setOnClickListener(this);
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        holder.vUserInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).UIDNguoiDang), true,SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
+            }
+        });
         holder.vCourseInfo.setOnClickListener(this);
         loadData(holder, position);
     }
@@ -101,9 +107,10 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.view_UserInfo_DanhSachKhoaHoc:
-                Toast.makeText(context, "User info!", Toast.LENGTH_SHORT).show();
-                break;
+//            case R.id.view_UserInfo_DanhSachKhoaHoc:
+////                Toast.makeText(context, "User info!", Toast.LENGTH_SHORT).show();
+//                    fragmentHandler.ChuyenFragment();
+//                break;
             case R.id.view_CourseInfo_DanhSachKhoaHoc:
                 Toast.makeText(context, "Course info!", Toast.LENGTH_SHORT).show();
 //                fragmentHandler.ChuyenFragment(new ThongTinKhoaHocFragment(), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);

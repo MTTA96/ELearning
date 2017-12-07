@@ -88,15 +88,18 @@ public class DangNhapModel implements DangNhapImpModel{
     public void DangNhapGmail(final GoogleSignInAccount account, final Activity activity) {
         final FirebaseDatabase mDataDangNhapGmail;
         mDataDangNhapGmail=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
-        mDataDangNhapGmail.getReference().child("TaiKhoan").addChildEventListener(new ChildEventListener() {
+        //kiếm và lấy child theo id
+        mDataDangNhapGmail.getReference().child("TaiKhoan").orderByKey().equalTo(account.getId()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                if (dataSnapshot.exists()){
+                //nếu có lấy kqua truyen ra
+                if (dataSnapshot.getValue(TaiKhoan.class).getId()!=null){
                     dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,dataSnapshot.getValue(TaiKhoan.class));
-
-                }else {
+                }
+                //chua co thi set 1 nhanh theo id và lay ket qua tra ra
+                else {
                     mDataDangNhapGmail.getReference().child("TaiKhoan").child(account.getId().trim().toString()).setValue(new TaiKhoan(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),account.getDisplayName(),true, SupportKeysList.TAI_KHOAN_GMAIL,null,null,null,null,null,null,null,null,null));
-                    mDataDangNhapGmail.getReference().child("TaiKhoan").orderByKey().equalTo(account.getId().toString().trim()).addChildEventListener(new ChildEventListener() {
+                    mDataDangNhapGmail.getReference().child("TaiKhoan").orderByKey().equalTo(account.getId().toString()).addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                             dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,dataSnapshot.getValue(TaiKhoan.class));

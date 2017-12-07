@@ -46,7 +46,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         listKhoaHocTimGiaSuPresenterImp = new ListKhoaHocTimGiaSuPresenter(this);
-        fragmentHandler = new FragmentHandler(getActivity(), getChildFragmentManager());
+        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
     }
 
     @Override

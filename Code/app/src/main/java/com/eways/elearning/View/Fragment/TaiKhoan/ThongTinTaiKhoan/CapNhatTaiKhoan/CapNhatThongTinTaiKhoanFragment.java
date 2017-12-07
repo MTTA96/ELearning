@@ -33,6 +33,7 @@ import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPre
 import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Activity.MainActivity;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
 import com.squareup.picasso.Picasso;
 
@@ -119,8 +120,8 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     @Override
     public void KetQuaCapNhat(String ketQuaCapNhat) {
         if (ketQuaCapNhat.compareTo(SupportKeysList.TAG_CAPNHATTHANHCONG) == 0) {
-            Toast.makeText(getContext(),"Cập Nhật Thành Công",Toast.LENGTH_SHORT).show();
             fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), false, null);
+//            Toast.makeText(this.getContext(),"Cập Nhật Thành Công",Toast.LENGTH_SHORT).show();
         }
     }
 

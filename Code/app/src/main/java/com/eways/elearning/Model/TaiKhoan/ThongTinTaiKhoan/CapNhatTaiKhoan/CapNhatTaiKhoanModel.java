@@ -87,13 +87,13 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp {
         mGetData.getReference().child("TaiKhoan").orderByKey().equalTo(taiKhoan.getId().toString().trim()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                TaiKhoan tk=new TaiKhoan();
-                tk=dataSnapshot.getValue(TaiKhoan.class);
-                capNhatTaiKhoanPresenterImp.KetQuaCapNhat(SupportKeysList.TAG_CAPNHATTHANHCONG,tk,activityModel);
+                capNhatTaiKhoanPresenterImp.KetQuaCapNhat(SupportKeysList.TAG_CAPNHATTHANHCONG,dataSnapshot.getValue(TaiKhoan.class),activityModel);
+                return;
             }
 
             @Override

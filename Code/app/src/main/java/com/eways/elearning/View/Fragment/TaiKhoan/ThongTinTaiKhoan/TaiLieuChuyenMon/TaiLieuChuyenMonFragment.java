@@ -39,9 +39,7 @@ public class TaiLieuChuyenMonFragment extends Fragment {
 
         LinearLayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
 
-
         rcBangCap.setHasFixedSize(true);
-
 
         return root;
     }

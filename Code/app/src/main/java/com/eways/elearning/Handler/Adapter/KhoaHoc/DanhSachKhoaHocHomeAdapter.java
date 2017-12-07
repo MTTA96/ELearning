@@ -43,7 +43,7 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
     }
 
     @Override
-    public void onBindViewHolder(ItemListKhoaHocHomeViewHolder holder, int position) {
+    public void onBindViewHolder(final ItemListKhoaHocHomeViewHolder holder, int position) {
         imageHandler.loadImageRound(listKhoaHoc.get(holder.getLayoutPosition()).LinkAvatar, holder.imgUserImage);
         holder.tvMon.setText(listKhoaHoc.get(holder.getLayoutPosition()).MonHoc.get(0).toString());
         holder.tvGia.setText(chuyenGia(Long.parseLong(listKhoaHoc.get(holder.getLayoutPosition()).HocPhi)));
@@ -51,7 +51,7 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
         holder.imgUserImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.ChuyenFragment(new ThongTinKhoaHocFragment(), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
+                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(listKhoaHoc.get(holder.getLayoutPosition()).UIDNguoiDang), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
             }
         });
     }

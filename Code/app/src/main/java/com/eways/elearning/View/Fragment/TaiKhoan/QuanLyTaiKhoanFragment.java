@@ -24,10 +24,9 @@ import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
-import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
+import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinNguoiDang.ThongTinNguoiDangFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment;
-import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.ThongTinCaNhanFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -136,7 +135,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
             dialog.show();
         }
         if (v.getId()==R.id.LoThongTinCaNhan){
-            fragmentHandler.ChuyenFragment(new ThongTinCaNhanFragment(),true, SupportKeysList.TAG_THONG_TIN_CA_NHAN);
+            fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(),false,null);
         }
     }
 

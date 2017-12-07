@@ -17,9 +17,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eways.elearning.Handler.LoginGmailHandler;
 import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenter;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.R;
@@ -65,6 +67,8 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dangNhapImpPresenter=new DangNhapPresenter(this);
+
+
         loginGmailHandler=new LoginGmailHandler(getActivity(),this,dangNhapImpPresenter);
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
     }
@@ -85,6 +89,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         btnDangNhap.setOnClickListener(this);
 
 //        ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
+
         AnHienMatKhau(etPasswordDN);
 
         return root;

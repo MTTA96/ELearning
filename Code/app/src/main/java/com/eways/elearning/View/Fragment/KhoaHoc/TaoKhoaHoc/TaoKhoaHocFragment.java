@@ -3,9 +3,13 @@ package com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -18,6 +22,9 @@ import android.widget.TextView;
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.LichHoc;
+import com.eways.elearning.DataModel.KhuVuc;
+import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
+import com.eways.elearning.DataModel.LinhVuc.Mon;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenter;
 import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenterImp;
@@ -37,13 +44,18 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     Switch switchTaoKhoaHoc;
     Button btnTaoKhoaHoc;
     Spinner spnLinhVuc, spnQuan, spnThanhPho;
-    EditText etMon, etDiaDiem, etHocPhi, etBangCap, etSoHocVien, etSoBuoi, etThoiLuong, etThongTinThem;
+    EditText etDiaDiem, etHocPhi, etSoHocVien, etSoBuoi, etThoiLuong, etThongTinThem;
+    AutoCompleteTextView etMon, etBangCap;
     CheckBox cbGioiTinhNam, cbGioiTinhNu;
     CheckBox cbSang, cbChieu, cbToi;
     CheckBox cbThu2, cbThu3, cbThu4, cbThu5, cbThu6, cbThu7, cbChuNhat;
 
     private SharedPreferencesHandler sharedPreferencesHandler;
     private TaoKhoaHocPresenterImp taoKhoaHocPresenterImp;
+
+
+    ArrayList<Mon> danhSachMon;
+    ArrayList<String> danhSachBangCap;
 
     public TaoKhoaHocFragment() {
         // Required empty public constructor
@@ -82,9 +94,9 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         spnQuan = (Spinner) root.findViewById(R.id.spinner_Quan_TaoKhoaHoc);
         spnThanhPho = (Spinner) root.findViewById(R.id.spinner_ThanhPho_TaoKhoaHoc);
         etDiaDiem = (EditText) root.findViewById(R.id.editText_DiaDiem_TaoKhoaHoc);
-        etMon = (EditText) root.findViewById(R.id.editText_TenMon_TaoKhoaHoc);
+        etMon = (AutoCompleteTextView) root.findViewById(R.id.editText_TenMon_TaoKhoaHoc);
         etHocPhi = (EditText) root.findViewById(R.id.editText_HocPhi_TaoKhoaHoc);
-        etBangCap = (EditText) root.findViewById(R.id.editText_BangCap_TaoKhoaHoc);
+        etBangCap = (AutoCompleteTextView) root.findViewById(R.id.editText_BangCap_TaoKhoaHoc);
         etSoHocVien = (EditText) root.findViewById(R.id.editText_SoHocVien_TaoKhoaHoc);
         etSoBuoi = (EditText) root.findViewById(R.id.editText_SoBuoi_TaoKhoaHoc);
         etThoiLuong = (EditText) root.findViewById(R.id.editText_ThoiLuong_TaoKhoaHoc);
@@ -103,6 +115,8 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbChuNhat = (CheckBox) root.findViewById(R.id.checkBox_Chu_Nhat);
         btnTaoKhoaHoc = (Button) root.findViewById(R.id.btn_tao_khoa_hoc);
 
+        danhSachMon=new ArrayList<>();
+        danhSachBangCap=new ArrayList<>();
 
         root.findViewById(R.id.button_TiepTuc_TaoKhoaHoc).setOnClickListener(this);
         switchTaoKhoaHoc.setOnCheckedChangeListener(this);
@@ -116,7 +130,8 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbThu6.setOnCheckedChangeListener(this);
         cbThu7.setOnCheckedChangeListener(this);
         cbChuNhat.setOnCheckedChangeListener(this);
-
+        taoKhoaHocPresenterImp.loaddataLinhvuc(getActivity());
+        taoKhoaHocPresenterImp.loaddataKhuVuc(getActivity());
         ((MainActivity) getActivity()).tvScreenTitle.setText("Tạo khóa học");
         getActivity().supportInvalidateOptionsMenu();
         return root;
@@ -227,7 +242,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         if (etBangCap.getText() != null) {
             dataKhoaHoc = new ArrayList();
             dataKhoaHoc.add(etBangCap.getText().toString());
-            khoaHoc.setMon(dataKhoaHoc);
+            khoaHoc.setBangCap(dataKhoaHoc);
         }
 
         //ArrayList<String> Mon;
@@ -235,13 +250,12 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         dataKhoaHoc.add(etMon.getText().toString());
         khoaHoc.setMon(dataKhoaHoc);
 
-        //ArrayList<String> LinhVuc;
-//        dataKhocHoc.add(etLinhVuc.getText().toString());
-//        khoaHoc.setLinhVuc(dataKhocHoc);
-
+        dataKhoaHoc=new ArrayList();
+        dataKhoaHoc.add(spnLinhVuc.getSelectedItem().toString());
+        khoaHoc.setLinhVuc(dataKhoaHoc);
 //                LichHoc LichHoc;
         //DiaDiem DiaDiem;
-        khoaHoc.setDiaDiem(new DiaDiem(etDiaDiem.getText().toString(), null, null));
+        khoaHoc.setDiaDiem(new DiaDiem(etDiaDiem.getText().toString(), spnQuan.getSelectedItem().toString(), spnThanhPho.getSelectedItem().toString()));
         return khoaHoc;
     }
 
@@ -257,5 +271,79 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     @Override
     public void KetQuaTaoKhoaHoc(String result) {
 
+    }
+
+    @Override
+    public void NhanDanhSachLinhVuc(ArrayList<LinhVuc> danhSachLinhVuc) {
+        LoadDataLinhVuc(danhSachLinhVuc);
+    }
+
+    @Override
+    public void NhanDanhSachKhuVuc(ArrayList<KhuVuc> danhSachKhuVuc) {
+        LoadDataKhuVuc(danhSachKhuVuc);
+    }
+
+    //Load data cho khu vực
+    public void LoadDataKhuVuc(final ArrayList<KhuVuc> danhSachKhuVuc){
+        ArrayList<String> danhSachTenKhuVuc=new ArrayList<>();
+        for (int i=0;i<danhSachKhuVuc.size();i++){
+            danhSachTenKhuVuc.add(danhSachKhuVuc.get(i).getTenThanhPho());
+        }
+        final ArrayAdapter adDanhSachKhuVuc=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachTenKhuVuc);
+        spnThanhPho.setAdapter(adDanhSachKhuVuc);
+
+        spnThanhPho.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ArrayList<String> danhSachQuan=new ArrayList<>();
+                danhSachQuan=danhSachKhuVuc.get(position).getDanhSachQuan();
+                ArrayAdapter adDanhSachQuan=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachQuan);
+                spnQuan.setAdapter(adDanhSachQuan);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    //Load data cho Linh Vực
+    public void LoadDataLinhVuc(final ArrayList<LinhVuc> danhSachLinhVucView){
+        ArrayList<String> danhSachTenLinhVuc= new ArrayList<>();
+        for (int i=0;i<danhSachLinhVucView.size();i++){
+            danhSachTenLinhVuc.add(danhSachLinhVucView.get(i).getTenLinhVuc());
+        }
+        ArrayAdapter adLinhVuc=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachTenLinhVuc);
+        spnLinhVuc.setAdapter(adLinhVuc);
+
+        spnLinhVuc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                int spinnerPosition=adLinhVuc.getPosition(spnLinhVuc.getSelectedItem().toString());
+                danhSachMon=danhSachLinhVucView.get(position).getDanhMucMon();
+                ArrayList<String> danhSachTenMon=new ArrayList<>();
+                for (int i=0;i<danhSachMon.size();i++){
+                    danhSachTenMon.add(danhSachMon.get(i).getTenMon());
+                }
+                ArrayAdapter adMon=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachTenMon);
+                etMon.setAdapter(adMon);
+                etMon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        danhSachBangCap=new ArrayList<>();
+                        danhSachBangCap=danhSachMon.get(position).getDanhMucBangCap();
+                        ArrayAdapter adDanhSachBangCap=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachBangCap);
+                        etBangCap.setAdapter(adDanhSachBangCap);
+                    }
+                });
+            }
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 }

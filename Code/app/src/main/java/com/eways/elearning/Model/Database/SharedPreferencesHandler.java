@@ -27,6 +27,9 @@ public class SharedPreferencesHandler {
     private final String KEY_AVATAR ="avatar";
     private final String KEY_TAILIEUXACMINH_MT="tailieuxacminh_mt";
     private final String KEY_TAILIEUXACMINH_MS="tailieuxacminh_ms";
+    private final String KEY_TRINHDO="trinhdo";
+    private final String KEY_DIACHI="diachi";
+    private final String KEY_SODIENTHOAI="sodienthoai";
 
     public SharedPreferencesHandler(Context context,String tenFile) {
         this.context = context;
@@ -176,7 +179,34 @@ public class SharedPreferencesHandler {
         editor.commit();
     }
 
-    public void DangNhapThanhCong(String id, String email, String ho, String ten, String avatar, String tenTK,boolean daDangNhap, String loaiTK,String ngheNghiep,String namSinh,String gioiTinh,String taiLieuXacMinh_mt,String taiLieuXacMinh_ms){
+    public String getTrinhDo(){
+        return sharedPreferences.getString(KEY_TRINHDO, "");
+    }
+
+    public void setTrinhDo(String trinhDo){
+        editor.putString(KEY_TRINHDO,trinhDo);
+        editor.commit();
+    }
+
+    public String getDiaChi(){
+        return sharedPreferences.getString(KEY_DIACHI, "");
+    }
+
+    public void setDiaChi(String diaChi){
+        editor.putString(KEY_DIACHI,diaChi);
+        editor.commit();
+    }
+
+    public String getSoDienThoai(){
+        return sharedPreferences.getString(KEY_SODIENTHOAI, "");
+    }
+
+    public void setSoDienThoai(String soDienThoai){
+        editor.putString(KEY_SODIENTHOAI,soDienThoai);
+        editor.commit();
+    }
+
+    public void DangNhapThanhCong(String id, String email, String ho, String ten, String avatar, String tenTK,boolean daDangNhap, String loaiTK,String ngheNghiep,String namSinh,String gioiTinh,String taiLieuXacMinh_mt,String taiLieuXacMinh_ms,String trinhdo,String diachi,String sodienthoai){
         setID(id);
         setEmail(email);
         setHo(ho);
@@ -190,6 +220,9 @@ public class SharedPreferencesHandler {
         setGioiTinh(gioiTinh);
         setTaiLieuXacMinh_mt(taiLieuXacMinh_mt);
         setTaiLieuXacMinh_ms(taiLieuXacMinh_ms);
+        setTrinhDo(trinhdo);
+        setDiaChi(diachi);
+        setSoDienThoai(sodienthoai);
     }
     public void DangXuat(){
         setID("");
@@ -199,5 +232,9 @@ public class SharedPreferencesHandler {
         setTenTaiKhoan("");
         setDaDangNhap(false);
         setLoaiTaiKhoan("");
+        setTaiLieuXacMinh_mt("");
+        setTaiLieuXacMinh_ms("");
+        setDiaChi("");
+        setSoDienThoai("");
     }
 }

@@ -1,5 +1,7 @@
 package com.eways.elearning.DataModel;
 
+import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
+
 /**
  * Created by zzzzz on 8/28/2017.
  */
@@ -18,6 +20,9 @@ public class TaiKhoan {
     String gioitinh;
     String tailieuxacminh_mt;
     String tailieuxacminh_ms;
+    String trinhdo;
+    String diadiem;
+    String sodienthoai;
 
     public TaiKhoan() {
     }
@@ -32,7 +37,23 @@ public class TaiKhoan {
         this.ten=ten;
     }
 
-    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms) {
+//    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms) {
+//        this.id = id;
+//        this.email = email;
+//        this.ho = ho;
+//        this.ten = ten;
+//        this.tentaikhoan = tentaikhoan;
+//        this.dadangnhap = dadangnhap;
+//        this.loaitaikhoan = loaitaikhoan;
+//        this.password = password;
+//        this.nghenghiep = nghenghiep;
+//        this.namsinh = namsinh;
+//        this.gioitinh = gioitinh;
+//        this.tailieuxacminh_mt = tailieuxacminh_mt;
+//        this.tailieuxacminh_ms = tailieuxacminh_ms;
+//    }
+
+    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms, String trinhdo, String diadiem, String sodienthoai) {
         this.id = id;
         this.email = email;
         this.ho = ho;
@@ -46,6 +67,9 @@ public class TaiKhoan {
         this.gioitinh = gioitinh;
         this.tailieuxacminh_mt = tailieuxacminh_mt;
         this.tailieuxacminh_ms = tailieuxacminh_ms;
+        this.trinhdo = trinhdo;
+        this.diadiem = diadiem;
+        this.sodienthoai = sodienthoai;
     }
 
     public String getId() {
@@ -150,5 +174,29 @@ public class TaiKhoan {
 
     public void setTailieuxacminh_ms(String tailieuxacminh_ms) {
         this.tailieuxacminh_ms = tailieuxacminh_ms;
+    }
+
+    public String getTrinhdo() {
+        return trinhdo;
+    }
+
+    public void setTrinhdo(String trinhdo) {
+        this.trinhdo = trinhdo;
+    }
+
+    public String getDiadiem() {
+        return diadiem;
+    }
+
+    public void setDiadiem(String diadiem) {
+        this.diadiem = diadiem;
+    }
+
+    public String getSodienthoai() {
+        return sodienthoai;
+    }
+
+    public void setSodienthoai(String sodienthoai) {
+        this.sodienthoai = sodienthoai;
     }
 }

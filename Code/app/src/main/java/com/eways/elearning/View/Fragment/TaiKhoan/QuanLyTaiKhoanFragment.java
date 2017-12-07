@@ -26,6 +26,7 @@ import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeFragment;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.ThongTinCaNhanFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -138,4 +139,5 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
             fragmentHandler.ChuyenFragment(new ThongTinCaNhanFragment(),true, SupportKeysList.TAG_THONG_TIN_CA_NHAN);
         }
     }
+
 }

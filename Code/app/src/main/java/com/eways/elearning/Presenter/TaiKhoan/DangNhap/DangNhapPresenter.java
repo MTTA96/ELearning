@@ -85,12 +85,14 @@ public class DangNhapPresenter implements DangNhapPresenterImp {
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
                 sharedPreferencesHandler.DangNhapThanhCong(user.getUid(), user.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(), user.getPhotoUrl() != null ? user.getPhotoUrl().toString():null, user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms(),taiKhoan.getTrinhdo(),taiKhoan.getDiadiem(),taiKhoan.getSodienthoai());
                 dangNhapImpView.NhanKetQuaDN(ketqua);
+                return;
             }
             if (Guser!=null)
             {
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity,SupportKeysList.SHARED_PREF_FILE_NAME);
                 sharedPreferencesHandler.DangNhapThanhCong(Guser.getId(),Guser.getEmail(),Guser.getFamilyName(),Guser.getGivenName(),Guser.getPhotoUrl() != null ? Guser.getPhotoUrl().toString():null,Guser.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms(),taiKhoan.getTrinhdo(),taiKhoan.getDiadiem(),taiKhoan.getSodienthoai());
                 dangNhapImpView.NhanKetQuaDN(ketqua);
+                return;
             }
         }else
             dangNhapImpView.NhanKetQuaDN(ketqua);

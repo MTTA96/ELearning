@@ -8,10 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
 import com.eways.elearning.Model.CustomClasses.CustomViewPager;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.HomeTimGiaSu.HomeTimGiaSuFragment;
 import com.eways.elearning.View.Fragment.Home.HomeTimHocVien.HomeTimHocVienFragment;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
  * A simple {@link Fragment} subclass.
  */
 public class NewHomeFragment extends Fragment {
-
+    SharedPreferencesHandler sharedPreferencesHandler;
     private final String titleTab1 = "Tìm gia sư";
     private final String titleTab2 = "Tìm học viên";
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
@@ -33,6 +36,7 @@ public class NewHomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPreferencesHandler=new SharedPreferencesHandler(getContext(), SupportKeysList.SHARED_PREF_FILE_NAME);
         setHasOptionsMenu(true);
     }
 
@@ -41,7 +45,8 @@ public class NewHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_new_home, container, false);
-
+        Toast.makeText(getContext(),sharedPreferencesHandler.getGioiTinh()
+                .toString(),Toast.LENGTH_SHORT).show();
         setUpViewPager((CustomViewPager) root.findViewById(R.id.viewPager_PhanMuc_Home));
         return root;
     }

@@ -120,7 +120,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     FirebaseAuth.getInstance().signOut();
-                    fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, null);
+                    fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
                     sharedPreferencesHandler.DangXuat();
                 }
             });
@@ -135,7 +135,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
             dialog.show();
         }
         if (v.getId()==R.id.LoThongTinCaNhan){
-            fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(),false,null);
+            fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(),true,SupportKeysList.TAG_THONG_TIN_CA_NHAN);
         }
     }
 

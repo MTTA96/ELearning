@@ -40,7 +40,7 @@
         <EditText
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ViewDangNhap_height"
+            android:layout_height="@dimen/text_height_dang_nhap"
             android:layout_gravity="center"
             android:textColorHint="@color/colorHint"
             android:background="@drawable/etusername_etpass_shape"
@@ -49,7 +49,7 @@
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ViewDangNhap_height"
+            android:layout_height="@dimen/text_height_dang_nhap"
             android:layout_gravity="center"
             android:textColorHint="@color/colorHint"
             android:background="@drawable/etusername_etpass_shape"
@@ -144,13 +144,14 @@
                 android:layout_weight="1"
                 android:background="#0084ff"
                 android:text="Facebook"
-                android:textColor="#fffefe"/>
+                android:textColor="#fffefe"
+                android:visibility="gone"/>
 
 
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/btnLoginGmail"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/ViewDangNhap_height"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/BtnDangNhap_marginLeft"/>
         </LinearLayout>

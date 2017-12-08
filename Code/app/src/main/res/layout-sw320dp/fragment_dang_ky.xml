@@ -38,7 +38,7 @@
         <EditText
             android:id="@+id/etHoTen"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ViewDangKy_height"
+            android:layout_height="@dimen/text_height_dang_ky"
             android:layout_gravity="center"
             android:background="@drawable/etusername_etpass_shape"
             android:hint="@string/Hint_Hoten"
@@ -55,7 +55,7 @@
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ViewDangKy_height"
+            android:layout_height="@dimen/text_height_dang_ky"
             android:layout_gravity="center"
             android:background="@drawable/etusername_etpass_shape"
             android:hint="@string/Hint_username"
@@ -72,7 +72,7 @@
         <EditText
             android:id="@+id/etPasswordDK"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ViewDangKy_height"
+            android:layout_height="@dimen/text_height_dang_ky"
             android:layout_gravity="center"
             android:background="@drawable/etusername_etpass_shape"
             android:hint="@string/Hint_password"
@@ -91,7 +91,7 @@
         <EditText
             android:id="@+id/etConfirmPassDK"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ViewDangKy_height"
+            android:layout_height="@dimen/text_height_dang_ky"
             android:layout_gravity="center"
             android:background="@drawable/etusername_etpass_shape"
             android:hint="@string/Hint_confirmpasswordDK"

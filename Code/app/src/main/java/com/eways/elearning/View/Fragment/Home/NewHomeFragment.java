@@ -45,8 +45,6 @@ public class NewHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_new_home, container, false);
-        Toast.makeText(getContext(),sharedPreferencesHandler.getGioiTinh()
-                .toString(),Toast.LENGTH_SHORT).show();
         setUpViewPager((CustomViewPager) root.findViewById(R.id.viewPager_PhanMuc_Home));
         return root;
     }

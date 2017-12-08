@@ -62,8 +62,10 @@ public class HomeTimHocVienFragment extends Fragment implements View.OnClickList
         rvDanhSachKhoaHocKhac = (RecyclerView) root.findViewById(R.id.recyclerView_DanhSachKhoaHocKhac_HomeTimHocVien);
 
         root.findViewById(R.id.textView_XemDanhSachKhoaHocAnhVan_HomeTimHocVien).setOnClickListener(this);
+        root.findViewById(R.id.textView_XemDanhSachKhoaHocToan_HomeTimHocVien).setOnClickListener(this);
+        root.findViewById(R.id.textView_XemDanhSachKhoaHocKhac_HomeTimHocVien).setOnClickListener(this);
 
-        newHomeFragmentPresenter.guiYeuCau(false,"Ngoại ngữ", "Toán", "Khác");
+        newHomeFragmentPresenter.guiYeuCau(false,"Ngoại ngữ", "Toán", "Other");
         return root;
     }
 

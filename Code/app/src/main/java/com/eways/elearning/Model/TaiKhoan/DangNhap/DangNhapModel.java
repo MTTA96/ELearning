@@ -89,11 +89,11 @@ public class DangNhapModel implements DangNhapImpModel{
         final FirebaseDatabase mDataDangNhapGmail;
         mDataDangNhapGmail=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
         //kiếm và lấy child theo id
-        mDataDangNhapGmail.getReference().child("TaiKhoan").orderByKey().equalTo(account.getId()).addChildEventListener(new ChildEventListener() {
+        mDataDangNhapGmail.getReference().child("TaiKhoan").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 //nếu có lấy kqua truyen ra
-                if (dataSnapshot.getValue(TaiKhoan.class).getId()!=null){
+                if (dataSnapshot.hasChild(account.getId())){
                     dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,dataSnapshot.getValue(TaiKhoan.class));
                 }
                 //chua co thi set 1 nhanh theo id và lay ket qua tra ra

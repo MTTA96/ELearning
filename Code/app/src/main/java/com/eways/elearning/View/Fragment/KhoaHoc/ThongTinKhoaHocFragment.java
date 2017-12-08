@@ -16,15 +16,17 @@ import com.eways.elearning.R;
 public class ThongTinKhoaHocFragment extends Fragment {
 
     private static final String KEY_PARAM1="param1";
+    private static final String KEY_PARAM2="param2";
 
     public ThongTinKhoaHocFragment() {
         // Required empty public constructor
     }
 
-    public static ThongTinKhoaHocFragment newInstance(String idNguoiDang) {
+    public static ThongTinKhoaHocFragment newInstance(String idNguoiDang, String idKhoaHoc) {
 
         Bundle args = new Bundle();
         args.putString(KEY_PARAM1,idNguoiDang);
+        args.putString(KEY_PARAM2,idKhoaHoc);
         ThongTinKhoaHocFragment fragment = new ThongTinKhoaHocFragment();
         fragment.setArguments(args);
         return fragment;
@@ -33,8 +35,10 @@ public class ThongTinKhoaHocFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments()!=null)
+        if (getArguments()!=null) {
             getArguments().getString(KEY_PARAM1);
+            getArguments().getString(KEY_PARAM2);
+        }
     }
 
     @Override

@@ -1,10 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
+    android:orientation="vertical"
     tools:context="com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.TimKiemFragment">
-
 
     <!-- Buttons -->
     <LinearLayout
@@ -39,10 +39,10 @@
 
     <!-- Content -->
     <android.support.v4.widget.NestedScrollView
-        android:id="@+id/content_tim_kiem"
+        android:id="@+id/content_tim_kiem_khoa_hoc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/buttons_tim_kiem"
+        android:layout_weight="1"
         android:fillViewport="true">
 
         <LinearLayout
@@ -52,22 +52,21 @@
             android:paddingBottom="10dp"
             android:paddingLeft="@dimen/tao_khoa_hoc_horizontal_padding"
             android:paddingRight="@dimen/tao_khoa_hoc_horizontal_padding">
-
             <!-- Switch tìm kiếm -->
             <Switch
                 android:id="@+id/switch_tim_kiem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tìm gia sư"
-                android:layout_marginTop="@dimen/tao_khoa_hoc_vertical_padding"/>
+                android:layout_marginTop="@dimen/tao_khoa_hoc_vertical_padding"
+                android:text="Tìm gia sư" />
 
             <!-- Lĩnh vực -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tao_khoa_hoc_vertical_padding"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/tao_khoa_hoc_vertical_padding">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -81,17 +80,17 @@
                     android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
                     android:background="@drawable/et_shape"
-                    android:hint="Lập trình C"
-                    android:paddingLeft="@dimen/text_padding_left" />
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/text_padding_left"
+                    android:textSize="@dimen/normal_text_size" />
             </LinearLayout>
-
             <!-- Tên môn -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_tao_khoa_hoc_margin_top"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/tao_khoa_hoc_vertical_padding">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -99,14 +98,14 @@
                     android:layout_weight="3"
                     android:text="@string/title_ten_mon" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/editText_Mon_TimKiem"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
                     android:background="@drawable/et_shape"
-                    android:hint="Lập trình C"
-                    android:paddingLeft="@dimen/text_padding_left" />
+                    android:paddingLeft="@dimen/text_padding_left"
+                    android:textSize="@dimen/normal_text_size" />
             </LinearLayout>
 
             <!-- Địa điểm -->
@@ -145,16 +144,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginTop="10dp">
-                        <!--Quận-->
-                        <Spinner
-                            android:id="@+id/spinner_Quan_TimKiem"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/text_height"
-                            android:layout_weight="1"
-                            android:background="@drawable/et_shape"
-                            android:paddingLeft="@dimen/text_padding_left"
-                            android:layout_marginRight="@dimen/info_quan_thanh_pho_tao_khoa_hoc_horizontal_margin"
-                            android:textSize="@dimen/normal_text_size" />
+
                         <!--Thành phố-->
                         <Spinner
                             android:id="@+id/spinner_ThanhPho_TimKiem"
@@ -163,6 +153,16 @@
                             android:layout_weight="1"
                             android:background="@drawable/et_shape"
                             android:layout_marginLeft="@dimen/info_quan_thanh_pho_tao_khoa_hoc_horizontal_margin"
+                            android:paddingLeft="@dimen/text_padding_left"
+                            android:layout_marginRight="@dimen/info_quan_thanh_pho_tao_khoa_hoc_horizontal_margin"
+                            android:textSize="@dimen/normal_text_size" />
+                        <!--Quận-->
+                        <Spinner
+                            android:id="@+id/spinner_Quan_TimKiem"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_height"
+                            android:layout_weight="1"
+                            android:background="@drawable/et_shape"
                             android:paddingLeft="@dimen/text_padding_left"
                             android:textSize="@dimen/normal_text_size" />
                     </LinearLayout>
@@ -180,17 +180,28 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="2.4"
                     android:text="@string/title_hoc_phi" />
 
                 <EditText
                     android:id="@+id/editText_HocPhi_TimKiem"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/text_height"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:background="@drawable/et_shape"
-                    android:hint="Lập trình C"
-                    android:paddingLeft="@dimen/text_padding_left" />
+                    android:hint="150000"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/text_padding_left"
+                    android:textSize="@dimen/normal_text_size" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="2"
+                    android:text="/Buổi"
+                    android:textSize="19sp" />
+
             </LinearLayout>
 
             <!-- Giới tính -->
@@ -244,16 +255,16 @@
                     android:layout_weight="3"
                     android:text="@string/title_bang_cap" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/editText_BangCap_TimKiem"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
                     android:background="@drawable/et_shape"
-                    android:hint="Lập trình C"
-                    android:paddingLeft="@dimen/text_padding_left" />
+                    android:hint="#Ielts"
+                    android:paddingLeft="@dimen/text_padding_left"
+                    android:textSize="@dimen/normal_text_size" />
             </LinearLayout>
-
             <!-- Buổi -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -412,4 +423,4 @@
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
-</RelativeLayout>
+</LinearLayout>

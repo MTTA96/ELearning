@@ -3,7 +3,6 @@ package com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
-import android.widget.TextView;
 
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
@@ -151,10 +149,10 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         }
         else {
             if (isChecked) {
-                buttonView.setBackgroundResource(R.drawable.btn_color_main_corners_shape);
+                buttonView.setBackgroundResource(R.drawable.main_color_with_min_corner_rectangle_shape);
                 buttonView.setTextColor(Color.WHITE);
             } else {
-                buttonView.setBackgroundResource(R.drawable.btn_white_corners_shape);
+                buttonView.setBackgroundResource(R.drawable.white_rectangle_corner_main_color_stroke_shape);
                 buttonView.setTextColor(Color.BLACK);
             }
         }

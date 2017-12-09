@@ -44,7 +44,7 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
 
     @Override
     public void onBindViewHolder(final ItemListKhoaHocHomeViewHolder holder, int position) {
-        imageHandler.loadImageRound(listKhoaHoc.get(holder.getLayoutPosition()).LinkAvatar, holder.imgUserImage);
+        imageHandler.loadImageSquare(listKhoaHoc.get(holder.getLayoutPosition()).LinkAvatar, holder.imgUserImage);
         holder.tvMon.setText(listKhoaHoc.get(holder.getLayoutPosition()).MonHoc.get(0).toString());
         holder.tvGia.setText(chuyenGia(Long.parseLong(listKhoaHoc.get(holder.getLayoutPosition()).HocPhi)));
 

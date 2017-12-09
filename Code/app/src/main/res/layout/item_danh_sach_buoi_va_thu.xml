@@ -9,6 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="@drawable/btn_white_corners_shape"
+        android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
         android:gravity="center"/>
 </LinearLayout>

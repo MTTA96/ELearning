@@ -5,7 +5,7 @@
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     android:layout_marginTop="10dp"
-    android:background="@drawable/btn_white_corners_shape"
+    android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
     android:orientation="horizontal">
 
     <!--User info-->
@@ -18,7 +18,7 @@
         android:layout_marginRight="@dimen/MarginRight_itemKhoaHoc_BlockImg"
         android:layout_marginTop="@dimen/MarginTop_itemKhoaHoc"
         android:layout_weight="1.5"
-        android:background="@drawable/btn_white_corners_shape"
+        android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
         android:orientation="vertical"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
@@ -59,7 +59,7 @@
             android:id="@+id/view_CourseInfo_DanhSachKhoaHoc"
             android:layout_width="match_parent"
             android:layout_height="@dimen/Height_KhoaHoc"
-            android:background="@drawable/btn_white_corners_shape"
+            android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
             android:orientation="vertical"
             android:padding="5dp">
 

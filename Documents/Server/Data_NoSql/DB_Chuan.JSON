@@ -1,0 +1,58 @@
+{
+	"KhoaHoc":
+	{
+		"Khoa001":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học","TOEIC"
+          ],
+          "LinhVuc":
+          [
+            "Ngoại ngữ"
+          ],
+          "NguoiDang":"UID002",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "TOEIC"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"350000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"1",
+          "ThoiLuongBuoiHoc":"90",
+          "SoBuoiHoc":"15",
+          "ThongTinKhac":"Ưu tiên giáo viên chuyên Anh hoặc có bằng TOEIC 850+",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        }
+	}
+}

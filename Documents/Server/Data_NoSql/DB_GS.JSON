@@ -103,6 +103,13 @@
             [
               "Đại học","Cao đẳng"
             ]
+          },
+           {
+            "TenMon":"Toán lớp 2",
+            "DanhMucBangCap":
+            [
+              "Đại học","Cao đẳng"
+            ]
           }
         ]
       },
@@ -128,6 +135,7 @@
         ]
       }
     }
+    
   },
   "HopThoai":
   [
@@ -470,10 +478,10 @@
           ],
           "LinhVuc":
           [
-            "Âm nhạc","Ngoại ngữ"
+            "Ngoại ngữ"
           ],
           "Rating":"5",
-          "NguoiDang":"UID",
+          "NguoiDang":"UID001",
           "HoTen":"MAI TRẦN TUẤN ANH",
           "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/10552573_209395612750503_8876221089496445441_n.jpg?oh=9dc5bda323d234a4228609a38aba0b89&oe=5AA35067",
           "NgayDang":"dd/mm/yyyy",
@@ -517,6 +525,118 @@
             ]
           }
         },
+        "Khoa0010":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học","TOEIC"
+          ],
+          "LinhVuc":
+          [
+            "Ngoại ngữ"
+          ],
+          "Rating":"4.5",
+          "NguoiDang":"UID002",
+          "HoTen":"NGUYỄN THỊ TRÀ MI",
+          "Avatar":"https://upload.wikimedia.org/wikipedia/commons/8/81/Ziwang%2C_sina_weibo%2C_Oct_2015.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "TOEIC"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"350000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"1",
+          "ThoiLuongBuoiHoc":"90",
+          "SoBuoiHoc":"15",
+          "ThongTinKhac":"Ưu tiên giáo viên chuyên Anh hoặc có bằng TOEIC 850+",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0011":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học","TOEIC"
+          ],
+          "LinhVuc":
+          [
+            "Ngoại ngữ"
+          ],
+          "Rating":"4.5",
+          "NguoiDang":"UID003",
+          "HoTen":"ĐINH QUỐC BẢO",
+          "Avatar":"http://2sao.vietnamnetjsc.vn/images/2017/03/21/14/14/129743759207548813562777744846891986778835n.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "TOEIC"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"280000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T6"
+            ]
+          },
+          "SoLuongHocVien":"1",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên chuyên Anh hoặc có bằng TOEIC 850+",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
         "Khoa050":
         {
           "GioiTinh":"Nam",
@@ -526,11 +646,350 @@
           ],
           "LinhVuc":
           [
-            "Âm nhạc","Ngoại ngữ"
+            "Toán"
           ],
           "Rating":"5",
-          "NguoiDang":"UID",
+          "NguoiDang":"UID004",
+          "HoTen":"TRẦN TIẾN PHÁT",
+          "Avatar":"https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.0-9/22851924_1518421024909182_252239229946743023_n.jpg?oh=53fe0a370bfc535482422cb055f61026&oe=5AC1F533",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 12"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"350000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+          "Khoa0501":
+        {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"3.5",
+          "NguoiDang":"UID005",
+          "HoTen":"HUỲNH TIẾN ĐẠT",
+          "Avatar":"http://a8.vietbao.vn/images/vn888/hot/v2014/d8043f7b5b-10-con-trai-my-linh-18-7197-1428723639.jpeg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 1"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"150000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0502":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"4",
+          "NguoiDang":"UID006",
+          "HoTen":"TRÀ ÁNH TRÚC",
+          "Avatar":"https://hinhanhdepvai.com/wp-content/uploads/2017/04/tai-anh-gai-xinh-de-thuong.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 12"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"150000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Tối"],
+            "NgayHoc":
+            [
+              "T2",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0503":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"4",
+          "NguoiDang":"UID007",
+          "HoTen":"TRẦN THỊ TRÚC ANH",
+          "Avatar":"https://tinbandoc.com/wp-content/uploads/2016/01/hinh-anh-girl-xinh-mien-tay-de-thuong.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 2"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"150000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Tối"],
+            "NgayHoc":
+            [
+              "T2",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0022":
+        {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Other"
+          ],
+          "Rating":"5",
+          "NguoiDang":"UID008",
           "HoTen":"HÀNG QUANG TRÍ",
+          "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/20374454_1477375532369865_6052979908697223421_n.jpg?oh=56e202b720764be8bfe613b90668b579&oe=5A9629AA",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Đàn guitar cơ bản"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"230000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Trưa"],
+            "NgayHoc":
+            [
+              "T2",
+              "T4",
+              "T6"
+            ]
+          },
+          "SoLuongHocVien":"3",
+          "ThoiLuongBuoiHoc":"60",
+          "SoBuoiHoc":"20",
+          "ThongTinKhac":"Ưu tiên sinh viên",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa01002":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Cao đẳng"
+          ],
+          "LinhVuc":
+          [
+            "Other"
+          ],
+          "Rating":"3.5",
+          "NguoiDang":"UID009",
+          "HoTen":"PHẠM MAI PHƯƠNG",
+          "Avatar":"http://i.9mobi.vn/cf/images/2015/03/nkk/anh-gai-xinh-16.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Dạy vẽ tranh cho trẻ nhỏ"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"170000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T4",
+              "T6"
+            ]
+          },
+          "SoLuongHocVien":"1",
+          "ThoiLuongBuoiHoc":"60",
+          "SoBuoiHoc":"12",
+          "ThongTinKhac":"Ưu tiên sinh viên",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        }
+      },
+      "DaHoanTat":
+      {
+        "Khoa001":
+        {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Ngoại ngữ"
+          ],
+          "Rating":"5",
+          "NguoiDang":"UID001",
+          "HoTen":"MAI TRẦN TUẤN ANH",
           "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/10552573_209395612750503_8876221089496445441_n.jpg?oh=9dc5bda323d234a4228609a38aba0b89&oe=5AA35067",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
@@ -573,7 +1032,119 @@
             ]
           }
         },
-        "Khoa002":
+        "Khoa0010":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học","TOEIC"
+          ],
+          "LinhVuc":
+          [
+            "Ngoại ngữ"
+          ],
+          "Rating":"4.5",
+          "NguoiDang":"UID002",
+          "HoTen":"NGUYỄN THỊ TRÀ MI",
+          "Avatar":"https://upload.wikimedia.org/wikipedia/commons/8/81/Ziwang%2C_sina_weibo%2C_Oct_2015.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "TOEIC"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"350000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"1",
+          "ThoiLuongBuoiHoc":"90",
+          "SoBuoiHoc":"15",
+          "ThongTinKhac":"Ưu tiên giáo viên chuyên Anh hoặc có bằng TOEIC 850+",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0011":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học","TOEIC"
+          ],
+          "LinhVuc":
+          [
+            "Ngoại ngữ"
+          ],
+          "Rating":"4.5",
+          "NguoiDang":"UID003",
+          "HoTen":"ĐINH QUỐC BẢO",
+          "Avatar":"http://2sao.vietnamnetjsc.vn/images/2017/03/21/14/14/129743759207548813562777744846891986778835n.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "TOEIC"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"280000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T6"
+            ]
+          },
+          "SoLuongHocVien":"1",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên chuyên Anh hoặc có bằng TOEIC 850+",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa050":
         {
           "GioiTinh":"Nam",
           "BangCap":
@@ -582,17 +1153,241 @@
           ],
           "LinhVuc":
           [
-            "Âm nhạc","Ngoại ngữ"
+            "Toán"
           ],
           "Rating":"5",
-          "NguoiDang":"UID",
+          "NguoiDang":"UID004",
+          "HoTen":"TRẦN TIẾN PHÁT",
+          "Avatar":"https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.0-9/22851924_1518421024909182_252239229946743023_n.jpg?oh=53fe0a370bfc535482422cb055f61026&oe=5AC1F533",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 12"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"350000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+          "Khoa0501":
+        {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"3.5",
+          "NguoiDang":"UID005",
+          "HoTen":"HUỲNH TIẾN ĐẠT",
+          "Avatar":"http://a8.vietbao.vn/images/vn888/hot/v2014/d8043f7b5b-10-con-trai-my-linh-18-7197-1428723639.jpeg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 1"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"150000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0502":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"4",
+          "NguoiDang":"UID006",
+          "HoTen":"TRÀ ÁNH TRÚC",
+          "Avatar":"https://hinhanhdepvai.com/wp-content/uploads/2017/04/tai-anh-gai-xinh-de-thuong.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 12"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"150000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Tối"],
+            "NgayHoc":
+            [
+              "T2",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0503":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"4",
+          "NguoiDang":"UID007",
+          "HoTen":"TRẦN THỊ TRÚC ANH",
+          "Avatar":"https://tinbandoc.com/wp-content/uploads/2016/01/hinh-anh-girl-xinh-mien-tay-de-thuong.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 2"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"150000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Tối"],
+            "NgayHoc":
+            [
+              "T2",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0022":
+        {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Other"
+          ],
+          "Rating":"5",
+          "NguoiDang":"UID008",
           "HoTen":"HÀNG QUANG TRÍ",
           "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/20374454_1477375532369865_6052979908697223421_n.jpg?oh=56e202b720764be8bfe613b90668b579&oe=5A9629AA",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
           "Mon":
           [
-            "Anh văn giao tiếp"
+            "Đàn guitar cơ bản"
           ],
           "DiaDiem":
           {
@@ -600,11 +1395,11 @@
             "Quan":"Bình Thạnh",
             "TP":"HCM"
           },
-          "HocPhi":"150000",
+          "HocPhi":"230000",
           "LichHoc":
           {
             "ThoiGian":
-            ["Sáng"],
+            ["Trưa"],
             "NgayHoc":
             [
               "T2",
@@ -612,10 +1407,10 @@
               "T6"
             ]
           },
-          "SoLuongHocVien":"1",
-          "ThoiLuongBuoiHoc":"90",
-          "SoBuoiHoc":"12",
-          "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
+          "SoLuongHocVien":"3",
+          "ThoiLuongBuoiHoc":"60",
+          "SoBuoiHoc":"20",
+          "ThongTinKhac":"Ưu tiên sinh viên",
           "DanhSachYeuCau":
           {
             "DangCho":
@@ -629,26 +1424,26 @@
             ]
           }
         },
-        "Khoa010":
+        "Khoa01002":
         {
-          "GioiTinh":"Nam",
+          "GioiTinh":"Nữ",
           "BangCap":
           [
-            "Đại học"
+            "Cao đẳng"
           ],
           "LinhVuc":
           [
-            "Âm nhạc","Ngoai Ngu"
+            "Other"
           ],
-          "Rating":"5",
-          "NguoiDang":"UID",
-          "HoTen":"TRẦN TIẾN PHÁT",
-          "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/22851924_1518421024909182_252239229946743023_n.jpg?oh=2ee0fd8cdfd8dc9ec287c03500c1f0bf&oe=5A9A6833",
+          "Rating":"3.5",
+          "NguoiDang":"UID009",
+          "HoTen":"PHẠM MAI PHƯƠNG",
+          "Avatar":"http://i.9mobi.vn/cf/images/2015/03/nkk/anh-gai-xinh-16.jpg",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
           "Mon":
           [
-            "Anh van giao tiep"
+            "Dạy vẽ tranh cho trẻ nhỏ"
           ],
           "DiaDiem":
           {
@@ -656,22 +1451,22 @@
             "Quan":"Bình Thạnh",
             "TP":"HCM"
           },
-          "HocPhi":"150000",
+          "HocPhi":"170000",
           "LichHoc":
           {
             "ThoiGian":
             ["Sáng"],
             "NgayHoc":
             [
-              "T2",
+              "T3",
               "T4",
               "T6"
             ]
           },
           "SoLuongHocVien":"1",
-          "ThoiLuongBuoiHoc":"90",
+          "ThoiLuongBuoiHoc":"60",
           "SoBuoiHoc":"12",
-          "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
+          "ThongTinKhac":"Ưu tiên sinh viên",
           "DanhSachYeuCau":
           {
             "DangCho":
@@ -685,112 +1480,13 @@
             ]
           }
         }
-      },
-      "DaHoanTat":
-      {
-        "Khoa004":
-        {
-          "GioiTinh":"Nam",
-          "BangCap":
-          [
-            "Đại học"
-          ],
-          "LinhVuc":
-          [
-            "Âm nhạc","Ngoại ngữ"
-          ],
-          "NguoiDang":"UID",
-          "Rating":"5",
-          "HoTen":"Nguyễn A",
-          "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
-          "NgayDang":"dd/mm/yyyy",
-          "GioDang":"HH:MM:SS",
-          "Mon":
-          [
-            "Anh văn","Toán"
-          ],
-         "DiaDiem":
-          {
-            "DayDu":"Thỏa thuận",
-            "Quan":"Null",
-            "TP":"HCM"
-          },
-          "HocPhi":"350000",
-          "LichHoc":
-          {
-            "ThoiGian":
-            ["Sáng"],
-            "NgayHoc":
-            [
-              "T2",
-              "T4",
-              "T6"
-            ]
-          },
-          "SoLuongHocVien":"2",
-          "ThoiLuongBuoiHoc":"90",
-          "SoBuoiHoc":"12",
-          "ThongTinKhac":"Anh 8, toán 12",
-          "DanhSachNhan":
-          [
-            "UID003"
-          ]
-        },
-
-        "Khoa003":
-        {
-          "GioiTinh":"Nam",
-          "BangCap":
-          [
-            "Đại học"
-          ],
-          "LinhVuc":
-          [
-            "Âm nhạc","Ngoại ngữ"
-          ],
-          "NguoiDang":"UID",
-          "Rating":"5",
-          "HoTen":"Nguyễn A",
-          "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
-          "NgayDang":"dd/mm/yyyy",
-          "GioDang":"HH:MM:SS",
-          "Mon":
-          [
-            "Anh văn","Toán"
-          ],
-         "DiaDiem":
-          {
-            "DayDu":"Thỏa thuận",
-            "Quan":"Null",
-            "TP":"HCM"
-          },
-          "HocPhi":"350000",
-          "LichHoc":
-          {
-            "ThoiGian":
-            ["Sáng"],
-            "NgayHoc":
-            [
-              "T2",
-              "T4",
-              "T6"
-            ]
-          },
-          "SoLuongHocVien":"2",
-          "ThoiLuongBuoiHoc":"90",
-          "SoBuoiHoc":"12",
-          "ThongTinKhac":"Anh 8, toán 12",
-          "DanhSachNhan":
-          [
-            "UID003"
-          ]
-        }
-      } 
+      }
     },
     "KhoaHocTimHocVien":
     {
       "ChuaHoanTat":
-      {"Khoa011":
+      {
+        "Khoa001":
         {
           "GioiTinh":"Nam",
           "BangCap":
@@ -799,19 +1495,19 @@
           ],
           "LinhVuc":
           [
-            "Âm nhạc","Ngoai Ngu"
+            "Ngoại ngữ"
           ],
           "Rating":"5",
-          "NguoiDang":"UID",
-          "HoTen":"Nguyễn A",
-          "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
+          "NguoiDang":"UID001",
+          "HoTen":"MAI TRẦN TUẤN ANH",
+          "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/10552573_209395612750503_8876221089496445441_n.jpg?oh=9dc5bda323d234a4228609a38aba0b89&oe=5AA35067",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
           "Mon":
           [
-            "Anh van giao tiep"
+            "Anh văn giao tiếp"
           ],
-         "DiaDiem":
+          "DiaDiem":
           {
             "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
             "Quan":"Bình Thạnh",
@@ -846,49 +1542,49 @@
             ]
           }
         },
-        "Khoa005":
+        "Khoa0010":
         {
-          "GioiTinh":"Nam",
+          "GioiTinh":"Nữ",
           "BangCap":
           [
-            "Đại học"
+            "Đại học","TOEIC"
           ],
           "LinhVuc":
           [
-            "Âm nhạc","Ngoại ngữ"
+            "Ngoại ngữ"
           ],
-          "Rating":"5",
-          "NguoiDang":"UID",
-          "HoTen":"Nguyễn A",
-          "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
+          "Rating":"4.5",
+          "NguoiDang":"UID002",
+          "HoTen":"NGUYỄN THỊ TRÀ MI",
+          "Avatar":"https://upload.wikimedia.org/wikipedia/commons/8/81/Ziwang%2C_sina_weibo%2C_Oct_2015.jpg",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
           "Mon":
           [
-            "Anh văn giao tiếp"
+            "TOEIC"
           ],
-         "DiaDiem":
+          "DiaDiem":
           {
             "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
             "Quan":"Bình Thạnh",
             "TP":"HCM"
           },
-          "HocPhi":"150000",
+          "HocPhi":"350000",
           "LichHoc":
           {
             "ThoiGian":
             ["Sáng"],
             "NgayHoc":
             [
-              "T2",
-              "T4",
-              "T6"
+              "T3",
+              "T5",
+              "T7"
             ]
           },
           "SoLuongHocVien":"1",
           "ThoiLuongBuoiHoc":"90",
-          "SoBuoiHoc":"12",
-          "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
+          "SoBuoiHoc":"15",
+          "ThongTinKhac":"Ưu tiên giáo viên chuyên Anh hoặc có bằng TOEIC 850+",
           "DanhSachYeuCau":
           {
             "DangCho":
@@ -902,8 +1598,63 @@
             ]
           }
         },
-
-        "Khoa006":
+        "Khoa0011":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học","TOEIC"
+          ],
+          "LinhVuc":
+          [
+            "Ngoại ngữ"
+          ],
+          "Rating":"4.5",
+          "NguoiDang":"UID003",
+          "HoTen":"ĐINH QUỐC BẢO",
+          "Avatar":"http://2sao.vietnamnetjsc.vn/images/2017/03/21/14/14/129743759207548813562777744846891986778835n.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "TOEIC"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"280000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T6"
+            ]
+          },
+          "SoLuongHocVien":"1",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên chuyên Anh hoặc có bằng TOEIC 850+",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa050":
         {
           "GioiTinh":"Nam",
           "BangCap":
@@ -912,19 +1663,75 @@
           ],
           "LinhVuc":
           [
-            "Âm nhạc","Ngoại ngữ"
+            "Toán"
           ],
           "Rating":"5",
-          "NguoiDang":"UID",
-          "HoTen":"Nguyễn A",
-          "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
+          "NguoiDang":"UID004",
+          "HoTen":"TRẦN TIẾN PHÁT",
+          "Avatar":"https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.0-9/22851924_1518421024909182_252239229946743023_n.jpg?oh=53fe0a370bfc535482422cb055f61026&oe=5AC1F533",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
           "Mon":
           [
-            "Anh văn giao tiếp"
+            "Toán lớp 12"
           ],
-         "DiaDiem":
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"350000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+          "Khoa0501":
+        {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"3.5",
+          "NguoiDang":"UID005",
+          "HoTen":"HUỲNH TIẾN ĐẠT",
+          "Avatar":"http://a8.vietbao.vn/images/vn888/hot/v2014/d8043f7b5b-10-con-trai-my-linh-18-7197-1428723639.jpeg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 1"
+          ],
+          "DiaDiem":
           {
             "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
             "Quan":"Bình Thạnh",
@@ -937,15 +1744,239 @@
             ["Sáng"],
             "NgayHoc":
             [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0502":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"4",
+          "NguoiDang":"UID006",
+          "HoTen":"TRÀ ÁNH TRÚC",
+          "Avatar":"https://hinhanhdepvai.com/wp-content/uploads/2017/04/tai-anh-gai-xinh-de-thuong.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 12"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"150000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Tối"],
+            "NgayHoc":
+            [
+              "T2",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0503":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"4",
+          "NguoiDang":"UID007",
+          "HoTen":"TRẦN THỊ TRÚC ANH",
+          "Avatar":"https://tinbandoc.com/wp-content/uploads/2016/01/hinh-anh-girl-xinh-mien-tay-de-thuong.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 2"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"150000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Tối"],
+            "NgayHoc":
+            [
+              "T2",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0022":
+        {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Other"
+          ],
+          "Rating":"5",
+          "NguoiDang":"UID008",
+          "HoTen":"HÀNG QUANG TRÍ",
+          "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/20374454_1477375532369865_6052979908697223421_n.jpg?oh=56e202b720764be8bfe613b90668b579&oe=5A9629AA",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Đàn guitar cơ bản"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"230000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Trưa"],
+            "NgayHoc":
+            [
               "T2",
               "T4",
               "T6"
             ]
           },
+          "SoLuongHocVien":"3",
+          "ThoiLuongBuoiHoc":"60",
+          "SoBuoiHoc":"20",
+          "ThongTinKhac":"Ưu tiên sinh viên",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa01002":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Cao đẳng"
+          ],
+          "LinhVuc":
+          [
+            "Other"
+          ],
+          "Rating":"3.5",
+          "NguoiDang":"UID009",
+          "HoTen":"PHẠM MAI PHƯƠNG",
+          "Avatar":"http://i.9mobi.vn/cf/images/2015/03/nkk/anh-gai-xinh-16.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Dạy vẽ tranh cho trẻ nhỏ"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"170000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T4",
+              "T6"
+            ]
+          },
           "SoLuongHocVien":"1",
-          "ThoiLuongBuoiHoc":"90",
+          "ThoiLuongBuoiHoc":"60",
           "SoBuoiHoc":"12",
-          "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
+          "ThongTinKhac":"Ưu tiên sinh viên",
           "DanhSachYeuCau":
           {
             "DangCho":
@@ -962,58 +1993,7 @@
       },
       "DaHoanTat":
       {
-        "GioiTinh":"Nam",
-          "BangCap":
-          [
-            "Đại học"
-          ],
-        "Khoa007":
-        {
-          "LinhVuc":
-          [
-            "Âm nhạc","Ngoại ngữ"
-          ],
-          "NguoiDang":"UID",
-          "Rating":"5",
-          "HoTen":"Nguyễn A",
-          "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
-          "NgayDang":"dd/mm/yyyy",
-          "GioDang":"HH:MM:SS",
-          "Mon":
-          [
-            "Anh văn","Toán"
-          ],
-         "DiaDiem":
-          {
-            "DayDu":"Thỏa thuận",
-            "Quan":"Null",
-            "TP":"HCM"
-          },
-          "HocPhi":"150000",
-          "LichHoc":
-          {
-            "ThoiGian":
-            ["Sáng"],
-            "NgayHoc":
-            [
-              "T2",
-              "T4",
-              "T6"
-            ]
-          },
-          "SoLuongHocVien":"3",
-          "ThoiLuongBuoiHoc":"120",
-          "SoBuoiHoc":"12",
-          "ThongTinKhac":"Vui lòng chịu khó làm bài tập",
-          "DanhSachNhan":
-          [
-            "UID006",
-            "UID007",
-            "UID001"
-          ]
-        },
-
-        "Khoa009":
+        "Khoa001":
         {
           "GioiTinh":"Nam",
           "BangCap":
@@ -1022,22 +2002,22 @@
           ],
           "LinhVuc":
           [
-            "Âm nhạc","Ngoại ngữ"
+            "Ngoại ngữ"
           ],
-          "NguoiDang":"UID",
           "Rating":"5",
-          "HoTen":"Nguyễn A",
-          "Avatar":"https://i.pinimg.com/564x/30/1c/4d/301c4d6bfc534c7ab82f43715d097c27.jpg",
+          "NguoiDang":"UID001",
+          "HoTen":"MAI TRẦN TUẤN ANH",
+          "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/10552573_209395612750503_8876221089496445441_n.jpg?oh=9dc5bda323d234a4228609a38aba0b89&oe=5AA35067",
           "NgayDang":"dd/mm/yyyy",
           "GioDang":"HH:MM:SS",
           "Mon":
           [
-            "Anh văn","Toán"
+            "Anh văn giao tiếp"
           ],
-         "DiaDiem":
+          "DiaDiem":
           {
-            "DayDu":"Thỏa thuận",
-            "Quan":"Null",
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
             "TP":"HCM"
           },
           "HocPhi":"150000",
@@ -1052,16 +2032,470 @@
               "T6"
             ]
           },
-          "SoLuongHocVien":"3",
-          "ThoiLuongBuoiHoc":"120",
+          "SoLuongHocVien":"1",
+          "ThoiLuongBuoiHoc":"90",
           "SoBuoiHoc":"12",
-          "ThongTinKhac":"Vui lòng chịu khó làm bài tập",
-          "DanhSachNhan":
+          "ThongTinKhac":"Ưu tiên gia sư là sinh viên nữ ngành ngôn ngữ Anh",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0010":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
           [
-            "UID006",
-            "UID007",
-            "UID001"
-          ]
+            "Đại học","TOEIC"
+          ],
+          "LinhVuc":
+          [
+            "Ngoại ngữ"
+          ],
+          "Rating":"4.5",
+          "NguoiDang":"UID002",
+          "HoTen":"NGUYỄN THỊ TRÀ MI",
+          "Avatar":"https://upload.wikimedia.org/wikipedia/commons/8/81/Ziwang%2C_sina_weibo%2C_Oct_2015.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "TOEIC"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"350000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"1",
+          "ThoiLuongBuoiHoc":"90",
+          "SoBuoiHoc":"15",
+          "ThongTinKhac":"Ưu tiên giáo viên chuyên Anh hoặc có bằng TOEIC 850+",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0011":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học","TOEIC"
+          ],
+          "LinhVuc":
+          [
+            "Ngoại ngữ"
+          ],
+          "Rating":"4.5",
+          "NguoiDang":"UID003",
+          "HoTen":"ĐINH QUỐC BẢO",
+          "Avatar":"http://2sao.vietnamnetjsc.vn/images/2017/03/21/14/14/129743759207548813562777744846891986778835n.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "TOEIC"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"280000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T6"
+            ]
+          },
+          "SoLuongHocVien":"1",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên chuyên Anh hoặc có bằng TOEIC 850+",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa050":
+        {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"5",
+          "NguoiDang":"UID004",
+          "HoTen":"TRẦN TIẾN PHÁT",
+          "Avatar":"https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.0-9/22851924_1518421024909182_252239229946743023_n.jpg?oh=53fe0a370bfc535482422cb055f61026&oe=5AC1F533",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 12"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"350000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+          "Khoa0501":
+        {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"3.5",
+          "NguoiDang":"UID005",
+          "HoTen":"HUỲNH TIẾN ĐẠT",
+          "Avatar":"http://a8.vietbao.vn/images/vn888/hot/v2014/d8043f7b5b-10-con-trai-my-linh-18-7197-1428723639.jpeg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 1"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"150000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0502":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"4",
+          "NguoiDang":"UID006",
+          "HoTen":"TRÀ ÁNH TRÚC",
+          "Avatar":"https://hinhanhdepvai.com/wp-content/uploads/2017/04/tai-anh-gai-xinh-de-thuong.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 12"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"150000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Tối"],
+            "NgayHoc":
+            [
+              "T2",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0503":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Toán"
+          ],
+          "Rating":"4",
+          "NguoiDang":"UID007",
+          "HoTen":"TRẦN THỊ TRÚC ANH",
+          "Avatar":"https://tinbandoc.com/wp-content/uploads/2016/01/hinh-anh-girl-xinh-mien-tay-de-thuong.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Toán lớp 2"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"150000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Tối"],
+            "NgayHoc":
+            [
+              "T2",
+              "T5",
+              "T7"
+            ]
+          },
+          "SoLuongHocVien":"2",
+          "ThoiLuongBuoiHoc":"120",
+          "SoBuoiHoc":"24",
+          "ThongTinKhac":"Ưu tiên giáo viên hoặc sinh viên sưu phạm chuyên toán",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa0022":
+        {
+          "GioiTinh":"Nam",
+          "BangCap":
+          [
+            "Đại học"
+          ],
+          "LinhVuc":
+          [
+            "Other"
+          ],
+          "Rating":"5",
+          "NguoiDang":"UID008",
+          "HoTen":"HÀNG QUANG TRÍ",
+          "Avatar":"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/20374454_1477375532369865_6052979908697223421_n.jpg?oh=56e202b720764be8bfe613b90668b579&oe=5A9629AA",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Đàn guitar cơ bản"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"230000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Trưa"],
+            "NgayHoc":
+            [
+              "T2",
+              "T4",
+              "T6"
+            ]
+          },
+          "SoLuongHocVien":"3",
+          "ThoiLuongBuoiHoc":"60",
+          "SoBuoiHoc":"20",
+          "ThongTinKhac":"Ưu tiên sinh viên",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
+        },
+        "Khoa01002":
+        {
+          "GioiTinh":"Nữ",
+          "BangCap":
+          [
+            "Cao đẳng"
+          ],
+          "LinhVuc":
+          [
+            "Other"
+          ],
+          "Rating":"3.5",
+          "NguoiDang":"UID009",
+          "HoTen":"PHẠM MAI PHƯƠNG",
+          "Avatar":"http://i.9mobi.vn/cf/images/2015/03/nkk/anh-gai-xinh-16.jpg",
+          "NgayDang":"dd/mm/yyyy",
+          "GioDang":"HH:MM:SS",
+          "Mon":
+          [
+            "Dạy vẽ tranh cho trẻ nhỏ"
+          ],
+          "DiaDiem":
+          {
+            "DayDu":"số 5, Điện Biên Phủ, Bình Thạnh, TP HCM",
+            "Quan":"Bình Thạnh",
+            "TP":"HCM"
+          },
+          "HocPhi":"170000",
+          "LichHoc":
+          {
+            "ThoiGian":
+            ["Sáng"],
+            "NgayHoc":
+            [
+              "T3",
+              "T4",
+              "T6"
+            ]
+          },
+          "SoLuongHocVien":"1",
+          "ThoiLuongBuoiHoc":"60",
+          "SoBuoiHoc":"12",
+          "ThongTinKhac":"Ưu tiên sinh viên",
+          "DanhSachYeuCau":
+          {
+            "DangCho":
+            [
+              "UID001",
+              "UID002"
+            ],
+            "TamDuyet":
+            [
+              "UID003"
+            ]
+          }
         }
       }
     }

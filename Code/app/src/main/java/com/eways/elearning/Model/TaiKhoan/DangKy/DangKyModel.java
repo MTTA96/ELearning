@@ -63,7 +63,7 @@ public class DangKyModel implements DangKyImpModel{
                             dangKyImpPresenter.KetQuaDangKy(DangKyFragment.SIGN_UP_SUCCESS);
                             final FirebaseUser user=mAuth.getCurrentUser();
 
-                            mData.getReference().child("TaiKhoan").child(user.getUid()).setValue(new TaiKhoan(user.getUid(),user.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(),user.getDisplayName(),false, SupportKeysList.TAI_KHOAN_GMAIL,taiKhoan.getPassword(),null,null,null,null,null,null,null,null));
+                            mData.getReference().child("TaiKhoan").child(user.getUid()).setValue(new TaiKhoan(user.getUid(),user.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(),"null",false, SupportKeysList.TAI_KHOAN_GMAIL,taiKhoan.getPassword(),"null","null","null","null","null","null","null","null"));
                             mData.getReference().child("TaiLieuChuyenMon").child(user.getUid()).setValue(new TaiLieuChuyenMon(taiKhoan.getId()+"_TLCM",new BangCapTaiLieuChuyenMon(taiKhoan.getId()+"_TLCM_BangCap",null,null),new MonTaiLieuChuyenMon(null,null,null,null)));
                         } else{
                             dangKyImpPresenter.KetQuaDangKy(DangKyFragment.SIGN_UP_FAILED);

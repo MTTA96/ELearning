@@ -6,7 +6,7 @@
     <dimen name="min_vertical_padding">5dp</dimen>
     <dimen name="horizontal_margin">10dp</dimen>
     <dimen name="elevation">5dp</dimen>
-    <dimen name="title_text_size">23sp</dimen>
+    <dimen name="title_text_size">20sp</dimen>
     <dimen name="normal_text_size">17sp</dimen>
     <dimen name="text_height">35dp</dimen>
     <dimen name="text_padding_left">10dp</dimen>
@@ -35,12 +35,12 @@
     <dimen name="danh_sach_chuc_nang_horizontal_padding">35dp</dimen>
     <dimen name="item_danh_sach_chuc_nang_margin_top">40dp</dimen>
     <!-- New home -->
-    <dimen name="home_danh_sach_khoa_hoc_vertical_margin">15dp</dimen>
+    <dimen name="home_danh_sach_khoa_hoc_vertical_margin">10dp</dimen>
     <dimen name="home_danh_sach_khoa_hoc_vertical_padding">15dp</dimen>
     <dimen name="home_title_danh_sach_khoa_hoc_horizontal_padding">15dp</dimen>
     <dimen name="home_danh_sach_khoa_hoc_elevation">2dp</dimen>
     <dimen name="danh_sach_khoa_hoc_home_margin_left">5dp</dimen>
-    <dimen name="item_khoa_hoc_home_horizontal_margin">5dp</dimen>
+    <dimen name="item_khoa_hoc_home_horizontal_margin">7dp</dimen>
 
 
     <!--Fragment đăng nhập-->

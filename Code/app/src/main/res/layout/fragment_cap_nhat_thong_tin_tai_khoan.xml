@@ -282,7 +282,7 @@
                     android:layout_width="@dimen/BtnCNTTTK_width"
                     android:layout_height="@dimen/BtnCNTTTK_height"
                     android:layout_marginRight="@dimen/ItemCNTTTK_marginRight"
-                    android:background="@drawable/btn_shape"
+                    android:background="@drawable/main_color_with_corner_rectangle_shape"
                     android:text="Hủy"
                     android:textColor="@color/White" />
 
@@ -290,7 +290,7 @@
                     android:id="@+id/btnLuuCNTTTK"
                     android:layout_width="@dimen/BtnCNTTTK_width"
                     android:layout_height="@dimen/BtnCNTTTK_height"
-                    android:background="@drawable/btn_shape"
+                    android:background="@drawable/main_color_with_corner_rectangle_shape"
                     android:text="Lưu"
                     android:textColor="@color/White" />
             </LinearLayout>

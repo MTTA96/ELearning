@@ -15,7 +15,9 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.eways.elearning.Handler.ImageHandler;
@@ -29,10 +31,13 @@ import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 
+import br.com.mauker.materialsearchview.MaterialSearchView;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     TextView tvUserName, tvUserEmail;
     ImageView imgUser;
     public TextView tvScreenTitle;
+    private MaterialSearchView searchView;
 
     private FragmentHandler fragmentHandler;
     private SharedPreferencesHandler mySharedPref;
@@ -47,16 +52,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         tvScreenTitle = (TextView) findViewById(R.id.textView_Title_Actionbar);
+        searchView = (MaterialSearchView) findViewById(R.id.search_view); //Search bar
         //Set sự kiện
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getHeaderView(0).setOnClickListener(this);
+        findViewById(R.id.search_home).setOnClickListener(this);
+        findViewById(R.id.nav_menu_home).setOnClickListener(this);
+        findViewById(R.id.text_Search_Actionbar).setOnClickListener(this);
 
         setUpActionBar(drawer, myToolbar);
+        initData();
         mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
         imageHandler = new ImageHandler(this);
         fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
-//        fragmentHandler.ChuyenFragment(new HomeFragment(), false, null);
         fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
+    }
+
+    private void initData() {
+        String[] suggestions = {"Toán 1", "Toeic", "Anh văn giao tiếp", "Toán 12"};
+        searchView.addSuggestions(suggestions);
     }
 
     private void setUpActionBar(DrawerLayout drawer, Toolbar myToolbar) {
@@ -97,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         };
         myToolbar.setNavigationOnClickListener(this);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawer.addDrawerListener(toggle);
         toggle.getDrawerArrowDrawable().setColor(Color.WHITE);
         toggle.syncState();
@@ -114,19 +128,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.content_main);
         if(currentFragment!=null && currentFragment.getTag()!=null) {
             switch (currentFragment.getTag()) {
+                case SupportKeysList.TAG_HOME_FRAGMENT:
+                    findViewById(R.id.search_layout).setVisibility(View.VISIBLE);
+                    tvScreenTitle.setVisibility(View.GONE);
+                    menu.findItem(R.id.act_search).setVisible(false);
+                    menu.findItem(R.id.act_save).setVisible(false);
+                    break;
                 case SupportKeysList.TAG_THONG_TIN_CA_NHAN:
                     menu.findItem(R.id.act_save).setVisible(true);
-                    menu.findItem(R.id.act_search).setVisible(false);
-                    break;
                 case SupportKeysList.TAG_DANG_NHAP_FRAGMENT:
                 case SupportKeysList.TAG_DANG_KY_FRAGMENT:
                 case SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT:
                 case SupportKeysList.TAG_THONG_TIN_KHOA_HOC:
                 case SupportKeysList.TAG_TAO_KHOA_HOC:
+                    findViewById(R.id.search_layout).setVisibility(View.GONE);
+                    tvScreenTitle.setVisibility(View.VISIBLE);
                     menu.findItem(R.id.act_search).setVisible(false);
                     menu.findItem(R.id.act_save).setVisible(false);
                     break;
                 default:
+                    findViewById(R.id.search_layout).setVisibility(View.GONE);
+                    tvScreenTitle.setVisibility(View.VISIBLE);
                     menu.findItem(R.id.act_search).setVisible(true);
                     menu.findItem(R.id.act_save).setVisible(false);
                     break;
@@ -139,7 +161,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.act_search:
-                fragmentHandler.ChuyenFragment(new TimKiemFragment(), true, SupportKeysList.TAG_TIM_KIEM);
+//                fragmentHandler.ChuyenFragment(new TimKiemFragment(), true, SupportKeysList.TAG_TIM_KIEM);
+                searchView.openSearch();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -174,26 +197,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == -1){
-            if (!(getSupportFragmentManager().findFragmentById(R.id.content_main) instanceof NewHomeFragment))
-                this.onBackPressed();
-            else
-                ((DrawerLayout) findViewById(R.id.drawer_layout)).openDrawer(Gravity.START);
-        }
-        else {
-            if (v.getId() == R.id.nav_header) {
+        switch (v.getId()){
+            case -1:
+                if (!(getSupportFragmentManager().findFragmentById(R.id.content_main) instanceof NewHomeFragment))
+                    this.onBackPressed();
+                else
+                    ((DrawerLayout) findViewById(R.id.drawer_layout)).openDrawer(Gravity.START);
+                break;
+            case R.id.nav_header:
                 if (mySharedPref.getDaDangNhap())
                     fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
                 else
                     fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
                 ((DrawerLayout) findViewById(R.id.drawer_layout)).closeDrawer(Gravity.START);
-            }
+                break;
+            case R.id.nav_menu_home:
+                ((DrawerLayout) findViewById(R.id.drawer_layout)).openDrawer(Gravity.START);
+                break;
+            case R.id.text_Search_Actionbar:
+            case R.id.search_home:
+                searchView.openSearch();
+                break;
         }
     }
 
     @Override
     public void onBackPressed() {
-        tvScreenTitle.setText("");
-        super.onBackPressed();
+        if (searchView.isOpen()) {
+            // Close the search on the back button press.
+            searchView.closeSearch();
+        } else {
+            tvScreenTitle.setText("");
+            super.onBackPressed();
+        }
     }
 }

@@ -343,7 +343,7 @@
                         android:layout_width="@dimen/button_buoi_va_thu_width"
                         android:layout_height="@dimen/button_buoi_va_thu_height"
                         android:layout_marginRight="@dimen/button_thu_margin_top"
-                        android:background="@drawable/btn_white_corners_shape"
+                        android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
                         android:button="@null"
                         android:gravity="center"
                         android:text="@string/text_buoi_sang" />
@@ -353,7 +353,7 @@
                         android:layout_width="@dimen/button_buoi_va_thu_width"
                         android:layout_height="@dimen/button_buoi_va_thu_height"
                         android:layout_marginRight="@dimen/button_thu_margin_top"
-                        android:background="@drawable/btn_white_corners_shape"
+                        android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
                         android:button="@null"
                         android:gravity="center"
                         android:text="@string/text_buoi_chieu" />
@@ -362,7 +362,7 @@
                         android:id="@+id/checkBox_Toi"
                         android:layout_width="@dimen/button_buoi_va_thu_width"
                         android:layout_height="@dimen/button_buoi_va_thu_height"
-                        android:background="@drawable/btn_white_corners_shape"
+                        android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
                         android:button="@null"
                         android:gravity="center"
                         android:text="@string/text_buoi_toi" />
@@ -399,7 +399,7 @@
                             android:layout_width="@dimen/button_buoi_va_thu_width"
                             android:layout_height="@dimen/button_buoi_va_thu_height"
                             android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
-                            android:background="@drawable/btn_white_corners_shape"
+                            android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
                             android:button="@null"
                             android:gravity="center"
                             android:text="@string/text_thu_2" />
@@ -409,7 +409,7 @@
                             android:layout_width="@dimen/button_buoi_va_thu_width"
                             android:layout_height="@dimen/button_buoi_va_thu_height"
                             android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
-                            android:background="@drawable/btn_white_corners_shape"
+                            android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
                             android:button="@null"
                             android:gravity="center"
                             android:text="@string/text_thu_3" />
@@ -419,7 +419,7 @@
                             android:layout_width="@dimen/button_buoi_va_thu_width"
                             android:layout_height="@dimen/button_buoi_va_thu_height"
                             android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
-                            android:background="@drawable/btn_white_corners_shape"
+                            android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
                             android:button="@null"
                             android:gravity="center"
                             android:text="@string/text_thu_4" />
@@ -429,7 +429,7 @@
                             android:layout_width="@dimen/button_buoi_va_thu_width"
                             android:layout_height="@dimen/button_buoi_va_thu_height"
                             android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
-                            android:background="@drawable/btn_white_corners_shape"
+                            android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
                             android:button="@null"
                             android:gravity="center"
                             android:text="@string/text_thu_5" />
@@ -447,7 +447,7 @@
                             android:layout_width="@dimen/button_buoi_va_thu_width"
                             android:layout_height="@dimen/button_buoi_va_thu_height"
                             android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
-                            android:background="@drawable/btn_white_corners_shape"
+                            android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
                             android:button="@null"
                             android:gravity="center"
                             android:text="@string/text_thu_6" />
@@ -457,7 +457,7 @@
                             android:layout_width="@dimen/button_buoi_va_thu_width"
                             android:layout_height="@dimen/button_buoi_va_thu_height"
                             android:layout_marginRight="@dimen/button_buoi_va_thu_margin_left"
-                            android:background="@drawable/btn_white_corners_shape"
+                            android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
                             android:button="@null"
                             android:gravity="center"
                             android:text="@string/text_thu_7" />
@@ -466,7 +466,7 @@
                             android:id="@+id/checkBox_Chu_Nhat"
                             android:layout_width="@dimen/button_buoi_va_thu_width"
                             android:layout_height="@dimen/button_buoi_va_thu_height"
-                            android:background="@drawable/btn_white_corners_shape"
+                            android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
                             android:button="@null"
                             android:gravity="center"
                             android:text="@string/text_chu_nhat" />

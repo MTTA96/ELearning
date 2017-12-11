@@ -50,7 +50,7 @@
             android:id="@+id/btn_xem_danh_sach_khoa_hoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_shape"
+            android:background="@drawable/main_color_with_corner_rectangle_shape"
             android:text="@string/xem_danh_sach_bai_dang"
             android:textColor="@android:color/white"/>
         <!-- Tạo khóa học -->
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/item_danh_sach_chuc_nang_margin_top"
-            android:background="@drawable/btn_shape"
+            android:background="@drawable/main_color_with_corner_rectangle_shape"
             android:text="@string/tao_khoa_hoc"
             android:textColor="@android:color/white"/>
         <!-- Đăng tin -->
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/item_danh_sach_chuc_nang_margin_top"
-            android:background="@drawable/btn_shape"
+            android:background="@drawable/main_color_with_corner_rectangle_shape"
             android:text="@string/hoi_dap"
             android:textColor="@android:color/white"/>
     </LinearLayout>

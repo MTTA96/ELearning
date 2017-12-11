@@ -95,7 +95,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     btnDangKy_DK.setEnabled(true);
-                    btnDangKy_DK.setBackgroundResource(R.drawable.btn_shape);
+                    btnDangKy_DK.setBackgroundResource(R.drawable.main_color_with_corner_rectangle_shape);
                 } else {
                     btnDangKy_DK.setEnabled(false);
                     btnDangKy_DK.setBackgroundResource(R.drawable.disablebtn_shape);

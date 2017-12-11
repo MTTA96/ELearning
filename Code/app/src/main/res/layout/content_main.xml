@@ -1,28 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/my_tool_bar"
+
+    <FrameLayout
+        android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorMain">
-        <!-- Title -->
-        <TextView
-            android:id="@+id/textView_Title_Actionbar"
-            android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_tool_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/title_text_size"/>
-    </android.support.v7.widget.Toolbar>
+            android:background="@color/colorMain"
+            android:gravity="center"
+            android:paddingLeft="@dimen/horizontal_padding">
+            <!-- Title -->
+            <TextView
+                android:id="@+id/textView_Title_Actionbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/title_text_size"
+                android:paddingLeft="@dimen/text_padding_left"
+                android:visibility="gone"/>
+            <LinearLayout
+                android:id="@+id/search_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
+                android:orientation="horizontal"
+                android:padding="6dp">
+                <ImageView
+                    android:id="@+id/nav_menu_home"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/menu_home"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"/>
+                <!-- Title -->
+                <TextView
+                    android:id="@+id/text_Search_Actionbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/white"
+                    android:hint="@string/app_name"
+                    android:textSize="@dimen/title_text_size"
+                    android:paddingLeft="@dimen/text_padding_left"/>
+                <!--Search button-->
+                <ImageView
+                    android:id="@+id/search_home"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/search_home"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+        <br.com.mauker.materialsearchview.MaterialSearchView
+            android:id="@+id/search_view"
+            style="@style/MaterialSearchViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <!-- Content -->
     <FrameLayout
         android:id="@+id/content_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </LinearLayout>

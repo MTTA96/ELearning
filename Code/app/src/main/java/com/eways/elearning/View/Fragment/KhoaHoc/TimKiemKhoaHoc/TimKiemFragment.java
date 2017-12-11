@@ -128,10 +128,10 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
             }
         } else {
             if (isChecked) {
-                buttonView.setBackgroundResource(R.drawable.btn_color_main_corners_shape);
+                buttonView.setBackgroundResource(R.drawable.main_color_with_min_corner_rectangle_shape);
                 buttonView.setTextColor(Color.WHITE);
             } else {
-                buttonView.setBackgroundResource(R.drawable.btn_white_corners_shape);
+                buttonView.setBackgroundResource(R.drawable.white_rectangle_corner_main_color_stroke_shape);
                 buttonView.setTextColor(Color.BLACK);
             }
         }

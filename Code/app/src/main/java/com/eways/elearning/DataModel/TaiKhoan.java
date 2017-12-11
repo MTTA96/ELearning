@@ -2,6 +2,9 @@ package com.eways.elearning.DataModel;
 
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by zzzzz on 8/28/2017.
  */
@@ -26,15 +29,17 @@ public class TaiKhoan {
 
     public TaiKhoan() {
     }
+
     public TaiKhoan(String email, String password) {
         this.email = email;
         this.password = password;
     }
-    public TaiKhoan(String email, String password,String ho,String ten) {
+
+    public TaiKhoan(String email, String password, String ho, String ten) {
         this.email = email;
         this.password = password;
-        this.ho=ho;
-        this.ten=ten;
+        this.ho = ho;
+        this.ten = ten;
     }
 
 //    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms) {
@@ -199,4 +204,14 @@ public class TaiKhoan {
     public void setSodienthoai(String sodienthoai) {
         this.sodienthoai = sodienthoai;
     }
+
+//    public TaiKhoan JsonObjectToTaiKhoan(JSONObject jsonObject) {
+//        TaiKhoan taiKhoan = null;
+//        try {
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        return taiKhoan;
+//    }
 }
+

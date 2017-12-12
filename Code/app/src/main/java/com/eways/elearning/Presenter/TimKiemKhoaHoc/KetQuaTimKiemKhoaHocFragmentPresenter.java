@@ -2,8 +2,8 @@ package com.eways.elearning.Presenter.TimKiemKhoaHoc;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.Model.TimKiemKhoaHoc.KetQuaTimKiemFragmentModel;
-import com.eways.elearning.Model.TimKiemKhoaHoc.KetQuatimKiemFragmentModelImp;
+import com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc.KetQuaTimKiemFragmentModel;
+import com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc.KetQuatimKiemFragmentModelImp;
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.KetQuaTimKiemFragmentViewImp;
 
 import java.util.ArrayList;

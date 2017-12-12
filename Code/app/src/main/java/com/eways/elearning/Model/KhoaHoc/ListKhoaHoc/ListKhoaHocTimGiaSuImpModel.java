@@ -1,4 +1,4 @@
-package com.eways.elearning.Model.ListKhoaHoc;
+package com.eways.elearning.Model.KhoaHoc.ListKhoaHoc;
 
 /**
  * Created by yowin on 09/11/2017.

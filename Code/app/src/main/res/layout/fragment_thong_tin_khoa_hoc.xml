@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!--Thông tin cá nhân-->
+            <!--Thông tin người đăng-->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -77,6 +77,7 @@
                             android:text="Năm sinh: " />
 
                         <TextView
+                            android:id="@+id/textView_NamSinh_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1236"
@@ -96,12 +97,14 @@
                             android:text="Giới tính: " />
 
                         <TextView
+                            android:id="@+id/textView_GioiTinh_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Nam"
                             android:textStyle="bold" />
                     </LinearLayout>
 
+                    <!--Nghề nghiệp-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -114,12 +117,14 @@
                             android:text="Nghề nghiệp: " />
 
                         <TextView
+                            android:id="@+id/textView_NgheNghiep_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Sinh viên"
                             android:textStyle="bold" />
                     </LinearLayout>
 
+                    <!--Trình độ-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -132,6 +137,7 @@
                             android:text="Trình độ: " />
 
                         <TextView
+                            android:id="@+id/textView_TrinhDo_ThongTin_KhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Đại học"
@@ -178,6 +184,7 @@
                             android:text="Môn: " />
 
                         <TextView
+                            android:id="@+id/textView_Mon_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Toán"
@@ -197,6 +204,7 @@
                             android:text="Địa điểm: " />
 
                         <TextView
+                            android:id="@+id/textView_DiaDiem_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Q8, HCM"
@@ -216,6 +224,7 @@
                             android:text="Thứ: " />
 
                         <TextView
+                            android:id="@+id/textView_Thu_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="T2, T3, T4"
@@ -235,6 +244,7 @@
                             android:text="Buổi: " />
 
                         <TextView
+                            android:id="@+id/textView_Buoi_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Sáng"
@@ -254,6 +264,7 @@
                             android:text="Số buổi: " />
 
                         <TextView
+                            android:id="@+id/textView_SoBuoi_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="15"
@@ -273,11 +284,13 @@
                             android:text="Số học viên: " />
 
                         <TextView
+                            android:id="@+id/textView_SoHocVien_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2"
                             android:textStyle="bold" />
                     </LinearLayout>
+
                     <!-- Thông tin thêm -->
                     <TextView
                         android:layout_width="match_parent"
@@ -286,8 +299,8 @@
                         android:layout_weight="3"
                         android:text="@string/title_thong_tin_them_tao_khoa_hoc" />
 
-                    <EditText
-                        android:id="@+id/editText_ThongTinKhac_TaoKhoaHoc"
+                    <TextView
+                        android:id="@+id/textView_ThongTinKhac_TaoKhoaHoc"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/text_thong_tin_them_height"
                         android:layout_marginTop="5dp"
@@ -321,11 +334,12 @@
         android:paddingLeft="10dp">
         <!--Giá-->
         <TextView
+            android:id="@+id/textView_HocPhi_ThongTinKhoaHoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="100.000đ/buổi"
+            android:text="/buổi"
             android:textColor="@color/White"
             android:textSize="@dimen/normal_text_size" />
         <!-- Tạo -->

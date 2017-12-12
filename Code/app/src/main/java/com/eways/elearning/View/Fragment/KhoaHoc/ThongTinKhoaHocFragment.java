@@ -7,21 +7,33 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.DataModel.TaiKhoan;
 import com.eways.elearning.DataModel.ThongTinChiTietKhoaHoc;
+import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPresenter;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 
 /**
- * A simple {@link Fragment} subclass.
+ * @author zzzzz
+ *
+ * Note: Tài khoản chưa có hình đại diện
  */
-public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHocViewImp{
+public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHocViewImp, View.OnClickListener {
+    ImageView imgUserAvatar;
+    TextView tvNamSinh, tvGioiTinh, tvNgheNghiep, tvTrinhDo;
+    TextView tvMon, tvDiaDiem, tvThu, tvBuoi, tvSoBuoi, tvSoHocVien, tvThongTinThem, tvHocPhi;
 
     private static final String KEY_PARAM1="param1";
     private static final String KEY_PARAM2="param2";
     private ThongTinKhoaHocPresenterImp thongTinKhoaHocPresenterImp;
+    private ImageHandler imageHandler;
 
     public ThongTinKhoaHocFragment() {
         // Required empty public constructor
@@ -41,6 +53,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         thongTinKhoaHocPresenterImp=new ThongTinKhoaHocPresenter(this);
+        imageHandler = new ImageHandler(getActivity());
         if (getArguments()!=null) {
             thongTinKhoaHocPresenterImp.YeuCauLayThongTinKhoaHoc(getActivity(), SupportKeysList.GET_DATA_TIMGIASU, getArguments().getString(KEY_PARAM1),getArguments().getString(KEY_PARAM2));
         }
@@ -52,11 +65,56 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_thong_tin_khoa_hoc, container, false);
+        tvNamSinh = root.findViewById(R.id.textView_NamSinh_ThongTinKhoaHoc);
+        tvGioiTinh = root.findViewById(R.id.textView_GioiTinh_ThongTinKhoaHoc);
+        tvNgheNghiep = root.findViewById(R.id.textView_NgheNghiep_ThongTinKhoaHoc);
+        tvTrinhDo = root.findViewById(R.id.textView_TrinhDo_ThongTin_KhoaHoc);
+        tvMon = root.findViewById(R.id.textView_Mon_ThongTinKhoaHoc);
+        tvDiaDiem = root.findViewById(R.id.textView_DiaDiem_ThongTinKhoaHoc);
+        tvThu = root.findViewById(R.id.textView_Thu_ThongTinKhoaHoc);
+        tvBuoi = root.findViewById(R.id.textView_Buoi_ThongTinKhoaHoc);
+        tvSoBuoi = root.findViewById(R.id.textView_SoBuoi_ThongTinKhoaHoc);
+        tvSoHocVien = root.findViewById(R.id.textView_SoHocVien_ThongTinKhoaHoc);
+        tvHocPhi = root.findViewById(R.id.textView_HocPhi_ThongTinKhoaHoc);
+
+        root.findViewById(R.id.button_YeuCau_ThongTinKhoaHoc).setOnClickListener(this);
         return root;
     }
 
     @Override
     public void KetQuaThongTinKhoaHoc(ThongTinChiTietKhoaHoc thongTinChiTietKhoaHoc) {
+        loadView(thongTinChiTietKhoaHoc.getTaiKhoan(), thongTinChiTietKhoaHoc.getKhoaHoc());
+    }
+
+    private void loadView(TaiKhoan taiKhoan, KhoaHoc khoaHoc) {
+        //User info
+//        imageHandler.loadImageRound(taiKhoan.get);
+        tvNamSinh.setText(taiKhoan.getNamsinh()!=null ? taiKhoan.getNamsinh().toString():"Chưa cập nhật");
+        tvGioiTinh.setText(taiKhoan.getGioitinh()!=null ? taiKhoan.getGioitinh().toString():"Chưa cập nhật");
+        tvNgheNghiep.setText(taiKhoan.getNghenghiep()!=null ? taiKhoan.getNghenghiep().toString():"Chưa cập nhật");
+        tvTrinhDo.setText(taiKhoan.getTrinhdo()!=null ? taiKhoan.getTrinhdo().toString():"Chưa cập nhật");
+
+        //Course info
+        tvMon.setText(khoaHoc.getMon().get(0));
+        tvDiaDiem.setText(khoaHoc.getDiaDiem().getDayDu()+khoaHoc.getDiaDiem().getQuan()+khoaHoc.getDiaDiem().getTP());
+        String thu = "";
+        for (int i = 0; i < khoaHoc.getLichHoc().getThoiGian().size(); i++) {
+            thu+=" "+khoaHoc.getLichHoc().getThoiGian().get(i);
+        }
+        tvThu.setText(thu);
+        String buoi = "";
+        for (int i = 0; i < khoaHoc.getLichHoc().getNgayHoc().size(); i++) {
+            buoi+=" "+khoaHoc.getLichHoc().getNgayHoc().get(i);
+        }
+        tvBuoi.setText(buoi);
+        tvSoBuoi.setText(khoaHoc.getSoBuoiHoc());
+        tvSoHocVien.setText(khoaHoc.getSoLuongHocVien());
+        tvThongTinThem.setText(khoaHoc.getThongTinKhac());
+        tvHocPhi.setText(khoaHoc.getHocPhi());
+    }
+
+    @Override
+    public void onClick(View view) {
 
     }
 }

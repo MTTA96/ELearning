@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Handler.ViewHolder.ItemListKhoaHocHomeViewHolder;
@@ -26,6 +27,7 @@ import java.util.Locale;
 public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKhoaHocHomeViewHolder> {
     private Context context;
     private ArrayList<CustomModelKhoaHoc> listKhoaHoc = new ArrayList();
+    private CustomModelKhoaHoc khoaHoc;
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
 
@@ -44,14 +46,15 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
 
     @Override
     public void onBindViewHolder(final ItemListKhoaHocHomeViewHolder holder, int position) {
-        imageHandler.loadImageSquare(listKhoaHoc.get(holder.getLayoutPosition()).LinkAvatar, holder.imgUserImage);
-        holder.tvMon.setText(listKhoaHoc.get(holder.getLayoutPosition()).MonHoc.get(0).toString());
-        holder.tvGia.setText(chuyenGia(Long.parseLong(listKhoaHoc.get(holder.getLayoutPosition()).HocPhi)));
+        khoaHoc = listKhoaHoc.get(holder.getLayoutPosition());
+        imageHandler.loadImageSquare(khoaHoc.LinkAvatar, holder.imgUserImage);
+        holder.tvMon.setText(khoaHoc.MonHoc.get(0).toString());
+        holder.tvGia.setText(khoaHoc.formatGia(Long.parseLong(khoaHoc.HocPhi)));
 
         holder.imgUserImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(listKhoaHoc.get(holder.getLayoutPosition()).UIDNguoiDang, listKhoaHoc.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
+                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(khoaHoc.UIDNguoiDang, khoaHoc.KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
             }
         });
     }
@@ -59,11 +62,6 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
     @Override
     public int getItemCount() {
         return listKhoaHoc.size();
-    }
-
-    public static String chuyenGia(long gia){
-        NumberFormat formatGia = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
-        return formatGia.format(gia);
     }
 
 }

@@ -8,15 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.eways.elearning.DataModel.ThongTinChiTietKhoaHoc;
+import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPresenter;
+import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPresenterImp;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ThongTinKhoaHocFragment extends Fragment {
+public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHocViewImp{
 
     private static final String KEY_PARAM1="param1";
     private static final String KEY_PARAM2="param2";
+    private ThongTinKhoaHocPresenterImp thongTinKhoaHocPresenterImp;
 
     public ThongTinKhoaHocFragment() {
         // Required empty public constructor
@@ -35,10 +40,11 @@ public class ThongTinKhoaHocFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        thongTinKhoaHocPresenterImp=new ThongTinKhoaHocPresenter(this);
         if (getArguments()!=null) {
-            getArguments().getString(KEY_PARAM1);
-            getArguments().getString(KEY_PARAM2);
+            thongTinKhoaHocPresenterImp.YeuCauLayThongTinKhoaHoc(getActivity(), SupportKeysList.GET_DATA_TIMGIASU, getArguments().getString(KEY_PARAM1),getArguments().getString(KEY_PARAM2));
         }
+
     }
 
     @Override
@@ -49,4 +55,8 @@ public class ThongTinKhoaHocFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void KetQuaThongTinKhoaHoc(ThongTinChiTietKhoaHoc thongTinChiTietKhoaHoc) {
+
+    }
 }

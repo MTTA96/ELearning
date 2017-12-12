@@ -7,5 +7,5 @@ import android.app.Activity;
  */
 
 public interface ThongTinKhoaHocModelImp {
-    public void LayDataKhoaHoc(Activity activity,String loaiBaiDang);
+    public void LayDataKhoaHoc(Activity activity,String loaiKhoaHoc,String idNguoiDang,String idKhoaHoc);
 }

@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(currentFragment!=null && currentFragment.getTag()!=null) {
             switch (currentFragment.getTag()) {
                 case SupportKeysList.TAG_HOME_FRAGMENT:
+                case SupportKeysList.TAG_DANH_SACH_KHOA_HOC:
                     findViewById(R.id.search_layout).setVisibility(View.VISIBLE);
                     tvScreenTitle.setVisibility(View.GONE);
                     menu.findItem(R.id.act_search).setVisible(false);
@@ -215,8 +216,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 ((DrawerLayout) findViewById(R.id.drawer_layout)).openDrawer(Gravity.START);
                 break;
             case R.id.text_Search_Actionbar:
-            case R.id.search_home:
                 searchView.openSearch();
+                break;
+            case R.id.search_home:
+                fragmentHandler.ChuyenFragment(new TimKiemFragment(), true, SupportKeysList.TAG_TIM_KIEM);
                 break;
         }
     }

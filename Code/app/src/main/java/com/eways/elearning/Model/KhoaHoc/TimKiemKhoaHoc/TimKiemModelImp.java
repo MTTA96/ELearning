@@ -1,4 +1,4 @@
-package com.eways.elearning.Model.TimKiemKhoaHoc;
+package com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc;
 
 import android.app.Activity;
 

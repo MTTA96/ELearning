@@ -1,13 +1,12 @@
 package com.eways.elearning.Presenter.TaoKhoaHoc;
 
 import android.app.Activity;
-import android.widget.ArrayAdapter;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
-import com.eways.elearning.Model.TaoKhoaHoc.TaoKhoaHocModel;
-import com.eways.elearning.Model.TaoKhoaHoc.TaoKhoaHocModelImp;
+import com.eways.elearning.Model.KhoaHoc.TaoKhoaHoc.TaoKhoaHocModel;
+import com.eways.elearning.Model.KhoaHoc.TaoKhoaHoc.TaoKhoaHocModelImp;
 import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc.TaoKhoaHocFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc.TaoKhoaHocViewImp;
 

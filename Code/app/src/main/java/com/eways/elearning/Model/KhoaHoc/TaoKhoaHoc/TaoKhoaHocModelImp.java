@@ -1,13 +1,8 @@
-package com.eways.elearning.Model.TaoKhoaHoc;
+package com.eways.elearning.Model.KhoaHoc.TaoKhoaHoc;
 
 import android.app.Activity;
-import android.support.v4.app.ActivityCompat;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
-import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
-
-import java.util.ArrayList;
 
 /**
  * Created by yowin on 19/11/2017.

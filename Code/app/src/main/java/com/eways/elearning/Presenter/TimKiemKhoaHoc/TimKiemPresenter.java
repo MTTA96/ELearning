@@ -4,8 +4,8 @@ import android.app.Activity;
 
 import com.eways.elearning.DataModel.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
-import com.eways.elearning.Model.TimKiemKhoaHoc.TimKiemModel;
-import com.eways.elearning.Model.TimKiemKhoaHoc.TimKiemModelImp;
+import com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc.TimKiemModel;
+import com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc.TimKiemModelImp;
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.TimKiemFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.TimKiemViewImp;
 

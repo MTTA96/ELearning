@@ -1,7 +1,9 @@
 package com.eways.elearning.DataModel.KhoaHoc;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by yowin on 10/11/2017.
@@ -27,8 +29,7 @@ public class KhoaHoc implements Serializable {
     private LichHoc LichHoc;
     private DiaDiem DiaDiem;
 
-    //Custom
-
+    private NumberFormat formatGia = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
 
 
     public KhoaHoc() {
@@ -191,4 +192,10 @@ public class KhoaHoc implements Serializable {
         this.DiaDiem = DiaDiem;
     }
 
+    /**
+     * Định dạng giá hiển thị
+     */
+    public String formatGia(long gia){
+        return formatGia.format(gia);
+    }
 }

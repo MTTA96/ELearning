@@ -44,5 +44,8 @@ public class SupportKeysList {
     public static final String GET_DATA_THANHCONG = "GET_DATA_THANHCONG";
     public static final String LOI_KET_NOI = "LOI_KET_NOI";
     public static final String LOI_DATA = "LOI_DATA";
+    public static final String GET_DATA_TIMGIASU="DATA_TIMGIASU";
+    public static final String GET_DATA_TIMHOCVIEN="DATA_TIMHOCVIEN";
+
 
 }

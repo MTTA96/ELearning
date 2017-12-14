@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc.TaoKhoaHocFragment;
+import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.KetQuaTimKiemFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.TimKiemFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
@@ -33,7 +35,7 @@ import java.util.ArrayList;
 
 import br.com.mauker.materialsearchview.MaterialSearchView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener,MainActivityImp {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener,MainActivityImp, AdapterView.OnItemClickListener {
     TextView tvUserName, tvUserEmail;
     ImageView imgUser;
     public TextView tvScreenTitle;
@@ -63,18 +65,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         findViewById(R.id.search_home).setOnClickListener(this);
         findViewById(R.id.nav_menu_home).setOnClickListener(this);
         findViewById(R.id.text_Search_Actionbar).setOnClickListener(this);
+        searchView.setOnItemClickListener(this);
 
         setUpActionBar(drawer, myToolbar);
-//        initData();
         mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
         imageHandler = new ImageHandler(this);
         fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
         fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
-    }
-
-    private void initData() {
-//        String[] suggestions = {"Toán 1", "Toeic", "Anh văn giao tiếp", "Toán 12"};
-//        searchView.addSuggestions(suggestions);
     }
 
     private void setUpActionBar(DrawerLayout drawer, Toolbar myToolbar) {
@@ -242,5 +239,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void NhanDanhSachMon(ArrayList<String> dsMon) {
         searchView.addSuggestions(dsMon);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        String suggestion = searchView.getSuggestionAtPosition(position);
+
+        fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(suggestion), true, SupportKeysList.TAG_KET_QUA_TIM_KIEM);
     }
 }

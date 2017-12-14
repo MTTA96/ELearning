@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         danhSachMonPresenterImp = new DanhSachMonPresenter(this);
+        danhSachMonPresenterImp.guiYeuCau();
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_tool_bar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

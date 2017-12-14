@@ -54,7 +54,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     Spinner spNamsinh, spGiotinh;
     Button btnLuuCapNhat;
     EditText etHoTen, etNgheNghiep,etTrinhDo,etDiaChi,etSoDienThoai;
-    ImageView imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms;
+    ImageView imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms,imAvarta;
 
     private Calendar calendar;
     private ArrayList<String> danhsachNam;
@@ -96,6 +96,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         btnLuuCapNhat = (Button) view.findViewById(R.id.btnLuuCNTTTK);
         imTaiLieuXacMinh_mt= (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_mt);
         imTaiLieuXacMinh_ms= (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_ms);
+        imAvarta=(ImageView) view.findViewById(R.id.imageView_UserAvatar_CNTTTK);
         etTrinhDo=(EditText) view.findViewById(R.id.etTrinhDo_CNTTTK);
         etDiaChi=(EditText) view.findViewById(R.id.etDiaChi_CNTTTK);
         etSoDienThoai=(EditText) view.findViewById(R.id.etSDT_CNTTTK);
@@ -104,6 +105,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
 
         imTaiLieuXacMinh_mt.setOnClickListener(this);
         imTaiLieuXacMinh_ms.setOnClickListener(this);
+        imAvarta.setOnClickListener(this);
 
         //cai đặt dialogplus
         danhSachChon=new ArrayList<>();
@@ -128,18 +130,33 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnLuuCNTTTK) {
-            capNhatTaiKhoanPresenterImp.NhanDataUpdate(new TaiKhoan(SetStringNull(sharedPreferencesHandler.getID()), SetStringNull(sharedPreferencesHandler.getEmail()),
-                    SetStringNull(sharedPreferencesHandler.getHo()), SetStringNull(etHoTen.getText().toString()), SetStringNull(sharedPreferencesHandler.getTenTaiKhoan()),
-                    sharedPreferencesHandler.getDaDangNhap(), SetStringNull(sharedPreferencesHandler.getLoaiTaiKhoan()),
-                    SetStringNull(sharedPreferencesHandler.getMatKhau()), SetStringNull(etNgheNghiep.getText().toString()), SetStringNull(spNamsinh.getSelectedItem().toString()),
-                    SetStringNull(spGiotinh.getSelectedItem().toString()),SetStringNull(sharedPreferencesHandler.getTaiLieuXacMinh_mt()),SetStringNull(sharedPreferencesHandler.getTaiLieuXacMinh_ms()),
-                    SetStringNull(etTrinhDo.getText().toString()),SetStringNull(etDiaChi.getText().toString()),SetStringNull(etSoDienThoai.getText().toString())), getActivity(),imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms);
+            capNhatTaiKhoanPresenterImp.NhanDataUpdate(new TaiKhoan(SetStringNull(sharedPreferencesHandler.getID()),
+                    SetStringNull(sharedPreferencesHandler.getEmail()),
+                    SetStringNull(sharedPreferencesHandler.getHo()),
+                    SetStringNull(etHoTen.getText().toString()),
+                    sharedPreferencesHandler.getTenTaiKhoan(),
+                    sharedPreferencesHandler.getDaDangNhap(),
+                    SetStringNull(sharedPreferencesHandler.getLoaiTaiKhoan()),
+                    SetStringNull(sharedPreferencesHandler.getMatKhau()),
+                    SetStringNull(etNgheNghiep.getText().toString()),
+                    SetStringNull(spNamsinh.getSelectedItem().toString()),
+                    SetStringNull(spGiotinh.getSelectedItem().toString()),
+                    SetStringNull(sharedPreferencesHandler.getTaiLieuXacMinh_mt()),
+                    SetStringNull(sharedPreferencesHandler.getTaiLieuXacMinh_ms()),
+                    SetStringNull(etTrinhDo.getText().toString()),
+                    SetStringNull(etDiaChi.getText().toString()),
+                    SetStringNull(etSoDienThoai.getText().toString()),
+                    SetStringNull(sharedPreferencesHandler.getAvatar()),
+                    true), getActivity(),imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms,imAvarta);
         }
         if (v.getId() == R.id.ivTaiLieuXacMinh_mt){
             dialogPlusHandler.ShowDialogChonHinh(0);
         }
         if (v.getId() == R.id.ivTaiLieuXacMinh_ms){
             dialogPlusHandler.ShowDialogChonHinh(1);
+        }
+        if (v.getId() == R.id.imageView_UserAvatar_CNTTTK){
+            dialogPlusHandler.ShowDialogChonHinh(2);
         }
     }
 
@@ -220,6 +237,10 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
 
             }
         }
+        if (sharedPreferencesHandler.getAvatar().compareTo("null")==0)
+            return;
+        else
+            imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(),imAvarta);
         if (sharedPreferencesHandler.getTrinhDo().compareTo("null")==0)
             etTrinhDo.setText("");
         else
@@ -255,9 +276,12 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
                 view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                 imageHandler.loadImageRound(String.valueOf(data.getData()), imTaiLieuXacMinh_mt);
             }
-            else {
+            if(vitrichon==1){
                 view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                 imageHandler.loadImageRound(String.valueOf(data.getData()), imTaiLieuXacMinh_ms);
+            }
+            if (vitrichon==2){
+                imageHandler.loadImageRound(String.valueOf(data.getData()),imAvarta);
             }
             dialogPlusHandler.dissMissDialog();
         }

@@ -31,7 +31,7 @@ public class ThongTinKhoaHocModel implements ThongTinKhoaHocModelImp {
     public void LayDataKhoaHoc(Activity activity, String loaiKhoaHoc , String idNguoiDang, final String idKhoaHoc) {
         mData = FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
         if (loaiKhoaHoc.compareTo(SupportKeysList.GET_DATA_TIMGIASU)==0){
-            mData.getReference().child("TaiKhoan").orderByKey().equalTo(idNguoiDang).addChildEventListener(new ChildEventListener() {
+            mData.getReference().child("TaiKhoan").orderByKey().equalTo(idNguoiDang.toString().trim()).addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     final TaiKhoan taiKhoan=dataSnapshot.getValue(TaiKhoan.class);

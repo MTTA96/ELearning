@@ -9,6 +9,6 @@ import com.eways.elearning.DataModel.TaiKhoan;
  */
 
 public interface CapNhatTaiKhoanModelImp {
-    public void CapNhatTaiKhoan(TaiKhoan taiKhoan, Activity activity,byte[] data_mt,byte[] data_ms);
+    public void CapNhatTaiKhoan(TaiKhoan taiKhoan, Activity activity,byte[] data_mt,byte[] data_ms,byte[] data_avarta);
 
 }

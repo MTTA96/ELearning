@@ -27,14 +27,14 @@ public class CapNhatTaiKhoanPresenter implements CapNhatTaiKhoanPresenterImp {
     }
 
     @Override
-    public void NhanDataUpdate(TaiKhoan taiKhoan, Activity activity, ImageView ivTaiLieuXacMinh_MT, ImageView ivTaiLieuXacMinh_MS) {
-        capNhatTaiKhoanModelImp.CapNhatTaiKhoan(taiKhoan,activity,xuLyHinhAnh_firebaseStorage.XuLy(ivTaiLieuXacMinh_MT),xuLyHinhAnh_firebaseStorage.XuLy(ivTaiLieuXacMinh_MS));
+    public void NhanDataUpdate(TaiKhoan taiKhoan, Activity activity, ImageView ivTaiLieuXacMinh_MT, ImageView ivTaiLieuXacMinh_MS,ImageView ivAvarta) {
+        capNhatTaiKhoanModelImp.CapNhatTaiKhoan(taiKhoan,activity,xuLyHinhAnh_firebaseStorage.XuLy(ivTaiLieuXacMinh_MT),xuLyHinhAnh_firebaseStorage.XuLy(ivTaiLieuXacMinh_MS),xuLyHinhAnh_firebaseStorage.XuLy(ivAvarta));
     }
 
     @Override
     public void KetQuaCapNhat(String ketquacapnhat,TaiKhoan taiKhoan,Activity activity) {
         sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
-        sharedPreferencesHandler.DangNhapThanhCong(taiKhoan.getId(), taiKhoan.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(), sharedPreferencesHandler.getAvatar() != null ? sharedPreferencesHandler.getAvatar():null, taiKhoan.getTentaikhoan(),true,SupportKeysList.TAI_KHOAN_THUONG,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms(),taiKhoan.getTrinhdo(),taiKhoan.getDiadiem(),taiKhoan.getSodienthoai());
+        sharedPreferencesHandler.DangNhapThanhCong(taiKhoan.getId(), taiKhoan.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(), sharedPreferencesHandler.getAvatar() != null ? sharedPreferencesHandler.getAvatar():"null", taiKhoan.getTentaikhoan(),true,SupportKeysList.TAI_KHOAN_THUONG,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms(),taiKhoan.getTrinhdo(),taiKhoan.getDiadiem(),taiKhoan.getSodienthoai(),taiKhoan.getDacapnhat());
         capNhatThongTinTaiKhoanFragment.KetQuaCapNhat(ketquacapnhat);
     }
 }

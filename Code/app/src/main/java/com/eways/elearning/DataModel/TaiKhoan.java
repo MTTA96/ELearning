@@ -26,9 +26,12 @@ public class TaiKhoan {
     String trinhdo;
     String diadiem;
     String sodienthoai;
+    String avarta;
+    boolean dacapnhat;
 
     public TaiKhoan() {
     }
+
 
     public TaiKhoan(String email, String password) {
         this.email = email;
@@ -42,23 +45,7 @@ public class TaiKhoan {
         this.ten = ten;
     }
 
-//    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms) {
-//        this.id = id;
-//        this.email = email;
-//        this.ho = ho;
-//        this.ten = ten;
-//        this.tentaikhoan = tentaikhoan;
-//        this.dadangnhap = dadangnhap;
-//        this.loaitaikhoan = loaitaikhoan;
-//        this.password = password;
-//        this.nghenghiep = nghenghiep;
-//        this.namsinh = namsinh;
-//        this.gioitinh = gioitinh;
-//        this.tailieuxacminh_mt = tailieuxacminh_mt;
-//        this.tailieuxacminh_ms = tailieuxacminh_ms;
-//    }
-
-    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms, String trinhdo, String diadiem, String sodienthoai) {
+    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms, String trinhdo, String diadiem, String sodienthoai, String avarta, boolean dacapnhat) {
         this.id = id;
         this.email = email;
         this.ho = ho;
@@ -75,6 +62,8 @@ public class TaiKhoan {
         this.trinhdo = trinhdo;
         this.diadiem = diadiem;
         this.sodienthoai = sodienthoai;
+        this.avarta = avarta;
+        this.dacapnhat = dacapnhat;
     }
 
     public String getId() {
@@ -205,13 +194,20 @@ public class TaiKhoan {
         this.sodienthoai = sodienthoai;
     }
 
-//    public TaiKhoan JsonObjectToTaiKhoan(JSONObject jsonObject) {
-//        TaiKhoan taiKhoan = null;
-//        try {
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return taiKhoan;
-//    }
+    public String getAvarta() {
+        return avarta;
+    }
+
+    public void setAvarta(String avarta) {
+        this.avarta = avarta;
+    }
+
+    public boolean getDacapnhat() {
+        return dacapnhat;
+    }
+
+    public void setDacapnhat(boolean dacapnhat) {
+        this.dacapnhat = dacapnhat;
+    }
 }
 

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.eways.elearning.DataModel.ThongTinChiTietKhoaHoc;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPresenter;
@@ -52,6 +53,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_thong_tin_khoa_hoc, container, false);
+
         return root;
     }
 

@@ -1,39 +1,39 @@
 package com.eways.elearning.View.Activity;
 
-import android.content.res.Configuration;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
-import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.Presenter.DanhSachMon.DanhSachMonPresenter;
+import com.eways.elearning.Presenter.DanhSachMon.DanhSachMonPresenterImp;
+import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc.TaoKhoaHocFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.TimKiemFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
-import com.eways.elearning.R;
-import com.eways.elearning.Util.SupportKeysList;
+
+import java.util.ArrayList;
 
 import br.com.mauker.materialsearchview.MaterialSearchView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener,MainActivityImp {
     TextView tvUserName, tvUserEmail;
     ImageView imgUser;
     public TextView tvScreenTitle;
@@ -43,10 +43,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private SharedPreferencesHandler mySharedPref;
     private ImageHandler imageHandler;
 
+    DanhSachMonPresenterImp danhSachMonPresenterImp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        danhSachMonPresenterImp = new DanhSachMonPresenter(this);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_tool_bar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -61,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         findViewById(R.id.text_Search_Actionbar).setOnClickListener(this);
 
         setUpActionBar(drawer, myToolbar);
-        initData();
+//        initData();
         mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
         imageHandler = new ImageHandler(this);
         fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
@@ -69,8 +73,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initData() {
-        String[] suggestions = {"Toán 1", "Toeic", "Anh văn giao tiếp", "Toán 12"};
-        searchView.addSuggestions(suggestions);
+//        String[] suggestions = {"Toán 1", "Toeic", "Anh văn giao tiếp", "Toán 12"};
+//        searchView.addSuggestions(suggestions);
     }
 
     private void setUpActionBar(DrawerLayout drawer, Toolbar myToolbar) {
@@ -233,5 +237,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             tvScreenTitle.setText("");
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void NhanDanhSachMon(ArrayList<String> dsMon) {
+        searchView.addSuggestions(dsMon);
     }
 }

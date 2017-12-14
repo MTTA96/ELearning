@@ -29,6 +29,7 @@ import java.util.ArrayList;
  */
 public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFragmentViewImp {
 
+    private static final String paramMon = "paramMon";
     private static final String paramRequestKhoaHoc = "RequestKhoaHoc";
     private static final String paramRequestGiaSu = "RequestGiaSu";
     private static final String paramRequestBangCap = "RequestBangCap";
@@ -72,6 +73,15 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
         return fragment;
     }
 
+    public static KetQuaTimKiemFragment newInstance(String tenMon) {
+
+        Bundle args = new Bundle();
+        args.putString(paramMon, tenMon);
+        KetQuaTimKiemFragment fragment = new KetQuaTimKiemFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +91,10 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
             requestBangCap = getArguments().getString(paramRequestBangCap, null);
             fragmentHandler = new FragmentHandler(getActivity(), getChildFragmentManager());
             ketQuaTimKiemKhoaHocFragmentPresenterImp = new KetQuaTimKiemKhoaHocFragmentPresenter(this);
+
+            //Request môn
+            getArguments().getString(paramMon, "");
+
         }
     }
 

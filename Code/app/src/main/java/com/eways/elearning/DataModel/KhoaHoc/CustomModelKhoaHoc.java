@@ -1,6 +1,8 @@
 package com.eways.elearning.DataModel.KhoaHoc;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Tran Tien Phat on 14/11/2017.
@@ -17,6 +19,8 @@ public class CustomModelKhoaHoc {
     public String Rating;
     public String HocPhi;
     public ArrayList<String> MonHoc;
+
+    private NumberFormat formatGia = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
 
     public CustomModelKhoaHoc() {
     }
@@ -40,5 +44,12 @@ public class CustomModelKhoaHoc {
         Rating = rating;
         HocPhi = hocPhi;
         MonHoc = monHoc;
+    }
+
+    /**
+     * Định dạng giá hiển thị
+     */
+    public String formatGia(long gia){
+        return formatGia.format(gia);
     }
 }

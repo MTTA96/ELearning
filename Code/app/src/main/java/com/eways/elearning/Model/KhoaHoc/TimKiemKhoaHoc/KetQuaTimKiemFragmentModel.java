@@ -39,9 +39,9 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
 
         if(!loai)
         {
-            if(khoaHoc.getMon().size() == 0)
+            if(khoaHoc.getMon() == null)
             {
-                if(khoaHoc.getLinhVuc().size() == 0 )
+                if(khoaHoc.getLinhVuc() == null )
                 {
                     if(khoaHoc.getDiaDiem().getDayDu().isEmpty())
                     {
@@ -49,7 +49,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) //Tất cả empty || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null) //Tất cả empty || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -169,7 +169,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) // Tất cả empty hết ngoại trừ giới tính ||có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null) // Tất cả empty hết ngoại trừ giới tính ||có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -297,7 +297,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) // tất cả empty hết ngoại trừ học phí || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null) // tất cả empty hết ngoại trừ học phí || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -411,7 +411,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) // Tất cả empty hết ngoại trừ học phí, giới tính || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null) // Tất cả empty hết ngoại trừ học phí, giới tính || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -548,7 +548,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Tất cả empty hết ngoại trừ Địa điểm || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null)//Tất cả empty hết ngoại trừ Địa điểm || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -677,7 +677,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Tất cả empty ngoại trừ địa điểm, giới tính || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null)//Tất cả empty ngoại trừ địa điểm, giới tính || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -815,7 +815,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Tất cả empty ngoại trừ địa điểm, học phí || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null)//Tất cả empty ngoại trừ địa điểm, học phí || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -951,7 +951,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Tất cả empty ngoại trừ địa điểm, học phí, giới tính || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null)//Tất cả empty ngoại trừ địa điểm, học phí, giới tính || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -1103,7 +1103,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) //Tất cả empty ngoài trừ Lĩnh vực
+                                if(khoaHoc.getBangCap() == null) //Tất cả empty ngoài trừ Lĩnh vực
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -1239,7 +1239,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) //Tất cả empty ngoại trừ Lĩnh vực, giới tính
+                                if(khoaHoc.getBangCap() == null) //Tất cả empty ngoại trừ Lĩnh vực, giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -1383,7 +1383,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Tất cả empty ngoại trừ Lĩnh vực, học phí
+                                if(khoaHoc.getBangCap() == null)//Tất cả empty ngoại trừ Lĩnh vực, học phí
                                 {
 
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
@@ -1525,7 +1525,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoại trừ Lĩnh vực, học phí, giới tính
+                                if(khoaHoc.getBangCap() == null)//Empty ngoại trừ Lĩnh vực, học phí, giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -1679,7 +1679,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoại trừ Lĩnh vực, địa điểm
+                                if(khoaHoc.getBangCap() == null)//Empty ngoại trừ Lĩnh vực, địa điểm
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -1819,7 +1819,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ lĩnh vực, điệm điểm, giới tính
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ lĩnh vực, điệm điểm, giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -1970,7 +1970,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoại trừ Lĩnh vực, địa điểm, học phí
+                                if(khoaHoc.getBangCap() == null)//Empty ngoại trừ Lĩnh vực, địa điểm, học phí
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -2116,7 +2116,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) //Empty ngoại trừ Lĩnh vực, địa điểm, học phí, giới tính
+                                if(khoaHoc.getBangCap() == null) //Empty ngoại trừ Lĩnh vực, địa điểm, học phí, giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -2272,7 +2272,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
             }
             else
             {
-                if(khoaHoc.getLinhVuc().size() == 0 )
+                if(khoaHoc.getLinhVuc() == null )
                 {
                     if(khoaHoc.getDiaDiem().getDayDu().isEmpty())
                     {
@@ -2280,7 +2280,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -2349,7 +2349,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) //empty ngoại trừ môn,giới tính
+                                if(khoaHoc.getBangCap() == null) //empty ngoại trừ môn,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -2492,7 +2492,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,học phí
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,học phí
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -2633,7 +2633,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,học phí,giới tính
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,học phí,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -2714,7 +2714,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,đại điểm
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,đại điểm
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -2854,7 +2854,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,đại điểm, giới tính
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,đại điểm, giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -2933,7 +2933,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,đại điểm, học phí
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,đại điểm, học phí
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -3076,7 +3076,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,đại điểm, học phí,giới tính
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,đại điểm, học phí,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -3237,7 +3237,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoại trừ môn,Lĩnh vực
+                                if(khoaHoc.getBangCap() == null)//Empty ngoại trừ môn,Lĩnh vực
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -3383,7 +3383,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoại trừ môn,Lĩnh vực,giới tính
+                                if(khoaHoc.getBangCap() == null)//Empty ngoại trừ môn,Lĩnh vực,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -3540,7 +3540,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,Lĩnh vực,học phí
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,Lĩnh vực,học phí
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -3618,7 +3618,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,Lĩnh vực,học phí,giới tính
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,Lĩnh vực,học phí,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -3782,7 +3782,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoài môn,Lĩnh vực, địa điểm
+                                if(khoaHoc.getBangCap() == null)//Empty ngoài môn,Lĩnh vực, địa điểm
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -3934,7 +3934,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoài môn,Lĩnh vực, địa điểm,giới tính
+                                if(khoaHoc.getBangCap() == null)//Empty ngoài môn,Lĩnh vực, địa điểm,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -4095,7 +4095,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoài môn,Lĩnh vục, địa điểm,học phí
+                                if(khoaHoc.getBangCap() == null)//Empty ngoài môn,Lĩnh vục, địa điểm,học phí
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -4255,7 +4255,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoài môn,Lĩnh vục, địa điểm,học phí,giới tính
+                                if(khoaHoc.getBangCap() == null)//Empty ngoài môn,Lĩnh vục, địa điểm,học phí,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -4425,9 +4425,9 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
         }
         else
         {
-            if(khoaHoc.getMon().size() == 0)
+            if(khoaHoc.getMon() == null)
             {
-                if(khoaHoc.getLinhVuc().size() == 0 )
+                if(khoaHoc.getLinhVuc() == null )
                 {
                     if(khoaHoc.getDiaDiem().getDayDu().isEmpty())
                     {
@@ -4435,7 +4435,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) //Tất cả empty || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null) //Tất cả empty || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -4555,7 +4555,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) // Tất cả empty hết ngoại trừ giới tính ||có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null) // Tất cả empty hết ngoại trừ giới tính ||có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -4683,7 +4683,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) // tất cả empty hết ngoại trừ học phí || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null) // tất cả empty hết ngoại trừ học phí || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -4797,7 +4797,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) // Tất cả empty hết ngoại trừ học phí, giới tính || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null) // Tất cả empty hết ngoại trừ học phí, giới tính || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -4934,7 +4934,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Tất cả empty hết ngoại trừ Địa điểm || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null)//Tất cả empty hết ngoại trừ Địa điểm || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -5063,7 +5063,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Tất cả empty ngoại trừ địa điểm, giới tính || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null)//Tất cả empty ngoại trừ địa điểm, giới tính || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -5201,7 +5201,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Tất cả empty ngoại trừ địa điểm, học phí || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null)//Tất cả empty ngoại trừ địa điểm, học phí || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -5337,7 +5337,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Tất cả empty ngoại trừ địa điểm, học phí, giới tính || có thể ngoại trừ buổi hoặc thứ
+                                if(khoaHoc.getBangCap() == null)//Tất cả empty ngoại trừ địa điểm, học phí, giới tính || có thể ngoại trừ buổi hoặc thứ
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -5489,7 +5489,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) //Tất cả empty ngoài trừ Lĩnh vực
+                                if(khoaHoc.getBangCap() == null) //Tất cả empty ngoài trừ Lĩnh vực
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -5625,7 +5625,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) //Tất cả empty ngoại trừ Lĩnh vực, giới tính
+                                if(khoaHoc.getBangCap() == null) //Tất cả empty ngoại trừ Lĩnh vực, giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -5769,7 +5769,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Tất cả empty ngoại trừ Lĩnh vực, học phí
+                                if(khoaHoc.getBangCap() == null)//Tất cả empty ngoại trừ Lĩnh vực, học phí
                                 {
 
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
@@ -5911,7 +5911,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoại trừ Lĩnh vực, học phí, giới tính
+                                if(khoaHoc.getBangCap() == null)//Empty ngoại trừ Lĩnh vực, học phí, giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -6065,7 +6065,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoại trừ Lĩnh vực, địa điểm
+                                if(khoaHoc.getBangCap() == null)//Empty ngoại trừ Lĩnh vực, địa điểm
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -6205,7 +6205,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ lĩnh vực, điệm điểm, giới tính
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ lĩnh vực, điệm điểm, giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -6356,7 +6356,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoại trừ Lĩnh vực, địa điểm, học phí
+                                if(khoaHoc.getBangCap() == null)//Empty ngoại trừ Lĩnh vực, địa điểm, học phí
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -6502,7 +6502,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) //Empty ngoại trừ Lĩnh vực, địa điểm, học phí, giới tính
+                                if(khoaHoc.getBangCap() == null) //Empty ngoại trừ Lĩnh vực, địa điểm, học phí, giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -6658,7 +6658,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
             }
             else
             {
-                if(khoaHoc.getLinhVuc().size() == 0 )
+                if(khoaHoc.getLinhVuc() == null )
                 {
                     if(khoaHoc.getDiaDiem().getDayDu().isEmpty())
                     {
@@ -6666,7 +6666,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -6735,7 +6735,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty()) //empty ngoại trừ môn,giới tính
+                                if(khoaHoc.getBangCap() == null) //empty ngoại trừ môn,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -6878,7 +6878,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,học phí
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,học phí
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -7019,7 +7019,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,học phí,giới tính
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,học phí,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -7100,7 +7100,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,đại điểm
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,đại điểm
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -7240,7 +7240,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,đại điểm, giới tính
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,đại điểm, giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -7319,7 +7319,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,đại điểm, học phí
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,đại điểm, học phí
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -7462,7 +7462,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,đại điểm, học phí,giới tính
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,đại điểm, học phí,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -7623,7 +7623,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoại trừ môn,Lĩnh vực
+                                if(khoaHoc.getBangCap() == null)//Empty ngoại trừ môn,Lĩnh vực
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -7769,7 +7769,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoại trừ môn,Lĩnh vực,giới tính
+                                if(khoaHoc.getBangCap() == null)//Empty ngoại trừ môn,Lĩnh vực,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -7926,7 +7926,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,Lĩnh vực,học phí
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,Lĩnh vực,học phí
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -8004,7 +8004,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//empty ngoại trừ môn,Lĩnh vực,học phí,giới tính
+                                if(khoaHoc.getBangCap() == null)//empty ngoại trừ môn,Lĩnh vực,học phí,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -8168,7 +8168,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoài môn,Lĩnh vực, địa điểm
+                                if(khoaHoc.getBangCap() == null)//Empty ngoài môn,Lĩnh vực, địa điểm
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -8320,7 +8320,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoài môn,Lĩnh vực, địa điểm,giới tính
+                                if(khoaHoc.getBangCap() == null)//Empty ngoài môn,Lĩnh vực, địa điểm,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -8481,7 +8481,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                         {
                             if(khoaHoc.getGioiTinh().equals("Nam, Nữ"))
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoài môn,Lĩnh vục, địa điểm,học phí
+                                if(khoaHoc.getBangCap() == null)//Empty ngoài môn,Lĩnh vục, địa điểm,học phí
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -8641,7 +8641,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             }
                             else
                             {
-                                if(khoaHoc.getBangCap().isEmpty())//Empty ngoài môn,Lĩnh vục, địa điểm,học phí,giới tính
+                                if(khoaHoc.getBangCap() == null)//Empty ngoài môn,Lĩnh vục, địa điểm,học phí,giới tính
                                 {
                                     mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
                                         @Override
@@ -8811,7 +8811,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
         }
 
 //        if (loai) {
-//            if (khoaHoc.getLinhVuc().size() == 0 && khoaHoc.getMon().size() == 0) {
+//            if (khoaHoc.getLinhVuc() == null && khoaHoc.getMon().size() == 0) {
 //                if (hocPhiTimKiem == 0 && khoaHoc.getDiaDiem().getDayDu().equals(null)) {
 //                    mData.child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
 //                        @Override
@@ -9047,7 +9047,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
 //
 //                    }
 //                }
-//                if (khoaHoc.getLinhVuc().size() == 0 && khoaHoc.getMon().size() != 0) {
+//                if (khoaHoc.getLinhVuc() == null && khoaHoc.getMon().size() != 0) {
 //                    if (hocPhiTimKiem == 0 && khoaHoc.getDiaDiem().getDayDu().equals(null)) {
 //
 //                    }
@@ -9076,7 +9076,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
 //                    }
 //                }
 //            } else {
-//                if (khoaHoc.getLinhVuc().size() == 0 && khoaHoc.getMon().size() == 0) {
+//                if (khoaHoc.getLinhVuc() == null && khoaHoc.getMon().size() == 0) {
 //                    if (hocPhiTimKiem == 0 && khoaHoc.getDiaDiem().getDayDu().equals(null)) {
 //
 //                    }
@@ -9104,7 +9104,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
 //
 //                    }
 //                }
-//                if (khoaHoc.getLinhVuc().size() == 0 && khoaHoc.getMon().size() != 0) {
+//                if (khoaHoc.getLinhVuc() == null && khoaHoc.getMon().size() != 0) {
 //                    if (hocPhiTimKiem == 0 && khoaHoc.getDiaDiem().getDayDu().equals(null)) {
 //
 //                    }

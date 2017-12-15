@@ -53,14 +53,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        danhSachMonPresenterImp = new DanhSachMonPresenter(this);
-        danhSachMonPresenterImp.guiYeuCau();
+        Toolbar myToolbar = findViewById(R.id.my_tool_bar);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        tvScreenTitle = findViewById(R.id.textView_Title_Actionbar);
+        searchView = findViewById(R.id.search_view); //Search bar
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_tool_bar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        tvScreenTitle = (TextView) findViewById(R.id.textView_Title_Actionbar);
-        searchView = (MaterialSearchView) findViewById(R.id.search_view); //Search bar
         //Set sự kiện
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getHeaderView(0).setOnClickListener(this);
@@ -71,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchView.setOnVoiceClickedListener(this);
 
         setUpActionBar(drawer, myToolbar);
+        danhSachMonPresenterImp = new DanhSachMonPresenter(this);
+        danhSachMonPresenterImp.guiYeuCau();
         mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
         imageHandler = new ImageHandler(this);
         fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
@@ -134,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             switch (currentFragment.getTag()) {
                 case SupportKeysList.TAG_HOME_FRAGMENT:
                 case SupportKeysList.TAG_DANH_SACH_KHOA_HOC:
+                case SupportKeysList.TAG_KET_QUA_TIM_KIEM:
                     findViewById(R.id.search_layout).setVisibility(View.VISIBLE);
                     tvScreenTitle.setVisibility(View.GONE);
                     menu.findItem(R.id.act_search).setVisible(false);
@@ -230,6 +231,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
+        if (getSupportFragmentManager().findFragmentById(R.id.content_main).getTag().compareTo(SupportKeysList.TAG_KET_QUA_TIM_KIEM)==0) {
+            fragmentHandler.XoaTatCaFragment();
+            ((TextView)findViewById(R.id.text_Search_Actionbar)).setHint(getResources().getString(R.string.app_name));
+        }
         if (searchView.isOpen()) {
             // Close the search on the back button press.
             searchView.closeSearch();
@@ -247,8 +252,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         String suggestion = searchView.getSuggestionAtPosition(position);
-
         fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(suggestion), true, SupportKeysList.TAG_KET_QUA_TIM_KIEM);
+        searchView.closeSearch();
+        ((TextView)findViewById(R.id.text_Search_Actionbar)).setHint(suggestion);
     }
 
     @Override

@@ -66,7 +66,7 @@ public class FragmentHandler {
 
     public void XoaTatCaFragment(){
         int count = fragmentManager.getBackStackEntryCount();
-        while(count > 0 ){
+        while(count > 1 ){
             XoaFragment();
             count--;
         }

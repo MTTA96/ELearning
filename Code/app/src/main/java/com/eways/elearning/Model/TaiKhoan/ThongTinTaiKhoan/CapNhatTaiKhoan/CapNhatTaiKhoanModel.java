@@ -93,7 +93,7 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 String downloadUrl = taskSnapshot.getDownloadUrl().toString();
-                taiKhoan.setAvarta(downloadUrl);
+                taiKhoan.setAvatar(downloadUrl);
                 mData.getReference().child("TaiKhoan").child(taiKhoan.getId()).setValue(taiKhoan);
             }
         });

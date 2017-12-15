@@ -65,6 +65,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_thong_tin_khoa_hoc, container, false);
+        imgUserAvatar = root.findViewById(R.id.imageView_UserAvatar_ThongTinKhoaHoc);
         tvNamSinh = root.findViewById(R.id.textView_NamSinh_ThongTinKhoaHoc);
         tvGioiTinh = root.findViewById(R.id.textView_GioiTinh_ThongTinKhoaHoc);
         tvNgheNghiep = root.findViewById(R.id.textView_NgheNghiep_ThongTinKhoaHoc);
@@ -89,7 +90,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
 
     private void loadView(TaiKhoan taiKhoan, KhoaHoc khoaHoc) {
         //User info
-//        imageHandler.loadImageRound(taiKhoan.);
+        imageHandler.loadImageRound(taiKhoan.getAvatar(), imgUserAvatar);
         tvNamSinh.setText(taiKhoan.getNamsinh().compareTo("null") == 0 ? "Chưa cập nhật" : taiKhoan.getNamsinh().toString());
         tvGioiTinh.setText(taiKhoan.getGioitinh().compareTo("null") == 0 ? "Chưa cập nhật" : taiKhoan.getGioitinh().toString());
         tvNgheNghiep.setText(taiKhoan.getNghenghiep().compareTo("null") == 0 ? "Chưa cập nhật" : taiKhoan.getNghenghiep().toString());
@@ -97,7 +98,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
 
         //Course info
         tvMon.setText(khoaHoc.getMon().get(0));
-        tvDiaDiem.setText(khoaHoc.getDiaDiem().getDayDu() + " " + khoaHoc.getDiaDiem().getQuan() + " " + khoaHoc.getDiaDiem().getTP());
+        tvDiaDiem.setText(khoaHoc.getDiaDiem().getDayDu() + ", " + khoaHoc.getDiaDiem().getQuan() + ", " + khoaHoc.getDiaDiem().getTP());
         String thu = "";
         for (int i = 0; i < khoaHoc.getLichHoc().getThoiGian().size(); i++) {
             thu += " " + khoaHoc.getLichHoc().getThoiGian().get(i);
@@ -111,7 +112,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         tvSoBuoi.setText(khoaHoc.getSoBuoiHoc());
         tvSoHocVien.setText(khoaHoc.getSoLuongHocVien());
         tvThongTinThem.setText(khoaHoc.getThongTinKhac() != null ? khoaHoc.getThongTinKhac() : "");
-        tvHocPhi.setText(khoaHoc.getHocPhi());
+        tvHocPhi.setText(khoaHoc.formatGia(Long.parseLong(khoaHoc.getHocPhi())) + tvHocPhi.getText());
     }
 
     @Override

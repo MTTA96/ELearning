@@ -26,7 +26,7 @@ public class TaiKhoan {
     String trinhdo;
     String diadiem;
     String sodienthoai;
-    String avarta;
+    String avatar;
     boolean dacapnhat;
 
     public TaiKhoan() {
@@ -45,7 +45,7 @@ public class TaiKhoan {
         this.ten = ten;
     }
 
-    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms, String trinhdo, String diadiem, String sodienthoai, String avarta, boolean dacapnhat) {
+    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms, String trinhdo, String diadiem, String sodienthoai, String avatar, boolean dacapnhat) {
         this.id = id;
         this.email = email;
         this.ho = ho;
@@ -62,7 +62,7 @@ public class TaiKhoan {
         this.trinhdo = trinhdo;
         this.diadiem = diadiem;
         this.sodienthoai = sodienthoai;
-        this.avarta = avarta;
+        this.avatar = avatar;
         this.dacapnhat = dacapnhat;
     }
 
@@ -194,12 +194,12 @@ public class TaiKhoan {
         this.sodienthoai = sodienthoai;
     }
 
-    public String getAvarta() {
-        return avarta;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setAvarta(String avarta) {
-        this.avarta = avarta;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public boolean getDacapnhat() {

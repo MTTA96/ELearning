@@ -14,7 +14,7 @@
         android:orientation="vertical">
         <!--User avatar-->
         <ImageView
-            android:id="@+id/ivAvatar_ChiTietKhoaHoc"
+            android:id="@+id/imageView_UserAvatar_ThongTinKhoaHoc"
             android:layout_width="@dimen/avarta_size_QLTK"
             android:layout_height="@dimen/avarta_size_QLTK"
             android:layout_gravity="center"
@@ -80,7 +80,6 @@
                             android:id="@+id/textView_NamSinh_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1236"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -100,7 +99,6 @@
                             android:id="@+id/textView_GioiTinh_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Nam"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -120,7 +118,6 @@
                             android:id="@+id/textView_NgheNghiep_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sinh viên"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -140,7 +137,6 @@
                             android:id="@+id/textView_TrinhDo_ThongTin_KhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Đại học"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
@@ -187,7 +183,6 @@
                             android:id="@+id/textView_Mon_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Toán"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -207,7 +202,6 @@
                             android:id="@+id/textView_DiaDiem_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Q8, HCM"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -227,7 +221,6 @@
                             android:id="@+id/textView_Thu_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="T2, T3, T4"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -247,7 +240,6 @@
                             android:id="@+id/textView_Buoi_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sáng"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -267,7 +259,6 @@
                             android:id="@+id/textView_SoBuoi_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="15"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -287,7 +278,6 @@
                             android:id="@+id/textView_SoHocVien_ThongTinKhoaHoc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="2"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -341,7 +331,8 @@
             android:layout_weight="1"
             android:text="/buổi"
             android:textColor="@color/White"
-            android:textSize="@dimen/normal_text_size" />
+            android:textStyle="bold"
+            android:textSize="@dimen/title_text_size" />
         <!-- Tạo -->
         <Button
             android:id="@+id/button_YeuCau_ThongTinKhoaHoc"

@@ -83,14 +83,14 @@ public class DangNhapPresenter implements DangNhapPresenterImp {
         if (ketqua.compareTo(DangNhapFragment.LOGIN_SUCCESS)==0){
             if (user!=null){
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
-                sharedPreferencesHandler.DangNhapThanhCong(user.getUid(), user.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(),taiKhoan.getAvarta(), user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms(),taiKhoan.getTrinhdo(),taiKhoan.getDiadiem(),taiKhoan.getSodienthoai(),taiKhoan.getDacapnhat());
+                sharedPreferencesHandler.DangNhapThanhCong(user.getUid(), user.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(),taiKhoan.getAvatar(), user.getDisplayName(),true,SupportKeysList.TAI_KHOAN_THUONG,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms(),taiKhoan.getTrinhdo(),taiKhoan.getDiadiem(),taiKhoan.getSodienthoai(),taiKhoan.getDacapnhat());
                 dangNhapImpView.NhanKetQuaDN(ketqua);
                 return;
             }
             if (Guser!=null)
             {
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity,SupportKeysList.SHARED_PREF_FILE_NAME);
-                sharedPreferencesHandler.DangNhapThanhCong(Guser.getId(),Guser.getEmail(),Guser.getFamilyName(),Guser.getGivenName(),taiKhoan.getAvarta(),Guser.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms(),taiKhoan.getTrinhdo(),taiKhoan.getDiadiem(),taiKhoan.getSodienthoai(),taiKhoan.getDacapnhat());
+                sharedPreferencesHandler.DangNhapThanhCong(Guser.getId(),Guser.getEmail(),Guser.getFamilyName(),Guser.getGivenName(),taiKhoan.getAvatar(),Guser.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms(),taiKhoan.getTrinhdo(),taiKhoan.getDiadiem(),taiKhoan.getSodienthoai(),taiKhoan.getDacapnhat());
                 dangNhapImpView.NhanKetQuaDN(ketqua);
                 return;
             }

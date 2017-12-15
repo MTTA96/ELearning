@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
@@ -35,7 +36,7 @@ import java.util.ArrayList;
 
 import br.com.mauker.materialsearchview.MaterialSearchView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener,MainActivityImp, AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener,MainActivityImp, AdapterView.OnItemClickListener, MaterialSearchView.OnVoiceClickedListener {
     TextView tvUserName, tvUserEmail;
     ImageView imgUser;
     public TextView tvScreenTitle;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         findViewById(R.id.nav_menu_home).setOnClickListener(this);
         findViewById(R.id.text_Search_Actionbar).setOnClickListener(this);
         searchView.setOnItemClickListener(this);
+        searchView.setOnVoiceClickedListener(this);
 
         setUpActionBar(drawer, myToolbar);
         mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
@@ -247,5 +249,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String suggestion = searchView.getSuggestionAtPosition(position);
 
         fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(suggestion), true, SupportKeysList.TAG_KET_QUA_TIM_KIEM);
+    }
+
+    @Override
+    public void onVoiceClicked() {
+        Toast.makeText(this, "Comming soon!", Toast.LENGTH_SHORT).show();
     }
 }

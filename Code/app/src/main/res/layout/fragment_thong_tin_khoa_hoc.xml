@@ -300,7 +300,7 @@
                         android:text="@string/title_thong_tin_them_tao_khoa_hoc" />
 
                     <TextView
-                        android:id="@+id/textView_ThongTinKhac_TaoKhoaHoc"
+                        android:id="@+id/textView_ThongTinKhac_ThongTinKhoaHoc"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/text_thong_tin_them_height"
                         android:layout_marginTop="5dp"

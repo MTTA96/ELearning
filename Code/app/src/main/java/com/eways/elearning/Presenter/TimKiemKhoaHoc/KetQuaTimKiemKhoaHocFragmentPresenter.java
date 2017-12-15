@@ -1,5 +1,7 @@
 package com.eways.elearning.Presenter.TimKiemKhoaHoc;
 
+import android.app.Activity;
+
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc.KetQuaTimKiemFragmentModel;
@@ -24,8 +26,8 @@ public class KetQuaTimKiemKhoaHocFragmentPresenter implements KetQuaTimKiemKhoaH
 
 
     @Override
-    public void guiYeuCauListKhoaHoc(KhoaHoc khoaHoc, boolean loai) {
-        ketQuatimKiemFragmentModelImp.getListKhoaHoc(khoaHoc,loai);
+    public void guiYeuCauListKhoaHoc(KhoaHoc khoaHoc, boolean loai, String mon,Activity activity) {
+        ketQuatimKiemFragmentModelImp.getListKhoaHoc(khoaHoc,loai,mon,activity);
     }
 
     @Override

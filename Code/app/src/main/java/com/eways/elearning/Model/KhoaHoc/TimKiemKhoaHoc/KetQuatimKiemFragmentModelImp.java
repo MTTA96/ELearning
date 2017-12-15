@@ -1,5 +1,7 @@
 package com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc;
 
+import android.app.Activity;
+
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 
 /**
@@ -7,5 +9,5 @@ import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
  */
 
 public interface KetQuatimKiemFragmentModelImp {
-    public void getListKhoaHoc(KhoaHoc khoaHoc,boolean loai);
+    public void getListKhoaHoc(KhoaHoc khoaHoc,boolean loai,String mon,Activity activity);
 }

@@ -1,10 +1,24 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/White"
     android:orientation="vertical"
     tools:context=".View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/big_toolbar_with_avatar_height"
+        android:background="@color/colorMain"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView_UserAvatar_CNTTTK"
+            android:layout_width="@dimen/user_avatar_size"
+            android:layout_height="@dimen/user_avatar_size"
+            android:background="@drawable/avatar_shape" />
+    </LinearLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/content_tao_khoa_hoc"
@@ -301,4 +315,4 @@
     <!-- Họ tên -->
 
 
-</RelativeLayout>
+</LinearLayout>

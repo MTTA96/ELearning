@@ -2,6 +2,7 @@ package com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc;
 
 import android.app.Activity;
 
+import com.eways.elearning.DataModel.TaiKhoanCustom;
 import com.eways.elearning.DataModel.ThongTinChiTietKhoaHoc;
 import com.eways.elearning.Model.KhoaHoc.ThongTinNguoiDang.ThongTinKhoaHoc.ThongTinKhoaHocModel;
 import com.eways.elearning.Model.KhoaHoc.ThongTinNguoiDang.ThongTinKhoaHoc.ThongTinKhoaHocModelImp;

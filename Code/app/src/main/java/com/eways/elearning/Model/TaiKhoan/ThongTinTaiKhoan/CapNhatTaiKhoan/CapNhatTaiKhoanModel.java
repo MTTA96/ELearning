@@ -41,7 +41,7 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp {
     }
 
     @Override
-    public void CapNhatTaiKhoan(final TaiKhoan taiKhoan, final Activity activity, byte[] data_mt, final byte[] data_ms) {
+    public void CapNhatTaiKhoan(final TaiKhoan taiKhoan, final Activity activity, byte[] data_mt, final byte[] data_ms,final byte[] data_avarta) {
         activityModel=activity;
         mAuth=FirebaseAuth.getInstance(FirebaseApp.initializeApp(activity));
         mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
@@ -50,8 +50,9 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp {
         //up hinh tai lieu xac minh
         storage=FirebaseStorage.getInstance(FirebaseApp.initializeApp(activity));
         StorageReference storageRef = storage.getReferenceFromUrl("gs://elearning-da847.appspot.com");
-        StorageReference TaiLieuXacMinh_mt = storageRef.child(taiKhoan.getId()+"_mt.jpg");
+        final StorageReference TaiLieuXacMinh_mt = storageRef.child(taiKhoan.getId()+"_mt.jpg");
         final StorageReference TaiLieuXacMinh_ms = storageRef.child(taiKhoan.getId()+"_ms.jpg");
+        final StorageReference Avarta=storageRef.child(taiKhoan.getId()+"_avarta.jpg");
         UploadTask uploadTask = TaiLieuXacMinh_mt.putBytes(data_mt);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -79,6 +80,20 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 String downloadUrl = taskSnapshot.getDownloadUrl().toString();
                 taiKhoan.setTailieuxacminh_ms(downloadUrl);
+                mData.getReference().child("TaiKhoan").child(taiKhoan.getId()).setValue(taiKhoan);
+            }
+        });
+        UploadTask uploadTask2 = Avarta.putBytes(data_avarta);
+        uploadTask2.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("LoiCN1",e.toString());
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                String downloadUrl = taskSnapshot.getDownloadUrl().toString();
+                taiKhoan.setAvarta(downloadUrl);
                 mData.getReference().child("TaiKhoan").child(taiKhoan.getId()).setValue(taiKhoan);
             }
         });

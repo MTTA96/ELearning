@@ -34,8 +34,8 @@ public class ParseDataTaiKhoan  {
             while (keys.hasNext())
             {
                 String key = keys.next();
-                boolean dadangnhapTaiKhoan;
-                String idTaiKhoan,emailTaiKhoan,hoTaiKhoan,tenTaiKhoan,tentaikhoanTaiKhoan,loaitaikhoanTaiKhoan,passwordTaiKhoan,nghenghiepTaiKhoan,namsinhTaiKhoan,gioitinhTaiKhoan,tailieuxacminh_mt,tailieuxacminh_ms,trinhdoTaiKhoan,diadiemTaiKhoan,sodienthoaiTaiKhoan;
+                boolean dadangnhapTaiKhoan,dacapnhatTaiKhoan;
+                String idTaiKhoan,emailTaiKhoan,hoTaiKhoan,tenTaiKhoan,tentaikhoanTaiKhoan,loaitaikhoanTaiKhoan,passwordTaiKhoan,nghenghiepTaiKhoan,namsinhTaiKhoan,gioitinhTaiKhoan,tailieuxacminh_mt,tailieuxacminh_ms,trinhdoTaiKhoan,diadiemTaiKhoan,sodienthoaiTaiKhoan,avartaTaiKhoan;
                 if(root.get(key) instanceof JSONObject)
                 {
                     JSONObject object = root.getJSONObject(key);
@@ -59,10 +59,10 @@ public class ParseDataTaiKhoan  {
                     else
                         tenTaiKhoan="null";
 
-                    if (object.getString("tentaikhoan")!=null)
-                        tentaikhoanTaiKhoan = object.getString("tentaikhoan");
-                    else
-                        tentaikhoanTaiKhoan="null";
+//                    if (object.getString("tentaikhoan")!=null)
+//                        tentaikhoanTaiKhoan = object.getString("tentaikhoan");
+//                    else
+//                        tentaikhoanTaiKhoan="null";
 
                     if (object.getBoolean("dadangnhap"))
                         dadangnhapTaiKhoan=object.getBoolean("dadangnhap");
@@ -119,6 +119,16 @@ public class ParseDataTaiKhoan  {
                         sodienthoaiTaiKhoan=object.getString("sodienthoai");
                     else
                         sodienthoaiTaiKhoan="null";
+
+                    if (object.getString("avarta")!=null)
+                        avartaTaiKhoan=object.getString("avarta");
+                    else
+                        avartaTaiKhoan="null";
+                    if (object.getBoolean("dacapnhat"))
+                        dacapnhatTaiKhoan=object.getBoolean("dacapnhat");
+                    else
+                        dacapnhatTaiKhoan=false;
+
                     //Truyền UID vào NODEJS để lấy về Avatar người đăng
 
 //                    JSONArray objectLop = object.getJSONArray("Lop");
@@ -139,7 +149,7 @@ public class ParseDataTaiKhoan  {
 
 //                    CustomModelKhoaHoc kht = new CustomModelKhoaHoc(TenNguoiDang,UIDNguoiDang,LinkAnh,BuoiHoc,rating,Mon,Lop);
 //                    khoaHocArrayList.add(kht);
-                    TaiKhoan taiKhoan=new TaiKhoan(idTaiKhoan,emailTaiKhoan,hoTaiKhoan,tenTaiKhoan,tentaikhoanTaiKhoan,dadangnhapTaiKhoan,loaitaikhoanTaiKhoan,passwordTaiKhoan,nghenghiepTaiKhoan,namsinhTaiKhoan,gioitinhTaiKhoan,tailieuxacminh_mt,tailieuxacminh_ms,trinhdoTaiKhoan,diadiemTaiKhoan,sodienthoaiTaiKhoan);
+                    TaiKhoan taiKhoan=new TaiKhoan(idTaiKhoan,emailTaiKhoan,hoTaiKhoan,tenTaiKhoan,"null",dadangnhapTaiKhoan,loaitaikhoanTaiKhoan,passwordTaiKhoan,nghenghiepTaiKhoan,namsinhTaiKhoan,gioitinhTaiKhoan,tailieuxacminh_mt,tailieuxacminh_ms,trinhdoTaiKhoan,diadiemTaiKhoan,sodienthoaiTaiKhoan,avartaTaiKhoan,dacapnhatTaiKhoan);
                     taiKhoanList.add(taiKhoan);
                 }
             }

@@ -53,6 +53,7 @@ public class DialogPlusHandler {
     public Intent data;
     public ImageView hinhMatTruoc;
     public ImageView hinhMatSau;
+    public ImageView avarta;
 
     public static int vitrichon;
     private String selectedImagePath;

@@ -501,7 +501,6 @@
         android:id="@+id/buttons_tao_khoa_hoc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:background="@color/colorMain"
         android:gravity="end"
         android:orientation="horizontal">

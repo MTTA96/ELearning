@@ -220,17 +220,22 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
             return;
         }else{
             if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null")==0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null")!=0){
+                view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                 imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(),imTaiLieuXacMinh_ms);
             }else {
                 if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null")==0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null")!=0){
+                    view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                     imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(),imTaiLieuXacMinh_ms);
                     return;
                 }
                 if (sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null")==0 && sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null")!=0){
+                    view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                     imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_mt(),imTaiLieuXacMinh_mt);
                     return;
                 }
                 if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null")!=0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null")!=0){
+                    view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
+                    view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                     imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_mt(),imTaiLieuXacMinh_mt);
                     imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(),imTaiLieuXacMinh_ms);
                 }
@@ -258,7 +263,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        dialogPlusHandler.onActivityResult(requestCode,resultCode,data,imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms);
+        dialogPlusHandler.onActivityResult(requestCode,resultCode,data,imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms);
         if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data!= null){
             Bitmap bitmap=(Bitmap) data.getExtras().get("data");
             if (vitrichon==0) {

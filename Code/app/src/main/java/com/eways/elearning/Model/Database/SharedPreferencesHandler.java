@@ -46,6 +46,7 @@ public class SharedPreferencesHandler {
         setHo("");
         setTen("");
         setTenTaiKhoan("");
+        setAvatar("null");
         setDaDangNhap(false);
         setLoaiTaiKhoan("");
     }

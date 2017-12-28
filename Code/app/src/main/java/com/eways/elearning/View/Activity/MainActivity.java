@@ -97,10 +97,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     //Set data
                     if (mySharedPref.getDaDangNhap()){
-                        if (mySharedPref.getAvatar() != null && mySharedPref.getAvatar().compareTo("") != 0)
+                        if (mySharedPref.getAvatar() != null && mySharedPref.getAvatar().compareTo("null") != 0)
                             imageHandler.loadImageRound(mySharedPref.getAvatar(), imgUser);
                         else
-                            imgUser.setImageBitmap(null);
+                            imgUser.setBackgroundResource(R.drawable.default_avatar);
                         tvUserEmail.setText(mySharedPref.getEmail());
                         tvUserName.setText(mySharedPref.getHo() + " " + mySharedPref.getTen());
                     }

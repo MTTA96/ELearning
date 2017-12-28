@@ -176,7 +176,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         }
         if (ketqua.compareTo(LOGIN_SUCCESS)==0){
 //            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main,new HomeFragment()).commit();
-            fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, null);
+            fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
         }
     }
 

@@ -37,6 +37,7 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
     private KhoaHoc requestKhoaHoc;
     private boolean requestGiaSu;
     private String requestBangCap;
+    private String requestMon;
 
     int sizeLichHoc = 0;
     int countLichHoc = 0;
@@ -46,6 +47,7 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
     ArrayList<CustomModelKhoaHoc> rsKhoaHocGanChinhXac;
     KhoaHocRCAdapter adapterChinhXac;
     KhoaHocRCAdapter adapterGanChinhXac;
+
     RecyclerView rcKetQua;
     ImageHandler imageHandler;
     KetQuaTimKiemKhoaHocFragmentPresenterImp ketQuaTimKiemKhoaHocFragmentPresenterImp;
@@ -93,7 +95,7 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
             ketQuaTimKiemKhoaHocFragmentPresenterImp = new KetQuaTimKiemKhoaHocFragmentPresenter(this);
 
             //Request môn
-            getArguments().getString(paramMon, "");
+            requestMon = getArguments().getString(paramMon, "");
 
         }
     }
@@ -109,7 +111,7 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
         imageHandler = new ImageHandler(getActivity());
         rsKhoaHocChinhXac = new ArrayList<CustomModelKhoaHoc>();
         rsKhoaHocGanChinhXac = new ArrayList<CustomModelKhoaHoc>();
-        ketQuaTimKiemKhoaHocFragmentPresenterImp.guiYeuCauListKhoaHoc(requestKhoaHoc, requestGiaSu);
+        ketQuaTimKiemKhoaHocFragmentPresenterImp.guiYeuCauListKhoaHoc(requestKhoaHoc, requestGiaSu,requestMon, getActivity());
 //        if (rsKhoaHocChinhXac.size() == 0) {
 //            if(rsKhoaHocGanChinhXac.size() == 0)
 //            {
@@ -281,8 +283,8 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
     public void nhanListKhoaHoc(ArrayList<CustomModelKhoaHoc> chinhxac, ArrayList<CustomModelKhoaHoc> ganchinhxac) {
         rsKhoaHocChinhXac = chinhxac;
         rsKhoaHocGanChinhXac = ganchinhxac;
-        if (rsKhoaHocChinhXac.size() == 0) {
-            if (rsKhoaHocGanChinhXac.size() == 0) {
+        if (rsKhoaHocChinhXac == null || rsKhoaHocChinhXac.size() == 0) {
+            if (rsKhoaHocGanChinhXac == null || rsKhoaHocGanChinhXac.size()==0) {
                 Toast.makeText(getActivity(), "Không tìm thấy kết quả!", Toast.LENGTH_SHORT).show();
             } else {
                 adapterKhoaHoc = new KhoaHocRCAdapter(getActivity(), rsKhoaHocGanChinhXac, imageHandler, fragmentHandler);

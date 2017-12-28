@@ -46,15 +46,15 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
 
     @Override
     public void onBindViewHolder(final ItemListKhoaHocHomeViewHolder holder, int position) {
-        khoaHoc = listKhoaHoc.get(holder.getLayoutPosition());
-        imageHandler.loadImageSquare(khoaHoc.LinkAvatar, holder.imgUserImage);
-        holder.tvMon.setText(khoaHoc.MonHoc.get(0).toString());
-        holder.tvGia.setText(khoaHoc.formatGia(Long.parseLong(khoaHoc.HocPhi)));
+        khoaHoc = listKhoaHoc.get(position);
+        imageHandler.loadImageSquare(khoaHoc.getAvatar(), holder.imgUserImage);
+        holder.tvMon.setText(khoaHoc.getMon().get(0).toString());
+        holder.tvGia.setText(khoaHoc.formatGia(Long.parseLong(khoaHoc.getHocPhi())));
 
         holder.imgUserImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(khoaHoc.UIDNguoiDang, khoaHoc.KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
+                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(listKhoaHoc.get(holder.getLayoutPosition()).getNguoiDang(), listKhoaHoc.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
             }
         });
     }

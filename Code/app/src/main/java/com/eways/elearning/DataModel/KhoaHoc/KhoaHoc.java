@@ -57,7 +57,7 @@ public class KhoaHoc implements Serializable {
 //    }
 
 
-    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem, DanhSachYeuCau danhSachYeuCau, NumberFormat formatGia) {
+    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem, DanhSachYeuCau danhSachYeuCau) {
         Avatar = avatar;
         Rating = rating;
         HoTen = hoTen;
@@ -76,7 +76,6 @@ public class KhoaHoc implements Serializable {
         LichHoc = lichHoc;
         DiaDiem = diaDiem;
         this.danhSachYeuCau = danhSachYeuCau;
-        this.formatGia = formatGia;
     }
 
     public String getAvatar() {

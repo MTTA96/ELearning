@@ -39,7 +39,9 @@ public class TimKiemTheoMonModel implements TimKiemTheoMonModelImp {
                     try {
                         if(URLEncoder.encode(removeDiacriticalMarks(mon),"utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(kh.getMon().get(0)),"utf-8")))
                         {
-                            listKhoaHoc.add(new CustomModelKhoaHoc(dataSnapshot.getKey(), kh.getHoTen(), kh.getNguoiDang(), kh.getAvatar(), kh.getLichHoc().getThoiGian(), kh.getRating(), kh.getHocPhi(), kh.getMon()));
+                            KhoaHoc khoaHoc=new KhoaHoc();
+                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            listKhoaHoc.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
                             timKiemTheoMonPresenterImp.nhanListKhoaHoc(listKhoaHoc);
                         }
                     } catch (UnsupportedEncodingException e) {
@@ -77,7 +79,9 @@ public class TimKiemTheoMonModel implements TimKiemTheoMonModelImp {
                    try {
                        if(URLEncoder.encode(removeDiacriticalMarks(mon),"utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(kh.getMon().get(0)),"utf-8")))
                        {
-                           listKhoaHoc.add(new CustomModelKhoaHoc(dataSnapshot.getKey(), kh.getHoTen(), kh.getNguoiDang(), kh.getAvatar(), kh.getLichHoc().getThoiGian(), kh.getRating(), kh.getHocPhi(), kh.getMon()));
+                           KhoaHoc khoaHoc=new KhoaHoc();
+                           khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                           listKhoaHoc.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
                            timKiemTheoMonPresenterImp.nhanListKhoaHoc(listKhoaHoc);
                        }
                    } catch (UnsupportedEncodingException e) {

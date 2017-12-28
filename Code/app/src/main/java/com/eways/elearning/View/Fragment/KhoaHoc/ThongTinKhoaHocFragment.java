@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
 import com.eways.elearning.DataModel.TaiKhoan;
 import com.eways.elearning.DataModel.ThongTinChiTietKhoaHoc;
 import com.eways.elearning.Handler.ImageHandler;
@@ -29,6 +30,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     ImageView imgUserAvatar;
     TextView tvNamSinh, tvGioiTinh, tvNgheNghiep, tvTrinhDo;
     TextView tvMon, tvDiaDiem, tvThu, tvBuoi, tvSoBuoi, tvSoHocVien, tvThongTinThem, tvHocPhi;
+    Button btnGuiYeuCau;
 
     private static final String KEY_PARAM1 = "param1";
     private static final String KEY_PARAM2 = "param2";
@@ -78,17 +80,19 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         tvSoHocVien = root.findViewById(R.id.textView_SoHocVien_ThongTinKhoaHoc);
         tvHocPhi = root.findViewById(R.id.textView_HocPhi_ThongTinKhoaHoc);
         tvThongTinThem = root.findViewById(R.id.textView_ThongTinKhac_ThongTinKhoaHoc);
+        btnGuiYeuCau=root.findViewById(R.id.button_YeuCau_ThongTinKhoaHoc);
 
         root.findViewById(R.id.button_YeuCau_ThongTinKhoaHoc).setOnClickListener(this);
         return root;
     }
 
     @Override
-    public void KetQuaThongTinKhoaHoc(ThongTinChiTietKhoaHoc thongTinChiTietKhoaHoc) {
+    public void KetQuaThongTinKhoaHoc(final ThongTinChiTietKhoaHoc thongTinChiTietKhoaHoc) {
         loadView(thongTinChiTietKhoaHoc.getTaiKhoan(), thongTinChiTietKhoaHoc.getKhoaHoc());
+
     }
 
-    private void loadView(TaiKhoan taiKhoan, KhoaHoc khoaHoc) {
+    private void loadView(TaiKhoan taiKhoan,KhoaHoc khoaHoc) {
         //User info
         imageHandler.loadImageRound(taiKhoan.getAvatar(), imgUserAvatar);
         tvNamSinh.setText(taiKhoan.getNamsinh().compareTo("null") == 0 ? "Chưa cập nhật" : taiKhoan.getNamsinh().toString());

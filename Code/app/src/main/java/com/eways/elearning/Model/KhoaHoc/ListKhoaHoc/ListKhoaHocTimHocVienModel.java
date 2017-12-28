@@ -45,8 +45,9 @@ public class ListKhoaHocTimHocVienModel implements ListKhoaHocTimHocVienImpModel
         mData.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMHOCVIEN).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
-                CustomModelKhoaHoc ckh = new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon());
+                KhoaHoc khoaHoc=new KhoaHoc();
+                khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                CustomModelKhoaHoc ckh = new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey());
                 listKhoaHoc.add(ckh);
                 listKhoaHocTimHocVienPresenterImp.nhanDanhSachKhoaHoc(listKhoaHoc);
             }

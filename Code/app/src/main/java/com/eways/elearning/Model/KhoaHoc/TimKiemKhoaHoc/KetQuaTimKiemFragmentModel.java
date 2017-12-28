@@ -458,8 +458,8 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
                             for (String smon : kh.getMon()) {
                                 try {
                                     if (URLEncoder.encode(removeDiacriticalMarks(mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(smon), "utf-8"))) {
-                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(dataSnapshot.getKey(), kh.getHoTen(), kh.getNguoiDang(), kh.getAvatar(), kh.getLichHoc().getThoiGian(), kh.getRating(), kh.getHocPhi(), kh.getMon()));
-                                        khoaHocGanChinhXac.add(new CustomModelKhoaHoc(dataSnapshot.getKey(), kh.getHoTen(), kh.getNguoiDang(), kh.getAvatar(), kh.getLichHoc().getThoiGian(), kh.getRating(), kh.getHocPhi(), kh.getMon()));
+                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                        khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
                                         ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
                                     }
                                 } catch (UnsupportedEncodingException e) {

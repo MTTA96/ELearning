@@ -118,7 +118,6 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         tvThongTinThem.setText(khoaHoc.getThongTinKhac() != null ? khoaHoc.getThongTinKhac() : "");
         tvHocPhi.setText(khoaHoc.formatGia(Long.parseLong(khoaHoc.getHocPhi())) + tvHocPhi.getText());
     }
-
     @Override
     public void onClick(View view) {
 

@@ -116,20 +116,29 @@ public class DialogPlusHandler {
         this.permissions=permissions;
         this.grantResults=grantResults;
     }
-    public void onActivityResult(int requestCode,int resultCode,Intent data,ImageView hinhMatTruoc,ImageView hinhMatSau){
+    public void onActivityResult(int requestCode,int resultCode,Intent data,ImageView hinhMatTruoc,ImageView hinhMatSau,ImageView avatar){
         ImageHandler imageHandler=new ImageHandler(activity);
         if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data!= null){
             bitmap=(Bitmap) data.getExtras().get("data");
             if (vitrichon==0)
                 hinhMatTruoc.setImageBitmap(bitmap);
-            else
-                hinhMatSau.setImageBitmap(bitmap);
+            else{
+                if (vitrichon==1)
+                    hinhMatSau.setImageBitmap(bitmap);
+                else
+                    avatar.setImageBitmap(bitmap);
+            }
         }
         if (requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null) {
             if (vitrichon==0)
                 imageHandler.loadImageRound(String.valueOf(data.getData()) ,hinhMatTruoc);
-            else
-                imageHandler.loadImageRound(String.valueOf(data.getData()),hinhMatSau);
+            else{
+                if (vitrichon==1)
+                    imageHandler.loadImageRound(String.valueOf(data.getData()),hinhMatSau);
+                else
+                    imageHandler.loadImageRound(String.valueOf(data.getData()),avatar);
+            }
+
         }
         this.requestCode=requestCode;
         this.resultCode=resultCode;

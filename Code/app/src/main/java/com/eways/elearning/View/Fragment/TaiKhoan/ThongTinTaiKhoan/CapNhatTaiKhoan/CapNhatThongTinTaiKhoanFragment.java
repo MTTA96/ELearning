@@ -263,7 +263,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        dialogPlusHandler.onActivityResult(requestCode,resultCode,data,imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms);
+        dialogPlusHandler.onActivityResult(requestCode,resultCode,data,imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms,imAvarta);
         if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data!= null){
             Bitmap bitmap=(Bitmap) data.getExtras().get("data");
             if (vitrichon==0) {

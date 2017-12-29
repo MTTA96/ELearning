@@ -343,7 +343,6 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="Gửi yêu cầu" />
+            android:paddingRight="10dp" />
     </LinearLayout>
 </LinearLayout>

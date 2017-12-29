@@ -121,7 +121,7 @@ public class DangNhapModel implements DangNhapImpModel{
                         return;
                     }
                 }
-                mDataDangNhapGmail.getReference().child("TaiKhoan").child(account.getId().trim().toString()).setValue(new TaiKhoan(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),"null",true, SupportKeysList.TAI_KHOAN_GMAIL,"null","null","null","null","null","null","null","null","null","null",false));
+                mDataDangNhapGmail.getReference().child("TaiKhoan").child(account.getId().trim().toString()).setValue(new TaiKhoan(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),"null",true, SupportKeysList.TAI_KHOAN_GMAIL,"null","null","null","null","null","null","null","null","null","null",false,"5"));
                 mDataDangNhapGmail.getReference().child("TaiKhoan").orderByKey().equalTo(account.getId().toString()).addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {

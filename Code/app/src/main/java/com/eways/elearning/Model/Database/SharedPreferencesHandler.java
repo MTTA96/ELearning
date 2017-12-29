@@ -31,6 +31,7 @@ public class SharedPreferencesHandler {
     private final String KEY_DIACHI="diachi";
     private final String KEY_SODIENTHOAI="sodienthoai";
     private final String KEY_DACAPNHAT="dacapnhat";
+    private final String KEY_RATING="rating";
 
     public SharedPreferencesHandler(Context context,String tenFile) {
         this.context = context;
@@ -216,8 +217,16 @@ public class SharedPreferencesHandler {
         editor.putBoolean(KEY_DACAPNHAT,daCapNhat);
         editor.commit();
     }
+    public String getRating(){
+        return sharedPreferences.getString(KEY_RATING, "");
+    }
 
-    public void DangNhapThanhCong(String id, String email, String ho, String ten, String avatar, String tenTK,boolean daDangNhap, String loaiTK,String ngheNghiep,String namSinh,String gioiTinh,String taiLieuXacMinh_mt,String taiLieuXacMinh_ms,String trinhdo,String diachi,String sodienthoai,boolean daCapnNhat){
+    public void setRating(String rating){
+        editor.putString(KEY_RATING,rating);
+        editor.commit();
+    }
+
+    public void DangNhapThanhCong(String id, String email, String ho, String ten, String avatar, String tenTK,boolean daDangNhap, String loaiTK,String ngheNghiep,String namSinh,String gioiTinh,String taiLieuXacMinh_mt,String taiLieuXacMinh_ms,String trinhdo,String diachi,String sodienthoai,boolean daCapnNhat,String rating){
         setID(id);
         setEmail(email);
         setHo(ho);
@@ -235,6 +244,7 @@ public class SharedPreferencesHandler {
         setDiaChi(diachi);
         setSoDienThoai(sodienthoai);
         setDaCapNhat(daCapnNhat);
+        setRating(rating);
     }
     public void DangXuat(){
         setID("");
@@ -250,5 +260,6 @@ public class SharedPreferencesHandler {
         setSoDienThoai("");
         setAvatar("");
         setDaDangNhap(false);
+        setRating("");
     }
 }

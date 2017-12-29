@@ -21,6 +21,7 @@ import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenter;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
 import com.google.android.gms.common.SignInButton;
@@ -82,7 +83,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
 //        ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
 
         AnHienMatKhau(etPasswordDN);
-
+        LoadingDialog.dismissDialog();
         return root;
     }
 
@@ -91,9 +92,11 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         if (view.getId() == R.id.btnSignup)
             fragmentHandler.ChuyenFragment(new DangKyFragment(), true, SupportKeysList.TAG_DANG_KY_FRAGMENT);
         if (view.getId() == R.id.btnLogin){
+            LoadingDialog.showDialog();
             dangNhapImpPresenter.NhanThongTinDN(etEmailDN.getText().toString().trim(),etPasswordDN.getText().toString().trim(),getActivity());
         }
         if (view.getId() == R.id.btnLoginGmail){
+            LoadingDialog.showDialog();
             loginGmailHandler.ConnectGmail();
             loginGmailHandler.signIn();
         }
@@ -135,18 +138,21 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
     @Override
     public void NhanKetQuaDN(String ketqua) {
         if (ketqua.compareTo(ERROR_MSG_THIEU_EMAIL)==0){
+            LoadingDialog.dismissDialog();
             tvLoiDangNhap.setText(R.string.loi_EmailDN);
             etEmailDN.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDN.setBackgroundResource(R.drawable.et_shape);
             return;
         }
         if (ketqua.compareTo(ERROR_MSG_THIEU_PW)==0){
+            LoadingDialog.dismissDialog();
             tvLoiDangNhap.setText(R.string.loi_PasswordDN);
             etPasswordDN.setBackgroundResource(R.drawable.loi_shape);
             etEmailDN.setBackgroundResource(R.drawable.et_shape);
             return;
         }
         if (ketqua.compareTo(ERROR_MSG_THIEU_EMAIL_PW)==0){
+            LoadingDialog.dismissDialog();
             tvLoiDangNhap.setText(R.string.loi_EmailPasswordDN);
             etEmailDN.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDN.setBackgroundResource(R.drawable.loi_shape);
@@ -154,12 +160,14 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
         }
 
         if (ketqua.compareTo(ERROR_MSG_SAI_EMAIL)==0){
+            LoadingDialog.dismissDialog();
             tvLoiDangNhap.setText(R.string.loi_SaiDinhDangEmailDN);
             etEmailDN.setBackgroundResource(R.drawable.loi_shape);
             etPasswordDN.setBackgroundResource(R.drawable.et_shape);
             return;
         }
         if (ketqua.compareTo(ERROR_MSG_SAI_PW)==0){
+            LoadingDialog.dismissDialog();
             tvLoiDangNhap.setText(R.string.loi_SaiMatKhauDN);
             etPasswordDN.setBackgroundResource(R.drawable.loi_shape);
             etEmailDN.setBackgroundResource(R.drawable.et_shape);

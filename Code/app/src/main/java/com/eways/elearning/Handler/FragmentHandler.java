@@ -32,13 +32,11 @@ public class FragmentHandler {
     public FragmentHandler(Context context, FragmentManager fm){
         this.context = context;
         fragmentManager = fm;
-        loadingDialog = LoadingDialog.getInstance(context);
     }
 
     public void  ChuyenFragment(Fragment toFragment, boolean toBackStack, @NonNull String tag){
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         ((MainActivity)context).tvScreenTitle.setText("");
-        loadingDialog.show();
         //Kiểm tra fragment chuyển tiếp
         if(toFragment instanceof NewHomeFragment)
             XoaTatCaFragment();

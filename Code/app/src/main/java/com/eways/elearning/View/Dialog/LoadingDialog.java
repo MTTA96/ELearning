@@ -26,6 +26,9 @@ public class LoadingDialog extends ProgressDialog{
         return loadingDialog;
     }
 
+    public static void showDialog(){
+        loadingDialog.show();
+    }
     public static void dismissDialog(){
         loadingDialog.dismiss();
     }

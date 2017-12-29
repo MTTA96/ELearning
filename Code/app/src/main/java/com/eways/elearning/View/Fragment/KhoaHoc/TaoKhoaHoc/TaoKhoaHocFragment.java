@@ -167,6 +167,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     public void onClick(View v) {
         if (v.getId() == R.id.button_TaoKhoaHoc) {
             if (checkData()) {
+                LoadingDialog.showDialog();
                 KhoaHoc khoaHoc = setUpData();
                 taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc, switchTaoKhoaHoc.isChecked() ,getActivity());
             } else

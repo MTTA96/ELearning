@@ -46,9 +46,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private MaterialSearchView searchView;
 
     private FragmentHandler fragmentHandler;
+    private LoadingDialog loadingDialog;
     private SharedPreferencesHandler mySharedPref;
     private ImageHandler imageHandler;
-    DanhSachMonPresenterImp danhSachMonPresenterImp;
+    private DanhSachMonPresenterImp danhSachMonPresenterImp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchView.setOnVoiceClickedListener(this);
 
         setUpActionBar(drawer, myToolbar);
+        loadingDialog = LoadingDialog.getInstance(this);
         danhSachMonPresenterImp = new DanhSachMonPresenter(this);
         danhSachMonPresenterImp.guiYeuCau();
         mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);

@@ -19,6 +19,7 @@ import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Presenter.TaiKhoan.DangKy.DangKyPresenter;
 import com.eways.elearning.Presenter.TaiKhoan.DangKy.DangKyPresenterImp;
 import com.eways.elearning.R;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 
 /**
@@ -118,6 +119,7 @@ public class DangKyFragment extends Fragment implements View.OnClickListener, Da
         if (view.getId() == R.id.btnHuy_DK)
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new DangNhapFragment()).commit();
         if (view.getId() == R.id.btnDK_DK) {
+            LoadingDialog.showDialog();
             dangKyImpPresenter.NhanThongTinDangKy(etEmailDK.getText().toString(), etPasswordDK.getText().toString(), etCPassword.getText().toString(),etHoten.getText().toString(),getActivity());
         }
     }

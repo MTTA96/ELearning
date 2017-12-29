@@ -125,5 +125,8 @@
     <string name="Message_CapNhatThanhCong">Cập nhật thành công</string>
     <!--Dialog Lĩnh vực yêu thích-->
 
+    <!--Fragment thông tin khóa hoc-->
+    <string name="text_GuiYeuCau"><b>Gửi Yêu Cầu</b></string>
+    <string name="text_HuyYeuCau"><b>Hủy Yêu Cầu</b></string>
 
 </resources>

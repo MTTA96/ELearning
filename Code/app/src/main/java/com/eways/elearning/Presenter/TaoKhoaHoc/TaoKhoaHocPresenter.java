@@ -2,6 +2,7 @@ package com.eways.elearning.Presenter.TaoKhoaHoc;
 
 import android.app.Activity;
 
+import com.eways.elearning.DataModel.KhoaHoc.DanhSachYeuCau;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
@@ -26,6 +27,9 @@ public class TaoKhoaHocPresenter implements TaoKhoaHocPresenterImp {
 
     @Override
     public void nhanThongTinKhoaHoc(KhoaHoc khoaHoc,boolean loai ,Activity activity) {
+        ArrayList<String> dangcho=new ArrayList<>();
+        ArrayList<String> tamduyet=new ArrayList<>();
+        khoaHoc.setDanhSachYeuCau(new DanhSachYeuCau(dangcho,tamduyet));
         taoKhoaHocModelImp.postKhoaHoc(khoaHoc,loai,activity);
     }
 

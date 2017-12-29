@@ -18,6 +18,7 @@
     <string name="xem_danh_sach_bai_dang">Danh sách khóa học</string>
     <string name="tao_khoa_hoc">Tạo khóa học</string>
     <string name="hoi_dap">Hỏi - Đáp</string>
+    <string name="msg_cap_nhat_thong_tin">Cập nhật thông tin trước khi đăng ký!</string>
 
     <!--Fragment đăng nhập-->
     <string name="Tittle_Login"><b>Đăng Nhập</b></string>

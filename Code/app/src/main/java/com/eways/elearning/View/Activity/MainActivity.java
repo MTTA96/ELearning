@@ -31,6 +31,7 @@ import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.KetQuaTimKiemFra
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.TimKiemFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment;
 
 import java.util.ArrayList;
 
@@ -96,10 +97,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     //Set data
                     if (mySharedPref.getDaDangNhap()){
-                        if (mySharedPref.getAvatar() != null && mySharedPref.getAvatar().compareTo("") != 0)
+                        if (mySharedPref.getAvatar() != null && mySharedPref.getAvatar().compareTo("null") != 0)
                             imageHandler.loadImageRound(mySharedPref.getAvatar(), imgUser);
                         else
-                            imgUser.setImageBitmap(null);
+                            imgUser.setBackgroundResource(R.drawable.default_avatar);
                         tvUserEmail.setText(mySharedPref.getEmail());
                         tvUserName.setText(mySharedPref.getHo() + " " + mySharedPref.getTen());
                     }
@@ -192,8 +193,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_tao_khoa_hoc:
                 if (!mySharedPref.getDaDangNhap())
                     fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
-                else
-                    fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(),true,SupportKeysList.TAG_TAO_KHOA_HOC);
+                else {
+                    if(mySharedPref.getDaCapNhat())
+                        fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
+                    else {
+                        Toast.makeText(this, getResources().getString(R.string.msg_cap_nhat_thong_tin), Toast.LENGTH_SHORT).show();
+                        fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), true, SupportKeysList.TAG_THONG_TIN_CA_NHAN);
+                    }
+                }
                 break;
         }
 

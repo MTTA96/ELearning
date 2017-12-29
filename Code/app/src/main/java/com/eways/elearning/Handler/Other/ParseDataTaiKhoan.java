@@ -120,8 +120,8 @@ public class ParseDataTaiKhoan  {
                     else
                         sodienthoaiTaiKhoan="null";
 
-                    if (object.getString("avarta")!=null)
-                        avartaTaiKhoan=object.getString("avarta");
+                    if (object.getString("avatar")!=null)
+                        avartaTaiKhoan=object.getString("avatar");
                     else
                         avartaTaiKhoan="null";
                     if (object.getBoolean("dacapnhat"))

@@ -17,7 +17,7 @@
             android:id="@+id/imageView_UserAvatar_CNTTTK"
             android:layout_width="@dimen/user_avatar_size"
             android:layout_height="@dimen/user_avatar_size"
-            android:background="@drawable/avatar_shape" />
+            android:background="@drawable/default_avatar" />
     </LinearLayout>
 
     <android.support.v4.widget.NestedScrollView

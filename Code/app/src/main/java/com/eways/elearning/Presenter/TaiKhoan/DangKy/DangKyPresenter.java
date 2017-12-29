@@ -81,9 +81,9 @@ public class DangKyPresenter implements DangKyPresenterImp {
         }
         String[] Ho_Ten=Hoten.split(" ");
         if (Ho_Ten.length>=2){
-        dangKyImpModel.NhanTaiKhoan(new TaiKhoan(Email,Password,Ho_Ten[0],Ho_Ten[Ho_Ten.length-1]),activity);}
+            dangKyImpModel.NhanTaiKhoan(new TaiKhoan(Email,Password,Ho_Ten[0],Ho_Ten[Ho_Ten.length-1]),activity);}
         else {
-            dangKyImpModel.NhanTaiKhoan(new TaiKhoan(Email,Password,Ho_Ten[0],null),activity);
+            dangKyImpModel.NhanTaiKhoan(new TaiKhoan(Email,Password,Ho_Ten[0],"null"),activity);
         }
     }
     //Đếm số chữ trong chuỗi

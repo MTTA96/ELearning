@@ -40,13 +40,19 @@ public class NewHomeFragmentModel implements NewHomeFragmentModelImp {
                     KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
                     for (String linhVuc : kh.getLinhVuc()) {
                         if (linhVuc.equals(linhVuc1)) {
-                            listKhoaHoc1.add(new CustomModelKhoaHoc(dataSnapshot.getKey(), kh.getHoTen(), kh.getNguoiDang(), kh.getAvatar(), kh.getLichHoc().getThoiGian(), kh.getRating(), kh.getHocPhi(), kh.getMon()));
+                            KhoaHoc khoaHoc=new KhoaHoc();
+                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            listKhoaHoc1.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
                         }
                         if (linhVuc.equals(linhVuc2)) {
-                            listKhoaHoc2.add(new CustomModelKhoaHoc(dataSnapshot.getKey(), kh.getHoTen(), kh.getNguoiDang(), kh.getAvatar(), kh.getLichHoc().getThoiGian(), kh.getRating(), kh.getHocPhi(), kh.getMon()));
+                            KhoaHoc khoaHoc=new KhoaHoc();
+                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            listKhoaHoc2.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
                         }
                         if (linhVuc.equals(linhVuc3)) {
-                            listKhoaHoc3.add(new CustomModelKhoaHoc(dataSnapshot.getKey(), kh.getHoTen(), kh.getNguoiDang(), kh.getAvatar(), kh.getLichHoc().getThoiGian(), kh.getRating(), kh.getHocPhi(), kh.getMon()));
+                            KhoaHoc khoaHoc=new KhoaHoc();
+                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            listKhoaHoc3.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
                         }
                     }
                     newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);
@@ -81,13 +87,19 @@ public class NewHomeFragmentModel implements NewHomeFragmentModelImp {
                     KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
                     for (String linhVuc : kh.getLinhVuc()) {
                         if (linhVuc.equals(linhVuc1)) {
-                            listKhoaHoc1.add(new CustomModelKhoaHoc(dataSnapshot.getKey(), kh.getHoTen(), kh.getNguoiDang(), kh.getAvatar(), kh.getLichHoc().getThoiGian(), kh.getRating(), kh.getHocPhi(), kh.getMon()));
+                            KhoaHoc khoaHoc=new KhoaHoc();
+                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            listKhoaHoc1.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
                         }
                         if (linhVuc.equals(linhVuc2)) {
-                            listKhoaHoc2.add(new CustomModelKhoaHoc(dataSnapshot.getKey(), kh.getHoTen(), kh.getNguoiDang(), kh.getAvatar(), kh.getLichHoc().getThoiGian(), kh.getRating(), kh.getHocPhi(), kh.getMon()));
+                            KhoaHoc khoaHoc=new KhoaHoc();
+                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            listKhoaHoc2.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
                         }
                         if (linhVuc.equals(linhVuc3)) {
-                            listKhoaHoc3.add(new CustomModelKhoaHoc(dataSnapshot.getKey(), kh.getHoTen(), kh.getNguoiDang(), kh.getAvatar(), kh.getLichHoc().getThoiGian(), kh.getRating(), kh.getHocPhi(), kh.getMon()));
+                            KhoaHoc khoaHoc=new KhoaHoc();
+                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            listKhoaHoc3.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
                         }
                     }
                     newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);

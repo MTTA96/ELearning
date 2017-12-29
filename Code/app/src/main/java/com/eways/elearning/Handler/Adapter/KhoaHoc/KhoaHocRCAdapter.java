@@ -53,7 +53,7 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
         holder.vUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).UIDNguoiDang), true,SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
+                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang()), true,SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
             }
         });
         holder.vCourseInfo.setOnClickListener(this);
@@ -62,22 +62,26 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
     }
 
     private void loadData(ViewHolder holder, int position) {
+<<<<<<< HEAD
 
 
         imageHandler.loadImageSquare(khoaHocArrayList.get(position).LinkAvatar,holder.imvAvatar);
+=======
+        imageHandler.loadImageSquare(khoaHocArrayList.get(position).getAvatar(),holder.imvAvatar);
+>>>>>>> 92a98d8945546809c6ce88e65e09401d4588703d
 
-        if(khoaHocArrayList.get(position).Rating != null) {
-            float rt = Float.parseFloat(khoaHocArrayList.get(position).Rating);
+        if(khoaHocArrayList.get(position).getRating() != null) {
+            float rt = Float.parseFloat(khoaHocArrayList.get(position).getRating());
             holder.rtbBaiDang.setRating(rt);
         }
 
-        if(khoaHocArrayList.get(position).TenNguoiDang != null) {
-            String ten = "<b>Tên: </b>" + " " + khoaHocArrayList.get(position).TenNguoiDang;
+        if(khoaHocArrayList.get(position).getHoTen() != null) {
+            String ten = "<b>Tên: </b>" + " " + khoaHocArrayList.get(position).getHoTen();
             holder.tvTenNguoiDang.setText(Html.fromHtml(ten));
         }
 
-        if(khoaHocArrayList.get(position).MonHoc != null) {
-            ArrayList<String> listMon = khoaHocArrayList.get(position).MonHoc;
+        if(khoaHocArrayList.get(position).getMon() != null) {
+            ArrayList<String> listMon = khoaHocArrayList.get(position).getMon();
             String danhSachMon = "";
             for (String mon : listMon) {
                 danhSachMon = danhSachMon + mon;
@@ -86,8 +90,8 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
             holder.tvMonHoc.setText(Html.fromHtml(mon));
         }
 
-        if(khoaHocArrayList.get(position).BuoiHoc != null) {
-            ArrayList<String> listBuoi = khoaHocArrayList.get(position).BuoiHoc;
+        if(khoaHocArrayList.get(position).getSoBuoiHoc()!= null) {
+            ArrayList<String> listBuoi = khoaHocArrayList.get(position).getLichHoc().getNgayHoc();
             String dsbuoi = "";
             for (String buoi : listBuoi) {
                 dsbuoi = dsbuoi + buoi;
@@ -96,8 +100,8 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
             holder.tvBuoiHoc.setText(Html.fromHtml(buoi));
         }
 
-        if(khoaHocArrayList.get(position).HocPhi != null) {
-            String hocPhi = "<b>Học phí: <b>" + " " + khoaHocArrayList.get(position).HocPhi;
+        if(khoaHocArrayList.get(position).getHocPhi()!= null) {
+            String hocPhi = "<b>Học phí: <b>" + " " + khoaHocArrayList.get(position).getHocPhi();
             holder.tvHocPhi.setText(Html.fromHtml(hocPhi));
         }
     }

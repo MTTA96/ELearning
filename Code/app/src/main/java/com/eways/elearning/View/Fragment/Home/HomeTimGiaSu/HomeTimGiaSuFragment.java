@@ -18,6 +18,7 @@ import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.Home.NewHomeFragmentPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragmentImp;
 import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocFragment;
 
@@ -55,11 +56,10 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_home_tim_gia_su, container, false);
-        rvDanhSachKhoaHocAnhVan = (RecyclerView) root.findViewById(R.id.recyclerView_DanhSachKhoaHocAnhVan_HomeTimGiaSu);
-        rvDanhSachKhoaHocToan = (RecyclerView) root.findViewById(R.id.recyclerView_DanhSachKhoaHocToan_HomeTimGiaSu);
-        rvDanhSachKhoaHocKhac = (RecyclerView) root.findViewById(R.id.recyclerView_DanhSachKhoaHocKhac_HomeTimGiaSu);
+        rvDanhSachKhoaHocAnhVan = root.findViewById(R.id.recyclerView_DanhSachKhoaHocAnhVan_HomeTimGiaSu);
+        rvDanhSachKhoaHocToan = root.findViewById(R.id.recyclerView_DanhSachKhoaHocToan_HomeTimGiaSu);
+        rvDanhSachKhoaHocKhac = root.findViewById(R.id.recyclerView_DanhSachKhoaHocKhac_HomeTimGiaSu);
 
         root.findViewById(R.id.textView_XemDanhSachKhoaHocAnhVan_HomeTimGiaSu).setOnClickListener(this);
         root.findViewById(R.id.textView_XemDanhSachKhoaHocToan_HomeTimGiaSu).setOnClickListener(this);
@@ -77,6 +77,7 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
         rvDanhSachKhoaHocAnhVan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocAnhVan, imageHandler, fragmentHandler));
         rvDanhSachKhoaHocToan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocToan, imageHandler, fragmentHandler));
         rvDanhSachKhoaHocKhac.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocKhac, imageHandler, fragmentHandler));
+        LoadingDialog.dismissDialog();
     }
 
     @Override

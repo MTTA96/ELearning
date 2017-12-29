@@ -2,6 +2,7 @@ package com.eways.elearning.Handler;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.eways.elearning.R;
 import com.eways.elearning.View.Activity.MainActivity;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 
 /**
@@ -25,16 +27,18 @@ import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 public class FragmentHandler {
     private Context context;
     private FragmentManager fragmentManager;
+    private LoadingDialog loadingDialog;
 
     public FragmentHandler(Context context, FragmentManager fm){
         this.context = context;
         fragmentManager = fm;
+        loadingDialog = LoadingDialog.getInstance(context);
     }
 
-    public void  ChuyenFragment(Fragment toFragment, boolean toBackStack, @Nullable String tag){
+    public void  ChuyenFragment(Fragment toFragment, boolean toBackStack, @NonNull String tag){
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         ((MainActivity)context).tvScreenTitle.setText("");
-
+        loadingDialog.show();
         //Kiểm tra fragment chuyển tiếp
         if(toFragment instanceof NewHomeFragment)
             XoaTatCaFragment();

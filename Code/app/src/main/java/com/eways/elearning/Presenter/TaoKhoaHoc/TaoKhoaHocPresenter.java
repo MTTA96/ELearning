@@ -21,6 +21,8 @@ public class TaoKhoaHocPresenter implements TaoKhoaHocPresenterImp {
     TaoKhoaHocModelImp taoKhoaHocModelImp=new TaoKhoaHocModel(this);
     TaoKhoaHocViewImp taoKhoaHocViewImp=new TaoKhoaHocFragment();
 
+    public static final String RESULT_CODE_SUCCESS = "tao_thanh_cong";
+
     public TaoKhoaHocPresenter(TaoKhoaHocViewImp taoKhoaHocViewImp) {
         this.taoKhoaHocViewImp = taoKhoaHocViewImp;
     }
@@ -35,7 +37,7 @@ public class TaoKhoaHocPresenter implements TaoKhoaHocPresenterImp {
 
     @Override
     public void ketQua(String ketQua) {
-
+        taoKhoaHocViewImp.KetQuaTaoKhoaHoc(RESULT_CODE_SUCCESS);
     }
 
     @Override

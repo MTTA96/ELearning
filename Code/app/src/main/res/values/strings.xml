@@ -7,7 +7,7 @@
     <!-- Messages -->
     <string name="msg_dang_nhap_thanh_cong">Xin chào </string>
     <string name="thieu_thong_tin">Thiếu thông tin</string>
-
+    <string name="msg_loading">Loading…</string>
     <!-- Nav Menu -->
     <string name="header_msg_chua_dang_nhap">Đăng nhập</string>
     <string name="nav_home">Home</string>
@@ -71,6 +71,7 @@
     <string name="title_thu">Thứ:</string>
     <string name="title_thong_tin_them_tao_khoa_hoc">Thông tin thêm:</string>
     <string name="button_tiep_tuc_tao_khoa_hoc">Tiếp tục</string>
+    <string name="hin_dia_chi">Số nhà, đường, phường</string>
     <string name="text_gioi_tinh_nam">Nam</string>
     <string name="text_gioi_tinh_nu">Nữ</string>
     <string name="text_buoi_sang">Sáng</string>

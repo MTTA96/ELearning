@@ -15,6 +15,8 @@ import com.eways.elearning.Model.CustomClasses.CustomViewPager;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Activity.MainActivity;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.Home.HomeTimGiaSu.HomeTimGiaSuFragment;
 import com.eways.elearning.View.Fragment.Home.HomeTimHocVien.HomeTimHocVienFragment;
 import com.google.firebase.database.DatabaseReference;
@@ -24,14 +26,24 @@ import com.google.firebase.database.FirebaseDatabase;
  * A simple {@link Fragment} subclass.
  */
 public class NewHomeFragment extends Fragment {
-    SharedPreferencesHandler sharedPreferencesHandler;
     private final String titleTab1 = "Tìm gia sư";
     private final String titleTab2 = "Tìm học viên";
-    DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
+
+    private DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
+    private SharedPreferencesHandler sharedPreferencesHandler;
+
     public NewHomeFragment() {
         // Required empty public constructor
     }
 
+    public static NewHomeFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        NewHomeFragment fragment = new NewHomeFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

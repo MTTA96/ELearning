@@ -20,6 +20,7 @@ import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPres
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 
 /**
  * @author zzzzz
@@ -28,7 +29,7 @@ import com.eways.elearning.Util.SupportKeysList;
  */
 public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHocViewImp, View.OnClickListener {
     ImageView imgUserAvatar;
-    TextView tvNamSinh, tvGioiTinh, tvNgheNghiep, tvTrinhDo;
+    TextView tvTenNguoiDang, tvEmailNguoiDang, tvNamSinh, tvGioiTinh, tvNgheNghiep, tvTrinhDo;
     TextView tvMon, tvDiaDiem, tvThu, tvBuoi, tvSoBuoi, tvSoHocVien, tvThongTinThem, tvHocPhi;
     Button btnGuiYeuCau;
 
@@ -68,6 +69,8 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_thong_tin_khoa_hoc, container, false);
         imgUserAvatar = root.findViewById(R.id.imageView_UserAvatar_ThongTinKhoaHoc);
+        tvTenNguoiDang = root.findViewById(R.id.textView_TenNguoiDang_ThongTinKhoaHoc);
+        tvEmailNguoiDang = root.findViewById(R.id.textView_EmailNguoiDang_ThongTinKhoaHoc);
         tvNamSinh = root.findViewById(R.id.textView_NamSinh_ThongTinKhoaHoc);
         tvGioiTinh = root.findViewById(R.id.textView_GioiTinh_ThongTinKhoaHoc);
         tvNgheNghiep = root.findViewById(R.id.textView_NgheNghiep_ThongTinKhoaHoc);
@@ -95,6 +98,8 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     private void loadView(TaiKhoan taiKhoan,KhoaHoc khoaHoc) {
         //User info
         imageHandler.loadImageRound(taiKhoan.getAvatar(), imgUserAvatar);
+        tvTenNguoiDang.setText(taiKhoan.getTen());
+        tvEmailNguoiDang.setText(taiKhoan.getEmail());
         tvNamSinh.setText(taiKhoan.getNamsinh().compareTo("null") == 0 ? "Chưa cập nhật" : taiKhoan.getNamsinh().toString());
         tvGioiTinh.setText(taiKhoan.getGioitinh().compareTo("null") == 0 ? "Chưa cập nhật" : taiKhoan.getGioitinh().toString());
         tvNgheNghiep.setText(taiKhoan.getNghenghiep().compareTo("null") == 0 ? "Chưa cập nhật" : taiKhoan.getNghenghiep().toString());
@@ -117,6 +122,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         tvSoHocVien.setText(khoaHoc.getSoLuongHocVien());
         tvThongTinThem.setText(khoaHoc.getThongTinKhac() != null ? khoaHoc.getThongTinKhac() : "");
         tvHocPhi.setText(khoaHoc.formatGia(Long.parseLong(khoaHoc.getHocPhi())) + tvHocPhi.getText());
+        LoadingDialog.dismissDialog();
     }
     @Override
     public void onClick(View view) {

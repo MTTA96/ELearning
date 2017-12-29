@@ -2,6 +2,7 @@ package com.eways.elearning.Presenter.TaiKhoan.DangNhap;
 
 import android.accounts.AccountManager;
 import android.app.Activity;
+import android.util.Log;
 
 import com.eways.elearning.DataModel.TaiKhoan;
 import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapImpModel;
@@ -90,6 +91,7 @@ public class DangNhapPresenter implements DangNhapPresenterImp {
             if (Guser!=null)
             {
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity,SupportKeysList.SHARED_PREF_FILE_NAME);
+                Log.d("zz", taiKhoan.getAvatar());
                 sharedPreferencesHandler.DangNhapThanhCong(Guser.getId(),Guser.getEmail(),Guser.getFamilyName(),Guser.getGivenName(),taiKhoan.getAvatar(),Guser.getDisplayName(),true,SupportKeysList.TAI_KHOAN_GMAIL,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms(),taiKhoan.getTrinhdo(),taiKhoan.getDiadiem(),taiKhoan.getSodienthoai(),taiKhoan.getDacapnhat());
                 dangNhapImpView.NhanKetQuaDN(ketqua);
                 return;

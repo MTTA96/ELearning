@@ -216,6 +216,19 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         else {
             etNgheNghiep.setText(sharedPreferencesHandler.getNgheNghiep().toString());
         }
+        imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(),imAvarta);
+        if (sharedPreferencesHandler.getTrinhDo().compareTo("null")==0)
+            etTrinhDo.setText("");
+        else
+            etTrinhDo.setText(sharedPreferencesHandler.getTrinhDo().toString());
+        if (sharedPreferencesHandler.getDiaChi().compareTo("null")==0)
+            etTrinhDo.setText("");
+        else
+            etDiaChi.setText(sharedPreferencesHandler.getDiaChi().toString());
+        if (sharedPreferencesHandler.getSoDienThoai().compareTo("null")==0)
+            etSoDienThoai.setText("");
+        else
+            etSoDienThoai.setText(sharedPreferencesHandler.getSoDienThoai());
         if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null")==0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().toString().trim().compareTo("null")==0){
             return;
         }else{
@@ -242,22 +255,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
 
             }
         }
-        if (sharedPreferencesHandler.getAvatar().compareTo("null")==0)
-            return;
-        else
-            imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(),imAvarta);
-        if (sharedPreferencesHandler.getTrinhDo().compareTo("null")==0)
-            etTrinhDo.setText("");
-        else
-            etTrinhDo.setText(sharedPreferencesHandler.getTrinhDo().toString());
-        if (sharedPreferencesHandler.getDiaChi().compareTo("null")==0)
-            etTrinhDo.setText("");
-        else
-            etDiaChi.setText(sharedPreferencesHandler.getDiaChi().toString());
-        if (sharedPreferencesHandler.getSoDienThoai().compareTo("null")==0)
-            etSoDienThoai.setText("");
-        else
-            etSoDienThoai.setText(sharedPreferencesHandler.getSoDienThoai());
+
     }
 
     @Override

@@ -16,6 +16,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.eways.elearning.DataModel.TaiKhoan;
 import com.eways.elearning.Handler.Other.ParseDataTaiKhoan;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
@@ -117,11 +118,47 @@ public class DangNhapModel implements DangNhapImpModel{
 
                 for (int i=0;i<listTaiKhoan.size();i++){
                     if (listTaiKhoan.get(i).getId().compareTo(account.getId().toString().trim())==0){
-                        dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,listTaiKhoan.get(i));
-                        return;
+                        if (account.getPhotoUrl()!=null){
+                            if (account.getPhotoUrl().toString().compareTo(listTaiKhoan.get(i).getAvatar())==0){
+                                dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,listTaiKhoan.get(i));
+                                return;
+                            }else {
+                                TaiKhoan taiKhoan=new TaiKhoan();
+                                taiKhoan=listTaiKhoan.get(i);
+                                mDataDangNhapGmail.getReference().child("TaiKhoan").child(account.getId().trim().toString()).setValue(new TaiKhoan(taiKhoan.getId(),taiKhoan.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(),"null",true, SupportKeysList.TAI_KHOAN_GMAIL,"null",taiKhoan.getNghenghiep(),taiKhoan.getNghenghiep(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms(),taiKhoan.getTrinhdo(),taiKhoan.getDiadiem(),taiKhoan.getSodienthoai(),account.getPhotoUrl()!=null?account.getPhotoUrl().toString():taiKhoan.getAvatar(),taiKhoan.getDacapnhat(),taiKhoan.getRating()));
+                                mDataDangNhapGmail.getReference().child("TaiKhoan").orderByKey().equalTo(account.getId()).addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                        dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,dataSnapshot.getValue(TaiKhoan.class));
+                                    }
+
+                                    @Override
+                                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+                            }
+                        }else {
+                            dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,listTaiKhoan.get(i));
+                        }
                     }
                 }
-                mDataDangNhapGmail.getReference().child("TaiKhoan").child(account.getId().trim().toString()).setValue(new TaiKhoan(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),"null",true, SupportKeysList.TAI_KHOAN_GMAIL,"null","null","null","null","null","null","null","null","null","null",false,"5"));
+                mDataDangNhapGmail.getReference().child("TaiKhoan").child(account.getId().trim().toString()).setValue(new TaiKhoan(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),"null",true, SupportKeysList.TAI_KHOAN_GMAIL,"null","null","null","null","null","null","null","null","null",account.getPhotoUrl()!=null?account.getPhotoUrl().toString():"null",false,"5"));
                 mDataDangNhapGmail.getReference().child("TaiKhoan").orderByKey().equalTo(account.getId().toString()).addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {

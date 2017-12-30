@@ -169,7 +169,6 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int s;
         return super.onOptionsItemSelected(item);
     }
 

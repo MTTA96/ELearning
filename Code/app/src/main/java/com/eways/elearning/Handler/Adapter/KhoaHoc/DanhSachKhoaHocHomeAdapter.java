@@ -14,6 +14,7 @@ import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Handler.ViewHolder.ItemListKhoaHocHomeViewHolder;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinKhoaHocFragment;
 
 import java.text.NumberFormat;
@@ -54,6 +55,7 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
         holder.imgUserImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                LoadingDialog.showDialog();
                 fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(listKhoaHoc.get(holder.getLayoutPosition()).getNguoiDang(), listKhoaHoc.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
             }
         });

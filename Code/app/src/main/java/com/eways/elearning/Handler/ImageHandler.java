@@ -30,23 +30,30 @@ public class ImageHandler {
     @TargetApi(16)
     public void loadImageRound(String url, ImageView imageView){
         if (Build.VERSION.SDK_INT > 15)
-
-            Picasso.with(context).load(url).transform(transformationRound).transform(new CropCircleTransformation()).into(imageView);
-//        if (url.compareTo("null")==0 || url==null)
-//            imageView.setBackgroundResource(R.drawable.default_avatar);
-        else
             imageView.setBackground(null);
 
+        if (url != null) {
+            if (url.compareTo("null") != 0)
+                Picasso.with(context).load(url).transform(transformationRound).transform(new CropCircleTransformation()).into(imageView);
+            else
+                imageView.setBackgroundResource(R.drawable.default_avatar);
+        }
+        else
+            imageView.setBackgroundResource(R.drawable.default_avatar);
     }
 
     @TargetApi(16)
     public void loadImageSquare(String url, ImageView imageView){
         if (Build.VERSION.SDK_INT > 15)
             imageView.setBackground(null);
-//        if (url.compareTo("null")==0)
-//            imageView.setBackgroundResource(R.drawable.default_avatar);
+        if (url != null) {
+            if (url.compareTo("null") != 0)
+                Picasso.with(context).load(url).transform(transformationSquared).resize(180,180).centerCrop().into(imageView);
+            else
+                imageView.setBackgroundResource(R.drawable.default_avatar);
+        }
         else
-            Picasso.with(context).load(url).transform(transformationSquared).resize(180,180).centerCrop().into(imageView);
+            imageView.setBackgroundResource(R.drawable.default_avatar);
     }
 
 }

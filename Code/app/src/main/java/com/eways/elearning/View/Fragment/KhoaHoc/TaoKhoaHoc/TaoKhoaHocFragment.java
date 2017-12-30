@@ -1,5 +1,7 @@
 package com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -23,12 +26,16 @@ import com.eways.elearning.DataModel.KhoaHoc.LichHoc;
 import com.eways.elearning.DataModel.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.DataModel.LinhVuc.Mon;
+import com.eways.elearning.DataModel.ThongTinChiTietKhoaHoc;
+import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenter;
 import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Activity.MainActivity;
+import com.eways.elearning.View.Dialog.LoadingDialog;
+import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,7 +47,6 @@ import java.util.Calendar;
 public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, TaoKhoaHocViewImp {
     View root;
     Switch switchTaoKhoaHoc;
-    Button btnTaoKhoaHoc;
     Spinner spnLinhVuc, spnQuan, spnThanhPho;
     EditText etDiaDiem, etHocPhi, etSoHocVien, etSoBuoi, etThoiLuong, etThongTinThem;
     AutoCompleteTextView etMon, etBangCap;
@@ -50,10 +56,9 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
     private SharedPreferencesHandler sharedPreferencesHandler;
     private TaoKhoaHocPresenterImp taoKhoaHocPresenterImp;
-
-
-    ArrayList<Mon> danhSachMon;
-    ArrayList<String> danhSachBangCap;
+    private FragmentHandler fragmentHandler;
+    private ArrayList<Mon> danhSachMon;
+    private ArrayList<String> danhSachBangCap;
 
     public TaoKhoaHocFragment() {
         // Required empty public constructor
@@ -80,6 +85,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         }
         taoKhoaHocPresenterImp = new TaoKhoaHocPresenter(this);
         sharedPreferencesHandler = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
+        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
     }
 
     @Override
@@ -87,36 +93,35 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_tao_khoa_hoc, container, false);
-        switchTaoKhoaHoc = (Switch) root.findViewById(R.id.switch_tao_khoa_hoc);
-        spnLinhVuc = (Spinner) root.findViewById(R.id.spinner_LinhVuc_TaoKhoaHoc);
-        spnQuan = (Spinner) root.findViewById(R.id.spinner_Quan_TaoKhoaHoc);
-        spnThanhPho = (Spinner) root.findViewById(R.id.spinner_ThanhPho_TaoKhoaHoc);
-        etDiaDiem = (EditText) root.findViewById(R.id.editText_DiaDiem_TaoKhoaHoc);
-        etMon = (AutoCompleteTextView) root.findViewById(R.id.editText_TenMon_TaoKhoaHoc);
-        etHocPhi = (EditText) root.findViewById(R.id.editText_HocPhi_TaoKhoaHoc);
-        etBangCap = (AutoCompleteTextView) root.findViewById(R.id.editText_BangCap_TaoKhoaHoc);
-        etSoHocVien = (EditText) root.findViewById(R.id.editText_SoHocVien_TaoKhoaHoc);
-        etSoBuoi = (EditText) root.findViewById(R.id.editText_SoBuoi_TaoKhoaHoc);
-        etThoiLuong = (EditText) root.findViewById(R.id.editText_ThoiLuong_TaoKhoaHoc);
-        etThongTinThem = (EditText) root.findViewById(R.id.editText_ThongTinKhac_TaoKhoaHoc);
-        cbGioiTinhNam = (CheckBox) root.findViewById(R.id.cbGioiTinhNam);
-        cbGioiTinhNu = (CheckBox) root.findViewById(R.id.cbGioiTinhNu);
-        cbSang = (CheckBox) root.findViewById(R.id.checkBox_Sang);
-        cbChieu = (CheckBox) root.findViewById(R.id.checkBox_Chieu);
-        cbToi = (CheckBox) root.findViewById(R.id.checkBox_Toi);
-        cbThu2 = (CheckBox) root.findViewById(R.id.checkBox_Thu2);
-        cbThu3 = (CheckBox) root.findViewById(R.id.checkBox_Thu3);
-        cbThu4 = (CheckBox) root.findViewById(R.id.checkBox_Thu4);
-        cbThu5 = (CheckBox) root.findViewById(R.id.checkBox_Thu5);
-        cbThu6 = (CheckBox) root.findViewById(R.id.checkBox_Thu6);
-        cbThu7 = (CheckBox) root.findViewById(R.id.checkBox_Thu7);
-        cbChuNhat = (CheckBox) root.findViewById(R.id.checkBox_Chu_Nhat);
-        btnTaoKhoaHoc = (Button) root.findViewById(R.id.btn_tao_khoa_hoc);
+        switchTaoKhoaHoc = root.findViewById(R.id.switch_tao_khoa_hoc);
+        spnLinhVuc = root.findViewById(R.id.spinner_LinhVuc_TaoKhoaHoc);
+        spnQuan = root.findViewById(R.id.spinner_Quan_TaoKhoaHoc);
+        spnThanhPho = root.findViewById(R.id.spinner_ThanhPho_TaoKhoaHoc);
+        etDiaDiem = root.findViewById(R.id.editText_DiaDiem_TaoKhoaHoc);
+        etMon = root.findViewById(R.id.editText_TenMon_TaoKhoaHoc);
+        etHocPhi = root.findViewById(R.id.editText_HocPhi_TaoKhoaHoc);
+        etBangCap = root.findViewById(R.id.editText_BangCap_TaoKhoaHoc);
+        etSoHocVien = root.findViewById(R.id.editText_SoHocVien_TaoKhoaHoc);
+        etSoBuoi = root.findViewById(R.id.editText_SoBuoi_TaoKhoaHoc);
+        etThoiLuong = root.findViewById(R.id.editText_ThoiLuong_TaoKhoaHoc);
+        etThongTinThem = root.findViewById(R.id.editText_ThongTinKhac_TaoKhoaHoc);
+        cbGioiTinhNam = root.findViewById(R.id.cbGioiTinhNam);
+        cbGioiTinhNu = root.findViewById(R.id.cbGioiTinhNu);
+        cbSang = root.findViewById(R.id.checkBox_Sang);
+        cbChieu = root.findViewById(R.id.checkBox_Chieu);
+        cbToi = root.findViewById(R.id.checkBox_Toi);
+        cbThu2 = root.findViewById(R.id.checkBox_Thu2);
+        cbThu3 = root.findViewById(R.id.checkBox_Thu3);
+        cbThu4 = root.findViewById(R.id.checkBox_Thu4);
+        cbThu5 = root.findViewById(R.id.checkBox_Thu5);
+        cbThu6 = root.findViewById(R.id.checkBox_Thu6);
+        cbThu7 = root.findViewById(R.id.checkBox_Thu7);
+        cbChuNhat = root.findViewById(R.id.checkBox_Chu_Nhat);
 
         danhSachMon=new ArrayList<>();
         danhSachBangCap=new ArrayList<>();
 
-        root.findViewById(R.id.button_TiepTuc_TaoKhoaHoc).setOnClickListener(this);
+        root.findViewById(R.id.button_TaoKhoaHoc).setOnClickListener(this);
         switchTaoKhoaHoc.setOnCheckedChangeListener(this);
         cbSang.setOnCheckedChangeListener(this);
         cbChieu.setOnCheckedChangeListener(this);
@@ -160,11 +165,11 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button_TiepTuc_TaoKhoaHoc) {
+        if (v.getId() == R.id.button_TaoKhoaHoc) {
             if (checkData()) {
+                LoadingDialog.showDialog();
                 KhoaHoc khoaHoc = setUpData();
                 taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc, switchTaoKhoaHoc.isChecked() ,getActivity());
-
             } else
                 Toast.makeText(getActivity(), "Thiếu thông tin!", Toast.LENGTH_LONG).show();
 
@@ -268,7 +273,9 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     }
     @Override
     public void KetQuaTaoKhoaHoc(String result) {
-
+        if (result.compareTo(TaoKhoaHocPresenter.RESULT_CODE_SUCCESS)==0){
+            fragmentHandler.ChuyenFragment(NewHomeFragment.newInstance(), false, SupportKeysList.TAG_HOME_FRAGMENT);
+        }
     }
 
     @Override

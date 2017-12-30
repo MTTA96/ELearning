@@ -1,5 +1,6 @@
 package com.eways.elearning.View.Activity;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,6 +26,7 @@ import com.eways.elearning.Presenter.DanhSachMon.DanhSachMonPresenter;
 import com.eways.elearning.Presenter.DanhSachMon.DanhSachMonPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.TaoKhoaHoc.TaoKhoaHocFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.KetQuaTimKiemFragment;
@@ -37,17 +39,17 @@ import java.util.ArrayList;
 
 import br.com.mauker.materialsearchview.MaterialSearchView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener,MainActivityImp, AdapterView.OnItemClickListener, MaterialSearchView.OnVoiceClickedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, MainActivityImp, AdapterView.OnItemClickListener, MaterialSearchView.OnVoiceClickedListener {
     TextView tvUserName, tvUserEmail;
     ImageView imgUser;
     public TextView tvScreenTitle;
     private MaterialSearchView searchView;
 
     private FragmentHandler fragmentHandler;
+    private LoadingDialog loadingDialog;
     private SharedPreferencesHandler mySharedPref;
     private ImageHandler imageHandler;
-
-    DanhSachMonPresenterImp danhSachMonPresenterImp;
+    private DanhSachMonPresenterImp danhSachMonPresenterImp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchView.setOnVoiceClickedListener(this);
 
         setUpActionBar(drawer, myToolbar);
+        loadingDialog = LoadingDialog.getInstance(this);
         danhSachMonPresenterImp = new DanhSachMonPresenter(this);
         danhSachMonPresenterImp.guiYeuCau();
         mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
@@ -84,27 +87,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //Đồng bộ toolbar và slide menu
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, myToolbar, 0, 0){
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, myToolbar, 0, 0) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 if (slideOffset == 0) {
                     // drawer closed
                 } else if (slideOffset > 0.3) {
                     // started opening
-                    tvUserName = (TextView) findViewById(R.id.user_name_nav_menu);
-                    tvUserEmail = (TextView) findViewById(R.id.user_email_nav_menu);
-                    imgUser = (ImageView) findViewById(R.id.user_ava_nav_menu);
+                    tvUserName = findViewById(R.id.user_name_nav_menu);
+                    tvUserEmail = findViewById(R.id.user_email_nav_menu);
+                    imgUser = findViewById(R.id.user_ava_nav_menu);
 
                     //Set data
-                    if (mySharedPref.getDaDangNhap()){
-                        if (mySharedPref.getAvatar() != null && mySharedPref.getAvatar().compareTo("null") != 0)
-                            imageHandler.loadImageRound(mySharedPref.getAvatar(), imgUser);
-                        else
-                            imgUser.setBackgroundResource(R.drawable.default_avatar);
+                    if (mySharedPref.getDaDangNhap()) {
+                        imageHandler.loadImageRound(mySharedPref.getAvatar(), imgUser);
                         tvUserEmail.setText(mySharedPref.getEmail());
                         tvUserName.setText(mySharedPref.getHo() + " " + mySharedPref.getTen());
-                    }
-                    else {
+                    } else {
                         tvUserName.setText(R.string.header_msg_chua_dang_nhap);
                         tvUserEmail.setText("");
                         imgUser.setImageBitmap(null);
@@ -131,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.content_main);
-        if(currentFragment!=null && currentFragment.getTag()!=null) {
+        if (currentFragment != null && currentFragment.getTag() != null) {
             switch (currentFragment.getTag()) {
                 case SupportKeysList.TAG_HOME_FRAGMENT:
                 case SupportKeysList.TAG_DANH_SACH_KHOA_HOC:
@@ -166,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.act_search:
 //                fragmentHandler.ChuyenFragment(new TimKiemFragment(), true, SupportKeysList.TAG_TIM_KIEM);
                 searchView.openSearch();
@@ -180,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         fragmentHandler.XoaTatCaFragment();
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
                 break;
@@ -194,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (!mySharedPref.getDaDangNhap())
                     fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
                 else {
-                    if(mySharedPref.getDaCapNhat())
+                    if (mySharedPref.getDaCapNhat())
                         fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
                     else {
                         Toast.makeText(this, getResources().getString(R.string.msg_cap_nhat_thong_tin), Toast.LENGTH_SHORT).show();
@@ -204,13 +203,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
 
-        ((DrawerLayout)findViewById(R.id.drawer_layout)).closeDrawer(Gravity.START);
+        ((DrawerLayout) findViewById(R.id.drawer_layout)).closeDrawer(Gravity.START);
         return false;
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case -1:
                 if (!(getSupportFragmentManager().findFragmentById(R.id.content_main) instanceof NewHomeFragment))
                     this.onBackPressed();
@@ -238,9 +237,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().findFragmentById(R.id.content_main).getTag().compareTo(SupportKeysList.TAG_KET_QUA_TIM_KIEM)==0) {
+        if (getSupportFragmentManager().findFragmentById(R.id.content_main).getTag().compareTo(SupportKeysList.TAG_KET_QUA_TIM_KIEM) == 0) {
             fragmentHandler.XoaTatCaFragment();
-            ((TextView)findViewById(R.id.text_Search_Actionbar)).setHint(getResources().getString(R.string.app_name));
+            ((TextView) findViewById(R.id.text_Search_Actionbar)).setHint(getResources().getString(R.string.app_name));
         }
         if (searchView.isOpen()) {
             // Close the search on the back button press.
@@ -261,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String suggestion = searchView.getSuggestionAtPosition(position);
         fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(suggestion), true, SupportKeysList.TAG_KET_QUA_TIM_KIEM);
         searchView.closeSearch();
-        ((TextView)findViewById(R.id.text_Search_Actionbar)).setHint(suggestion);
+        ((TextView) findViewById(R.id.text_Search_Actionbar)).setHint(suggestion);
     }
 
     @Override

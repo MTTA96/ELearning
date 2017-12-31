@@ -122,40 +122,38 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         tvSoHocVien.setText(khoaHoc.getSoLuongHocVien());
         tvThongTinThem.setText(khoaHoc.getThongTinKhac() != null ? khoaHoc.getThongTinKhac() : "");
         tvHocPhi.setText(khoaHoc.formatGia(Long.parseLong(khoaHoc.getHocPhi())) + tvHocPhi.getText());
-
-        //Tắt loading dialog khi hoàn tất load data
-        LoadingDialog.dismissDialog();
-
         //Load nút gửi yêu cầu
         int count=0;
-        if (khoaHoc.getDanhSachYeuCau().getDangCho()==null){
-            btnGuiYeuCau.setText(R.string.text_GuiYeuCau);
-            return;
-        }
-        else {
-            for (int i = 0; i < khoaHoc.getDanhSachYeuCau().getDangCho().size(); i++) {
-                if (taiKhoan.getId().toString().compareTo(khoaHoc.getDanhSachYeuCau().getDangCho().get(i).toString())==0){
-                    count++;
-                }
-            }
-            if (count>0){
-                btnGuiYeuCau.setText(R.string.text_HuyYeuCau);
-                return;
-            }else {
-                count=0;
-                for (int i=0;i<khoaHoc.getDanhSachYeuCau().getTamDuyet().size();i++){
-                    if (taiKhoan.getId().toString().compareTo(khoaHoc.getDanhSachYeuCau().getTamDuyet().get(i).toString())==0)
-                        count++;
-                }
-                if (count>0){
-                    btnGuiYeuCau.setText(R.string.text_HuyYeuCau);
-                    return;
-                }else {
-                    btnGuiYeuCau.setText(R.string.text_GuiYeuCau);
-                    return;
-                }
-            }
-        }
+//        if (khoaHoc.getDanhSachYeuCau().getDangCho()==null){
+//            btnGuiYeuCau.setText(R.string.text_GuiYeuCau);
+//        }
+//        else {
+//            if(khoaHoc.getDanhSachYeuCau().getTamDuyet()==null){
+//                btnGuiYeuCau.setText(R.string.text_GuiYeuCau);
+//            }else {
+//                for (int i = 0; i < khoaHoc.getDanhSachYeuCau().getDangCho().size(); i++) {
+//                    if (taiKhoan.getId().toString().compareTo(khoaHoc.getDanhSachYeuCau().getDangCho().get(i).toString())==0){
+//                        count++;
+//                    }
+//                }
+//                if (count>0){
+//                    btnGuiYeuCau.setText(R.string.text_HuyYeuCau);
+//                }else {
+//                    count=0;
+//                    for (int i=0;i<khoaHoc.getDanhSachYeuCau().getTamDuyet().size();i++){
+//                        if (taiKhoan.getId().toString().compareTo(khoaHoc.getDanhSachYeuCau().getTamDuyet().get(i).toString())==0)
+//                            count++;
+//                    }
+//                    if (count>0){
+//                        btnGuiYeuCau.setText(R.string.text_HuyYeuCau);
+//                    }else {
+//                        btnGuiYeuCau.setText(R.string.text_GuiYeuCau);
+//                    }
+//                }
+//            }
+//        }
+        //Tắt loading dialog khi hoàn tất load data
+        LoadingDialog.dismissDialog();
     }
     @Override
     public void onClick(View view) {

@@ -2,7 +2,7 @@ package com.eways.elearning.Model.TaiKhoan.DangNhap;
 
 import android.app.Activity;
 
-import com.eways.elearning.DataModel.TaiKhoan;
+import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 /**

@@ -1,4 +1,4 @@
-package com.eways.elearning.DataModel;
+package com.eways.elearning.DataModel.TaiKhoan;
 
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 

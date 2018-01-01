@@ -1,4 +1,4 @@
-package com.eways.elearning.DataModel;
+package com.eways.elearning.DataModel.TaiKhoan;
 
 /**
  * Created by ADMIN on 12/14/2017.

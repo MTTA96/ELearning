@@ -24,6 +24,14 @@ public class TaiLieuChuyenMonFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static TaiLieuChuyenMonFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        TaiLieuChuyenMonFragment fragment = new TaiLieuChuyenMonFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

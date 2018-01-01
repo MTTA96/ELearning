@@ -3,7 +3,7 @@ package com.eways.elearning.Model.KhoaHoc.ThongTinNguoiDang.ThongTinKhoaHoc;
 import android.app.Activity;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.TaiKhoan;
+import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.DataModel.ThongTinChiTietKhoaHoc;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
@@ -12,8 +12,6 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-
-import javax.xml.transform.ErrorListener;
 
 /**
  * Created by ADMIN on 12/11/2017.

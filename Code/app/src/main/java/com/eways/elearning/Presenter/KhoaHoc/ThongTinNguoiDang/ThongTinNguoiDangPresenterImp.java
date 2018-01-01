@@ -2,7 +2,7 @@ package com.eways.elearning.Presenter.KhoaHoc.ThongTinNguoiDang;
 
 import android.app.Activity;
 
-import com.eways.elearning.DataModel.TaiKhoan;
+import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 
 /**
  * Created by ADMIN on 12/7/2017.

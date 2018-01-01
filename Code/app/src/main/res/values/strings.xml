@@ -8,6 +8,7 @@
     <string name="msg_dang_nhap_thanh_cong">Xin chào </string>
     <string name="thieu_thong_tin">Thiếu thông tin</string>
     <string name="msg_loading">Loading…</string>
+
     <!-- Nav Menu -->
     <string name="header_msg_chua_dang_nhap">Đăng nhập</string>
     <string name="nav_home">Home</string>
@@ -52,6 +53,10 @@
     <string name="SaiXacNhanMatKhauDK">*Xác nhận mật không đúng</string>
     <string name="SaiMatKhauDK">*Mật khẩu phải từ 6 ký tự trở lên</string>
     <string name="thieu_hoten">*Chưa nhập họ tên</string>
+
+    <!-- Điều khoản -->
+    <string name="title_dieu_khoan_gia_su">ĐIỀU KHOẢN GIA SƯ</string>
+    <string name="dieu_khoan_gia_su"> </string>
 
     <!-- Danh sách khóa học -->
     <string name="title_danh_sach_khoa_hoc">Danh sách khóa học</string>

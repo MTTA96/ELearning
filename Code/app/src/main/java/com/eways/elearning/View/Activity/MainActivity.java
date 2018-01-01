@@ -142,6 +142,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     break;
                 case SupportKeysList.TAG_THONG_TIN_CA_NHAN:
                     menu.findItem(R.id.act_save).setVisible(true);
+                case SupportKeysList.TAG_DIEU_KHOAN_GIA_SU:
+                    tvScreenTitle.setText(getString(R.string.title_dieu_khoan_gia_su));
                 case SupportKeysList.TAG_DANG_NHAP_FRAGMENT:
                 case SupportKeysList.TAG_DANG_KY_FRAGMENT:
                 case SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT:

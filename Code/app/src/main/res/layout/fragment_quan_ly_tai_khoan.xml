@@ -108,7 +108,7 @@
 
         <!--Đăng ký làm gia sư-->
         <LinearLayout
-            android:id="@+id/LoCapNhatBangCap"
+            android:id="@+id/linearLayout_DangKyGiaSu"
             android:layout_marginTop="@dimen/ItemQLTK_margintop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

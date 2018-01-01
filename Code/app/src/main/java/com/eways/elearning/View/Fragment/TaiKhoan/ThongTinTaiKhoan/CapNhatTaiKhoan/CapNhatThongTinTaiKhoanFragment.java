@@ -34,6 +34,7 @@ import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPre
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Activity.MainActivity;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
 import com.squareup.picasso.Picasso;
 
@@ -122,7 +123,9 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     @Override
     public void KetQuaCapNhat(String ketQuaCapNhat) {
         if (ketQuaCapNhat.compareTo(SupportKeysList.TAG_CAPNHATTHANHCONG) == 0) {
-            fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), false, null);
+            if (fragmentHandler.getPreviousFragmentTag().compareTo(SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT)==0
+                    || fragmentHandler.getPreviousFragmentTag().compareTo(SupportKeysList.TAG_HOME_FRAGMENT)==0)
+                fragmentHandler.XoaFragment();
 //            Toast.makeText(this.getContext(),"Cập Nhật Thành Công",Toast.LENGTH_SHORT).show();
         }
     }
@@ -130,6 +133,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnLuuCNTTTK) {
+            LoadingDialog.showDialog();
             capNhatTaiKhoanPresenterImp.NhanDataUpdate(new TaiKhoan(SetStringNull(sharedPreferencesHandler.getID()),
                     SetStringNull(sharedPreferencesHandler.getEmail()),
                     SetStringNull(sharedPreferencesHandler.getHo()),
@@ -174,12 +178,14 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
 
     //Load Data tài khoản
     public void LoadData() {
-
+        //Họ tên
         if(sharedPreferencesHandler.getHo().isEmpty() && sharedPreferencesHandler.getTen().isEmpty()){
             etHoTen.setText("");
         }
         else
             etHoTen.setText(sharedPreferencesHandler.getHo().toString()+sharedPreferencesHandler.getTen().toString());
+
+        //Năm sinh
         if (sharedPreferencesHandler.getNamSinh().toString().compareTo("null")==0){
             calendar = Calendar.getInstance();
             int currentYear = calendar.get(Calendar.YEAR);
@@ -200,6 +206,8 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
             int spinnerPosition=adDanhSachNam.getPosition(sharedPreferencesHandler.getNamSinh().toString());
             spNamsinh.setSelection(spinnerPosition);
         }
+
+        //Giới tính
         if (sharedPreferencesHandler.getGioiTinh().compareTo("null")==0) {
             ArrayAdapter adDanhSachGioiTinh = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ListGioiTinh));
             spGiotinh.setAdapter(adDanhSachGioiTinh);
@@ -209,12 +217,35 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
             int spinnerPosition=adDanhSachGioiTinh.getPosition(sharedPreferencesHandler.getGioiTinh());
             spGiotinh.setSelection(spinnerPosition);
         }
+
+        //Nghề nghiệp
         if(sharedPreferencesHandler.getNgheNghiep().compareTo("null")==0){
             etNgheNghiep.setText("");
         }
         else {
             etNgheNghiep.setText(sharedPreferencesHandler.getNgheNghiep().toString());
         }
+
+        //Avatar
+        imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(),imAvarta);
+        if (sharedPreferencesHandler.getTrinhDo().compareTo("null")==0)
+            etTrinhDo.setText("");
+        else
+            etTrinhDo.setText(sharedPreferencesHandler.getTrinhDo().toString());
+
+        //Địa chỉ
+        if (sharedPreferencesHandler.getDiaChi().compareTo("null")==0)
+            etTrinhDo.setText("");
+        else
+            etDiaChi.setText(sharedPreferencesHandler.getDiaChi().toString());
+
+        //Số điện thoại
+        if (sharedPreferencesHandler.getSoDienThoai().compareTo("null")==0)
+            etSoDienThoai.setText("");
+        else
+            etSoDienThoai.setText(sharedPreferencesHandler.getSoDienThoai());
+
+        //Tài liệu xác minh
         if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null")==0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().toString().trim().compareTo("null")==0){
             return;
         }else{
@@ -238,25 +269,8 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
                     imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_mt(),imTaiLieuXacMinh_mt);
                     imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(),imTaiLieuXacMinh_ms);
                 }
-
             }
         }
-        if (sharedPreferencesHandler.getAvatar().compareTo("null")==0)
-            return;
-        else
-            imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(),imAvarta);
-        if (sharedPreferencesHandler.getTrinhDo().compareTo("null")==0)
-            etTrinhDo.setText("");
-        else
-            etTrinhDo.setText(sharedPreferencesHandler.getTrinhDo().toString());
-        if (sharedPreferencesHandler.getDiaChi().compareTo("null")==0)
-            etTrinhDo.setText("");
-        else
-            etDiaChi.setText(sharedPreferencesHandler.getDiaChi().toString());
-        if (sharedPreferencesHandler.getSoDienThoai().compareTo("null")==0)
-            etSoDienThoai.setText("");
-        else
-            etSoDienThoai.setText(sharedPreferencesHandler.getSoDienThoai());
     }
 
     @Override

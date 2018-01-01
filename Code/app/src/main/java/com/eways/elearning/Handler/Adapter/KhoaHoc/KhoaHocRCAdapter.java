@@ -62,19 +62,22 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
     }
 
     private void loadData(ViewHolder holder, int position) {
-
+        //Hình
         imageHandler.loadImageSquare(khoaHocArrayList.get(position).getAvatar(),holder.imvAvatar);
 
+        //Rating
         if(khoaHocArrayList.get(position).getRating() != null) {
             float rt = Float.parseFloat(khoaHocArrayList.get(position).getRating());
             holder.rtbBaiDang.setRating(rt);
         }
 
+        //Họ tên
         if(khoaHocArrayList.get(position).getHoTen() != null) {
             String ten = "<b>Tên: </b>" + " " + khoaHocArrayList.get(position).getHoTen();
             holder.tvTenNguoiDang.setText(Html.fromHtml(ten));
         }
 
+        //Môn
         if(khoaHocArrayList.get(position).getMon() != null) {
             ArrayList<String> listMon = khoaHocArrayList.get(position).getMon();
             String danhSachMon = "";

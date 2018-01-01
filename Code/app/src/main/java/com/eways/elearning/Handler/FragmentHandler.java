@@ -74,4 +74,10 @@ public class FragmentHandler {
         }
     }
 
+    /**
+     * Lấy fragment trước đó
+     * */
+    public String getPreviousFragmentTag(){
+        return fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount()-1).getName();
+    }
 }

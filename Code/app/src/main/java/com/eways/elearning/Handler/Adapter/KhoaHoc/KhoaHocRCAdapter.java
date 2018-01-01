@@ -62,13 +62,8 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
     }
 
     private void loadData(ViewHolder holder, int position) {
-<<<<<<< HEAD
 
-
-        imageHandler.loadImageSquare(khoaHocArrayList.get(position).LinkAvatar,holder.imvAvatar);
-=======
         imageHandler.loadImageSquare(khoaHocArrayList.get(position).getAvatar(),holder.imvAvatar);
->>>>>>> 92a98d8945546809c6ce88e65e09401d4588703d
 
         if(khoaHocArrayList.get(position).getRating() != null) {
             float rt = Float.parseFloat(khoaHocArrayList.get(position).getRating());

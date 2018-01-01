@@ -2,6 +2,7 @@ package com.eways.elearning.Model.Home;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.DataModel.TaiKhoan;
 import com.eways.elearning.Presenter.Home.NewHomeFragmentPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.google.firebase.database.ChildEventListener;
@@ -38,24 +39,100 @@ public class NewHomeFragmentModel implements NewHomeFragmentModelImp {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                    final String keyKhoaHoc=dataSnapshot.getKey();
                     for (String linhVuc : kh.getLinhVuc()) {
                         if (linhVuc.equals(linhVuc1)) {
-                            KhoaHoc khoaHoc=new KhoaHoc();
-                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
-                            listKhoaHoc1.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                            final KhoaHoc khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            mData.child("TaiKhoan").orderByKey().equalTo(khoaHoc.getNguoiDang()).addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                    listKhoaHoc1.add(new CustomModelKhoaHoc(dataSnapshot.getValue(TaiKhoan.class).getAvatar(),dataSnapshot.getValue(TaiKhoan.class).getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),keyKhoaHoc));
+                                    newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);
+                                }
+
+                                @Override
+                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
                         }
                         if (linhVuc.equals(linhVuc2)) {
-                            KhoaHoc khoaHoc=new KhoaHoc();
-                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
-                            listKhoaHoc2.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                            final KhoaHoc khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            mData.child("TaiKhoan").orderByKey().equalTo(khoaHoc.getNguoiDang()).addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                    listKhoaHoc2.add(new CustomModelKhoaHoc(dataSnapshot.getValue(TaiKhoan.class).getAvatar(),dataSnapshot.getValue(TaiKhoan.class).getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),keyKhoaHoc));
+                                    newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);
+                                }
+
+                                @Override
+                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
                         }
                         if (linhVuc.equals(linhVuc3)) {
-                            KhoaHoc khoaHoc=new KhoaHoc();
-                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
-                            listKhoaHoc3.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                            final KhoaHoc khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            mData.child("TaiKhoan").orderByKey().equalTo(khoaHoc.getNguoiDang()).addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                    listKhoaHoc3.add(new CustomModelKhoaHoc(dataSnapshot.getValue(TaiKhoan.class).getAvatar(),dataSnapshot.getValue(TaiKhoan.class).getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),keyKhoaHoc));
+                                    newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);
+                                }
+
+                                @Override
+                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
                         }
                     }
-                    newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);
+//                    newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);
                 }
 
                 @Override
@@ -85,24 +162,100 @@ public class NewHomeFragmentModel implements NewHomeFragmentModelImp {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                    final String keyKhoaHoc=dataSnapshot.getKey();
                     for (String linhVuc : kh.getLinhVuc()) {
                         if (linhVuc.equals(linhVuc1)) {
-                            KhoaHoc khoaHoc=new KhoaHoc();
-                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
-                            listKhoaHoc1.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                            final KhoaHoc khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            mData.child("TaiKhoan").orderByKey().equalTo(khoaHoc.getNguoiDang().trim()).addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                    listKhoaHoc1.add(new CustomModelKhoaHoc(dataSnapshot.getValue(TaiKhoan.class).getAvatar(),dataSnapshot.getValue(TaiKhoan.class).getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),keyKhoaHoc));
+                                    newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);
+                                }
+
+                                @Override
+                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
                         }
                         if (linhVuc.equals(linhVuc2)) {
-                            KhoaHoc khoaHoc=new KhoaHoc();
-                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
-                            listKhoaHoc2.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                            final KhoaHoc khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            mData.child("TaiKhoan").orderByKey().equalTo(khoaHoc.getNguoiDang().trim()).addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                    listKhoaHoc2.add(new CustomModelKhoaHoc(dataSnapshot.getValue(TaiKhoan.class).getAvatar(),dataSnapshot.getValue(TaiKhoan.class).getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),keyKhoaHoc));
+                                    newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);
+                                }
+
+                                @Override
+                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
                         }
                         if (linhVuc.equals(linhVuc3)) {
-                            KhoaHoc khoaHoc=new KhoaHoc();
-                            khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
-                            listKhoaHoc3.add(new CustomModelKhoaHoc(khoaHoc.getAvatar(),khoaHoc.getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                            final KhoaHoc khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
+                            mData.child("TaiKhoan").orderByKey().equalTo(khoaHoc.getNguoiDang().trim()).addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                    listKhoaHoc3.add(new CustomModelKhoaHoc(dataSnapshot.getValue(TaiKhoan.class).getAvatar(),dataSnapshot.getValue(TaiKhoan.class).getRating(),khoaHoc.getHoTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),keyKhoaHoc));
+                                    newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);
+                                }
+
+                                @Override
+                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
                         }
                     }
-                    newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);
+//                    newHomeFragmentPresenterImp.getListKhoaHoc(listKhoaHoc1, listKhoaHoc2, listKhoaHoc3);
                 }
 
                 @Override

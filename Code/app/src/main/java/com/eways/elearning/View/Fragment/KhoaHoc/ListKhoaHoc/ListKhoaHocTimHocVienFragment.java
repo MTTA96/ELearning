@@ -30,11 +30,10 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
 
     private SwipeRefreshLayout srlKhoaHocTimHocVien;
     private RecyclerView rvKhoaHocTimHocVien;
-    private ListKhoaHocTimHocVienPresenterImp listKhoaHocTimHocVienPresenterImp;
 
+    private ListKhoaHocTimHocVienPresenterImp listKhoaHocTimHocVienPresenterImp;
     private ArrayList<CustomModelKhoaHoc> khoaHocArrayListhv;
     private KhoaHocRCAdapter khoaHocAdapterhv;
-
     private DatabaseReference mDatabase;
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
@@ -76,41 +75,6 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
                 srlKhoaHocTimHocVien.setRefreshing(false);
             }
         });
-
-
-        /**Get khóa học Non-MVP*/
-//        mDatabase.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMHOCVIEN).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                KhoaHocChuaHoanTat kh = new KhoaHocChuaHoanTat();
-//                kh = dataSnapshot.getValue(KhoaHocChuaHoanTat.class);
-//                CustomModelKhoaHoc ckh = new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop);
-//                khoaHocArrayListhv.add(ckh);
-//                khoaHocAdapterhv.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-
-
 
         return root;
     }

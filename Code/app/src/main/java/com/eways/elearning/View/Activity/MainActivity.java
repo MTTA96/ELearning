@@ -142,6 +142,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     break;
                 case SupportKeysList.TAG_THONG_TIN_CA_NHAN:
                     menu.findItem(R.id.act_save).setVisible(true);
+                case SupportKeysList.TAG_DIEU_KHOAN_GIA_SU:
+                    tvScreenTitle.setText(getString(R.string.title_dieu_khoan_gia_su));
                 case SupportKeysList.TAG_DANG_NHAP_FRAGMENT:
                 case SupportKeysList.TAG_DANG_KY_FRAGMENT:
                 case SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT:
@@ -237,10 +239,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().findFragmentById(R.id.content_main).getTag().compareTo(SupportKeysList.TAG_KET_QUA_TIM_KIEM) == 0) {
-            fragmentHandler.XoaTatCaFragment();
-            ((TextView) findViewById(R.id.text_Search_Actionbar)).setHint(getResources().getString(R.string.app_name));
-        }
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_main);
+        if (fragment.getTag() != null)
+            if (fragment.getTag().compareTo(SupportKeysList.TAG_KET_QUA_TIM_KIEM) == 0) {
+                fragmentHandler.XoaTatCaFragment();
+                ((TextView) findViewById(R.id.text_Search_Actionbar)).setHint(getResources().getString(R.string.app_name));
+            }
         if (searchView.isOpen()) {
             // Close the search on the back button press.
             searchView.closeSearch();

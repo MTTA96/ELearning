@@ -34,461 +34,8704 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
 
     @Override
     public void getListKhoaHoc(final KhoaHoc khoaHoc, boolean loai, final String mon,Activity activity) {
-//        final int count = cout(khoaHoc.getLichHoc().getNgayHoc().size()); //Nếu /2 mà <1 lấy 0 còn lại lấy /2 bt
-//        final double hocPhiTimKiem = Double.parseDouble(khoaHoc.getHocPhi());
-//        final double hocPhiTren = (hocPhiTimKiem + ((hocPhiTimKiem / 100) * 20));
-//        final double hocPhiDuoi = (hocPhiTimKiem - ((hocPhiTimKiem / 100) * 20));
+        int count = 0; //Nếu /2 mà <1 lấy 0 còn lại lấy /2 bt
+        double hocPhiTimKiem = 0;
+        double hocPhiTren = 0;
+        double hocPhiDuoi = 0;
         mData = FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
 
-//            if (loai)//0
-//            {
-//                //Tìm gia sư là ra bài tìm học viên
-//                if (khoaHoc.getMon() != null)//1
-//                {
-//                    if (hocPhiTimKiem != 0) //2 Mon!=null, HocPhi !=0
-//                    {
-//                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon!=null, HocPhi !=0,GioiTinh!=Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
-//                                {
-//                                    mData.child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addListenerForSingleValueEvent(new ValueEventListener() {
-//                                        @Override
-//                                        public void onDataChange(DataSnapshot dataSnapshot) {
-//                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
-//                                            for (String mon : kh.getMon()) {
-//                                                try {
-//                                                    if (URLEncoder.encode(removeDiacriticalMarks(mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
-//                                                        khoaHocGanChinhXac.add(new CustomModelKhoaHoc(dataSnapshot.getKey(), kh.getHoTen(), kh.getNguoiDang(), kh.getAvatar(), kh.getLichHoc().getThoiGian(), kh.getRating(), kh.getHocPhi(), kh.getMon()));
-//                                                        if (Double.parseDouble(kh.getHocPhi()) >= hocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= hocPhiTren) {
-//                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
-//                                                                for (String bangcap : kh.getBangCap()) {
-//                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
-//
-//                                                                    }
-//                                                                }
-//                                                            }
-//                                                        }
-//                                                    }
-//                                                } catch (UnsupportedEncodingException e) {
-//                                                    e.printStackTrace();
-//                                                }
-//                                            }
-//                                        }
-//
-//                                        @Override
-//                                        public void onCancelled(DatabaseError databaseError) {
-//
-//                                        }
-//                                    });
-//                                } else //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        } else //3 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        }
-//                    } else//2 Mon!=null, HocPhi==0
-//                    {
-//                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        } else //3 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        }
-//                    }
-//                } else//1 Mon == null
-//                {
-//                    if (hocPhiTimKiem != 0) //2 Mon == null, HocPhi !=0
-//                    {
-//                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon == null, HocPhi !=0,GioiTinh!=Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        } else //3 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        }
-//                    } else//2 Mon == null, HocPhi==0
-//                    {
-//                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon == null, HocPhi==0,GioiTinh!=Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        } else //3 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            } else//0
-//            {
-//                //Tìm học viên là ra bài tìm gia sư
-//                if (khoaHoc.getMon() != null)//1
-//                {
-//                    if (hocPhiTimKiem != 0) //2 Mon!=null, HocPhi !=0
-//                    {
-//                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon!=null, HocPhi !=0,GioiTinh!=Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        } else //3 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        }
-//                    } else//2 Mon!=null, HocPhi==0
-//                    {
-//                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        } else //3 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        }
-//                    }
-//                } else//1 Mon == null
-//                {
-//                    if (hocPhiTimKiem != 0) //2 Mon == null, HocPhi !=0
-//                    {
-//                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon == null, HocPhi !=0,GioiTinh!=Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        } else //3 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        }
-//                    } else//2 Mon == null, HocPhi==0
-//                    {
-//                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon == null, HocPhi==0,GioiTinh!=Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        } else //3 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ
-//                        {
-//                            if (khoaHoc.getBangCap() != null) //4 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            } else//4 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null
-//                            {
-//                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
-//                                {
-//
-//                                } else //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
-//                                {
-//
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
+        if(mon == null || mon == "")
+        {
+            if(khoaHoc.getLichHoc().getNgayHoc() != null || khoaHoc.getLichHoc().getNgayHoc().size() != 0)
+            {
+                count = cout(khoaHoc.getLichHoc().getNgayHoc().size()); //Nếu /2 mà <1 lấy 0 còn lại lấy /2 bt
+                hocPhiTimKiem = Double.parseDouble(khoaHoc.getHocPhi());
+                hocPhiTren = (hocPhiTimKiem + ((hocPhiTimKiem / 100) * 20));
+                hocPhiDuoi = (hocPhiTimKiem - ((hocPhiTimKiem / 100) * 20));
+            }
+            else
+            {
+                count = 0; //Nếu /2 mà <1 lấy 0 còn lại lấy /2 bt
+                hocPhiTimKiem = Double.parseDouble(khoaHoc.getHocPhi());
+                hocPhiTren = (hocPhiTimKiem + ((hocPhiTimKiem / 100) * 20));
+                hocPhiDuoi = (hocPhiTimKiem - ((hocPhiTimKiem / 100) * 20));
+            }
 
-                mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
-                        if(kh.getMon()!=null || kh.getMon().size()>=0) {
-                            for (String smon : kh.getMon()) {
-                                try {
-                                    if (URLEncoder.encode(removeDiacriticalMarks(mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(smon), "utf-8"))) {
-                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
-                                        khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
-                                        ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
-                                    }
-                                } catch (UnsupportedEncodingException e) {
-                                    e.printStackTrace();
+            if (!loai)//0
+            {
+                //Tìm gia sư là ra bài tìm học viên
+                if (khoaHoc.getMon() != null)//1
+                {
+                    if (hocPhiTimKiem != 0) //2 Mon!=null, HocPhi !=0
+                    {
+                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon!=null, HocPhi !=0,GioiTinh!=Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                try {
+                                                    //Môn
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                                            //Bằng cấp
+                                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                                //Địa điểm
+                                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                                {
+                                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                            for (String bangcap : kh.getBangCap()) {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                    //Địa điểm
+                                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                            }
+                                                        }
+                                                        else // Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            //Địa điểm
+                                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                            {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                try {
+                                                    //Môn
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0)
+
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                                            //Bằng cấp
+                                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                            for (String bangcap : kh.getBangCap()) {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else // Ngày học == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null*
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for(String Mon : khoaHoc.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                        //Địa điểm
+                                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                            //Địa điểm
+                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else // Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    //Địa điểm
+                                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        //Địa điểm
+                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+
+                                }
+                            }
+                        } else //3 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    for (String bangcap : kh.getBangCap())
+                                                                                    {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                        {
+                                                                                            //Địa điểm
+                                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                            {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        for (String bangcap : kh.getBangCap())
+                                                                        {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        //Địa điểm
+                                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            //Địa điểm
+                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    for (String bangcap : kh.getBangCap())
+                                                                                    {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else // Buổi == null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        for (String bangcap : kh.getBangCap())
+                                                                        {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else // Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else // Buổi == null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    //Địa điểm
+                                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        //Địa điểm
+                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else//Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    //Địa điểm
+                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    } else//2 Mon!=null, HocPhi==0
+                    {
+                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    for (String bangcap : kh.getBangCap())
+                                                                                    {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                        {
+                                                                                            //Địa điểm
+                                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                            {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        for (String bangcap : kh.getBangCap())
+                                                                        {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else  //Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        //Địa điểm
+                                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                //Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            //Địa điểm
+                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    for (String bangcap : kh.getBangCap())
+                                                                                    {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        for (String bangcap : kh.getBangCap())
+                                                                        {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else  //Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                //Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    //Địa điểm
+                                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        //Địa điểm
+                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else  //Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                //Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                {
+                                                                    //Địa điểm
+                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+//Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                //Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        } else //3 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        //Địa điểm
+                                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            //Địa điểm
+                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            for (String bangcap : kh.getBangCap())
+                                                                            {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                {
+                                                                                    //Địa điểm
+                                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                for (String bangcap : kh.getBangCap())
+                                                                {
+                                                                    //Bằng cấp
+                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                    {
+                                                                        //Địa điểm
+                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngày học tìm kiếm ==null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            for (String bangcap : kh.getBangCap())
+                                                                            {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                for (String bangcap : kh.getBangCap())
+                                                                {
+                                                                    //Bằng cấp
+                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+//Địa điểm
+                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else // Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Địa điểm
+                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+//Địa điểm
+                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon())
+                                            {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
                                 }
                             }
                         }
                     }
+                } else//1 Mon == null
+                {
+                    if (hocPhiTimKiem != 0) //2 Mon == null, HocPhi !=0
+                    {
+                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon == null, HocPhi !=0,GioiTinh!=Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
 
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                                                try {
+                                                    //LinhVuc
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
 
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                    {
+                                                                                        for (String bangcap : kh.getBangCap())
+                                                                                        {
+                                                                                            //Bằng cấp
+                                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                            {
+                                                                                                //Địa điểm
+                                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                                {
+                                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                        {
+                                                                            for (String bangcap : kh.getBangCap())
+                                                                            {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                {
+                                                                                    //Địa điểm
+                                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    for (String bangcap : kh.getBangCap())
+                                                                                    {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                        {
+                                                                                            //Địa điểm
+                                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                            {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        for (String bangcap : kh.getBangCap())
+                                                                        {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                            ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                    {
+                                                                                        for (String bangcap : kh.getBangCap())
+                                                                                        {
+                                                                                            //Bằng cấp
+                                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                            {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buổi == null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                        {
+                                                                            for (String bangcap : kh.getBangCap())
+                                                                            {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    for (String bangcap : kh.getBangCap())
+                                                                                    {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buổi == null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        for (String bangcap : kh.getBangCap())
+                                                                        {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                    {
+                                                                                        //Địa điểm
+                                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buoi = null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                        {
+                                                                            //Địa điểm
+                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else//Ngày học tìm kiếm = null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    //Địa điểm
+                                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buoi = null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        //Địa điểm
+                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+//Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else//Buoi = null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else // Ngay = null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else//Buoi = null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        } else //3 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    for (String bangcap : kh.getBangCap())
+                                                                                    {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                        {
+                                                                                            //Địa điểm
+                                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                            {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buoi = null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        for (String bangcap : kh.getBangCap())
+                                                                        {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else//Ngauy = null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        //Địa điểm
+                                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buoi = null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            //Địa điểm
+                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+//Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    for (String bangcap : kh.getBangCap())
+                                                                                    {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buoi ==null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        for (String bangcap : kh.getBangCap())
+                                                                        {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngay ==null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buoi ==null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    //Địa điểm
+                                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else//Buoi ==null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        //Địa điểm
+                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else//Ngay = null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else//Buoi ==null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    //Địa điểm
+                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else//Buoi = null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else//Ngay == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else//Buoi = null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren)
+                                                                {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    } else//2 Mon == null, HocPhi==0
+                    {
+                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon == null, HocPhi==0,GioiTinh!=Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+//Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    for (String bangcap : kh.getBangCap())
+                                                                                    {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                        {
+                                                                                            //Địa điểm
+                                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                            {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buoi == null
+                                                                {
+//Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        for (String bangcap : kh.getBangCap())
+                                                                        {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngay == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        //Địa điểm
+                                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buoi == null
+                                                            {
+//Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            //Địa điểm
+                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+//Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    for (String bangcap : kh.getBangCap())
+                                                                                    {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buoi == null
+                                                                {
+//Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        for (String bangcap : kh.getBangCap())
+                                                                        {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngay == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buoi == null
+                                                            {
+//Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+                                                        //Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    //Địa điểm
+                                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buoi == null
+                                                                {
+//Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        //Địa điểm
+                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else // Ngay == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buoi == null
+                                                            {
+//Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                {
+                                                                    //Địa điểm
+                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+//Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buoi == null
+                                                                {
+//Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngay == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buoi == null
+                                                            {
+//Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh()))
+                                                                {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        } else //3 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+//Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        //Địa điểm
+                                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                        {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buoi == null
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            //Địa điểm
+                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngay == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            for (String bangcap : kh.getBangCap())
+                                                                            {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                {
+                                                                                    //Địa điểm
+                                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buoi == null
+                                                            {
+                                                                for (String bangcap : kh.getBangCap())
+                                                                {
+                                                                    //Bằng cấp
+                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                    {
+                                                                        //Địa điểm
+                                                                        if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+//Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap())
+                                                                                {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                    {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buoi == null
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap())
+                                                                    {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngay == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            for (String bangcap : kh.getBangCap())
+                                                                            {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buoi == null
+                                                            {
+                                                                for (String bangcap : kh.getBangCap())
+                                                                {
+                                                                    //Bằng cấp
+                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8")))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+//Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                                {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buoi == null
+                                                                {
+//Địa điểm
+                                                                    if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                    {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Ngay == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Địa điểm
+                                                                            if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buoi == null
+                                                            {
+//Địa điểm
+                                                                if(kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan()))
+                                                                {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimHocVien").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc())
+                                            {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8")))
+                                                    {
+//Lịch học
+                                                        if(finalCount !=0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for(String ngayHoc : khoaHoc.getLichHoc().getNgayHoc())
+                                                            {
+                                                                for(String ngayhoc : kh.getLichHoc().getNgayHoc())
+                                                                {
+                                                                    if(ngayhoc.equals(ngayHoc))
+                                                                    {
+                                                                        dem++;
+                                                                        if(dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                        {
+                                                                            if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else //Buoi == null
+                                                                {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                        else //Buoi == null
+                                                        {
+                                                            if(khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for(String buoiHoc : khoaHoc.getLichHoc().getThoiGian())
+                                                                {
+                                                                    for(String buoihoc : kh.getLichHoc().getThoiGian())
+                                                                    {
+                                                                        if(buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else //Buoi == null
+                                                            {
+                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(),kh.getRating(),kh.getHoTen(),kh.getNguoiDang(),kh.getSoBuoiHoc(),kh.getSoLuongHocVien(),kh.getGioiTinh(),kh.getNgayDang(),kh.getGioDang(),kh.getThoiLuongBuoiHoc(),kh.getHocPhi(),kh.getThongTinKhac(),kh.getBangCap(),kh.getMon(),kh.getLinhVuc(),kh.getLichHoc(),kh.getDiaDiem(),kh.getDanhSachYeuCau(),dataSnapshot.getKey()));
+
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        }
                     }
+                }
+            } else//0 TK GIASU
+            {
+                //Tìm học viên là ra bài tìm gia sư
+                if (khoaHoc.getMon() != null)//1
+                {
+                    if (hocPhiTimKiem != 0) //2 Mon!=null, HocPhi !=0
+                    {
+                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon!=null, HocPhi !=0,GioiTinh!=Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
 
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                try {
+                                                    //Môn
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                                            //Bằng cấp
+                                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                                //Địa điểm
+                                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
 
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                            for (String bangcap : kh.getBangCap()) {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                    //Địa điểm
+                                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                            }
+                                                        } else // Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            //Địa điểm
+                                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                try {
+                                                    //Môn
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                                            //Bằng cấp
+                                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                            for (String bangcap : kh.getBangCap()) {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else // Ngày học == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null*
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : khoaHoc.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                        //Địa điểm
+                                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                            //Địa điểm
+                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else // Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    //Địa điểm
+                                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        //Địa điểm
+                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            for (String Mon : kh.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+
+                                }
+                            }
+                        } else //3 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            //Địa điểm
+                                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        //Địa điểm
+                                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            //Địa điểm
+                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else // Buổi == null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else // Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else // Buổi == null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Địa điểm
+                                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Địa điểm
+                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else//Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Địa điểm
+                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    } else//2 Mon!=null, HocPhi==0
+                    {
+                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            //Địa điểm
+                                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else  //Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        //Địa điểm
+                                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                //Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            //Địa điểm
+                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else  //Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                //Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    //Địa điểm
+                                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        //Địa điểm
+                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else  //Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                //Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                    //Địa điểm
+                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+//Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                //Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        } else //3 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        //Địa điểm
+                                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            //Địa điểm
+                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            for (String bangcap : kh.getBangCap()) {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                    //Địa điểm
+                                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                for (String bangcap : kh.getBangCap()) {
+                                                                    //Bằng cấp
+                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                        //Địa điểm
+                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngày học tìm kiếm ==null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            for (String bangcap : kh.getBangCap()) {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                for (String bangcap : kh.getBangCap()) {
+                                                                    //Bằng cấp
+                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+//Địa điểm
+                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else // Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Địa điểm
+                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+//Địa điểm
+                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon!=null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String Mon : kh.getMon()) {
+                                                //Môn
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(Mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getMon().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        } else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        }
                     }
+                } else//1 Mon == null
+                {
+                    if (hocPhiTimKiem != 0) //2 Mon == null, HocPhi !=0
+                    {
+                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon == null, HocPhi !=0,GioiTinh!=Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
 
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                                                try {
+                                                    //LinhVuc
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
 
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                                            //Bằng cấp
+                                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                                //Địa điểm
+                                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                            for (String bangcap : kh.getBangCap()) {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                    //Địa điểm
+                                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            //Địa điểm
+                                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                            ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                                            //Bằng cấp
+                                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buổi == null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                            for (String bangcap : kh.getBangCap()) {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngày học tìm kiếm == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buổi == null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                        //Địa điểm
+                                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buoi = null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                            //Địa điểm
+                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else//Ngày học tìm kiếm = null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    //Địa điểm
+                                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buoi = null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        //Địa điểm
+                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null,HocPhi!=null,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+//Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Giới tính
+                                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else//Buoi = null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Giới tính
+                                                                        if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else // Ngay = null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else//Buoi = null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        } else //3 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            //Địa điểm
+                                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buoi = null
+                                                                {
+                                                                    //Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else//Ngauy = null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        //Địa điểm
+                                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buoi = null
+                                                            {
+                                                                //Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            //Địa điểm
+                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+//Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buoi ==null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngay ==null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buoi ==null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    //Địa điểm
+                                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else//Buoi ==null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        //Địa điểm
+                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else//Ngay = null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else//Buoi ==null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    //Địa điểm
+                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null,HocPhi!=0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Học phí
+                                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else//Buoi = null
+                                                                {
+//Học phí
+                                                                    if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else//Ngay == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Học phí
+                                                                            if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else//Buoi = null
+                                                            {
+//Học phí
+                                                                if (Double.parseDouble(kh.getHocPhi()) >= finalHocPhiDuoi && Double.parseDouble(kh.getHocPhi()) <= finalHocPhiTren) {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    } else//2 Mon == null, HocPhi==0
+                    {
+                        if (khoaHoc.getGioiTinh() != "Nam, Nữ") //3 Mon == null, HocPhi==0,GioiTinh!=Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+//Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            //Địa điểm
+                                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buoi == null
+                                                                {
+//Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngay == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        //Địa điểm
+                                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buoi == null
+                                                            {
+//Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            //Địa điểm
+                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+//Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                                        //Bằng cấp
+                                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buoi == null
+                                                                {
+//Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        for (String bangcap : kh.getBangCap()) {
+                                                                            //Bằng cấp
+                                                                            if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngay == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buoi == null
+                                                            {
+//Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+                                                        //Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    //Địa điểm
+                                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buoi == null
+                                                                {
+//Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        //Địa điểm
+                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else // Ngay == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buoi == null
+                                                            {
+//Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                    //Địa điểm
+                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null, HocPhi==0,GioiTinh!=Nam, Nu,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+//Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Giới tính
+                                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buoi == null
+                                                                {
+//Giới tính
+                                                                    if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngay == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Giới tính
+                                                                            if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buoi == null
+                                                            {
+//Giới tính
+                                                                if (kh.getGioiTinh().equals(khoaHoc.getGioiTinh())) {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        } else //3 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ
+                        {
+                            if (khoaHoc.getBangCap() != null) //4 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+//Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        //Địa điểm
+                                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buoi == null
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            //Địa điểm
+                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngay == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            for (String bangcap : kh.getBangCap()) {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                    //Địa điểm
+                                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buoi == null
+                                                            {
+                                                                for (String bangcap : kh.getBangCap()) {
+                                                                    //Bằng cấp
+                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                        //Địa điểm
+                                                                        if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap!=null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+//Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                for (String bangcap : kh.getBangCap()) {
+                                                                                    //Bằng cấp
+                                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buoi == null
+                                                                {
+                                                                    for (String bangcap : kh.getBangCap()) {
+                                                                        //Bằng cấp
+                                                                        if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngay == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            for (String bangcap : kh.getBangCap()) {
+                                                                                //Bằng cấp
+                                                                                if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buoi == null
+                                                            {
+                                                                for (String bangcap : kh.getBangCap()) {
+                                                                    //Bằng cấp
+                                                                    if (URLEncoder.encode(removeDiacriticalMarks(bangcap), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getBangCap().get(0)), "utf-8"))) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            } else//4 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null
+                            {
+                                if (khoaHoc.getDiaDiem().getQuan() != "Khác") //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null,Quan != "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+//Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                //Địa điểm
+                                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buoi == null
+                                                                {
+//Địa điểm
+                                                                    if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                        khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else //Ngay == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            //Địa điểm
+                                                                            if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buoi == null
+                                                            {
+//Địa điểm
+                                                                if (kh.getDiaDiem().getQuan().equals(khoaHoc.getDiaDiem().getQuan())) {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                } else //5 Mon == null, HocPhi==0,GioiTinh==Nam, Nữ,BangCap==null, Quan = "Khác"
+                                {
+                                    final double finalHocPhiDuoi = hocPhiDuoi;
+                                    final double finalHocPhiTren = hocPhiTren;
+                                    final int finalCount = count;
+                                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                            int dem = 0; // Xác định độ chính xác của lịch học (if dem == finaleCount)
+                                            KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                                            for (String linhvuc : kh.getLinhVuc()) {
+                                                //LinhVuc
+                                                try {
+                                                    if (URLEncoder.encode(removeDiacriticalMarks(linhvuc), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(khoaHoc.getLinhVuc().get(0)), "utf-8"))) {
+//Lịch học
+                                                        if (finalCount != 0) //Ngày học tìm kiếm != null
+                                                        {
+                                                            for (String ngayHoc : khoaHoc.getLichHoc().getNgayHoc()) {
+                                                                for (String ngayhoc : kh.getLichHoc().getNgayHoc()) {
+                                                                    if (ngayhoc.equals(ngayHoc)) {
+                                                                        dem++;
+                                                                        if (dem == finalCount) // Độ chính xác lịch học đạt mức chấp nhận được
+                                                                        {
+                                                                            khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (dem >= finalCount) // Độ chính xác lịch học chấp nhận được hoặc rất chính xác
+                                                            {
+                                                                if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                                {
+                                                                    for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                        for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                            if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                            {
+                                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else //Buoi == null
+                                                                {
+                                                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                }
+                                                            }
+                                                        } else //Buoi == null
+                                                        {
+                                                            if (khoaHoc.getLichHoc().getThoiGian().size() !=0) // Buổi != null
+                                                            {
+                                                                for (String buoiHoc : khoaHoc.getLichHoc().getThoiGian()) {
+                                                                    for (String buoihoc : kh.getLichHoc().getThoiGian()) {
+                                                                        if (buoiHoc.equals(buoihoc)) // Buổi
+                                                                        {
+                                                                            khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else //Buoi == null
+                                                            {
+                                                                khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+
+                                                            }
+                                                        }
+                                                    }
+                                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                        }
+
+                                        @Override
+                                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        }
                     }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
+                }
+            }
+        }
+        else {
+            mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
+                    if (kh.getMon() != null || kh.getMon().size() >= 0) {
+                        for (String smon : kh.getMon()) {
+                            try {
+                                if (URLEncoder.encode(removeDiacriticalMarks(mon), "utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(smon), "utf-8"))) {
+                                    khoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                    khoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.getAvatar(), kh.getRating(), kh.getHoTen(), kh.getNguoiDang(), kh.getSoBuoiHoc(), kh.getSoLuongHocVien(), kh.getGioiTinh(), kh.getNgayDang(), kh.getGioDang(), kh.getThoiLuongBuoiHoc(), kh.getHocPhi(), kh.getThongTinKhac(), kh.getBangCap(), kh.getMon(), kh.getLinhVuc(), kh.getLichHoc(), kh.getDiaDiem(), kh.getDanhSachYeuCau(), dataSnapshot.getKey()));
+                                    ketQuaTimKiemKhoaHocFragmentPresenterImp.nhanListKhoaHoc(khoaHocChinhXac, khoaHocGanChinhXac);
+                                }
+                            } catch (UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
-                });
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
 
     }
 //    }
@@ -504,7 +8747,7 @@ public class KetQuaTimKiemFragmentModel implements KetQuatimKiemFragmentModelImp
     public int cout(int x) {
         int count = 0;
         if ((x / 2) < 1) {
-            count = 1;
+            count = 0;
         } else {
             count = x / 2;
         }

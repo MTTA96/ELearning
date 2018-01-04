@@ -27,7 +27,7 @@ import java.util.ArrayList;
  * Created by ADMIN on 11/9/2017.
  */
 
-public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.ViewHolder> implements View.OnClickListener {
+public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.ViewHolder>  {
     private Context context;
     private ArrayList<CustomModelKhoaHoc> khoaHocArrayList;
     private ImageHandler imageHandler;
@@ -56,7 +56,12 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
                 fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang()), true,SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
             }
         });
-        holder.vCourseInfo.setOnClickListener(this);
+        holder.vCourseInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHocArrayList.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
+            }
+        });
         loadData(holder, position);
     }
 
@@ -102,21 +107,6 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
     @Override
     public int getItemCount() {
         return khoaHocArrayList.size();
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-//            case R.id.view_UserInfo_DanhSachKhoaHoc:
-////                Toast.makeText(context, "User info!", Toast.LENGTH_SHORT).show();
-//                    fragmentHandler.ChuyenFragment();
-//                break;
-            case R.id.view_CourseInfo_DanhSachKhoaHoc:
-                Toast.makeText(context, "Course info!", Toast.LENGTH_SHORT).show();
-//                fragmentHandler.ChuyenFragment(new ThongTinKhoaHocFragment(), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
-                break;
-        }
-
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

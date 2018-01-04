@@ -59,6 +59,7 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
                 fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(listKhoaHoc.get(holder.getLayoutPosition()).getNguoiDang(), listKhoaHoc.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
             }
         });
+
     }
 
     @Override

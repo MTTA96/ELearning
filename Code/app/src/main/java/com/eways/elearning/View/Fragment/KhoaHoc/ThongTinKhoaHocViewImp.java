@@ -1,5 +1,8 @@
 package com.eways.elearning.View.Fragment.KhoaHoc;
 
+import android.app.Activity;
+
+import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.ThongTinChiTietKhoaHoc;
 
 /**
@@ -8,4 +11,5 @@ import com.eways.elearning.DataModel.ThongTinChiTietKhoaHoc;
 
 public interface ThongTinKhoaHocViewImp {
     public void KetQuaThongTinKhoaHoc(ThongTinChiTietKhoaHoc thongTinChiTietKhoaHoc);
+    public void KetQuaGuiYeuCau(String ketQuaYC, KhoaHoc khoaHoc);
 }

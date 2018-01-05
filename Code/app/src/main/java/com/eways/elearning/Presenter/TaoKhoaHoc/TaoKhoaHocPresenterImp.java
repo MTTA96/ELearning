@@ -1,11 +1,9 @@
 package com.eways.elearning.Presenter.TaoKhoaHoc;
 
 import android.app.Activity;
-import android.widget.ArrayAdapter;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHocChuaHoanTat;
-import com.eways.elearning.DataModel.KhuVuc;
+import com.eways.elearning.DataModel.Other.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 
 import java.util.ArrayList;

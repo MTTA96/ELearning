@@ -1,4 +1,4 @@
-package com.eways.elearning.DataModel;
+package com.eways.elearning.DataModel.KhoaHoc;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;

@@ -2,7 +2,7 @@ package com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc;
 
 import android.app.Activity;
 
-import com.eways.elearning.DataModel.KhuVuc;
+import com.eways.elearning.DataModel.Other.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.Presenter.TimKiemKhoaHoc.TimKiemPresenterImp;
 import com.google.firebase.FirebaseApp;

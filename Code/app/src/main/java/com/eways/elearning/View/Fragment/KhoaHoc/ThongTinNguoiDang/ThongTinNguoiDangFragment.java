@@ -84,7 +84,7 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
     private void seUpViewpager(ViewPager viewPager) {
 //        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
 //        viewPagerAdapter.addFragment(new CapNhatThongTinTaiKhoanFragment(), titleTab1);
-//        viewPagerAdapter.addFragment(new TaiLieuChuyenMonFragment(), titleTab2);
+//        viewPagerAdapter.addFragment(new CapNhatTaiLieuChuyenMonFragment(), titleTab2);
 //        viewPager.setAdapter(viewPagerAdapter);
 
 

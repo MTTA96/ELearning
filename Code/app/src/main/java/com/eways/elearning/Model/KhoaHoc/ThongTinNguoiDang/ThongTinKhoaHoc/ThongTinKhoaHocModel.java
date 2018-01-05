@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
-import com.eways.elearning.DataModel.ThongTinChiTietKhoaHoc;
+import com.eways.elearning.DataModel.KhoaHoc.ThongTinChiTietKhoaHoc;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.google.firebase.FirebaseApp;

@@ -1,6 +1,6 @@
 package com.eways.elearning.Model.GuiYeuCau;
 
-import com.eways.elearning.DataModel.YeuCau;
+import com.eways.elearning.DataModel.Other.YeuCau;
 import com.eways.elearning.Presenter.GuiYeuCau.GuiYeuCauPresenterImp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

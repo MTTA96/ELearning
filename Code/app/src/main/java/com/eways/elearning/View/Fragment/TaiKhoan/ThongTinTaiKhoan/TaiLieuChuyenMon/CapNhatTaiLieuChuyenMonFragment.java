@@ -9,26 +9,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
+import com.eways.elearning.Handler.Adapter.TaiLieuChuyenMon.DanhSachLinhVucChuyenMonAdapter;
 import com.eways.elearning.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TaiLieuChuyenMonFragment extends Fragment {
+public class CapNhatTaiLieuChuyenMonFragment extends Fragment {
+    RecyclerView rvLinhVuc;
 
-    RecyclerView rcBangCap,rcChuyenMon;
-    Button btnThemMon;
-    public TaiLieuChuyenMonFragment() {
+    public CapNhatTaiLieuChuyenMonFragment() {
         // Required empty public constructor
     }
 
-    public static TaiLieuChuyenMonFragment newInstance() {
+    public static CapNhatTaiLieuChuyenMonFragment newInstance() {
         
         Bundle args = new Bundle();
         
-        TaiLieuChuyenMonFragment fragment = new TaiLieuChuyenMonFragment();
+        CapNhatTaiLieuChuyenMonFragment fragment = new CapNhatTaiLieuChuyenMonFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -41,14 +40,12 @@ public class TaiLieuChuyenMonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root=inflater.inflate(R.layout.fragment_tai_lieu_chuyen_mon2, container, false);
-        rcBangCap=(RecyclerView) root.findViewById(R.id.rcBangCap_TaiLieuChuyenMon);
-        rcChuyenMon=(RecyclerView) root.findViewById(R.id.rcChuyenMon_TaiLieuChuyenMon);
+        View root=inflater.inflate(R.layout.fragment_tai_lieu_chuyen_mon, container, false);
+        rvLinhVuc = root.findViewById(R.id.recyclerView_LinhVucChuyenMon_CapNhatTaiLieuChuyenMon);
 
         LinearLayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-
-        rcBangCap.setHasFixedSize(true);
-
+        rvLinhVuc.setLayoutManager(layoutManager);
+        rvLinhVuc.setAdapter(new DanhSachLinhVucChuyenMonAdapter(getContext()));
         return root;
     }
 

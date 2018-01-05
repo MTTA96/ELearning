@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.eways.elearning.DataModel.LayHinhModel;
+import com.eways.elearning.DataModel.Other.LayHinhModel;
 import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Handler.Adapter.ChonHinhAdapter;
 import com.eways.elearning.Handler.DialogPlusHandler;
@@ -31,7 +31,7 @@ import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPre
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;
-import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon.TaiLieuChuyenMonFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon.CapNhatTaiLieuChuyenMonFragment;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -119,7 +119,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     public void KetQuaCapNhat(String ketQuaCapNhat) {
         if (ketQuaCapNhat.compareTo(SupportKeysList.TAG_CAPNHATTHANHCONG) == 0) {
             if (fragmentHandler.getPreviousFragmentTag().compareTo(SupportKeysList.TAG_DIEU_KHOAN_GIA_SU) == 0)
-                fragmentHandler.ChuyenFragment(TaiLieuChuyenMonFragment.newInstance(), true, SupportKeysList.TAG_TAI_LIEU_CHUYEN_MON);
+                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(), true, SupportKeysList.TAG_TAI_LIEU_CHUYEN_MON);
             else {
                 fragmentHandler.XoaFragment();
                 Toast.makeText(this.getContext(), "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();

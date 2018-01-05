@@ -3,7 +3,7 @@ package com.eways.elearning.Model.KhoaHoc.TaoKhoaHoc;
 import android.app.Activity;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.KhuVuc;
+import com.eways.elearning.DataModel.Other.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenterImp;
 import com.google.firebase.FirebaseApp;

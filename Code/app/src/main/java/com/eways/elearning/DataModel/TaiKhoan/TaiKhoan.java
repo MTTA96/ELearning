@@ -1,9 +1,12 @@
 package com.eways.elearning.DataModel.TaiKhoan;
 
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
+import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by zzzzz on 8/28/2017.
@@ -29,6 +32,8 @@ public class TaiKhoan {
     String avatar;
     boolean dacapnhat;
     String rating;
+    ArrayList<TaiLieuChuyenMon> danhSachTaiLieuChuyenMon;
+
 
     public TaiKhoan() {
     }
@@ -89,6 +94,30 @@ public class TaiKhoan {
         this.avatar = avatar;
         this.dacapnhat = dacapnhat;
         this.rating = rating;
+    }
+    //Contructor khởi tạo có danh sach tài liệu chuyen môn
+
+    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms, String trinhdo, String diadiem, String sodienthoai, String avatar, boolean dacapnhat, String rating, ArrayList<TaiLieuChuyenMon> danhSachTaiLieuChuyenMon) {
+        this.id = id;
+        this.email = email;
+        this.ho = ho;
+        this.ten = ten;
+        this.tentaikhoan = tentaikhoan;
+        this.dadangnhap = dadangnhap;
+        this.loaitaikhoan = loaitaikhoan;
+        this.password = password;
+        this.nghenghiep = nghenghiep;
+        this.namsinh = namsinh;
+        this.gioitinh = gioitinh;
+        this.tailieuxacminh_mt = tailieuxacminh_mt;
+        this.tailieuxacminh_ms = tailieuxacminh_ms;
+        this.trinhdo = trinhdo;
+        this.diadiem = diadiem;
+        this.sodienthoai = sodienthoai;
+        this.avatar = avatar;
+        this.dacapnhat = dacapnhat;
+        this.rating = rating;
+        this.danhSachTaiLieuChuyenMon = danhSachTaiLieuChuyenMon;
     }
 
     public String getId() {

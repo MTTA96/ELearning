@@ -46,6 +46,7 @@
 
     <!--Course info-->
     <LinearLayout
+        android:id="@+id/loChiTietKhoaHoc_ListKhoaHoc"
         android:layout_width="match_parent"
         android:layout_height="@dimen/Height_BlockInfo_KhoaHoc"
         android:layout_marginBottom="@dimen/MarginBottom_itemKhoaHoc"

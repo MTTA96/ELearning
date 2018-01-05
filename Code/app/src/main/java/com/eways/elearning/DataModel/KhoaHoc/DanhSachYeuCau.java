@@ -7,30 +7,30 @@ import java.util.ArrayList;
  */
 
 public class DanhSachYeuCau {
-    private ArrayList<String> DangCho;
-    private ArrayList<String> TamDuyet;
+    private ArrayList<String> dangCho;
+    private ArrayList<String> tamDuyet;
 
     public DanhSachYeuCau() {
     }
 
     public DanhSachYeuCau(ArrayList<String> dangCho, ArrayList<String> tamDuyet) {
-        DangCho = dangCho;
-        TamDuyet = tamDuyet;
+        this.dangCho = dangCho;
+        this.tamDuyet = tamDuyet;
     }
 
     public ArrayList<String> getDangCho() {
-        return DangCho;
+        return dangCho;
     }
 
-    public void setDangCho(ArrayList<String> DangCho) {
-        this.DangCho = DangCho;
+    public void setDangCho(ArrayList<String> dangCho) {
+        this.dangCho = dangCho;
     }
 
     public ArrayList<String> getTamDuyet() {
-        return TamDuyet;
+        return tamDuyet;
     }
 
-    public void setTamDuyet(ArrayList<String> TamDuyet) {
-        this.TamDuyet = TamDuyet;
+    public void setTamDuyet(ArrayList<String> tamDuyet) {
+        this.tamDuyet = tamDuyet;
     }
 }

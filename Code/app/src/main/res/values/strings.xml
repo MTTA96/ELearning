@@ -135,4 +135,7 @@
     <string name="text_GuiYeuCau"><b>Gửi Yêu Cầu</b></string>
     <string name="text_HuyYeuCau"><b>Hủy Yêu Cầu</b></string>
 
+    <!--fragment thong tin nguoi dang-->
+    <string name="text_ChuaCapNhat_ThongTinNguoiDang">Chưa cập nhật</string>
+
 </resources>

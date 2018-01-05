@@ -3,10 +3,8 @@ package com.eways.elearning.Model.TaiKhoan.DangKy;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 
-import com.eways.elearning.DataModel.TaiKhoan.BangCapTaiLieuChuyenMon;
-import com.eways.elearning.DataModel.TaiKhoan.MonTaiLieuChuyenMon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
-import com.eways.elearning.DataModel.TaiKhoan.TaiLieuChuyenMon;
+import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Presenter.TaiKhoan.DangKy.DangKyPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
@@ -43,8 +41,8 @@ public class DangKyModel implements DangKyImpModel{
                             dangKyImpPresenter.KetQuaDangKy(DangKyFragment.SIGN_UP_SUCCESS);
                             final FirebaseUser user=mAuth.getCurrentUser();
 
-                            mData.getReference().child("TaiKhoan").child(user.getUid()).setValue(new TaiKhoan(user.getUid(),user.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(),"null",false, SupportKeysList.TAI_KHOAN_GMAIL,taiKhoan.getPassword(),"null","null","null","null","null","null","null","null","null",false,"5"));
-                            mData.getReference().child("TaiLieuChuyenMon").child(user.getUid()).setValue(new TaiLieuChuyenMon(taiKhoan.getId()+"_TLCM",new BangCapTaiLieuChuyenMon(taiKhoan.getId()+"_TLCM_BangCap",null,null),new MonTaiLieuChuyenMon(null,null,null,null)));
+                            mData.getReference().child("TaiKhoan").child(user.getUid()).setValue(new TaiKhoan(user.getUid(),user.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(),"null",false, SupportKeysList.TAI_KHOAN_GMAIL,taiKhoan.getPassword(),"null","null","null","null","null","null","null","null","null",false,"5" ));
+                            mData.getReference().child("TaiLieuChuyenMon").child(user.getUid()).setValue(new TaiLieuChuyenMon(user.getUid(),null,null,null));
                         } else{
                             dangKyImpPresenter.KetQuaDangKy(DangKyFragment.SIGN_UP_FAILED);
                         }

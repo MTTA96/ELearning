@@ -15,6 +15,9 @@ import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.DataModel.KhoaHoc.ThongTinChiTietKhoaHoc;
 import com.eways.elearning.Handler.ImageHandler;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Presenter.KhoaHoc.GuiYeuCau.GuiYeuCauPresenter;
+import com.eways.elearning.Presenter.KhoaHoc.GuiYeuCau.GuiYeuCauPresenterImp;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPresenter;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPresenterImp;
 import com.eways.elearning.R;
@@ -31,11 +34,14 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     TextView tvTenNguoiDang, tvEmailNguoiDang, tvNamSinh, tvGioiTinh, tvNgheNghiep, tvTrinhDo;
     TextView tvMon, tvDiaDiem, tvThu, tvBuoi, tvSoBuoi, tvSoHocVien, tvThongTinThem, tvHocPhi;
     Button btnGuiYeuCau;
+    SharedPreferencesHandler sharedPreferencesHandler;
 
     private static final String KEY_PARAM1 = "param1";
     private static final String KEY_PARAM2 = "param2";
     private ThongTinKhoaHocPresenterImp thongTinKhoaHocPresenterImp;
     private ImageHandler imageHandler;
+
+    GuiYeuCauPresenterImp guiYeuCauPresenterImp;
 
     public ThongTinKhoaHocFragment() {
         // Required empty public constructor
@@ -55,6 +61,8 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         thongTinKhoaHocPresenterImp = new ThongTinKhoaHocPresenter(this);
+        sharedPreferencesHandler=new SharedPreferencesHandler(getContext(),SupportKeysList.SHARED_PREF_FILE_NAME);
+        guiYeuCauPresenterImp=new GuiYeuCauPresenter(this);
         imageHandler = new ImageHandler(getActivity());
         if (getArguments() != null) {
             thongTinKhoaHocPresenterImp.YeuCauLayThongTinKhoaHoc(getActivity(), SupportKeysList.GET_DATA_TIMGIASU, getArguments().getString(KEY_PARAM1), getArguments().getString(KEY_PARAM2));
@@ -94,6 +102,13 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
 
     }
 
+    @Override
+    public void KetQuaGuiYeuCau(String ketQuaYC,KhoaHoc khoaHoc) {
+        if (ketQuaYC.compareTo("GuiYeuCauThanhCong")==0){
+            LoadNutGuiYeuCau(khoaHoc);
+        }
+    }
+
     private void loadView(TaiKhoan taiKhoan,KhoaHoc khoaHoc) {
         //User info
         imageHandler.loadImageRound(taiKhoan.getAvatar(), imgUserAvatar);
@@ -121,41 +136,103 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         tvSoHocVien.setText(khoaHoc.getSoLuongHocVien());
         tvThongTinThem.setText(khoaHoc.getThongTinKhac() != null ? khoaHoc.getThongTinKhac() : "");
         tvHocPhi.setText(khoaHoc.formatGia(Long.parseLong(khoaHoc.getHocPhi())) + tvHocPhi.getText());
-        //Load nút gửi yêu cầu
-        int count=0;
-//        if (khoaHoc.getDanhSachYeuCau().getDangCho()==null){
-//            btnGuiYeuCau.setText(R.string.text_GuiYeuCau);
-//        }
-//        else {
-//            if(khoaHoc.getDanhSachYeuCau().getTamDuyet()==null){
-//                btnGuiYeuCau.setText(R.string.text_GuiYeuCau);
-//            }else {
-//                for (int i = 0; i < khoaHoc.getDanhSachYeuCau().getDangCho().size(); i++) {
-//                    if (taiKhoan.getId().toString().compareTo(khoaHoc.getDanhSachYeuCau().getDangCho().get(i).toString())==0){
-//                        count++;
-//                    }
-//                }
-//                if (count>0){
-//                    btnGuiYeuCau.setText(R.string.text_HuyYeuCau);
-//                }else {
-//                    count=0;
-//                    for (int i=0;i<khoaHoc.getDanhSachYeuCau().getTamDuyet().size();i++){
-//                        if (taiKhoan.getId().toString().compareTo(khoaHoc.getDanhSachYeuCau().getTamDuyet().get(i).toString())==0)
-//                            count++;
-//                    }
-//                    if (count>0){
-//                        btnGuiYeuCau.setText(R.string.text_HuyYeuCau);
-//                    }else {
-//                        btnGuiYeuCau.setText(R.string.text_GuiYeuCau);
-//                    }
-//                }
-//            }
-//        }
+
+        //Load nút gui yêu cầu
+        LoadNutGuiYeuCau(khoaHoc);
         //Tắt loading dialog khi hoàn tất load data
         LoadingDialog.dismissDialog();
     }
     @Override
     public void onClick(View view) {
 
+    }
+
+    public void LoadNutGuiYeuCau(KhoaHoc khoaHoc){
+        //Load nút gửi yêu cầu
+        int count=0;
+        if(khoaHoc.getDanhSachYeuCau()!= null){
+            if (khoaHoc.getDanhSachYeuCau().getDangCho()==null && khoaHoc.getDanhSachYeuCau().getTamDuyet()==null){
+                btnGuiYeuCau.setText("Gửi Yêu Cầu");
+                btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),getArguments().getString(KEY_PARAM1),getActivity());
+                    }
+                });
+            }
+            if (khoaHoc.getDanhSachYeuCau().getDangCho()!=null && khoaHoc.getDanhSachYeuCau().getTamDuyet()==null){
+                for (int i=0;i<khoaHoc.getDanhSachYeuCau().getDangCho().size();i++){
+                    if (sharedPreferencesHandler.getID().compareTo(khoaHoc.getDanhSachYeuCau().getDangCho().get(i))==0){
+                        count++;
+                    }
+                }
+                if (count<=0){
+                    btnGuiYeuCau.setText("Gửi yêu cầu");
+                    btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),getArguments().getString(KEY_PARAM1),getActivity());
+                        }
+                    });
+                }else {
+                    btnGuiYeuCau.setText("Hủy");
+                }
+            }
+            if (khoaHoc.getDanhSachYeuCau().getTamDuyet()!=null && khoaHoc.getDanhSachYeuCau().getDangCho()==null){
+                for (int i=0;i<khoaHoc.getDanhSachYeuCau().getTamDuyet().size();i++){
+                    if (sharedPreferencesHandler.getID().compareTo(khoaHoc.getDanhSachYeuCau().getTamDuyet().get(i))==0){
+                        count++;
+                    }
+                }
+                if (count<=0){
+                    btnGuiYeuCau.setText("Gửi Yêu Cầu");
+                    btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),getArguments().getString(KEY_PARAM1),getActivity());
+                        }
+                    });
+                }
+                else {
+                    btnGuiYeuCau.setText("Hủy");
+                }
+            }
+            if (khoaHoc.getDanhSachYeuCau().getDangCho()!=null && khoaHoc.getDanhSachYeuCau().getTamDuyet()!=null){
+                for (int i=0;i<khoaHoc.getDanhSachYeuCau().getDangCho().size();i++){
+                    if (sharedPreferencesHandler.getID().compareTo(khoaHoc.getDanhSachYeuCau().getDangCho().get(i))==0){
+                        count++;
+                    }
+                }
+                if (count<=0){
+                    count=0;
+                    for (int i=0;i<khoaHoc.getDanhSachYeuCau().getTamDuyet().size();i++){
+                        if (sharedPreferencesHandler.getID().compareTo(khoaHoc.getDanhSachYeuCau().getTamDuyet().get(i))==0){
+                            count++;
+                        }
+                    }
+                    if (count<=0){
+                        btnGuiYeuCau.setText("Gửi Yêu Cầu");
+                        btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),getArguments().getString(KEY_PARAM1),getActivity());
+                            }
+                        });
+                    }else {
+                        btnGuiYeuCau.setText("Hủy");
+                    }
+                }else {
+                    btnGuiYeuCau.setText("Hủy");
+                }
+            }
+        }else {
+            btnGuiYeuCau.setText("Gửi Yêu Cầu");
+            btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),getArguments().getString(KEY_PARAM1),getActivity());
+                }
+            });
+        }
     }
 }

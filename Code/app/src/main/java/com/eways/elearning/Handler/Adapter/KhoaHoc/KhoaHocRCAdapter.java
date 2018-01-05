@@ -17,6 +17,7 @@ import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinKhoaHocFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinNguoiDang.ThongTinNguoiDangFragment;
 
 import java.util.ArrayList;
@@ -25,13 +26,11 @@ import java.util.ArrayList;
  * Created by ADMIN on 11/9/2017.
  */
 
-public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.ViewHolder> implements View.OnClickListener{
+public class KhoaHocRCAdapter extends RecyclerView.Adapter<ViewHolder> implements View.OnClickListener {
     private Context context;
     private ArrayList<CustomModelKhoaHoc> khoaHocArrayList;
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
-
-    String avatar = "https://scontent.fsgn2-2.fna.fbcdn.net/v/t31.0-1/c282.0.960.960/p960x960/10506738_10150004552801856_220367501106153455_o.jpg?oh=8e3c92bb05c15479a3e2c0692c670e6e&oe=5A8AF812";
 
     public KhoaHocRCAdapter(Context context, ArrayList<CustomModelKhoaHoc> khoaHocArrayList, ImageHandler imageHandler, FragmentHandler fragmentHandler) {
         this.context = context;
@@ -42,8 +41,8 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
-        View root=layoutInflater.inflate(R.layout.custom_item_khoahoc,parent,false);
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View root = layoutInflater.inflate(R.layout.custom_item_khoahoc, parent, false);
 
         return new ViewHolder(root);
     }
@@ -53,32 +52,37 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
         holder.vUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang()), true,SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
+                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
             }
         });
-        holder.vCourseInfo.setOnClickListener(this);
+        holder.vCourseInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHocArrayList.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
+            }
+        });
 
         loadData(holder, position);
     }
 
     private void loadData(ViewHolder holder, int position) {
         //Hình
-        imageHandler.loadImageSquare(khoaHocArrayList.get(position).getAvatar(),holder.imvAvatar);
+        imageHandler.loadImageSquare(khoaHocArrayList.get(position).getAvatar(), holder.imvAvatar);
 
         //Rating
-        if(khoaHocArrayList.get(position).getRating() != null) {
+        if (khoaHocArrayList.get(position).getRating() != null) {
             float rt = Float.parseFloat(khoaHocArrayList.get(position).getRating());
             holder.rtbBaiDang.setRating(rt);
         }
 
         //Họ tên
-        if(khoaHocArrayList.get(position).getHoTen() != null) {
+        if (khoaHocArrayList.get(position).getHoTen() != null) {
             String ten = "<b>Tên: </b>" + " " + khoaHocArrayList.get(position).getHoTen();
             holder.tvTenNguoiDang.setText(Html.fromHtml(ten));
         }
 
         //Môn
-        if(khoaHocArrayList.get(position).getMon() != null) {
+        if (khoaHocArrayList.get(position).getMon() != null) {
             ArrayList<String> listMon = khoaHocArrayList.get(position).getMon();
             String danhSachMon = "";
             for (String mon : listMon) {
@@ -88,7 +92,7 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
             holder.tvMonHoc.setText(Html.fromHtml(mon));
         }
 
-        if(khoaHocArrayList.get(position).getSoBuoiHoc()!= null) {
+        if (khoaHocArrayList.get(position).getSoBuoiHoc() != null) {
             ArrayList<String> listBuoi = khoaHocArrayList.get(position).getLichHoc().getNgayHoc();
             String dsbuoi = "";
             for (String buoi : listBuoi) {
@@ -98,7 +102,7 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
             holder.tvBuoiHoc.setText(Html.fromHtml(buoi));
         }
 
-        if(khoaHocArrayList.get(position).getHocPhi()!= null) {
+        if (khoaHocArrayList.get(position).getHocPhi() != null) {
             String hocPhi = "<b>Học phí: <b>" + " " + khoaHocArrayList.get(position).getHocPhi();
             holder.tvHocPhi.setText(Html.fromHtml(hocPhi));
         }
@@ -111,7 +115,7 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
 //            case R.id.view_UserInfo_DanhSachKhoaHoc:
 ////                Toast.makeText(context, "User info!", Toast.LENGTH_SHORT).show();
 //                    fragmentHandler.ChuyenFragment();
@@ -122,28 +126,5 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
                 break;
         }
 
-    }
-
-
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        LinearLayout vUserInfo, vCourseInfo;
-        ImageView imvAvatar;
-        RatingBar rtbBaiDang;
-        TextView tvTenNguoiDang;
-        TextView tvBuoiHoc;
-        TextView tvMonHoc;
-        TextView tvHocPhi;
-        public ViewHolder(View itemView) {
-            super(itemView);
-            vUserInfo = (LinearLayout) itemView.findViewById(R.id.view_UserInfo_DanhSachKhoaHoc);
-            vCourseInfo = (LinearLayout) itemView.findViewById(R.id.view_CourseInfo_DanhSachKhoaHoc);
-            imvAvatar = (ImageView) itemView.findViewById(R.id.img_KhoaHoc);
-            rtbBaiDang = (RatingBar) itemView.findViewById(R.id.rtb_KhoaHoc);
-            tvTenNguoiDang = (TextView) itemView.findViewById(R.id.tvTen_KhoaHoc);
-            tvBuoiHoc = (TextView) itemView.findViewById(R.id.tvBuoi_KhoaHoc);
-            tvMonHoc = (TextView) itemView.findViewById(R.id.tvMon_KhoaHoc);
-            tvHocPhi = (TextView) itemView.findViewById(R.id.tvGia_KhoaHoc);
-        }
     }
 }

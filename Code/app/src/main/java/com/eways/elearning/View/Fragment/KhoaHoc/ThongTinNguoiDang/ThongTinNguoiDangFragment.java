@@ -31,6 +31,7 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
     TextView tvHoten,tvGioiTinh,tvNamSinh,tvCongViec,tvTrinhDo,tvSDT,tvEmail;
     ImageView ivTaiLieuXacMinh_mt;
     ImageView ivTaiLieuXacMinh_ms;
+    ImageView ivAvarta;
 
     ThongTinNguoiDangPresenterImp thongTinNguoiDangPresenterImp;
 
@@ -67,12 +68,14 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
         tvGioiTinh=(TextView) root.findViewById(R.id.tvGioiTinh_ThongTinCaNhan);
         tvNamSinh=(TextView) root.findViewById(R.id.tvNamsinh_ThongTinCaNhan);
         tvCongViec=(TextView) root.findViewById(R.id.tvNgheNghiep_ThongTinCaNhan);
-        tvTrinhDo=(TextView) root.findViewById(R.id.tvNgheNghiep_ThongTinCaNhan);
+        tvTrinhDo=(TextView) root.findViewById(R.id.tvTrinhDo_ThongTinCaNhan);
         tvSDT=(TextView) root.findViewById(R.id.tvSdt_ThongTinCaNhan);
         tvEmail=(TextView) root.findViewById(R.id.tvEmail_ThongTinCaNhan);
 
         ivTaiLieuXacMinh_mt=(ImageView) root.findViewById(R.id.ivTaiLieuXacMinhMT_ThongTinCaNhan);
         ivTaiLieuXacMinh_ms=(ImageView) root.findViewById(R.id.ivTaiLieuXacMinhMS_ThongTinCaNhan);
+        ivAvarta=(ImageView) root.findViewById(R.id.imageView_UserAvatar_ThongTinTaiKhoan);
+
 
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
@@ -97,49 +100,50 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
 
     //Load thong tin nguoi đăng
     public void LoadThongTinNguoiDang(TaiKhoan taiKhoan) {
-        if(taiKhoan.getTen()==null)
-            tvHoten.setText("");
+        if(taiKhoan.getTen().compareTo("null")==0)
+            tvHoten.setText(R.string.text_ChuaCapNhat_ThongTinNguoiDang);
         else
             tvHoten.setText(taiKhoan.getTen());
-        if(taiKhoan.getGioitinh()==null)
-            tvGioiTinh.setText("");
+        if(taiKhoan.getGioitinh().compareTo("null")==0)
+            tvGioiTinh.setText(R.string.text_ChuaCapNhat_ThongTinNguoiDang);
         else
             tvGioiTinh.setText(taiKhoan.getGioitinh());
-        if (taiKhoan.getNamsinh()==null)
-            tvNamSinh.setText("");
+        if (taiKhoan.getNamsinh().compareTo("null")==0)
+            tvNamSinh.setText(R.string.text_ChuaCapNhat_ThongTinNguoiDang);
         else
             tvNamSinh.setText(taiKhoan.getNamsinh());
-        if (taiKhoan.getTrinhdo()==null)
-            tvTrinhDo.setText("");
+        if (taiKhoan.getTrinhdo().compareTo("null")==0)
+            tvTrinhDo.setText(R.string.text_ChuaCapNhat_ThongTinNguoiDang);
         else
             tvTrinhDo.setText(taiKhoan.getTrinhdo());
-        if (taiKhoan.getNghenghiep()==null)
-            tvCongViec.setText("");
+        if (taiKhoan.getNghenghiep().compareTo("null")==0)
+            tvCongViec.setText(R.string.text_ChuaCapNhat_ThongTinNguoiDang);
         else
             tvCongViec.setText(taiKhoan.getNghenghiep());
-        if (taiKhoan.getSodienthoai()==null)
-            tvSDT.setText("");
+        if (taiKhoan.getSodienthoai().compareTo("null")==0)
+            tvSDT.setText(R.string.text_ChuaCapNhat_ThongTinNguoiDang);
         else
             tvSDT.setText(taiKhoan.getSodienthoai());
-        if (taiKhoan.getEmail()==null)
-            tvEmail.setText("");
+        if (taiKhoan.getEmail().compareTo("null")==0)
+            tvEmail.setText(R.string.text_ChuaCapNhat_ThongTinNguoiDang);
         else
             tvEmail.setText(taiKhoan.getEmail());
-        if (taiKhoan.getTailieuxacminh_mt().isEmpty() && taiKhoan.getTailieuxacminh_ms().isEmpty()){
+        imageHandler.loadImageRound(taiKhoan.getAvatar(),ivAvarta);
+        if (taiKhoan.getTailieuxacminh_mt().compareTo("null")==0 && taiKhoan.getTailieuxacminh_ms().compareTo("null")==0){
             return;
         }else{
-            if (taiKhoan.getTailieuxacminh_mt().isEmpty() && !taiKhoan.getTailieuxacminh_ms().isEmpty()){
+            if (taiKhoan.getTailieuxacminh_mt().compareTo("null")==0 && taiKhoan.getTailieuxacminh_ms().compareTo("null")!=0){
                 imageHandler.loadImageRound(taiKhoan.getTailieuxacminh_ms(),ivTaiLieuXacMinh_ms);
             }else {
-                if (taiKhoan.getTailieuxacminh_mt().isEmpty() && !taiKhoan.getTailieuxacminh_ms().isEmpty()){
+                if (taiKhoan.getTailieuxacminh_mt().compareTo("null")==0 && taiKhoan.getTailieuxacminh_ms().compareTo("null")!=0){
                     imageHandler.loadImageRound(taiKhoan.getTailieuxacminh_ms(),ivTaiLieuXacMinh_ms);
                     return;
                 }
-                if (taiKhoan.getTailieuxacminh_ms().isEmpty() && !taiKhoan.getTailieuxacminh_mt().isEmpty()){
+                if (taiKhoan.getTailieuxacminh_ms().compareTo("null")==0 && taiKhoan.getTailieuxacminh_mt().compareTo("null")!=0){
                     imageHandler.loadImageRound(taiKhoan.getTailieuxacminh_mt(),ivTaiLieuXacMinh_mt);
                     return;
                 }
-                if (!taiKhoan.getTailieuxacminh_mt().isEmpty() && !taiKhoan.getTailieuxacminh_ms().isEmpty()){
+                if (taiKhoan.getTailieuxacminh_mt().compareTo("null")!=0 && taiKhoan.getTailieuxacminh_ms().compareTo("null")!=0){
                     imageHandler.loadImageRound(taiKhoan.getTailieuxacminh_mt(),ivTaiLieuXacMinh_mt);
                     imageHandler.loadImageRound(taiKhoan.getTailieuxacminh_ms(),ivTaiLieuXacMinh_ms);
                 }

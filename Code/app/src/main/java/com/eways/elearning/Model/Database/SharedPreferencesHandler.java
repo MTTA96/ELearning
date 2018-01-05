@@ -3,6 +3,10 @@ package com.eways.elearning.Model.Database;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
+
+import java.util.ArrayList;
+
 /**
  * Created by zzzzz on 10/8/2017.
  */
@@ -32,6 +36,7 @@ public class SharedPreferencesHandler {
     private final String KEY_SODIENTHOAI="sodienthoai";
     private final String KEY_DACAPNHAT="dacapnhat";
     private final String KEY_RATING="rating";
+    private final String KEY_DANHSACHTAILIEUCHUYENMON="danhsachtailieuchuyenmon";
 
     public SharedPreferencesHandler(Context context,String tenFile) {
         this.context = context;
@@ -221,8 +226,8 @@ public class SharedPreferencesHandler {
         return sharedPreferences.getString(KEY_RATING, "");
     }
 
-    public void setRating(String rating){
-        editor.putString(KEY_RATING,rating);
+    public void setRating(String rating) {
+        editor.putString(KEY_RATING, rating);
         editor.commit();
     }
 

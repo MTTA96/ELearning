@@ -5,6 +5,8 @@ import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Created by zzzzz on 8/28/2017.
  */
@@ -29,6 +31,7 @@ public class TaiKhoan {
     String avatar;
     boolean dacapnhat;
     String rating;
+
 
     public TaiKhoan() {
     }

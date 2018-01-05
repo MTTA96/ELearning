@@ -22,7 +22,7 @@ import android.widget.Toast;
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.LichHoc;
-import com.eways.elearning.DataModel.KhuVuc;
+import com.eways.elearning.DataModel.Other.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.DataModel.LinhVuc.Mon;
 import com.eways.elearning.Handler.FragmentHandler;

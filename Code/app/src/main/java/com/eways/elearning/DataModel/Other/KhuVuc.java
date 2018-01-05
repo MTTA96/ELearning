@@ -1,4 +1,4 @@
-package com.eways.elearning.DataModel;
+package com.eways.elearning.DataModel.Other;
 
 import java.util.ArrayList;
 

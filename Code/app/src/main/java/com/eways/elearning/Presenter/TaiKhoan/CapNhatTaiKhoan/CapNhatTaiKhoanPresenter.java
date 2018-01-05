@@ -3,7 +3,7 @@ package com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan;
 import android.app.Activity;
 import android.widget.ImageView;
 
-import com.eways.elearning.DataModel.TaiKhoan;
+import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Handler.XuLyHinhAnh_FirebaseStorage;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModel;

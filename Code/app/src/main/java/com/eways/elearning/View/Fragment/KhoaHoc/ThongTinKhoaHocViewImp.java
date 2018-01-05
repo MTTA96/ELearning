@@ -1,9 +1,9 @@
 package com.eways.elearning.View.Fragment.KhoaHoc;
 
-import android.app.Activity;
 
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.ThongTinChiTietKhoaHoc;
+import com.eways.elearning.DataModel.KhoaHoc.ThongTinChiTietKhoaHoc;
+
 
 /**
  * Created by ADMIN on 12/12/2017.

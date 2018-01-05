@@ -2,12 +2,11 @@ package com.eways.elearning.Presenter.TaiKhoan.DangKy;
 
 import android.app.Activity;
 
-import com.eways.elearning.DataModel.TaiKhoan;
+import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Model.TaiKhoan.DangKy.DangKyImpModel;
 import com.eways.elearning.Model.TaiKhoan.DangKy.DangKyModel;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyViewImp;
-import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 
 /**
  * Created by Quang Tri on 27/10/2017.

@@ -1,12 +1,8 @@
 package com.eways.elearning.Handler.Adapter;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.eways.elearning.DataModel.LayHinhModel;
-import com.eways.elearning.Manifest;
+import com.eways.elearning.DataModel.Other.LayHinhModel;
 import com.eways.elearning.R;
-import com.eways.elearning.View.Activity.MainActivity;
 
 import java.util.ArrayList;
 

@@ -2,11 +2,8 @@ package com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKh
 
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,8 +19,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.eways.elearning.DataModel.LayHinhModel;
-import com.eways.elearning.DataModel.TaiKhoan;
+import com.eways.elearning.DataModel.Other.LayHinhModel;
+import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Handler.Adapter.ChonHinhAdapter;
 import com.eways.elearning.Handler.DialogPlusHandler;
 import com.eways.elearning.Handler.FragmentHandler;
@@ -33,10 +30,8 @@ import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPre
 import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
-import com.eways.elearning.View.Activity.MainActivity;
 import com.eways.elearning.View.Dialog.LoadingDialog;
-import com.eways.elearning.View.Fragment.TaiKhoan.QuanLyTaiKhoanFragment;
-import com.squareup.picasso.Picasso;
+import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon.CapNhatTaiLieuChuyenMonFragment;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,12 +45,12 @@ import static com.eways.elearning.Handler.DialogPlusHandler.vitrichon;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhatTaiKhoanViewImp, View.OnClickListener{
+public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhatTaiKhoanViewImp, View.OnClickListener {
     View view;
     Spinner spNamsinh, spGiotinh;
     Button btnLuuCapNhat;
-    EditText etHoTen, etNgheNghiep,etTrinhDo,etDiaChi,etSoDienThoai;
-    ImageView imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms,imAvarta;
+    EditText etHoTen, etNgheNghiep, etTrinhDo, etDiaChi, etSoDienThoai;
+    ImageView imTaiLieuXacMinh_mt, imTaiLieuXacMinh_ms, imAvarta;
 
     private Calendar calendar;
     private ArrayList<String> danhsachNam;
@@ -67,8 +62,8 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     private DialogPlusHandler dialogPlusHandler;
     private ImageHandler imageHandler;
 
-    int RESULT_LOAD_HINHMT=1;
-    int RESULT_LOAD_HINHMS=2;
+    int RESULT_LOAD_HINHMT = 1;
+    int RESULT_LOAD_HINHMS = 2;
 
     public CapNhatThongTinTaiKhoanFragment() {
         // Required empty public constructor
@@ -95,12 +90,12 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         etHoTen = (EditText) view.findViewById(R.id.etHoten_CNTTTK);
         etNgheNghiep = (EditText) view.findViewById(R.id.etNghenghiep_CNTTTK);
         btnLuuCapNhat = (Button) view.findViewById(R.id.btnLuuCNTTTK);
-        imTaiLieuXacMinh_mt= (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_mt);
-        imTaiLieuXacMinh_ms= (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_ms);
-        imAvarta=(ImageView) view.findViewById(R.id.imageView_UserAvatar_CNTTTK);
-        etTrinhDo=(EditText) view.findViewById(R.id.etTrinhDo_CNTTTK);
-        etDiaChi=(EditText) view.findViewById(R.id.etDiaChi_CNTTTK);
-        etSoDienThoai=(EditText) view.findViewById(R.id.etSDT_CNTTTK);
+        imTaiLieuXacMinh_mt = (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_mt);
+        imTaiLieuXacMinh_ms = (ImageView) view.findViewById(R.id.ivTaiLieuXacMinh_ms);
+        imAvarta = (ImageView) view.findViewById(R.id.imageView_UserAvatar_CNTTTK);
+        etTrinhDo = (EditText) view.findViewById(R.id.etTrinhDo_CNTTTK);
+        etDiaChi = (EditText) view.findViewById(R.id.etDiaChi_CNTTTK);
+        etSoDienThoai = (EditText) view.findViewById(R.id.etSDT_CNTTTK);
         LoadData();
         btnLuuCapNhat.setOnClickListener(this);
 
@@ -109,11 +104,11 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         imAvarta.setOnClickListener(this);
 
         //cai đặt dialogplus
-        danhSachChon=new ArrayList<>();
-        danhSachChon.add(new LayHinhModel(1,R.drawable.camera_icon,"Máy ảnh"));
-        danhSachChon.add(new LayHinhModel(2,R.drawable.gallery_icon,"Bộ sưu tập"));
-        adDanhSachChonHinh=new ChonHinhAdapter(getActivity(),R.layout.item_chonhinh_cntttk,danhSachChon);
-        dialogPlusHandler=new DialogPlusHandler(getActivity(),adDanhSachChonHinh,this);
+        danhSachChon = new ArrayList<>();
+        danhSachChon.add(new LayHinhModel(1, R.drawable.camera_icon, "Máy ảnh"));
+        danhSachChon.add(new LayHinhModel(2, R.drawable.gallery_icon, "Bộ sưu tập"));
+        adDanhSachChonHinh = new ChonHinhAdapter(getActivity(), R.layout.item_chonhinh_cntttk, danhSachChon);
+        dialogPlusHandler = new DialogPlusHandler(getActivity(), adDanhSachChonHinh, this);
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
@@ -123,10 +118,12 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     @Override
     public void KetQuaCapNhat(String ketQuaCapNhat) {
         if (ketQuaCapNhat.compareTo(SupportKeysList.TAG_CAPNHATTHANHCONG) == 0) {
-            if (fragmentHandler.getPreviousFragmentTag().compareTo(SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT)==0
-                    || fragmentHandler.getPreviousFragmentTag().compareTo(SupportKeysList.TAG_HOME_FRAGMENT)==0)
+            if (fragmentHandler.getPreviousFragmentTag().compareTo(SupportKeysList.TAG_DIEU_KHOAN_GIA_SU) == 0)
+                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(), true, SupportKeysList.TAG_TAI_LIEU_CHUYEN_MON);
+            else {
                 fragmentHandler.XoaFragment();
-//            Toast.makeText(this.getContext(),"Cập Nhật Thành Công",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.getContext(), "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -151,22 +148,22 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
                     SetStringNull(etDiaChi.getText().toString()),
                     SetStringNull(etSoDienThoai.getText().toString()),
                     SetStringNull(sharedPreferencesHandler.getAvatar()),
-                    true,SetStringNull(sharedPreferencesHandler.getRating())), getActivity(),imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms,imAvarta);
+                    true, SetStringNull(sharedPreferencesHandler.getRating())), getActivity(), imTaiLieuXacMinh_mt, imTaiLieuXacMinh_ms, imAvarta);
         }
-        if (v.getId() == R.id.ivTaiLieuXacMinh_mt){
+        if (v.getId() == R.id.ivTaiLieuXacMinh_mt) {
             dialogPlusHandler.ShowDialogChonHinh(0);
         }
-        if (v.getId() == R.id.ivTaiLieuXacMinh_ms){
+        if (v.getId() == R.id.ivTaiLieuXacMinh_ms) {
             dialogPlusHandler.ShowDialogChonHinh(1);
         }
-        if (v.getId() == R.id.imageView_UserAvatar_CNTTTK){
+        if (v.getId() == R.id.imageView_UserAvatar_CNTTTK) {
             dialogPlusHandler.ShowDialogChonHinh(2);
         }
     }
 
     //Kiem tra rong va set "null"
-    public String SetStringNull(String text){
-        if (text.compareTo("")==0)
+    public String SetStringNull(String text) {
+        if (text.compareTo("") == 0)
             return "null";
         return text;
     }
@@ -179,95 +176,93 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     //Load Data tài khoản
     public void LoadData() {
         //Họ tên
-        if(sharedPreferencesHandler.getHo().isEmpty() && sharedPreferencesHandler.getTen().isEmpty()){
+        if (sharedPreferencesHandler.getHo().isEmpty() && sharedPreferencesHandler.getTen().isEmpty()) {
             etHoTen.setText("");
-        }
-        else
-            etHoTen.setText(sharedPreferencesHandler.getHo().toString()+sharedPreferencesHandler.getTen().toString());
+        } else
+            etHoTen.setText(sharedPreferencesHandler.getHo().toString() + sharedPreferencesHandler.getTen().toString());
 
         //Năm sinh
-        if (sharedPreferencesHandler.getNamSinh().toString().compareTo("null")==0){
+        if (sharedPreferencesHandler.getNamSinh().toString().compareTo("null") == 0) {
             calendar = Calendar.getInstance();
             int currentYear = calendar.get(Calendar.YEAR);
             for (int i = 1960; i <= currentYear; i++) {
                 danhsachNam.add(String.valueOf(i));
             }
-            ArrayAdapter adDanhSachNam=new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,danhsachNam);
+            ArrayAdapter adDanhSachNam = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, danhsachNam);
             spNamsinh.setAdapter(adDanhSachNam);
 
-        }else{
+        } else {
             calendar = Calendar.getInstance();
             int currentYear = calendar.get(Calendar.YEAR);
             for (int i = 1960; i <= currentYear; i++) {
                 danhsachNam.add(String.valueOf(i));
             }
-            ArrayAdapter adDanhSachNam=new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,danhsachNam);
+            ArrayAdapter adDanhSachNam = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, danhsachNam);
             spNamsinh.setAdapter(adDanhSachNam);
-            int spinnerPosition=adDanhSachNam.getPosition(sharedPreferencesHandler.getNamSinh().toString());
+            int spinnerPosition = adDanhSachNam.getPosition(sharedPreferencesHandler.getNamSinh().toString());
             spNamsinh.setSelection(spinnerPosition);
         }
 
         //Giới tính
-        if (sharedPreferencesHandler.getGioiTinh().compareTo("null")==0) {
+        if (sharedPreferencesHandler.getGioiTinh().compareTo("null") == 0) {
             ArrayAdapter adDanhSachGioiTinh = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ListGioiTinh));
             spGiotinh.setAdapter(adDanhSachGioiTinh);
-        }else{
-            ArrayAdapter adDanhSachGioiTinh = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.ListGioiTinh));
+        } else {
+            ArrayAdapter adDanhSachGioiTinh = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ListGioiTinh));
             spGiotinh.setAdapter(adDanhSachGioiTinh);
-            int spinnerPosition=adDanhSachGioiTinh.getPosition(sharedPreferencesHandler.getGioiTinh());
+            int spinnerPosition = adDanhSachGioiTinh.getPosition(sharedPreferencesHandler.getGioiTinh());
             spGiotinh.setSelection(spinnerPosition);
         }
 
         //Nghề nghiệp
-        if(sharedPreferencesHandler.getNgheNghiep().compareTo("null")==0){
+        if (sharedPreferencesHandler.getNgheNghiep().compareTo("null") == 0) {
             etNgheNghiep.setText("");
-        }
-        else {
+        } else {
             etNgheNghiep.setText(sharedPreferencesHandler.getNgheNghiep().toString());
         }
 
         //Avatar
-        imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(),imAvarta);
-        if (sharedPreferencesHandler.getTrinhDo().compareTo("null")==0)
+        imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(), imAvarta);
+        if (sharedPreferencesHandler.getTrinhDo().compareTo("null") == 0)
             etTrinhDo.setText("");
         else
             etTrinhDo.setText(sharedPreferencesHandler.getTrinhDo().toString());
 
         //Địa chỉ
-        if (sharedPreferencesHandler.getDiaChi().compareTo("null")==0)
+        if (sharedPreferencesHandler.getDiaChi().compareTo("null") == 0)
             etTrinhDo.setText("");
         else
             etDiaChi.setText(sharedPreferencesHandler.getDiaChi().toString());
 
         //Số điện thoại
-        if (sharedPreferencesHandler.getSoDienThoai().compareTo("null")==0)
+        if (sharedPreferencesHandler.getSoDienThoai().compareTo("null") == 0)
             etSoDienThoai.setText("");
         else
             etSoDienThoai.setText(sharedPreferencesHandler.getSoDienThoai());
 
         //Tài liệu xác minh
-        if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null")==0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().toString().trim().compareTo("null")==0){
+        if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().toString().trim().compareTo("null") == 0) {
             return;
-        }else{
-            if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null")==0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null")!=0){
+        } else {
+            if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") != 0) {
                 view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
-                imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(),imTaiLieuXacMinh_ms);
-            }else {
-                if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null")==0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null")!=0){
+                imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(), imTaiLieuXacMinh_ms);
+            } else {
+                if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") != 0) {
                     view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
-                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(),imTaiLieuXacMinh_ms);
+                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(), imTaiLieuXacMinh_ms);
                     return;
                 }
-                if (sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null")==0 && sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null")!=0){
+                if (sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null") != 0) {
                     view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
-                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_mt(),imTaiLieuXacMinh_mt);
+                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_mt(), imTaiLieuXacMinh_mt);
                     return;
                 }
-                if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null")!=0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null")!=0){
+                if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null") != 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") != 0) {
                     view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                     view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
-                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_mt(),imTaiLieuXacMinh_mt);
-                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(),imTaiLieuXacMinh_ms);
+                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_mt(), imTaiLieuXacMinh_mt);
+                    imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(), imTaiLieuXacMinh_ms);
                 }
             }
         }
@@ -276,30 +271,29 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        dialogPlusHandler.onActivityResult(requestCode,resultCode,data,imTaiLieuXacMinh_mt,imTaiLieuXacMinh_ms,imAvarta);
-        if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data!= null){
-            Bitmap bitmap=(Bitmap) data.getExtras().get("data");
-            if (vitrichon==0) {
+        dialogPlusHandler.onActivityResult(requestCode, resultCode, data, imTaiLieuXacMinh_mt, imTaiLieuXacMinh_ms, imAvarta);
+        if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data != null) {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            if (vitrichon == 0) {
                 view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                 imTaiLieuXacMinh_mt.setImageBitmap(bitmap);
-            }
-            else {
+            } else {
                 view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                 imTaiLieuXacMinh_ms.setImageBitmap(bitmap);
             }
             dialogPlusHandler.dissMissDialog();
         }
         if (requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null) {
-            if (vitrichon==0) {
+            if (vitrichon == 0) {
                 view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                 imageHandler.loadImageRound(String.valueOf(data.getData()), imTaiLieuXacMinh_mt);
             }
-            if(vitrichon==1){
+            if (vitrichon == 1) {
                 view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                 imageHandler.loadImageRound(String.valueOf(data.getData()), imTaiLieuXacMinh_ms);
             }
-            if (vitrichon==2){
-                imageHandler.loadImageRound(String.valueOf(data.getData()),imAvarta);
+            if (vitrichon == 2) {
+                imageHandler.loadImageRound(String.valueOf(data.getData()), imAvarta);
             }
             dialogPlusHandler.dissMissDialog();
         }
@@ -308,6 +302,6 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        dialogPlusHandler.onRequestPermissionResult(requestCode,permissions,grantResults);
+        dialogPlusHandler.onRequestPermissionResult(requestCode, permissions, grantResults);
     }
 }

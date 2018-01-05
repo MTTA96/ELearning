@@ -3,25 +3,19 @@ package com.eways.elearning.Model.TaiKhoan.DangNhap;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.eways.elearning.DataModel.TaiKhoan;
+import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Handler.Other.ParseDataTaiKhoan;
-import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -34,11 +28,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 /**

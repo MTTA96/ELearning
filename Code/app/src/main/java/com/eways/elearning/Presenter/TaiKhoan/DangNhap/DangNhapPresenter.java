@@ -1,9 +1,8 @@
 package com.eways.elearning.Presenter.TaiKhoan.DangNhap;
 
-import android.accounts.AccountManager;
 import android.app.Activity;
 
-import com.eways.elearning.DataModel.TaiKhoan;
+import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapImpModel;
 import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapModel;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
@@ -11,9 +10,7 @@ import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapViewImp;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by ADMIN on 11/5/2017.

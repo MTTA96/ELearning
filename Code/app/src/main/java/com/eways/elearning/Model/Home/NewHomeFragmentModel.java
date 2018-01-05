@@ -2,7 +2,7 @@ package com.eways.elearning.Model.Home;
 
 import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.TaiKhoan;
+import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Presenter.Home.NewHomeFragmentPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.google.firebase.database.ChildEventListener;

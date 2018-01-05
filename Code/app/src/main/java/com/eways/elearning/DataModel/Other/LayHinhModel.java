@@ -1,4 +1,4 @@
-package com.eways.elearning.DataModel;
+package com.eways.elearning.DataModel.Other;
 
 /**
  * Created by ADMIN on 11/30/2017.

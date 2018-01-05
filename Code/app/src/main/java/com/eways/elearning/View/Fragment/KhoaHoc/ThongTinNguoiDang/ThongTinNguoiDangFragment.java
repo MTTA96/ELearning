@@ -1,7 +1,6 @@
 package com.eways.elearning.View.Fragment.KhoaHoc.ThongTinNguoiDang;
 
 
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,22 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.eways.elearning.DataModel.TaiKhoan;
-import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
+import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinNguoiDang.ThongTinNguoiDangPresenter;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinNguoiDang.ThongTinNguoiDangPresenterImp;
 import com.eways.elearning.R;
-import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment;
-import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon.TaiLieuChuyenMonFragment;
-
-import org.w3c.dom.Text;
-
-import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -96,7 +87,7 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
     private void seUpViewpager(ViewPager viewPager) {
 //        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
 //        viewPagerAdapter.addFragment(new CapNhatThongTinTaiKhoanFragment(), titleTab1);
-//        viewPagerAdapter.addFragment(new TaiLieuChuyenMonFragment(), titleTab2);
+//        viewPagerAdapter.addFragment(new CapNhatTaiLieuChuyenMonFragment(), titleTab2);
 //        viewPager.setAdapter(viewPagerAdapter);
 
 

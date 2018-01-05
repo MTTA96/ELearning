@@ -2,8 +2,7 @@ package com.eways.elearning.Model.KhoaHoc.ThongTinNguoiDang;
 
 import android.app.Activity;
 
-import com.eways.elearning.DataModel.TaiKhoan;
-import com.eways.elearning.Presenter.KhoaHoc.ThongTinNguoiDang.ThongTinNguoiDangPresenter;
+import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinNguoiDang.ThongTinNguoiDangPresenterImp;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.ChildEventListener;

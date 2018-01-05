@@ -1,7 +1,6 @@
 package com.eways.elearning.Handler.Adapter.KhoaHoc;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -18,7 +17,6 @@ import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
-import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinKhoaHocFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinNguoiDang.ThongTinNguoiDangFragment;
 
 import java.util.ArrayList;
@@ -27,11 +25,13 @@ import java.util.ArrayList;
  * Created by ADMIN on 11/9/2017.
  */
 
-public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.ViewHolder> implements View.OnClickListener {
+public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.ViewHolder> implements View.OnClickListener{
     private Context context;
     private ArrayList<CustomModelKhoaHoc> khoaHocArrayList;
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
+
+    String avatar = "https://scontent.fsgn2-2.fna.fbcdn.net/v/t31.0-1/c282.0.960.960/p960x960/10506738_10150004552801856_220367501106153455_o.jpg?oh=8e3c92bb05c15479a3e2c0692c670e6e&oe=5A8AF812";
 
     public KhoaHocRCAdapter(Context context, ArrayList<CustomModelKhoaHoc> khoaHocArrayList, ImageHandler imageHandler, FragmentHandler fragmentHandler) {
         this.context = context;
@@ -57,6 +57,7 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
             }
         });
         holder.vCourseInfo.setOnClickListener(this);
+
         loadData(holder, position);
     }
 
@@ -122,6 +123,8 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<KhoaHocRCAdapter.View
         }
 
     }
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         LinearLayout vUserInfo, vCourseInfo;

@@ -215,6 +215,8 @@ public class KhoaHoc implements Serializable {
         this.DiaDiem = DiaDiem;
     }
 
+
+
     /**
      * Định dạng giá hiển thị
      */

@@ -55,8 +55,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/text_height"
                     android:layout_weight="1"
-                    android:paddingLeft="@dimen/text_padding_left"
-                    android:background="@drawable/et_shape" />
+                    android:background="@drawable/et_shape"
+                    android:paddingLeft="@dimen/text_padding_left" />
             </LinearLayout>
 
             <!-- Giới tính -->

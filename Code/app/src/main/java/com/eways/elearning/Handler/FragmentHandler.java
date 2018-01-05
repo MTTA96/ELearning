@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Activity.MainActivity;
 import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
@@ -78,6 +79,9 @@ public class FragmentHandler {
      * Lấy fragment trước đó
      * */
     public String getPreviousFragmentTag(){
-        return fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount()-1).getName();
+        if (fragmentManager.getBackStackEntryCount()>0)
+            return fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount()-1).getName();
+        else
+            return SupportKeysList.TAG_HOME_FRAGMENT;
     }
 }

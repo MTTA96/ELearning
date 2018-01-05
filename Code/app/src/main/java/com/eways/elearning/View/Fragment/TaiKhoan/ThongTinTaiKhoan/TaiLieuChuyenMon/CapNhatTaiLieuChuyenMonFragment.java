@@ -16,7 +16,7 @@ import com.eways.elearning.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CapNhatTaiLieuChuyenMonFragment extends Fragment {
+public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.OnClickListener {
     RecyclerView rvLinhVuc;
 
     public CapNhatTaiLieuChuyenMonFragment() {
@@ -43,10 +43,20 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment {
         View root=inflater.inflate(R.layout.fragment_tai_lieu_chuyen_mon, container, false);
         rvLinhVuc = root.findViewById(R.id.recyclerView_LinhVucChuyenMon_CapNhatTaiLieuChuyenMon);
 
+        root.findViewById(R.id.button_ThemLinhVucChuyenMon).setOnClickListener(this);
+
         LinearLayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         rvLinhVuc.setLayoutManager(layoutManager);
         rvLinhVuc.setAdapter(new DanhSachLinhVucChuyenMonAdapter(getContext()));
         return root;
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.button_ThemLinhVucChuyenMon:
+
+                break;
+        }
+    }
 }

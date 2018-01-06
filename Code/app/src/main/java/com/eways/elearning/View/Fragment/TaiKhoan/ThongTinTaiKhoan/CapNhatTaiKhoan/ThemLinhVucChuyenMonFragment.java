@@ -66,7 +66,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_them_linh_vuc_chuyen_mon, container, false);
-//        spinner = root.findViewById(R.id.)
+        spinner = root.findViewById(R.id.spinner_ChonLinhVucChuyenMon);
         rvBangCap = root.findViewById(R.id.recyclerView_DanhSachBangCap_ThemLinhVucChuyenMon);
         rvMon = root.findViewById(R.id.recyclerView_DanhSachMon_ThemLinhVucChuyenMon);
 
@@ -78,7 +78,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
     }
 
     private void setUpData() {
-//        spinner
+//        spinner.setAdapter();
         rvBangCap.setLayoutManager(new GridLayoutManager(getContext(), 3));
         rvMon.setLayoutManager(new GridLayoutManager(getContext(), 3));
     }

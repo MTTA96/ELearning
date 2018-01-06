@@ -89,8 +89,8 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_cap_nhat_thong_tin_tai_khoan, container, false);
 
-        spNamsinh = (Spinner) view.findViewById(R.id.spNamsinh_CNTTTK);
-        spGiotinh = (Spinner) view.findViewById(R.id.spGioiTinh);
+        spNamsinh = view.findViewById(R.id.spNamsinh_CNTTTK);
+        spGiotinh = view.findViewById(R.id.spGioiTinh);
         etHoTen = (EditText) view.findViewById(R.id.etHoten_CNTTTK);
         etNgheNghiep = (EditText) view.findViewById(R.id.etNghenghiep_CNTTTK);
         btnLuuCapNhat = (Button) view.findViewById(R.id.btnLuuCNTTTK);

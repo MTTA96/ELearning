@@ -10,14 +10,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.MonTaiLieuChuyenMon;
+import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Handler.Adapter.TaiLieuChuyenMon.DanhSachLinhVucChuyenMonAdapter;
+import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.ThemLinhVucChuyenMonFragment;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.OnClickListener {
     RecyclerView rvLinhVuc;
+
+    private FragmentHandler fragmentHandler;
+    private ArrayList<TaiLieuChuyenMon> danhSachLinhVucChuyenMon = new ArrayList<>();
 
     public CapNhatTaiLieuChuyenMonFragment() {
         // Required empty public constructor
@@ -34,6 +44,7 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fragmentHandler = new FragmentHandler(getContext(), getActivity().getSupportFragmentManager());
     }
 
     @Override
@@ -47,7 +58,7 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
 
         LinearLayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         rvLinhVuc.setLayoutManager(layoutManager);
-        rvLinhVuc.setAdapter(new DanhSachLinhVucChuyenMonAdapter(getContext()));
+        rvLinhVuc.setAdapter(new DanhSachLinhVucChuyenMonAdapter(getContext(), danhSachLinhVucChuyenMon));
         return root;
     }
 
@@ -55,7 +66,7 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_ThemLinhVucChuyenMon:
-
+                fragmentHandler.ChuyenFragment(ThemLinhVucChuyenMonFragment.newInstance(null), true, SupportKeysList.TAG_THEM_LINH_VUC_CHUYEN_MON);
                 break;
         }
     }

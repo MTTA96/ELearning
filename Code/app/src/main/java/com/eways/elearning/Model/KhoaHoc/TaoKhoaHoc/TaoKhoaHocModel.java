@@ -35,6 +35,7 @@ public class TaoKhoaHocModel implements TaoKhoaHocModelImp {
         if(loai == false)
         {
             mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").push().setValue(khoaHoc);
+
         }
         else
         {

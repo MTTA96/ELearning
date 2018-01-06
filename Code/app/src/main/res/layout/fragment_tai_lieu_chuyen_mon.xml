@@ -5,12 +5,15 @@
     android:orientation="vertical"
     tools:context="com.eways.elearning.View.Activity.MainActivity">
 
+    <!--Thêm lĩnh vực-->
     <Button
         android:id="@+id/button_ThemLinhVucChuyenMon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Thêm lĩnh vực"
         android:background="@color/white"/>
+
+    <!--Danh sách lĩnh vực chuyên môn-->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView_LinhVucChuyenMon_CapNhatTaiLieuChuyenMon"
         android:layout_width="match_parent"

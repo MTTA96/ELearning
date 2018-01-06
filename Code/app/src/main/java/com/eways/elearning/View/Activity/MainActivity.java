@@ -1,6 +1,5 @@
 package com.eways.elearning.View.Activity;
 
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;

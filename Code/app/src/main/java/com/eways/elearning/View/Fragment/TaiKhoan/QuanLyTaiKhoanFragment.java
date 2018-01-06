@@ -27,7 +27,6 @@ import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.DieuKhoan.DieuKhoanGiaSuFragment;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
-import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinNguoiDang.ThongTinNguoiDangFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment;
 import com.google.firebase.auth.FirebaseAuth;
 

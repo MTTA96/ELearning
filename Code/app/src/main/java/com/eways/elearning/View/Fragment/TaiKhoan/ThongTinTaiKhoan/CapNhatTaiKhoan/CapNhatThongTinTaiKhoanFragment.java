@@ -340,3 +340,4 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         dialogPlusHandler.onRequestPermissionResult(requestCode, permissions, grantResults);
     }
 }
+

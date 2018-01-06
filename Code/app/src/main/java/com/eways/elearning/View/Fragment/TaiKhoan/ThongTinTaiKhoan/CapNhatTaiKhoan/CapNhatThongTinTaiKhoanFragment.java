@@ -122,7 +122,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
                 fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(), true, SupportKeysList.TAG_TAI_LIEU_CHUYEN_MON);
             else {
                 fragmentHandler.XoaFragment();
-                Toast.makeText(this.getContext(), "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
             }
         }
     }

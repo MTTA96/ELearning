@@ -33,7 +33,6 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp {
 
     public CapNhatTaiKhoanModel(CapNhatTaiKhoanPresenterImp capNhatTaiKhoanPresenterImp) {
         this.capNhatTaiKhoanPresenterImp = capNhatTaiKhoanPresenterImp;
-
     }
 
     @Override

@@ -1,4 +1,4 @@
-﻿package com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan;
+package com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan;
 
 
 import android.content.Intent;
@@ -32,7 +32,6 @@ import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPre
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;
-import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanViewImp;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon.CapNhatTaiLieuChuyenMonFragment;
 
 import java.util.ArrayList;
@@ -90,8 +89,8 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_cap_nhat_thong_tin_tai_khoan, container, false);
 
-        spNamsinh = (Spinner) view.findViewById(R.id.spNamsinh_CNTTTK);
-        spGiotinh = (Spinner) view.findViewById(R.id.spGioiTinh);
+        spNamsinh = view.findViewById(R.id.spNamsinh_CNTTTK);
+        spGiotinh = view.findViewById(R.id.spGioiTinh);
         etHoTen = (EditText) view.findViewById(R.id.etHoten_CNTTTK);
         etNgheNghiep = (EditText) view.findViewById(R.id.etNghenghiep_CNTTTK);
         btnLuuCapNhat = (Button) view.findViewById(R.id.btnLuuCNTTTK);
@@ -129,7 +128,6 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
             else {
 //                Toast.makeText(getActivity(), "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
                 fragmentHandler.XoaFragment();
-
             }
         }
     }
@@ -342,3 +340,4 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         dialogPlusHandler.onRequestPermissionResult(requestCode, permissions, grantResults);
     }
 }
+

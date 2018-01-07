@@ -17,6 +17,7 @@ import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.MonTaiLie
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 
 import java.io.Serializable;
 
@@ -103,6 +104,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.act_save) {
+            LoadingDialog.showDialog();
             //Xử lý lưu lĩnh vưc lên server
             spinner.getSelectedItem();
             fragmentHandler.XoaFragment();

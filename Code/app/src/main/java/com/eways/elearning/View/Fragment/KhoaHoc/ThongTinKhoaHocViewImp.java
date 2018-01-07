@@ -12,4 +12,5 @@ import com.eways.elearning.DataModel.KhoaHoc.ThongTinChiTietKhoaHoc;
 public interface ThongTinKhoaHocViewImp {
     public void KetQuaThongTinKhoaHoc(ThongTinChiTietKhoaHoc thongTinChiTietKhoaHoc);
     public void KetQuaGuiYeuCau(String ketQuaYC, KhoaHoc khoaHoc);
+    public void KetQuaHuyYeuCau(String ketQuaHYC,KhoaHoc khoaHoc);
 }

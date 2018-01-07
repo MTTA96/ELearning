@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.eways.elearning.DataModel.KhoaHoc.DanhSachYeuCau;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.Handler.Adapter.KhoaHoc.KhoaHocRCAdapter;
 import com.eways.elearning.Presenter.KhoaHoc.GuiYeuCau.GuiYeuCauPresenter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -88,6 +89,44 @@ public class GuiYeuCauModel implements GuiYeuCauModelImp {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+    }
+
+    @Override
+    public void NhanDataHuyYeuCau(final String keyKhoaHoc, String keyYeuCau, String nhanh, Activity activity) {
+        final FirebaseDatabase mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
+        mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").child(keyKhoaHoc).child("danhSachYeuCau").child(nhanh).child(keyYeuCau).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isComplete()){
+                    mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").orderByKey().equalTo(keyKhoaHoc).addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            guiYeuCauPresenter.KetQuaHuyYeuCau("HuyYeuCauThanhCong",dataSnapshot.getValue(KhoaHoc.class));
+                        }
+
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
             }
         });
     }

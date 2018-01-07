@@ -33,4 +33,16 @@ public class GuiYeuCauPresenter implements GuiYeuCauPresenterImp {
     public void KetQuaGuiYeuCau(String ketQuaGuiYC,KhoaHoc khoaHoc) {
         thongTinKhoaHocViewImp.KetQuaGuiYeuCau(ketQuaGuiYC,khoaHoc);
     }
+
+    @Override
+    public void HuyYeuCau(String keyKhoaHoc, String keyYeuCau,String nhanh, Activity activity) {
+        guiYeuCauModelImp.NhanDataHuyYeuCau(keyKhoaHoc,keyYeuCau,nhanh,activity);
+    }
+
+    @Override
+    public void KetQuaHuyYeuCau(String ketQuaHuyYeuCau, KhoaHoc khoaHoc) {
+        thongTinKhoaHocViewImp.KetQuaHuyYeuCau(ketQuaHuyYeuCau,khoaHoc);
+    }
+
+
 }

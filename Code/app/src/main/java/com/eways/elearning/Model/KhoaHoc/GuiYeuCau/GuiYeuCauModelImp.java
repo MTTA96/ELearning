@@ -11,4 +11,5 @@ import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 public interface GuiYeuCauModelImp {
     public void CapNhapYeuCau(String keyKhoaHoc, String idNguoiGui, Activity activity);
     public void KiemTraTinhTrangYeuCau(String keyKhoaHoc,Activity activity);
+    public void NhanDataHuyYeuCau(String keyKhoaHoc,String keyYeuCau,String nhanh,Activity activity);
 }

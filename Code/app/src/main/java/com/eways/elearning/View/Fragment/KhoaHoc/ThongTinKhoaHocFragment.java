@@ -116,6 +116,13 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         }
     }
 
+    @Override
+    public void KetQuaHuyYeuCau(String ketQuaHYC, KhoaHoc khoaHoc) {
+        if (ketQuaHYC.compareTo("HuyYeuCauThanhCong")==0){
+            LoadNutGuiYeuCau(khoaHoc);
+        }
+    }
+
     private void loadView(TaiKhoan taiKhoan,KhoaHoc khoaHoc) {
         //User info
         imageHandler.loadImageRound(taiKhoan.getAvatar(), imgUserAvatar);
@@ -157,12 +164,16 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     public void LoadNutGuiYeuCau(KhoaHoc khoaHoc){
         ArrayList<String> listDanhSachYeuCauDangCho=new ArrayList<>();
         ArrayList<String> listDanhSachYeuCauTamDuyet=new ArrayList<>();
+        final ArrayList<String> listDanhSachYeuCauDangChoKey=new ArrayList<>();
+        final ArrayList<String> listDanhSachYeuCauTamDuyetKey=new ArrayList<>();
         if (khoaHoc.getDanhSachYeuCau()==null) {
             btnGuiYeuCau.setText("Gửi yêu cầu");
             btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),sharedPreferencesHandler.getID(),getActivity(),false);
+                    if (btnGuiYeuCau.getText().toString().compareTo("Gửi yêu cầu") == 0) {
+                        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2), sharedPreferencesHandler.getID(), getActivity(), false);
+                    }
                 }
             });
         }else {
@@ -170,9 +181,21 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                 for(Map.Entry m:khoaHoc.getDanhSachYeuCau().getDangCho().entrySet()){
                     listDanhSachYeuCauDangCho.add(m.getValue().toString());
                 }
+                for (Map.Entry q:khoaHoc.getDanhSachYeuCau().getDangCho().entrySet()){
+                    listDanhSachYeuCauDangChoKey.add(q.getKey().toString());
+                }
                 for (int i=0;i<listDanhSachYeuCauDangCho.size();i++){
                     if(listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getID())==0){
                         btnGuiYeuCau.setText("Hủy");
+                        final int finalI = i;
+                        btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (btnGuiYeuCau.getText().toString().compareTo("Hủy")==0){
+                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2),listDanhSachYeuCauDangChoKey.get(finalI),"dangCho",getActivity());
+                                }
+                            }
+                        });
                         return;
                     }
                 }
@@ -180,7 +203,9 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                 btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),sharedPreferencesHandler.getID(),getActivity(),false);
+                        if (btnGuiYeuCau.getText().toString().compareTo("Gửi yêu cầu") == 0) {
+                            guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2), sharedPreferencesHandler.getID(), getActivity(), false);
+                        }
                     }
                 });
                 return;
@@ -190,9 +215,19 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                 for(Map.Entry n:khoaHoc.getDanhSachYeuCau().getTamDuyet().entrySet()){
                     listDanhSachYeuCauTamDuyet.add(n.getValue().toString());
                 }
+                for (Map.Entry p:khoaHoc.getDanhSachYeuCau().getTamDuyet().entrySet()){
+                    listDanhSachYeuCauTamDuyetKey.add(p.getKey().toString());
+                }
                 for (int i=0;i<listDanhSachYeuCauDangCho.size();i++){
                     if(listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getID())==0){
                         btnGuiYeuCau.setText("Hủy");
+                        final int finalI = i;
+                        btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2),listDanhSachYeuCauTamDuyetKey.get(finalI),"tamDuyet",getActivity());
+                            }
+                        });
                         return;
                     }
                 }
@@ -200,43 +235,78 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                 btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),sharedPreferencesHandler.getID(),getActivity(),false);
+                        if (btnGuiYeuCau.getText().toString().compareTo("Gửi yêu cầu") == 0) {
+                            guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2), sharedPreferencesHandler.getID(), getActivity(), false);
+                        }
                     }
                 });
                 return;
             }
             if (khoaHoc.getDanhSachYeuCau().getDangCho()!=null && khoaHoc.getDanhSachYeuCau().getDangCho()!=null){
                 int count=0;
+                int vitri=-1;
+                for (Map.Entry q:khoaHoc.getDanhSachYeuCau().getDangCho().entrySet()){
+                    listDanhSachYeuCauDangChoKey.add(q.getKey().toString());
+                }
+                for (Map.Entry p:khoaHoc.getDanhSachYeuCau().getTamDuyet().entrySet()){
+                    listDanhSachYeuCauTamDuyetKey.add(p.getKey().toString());
+                }
                 for(Map.Entry n:khoaHoc.getDanhSachYeuCau().getTamDuyet().entrySet()){
                     listDanhSachYeuCauTamDuyet.add(n.getValue().toString());
                 }
                 for(Map.Entry m:khoaHoc.getDanhSachYeuCau().getDangCho().entrySet()){
                     listDanhSachYeuCauDangCho.add(m.getValue().toString());
                 }
+
                 for (int i=0;i<listDanhSachYeuCauDangCho.size();i++){
                     if (listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getID())==0){
                         count++;
+                        vitri=i;
                     }
                 }
                 if (count>0){
                     btnGuiYeuCau.setText("Hủy");
-                    return;
+                    if (vitri>-1) {
+                        final int vttemp = vitri;
+                        btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (btnGuiYeuCau.getText().toString().compareTo("Hủy") == 0) {
+                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2), listDanhSachYeuCauDangChoKey.get(vttemp),"dangCho",getActivity());
+                                }
+                            }
+                        });
+                        return;
+                    }
                 }else {
                     count =0;
+                    vitri=-1;
                     for (int j=0;j<listDanhSachYeuCauTamDuyet.size();j++){
                         if (listDanhSachYeuCauTamDuyet.get(j).compareTo(sharedPreferencesHandler.getID())==0){
                             count++;
+                            vitri=j;
                         }
                     }
                     if (count>0){
                         btnGuiYeuCau.setText("Hủy");
+                        if (vitri>-1){
+                            final int vttemp=vitri;
+                            btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2), listDanhSachYeuCauTamDuyetKey.get(vttemp),"tamDuyet",getActivity());
+                                }
+                            });
+                        }
                         return;
                     }else {
                         btnGuiYeuCau.setText("Gửi yêu cầu");
                         btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),sharedPreferencesHandler.getID(),getActivity(),false);
+                                if (btnGuiYeuCau.getText().toString().compareTo("Gửi yêu cầu") == 0) {
+                                    guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2), sharedPreferencesHandler.getID(), getActivity(), false);
+                                }
                             }
                         });
                         return;

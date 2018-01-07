@@ -65,7 +65,7 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
     }
 
     public void loadData(){
-        
+
         LoadingDialog.dismissDialog();
     }
     @Override

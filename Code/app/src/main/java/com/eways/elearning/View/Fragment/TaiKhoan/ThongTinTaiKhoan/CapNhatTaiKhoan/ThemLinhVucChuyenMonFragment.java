@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.BangCapTaiLieuChuyenMon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.MonTaiLieuChuyenMon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Handler.FragmentHandler;
@@ -20,6 +21,7 @@ import com.eways.elearning.R;
 import com.eways.elearning.View.Dialog.LoadingDialog;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +32,8 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
 
     private FragmentHandler fragmentHandler;
     private TaiLieuChuyenMon taiLieuChuyenMon;
+    private ArrayList<BangCapTaiLieuChuyenMon> danhSachBangCap = new ArrayList<>();
+    private ArrayList<MonTaiLieuChuyenMon> danhSachMon = new ArrayList<>();
 
     //Phân biệt request tạo hay cập nhật lĩnh vực.
     private String REQUEST;
@@ -106,7 +110,10 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
         if(item.getItemId() == R.id.act_save) {
             LoadingDialog.showDialog();
             //Xử lý lưu lĩnh vưc lên server
-            spinner.getSelectedItem();
+            //Chưa xử lý id tài liệu chuyên môn (chưa có id)
+            //Chưa có danh sách bằng cấp
+            //Chỉ có tên lĩnh vực chưa có id lĩnh vực
+            taiLieuChuyenMon = new TaiLieuChuyenMon(null, spinner.getSelectedItem().toString(), danhSachBangCap, danhSachMon);
             fragmentHandler.XoaFragment();
         }
         return super.onOptionsItemSelected(item);

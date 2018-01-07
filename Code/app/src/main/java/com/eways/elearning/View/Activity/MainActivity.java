@@ -139,8 +139,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     menu.findItem(R.id.act_search).setVisible(false);
                     menu.findItem(R.id.act_save).setVisible(false);
                     break;
-                case SupportKeysList.TAG_THONG_TIN_CA_NHAN:
+
+                //Tài khoản
+                case SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON:
+                case SupportKeysList.TAG_THEM_LINH_VUC_CHUYEN_MON:
+                case SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN:
+                    findViewById(R.id.search_layout).setVisibility(View.GONE);
+                    tvScreenTitle.setVisibility(View.VISIBLE);
+                    menu.findItem(R.id.act_search).setVisible(false);
                     menu.findItem(R.id.act_save).setVisible(true);
+                    break;
                 case SupportKeysList.TAG_DIEU_KHOAN_GIA_SU:
                     tvScreenTitle.setText(getString(R.string.title_dieu_khoan_gia_su));
                 case SupportKeysList.TAG_DANG_NHAP_FRAGMENT:
@@ -154,10 +162,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     menu.findItem(R.id.act_save).setVisible(false);
                     break;
                 default:
-                    findViewById(R.id.search_layout).setVisibility(View.GONE);
-                    tvScreenTitle.setVisibility(View.VISIBLE);
-                    menu.findItem(R.id.act_search).setVisible(true);
-                    menu.findItem(R.id.act_save).setVisible(false);
+//                    findViewById(R.id.search_layout).setVisibility(View.GONE);
+//                    tvScreenTitle.setVisibility(View.VISIBLE);
+//                    menu.findItem(R.id.act_search).setVisible(true);
+//                    menu.findItem(R.id.act_save).setVisible(false);
                     break;
             }
         }
@@ -198,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
                     else {
                         Toast.makeText(this, getResources().getString(R.string.msg_cap_nhat_thong_tin), Toast.LENGTH_SHORT).show();
-                        fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), true, SupportKeysList.TAG_THONG_TIN_CA_NHAN);
+                        fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), true, SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
                     }
                 }
                 break;
@@ -258,6 +266,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchView.addSuggestions(dsMon);
     }
 
+    /**
+     * Xử lý seach bar
+     * */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         String suggestion = searchView.getSuggestionAtPosition(position);

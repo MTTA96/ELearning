@@ -137,7 +137,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
                 dialog.show();
                 break;
             case R.id.LoThongTinCaNhan:
-                fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(),true,SupportKeysList.TAG_THONG_TIN_CA_NHAN);
+                fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(),true,SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
                 break;
             case R.id.linearLayout_DangKyGiaSu:
                 fragmentHandler.ChuyenFragment(DieuKhoanGiaSuFragment.newInstance(), true, SupportKeysList.TAG_DIEU_KHOAN_GIA_SU);

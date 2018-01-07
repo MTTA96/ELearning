@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -16,6 +17,7 @@ import com.eways.elearning.Handler.Adapter.TaiLieuChuyenMon.DanhSachLinhVucChuye
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.ThemLinhVucChuyenMonFragment;
 
 import java.util.ArrayList;
@@ -62,6 +64,10 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
         return root;
     }
 
+    public void loadData(){
+
+        LoadingDialog.dismissDialog();
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

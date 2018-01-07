@@ -1,22 +1,27 @@
 package com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.BangCapTaiLieuChuyenMon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.MonTaiLieuChuyenMon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
+import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +30,10 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
     Spinner spinner;
     RecyclerView rvBangCap, rvMon;
 
+    private FragmentHandler fragmentHandler;
     private TaiLieuChuyenMon taiLieuChuyenMon;
+    private ArrayList<BangCapTaiLieuChuyenMon> danhSachBangCap = new ArrayList<>();
+    private ArrayList<MonTaiLieuChuyenMon> danhSachMon = new ArrayList<>();
 
     //Phân biệt request tạo hay cập nhật lĩnh vực.
     private String REQUEST;
@@ -58,7 +66,9 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
         }
         else
             REQUEST = CREATE;
-
+        fragmentHandler = new FragmentHandler(getContext(), getActivity().getSupportFragmentManager());
+        getActivity().invalidateOptionsMenu();
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -85,6 +95,27 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.button_ThemBangCapLinhVucChuyenMon:
+                Toast.makeText(getContext(), "Comming soon...", Toast.LENGTH_SHORT);
+                break;
+            case R.id.button_ThemMonLinhVucChuyenMon:
+                Toast.makeText(getContext(), "Comming soon...", Toast.LENGTH_SHORT);
+                break;
+        }
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.act_save) {
+            LoadingDialog.showDialog();
+            //Xử lý lưu lĩnh vưc lên server
+            //Chưa xử lý id tài liệu chuyên môn (chưa có id)
+            //Chưa có danh sách bằng cấp
+            //Chỉ có tên lĩnh vực chưa có id lĩnh vực
+            taiLieuChuyenMon = new TaiLieuChuyenMon(null, spinner.getSelectedItem().toString(), danhSachBangCap, danhSachMon);
+            fragmentHandler.XoaFragment();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

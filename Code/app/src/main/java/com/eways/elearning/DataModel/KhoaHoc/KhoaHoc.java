@@ -224,11 +224,11 @@ public class KhoaHoc implements Serializable {
         return formatGia.format(gia);
     }
 
-    public DanhSachYeuCau getDanhSachYeuCau() {
+    public com.eways.elearning.DataModel.KhoaHoc.DanhSachYeuCau getDanhSachYeuCau() {
         return danhSachYeuCau;
     }
 
-    public void setDanhSachYeuCau(DanhSachYeuCau danhSachYeuCau) {
+    public void setDanhSachYeuCau(com.eways.elearning.DataModel.KhoaHoc.DanhSachYeuCau danhSachYeuCau) {
         this.danhSachYeuCau = danhSachYeuCau;
     }
 }

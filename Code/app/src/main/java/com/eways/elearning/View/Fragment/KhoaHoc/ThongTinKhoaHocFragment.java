@@ -24,6 +24,9 @@ import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 /**
  * @author zzzzz
  *         <p>
@@ -91,6 +94,9 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         tvHocPhi = root.findViewById(R.id.textView_HocPhi_ThongTinKhoaHoc);
         tvThongTinThem = root.findViewById(R.id.textView_ThongTinKhac_ThongTinKhoaHoc);
         btnGuiYeuCau=root.findViewById(R.id.button_YeuCau_ThongTinKhoaHoc);
+        btnGuiYeuCau.setOnClickListener(this);
+
+        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),sharedPreferencesHandler.getID(),getActivity(),true);
 
         root.findViewById(R.id.button_YeuCau_ThongTinKhoaHoc).setOnClickListener(this);
         return root;
@@ -106,6 +112,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     public void KetQuaGuiYeuCau(String ketQuaYC,KhoaHoc khoaHoc) {
         if (ketQuaYC.compareTo("GuiYeuCauThanhCong")==0){
             LoadNutGuiYeuCau(khoaHoc);
+
         }
     }
 
@@ -138,8 +145,8 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         tvHocPhi.setText(khoaHoc.formatGia(Long.parseLong(khoaHoc.getHocPhi())) + tvHocPhi.getText());
 
         //Load nút gui yêu cầu
-        LoadNutGuiYeuCau(khoaHoc);
-        //Tắt loading dialog khi hoàn tất load data
+//        LoadNutGuiYeuCau(khoaHoc);
+//        //Tắt loading dialog khi hoàn tất load data
         LoadingDialog.dismissDialog();
     }
     @Override
@@ -148,91 +155,94 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     }
 
     public void LoadNutGuiYeuCau(KhoaHoc khoaHoc){
-        //Load nút gửi yêu cầu
-        int count=0;
-        if(khoaHoc.getDanhSachYeuCau()!= null){
-            if (khoaHoc.getDanhSachYeuCau().getDangCho()==null && khoaHoc.getDanhSachYeuCau().getTamDuyet()==null){
-                btnGuiYeuCau.setText("Gửi Yêu Cầu");
-                btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),getArguments().getString(KEY_PARAM1),getActivity());
-                    }
-                });
-            }
-            if (khoaHoc.getDanhSachYeuCau().getDangCho()!=null && khoaHoc.getDanhSachYeuCau().getTamDuyet()==null){
-                for (int i=0;i<khoaHoc.getDanhSachYeuCau().getDangCho().size();i++){
-                    if (sharedPreferencesHandler.getID().compareTo(khoaHoc.getDanhSachYeuCau().getDangCho().get(i))==0){
-                        count++;
-                    }
-                }
-                if (count<=0){
-                    btnGuiYeuCau.setText("Gửi yêu cầu");
-                    btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),getArguments().getString(KEY_PARAM1),getActivity());
-                        }
-                    });
-                }else {
-                    btnGuiYeuCau.setText("Hủy");
-                }
-            }
-            if (khoaHoc.getDanhSachYeuCau().getTamDuyet()!=null && khoaHoc.getDanhSachYeuCau().getDangCho()==null){
-                for (int i=0;i<khoaHoc.getDanhSachYeuCau().getTamDuyet().size();i++){
-                    if (sharedPreferencesHandler.getID().compareTo(khoaHoc.getDanhSachYeuCau().getTamDuyet().get(i))==0){
-                        count++;
-                    }
-                }
-                if (count<=0){
-                    btnGuiYeuCau.setText("Gửi Yêu Cầu");
-                    btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),getArguments().getString(KEY_PARAM1),getActivity());
-                        }
-                    });
-                }
-                else {
-                    btnGuiYeuCau.setText("Hủy");
-                }
-            }
-            if (khoaHoc.getDanhSachYeuCau().getDangCho()!=null && khoaHoc.getDanhSachYeuCau().getTamDuyet()!=null){
-                for (int i=0;i<khoaHoc.getDanhSachYeuCau().getDangCho().size();i++){
-                    if (sharedPreferencesHandler.getID().compareTo(khoaHoc.getDanhSachYeuCau().getDangCho().get(i))==0){
-                        count++;
-                    }
-                }
-                if (count<=0){
-                    count=0;
-                    for (int i=0;i<khoaHoc.getDanhSachYeuCau().getTamDuyet().size();i++){
-                        if (sharedPreferencesHandler.getID().compareTo(khoaHoc.getDanhSachYeuCau().getTamDuyet().get(i))==0){
-                            count++;
-                        }
-                    }
-                    if (count<=0){
-                        btnGuiYeuCau.setText("Gửi Yêu Cầu");
-                        btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),getArguments().getString(KEY_PARAM1),getActivity());
-                            }
-                        });
-                    }else {
-                        btnGuiYeuCau.setText("Hủy");
-                    }
-                }else {
-                    btnGuiYeuCau.setText("Hủy");
-                }
-            }
-        }else {
-            btnGuiYeuCau.setText("Gửi Yêu Cầu");
+        ArrayList<String> listDanhSachYeuCauDangCho=new ArrayList<>();
+        ArrayList<String> listDanhSachYeuCauTamDuyet=new ArrayList<>();
+        if (khoaHoc.getDanhSachYeuCau()==null) {
+            btnGuiYeuCau.setText("Gửi yêu cầu");
             btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),getArguments().getString(KEY_PARAM1),getActivity());
+                    guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),sharedPreferencesHandler.getID(),getActivity(),false);
                 }
             });
+        }else {
+            if (khoaHoc.getDanhSachYeuCau().getDangCho()!=null && khoaHoc.getDanhSachYeuCau().getTamDuyet()==null){
+                for(Map.Entry m:khoaHoc.getDanhSachYeuCau().getDangCho().entrySet()){
+                    listDanhSachYeuCauDangCho.add(m.getValue().toString());
+                }
+                for (int i=0;i<listDanhSachYeuCauDangCho.size();i++){
+                    if(listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getID())==0){
+                        btnGuiYeuCau.setText("Hủy");
+                        return;
+                    }
+                }
+                btnGuiYeuCau.setText("Gửi yêu cầu");
+                btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),sharedPreferencesHandler.getID(),getActivity(),false);
+                    }
+                });
+                return;
+            }
+
+            if (khoaHoc.getDanhSachYeuCau().getDangCho()==null && khoaHoc.getDanhSachYeuCau().getTamDuyet()!=null){
+                for(Map.Entry n:khoaHoc.getDanhSachYeuCau().getTamDuyet().entrySet()){
+                    listDanhSachYeuCauTamDuyet.add(n.getValue().toString());
+                }
+                for (int i=0;i<listDanhSachYeuCauDangCho.size();i++){
+                    if(listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getID())==0){
+                        btnGuiYeuCau.setText("Hủy");
+                        return;
+                    }
+                }
+                btnGuiYeuCau.setText("Gửi yêu cầu");
+                btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),sharedPreferencesHandler.getID(),getActivity(),false);
+                    }
+                });
+                return;
+            }
+            if (khoaHoc.getDanhSachYeuCau().getDangCho()!=null && khoaHoc.getDanhSachYeuCau().getDangCho()!=null){
+                int count=0;
+                for(Map.Entry n:khoaHoc.getDanhSachYeuCau().getTamDuyet().entrySet()){
+                    listDanhSachYeuCauTamDuyet.add(n.getValue().toString());
+                }
+                for(Map.Entry m:khoaHoc.getDanhSachYeuCau().getDangCho().entrySet()){
+                    listDanhSachYeuCauDangCho.add(m.getValue().toString());
+                }
+                for (int i=0;i<listDanhSachYeuCauDangCho.size();i++){
+                    if (listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getID())==0){
+                        count++;
+                    }
+                }
+                if (count>0){
+                    btnGuiYeuCau.setText("Hủy");
+                    return;
+                }else {
+                    count =0;
+                    for (int j=0;j<listDanhSachYeuCauTamDuyet.size();j++){
+                        if (listDanhSachYeuCauTamDuyet.get(j).compareTo(sharedPreferencesHandler.getID())==0){
+                            count++;
+                        }
+                    }
+                    if (count>0){
+                        btnGuiYeuCau.setText("Hủy");
+                        return;
+                    }else {
+                        btnGuiYeuCau.setText("Gửi yêu cầu");
+                        btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(KEY_PARAM2),sharedPreferencesHandler.getID(),getActivity(),false);
+                            }
+                        });
+                        return;
+                    }
+                }
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.eways.elearning.DataModel.KhoaHoc.DanhSachYeuCau;
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.LichHoc;
@@ -255,6 +256,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         //DiaDiem DiaDiem;
         khoaHoc.setDiaDiem(new DiaDiem(etDiaDiem.getText().toString(), spnQuan.getSelectedItem().toString(), spnThanhPho.getSelectedItem().toString()));
         return khoaHoc;
+
     }
 
     private boolean checkData() {

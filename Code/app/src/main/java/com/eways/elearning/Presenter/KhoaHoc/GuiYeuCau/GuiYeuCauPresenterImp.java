@@ -9,6 +9,6 @@ import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
  */
 
 public interface GuiYeuCauPresenterImp {
-    public void TruyenYeuCau(String keyKhoaHoc,String idNguoiGui, Activity activity);
+    public void TruyenYeuCau(String keyKhoaHoc,String idNguoiGui, Activity activity,boolean kiemtra);
     public void KetQuaGuiYeuCau(String ketQuaGuiYC,KhoaHoc khoaHoc);
 }

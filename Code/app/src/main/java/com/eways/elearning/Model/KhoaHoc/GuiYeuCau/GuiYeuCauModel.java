@@ -60,4 +60,35 @@ public class GuiYeuCauModel implements GuiYeuCauModelImp {
             }
         });
     }
+
+    @Override
+    public void KiemTraTinhTrangYeuCau(String keyKhoaHoc, Activity activity) {
+        final FirebaseDatabase mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
+        mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").orderByKey().equalTo(keyKhoaHoc).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                guiYeuCauPresenter.KetQuaGuiYeuCau("GuiYeuCauThanhCong",dataSnapshot.getValue(KhoaHoc.class));
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

@@ -20,8 +20,13 @@ public class GuiYeuCauPresenter implements GuiYeuCauPresenterImp {
     }
 
     @Override
-    public void TruyenYeuCau(String keyKhoaHoc, String idNguoiGui, Activity activity) {
-        guiYeuCauModelImp.CapNhapYeuCau(keyKhoaHoc,idNguoiGui,activity);
+    public void TruyenYeuCau(String keyKhoaHoc, String idNguoiGui, Activity activity,boolean kiemtra) {
+        if (kiemtra==false)
+            guiYeuCauModelImp.CapNhapYeuCau(keyKhoaHoc,idNguoiGui,activity);
+        else{
+            guiYeuCauModelImp.KiemTraTinhTrangYeuCau(keyKhoaHoc,activity);
+        }
+
     }
 
     @Override

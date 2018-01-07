@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ public class DieuKhoanGiaSuFragment extends Fragment implements View.OnClickList
         super.onCreate(savedInstanceState);
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         sharedPreferencesHandler = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
+        getActivity().invalidateOptionsMenu();
     }
 
     @Override
@@ -53,7 +55,6 @@ public class DieuKhoanGiaSuFragment extends Fragment implements View.OnClickList
         tvDieuKhoanGiaSu = root.findViewById(R.id.textView_DieuKhoanGiaSu);
 
         root.findViewById(R.id.button_DongYDieuKhoan_DieuKhoanGiaSu).setOnClickListener(this);
-        getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 
@@ -61,11 +62,15 @@ public class DieuKhoanGiaSuFragment extends Fragment implements View.OnClickList
     public void onClick(View view) {
         if (view.getId() == R.id.button_DongYDieuKhoan_DieuKhoanGiaSu){
             if (sharedPreferencesHandler.getDaCapNhat())
-                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
+                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(), false, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
             else {
                 Toast.makeText(getActivity(), getResources().getString(R.string.msg_cap_nhat_thong_tin), Toast.LENGTH_SHORT).show();
-                fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), true, SupportKeysList.TAG_THONG_TIN_CA_NHAN);
+                fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), false, SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
             }
+            //Xử lý cập nhật tài khoản
+            //Xử lý sharedpref
+            //Xử lý server
         }
     }
+
 }

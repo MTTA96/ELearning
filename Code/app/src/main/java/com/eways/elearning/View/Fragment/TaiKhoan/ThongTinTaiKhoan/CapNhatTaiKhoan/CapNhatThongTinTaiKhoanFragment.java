@@ -123,7 +123,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     public void KetQuaCapNhat(String ketQuaCapNhat) {
         if (ketQuaCapNhat.compareTo(SupportKeysList.TAG_CAPNHATTHANHCONG) == 0) {
             if (fragmentHandler.getPreviousFragmentTag().compareTo(SupportKeysList.TAG_DIEU_KHOAN_GIA_SU) == 0)
-                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(), true, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
+                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(CapNhatTaiLieuChuyenMonFragment.TYPE_EDIT), true, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
             else {
 //                Toast.makeText(getActivity(), "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
                 fragmentHandler.XoaFragment();

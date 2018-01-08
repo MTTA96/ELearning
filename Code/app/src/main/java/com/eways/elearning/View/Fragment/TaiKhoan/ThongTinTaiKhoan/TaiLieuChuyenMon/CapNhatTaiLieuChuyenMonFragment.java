@@ -36,8 +36,8 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
 
     //Key
     private static final String param1 = "type";
-    private static final String TYPE_VIEW = "View";
-    private static final String TYPE_EDIT = "Edit";
+    public static final String TYPE_VIEW = "View";
+    public static final String TYPE_EDIT = "Edit";
 
     public CapNhatTaiLieuChuyenMonFragment() {
         // Required empty public constructor

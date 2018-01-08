@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.eways.elearning.DataModel.BaiDang.LinhVucBaiDang;
+import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucDialog;
 import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucQuanTamAdapter;
 import com.eways.elearning.Handler.ImageHandler;
@@ -28,6 +29,7 @@ import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.DieuKhoan.DieuKhoanGiaSuFragment;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon.CapNhatTaiLieuChuyenMonFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -35,9 +37,13 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
+ *
+ * Note:
+ * 1. Tạo class riêng cho dialog lĩnh vực quan tâm
+ *
  */
 public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickListener {
-    TextView tvTenUser, tvUserEmail;
+    TextView tvTenUser, tvUserEmail, tvChucNangGiaSu;
     ImageView imgUser;
 
     private LinhVucQuanTamAdapter linhVucQuanTamAdapter;
@@ -71,6 +77,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
         loCapNhatThongCN= root.findViewById(R.id.LoThongTinCaNhan);
 		tvTenUser = root.findViewById(R.id.tvName_QLTK);
         tvUserEmail = root.findViewById(R.id.tvEmail_QLTK);
+        tvChucNangGiaSu = root.findViewById(R.id.textView_ChucNangGiaSu_QuanLyTaiKhoan);
         imgUser = root.findViewById(R.id.ivAvatar_QLTK);
 
         loTaiKhoanKhac.setOnClickListener(this);
@@ -78,16 +85,32 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
         loCapNhatThongCN.setOnClickListener(this);
         root.findViewById(R.id.linearLayout_DangKyGiaSu).setOnClickListener(this);
 
+        setUpData();
+
+        return root;
+    }
+
+    private void setUpData() {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
+        //Avatar
         if (sharedPreferencesHandler.getAvatar() != null && sharedPreferencesHandler.getAvatar().compareTo("") != 0)
             imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(), imgUser);
+
+        //Email
         tvUserEmail.setText(sharedPreferencesHandler.getEmail());
+
+        //Họ tên
         if (sharedPreferencesHandler.getTen().length()==0)
             tvTenUser.setVisibility(View.GONE);
         else
             tvTenUser.setText(sharedPreferencesHandler.getHo() + " " + sharedPreferencesHandler.getTen());
+
+        //Chức năng gia sư
+        if (sharedPreferencesHandler.getTaiKhoanGiaSu())
+            tvChucNangGiaSu.setText(getString(R.string.tai_lieu_chuyen_mon));
+        else
+            tvChucNangGiaSu.setText(getString(R.string.dang_ky_lam_gia_su));
         LoadingDialog.dismissDialog();
-        return root;
     }
 
     @Override
@@ -140,7 +163,10 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
                 fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(),true,SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
                 break;
             case R.id.linearLayout_DangKyGiaSu:
-                fragmentHandler.ChuyenFragment(DieuKhoanGiaSuFragment.newInstance(), true, SupportKeysList.TAG_DIEU_KHOAN_GIA_SU);
+                if (!sharedPreferencesHandler.getTaiKhoanGiaSu())
+                    fragmentHandler.ChuyenFragment(DieuKhoanGiaSuFragment.newInstance(), true, SupportKeysList.TAG_DIEU_KHOAN_GIA_SU);
+                else
+                    fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(), true, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
                 break;
         }
     }

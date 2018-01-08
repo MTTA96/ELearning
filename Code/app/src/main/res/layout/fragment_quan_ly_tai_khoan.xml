@@ -109,22 +109,24 @@
         <!--Đăng ký làm gia sư-->
         <LinearLayout
             android:id="@+id/linearLayout_DangKyGiaSu"
-            android:layout_marginTop="@dimen/ItemQLTK_margintop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ItemQLTK_margintop"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="@dimen/Icon_size"
                 android:layout_height="@dimen/Icon_size"
                 android:background="@android:drawable/presence_video_busy" />
+
             <TextView
+                android:id="@+id/textView_ChucNangGiaSu_QuanLyTaiKhoan"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingLeft="@dimen/text_padding_left"
                 android:gravity="center_vertical"
-                android:textSize="@dimen/normal_text_size"
-                android:text="@string/dang_ky_lam_gia_su"/>
+                android:paddingLeft="@dimen/text_padding_left"
+                android:text="@string/dang_ky_lam_gia_su"
+                android:textSize="@dimen/normal_text_size" />
         </LinearLayout>
 
 

@@ -5,7 +5,8 @@
     tools:context="com.eways.elearning.View.Fragment.Home.HomeTimHocVien.HomeTimHocVienFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <android.support.v4.widget.NestedScrollView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout_HomeTimHocVien"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -159,6 +160,6 @@
 
             </LinearLayout>
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </FrameLayout>

@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     tools:context="com.eways.elearning.View.Fragment.Home.HomeTimGiaSu.HomeTimGiaSuFragment">
 
-    <android.support.v4.widget.NestedScrollView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout_HomeTimGiaSu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -157,6 +158,6 @@
 
             </LinearLayout>
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </FrameLayout>

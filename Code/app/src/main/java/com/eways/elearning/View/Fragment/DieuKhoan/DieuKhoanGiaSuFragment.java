@@ -74,7 +74,7 @@ public class DieuKhoanGiaSuFragment extends Fragment implements View.OnClickList
     public void NhanKetQuaCapNhatTaiKhoanGiaSu(String ketQuaCapNhat) {
         if (ketQuaCapNhat.compareTo("CapNhatTaiKhoanGiaSuThanhCong")==0){
             if (sharedPreferencesHandler.getDaCapNhat())
-                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(), false, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
+                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(CapNhatTaiLieuChuyenMonFragment.TYPE_EDIT), false, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
             else {
                 Toast.makeText(getActivity(), getResources().getString(R.string.msg_cap_nhat_thong_tin), Toast.LENGTH_SHORT).show();
                 fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), false, SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);

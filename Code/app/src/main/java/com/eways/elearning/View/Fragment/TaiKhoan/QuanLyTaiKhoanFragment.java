@@ -166,7 +166,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
                 if (!sharedPreferencesHandler.getTaiKhoanGiaSu())
                     fragmentHandler.ChuyenFragment(DieuKhoanGiaSuFragment.newInstance(), true, SupportKeysList.TAG_DIEU_KHOAN_GIA_SU);
                 else
-                    fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(), true, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
+                    fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(CapNhatTaiLieuChuyenMonFragment.TYPE_EDIT), true, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
                 break;
         }
     }

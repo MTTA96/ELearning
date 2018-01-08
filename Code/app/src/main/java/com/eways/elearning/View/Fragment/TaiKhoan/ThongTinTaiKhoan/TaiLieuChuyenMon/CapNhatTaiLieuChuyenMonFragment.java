@@ -88,14 +88,13 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
             btnThemLinhVuc.setVisibility(View.GONE);
         }
         else {
-            getActivity().getActionBar().show();
             btnThemLinhVuc.setVisibility(View.VISIBLE);
         }
     }
 
 
     public void loadData(ArrayList<TaiLieuChuyenMon> danhSachTaiLieuChuyenMon){
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         rvLinhVuc.setLayoutManager(layoutManager);
         rvLinhVuc.setAdapter(new DanhSachLinhVucChuyenMonAdapter(getContext(), danhSachTaiLieuChuyenMon));
         LoadingDialog.dismissDialog();

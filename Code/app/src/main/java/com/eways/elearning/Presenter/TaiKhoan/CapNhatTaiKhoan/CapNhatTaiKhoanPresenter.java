@@ -9,6 +9,8 @@ import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModel;
 import com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModelImp;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.Fragment.DieuKhoan.DieuKhoanGiaSuFragment;
+import com.eways.elearning.View.Fragment.DieuKhoan.DieuKhoanGiaSuViewImp;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment;
 
 /**
@@ -18,12 +20,17 @@ import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKho
 public class CapNhatTaiKhoanPresenter implements CapNhatTaiKhoanPresenterImp {
     CapNhatTaiKhoanModelImp capNhatTaiKhoanModelImp=new CapNhatTaiKhoanModel(this);
     CapNhatThongTinTaiKhoanFragment capNhatThongTinTaiKhoanFragment;
+    DieuKhoanGiaSuViewImp dieuKhoanGiaSuViewImp;
     SharedPreferencesHandler sharedPreferencesHandler;
     XuLyHinhAnh_FirebaseStorage xuLyHinhAnh_firebaseStorage;
 
     public CapNhatTaiKhoanPresenter(CapNhatThongTinTaiKhoanFragment capNhatThongTinTaiKhoanFragment) {
         this.capNhatThongTinTaiKhoanFragment = capNhatThongTinTaiKhoanFragment;
         xuLyHinhAnh_firebaseStorage=new XuLyHinhAnh_FirebaseStorage();
+    }
+
+    public CapNhatTaiKhoanPresenter(DieuKhoanGiaSuViewImp dieuKhoanGiaSuViewImp) {
+        this.dieuKhoanGiaSuViewImp = dieuKhoanGiaSuViewImp;
     }
 
     @Override
@@ -36,5 +43,15 @@ public class CapNhatTaiKhoanPresenter implements CapNhatTaiKhoanPresenterImp {
         sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
         sharedPreferencesHandler.DangNhapThanhCong(taiKhoan.getId(), taiKhoan.getEmail(),taiKhoan.getHo(),taiKhoan.getTen(),taiKhoan.getAvatar(), taiKhoan.getTentaikhoan(),true,SupportKeysList.TAI_KHOAN_THUONG,taiKhoan.getNghenghiep(),taiKhoan.getNamsinh(),taiKhoan.getGioitinh(),taiKhoan.getTailieuxacminh_mt(),taiKhoan.getTailieuxacminh_ms(),taiKhoan.getTrinhdo(),taiKhoan.getDiadiem(),taiKhoan.getSodienthoai(),taiKhoan.getDacapnhat(),taiKhoan.getRating(),taiKhoan.getTaiKhoanGiaSu());
         capNhatThongTinTaiKhoanFragment.KetQuaCapNhat(ketquacapnhat);
+    }
+
+    @Override
+    public void NhanDataCapNhatTaiKhoanGiaSu(String idUser, Activity activity) {
+        capNhatTaiKhoanModelImp.CapNhatTaiKhoanGiaSu(idUser,activity);
+    }
+
+    @Override
+    public void KetQuaCapNhatTaiKhoanGiaSu(String ketQua) {
+        dieuKhoanGiaSuViewImp.NhanKetQuaCapNhatTaiKhoanGiaSu(ketQua);
     }
 }

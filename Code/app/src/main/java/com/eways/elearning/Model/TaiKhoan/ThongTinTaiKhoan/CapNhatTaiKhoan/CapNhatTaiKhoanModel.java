@@ -7,8 +7,10 @@ import android.util.Log;
 import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -119,6 +121,19 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+    }
+
+    @Override
+    public void CapNhatTaiKhoanGiaSu(String idUser, Activity activity) {
+        mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
+        mData.getReference().child("TaiKhoan").child(idUser).child("taiKhoanGiaSu").setValue(true).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isComplete()){
+                    capNhatTaiKhoanPresenterImp.KetQuaCapNhatTaiKhoanGiaSu("CapNhatTaiKhoanGiaSuThanhCong");
+                }
             }
         });
     }

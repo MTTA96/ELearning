@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.MonTaiLieuChuyenMon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
@@ -27,18 +28,25 @@ import java.util.ArrayList;
  */
 public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.OnClickListener {
     RecyclerView rvLinhVuc;
+    Button btnThemLinhVuc;
 
     private FragmentHandler fragmentHandler;
     private ArrayList<TaiLieuChuyenMon> danhSachLinhVucChuyenMon = new ArrayList<>();
+    private String type; //Kiểm tra loại request của fragment
+
+    //Key
+    private static final String param1 = "type";
+    private static final String TYPE_VIEW = "View";
+    private static final String TYPE_EDIT = "Edit";
 
     public CapNhatTaiLieuChuyenMonFragment() {
         // Required empty public constructor
     }
 
-    public static CapNhatTaiLieuChuyenMonFragment newInstance() {
+    public static CapNhatTaiLieuChuyenMonFragment newInstance(String type) {
         
         Bundle args = new Bundle();
-        
+        args.putString(param1, type);
         CapNhatTaiLieuChuyenMonFragment fragment = new CapNhatTaiLieuChuyenMonFragment();
         fragment.setArguments(args);
         return fragment;
@@ -46,6 +54,8 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments()!=null)
+            type = getArguments().getString(param1);
         fragmentHandler = new FragmentHandler(getContext(), getActivity().getSupportFragmentManager());
     }
 
@@ -55,10 +65,23 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
         // Inflate the layout for this fragment
         View root=inflater.inflate(R.layout.fragment_tai_lieu_chuyen_mon, container, false);
         rvLinhVuc = root.findViewById(R.id.recyclerView_LinhVucChuyenMon_CapNhatTaiLieuChuyenMon);
+        btnThemLinhVuc = root.findViewById(R.id.button_ThemLinhVucChuyenMon);
 
-        root.findViewById(R.id.button_ThemLinhVucChuyenMon).setOnClickListener(this);
+        btnThemLinhVuc.setOnClickListener(this);
 
+        setUpView();
         return root;
+    }
+
+    private void setUpView() {
+        if (type.compareTo(TYPE_VIEW)==0){
+            getActivity().getActionBar().hide();
+            btnThemLinhVuc.setVisibility(View.GONE);
+        }
+        else {
+            getActivity().getActionBar().show();
+            btnThemLinhVuc.setVisibility(View.VISIBLE);
+        }
     }
 
     public void loadData(){

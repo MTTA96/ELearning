@@ -12,6 +12,10 @@ public class TaiLieuChuyenMon {
     ArrayList<BangCapTaiLieuChuyenMon> danhSachBangCapTaiLieuChuyenMon;
     ArrayList<MonTaiLieuChuyenMon> danhSachMonTaiLieuChuyenMon;
 
+    public TaiLieuChuyenMon() {
+
+    }
+
     public TaiLieuChuyenMon(String idTaiLieuChuyenMon, String tenLinhVucChuyenMon, ArrayList<BangCapTaiLieuChuyenMon> danhSachBangCapTaiLieuChuyenMon, ArrayList<MonTaiLieuChuyenMon> danhSachMonTaiLieuChuyenMon) {
         this.idTaiLieuChuyenMon = idTaiLieuChuyenMon;
         this.tenLinhVucChuyenMon = tenLinhVucChuyenMon;

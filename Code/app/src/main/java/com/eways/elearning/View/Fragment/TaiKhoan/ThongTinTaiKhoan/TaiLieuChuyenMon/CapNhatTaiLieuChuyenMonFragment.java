@@ -58,16 +58,15 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
 
         root.findViewById(R.id.button_ThemLinhVucChuyenMon).setOnClickListener(this);
 
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-        rvLinhVuc.setLayoutManager(layoutManager);
-        rvLinhVuc.setAdapter(new DanhSachLinhVucChuyenMonAdapter(getContext(), danhSachLinhVucChuyenMon));
         return root;
     }
 
     public void loadData(){
-
-        LoadingDialog.dismissDialog();
+        LinearLayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        rvLinhVuc.setLayoutManager(layoutManager);
+        rvLinhVuc.setAdapter(new DanhSachLinhVucChuyenMonAdapter(getContext(), danhSachLinhVucChuyenMon));        LoadingDialog.dismissDialog();
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

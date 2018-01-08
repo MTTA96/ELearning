@@ -10,4 +10,5 @@ import java.util.ArrayList;
 
 public interface ThemLinhVucChuyenMonViewImp {
     public void DataLinhVuc(ArrayList<LinhVuc> listLinhVuc);
+    public void KetQuaThemTaiLieuChuyenMon(String ketQuaCapNhat);
 }

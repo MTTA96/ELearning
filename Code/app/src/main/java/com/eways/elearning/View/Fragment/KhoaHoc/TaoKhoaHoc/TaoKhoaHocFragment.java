@@ -82,6 +82,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         taoKhoaHocPresenterImp = new TaoKhoaHocPresenter(this);
         sharedPreferencesHandler = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+        getActivity().supportInvalidateOptionsMenu();
     }
 
     @Override
@@ -114,8 +115,8 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbThu7 = root.findViewById(R.id.checkBox_Thu7);
         cbChuNhat = root.findViewById(R.id.checkBox_Chu_Nhat);
 
-        danhSachMon=new ArrayList<>();
-        danhSachBangCap=new ArrayList<>();
+        danhSachMon = new ArrayList<>();
+        danhSachBangCap = new ArrayList<>();
 
         root.findViewById(R.id.button_TaoKhoaHoc).setOnClickListener(this);
         switchTaoKhoaHoc.setOnCheckedChangeListener(this);
@@ -129,26 +130,34 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         cbThu6.setOnCheckedChangeListener(this);
         cbThu7.setOnCheckedChangeListener(this);
         cbChuNhat.setOnCheckedChangeListener(this);
+
+        showData();
+        return root;
+    }
+
+    private void showData() {
         taoKhoaHocPresenterImp.loaddataLinhvuc(getActivity());
         taoKhoaHocPresenterImp.loaddataKhuVuc(getActivity());
         ((MainActivity) getActivity()).tvScreenTitle.setText("Tạo khóa học");
-        getActivity().supportInvalidateOptionsMenu();
-        return root;
+
+        //Loại
+        if (sharedPreferencesHandler.getTaiKhoanGiaSu())
+            switchTaoKhoaHoc.setVisibility(View.VISIBLE);
+        else
+            switchTaoKhoaHoc.setVisibility(View.GONE);
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (buttonView.getId() == R.id.switch_tao_khoa_hoc){
+        if (buttonView.getId() == R.id.switch_tao_khoa_hoc) {
             if (isChecked) {
                 buttonView.setText("Tìm học viên");
                 root.findViewById(R.id.layout_BangCap_TaoKhoaHoc).setVisibility(View.GONE);
-            }
-            else {
+            } else {
                 buttonView.setText("Tìm gia sư");
                 root.findViewById(R.id.layout_BangCap_TaoKhoaHoc).setVisibility(View.VISIBLE);
             }
-        }
-        else {
+        } else {
             if (isChecked) {
                 buttonView.setBackgroundResource(R.drawable.main_color_with_min_corner_rectangle_shape);
                 buttonView.setTextColor(Color.WHITE);
@@ -165,7 +174,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
             if (checkData()) {
                 LoadingDialog.showDialog();
                 KhoaHoc khoaHoc = setUpData();
-                taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc, switchTaoKhoaHoc.isChecked() ,getActivity());
+                taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc, switchTaoKhoaHoc.isChecked(), getActivity());
             } else
                 Toast.makeText(getActivity(), "Thiếu thông tin!", Toast.LENGTH_LONG).show();
 
@@ -185,7 +194,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         //SoLuongHocVien;
         khoaHoc.setSoLuongHocVien(etSoHocVien.getText().toString());
 
-        //ArrayList<String> Buoi;
+        //Buổi;
         ArrayList dataBuoi = new ArrayList();
         if (cbSang.isChecked())
             dataBuoi.add("Sáng");
@@ -194,7 +203,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         if (cbToi.isChecked())
             dataBuoi.add("Tối");
 
-        //ArrayList<String> Thu;
+        //Thứ;
         ArrayList dataThu = new ArrayList();
         if (cbThu2.isChecked())
             dataThu.add("T2");
@@ -210,7 +219,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
             dataThu.add("T7");
         if (cbChuNhat.isChecked())
             dataThu.add("CN");
-        khoaHoc.setLichHoc(new LichHoc(dataThu,dataBuoi));
+        khoaHoc.setLichHoc(new LichHoc(dataThu, dataBuoi));
 
         //GioiTinh;
         if (cbGioiTinhNam.isChecked() && cbGioiTinhNu.isChecked())
@@ -249,7 +258,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         dataKhoaHoc.add(etMon.getText().toString());
         khoaHoc.setMon(dataKhoaHoc);
 
-        dataKhoaHoc=new ArrayList();
+        dataKhoaHoc = new ArrayList();
         dataKhoaHoc.add(spnLinhVuc.getSelectedItem().toString());
         khoaHoc.setLinhVuc(dataKhoaHoc);
 //                LichHoc LichHoc;
@@ -268,9 +277,10 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
                         return true;
         return false;
     }
+
     @Override
     public void KetQuaTaoKhoaHoc(String result) {
-        if (result.compareTo(TaoKhoaHocPresenter.RESULT_CODE_SUCCESS)==0){
+        if (result.compareTo(TaoKhoaHocPresenter.RESULT_CODE_SUCCESS) == 0) {
             fragmentHandler.ChuyenFragment(NewHomeFragment.newInstance(), false, SupportKeysList.TAG_HOME_FRAGMENT);
         }
     }
@@ -286,20 +296,20 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     }
 
     //Load data cho khu vực
-    public void LoadDataKhuVuc(final ArrayList<KhuVuc> danhSachKhuVuc){
-        ArrayList<String> danhSachTenKhuVuc=new ArrayList<>();
-        for (int i=0;i<danhSachKhuVuc.size();i++){
+    public void LoadDataKhuVuc(final ArrayList<KhuVuc> danhSachKhuVuc) {
+        ArrayList<String> danhSachTenKhuVuc = new ArrayList<>();
+        for (int i = 0; i < danhSachKhuVuc.size(); i++) {
             danhSachTenKhuVuc.add(danhSachKhuVuc.get(i).getTenThanhPho());
         }
-        final ArrayAdapter adDanhSachKhuVuc=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachTenKhuVuc);
+        final ArrayAdapter adDanhSachKhuVuc = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, danhSachTenKhuVuc);
         spnThanhPho.setAdapter(adDanhSachKhuVuc);
 
         spnThanhPho.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ArrayList<String> danhSachQuan=new ArrayList<>();
-                danhSachQuan=danhSachKhuVuc.get(position).getDanhSachQuan();
-                ArrayAdapter adDanhSachQuan=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachQuan);
+                ArrayList<String> danhSachQuan = new ArrayList<>();
+                danhSachQuan = danhSachKhuVuc.get(position).getDanhSachQuan();
+                ArrayAdapter adDanhSachQuan = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, danhSachQuan);
                 spnQuan.setAdapter(adDanhSachQuan);
             }
 
@@ -311,31 +321,31 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     }
 
     //Load data cho Linh Vực
-    public void LoadDataLinhVuc(final ArrayList<LinhVuc> danhSachLinhVucView){
-        ArrayList<String> danhSachTenLinhVuc= new ArrayList<>();
-        for (int i=0;i<danhSachLinhVucView.size();i++){
+    public void LoadDataLinhVuc(final ArrayList<LinhVuc> danhSachLinhVucView) {
+        ArrayList<String> danhSachTenLinhVuc = new ArrayList<>();
+        for (int i = 0; i < danhSachLinhVucView.size(); i++) {
             danhSachTenLinhVuc.add(danhSachLinhVucView.get(i).getTenLinhVuc());
         }
-        ArrayAdapter adLinhVuc=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachTenLinhVuc);
+        ArrayAdapter adLinhVuc = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, danhSachTenLinhVuc);
         spnLinhVuc.setAdapter(adLinhVuc);
 
         spnLinhVuc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                int spinnerPosition=adLinhVuc.getPosition(spnLinhVuc.getSelectedItem().toString());
-                danhSachMon=danhSachLinhVucView.get(position).getDanhMucMon();
-                ArrayList<String> danhSachTenMon=new ArrayList<>();
-                for (int i=0;i<danhSachMon.size();i++){
+                danhSachMon = danhSachLinhVucView.get(position).getDanhMucMon();
+                ArrayList<String> danhSachTenMon = new ArrayList<>();
+                for (int i = 0; i < danhSachMon.size(); i++) {
                     danhSachTenMon.add(danhSachMon.get(i).getTenMon());
                 }
-                ArrayAdapter adMon=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachTenMon);
+                ArrayAdapter adMon = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, danhSachTenMon);
                 etMon.setAdapter(adMon);
                 etMon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        danhSachBangCap=new ArrayList<>();
-                        danhSachBangCap=danhSachMon.get(position).getDanhMucBangCap();
-                        ArrayAdapter adDanhSachBangCap=new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachBangCap);
+                        danhSachBangCap = new ArrayList<>();
+                        danhSachBangCap = danhSachMon.get(position).getDanhMucBangCap();
+                        ArrayAdapter adDanhSachBangCap = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, danhSachBangCap);
                         etBangCap.setAdapter(adDanhSachBangCap);
                     }
                 });

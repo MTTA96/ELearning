@@ -40,8 +40,8 @@ public class DanhSachLinhVucChuyenMonAdapter extends RecyclerView.Adapter<LinhVu
     public void onBindViewHolder(LinhVucChuyenMonViewHolder holder, int position) {
         linhVucChuyenMon = danhSachLinhVucChuyenMon.get(position);
         holder.tvTitle.setText(linhVucChuyenMon.getTenLinhVucChuyenMon());
-        holder.vDanhSachBangCap.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true));
-        holder.vDanhSachBangCap.setAdapter(new DanhSachBangCapAdapter());
+//        holder.vDanhSachBangCap.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true));
+//        holder.vDanhSachBangCap.setAdapter(new DanhSachBangCapAdapter());
     }
 
     @Override

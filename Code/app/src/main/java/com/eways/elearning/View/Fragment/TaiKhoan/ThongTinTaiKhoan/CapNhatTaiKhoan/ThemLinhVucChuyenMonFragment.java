@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
+import com.eways.elearning.DataModel.LinhVuc.Mon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.BangCapTaiLieuChuyenMon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.MonTaiLieuChuyenMon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
@@ -128,7 +129,13 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
 
     @Override
     public void DataLinhVuc(ArrayList<LinhVuc> listLinhVuc) {
-        ArrayAdapter<LinhVuc> linhVucArrayAdapter=new ArrayAdapter<LinhVuc>(getActivity(),android.R.layout.simple_spinner_dropdown_item,listLinhVuc);
+        ArrayList<String> danhSachTenLinhVucChuyenMon=new ArrayList<>();
+        for (int i=0;i<listLinhVuc.size();i++){
+            danhSachTenLinhVucChuyenMon.add(listLinhVuc.get(i).getTenLinhVuc());
+        }
+        ArrayList<Mon> danhSachMonLinhVucChuyenMon=new ArrayList<>();
+
+        ArrayAdapter<String> linhVucArrayAdapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachTenLinhVucChuyenMon);
         spinner.setAdapter(linhVucArrayAdapter);
     }
 }

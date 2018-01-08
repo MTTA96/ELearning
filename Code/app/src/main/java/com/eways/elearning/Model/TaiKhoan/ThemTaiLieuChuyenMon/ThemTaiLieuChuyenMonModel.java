@@ -29,7 +29,7 @@ public class ThemTaiLieuChuyenMonModel implements ThemTaiLieuChuyenMonModelImp {
     public void LoadLinhVucTaiLieuChuyenMon(Activity activity) {
         mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
         final ArrayList<LinhVuc> listLinhVuc=new ArrayList<>();
-        mData.getReference().child("DataApp").child("KhuVuc").addChildEventListener(new ChildEventListener() {
+        mData.getReference().child("DataApp").child("DanhMucLinhVuc").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 listLinhVuc.add(dataSnapshot.getValue(LinhVuc.class));

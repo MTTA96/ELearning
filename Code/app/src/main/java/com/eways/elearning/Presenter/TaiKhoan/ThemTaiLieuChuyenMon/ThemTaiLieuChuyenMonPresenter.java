@@ -3,6 +3,7 @@ package com.eways.elearning.Presenter.TaiKhoan.ThemTaiLieuChuyenMon;
 import android.app.Activity;
 
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
+import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Model.LinhVuc.LinhVucModelImp;
 import com.eways.elearning.Model.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonModel;
 import com.eways.elearning.Model.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonModelImp;
@@ -30,5 +31,15 @@ public class ThemTaiLieuChuyenMonPresenter implements ThemTaiLieuChuyenMonPresen
     @Override
     public void KetQuaLinhVucTaiLieuChuyenMon(ArrayList<LinhVuc> listLinhVuc) {
         themLinhVucChuyenMonFragment.DataLinhVuc(listLinhVuc);
+    }
+
+    @Override
+    public void NhanDataCapNhatTaiLieuChuyenMon(TaiLieuChuyenMon taiLieuChuyenMon, String idUser, Activity activity) {
+        themTaiLieuChuyenMonModelImp.DataCapNhapTaiLieuChuyenMon(taiLieuChuyenMon,idUser,activity);
+    }
+
+    @Override
+    public void KetQuaCapNhatTaiLieuChuyenMon(String ketQuaCapNhat) {
+        themLinhVucChuyenMonFragment.KetQuaThemTaiLieuChuyenMon(ketQuaCapNhat);
     }
 }

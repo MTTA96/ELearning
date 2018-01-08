@@ -307,10 +307,15 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
                 view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                 imTaiLieuXacMinh_mt.setImageBitmap(bitmap);
                 checkHinhMatTruoc = true;
-            } else {
+            }
+            if (vitrichon == 1){
                 view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
                 imTaiLieuXacMinh_ms.setImageBitmap(bitmap);
                 checkHinhMatSau = true;
+            }
+            if (vitrichon == 2){
+                imAvarta.setImageBitmap(bitmap);
+                checkAvatar = true;
             }
             dialogPlusHandler.dissMissDialog();
         }

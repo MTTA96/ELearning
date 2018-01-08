@@ -1,10 +1,14 @@
 package com.eways.elearning.Model.TaiKhoan.ThemTaiLieuChuyenMon;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.DataModel.Other.KhuVuc;
+import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Presenter.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonPresenterImp;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -57,5 +61,16 @@ public class ThemTaiLieuChuyenMonModel implements ThemTaiLieuChuyenMonModelImp {
             }
         });
 
+    }
+
+    @Override
+    public void DataCapNhapTaiLieuChuyenMon(TaiLieuChuyenMon taiLieuChuyenMon, String idUser, Activity activity) {
+        mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
+        mData.getReference().child("TaiLieuChuyenMon").child(taiLieuChuyenMon.getTenLinhVucChuyenMon()).child(idUser).setValue(taiLieuChuyenMon).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                themTaiLieuChuyenMonPresenterImp.KetQuaCapNhatTaiLieuChuyenMon("CapNhatTaiLieuChuyenMonThanhCong");
+            }
+        });
     }
 }

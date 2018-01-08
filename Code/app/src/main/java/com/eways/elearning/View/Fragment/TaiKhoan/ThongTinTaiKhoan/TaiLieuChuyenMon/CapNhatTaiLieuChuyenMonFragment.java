@@ -16,6 +16,9 @@ import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.MonTaiLie
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Handler.Adapter.TaiLieuChuyenMon.DanhSachLinhVucChuyenMonAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiLieuChuyenMonPresenter;
+import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiLieuChuyenMonPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;
@@ -26,12 +29,14 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.OnClickListener {
+public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.OnClickListener ,CapNhatTaiLieuChuyenMonViewImp{
     RecyclerView rvLinhVuc;
     Button btnThemLinhVuc;
 
     private FragmentHandler fragmentHandler;
+    private SharedPreferencesHandler sharedPreferencesHandler;
     private ArrayList<TaiLieuChuyenMon> danhSachLinhVucChuyenMon = new ArrayList<>();
+    private CapNhatTaiLieuChuyenMonPresenterImp capNhatTaiLieuChuyenMonPresenterImp;
     private String type; //Kiểm tra loại request của fragment
 
     //Key
@@ -50,12 +55,15 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
         CapNhatTaiLieuChuyenMonFragment fragment = new CapNhatTaiLieuChuyenMonFragment();
         fragment.setArguments(args);
         return fragment;
+
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments()!=null)
             type = getArguments().getString(param1);
+        sharedPreferencesHandler=new SharedPreferencesHandler(getActivity(),SupportKeysList.SHARED_PREF_FILE_NAME);
+        capNhatTaiLieuChuyenMonPresenterImp=new CapNhatTaiLieuChuyenMonPresenter(this);
         fragmentHandler = new FragmentHandler(getContext(), getActivity().getSupportFragmentManager());
     }
 
@@ -69,6 +77,7 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
 
         btnThemLinhVuc.setOnClickListener(this);
 
+        capNhatTaiLieuChuyenMonPresenterImp.YeuCauDataTaiLieuChuyenMon(sharedPreferencesHandler.getID(),getActivity());
         setUpView();
         return root;
     }
@@ -84,10 +93,12 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
         }
     }
 
-    public void loadData(){
+
+    public void loadData(ArrayList<TaiLieuChuyenMon> danhSachTaiLieuChuyenMon){
         LinearLayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         rvLinhVuc.setLayoutManager(layoutManager);
-        rvLinhVuc.setAdapter(new DanhSachLinhVucChuyenMonAdapter(getContext(), danhSachLinhVucChuyenMon));        LoadingDialog.dismissDialog();
+        rvLinhVuc.setAdapter(new DanhSachLinhVucChuyenMonAdapter(getContext(), danhSachTaiLieuChuyenMon));
+        LoadingDialog.dismissDialog();
     }
 
     @Override
@@ -97,5 +108,10 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
                 fragmentHandler.ChuyenFragment(ThemLinhVucChuyenMonFragment.newInstance(null), true, SupportKeysList.TAG_THEM_LINH_VUC_CHUYEN_MON);
                 break;
         }
+    }
+
+    @Override
+    public void DataTaiLieuChuyenMon(ArrayList<TaiLieuChuyenMon> danhSachTaiLieuChuyenMon) {
+        loadData(danhSachTaiLieuChuyenMon);
     }
 }

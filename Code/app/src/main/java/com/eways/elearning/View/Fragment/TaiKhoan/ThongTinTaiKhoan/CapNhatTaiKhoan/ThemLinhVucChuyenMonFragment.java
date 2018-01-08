@@ -20,9 +20,11 @@ import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.BangCapTa
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.MonTaiLieuChuyenMon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonPresenter;
 import com.eways.elearning.Presenter.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonPresenterImp;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;
 
 import java.io.Serializable;
@@ -40,6 +42,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
     private ArrayList<BangCapTaiLieuChuyenMon> danhSachBangCap = new ArrayList<>();
     private ArrayList<MonTaiLieuChuyenMon> danhSachMon = new ArrayList<>();
     private ThemTaiLieuChuyenMonPresenterImp themTaiLieuChuyenMonPresenterImp;
+    private SharedPreferencesHandler sharedPreferencesHandler;
 
     //Phân biệt request tạo hay cập nhật lĩnh vực.
     private String REQUEST;
@@ -69,6 +72,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
         themTaiLieuChuyenMonPresenterImp=new ThemTaiLieuChuyenMonPresenter(this);
         if (getArguments() != null) {
             REQUEST = UPDATE;
+            sharedPreferencesHandler=new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
             taiLieuChuyenMon = (TaiLieuChuyenMon) getArguments().getSerializable(param1);
         }
         else
@@ -122,7 +126,8 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
             //Chưa có danh sách bằng cấp
             //Chỉ có tên lĩnh vực chưa có id lĩnh vực
             taiLieuChuyenMon = new TaiLieuChuyenMon(null, spinner.getSelectedItem().toString(), danhSachBangCap, danhSachMon);
-            fragmentHandler.XoaFragment();
+            themTaiLieuChuyenMonPresenterImp.NhanDataCapNhatTaiLieuChuyenMon(taiLieuChuyenMon,sharedPreferencesHandler.getID(),getActivity());
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -137,5 +142,12 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
 
         ArrayAdapter<String> linhVucArrayAdapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_dropdown_item,danhSachTenLinhVucChuyenMon);
         spinner.setAdapter(linhVucArrayAdapter);
+    }
+
+    @Override
+    public void KetQuaThemTaiLieuChuyenMon(String ketQuaCapNhat) {
+        if (ketQuaCapNhat.compareTo("CapNhatTaiLieuChuyenMonThanhCong")==0){
+            fragmentHandler.XoaFragment();
+        }
     }
 }

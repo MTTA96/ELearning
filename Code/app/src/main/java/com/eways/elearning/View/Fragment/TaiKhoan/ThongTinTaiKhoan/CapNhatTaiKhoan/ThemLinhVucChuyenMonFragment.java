@@ -9,14 +9,18 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.BangCapTaiLieuChuyenMon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.MonTaiLieuChuyenMon;
 import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.Presenter.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonPresenter;
+import com.eways.elearning.Presenter.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.View.Dialog.LoadingDialog;
 
@@ -26,7 +30,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnClickListener {
+public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnClickListener ,ThemLinhVucChuyenMonViewImp{
     Spinner spinner;
     RecyclerView rvBangCap, rvMon;
 
@@ -34,6 +38,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
     private TaiLieuChuyenMon taiLieuChuyenMon;
     private ArrayList<BangCapTaiLieuChuyenMon> danhSachBangCap = new ArrayList<>();
     private ArrayList<MonTaiLieuChuyenMon> danhSachMon = new ArrayList<>();
+    private ThemTaiLieuChuyenMonPresenterImp themTaiLieuChuyenMonPresenterImp;
 
     //Phân biệt request tạo hay cập nhật lĩnh vực.
     private String REQUEST;
@@ -60,6 +65,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        themTaiLieuChuyenMonPresenterImp=new ThemTaiLieuChuyenMonPresenter(this);
         if (getArguments() != null) {
             REQUEST = UPDATE;
             taiLieuChuyenMon = (TaiLieuChuyenMon) getArguments().getSerializable(param1);
@@ -79,7 +85,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
         spinner = root.findViewById(R.id.spinner_ChonLinhVucChuyenMon);
         rvBangCap = root.findViewById(R.id.recyclerView_DanhSachBangCap_ThemLinhVucChuyenMon);
         rvMon = root.findViewById(R.id.recyclerView_DanhSachMon_ThemLinhVucChuyenMon);
-
+        themTaiLieuChuyenMonPresenterImp.LoadLinhVucTaiLieuChuyenMon(getActivity());
         root.findViewById(R.id.button_ThemBangCapLinhVucChuyenMon).setOnClickListener(this);
         root.findViewById(R.id.button_ThemMonLinhVucChuyenMon).setOnClickListener(this);
 
@@ -89,6 +95,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
 
     private void setUpData() {
 //        spinner.setAdapter();
+
         rvBangCap.setLayoutManager(new GridLayoutManager(getContext(), 3));
         rvMon.setLayoutManager(new GridLayoutManager(getContext(), 3));
     }
@@ -117,5 +124,11 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
             fragmentHandler.XoaFragment();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void DataLinhVuc(ArrayList<LinhVuc> listLinhVuc) {
+        ArrayAdapter<LinhVuc> linhVucArrayAdapter=new ArrayAdapter<LinhVuc>(getActivity(),android.R.layout.simple_spinner_dropdown_item,listLinhVuc);
+        spinner.setAdapter(linhVucArrayAdapter);
     }
 }

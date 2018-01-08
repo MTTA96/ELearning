@@ -33,6 +33,7 @@ public class TaiKhoan {
     boolean dacapnhat;
     String rating;
     ArrayList<TaiLieuChuyenMon> danhSachTaiLieuChuyenMon;
+    boolean taiKhoanGiaSu;
 
 
     public TaiKhoan() {
@@ -74,30 +75,31 @@ public class TaiKhoan {
 //    }
 
 
-    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms, String trinhdo, String diadiem, String sodienthoai, String avatar, boolean dacapnhat, String rating) {
-        this.id = id;
-        this.email = email;
-        this.ho = ho;
-        this.ten = ten;
-        this.tentaikhoan = tentaikhoan;
-        this.dadangnhap = dadangnhap;
-        this.loaitaikhoan = loaitaikhoan;
-        this.password = password;
-        this.nghenghiep = nghenghiep;
-        this.namsinh = namsinh;
-        this.gioitinh = gioitinh;
-        this.tailieuxacminh_mt = tailieuxacminh_mt;
-        this.tailieuxacminh_ms = tailieuxacminh_ms;
-        this.trinhdo = trinhdo;
-        this.diadiem = diadiem;
-        this.sodienthoai = sodienthoai;
-        this.avatar = avatar;
-        this.dacapnhat = dacapnhat;
-        this.rating = rating;
-    }
+//    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms, String trinhdo, String diadiem, String sodienthoai, String avatar, boolean dacapnhat, String rating) {
+//        this.id = id;
+//        this.email = email;
+//        this.ho = ho;
+//        this.ten = ten;
+//        this.tentaikhoan = tentaikhoan;
+//        this.dadangnhap = dadangnhap;
+//        this.loaitaikhoan = loaitaikhoan;
+//        this.password = password;
+//        this.nghenghiep = nghenghiep;
+//        this.namsinh = namsinh;
+//        this.gioitinh = gioitinh;
+//        this.tailieuxacminh_mt = tailieuxacminh_mt;
+//        this.tailieuxacminh_ms = tailieuxacminh_ms;
+//        this.trinhdo = trinhdo;
+//        this.diadiem = diadiem;
+//        this.sodienthoai = sodienthoai;
+//        this.avatar = avatar;
+//        this.dacapnhat = dacapnhat;
+//        this.rating = rating;
+//    }
     //Contructor khởi tạo có danh sach tài liệu chuyen môn
 
-    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms, String trinhdo, String diadiem, String sodienthoai, String avatar, boolean dacapnhat, String rating, ArrayList<TaiLieuChuyenMon> danhSachTaiLieuChuyenMon) {
+
+    public TaiKhoan(String id, String email, String ho, String ten, String tentaikhoan, boolean dadangnhap, String loaitaikhoan, String password, String nghenghiep, String namsinh, String gioitinh, String tailieuxacminh_mt, String tailieuxacminh_ms, String trinhdo, String diadiem, String sodienthoai, String avatar, boolean dacapnhat, String rating, boolean taiKhoanGiaSu) {
         this.id = id;
         this.email = email;
         this.ho = ho;
@@ -117,7 +119,7 @@ public class TaiKhoan {
         this.avatar = avatar;
         this.dacapnhat = dacapnhat;
         this.rating = rating;
-        this.danhSachTaiLieuChuyenMon = danhSachTaiLieuChuyenMon;
+        this.taiKhoanGiaSu = taiKhoanGiaSu;
     }
 
     public String getId() {
@@ -270,6 +272,14 @@ public class TaiKhoan {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public boolean getTaiKhoanGiaSu() {
+        return taiKhoanGiaSu;
+    }
+
+    public void setTaiKhoanGiaSu(boolean taiKhoanGiaSu) {
+        this.taiKhoanGiaSu = taiKhoanGiaSu;
     }
 }
 

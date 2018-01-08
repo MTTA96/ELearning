@@ -154,7 +154,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
                             SetStringNull(etDiaChi.getText().toString()),
                             SetStringNull(etSoDienThoai.getText().toString()),
                             SetStringNull(sharedPreferencesHandler.getAvatar()),
-                            true, SetStringNull(sharedPreferencesHandler.getRating())), getActivity(), imTaiLieuXacMinh_mt, imTaiLieuXacMinh_ms, imAvarta);
+                            true, SetStringNull(sharedPreferencesHandler.getRating()),sharedPreferencesHandler.getTaiKhoanGiaSu()), getActivity(), imTaiLieuXacMinh_mt, imTaiLieuXacMinh_ms, imAvarta);
                 }
                 else
                     Toast.makeText(getActivity(), "Chưa điền đủ thông tin!", Toast.LENGTH_LONG).show();

@@ -32,7 +32,7 @@ public class ParseDataTaiKhoan  {
             while (keys.hasNext())
             {
                 String key = keys.next();
-                boolean dadangnhapTaiKhoan,dacapnhatTaiKhoan;
+                boolean dadangnhapTaiKhoan,dacapnhatTaiKhoan,taikhoangiasuTaiKhoan;
                 String idTaiKhoan,emailTaiKhoan,hoTaiKhoan,tenTaiKhoan,tentaikhoanTaiKhoan,loaitaikhoanTaiKhoan,passwordTaiKhoan,nghenghiepTaiKhoan,namsinhTaiKhoan,gioitinhTaiKhoan,tailieuxacminh_mt,tailieuxacminh_ms,trinhdoTaiKhoan,diadiemTaiKhoan,sodienthoaiTaiKhoan,avartaTaiKhoan,ratingTaiKhoan;
                 if(root.get(key) instanceof JSONObject)
                 {
@@ -128,6 +128,11 @@ public class ParseDataTaiKhoan  {
                         dacapnhatTaiKhoan=false;
                     ratingTaiKhoan=object.getString("rating");
 
+                    if (object.getBoolean("taiKhoanGiaSu"))
+                        taikhoangiasuTaiKhoan=object.getBoolean("taiKhoanGiaSu");
+                    else
+                        taikhoangiasuTaiKhoan=false;
+
                     //Truyền UID vào NODEJS để lấy về Avatar người đăng
 
 //                    JSONArray objectLop = object.getJSONArray("Lop");
@@ -148,7 +153,7 @@ public class ParseDataTaiKhoan  {
 
 //                    CustomModelKhoaHoc kht = new CustomModelKhoaHoc(TenNguoiDang,UIDNguoiDang,LinkAnh,BuoiHoc,rating,Mon,Lop);
 //                    khoaHocArrayList.add(kht);
-                    TaiKhoan taiKhoan=new TaiKhoan(idTaiKhoan,emailTaiKhoan,hoTaiKhoan,tenTaiKhoan,"null",dadangnhapTaiKhoan,loaitaikhoanTaiKhoan,passwordTaiKhoan,nghenghiepTaiKhoan,namsinhTaiKhoan,gioitinhTaiKhoan,tailieuxacminh_mt,tailieuxacminh_ms,trinhdoTaiKhoan,diadiemTaiKhoan,sodienthoaiTaiKhoan,avartaTaiKhoan,dacapnhatTaiKhoan,ratingTaiKhoan);
+                    TaiKhoan taiKhoan=new TaiKhoan(idTaiKhoan,emailTaiKhoan,hoTaiKhoan,tenTaiKhoan,"null",dadangnhapTaiKhoan,loaitaikhoanTaiKhoan,passwordTaiKhoan,nghenghiepTaiKhoan,namsinhTaiKhoan,gioitinhTaiKhoan,tailieuxacminh_mt,tailieuxacminh_ms,trinhdoTaiKhoan,diadiemTaiKhoan,sodienthoaiTaiKhoan,avartaTaiKhoan,dacapnhatTaiKhoan,ratingTaiKhoan,taikhoangiasuTaiKhoan);
                     taiKhoanList.add(taiKhoan);
                 }
             }

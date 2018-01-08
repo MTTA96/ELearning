@@ -126,13 +126,13 @@ public class CapNhatTaiKhoanModel implements CapNhatTaiKhoanModelImp {
     }
 
     @Override
-    public void CapNhatTaiKhoanGiaSu(String idUser, Activity activity) {
+    public void CapNhatTaiKhoanGiaSu(String idUser, final Activity activity) {
         mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
         mData.getReference().child("TaiKhoan").child(idUser).child("taiKhoanGiaSu").setValue(true).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isComplete()){
-                    capNhatTaiKhoanPresenterImp.KetQuaCapNhatTaiKhoanGiaSu("CapNhatTaiKhoanGiaSuThanhCong");
+                    capNhatTaiKhoanPresenterImp.KetQuaCapNhatTaiKhoanGiaSu("CapNhatTaiKhoanGiaSuThanhCong", activity);
                 }
             }
         });

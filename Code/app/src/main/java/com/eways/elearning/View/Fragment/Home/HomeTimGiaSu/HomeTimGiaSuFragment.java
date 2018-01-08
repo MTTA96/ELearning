@@ -4,6 +4,7 @@ package com.eways.elearning.View.Fragment.Home.HomeTimGiaSu;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,8 +28,9 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListener, NewHomeFragmentImp {
+public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListener, NewHomeFragmentImp, SwipeRefreshLayout.OnRefreshListener {
     RecyclerView rvDanhSachKhoaHocAnhVan, rvDanhSachKhoaHocToan, rvDanhSachKhoaHocKhac;
+    SwipeRefreshLayout refreshLayout;
 
     private FragmentHandler fragmentHandler;
     private NewHomeFragmentPresenter newHomeFragmentPresenter;
@@ -60,11 +62,13 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
         rvDanhSachKhoaHocAnhVan = root.findViewById(R.id.recyclerView_DanhSachKhoaHocAnhVan_HomeTimGiaSu);
         rvDanhSachKhoaHocToan = root.findViewById(R.id.recyclerView_DanhSachKhoaHocToan_HomeTimGiaSu);
         rvDanhSachKhoaHocKhac = root.findViewById(R.id.recyclerView_DanhSachKhoaHocKhac_HomeTimGiaSu);
+        refreshLayout = root.findViewById(R.id.refreshLayout_HomeTimGiaSu);
 
         root.findViewById(R.id.textView_XemDanhSachKhoaHocAnhVan_HomeTimGiaSu).setOnClickListener(this);
         root.findViewById(R.id.textView_XemDanhSachKhoaHocToan_HomeTimGiaSu).setOnClickListener(this);
         root.findViewById(R.id.textView_XemDanhSachKhoaHocKhac_HomeTimGiaSu).setOnClickListener(this);
 
+        refreshLayout.setOnRefreshListener(this);
         newHomeFragmentPresenter.guiYeuCau(true,"Ngoại ngữ", "Toán", "Other");
         return root;
     }
@@ -78,6 +82,7 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
         rvDanhSachKhoaHocToan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocToan, imageHandler, fragmentHandler));
         rvDanhSachKhoaHocKhac.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocKhac, imageHandler, fragmentHandler));
         LoadingDialog.dismissDialog();
+        refreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -94,5 +99,10 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
     @Override
     public void nhanListKhoaHoc(ArrayList<CustomModelKhoaHoc> khoaHocs1, ArrayList<CustomModelKhoaHoc> khoaHocs2, ArrayList<CustomModelKhoaHoc> khoaHocs3) {
         setUpDanhSach(khoaHocs1, khoaHocs2, khoaHocs3);
+    }
+
+    @Override
+    public void onRefresh() {
+        newHomeFragmentPresenter.guiYeuCau(true,"Ngoại ngữ", "Toán", "Other");
     }
 }

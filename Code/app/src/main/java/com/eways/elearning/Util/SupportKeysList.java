@@ -21,6 +21,7 @@ public class SupportKeysList {
     public static final String TAG_CAP_NHAT_THONG_TIN_CA_NHAN = "cap_nhat_thong_tin_ca_nhan_fragment";
     public static final String TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON = "cap_nhat_tai_lieu_chuyen_mon_fragment";
     public static final String TAG_THEM_LINH_VUC_CHUYEN_MON = "them_linh_vuc_chuyen_mon_fragment";
+    public static final String TAG_KHOA_HOC_CUA_TOI = "khoa_hoc_cua_toi_fragment";
     public static final String TAG_DANH_SACH_KHOA_HOC = "danh_sach_khoa_hoc_fragment";
     public static final String TAG_TAO_KHOA_HOC = "tao_khoa_hoc_fragment";
     public static final String TAG_TIM_KIEM = "tim_kiem_fragment";

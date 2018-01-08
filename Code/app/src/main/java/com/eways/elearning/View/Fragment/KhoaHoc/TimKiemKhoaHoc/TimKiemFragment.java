@@ -22,10 +22,11 @@ import android.widget.Toast;
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.LichHoc;
-import com.eways.elearning.DataModel.Other.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.DataModel.LinhVuc.Mon;
+import com.eways.elearning.DataModel.Other.KhuVuc;
 import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.KetQuaTimKiemGiaSuFragment;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TimKiemKhoaHoc.TimKiemPresenter;
 import com.eways.elearning.Presenter.TimKiemKhoaHoc.TimKiemPresenterImp;
@@ -151,10 +152,21 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
                 break;
             case R.id.button_Tim_Kiem:
                 if (checkData()) {
-                    KhoaHoc requestKhoaHoc = new KhoaHoc();
-                    setUpDataRequestKhoaHoc(requestKhoaHoc);
-                    String bangCap = etBangCap.getText() != null ? etBangCap.getText().toString() : null;
-                    fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(switchTimKiem.isChecked(), requestKhoaHoc, bangCap), false, null);
+                    if(switchTimKiem.isChecked() == false)
+                    {
+                        KhoaHoc requestKhoaHoc = new KhoaHoc();
+                        setUpDataRequestKhoaHoc(requestKhoaHoc);
+                        String bangCap = etBangCap.getText() != null ? etBangCap.getText().toString() : null;
+                        fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(switchTimKiem.isChecked(), requestKhoaHoc, bangCap), false, null);
+                    }
+                    else
+                    {
+                        KhoaHoc requestKhoaHoc = new KhoaHoc();
+                        setUpDataRequestKhoaHoc(requestKhoaHoc);
+                        String bangCap = etBangCap.getText() != null ? etBangCap.getText().toString() : null;
+                        fragmentHandler.ChuyenFragment(KetQuaTimKiemGiaSuFragment.newInstance(switchTimKiem.isChecked(), requestKhoaHoc, bangCap), false, null);
+                    }
+
                 } else
                     Toast.makeText(getActivity(), getString(R.string.thieu_thong_tin), Toast.LENGTH_LONG).show();
                 break;

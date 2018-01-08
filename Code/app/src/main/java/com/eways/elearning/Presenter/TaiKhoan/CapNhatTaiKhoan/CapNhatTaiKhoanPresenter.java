@@ -52,6 +52,8 @@ public class CapNhatTaiKhoanPresenter implements CapNhatTaiKhoanPresenterImp {
 
     @Override
     public void KetQuaCapNhatTaiKhoanGiaSu(String ketQua) {
+        //update lại sharePref
+        sharedPreferencesHandler.setTaiKhoanGiaSu(true);
         dieuKhoanGiaSuViewImp.NhanKetQuaCapNhatTaiKhoanGiaSu(ketQua);
     }
 }

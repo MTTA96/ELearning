@@ -12,5 +12,5 @@ import java.util.ArrayList;
 
 public interface KhoaHocCuaToiPresenterImp {
     public void YeuCauDataKhoaHocDaDangKy(String idUser, Activity activity);
-    public void NhanDataKhoaHocDaDangKy(ArrayList<KhoaHoc> khoaHoc);
+    public void NhanDataKhoaHocDaDangKy(ArrayList<KhoaHoc> khoaHoc,String idUser);
 }

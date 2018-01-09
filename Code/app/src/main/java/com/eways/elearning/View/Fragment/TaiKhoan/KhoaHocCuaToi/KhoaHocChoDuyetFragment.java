@@ -42,8 +42,8 @@ public class KhoaHocChoDuyetFragment extends Fragment implements KhoaHocChoDuyet
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_khoa_hoc_cho_duyet, container, false);
-        refreshLayout = root.findViewById(R.id.refreshLayout_KhoaHocDangThamGia);
-        rvKhoaHocChoDuyet = root.findViewById(R.id.rcvKhoaHocTimGiaSu);
+        refreshLayout = root.findViewById(R.id.refreshLayout_KhoaHocChoDuyet);
+        rvKhoaHocChoDuyet = root.findViewById(R.id.recyclerView_DanhSachKhoaHocChoDuyet);
 
         imageHandler = new ImageHandler(getActivity());
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -68,6 +68,9 @@ public class KhoaHocChoDuyetFragment extends Fragment implements KhoaHocChoDuyet
 
     @Override
     public void DataKhoaHocDangChoDuyet(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocChoDuyet) {
-
+        if (danhSachKhoaHocChoDuyet!=null){
+            danhSachKhoaHoc=danhSachKhoaHocChoDuyet;
+            showData();
+        }
     }
 }

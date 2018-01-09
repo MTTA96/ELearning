@@ -2,6 +2,7 @@ package com.eways.elearning.View.Fragment.TaiKhoan.KhoaHocCuaToi;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -10,7 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Presenter.TaiKhoan.KhoaHocCuaToi.KhoaHocCuaToiPresenter;
+import com.eways.elearning.Presenter.TaiKhoan.KhoaHocCuaToi.KhoaHocCuaToiPresenterImp;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Activity.MainActivity;
 import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocTimGiaSuFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocTimHocVienFragment;
@@ -18,9 +23,11 @@ import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocTimHocVi
 /**
  * A simple {@link Fragment} subclass.
  */
-public class KhoaHocCuaToiFragment extends Fragment {
+public class KhoaHocCuaToiFragment extends Fragment implements KhoaHocCuaToiViewImp {
     private ViewPager viewPagerKhoaHoc;
     private TabLayout tabLayoutKhoaHoc;
+    private KhoaHocCuaToiPresenterImp khoaHocCuaToiPresenterImp;
+    SharedPreferencesHandler sharedPreferencesHandler;
 
     private final String titleTab1 = "Khóa học đang tham gia";
     private final String titleTab2 = "Khóa học chờ duyệt";
@@ -37,6 +44,14 @@ public class KhoaHocCuaToiFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedPreferencesHandler=new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
+        khoaHocCuaToiPresenterImp=new KhoaHocCuaToiPresenter(this);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,6 +64,7 @@ public class KhoaHocCuaToiFragment extends Fragment {
         ((MainActivity)getActivity()).tvScreenTitle.setText(getResources().getString(R.string.title_danh_sach_khoa_hoc));
         setUpViewPager(viewPagerKhoaHoc);
         getActivity().supportInvalidateOptionsMenu();
+        khoaHocCuaToiPresenterImp.YeuCauDataKhoaHocDaDangKy(sharedPreferencesHandler.getID(),getActivity());
         return root;
     }
 

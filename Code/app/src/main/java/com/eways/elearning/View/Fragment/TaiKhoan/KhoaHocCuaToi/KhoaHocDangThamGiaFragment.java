@@ -25,7 +25,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class KhoaHocDangThamGiaFragment extends Fragment {
+public class KhoaHocDangThamGiaFragment extends Fragment implements KhoaHocDangThamGiaViewImp{
     private SwipeRefreshLayout refreshLayout;
     private RecyclerView rvKhoaHocDangThamGia;
 
@@ -51,7 +51,7 @@ public class KhoaHocDangThamGiaFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_khoa_hoc_dang_tham_gia, container, false);
         refreshLayout = root.findViewById(R.id.refreshLayout_KhoaHocDangThamGia);
-        rvKhoaHocDangThamGia = root.findViewById(R.id.rcvKhoaHocTimGiaSu);
+        rvKhoaHocDangThamGia = root.findViewById(R.id.recyclerView_DanhSachKhoaHocDangThamGia);
 
         imageHandler = new ImageHandler(getActivity());
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -72,5 +72,13 @@ public class KhoaHocDangThamGiaFragment extends Fragment {
         khoaHocAdapter = new KhoaHocRCAdapter(getActivity(), danhSachKhoaHoc, imageHandler, fragmentHandler);
         rvKhoaHocDangThamGia.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rvKhoaHocDangThamGia.setAdapter(khoaHocAdapter);
+    }
+
+    @Override
+    public void DataKhoaHocDangThamGia(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaTao, ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaDuyet) {
+        if (danhSachKhoaHocDaDuyet!=null){
+            danhSachKhoaHoc=danhSachKhoaHocDaTao;
+            showData();
+        }
     }
 }

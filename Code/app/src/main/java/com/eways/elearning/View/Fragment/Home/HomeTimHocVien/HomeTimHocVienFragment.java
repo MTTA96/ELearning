@@ -39,6 +39,7 @@ public class HomeTimHocVienFragment extends Fragment implements View.OnClickList
     private ArrayList danhSachKhoaHocToan = new ArrayList();
     private ArrayList danhSachKhoaHocKhac = new ArrayList();
 
+    private static final boolean TYPE_TIM_HOC_VIEN = SupportKeysList.TYPE_TIM_HOC_VIEN;
 
     public HomeTimHocVienFragment() {
         // Required empty public constructor
@@ -78,9 +79,9 @@ public class HomeTimHocVienFragment extends Fragment implements View.OnClickList
         rvDanhSachKhoaHocToan.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rvDanhSachKhoaHocKhac.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        rvDanhSachKhoaHocAnhVan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocAnhVan, imageHandler, fragmentHandler));
-        rvDanhSachKhoaHocToan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocToan, imageHandler, fragmentHandler));
-        rvDanhSachKhoaHocKhac.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocKhac, imageHandler, fragmentHandler));
+        rvDanhSachKhoaHocAnhVan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocAnhVan, imageHandler, fragmentHandler, TYPE_TIM_HOC_VIEN));
+        rvDanhSachKhoaHocToan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocToan, imageHandler, fragmentHandler, TYPE_TIM_HOC_VIEN));
+        rvDanhSachKhoaHocKhac.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocKhac, imageHandler, fragmentHandler, TYPE_TIM_HOC_VIEN));
         refreshLayout.setRefreshing(false);
     }
 

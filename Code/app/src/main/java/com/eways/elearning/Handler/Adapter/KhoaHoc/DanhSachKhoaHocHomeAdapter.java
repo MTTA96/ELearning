@@ -31,12 +31,14 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
     private CustomModelKhoaHoc khoaHoc;
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
+    private boolean loaiKhoaHoc;
 
-    public DanhSachKhoaHocHomeAdapter(Context context, ArrayList<CustomModelKhoaHoc> listKhoaHoc, ImageHandler imageHanlder, FragmentHandler fragmentHandler) {
+    public DanhSachKhoaHocHomeAdapter(Context context, ArrayList<CustomModelKhoaHoc> listKhoaHoc, ImageHandler imageHandler, FragmentHandler fragmentHandler, boolean loaiKhoaHoc) {
         this.context = context;
         this.listKhoaHoc = listKhoaHoc;
-        this.imageHandler = imageHanlder;
+        this.imageHandler = imageHandler;
         this.fragmentHandler = fragmentHandler;
+        this.loaiKhoaHoc = loaiKhoaHoc;
     }
 
     @Override
@@ -56,7 +58,7 @@ public class DanhSachKhoaHocHomeAdapter extends RecyclerView.Adapter<ItemListKho
             @Override
             public void onClick(View v) {
                 LoadingDialog.showDialog();
-                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(listKhoaHoc.get(holder.getLayoutPosition()).getNguoiDang(), listKhoaHoc.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
+                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(listKhoaHoc.get(holder.getLayoutPosition()).getNguoiDang(), listKhoaHoc.get(holder.getLayoutPosition()).KeyKhoaHoc, loaiKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
             }
         });
 

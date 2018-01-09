@@ -42,6 +42,7 @@ public class ListKhoaHocTimHocVienModel implements ListKhoaHocTimHocVienImpModel
 /**Dùng code Firebase*/
     @Override
     public void getDanhSachKhoaHocTimHocVien() {
+        listKhoaHoc.clear();
         mData.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMHOCVIEN).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

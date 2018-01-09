@@ -20,6 +20,7 @@
     <string name="tao_khoa_hoc">Tạo khóa học</string>
     <string name="hoi_dap">Hỏi - Đáp</string>
     <string name="msg_cap_nhat_thong_tin">Cập nhật thông tin trước khi đăng ký!</string>
+    <string name="button_xem_them_thong_tin">Xem thêm</string>
 
     <!--Fragment đăng nhập-->
     <string name="Tittle_Login"><b>Đăng Nhập</b></string>
@@ -103,13 +104,13 @@
 
     <!--Fragment QLTK-->
     <string name="Dang_xuat_QLTK"><i><u>Đăng xuất</u></i></string>
-    <string name="ThongTinCaNhan"><b>Thông tin cá nhân</b></string>
-    <string name="KhoaHocCuaToi"><b>Khóa học của tôi</b></string>
-    <string name="dang_ky_lam_gia_su"><b>Đăng ký làm gia sư</b></string>
-    <string name="tai_lieu_chuyen_mon"><b>Tài liệu chuyên môn</b></string>
-    <string name="LinhVucQuanTam"><b>Lĩnh Vực Quan Tâm  </b></string>
-    <string name="MoiBanBe"><b>Mời Bạn Bè</b></string>
-    <string name="TaiKhoanKhac"><b>Tài Khoản Khác</b></string>
+    <string name="ThongTinCaNhan">Thông tin cá nhân</string>
+    <string name="KhoaHocCuaToi">Khóa học của tôi</string>
+    <string name="dang_ky_lam_gia_su">Đăng ký làm gia sư</string>
+    <string name="tai_lieu_chuyen_mon">Tài liệu chuyên môn</string>
+    <string name="LinhVucQuanTam">Lĩnh vực quan tâm  </string>
+    <string name="MoiBanBe">Mời bạn bè</string>
+    <string name="TaiKhoanKhac">Tài khoản khác</string>
     <string name="DiaLogDangXuat">Bạn có muốn thoát</string>
     <string name="BtnDongY_DX">Đồng ý</string>
     <string name="BtnHuy_DX">Hủy</string>
@@ -135,6 +136,9 @@
     <!--Fragment thông tin khóa hoc-->
     <string name="text_GuiYeuCau"><b>Gửi Yêu Cầu</b></string>
     <string name="text_HuyYeuCau"><b>Hủy Yêu Cầu</b></string>
+    <string name="title_thong_tin_gia_su">Thông tin gia sư</string>
+    <string name="title_thong_tin_hoc_vien">Thông tin học viên</string>
+    <string name="title_thong_tin_khoa_hoc">Thông tin khóa học</string>
 
     <!--fragment thong tin nguoi dang-->
     <string name="text_ChuaCapNhat_ThongTinNguoiDang">Chưa cập nhật</string>

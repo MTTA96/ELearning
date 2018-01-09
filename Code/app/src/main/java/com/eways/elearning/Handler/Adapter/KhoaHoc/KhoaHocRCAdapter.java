@@ -31,12 +31,14 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<ViewHolder> {
     private ArrayList<CustomModelKhoaHoc> khoaHocArrayList;
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
+    private boolean loaiKhoaHoc;
 
-    public KhoaHocRCAdapter(Context context, ArrayList<CustomModelKhoaHoc> khoaHocArrayList, ImageHandler imageHandler, FragmentHandler fragmentHandler) {
+    public KhoaHocRCAdapter(Context context, ArrayList<CustomModelKhoaHoc> khoaHocArrayList, ImageHandler imageHandler, FragmentHandler fragmentHandler, boolean loaiKhoaHoc) {
         this.context = context;
         this.khoaHocArrayList = khoaHocArrayList;
         this.imageHandler = imageHandler;
         this.fragmentHandler = fragmentHandler;
+        this.loaiKhoaHoc = loaiKhoaHoc;
     }
 
     @Override
@@ -52,13 +54,13 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.vUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
+                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), loaiKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
             }
         });
         holder.vCourseInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHocArrayList.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
+                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHocArrayList.get(holder.getLayoutPosition()).KeyKhoaHoc, loaiKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
             }
         });
 

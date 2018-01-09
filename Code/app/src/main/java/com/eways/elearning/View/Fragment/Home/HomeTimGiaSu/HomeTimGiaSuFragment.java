@@ -40,6 +40,8 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
     private ArrayList danhSachKhoaHocToan = new ArrayList();
     private ArrayList danhSachKhoaHocKhac = new ArrayList();
 
+    public final boolean TYPE_TIM_GIA_SU = SupportKeysList.TYPE_TIM_GIA_SU;
+
     public HomeTimGiaSuFragment() {
         // Required empty public constructor
     }
@@ -69,7 +71,7 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
         root.findViewById(R.id.textView_XemDanhSachKhoaHocKhac_HomeTimGiaSu).setOnClickListener(this);
 
         refreshLayout.setOnRefreshListener(this);
-        newHomeFragmentPresenter.guiYeuCau(true,"Ngoại ngữ", "Toán", "Other");
+        newHomeFragmentPresenter.guiYeuCau(TYPE_TIM_GIA_SU,"Ngoại ngữ", "Toán", "Other");
         return root;
     }
 
@@ -78,9 +80,9 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
         rvDanhSachKhoaHocToan.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rvDanhSachKhoaHocKhac.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        rvDanhSachKhoaHocAnhVan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocAnhVan, imageHandler, fragmentHandler));
-        rvDanhSachKhoaHocToan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocToan, imageHandler, fragmentHandler));
-        rvDanhSachKhoaHocKhac.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocKhac, imageHandler, fragmentHandler));
+        rvDanhSachKhoaHocAnhVan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocAnhVan, imageHandler, fragmentHandler, TYPE_TIM_GIA_SU));
+        rvDanhSachKhoaHocToan.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocToan, imageHandler, fragmentHandler, TYPE_TIM_GIA_SU));
+        rvDanhSachKhoaHocKhac.setAdapter(new DanhSachKhoaHocHomeAdapter(getActivity(), danhSachKhoaHocKhac, imageHandler, fragmentHandler, TYPE_TIM_GIA_SU));
         LoadingDialog.dismissDialog();
         refreshLayout.setRefreshing(false);
     }
@@ -103,6 +105,6 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onRefresh() {
-        newHomeFragmentPresenter.guiYeuCau(true,"Ngoại ngữ", "Toán", "Other");
+        newHomeFragmentPresenter.guiYeuCau(TYPE_TIM_GIA_SU,"Ngoại ngữ", "Toán", "Other");
     }
 }

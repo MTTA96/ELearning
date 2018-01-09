@@ -139,6 +139,14 @@
                             android:layout_height="wrap_content"
                             android:textStyle="bold" />
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/button_XemThemThongTinNguoiDang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/button_xem_them_thong_tin"
+                        android:textColor="@color/colorMain"/>
                 </LinearLayout>
 
                 <TextView
@@ -148,7 +156,7 @@
                     android:background="@color/White"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="Thông tin cá nhân"
+                    android:text="@string/title_thong_tin_gia_su"
                     android:textSize="@dimen/normal_text_size" />
             </FrameLayout>
 
@@ -309,7 +317,7 @@
                     android:background="@color/White"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="Thông tin bài đăng"
+                    android:text="@string/title_thong_tin_khoa_hoc"
                     android:textSize="@dimen/normal_text_size" />
             </FrameLayout>
 

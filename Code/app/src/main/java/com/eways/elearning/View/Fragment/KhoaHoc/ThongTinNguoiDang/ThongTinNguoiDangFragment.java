@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Handler.ImageHandler;
@@ -21,28 +22,29 @@ import com.eways.elearning.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoiDangFragmentImp {
-    private final String titleTab1 = "Thông tin cá nhân";
-    private final String titleTab2 = "Tài liệu chuyên môn";
-
-    private static final String KEY_PARAM2="param2";
-    ImageHandler imageHandler;
-
-    TextView tvHoten,tvGioiTinh,tvNamSinh,tvCongViec,tvTrinhDo,tvSDT,tvEmail;
+public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoiDangFragmentImp {    TextView tvHoten,tvGioiTinh,tvNamSinh,tvCongViec,tvTrinhDo,tvSDT,tvEmail;
     ImageView ivTaiLieuXacMinh_mt;
     ImageView ivTaiLieuXacMinh_ms;
     ImageView ivAvarta;
 
-    ThongTinNguoiDangPresenterImp thongTinNguoiDangPresenterImp;
+    private final String titleTab1 = "Thông tin cá nhân";
+    private final String titleTab2 = "Tài liệu chuyên môn";
+    private static final String param1 = "param1";
+    private static final String param2 = "param2";
+
+    private ImageHandler imageHandler;
+    private ThongTinNguoiDangPresenterImp thongTinNguoiDangPresenterImp;
+    private boolean loaiKhoaHoc;
 
     public ThongTinNguoiDangFragment() {
         // Required empty public constructor
     }
 
-    public static ThongTinNguoiDangFragment newInstance(String idNguoiDang) {
+    public static ThongTinNguoiDangFragment newInstance(String idNguoiDang, boolean loaiKhoaHoc) {
 
         Bundle args = new Bundle();
-        args.putString(KEY_PARAM2,idNguoiDang);
+        args.putString(param1,idNguoiDang);
+        args.putBoolean(param2, loaiKhoaHoc);
         ThongTinNguoiDangFragment fragment = new ThongTinNguoiDangFragment();
         fragment.setArguments(args);
         return fragment;
@@ -52,7 +54,8 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             thongTinNguoiDangPresenterImp = new ThongTinNguoiDangPresenter(this);
-            thongTinNguoiDangPresenterImp.GetThongTinNguoiDangPresenter(getArguments().getString(KEY_PARAM2), getActivity());
+            thongTinNguoiDangPresenterImp.GetThongTinNguoiDangPresenter(getArguments().getString(param1), getActivity());
+            loaiKhoaHoc = getArguments().getBoolean(param2);
             imageHandler = new ImageHandler(getContext());
         }
     }
@@ -77,11 +80,21 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
         ivAvarta=(ImageView) root.findViewById(R.id.imageView_UserAvatar_ThongTinTaiKhoan);
 
 
-
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
-        getActivity().supportInvalidateOptionsMenu();
+        showData();
 //        seUpViewpager(viewPager);
         return root;
+    }
+
+    private void showData() {
+        //Set up action bar
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        getActivity().supportInvalidateOptionsMenu();
+
+        //Check loại khóa học
+        if (loaiKhoaHoc)
+            Toast.makeText(getContext(), "Tìm gia sư", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(getContext(), "Tìm học viên", Toast.LENGTH_SHORT).show();
     }
 
     private void seUpViewpager(ViewPager viewPager) {

@@ -84,7 +84,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
     public void nhanDanhSach(ArrayList<CustomModelKhoaHoc> khoaHocList) {
 
         khoaHocArrayList = khoaHocList;
-        khoaHocAdapter = new KhoaHocRCAdapter(getActivity(), khoaHocArrayList, imageHandler, fragmentHandler);
+        khoaHocAdapter = new KhoaHocRCAdapter(getActivity(), khoaHocArrayList, imageHandler, fragmentHandler, false);
         rcvKhoaHocTimGiaSu.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rcvKhoaHocTimGiaSu.setAdapter(khoaHocAdapter);
         LoadingDialog.dismissDialog();

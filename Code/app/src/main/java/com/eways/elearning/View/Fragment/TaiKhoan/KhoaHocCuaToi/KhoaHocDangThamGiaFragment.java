@@ -18,6 +18,7 @@ import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenterImp;
 import com.eways.elearning.R;
+import com.eways.elearning.Util.SupportKeysList;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -70,7 +71,7 @@ public class KhoaHocDangThamGiaFragment extends Fragment {
     }
 
     public void showData(){
-        khoaHocAdapter = new KhoaHocRCAdapter(getActivity(), danhSachKhoaHoc, imageHandler, fragmentHandler);
+        khoaHocAdapter = new KhoaHocRCAdapter(getActivity(), danhSachKhoaHoc, imageHandler, fragmentHandler, SupportKeysList.TYPE_TIM_HOC_VIEN);
         rvKhoaHocDangThamGia.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rvKhoaHocDangThamGia.setAdapter(khoaHocAdapter);
     }

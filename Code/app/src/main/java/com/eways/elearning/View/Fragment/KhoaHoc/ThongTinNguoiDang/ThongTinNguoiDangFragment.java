@@ -30,15 +30,17 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
     private final String titleTab1 = "Thông tin cá nhân";
     private final String titleTab2 = "Tài liệu chuyên môn";
     private static final String param1 = "param1";
+    private static final String param2 = "param2";
 
     private ImageHandler imageHandler;
     private ThongTinNguoiDangPresenterImp thongTinNguoiDangPresenterImp;
+    private final boolean loaiKhoaHoc = false;
 
     public ThongTinNguoiDangFragment() {
         // Required empty public constructor
     }
 
-    public static ThongTinNguoiDangFragment newInstance(String idNguoiDang) {
+    public static ThongTinNguoiDangFragment newInstance(String idNguoiDang, boolean loaiKhoaHoc) {
 
         Bundle args = new Bundle();
         args.putString(param1,idNguoiDang);
@@ -87,10 +89,10 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
         getActivity().supportInvalidateOptionsMenu();
 
         //Check loại khóa học
-//        if (loaiKhoaHoc)
-//            Toast.makeText(getContext(), "Tìm gia sư", Toast.LENGTH_SHORT).show();
-//        else
-//            Toast.makeText(getContext(), "Tìm học viên", Toast.LENGTH_SHORT).show();
+        if (!loaiKhoaHoc)
+            Toast.makeText(getContext(), "Tìm gia sư", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(getContext(), "Tìm học viên", Toast.LENGTH_SHORT).show();
     }
 
     private void seUpViewpager(ViewPager viewPager) {

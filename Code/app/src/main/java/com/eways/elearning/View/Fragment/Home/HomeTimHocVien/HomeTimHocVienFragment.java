@@ -35,9 +35,10 @@ public class HomeTimHocVienFragment extends Fragment implements View.OnClickList
     private NewHomeFragmentPresenter newHomeFragmentPresenter;
     private SharedPreferencesHandler mySharedPref;
     private ImageHandler imageHandler;
-    private ArrayList danhSachKhoaHocAnhVan = new ArrayList();
-    private ArrayList danhSachKhoaHocToan = new ArrayList();
-    private ArrayList danhSachKhoaHocKhac = new ArrayList();
+
+    public final String linhVucAnhVan = "Ngoại ngữ";
+    public final String linhVucToan = "Toán";
+    public final String linhVucOther = "Other";
 
     private static final boolean TYPE_TIM_HOC_VIEN = SupportKeysList.TYPE_TIM_HOC_VIEN;
 
@@ -70,7 +71,7 @@ public class HomeTimHocVienFragment extends Fragment implements View.OnClickList
         root.findViewById(R.id.textView_XemDanhSachKhoaHocKhac_HomeTimHocVien).setOnClickListener(this);
 
         refreshLayout.setOnRefreshListener(this);
-        newHomeFragmentPresenter.guiYeuCau(false,"Ngoại ngữ", "Toán", "Other");
+        newHomeFragmentPresenter.guiYeuCau(SupportKeysList.TYPE_TIM_HOC_VIEN,linhVucAnhVan, linhVucToan, linhVucOther);
         return root;
     }
 
@@ -89,9 +90,13 @@ public class HomeTimHocVienFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.textView_XemDanhSachKhoaHocKhac_HomeTimHocVien:
+                fragmentHandler.ChuyenFragment(ListKhoaHocFragment.newInstance(linhVucOther, !SupportKeysList.TYPE_TIM_HOC_VIEN), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
+                break;
             case R.id.textView_XemDanhSachKhoaHocToan_HomeTimHocVien:
+                fragmentHandler.ChuyenFragment(ListKhoaHocFragment.newInstance(linhVucToan, !SupportKeysList.TYPE_TIM_HOC_VIEN), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
+                break;
             case R.id.textView_XemDanhSachKhoaHocAnhVan_HomeTimHocVien:
-                fragmentHandler.ChuyenFragment(new ListKhoaHocFragment(), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
+                fragmentHandler.ChuyenFragment(ListKhoaHocFragment.newInstance(linhVucAnhVan, !SupportKeysList.TYPE_TIM_HOC_VIEN), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
                 break;
         }
     }
@@ -103,7 +108,7 @@ public class HomeTimHocVienFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onRefresh() {
-        newHomeFragmentPresenter.guiYeuCau(TYPE_TIM_HOC_VIEN,"Ngoại ngữ", "Toán", "Other");
+        newHomeFragmentPresenter.guiYeuCau(SupportKeysList.TYPE_TIM_HOC_VIEN,linhVucAnhVan, linhVucToan, linhVucOther);
 
         refreshLayout.setRefreshing(false);
     }

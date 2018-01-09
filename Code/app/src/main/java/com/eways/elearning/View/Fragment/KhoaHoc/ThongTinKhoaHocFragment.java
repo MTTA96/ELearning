@@ -112,7 +112,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.button_XemThemThongTinNguoiDang){
-            fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(thongTinChiTietKhoaHoc.getTaiKhoan().getId()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
+            fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(thongTinChiTietKhoaHoc.getTaiKhoan().getId(), thongTinChiTietKhoaHoc.getKhoaHoc().isLoaiKhoaHoc()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
         }
     }
 

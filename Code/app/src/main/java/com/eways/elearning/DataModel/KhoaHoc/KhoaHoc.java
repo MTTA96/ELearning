@@ -37,7 +37,7 @@ public class KhoaHoc implements Serializable {
     public KhoaHoc() {
     }
 
-    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem, DanhSachYeuCau danhSachYeuCau, boolean loaiKhoaHoc, NumberFormat formatGia) {
+    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem, DanhSachYeuCau danhSachYeuCau, boolean loaiKhoaHoc) {
         Avatar = avatar;
         Rating = rating;
         HoTen = hoTen;
@@ -57,7 +57,6 @@ public class KhoaHoc implements Serializable {
         DiaDiem = diaDiem;
         this.danhSachYeuCau = danhSachYeuCau;
         this.loaiKhoaHoc = loaiKhoaHoc;
-        this.formatGia = formatGia;
     }
 
     public boolean isLoaiKhoaHoc() {
@@ -66,14 +65,6 @@ public class KhoaHoc implements Serializable {
 
     public void setLoaiKhoaHoc(boolean loaiKhoaHoc) {
         this.loaiKhoaHoc = loaiKhoaHoc;
-    }
-
-    public NumberFormat getFormatGia() {
-        return formatGia;
-    }
-
-    public void setFormatGia(NumberFormat formatGia) {
-        this.formatGia = formatGia;
     }
 
     //    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem) {

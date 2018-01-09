@@ -48,7 +48,7 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<ItemListCustomKhoaHoc
         holder.vUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
+                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHoc.isLoaiKhoaHoc()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
             }
         });
         holder.vCourseInfo.setOnClickListener(new View.OnClickListener() {

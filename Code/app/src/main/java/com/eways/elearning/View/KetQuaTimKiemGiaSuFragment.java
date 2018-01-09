@@ -1,4 +1,4 @@
-package com.eways.elearning;
+package com.eways.elearning.View;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
+import com.eways.elearning.R;
 
 
 public class KetQuaTimKiemGiaSuFragment extends Fragment {
@@ -33,6 +34,9 @@ public class KetQuaTimKiemGiaSuFragment extends Fragment {
 
     private FragmentHandler fragmentHandler;
 
+//    private KetQuaKhoaHocViewImp ketQuaKhoaHocViewImp;
+
+//    private KetQuaTimKiemKhoaHocFragmentPresenterImp ketQuaTimKiemKhoaHocFragmentPresenterImp;
     public KetQuaTimKiemGiaSuFragment() {
         // Required empty public constructor
     }
@@ -61,6 +65,7 @@ public class KetQuaTimKiemGiaSuFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+
             requestKhoaHoc = (KhoaHoc) getArguments().getSerializable(paramRequestKhoaHoc);
             requestGiaSu = getArguments().getBoolean(paramRequestGiaSu);
             requestBangCap = getArguments().getString(paramRequestBangCap, null);
@@ -70,7 +75,10 @@ public class KetQuaTimKiemGiaSuFragment extends Fragment {
             //Request môn
             requestMon = getArguments().getString(paramMon, "");
 
+//            ketQuaTimKiemKhoaHocFragmentPresenterImp = new KetQuaTimKiemKhoaHocFragmentPresenter(this);
         }
+
+
     }
 
     @Override
@@ -82,14 +90,17 @@ public class KetQuaTimKiemGiaSuFragment extends Fragment {
         viewPagerKetQuaTimKiem = (ViewPager) root.findViewById(R.id.viewpagerKetQuaTimKiem);
         tabLayoutKetQuaTimKiem = (TabLayout)root.findViewById(R.id.tablayoutKetQuaTimKiem);
 
+//        ketQuaTimKiemKhoaHocFragmentPresenterImp.guiYeuCauTimKhoaHocGiaSu(requestKhoaHoc,getActivity());
+//        ketQuaTimKiemKhoaHocFragmentPresenterImp.guiYeuCauTimGiaSu(requestKhoaHoc,getActivity());
+//        ketQuaKhoaHocViewImp.nhanThongTinTimKiem(requestKhoaHoc);
         setUpViewPager(viewPagerKetQuaTimKiem);
         return root;
     }
 
     private void setUpViewPager(ViewPager pager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new KetQuaKhoaHocFragment(), titleTab1);
-        adapter.addFragment(new KetQuaNguoiFragment(), titleTab2);
+        adapter.addFragment(KetQuaKhoaHocFragment.newInstance(requestKhoaHoc), titleTab1);
+        adapter.addFragment(KetQuaNguoiFragment.newInstance(requestKhoaHoc), titleTab2);
         pager.setAdapter(adapter);
     }
 

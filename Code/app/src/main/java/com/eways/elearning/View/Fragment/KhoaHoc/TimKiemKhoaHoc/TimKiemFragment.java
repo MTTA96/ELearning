@@ -26,7 +26,7 @@ import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.DataModel.LinhVuc.Mon;
 import com.eways.elearning.DataModel.Other.KhuVuc;
 import com.eways.elearning.Handler.FragmentHandler;
-import com.eways.elearning.KetQuaTimKiemGiaSuFragment;
+import com.eways.elearning.View.KetQuaTimKiemGiaSuFragment;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TimKiemKhoaHoc.TimKiemPresenter;
 import com.eways.elearning.Presenter.TimKiemKhoaHoc.TimKiemPresenterImp;
@@ -152,7 +152,7 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
                 break;
             case R.id.button_Tim_Kiem:
                 if (checkData()) {
-                    if(switchTimKiem.isChecked() == false)
+                    if(switchTimKiem.isChecked() == true)
                     {
                         KhoaHoc requestKhoaHoc = new KhoaHoc();
                         setUpDataRequestKhoaHoc(requestKhoaHoc);

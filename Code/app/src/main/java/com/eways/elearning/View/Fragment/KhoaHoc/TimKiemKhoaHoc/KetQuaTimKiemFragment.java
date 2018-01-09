@@ -19,8 +19,6 @@ import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.TimKiemKhoaHoc.KetQuaTimKiemKhoaHocFragmentPresenter;
 import com.eways.elearning.Presenter.TimKiemKhoaHoc.KetQuaTimKiemKhoaHocFragmentPresenterImp;
 import com.eways.elearning.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -39,14 +37,9 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
     private String requestBangCap;
     private String requestMon;
 
-    int sizeLichHoc = 0;
-    int countLichHoc = 0;
-    int gioiHanLichHoc = 0;
-    DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
+
     ArrayList<CustomModelKhoaHoc> rsKhoaHocChinhXac;
     ArrayList<CustomModelKhoaHoc> rsKhoaHocGanChinhXac;
-    KhoaHocRCAdapter adapterChinhXac;
-    KhoaHocRCAdapter adapterGanChinhXac;
 
     RecyclerView rcKetQua;
     ImageHandler imageHandler;
@@ -112,162 +105,10 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
         rsKhoaHocChinhXac = new ArrayList<CustomModelKhoaHoc>();
         rsKhoaHocGanChinhXac = new ArrayList<CustomModelKhoaHoc>();
         ketQuaTimKiemKhoaHocFragmentPresenterImp.guiYeuCauListKhoaHoc(requestKhoaHoc, requestGiaSu,requestMon, getActivity());
-//        if (rsKhoaHocChinhXac.size() == 0) {
-//            if(rsKhoaHocGanChinhXac.size() == 0)
-//            {
-//                Toast.makeText(getActivity(), "Không tìm thấy kết quả!", Toast.LENGTH_SHORT).show();
-//            }
-//            else
-//            {
-//                adapterKhoaHoc = new KhoaHocRCAdapter(
-//                        rsKhoaHocGanChinhXac,
-//                        imageHandler
-//                );
-//                rcKetQua.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-//                rcKetQua.setAdapter(adapterKhoaHoc);
-//            }
-//        } else {
-//            adapterKhoaHoc = new KhoaHocRCAdapter(
-//                    rsKhoaHocChinhXac,
-//                    imageHandler
-//            );
-//            rcKetQua.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-//            rcKetQua.setAdapter(adapterKhoaHoc);
-//        }
 
-//        if (requestGiaSu == true) {
-//
-//            mData.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMGIASU).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
-//                @Override
-//                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                    KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
-//                    for (String mon : kh.getMon()) {
-//                        try {
-//                            if (URLEncoder.encode(removeDiacriticalMarks(mon).toLowerCase(),"utf-8").contains(URLEncoder.encode(removeDiacriticalMarks(requestKhoaHoc.getMon().get(0).toLowerCase(),"utf-8"))) //vì chỉ lấy 1 môn nên get(0)
-//                            {
-//                                for (String linhVuc : kh.getLinhVuc()) {
-//                                    if (URLEncoder.encode(linhVuc.toLowerCase(),"utf-8").contains(URLEncoder.encode(requestKhoaHoc.getLinhVuc().get(0).toLowerCase(),"utf-8"))) //Vì chỉ lấy 1 lĩnh vực 1 lần nên get(0)
-//                                    {
-//                                        for (String rqBuoi : requestKhoaHoc.getBuoi()) {
-//                                            for (String rsBuoi : kh.getLichHoc().getThoiGian()) {
-//                                                if (rqBuoi.equals(rsBuoi)) {
-//    //                                                rsKhoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
-//    //                                                adapterGanChinhXac.notifyDataSetChanged();
-//
-//                                                    for (String rqThu : requestKhoaHoc.getThu()) {
-//                                                        for (String rsThu : kh.getLichHoc().getNgayHoc()) {
-//                                                            if (rqThu.equals(rsThu)) {
-//                                                                countLichHoc += 1;
-//                                                                if (countLichHoc == gioiHanLichHoc) {
-//                                                                    rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon()));
-//                                                                    adapterChinhXac.notifyDataSetChanged();
-//                                                                }
-//                                                            }
-//                                                        }
-//
-//                                                    }
-//                                                }
-//                                            }
-//
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        } catch (UnsupportedEncodingException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }
-//
-//                @Override
-//                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//                }
-//
-//                @Override
-//                public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//                }
-//
-//                @Override
-//                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//
-//                }
-//            });
-//        } else {
-//            mData.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMHOCVIEN).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
-//                @Override
-//                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                    KhoaHoc kh = dataSnapshot.getValue(KhoaHoc.class);
-//
-//                    for (String mon : kh.getMon()) {
-//                        if (mon.equals(requestKhoaHoc.getMon().get(0))) //vì chỉ lấy 1 môn nên get(0)
-//                        {
-//                            for (String linhVuc : kh.getLinhVuc()) {
-//                                if (linhVuc.equals(requestKhoaHoc.getLinhVuc().get(0))) //Vì chỉ lấy 1 lĩnh vực 1 lần nên get(0)
-//                                {
-//                                    for (String rqBuoi : requestKhoaHoc.getBuoi()) {
-//                                        for (String rsBuoi : kh.getLichHoc().getThoiGian()) {
-//                                            if (rqBuoi.equals(rsBuoi)) {
-////                                                rsKhoaHocGanChinhXac.add(new CustomModelKhoaHoc(kh.HoTen,kh.NguoiDang,kh.Avatar,kh.LichHoc.ThoiGian,kh.Rating,kh.HocPhi,kh.Mon,kh.Lop));
-////                                                adapterGanChinhXac.notifyDataSetChanged();
-//
-//                                                for (String rqThu : requestKhoaHoc.getThu()) {
-//                                                    for (String rsThu : kh.getLichHoc().getNgayHoc()) {
-//                                                        if (rqThu.equals(rsThu)) {
-//                                                            countLichHoc += 1;
-//                                                            if (countLichHoc == gioiHanLichHoc) {
-//                                                                rsKhoaHocChinhXac.add(new CustomModelKhoaHoc(kh.getHoTen(),kh.getNguoiDang(),kh.getAvatar(),kh.getLichHoc().getThoiGian(),kh.getRating(),kh.getHocPhi(),kh.getMon()));
-//                                                                adapterChinhXac.notifyDataSetChanged();
-//                                                            }
-//                                                        }
-//                                                    }
-//
-//                                                }
-//                                            }
-//                                        }
-//
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//
-//                @Override
-//                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//                }
-//
-//                @Override
-//                public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//                }
-//
-//                @Override
-//                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//
-//                }
-//            });
-//        }
         return root;
     }
 
-//    //Gỡ dấu
-//    public static String removeDiacriticalMarks(String string) {
-//        return Normalizer.normalize(string, Normalizer.Form.NFD)
-//                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-//    }
 
     @Override
     public void nhanListKhoaHocGanChinhXac(ArrayList<CustomModelKhoaHoc> khoaHocsGanChinhXac) {

@@ -103,7 +103,7 @@ public class HomeTimHocVienFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onRefresh() {
-        newHomeFragmentPresenter.guiYeuCau(false,"Ngoại ngữ", "Toán", "Other");
+        newHomeFragmentPresenter.guiYeuCau(TYPE_TIM_HOC_VIEN,"Ngoại ngữ", "Toán", "Other");
 
         refreshLayout.setRefreshing(false);
     }

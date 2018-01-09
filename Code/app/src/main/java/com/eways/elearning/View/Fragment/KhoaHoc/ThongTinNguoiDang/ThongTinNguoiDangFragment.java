@@ -30,21 +30,18 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
     private final String titleTab1 = "Thông tin cá nhân";
     private final String titleTab2 = "Tài liệu chuyên môn";
     private static final String param1 = "param1";
-    private static final String param2 = "param2";
 
     private ImageHandler imageHandler;
     private ThongTinNguoiDangPresenterImp thongTinNguoiDangPresenterImp;
-    private boolean loaiKhoaHoc;
 
     public ThongTinNguoiDangFragment() {
         // Required empty public constructor
     }
 
-    public static ThongTinNguoiDangFragment newInstance(String idNguoiDang, boolean loaiKhoaHoc) {
+    public static ThongTinNguoiDangFragment newInstance(String idNguoiDang) {
 
         Bundle args = new Bundle();
         args.putString(param1,idNguoiDang);
-        args.putBoolean(param2, loaiKhoaHoc);
         ThongTinNguoiDangFragment fragment = new ThongTinNguoiDangFragment();
         fragment.setArguments(args);
         return fragment;
@@ -55,7 +52,6 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
         if (getArguments() != null) {
             thongTinNguoiDangPresenterImp = new ThongTinNguoiDangPresenter(this);
             thongTinNguoiDangPresenterImp.GetThongTinNguoiDangPresenter(getArguments().getString(param1), getActivity());
-            loaiKhoaHoc = getArguments().getBoolean(param2);
             imageHandler = new ImageHandler(getContext());
         }
     }
@@ -91,10 +87,10 @@ public class ThongTinNguoiDangFragment extends Fragment implements ThongTinNguoi
         getActivity().supportInvalidateOptionsMenu();
 
         //Check loại khóa học
-        if (loaiKhoaHoc)
-            Toast.makeText(getContext(), "Tìm gia sư", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(getContext(), "Tìm học viên", Toast.LENGTH_SHORT).show();
+//        if (loaiKhoaHoc)
+//            Toast.makeText(getContext(), "Tìm gia sư", Toast.LENGTH_SHORT).show();
+//        else
+//            Toast.makeText(getContext(), "Tìm học viên", Toast.LENGTH_SHORT).show();
     }
 
     private void seUpViewpager(ViewPager viewPager) {

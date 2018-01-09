@@ -46,7 +46,6 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     private ThongTinKhoaHocPresenterImp thongTinKhoaHocPresenterImp;
     private GuiYeuCauPresenterImp guiYeuCauPresenterImp;
     private ThongTinChiTietKhoaHoc thongTinChiTietKhoaHoc;
-    private boolean loaiKhoaHoc;
 
     private static final String param1 = "param1";
     private static final String param2 = "param2";
@@ -56,12 +55,11 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         // Required empty public constructor
     }
 
-    public static ThongTinKhoaHocFragment newInstance(String idNguoiDang, String idKhoaHoc, boolean loaiKhoaHoc) {
+    public static ThongTinKhoaHocFragment newInstance(String idNguoiDang, String idKhoaHoc) {
 
         Bundle args = new Bundle();
         args.putString(param1, idNguoiDang);
         args.putString(param2, idKhoaHoc);
-        args.putBoolean(param3, loaiKhoaHoc);
         ThongTinKhoaHocFragment fragment = new ThongTinKhoaHocFragment();
         fragment.setArguments(args);
         return fragment;
@@ -77,7 +75,6 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         if (getArguments() != null) {
             thongTinKhoaHocPresenterImp.YeuCauLayThongTinKhoaHoc(getActivity(), SupportKeysList.GET_DATA_TIMGIASU, getArguments().getString(param1), getArguments().getString(param2));
-            loaiKhoaHoc = getArguments().getBoolean(param3);
         }
 
     }
@@ -115,7 +112,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.button_XemThemThongTinNguoiDang){
-            fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(thongTinChiTietKhoaHoc.getTaiKhoan().getId(), loaiKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
+            fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(thongTinChiTietKhoaHoc.getTaiKhoan().getId()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
         }
     }
 

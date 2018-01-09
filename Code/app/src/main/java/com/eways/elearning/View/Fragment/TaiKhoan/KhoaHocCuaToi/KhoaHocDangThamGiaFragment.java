@@ -71,7 +71,7 @@ public class KhoaHocDangThamGiaFragment extends Fragment {
     }
 
     public void showData(){
-        khoaHocAdapter = new KhoaHocRCAdapter(getActivity(), danhSachKhoaHoc, imageHandler, fragmentHandler, SupportKeysList.TYPE_TIM_HOC_VIEN);
+        khoaHocAdapter = new KhoaHocRCAdapter(getActivity(), danhSachKhoaHoc, imageHandler, fragmentHandler);
         rvKhoaHocDangThamGia.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rvKhoaHocDangThamGia.setAdapter(khoaHocAdapter);
     }

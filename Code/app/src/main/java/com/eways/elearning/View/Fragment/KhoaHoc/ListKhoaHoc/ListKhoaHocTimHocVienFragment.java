@@ -83,7 +83,7 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
     public void nhanDanhSach(ArrayList<CustomModelKhoaHoc> khoaHocList) {
 
         khoaHocArrayListhv = khoaHocList;
-        khoaHocAdapterhv = new KhoaHocRCAdapter(getActivity(), khoaHocArrayListhv, imageHandler, fragmentHandler, false);
+        khoaHocAdapterhv = new KhoaHocRCAdapter(getActivity(), khoaHocArrayListhv, imageHandler, fragmentHandler);
         rvKhoaHocTimHocVien.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rvKhoaHocTimHocVien.setAdapter(khoaHocAdapterhv);
     }

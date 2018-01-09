@@ -12,8 +12,8 @@ public class SupportKeysList {
     public static final String SHARED_PREF_FILE_NAME = "MySharedPref";
     public static final String TAI_KHOAN_THUONG = "email_acc";
     public static final String TAI_KHOAN_GMAIL = "gmail_acc";
-    public static final boolean TYPE_TIM_GIA_SU = false;
-    public static final boolean TYPE_TIM_HOC_VIEN = true;
+    public static final boolean TYPE_TIM_GIA_SU = true;
+    public static final boolean TYPE_TIM_HOC_VIEN = false;
 
     //Fragment's tag
     public static final String TAG_HOME_FRAGMENT = "home_fragment";

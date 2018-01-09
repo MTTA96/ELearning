@@ -17,6 +17,7 @@ import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
+import com.eways.elearning.View.KetQuaTimKiemGiaSuFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -35,13 +36,26 @@ public class KhoaHocDangThamGiaFragment extends Fragment implements KhoaHocDangT
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
 
+    private static final String paramDanhSachKhoaHocDangThamGia = "paramDanhSachKhoaHocDangThamGia";
+
     public KhoaHocDangThamGiaFragment() {
         // Required empty public constructor
     }
 
+    public  static KhoaHocDangThamGiaFragment newInstance(ArrayList<CustomModelKhoaHoc> customModelKhoaHocs){
+        Bundle args = new Bundle();
+        args.putSerializable(paramDanhSachKhoaHocDangThamGia, customModelKhoaHocs);
+        KhoaHocDangThamGiaFragment fragment = new KhoaHocDangThamGiaFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(getArguments()!=null){
+            danhSachKhoaHoc= (ArrayList<CustomModelKhoaHoc>) getArguments().getSerializable(paramDanhSachKhoaHocDangThamGia);
+            showData();
+        }
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
     }
 
@@ -74,11 +88,11 @@ public class KhoaHocDangThamGiaFragment extends Fragment implements KhoaHocDangT
         rvKhoaHocDangThamGia.setAdapter(khoaHocAdapter);
     }
 
-    @Override
-    public void DataKhoaHocDangThamGia(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaTao, ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaDuyet) {
-        if (danhSachKhoaHocDaDuyet!=null){
-            danhSachKhoaHoc=danhSachKhoaHocDaTao;
-            showData();
-        }
-    }
+//    @Override
+//    public void DataKhoaHocDangThamGia(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaTao, ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaDuyet) {
+//        if (danhSachKhoaHocDaDuyet!=null){
+//            danhSachKhoaHoc=danhSachKhoaHocDaTao;
+//            showData();
+//        }
+//    }
 }

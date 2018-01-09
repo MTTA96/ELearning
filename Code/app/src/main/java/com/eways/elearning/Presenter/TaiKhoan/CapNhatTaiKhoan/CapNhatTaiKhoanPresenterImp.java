@@ -13,5 +13,5 @@ public interface CapNhatTaiKhoanPresenterImp {
     public void NhanDataUpdate (TaiKhoan taiKhoan, Activity activity, ImageView ivTaiLieuXacMinh_MT,ImageView ivTaiLieuXacMinh_MS,ImageView ivAvarta);
     public void KetQuaCapNhat(String ketquacapnhat,TaiKhoan taiKhoan,Activity activity);
     public void NhanDataCapNhatTaiKhoanGiaSu(String idUser,Activity activity);
-    public void KetQuaCapNhatTaiKhoanGiaSu(String ketQua);
+    public void KetQuaCapNhatTaiKhoanGiaSu(String ketQua, Activity activity);
 }

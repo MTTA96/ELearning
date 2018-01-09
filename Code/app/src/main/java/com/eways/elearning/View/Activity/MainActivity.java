@@ -154,7 +154,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 case SupportKeysList.TAG_DANG_NHAP_FRAGMENT:
                 case SupportKeysList.TAG_DANG_KY_FRAGMENT:
                 case SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT:
+                case SupportKeysList.TAG_KHOA_HOC_CUA_TOI:
                 case SupportKeysList.TAG_THONG_TIN_KHOA_HOC:
+                case SupportKeysList.TAG_THONG_TIN_NGUOI_DANG:
                 case SupportKeysList.TAG_TAO_KHOA_HOC:
                     findViewById(R.id.search_layout).setVisibility(View.GONE);
                     tvScreenTitle.setVisibility(View.VISIBLE);

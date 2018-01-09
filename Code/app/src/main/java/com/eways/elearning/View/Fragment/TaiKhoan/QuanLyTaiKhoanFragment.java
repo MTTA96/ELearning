@@ -28,6 +28,7 @@ import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.DieuKhoan.DieuKhoanGiaSuFragment;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.KhoaHocCuaToi.KhoaHocCuaToiFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon.CapNhatTaiLieuChuyenMonFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -83,6 +84,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
         loTaiKhoanKhac.setOnClickListener(this);
         loLinhVucQuanTam.setOnClickListener(this);
         loCapNhatThongCN.setOnClickListener(this);
+        root.findViewById(R.id.LoKhoaHocCuaToi).setOnClickListener(this);
         root.findViewById(R.id.linearLayout_DangKyGiaSu).setOnClickListener(this);
 
         setUpData();
@@ -162,11 +164,14 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
             case R.id.LoThongTinCaNhan:
                 fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(),true,SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
                 break;
+            case R.id.LoKhoaHocCuaToi:
+                fragmentHandler.ChuyenFragment(KhoaHocCuaToiFragment.newInstance(), true, SupportKeysList.TAG_KHOA_HOC_CUA_TOI);
+                break;
             case R.id.linearLayout_DangKyGiaSu:
                 if (!sharedPreferencesHandler.getTaiKhoanGiaSu())
                     fragmentHandler.ChuyenFragment(DieuKhoanGiaSuFragment.newInstance(), true, SupportKeysList.TAG_DIEU_KHOAN_GIA_SU);
                 else
-                    fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(), true, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
+                    fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(CapNhatTaiLieuChuyenMonFragment.TYPE_EDIT), true, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
                 break;
         }
     }

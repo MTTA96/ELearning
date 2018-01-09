@@ -44,7 +44,7 @@ public class ListKhoaHocTimGiaSuModel implements ListKhoaHocTimGiaSuImpModel {
      * implements DataCallBack ở view*/
     @Override
     public void getDanhSachKhoaHocTimGiaSu() {
-
+        listKhoaHoc.clear();
         mData.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMGIASU).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

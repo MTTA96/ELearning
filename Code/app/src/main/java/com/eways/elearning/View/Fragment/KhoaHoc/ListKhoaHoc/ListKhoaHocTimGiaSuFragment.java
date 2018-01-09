@@ -18,6 +18,7 @@ import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimGiaSuPresenterImp;
 import com.eways.elearning.R;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,7 +33,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
     private RecyclerView rcvKhoaHocTimGiaSu;
 
     private ListKhoaHocTimGiaSuPresenterImp listKhoaHocTimGiaSuPresenterImp;
-    private ArrayList<CustomModelKhoaHoc> khoaHocArrayList;
+    private ArrayList<CustomModelKhoaHoc> khoaHocArrayList = new ArrayList<>();
     private KhoaHocRCAdapter khoaHocAdapter;
     private DatabaseReference mDatabase;
     private ImageHandler imageHandler;
@@ -47,6 +48,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
         super.onCreate(savedInstanceState);
         listKhoaHocTimGiaSuPresenterImp = new ListKhoaHocTimGiaSuPresenter(this);
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+        LoadingDialog.showDialog();
     }
 
     @Override
@@ -85,6 +87,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
         khoaHocAdapter = new KhoaHocRCAdapter(getActivity(), khoaHocArrayList, imageHandler, fragmentHandler);
         rcvKhoaHocTimGiaSu.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rcvKhoaHocTimGiaSu.setAdapter(khoaHocAdapter);
+        LoadingDialog.dismissDialog();
     }
 
 }

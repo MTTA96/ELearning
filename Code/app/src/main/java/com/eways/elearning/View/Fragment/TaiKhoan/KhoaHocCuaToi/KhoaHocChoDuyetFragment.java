@@ -23,7 +23,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class KhoaHocChoDuyetFragment extends Fragment {
+public class KhoaHocChoDuyetFragment extends Fragment implements KhoaHocChoDuyetViewImp {
     private SwipeRefreshLayout refreshLayout;
     private RecyclerView rvKhoaHocChoDuyet;
 
@@ -64,5 +64,10 @@ public class KhoaHocChoDuyetFragment extends Fragment {
         khoaHocAdapter = new KhoaHocRCAdapter(getActivity(), danhSachKhoaHoc, imageHandler, fragmentHandler);
         rvKhoaHocChoDuyet.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rvKhoaHocChoDuyet.setAdapter(khoaHocAdapter);
+    }
+
+    @Override
+    public void DataKhoaHocDangChoDuyet(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocChoDuyet) {
+
     }
 }

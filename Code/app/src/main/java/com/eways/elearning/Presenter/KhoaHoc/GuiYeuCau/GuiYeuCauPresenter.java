@@ -35,8 +35,8 @@ public class GuiYeuCauPresenter implements GuiYeuCauPresenterImp {
     }
 
     @Override
-    public void HuyYeuCau(String keyKhoaHoc, String keyYeuCau,String nhanh, Activity activity) {
-        guiYeuCauModelImp.NhanDataHuyYeuCau(keyKhoaHoc,keyYeuCau,nhanh,activity);
+    public void HuyYeuCau(String keyKhoaHoc, String keyYeuCau,String nhanh,String idNguoiHuy, Activity activity) {
+        guiYeuCauModelImp.NhanDataHuyYeuCau(keyKhoaHoc,keyYeuCau,nhanh,idNguoiHuy,activity);
     }
 
     @Override

@@ -192,7 +192,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                             @Override
                             public void onClick(View view) {
                                 if (btnGuiYeuCau.getText().toString().compareTo("Hủy")==0){
-                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2),listDanhSachYeuCauDangChoKey.get(finalI),"dangCho",getActivity());
+                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2),listDanhSachYeuCauDangChoKey.get(finalI),"dangCho",sharedPreferencesHandler.getID(),getActivity());
                                 }
                             }
                         });
@@ -225,7 +225,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                         btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2),listDanhSachYeuCauTamDuyetKey.get(finalI),"tamDuyet",getActivity());
+                                guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2),listDanhSachYeuCauTamDuyetKey.get(finalI),"tamDuyet",sharedPreferencesHandler.getID(),getActivity());
                             }
                         });
                         return;
@@ -272,7 +272,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                             @Override
                             public void onClick(View view) {
                                 if (btnGuiYeuCau.getText().toString().compareTo("Hủy") == 0) {
-                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2), listDanhSachYeuCauDangChoKey.get(vttemp),"dangCho",getActivity());
+                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2), listDanhSachYeuCauDangChoKey.get(vttemp),"dangCho",sharedPreferencesHandler.getID(),getActivity());
                                 }
                             }
                         });
@@ -294,7 +294,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                             btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2), listDanhSachYeuCauTamDuyetKey.get(vttemp),"tamDuyet",getActivity());
+                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(KEY_PARAM2), listDanhSachYeuCauTamDuyetKey.get(vttemp),"tamDuyet",sharedPreferencesHandler.getID(),getActivity());
                                 }
                             });
                         }

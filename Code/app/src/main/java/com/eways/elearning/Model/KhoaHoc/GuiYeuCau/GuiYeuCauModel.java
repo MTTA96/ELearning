@@ -27,7 +27,7 @@ public class GuiYeuCauModel implements GuiYeuCauModelImp {
     }
 
     @Override
-    public void CapNhapYeuCau(final String keyKhoaHoc, String idNguoiGui, Activity activity) {
+    public void CapNhapYeuCau(final String keyKhoaHoc, final String idNguoiGui, Activity activity) {
         final FirebaseDatabase mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
         mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").child(keyKhoaHoc).child("danhSachYeuCau").child("dangCho").push().setValue(idNguoiGui).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -35,6 +35,7 @@ public class GuiYeuCauModel implements GuiYeuCauModelImp {
                 mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").orderByKey().equalTo(keyKhoaHoc).addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        mData.getReference().child("DanhSachDangKyKhoaHoc").child(idNguoiGui).child(keyKhoaHoc).setValue(keyKhoaHoc);
                         guiYeuCauPresenter.KetQuaGuiYeuCau("GuiYeuCauThanhCong",dataSnapshot.getValue(KhoaHoc.class));
                     }
 
@@ -94,7 +95,7 @@ public class GuiYeuCauModel implements GuiYeuCauModelImp {
     }
 
     @Override
-    public void NhanDataHuyYeuCau(final String keyKhoaHoc, String keyYeuCau, String nhanh, Activity activity) {
+    public void NhanDataHuyYeuCau(final String keyKhoaHoc, String keyYeuCau, String nhanh, final String idNguoiHuy, Activity activity) {
         final FirebaseDatabase mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
         mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").child(keyKhoaHoc).child("danhSachYeuCau").child(nhanh).child(keyYeuCau).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -103,6 +104,7 @@ public class GuiYeuCauModel implements GuiYeuCauModelImp {
                     mData.getReference().child("KhoaHoc").child("KhoaHocTimGiaSu").child("ChuaHoanTat").orderByKey().equalTo(keyKhoaHoc).addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            mData.getReference().child("DanhSachDangKyKhoaHoc").child(idNguoiHuy).child(keyKhoaHoc).setValue(null);
                             guiYeuCauPresenter.KetQuaHuyYeuCau("HuyYeuCauThanhCong",dataSnapshot.getValue(KhoaHoc.class));
                         }
 

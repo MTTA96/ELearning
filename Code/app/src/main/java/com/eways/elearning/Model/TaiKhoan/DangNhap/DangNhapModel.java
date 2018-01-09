@@ -37,6 +37,7 @@ import java.util.ArrayList;
 public class DangNhapModel implements DangNhapImpModel{
     DangNhapPresenterImp dangNhapImpPresenter;
     ParseDataTaiKhoan parseDataTaiKhoan;
+    int count=0;
 
     public DangNhapModel(DangNhapPresenterImp dangNhapImpPresenter) {
         this.dangNhapImpPresenter = dangNhapImpPresenter;
@@ -95,6 +96,7 @@ public class DangNhapModel implements DangNhapImpModel{
 
     @Override
     public void DangNhapGmail(final GoogleSignInAccount account, final Activity activity) {
+
         final FirebaseDatabase mDataDangNhapGmail;
         mDataDangNhapGmail=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
         RequestQueue requestQueue= Volley.newRequestQueue(activity);
@@ -104,8 +106,8 @@ public class DangNhapModel implements DangNhapImpModel{
                 parseDataTaiKhoan=new ParseDataTaiKhoan(response);
                 ArrayList<TaiKhoan> listTaiKhoan=new ArrayList<>();
                 listTaiKhoan=parseDataTaiKhoan.ParseTaiKhoan();
-
                 for (int i=0;i<listTaiKhoan.size();i++){
+                    count++;
                     if (listTaiKhoan.get(i).getId().compareTo(account.getId().toString().trim())==0){
                         if (account.getPhotoUrl()!=null){
                             if (account.getPhotoUrl().toString().compareTo(listTaiKhoan.get(i).getAvatar())==0){
@@ -147,33 +149,35 @@ public class DangNhapModel implements DangNhapImpModel{
                         }
                     }
                 }
-                mDataDangNhapGmail.getReference().child("TaiKhoan").child(account.getId().trim().toString()).setValue(new TaiKhoan(account.getId(),account.getEmail(),account.getFamilyName(),account.getGivenName(),"null",true, SupportKeysList.TAI_KHOAN_GMAIL,"null","null","null","null","null","null","null","null","null",account.getPhotoUrl()!=null?account.getPhotoUrl().toString():"null",false,"5",false));
-                mDataDangNhapGmail.getReference().child("TaiKhoan").orderByKey().equalTo(account.getId().toString()).addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,dataSnapshot.getValue(TaiKhoan.class));
-                    }
+                if (count<=0){
+                    mDataDangNhapGmail.getReference().child("TaiKhoan").child(account.getId().trim().toString()).setValue(new TaiKhoan(account.getId(),account.getEmail(),account.getFamilyName()!=null?account.getFamilyName():"null",account.getGivenName()!=null?account.getGivenName():"null","null",true, SupportKeysList.TAI_KHOAN_GMAIL,"null","null","null","null","null","null","null","null","null",account.getPhotoUrl()!=null?account.getPhotoUrl().toString():"null",false,"5",false));
+                    mDataDangNhapGmail.getReference().child("TaiKhoan").orderByKey().equalTo(account.getId().toString()).addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            dangNhapImpPresenter.KetQuaDangNhap(DangNhapFragment.LOGIN_SUCCESS,null,account,activity,dataSnapshot.getValue(TaiKhoan.class));
+                        }
 
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
+                }
             }
         }, new Response.ErrorListener() {
             @Override

@@ -26,14 +26,15 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<ItemListCustomKhoaHoc
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
     private CustomModelKhoaHoc khoaHoc;
+    private boolean loai;
 
-    public KhoaHocRCAdapter(Context context, ArrayList<CustomModelKhoaHoc> khoaHocArrayList, ImageHandler imageHandler, FragmentHandler fragmentHandler) {
+    public KhoaHocRCAdapter(Context context, ArrayList<CustomModelKhoaHoc> khoaHocArrayList, ImageHandler imageHandler, FragmentHandler fragmentHandler, boolean loai) {
         this.context = context;
         this.khoaHocArrayList = khoaHocArrayList;
         this.imageHandler = imageHandler;
         this.fragmentHandler = fragmentHandler;
+        this.loai = loai;
     }
-
 
     @Override
     public ItemListCustomKhoaHocViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

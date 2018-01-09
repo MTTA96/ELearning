@@ -128,12 +128,13 @@ public class KetQuaTimKiemFragment extends Fragment implements KetQuaTimKiemFrag
             if (rsKhoaHocGanChinhXac == null || rsKhoaHocGanChinhXac.size()==0) {
                 Toast.makeText(getActivity(), "Không tìm thấy kết quả!", Toast.LENGTH_SHORT).show();
             } else {
-                adapterKhoaHoc = new KhoaHocRCAdapter(getActivity(), rsKhoaHocGanChinhXac, imageHandler, fragmentHandler);
+                //True là tìm học gia sư ( Khóa học tìm gia sư) - tức là tìm học viên
+                adapterKhoaHoc = new KhoaHocRCAdapter(getActivity(), rsKhoaHocGanChinhXac, imageHandler, fragmentHandler,true);
                 rcKetQua.setLayoutManager(new GridLayoutManager(getActivity(), 1));
                 rcKetQua.setAdapter(adapterKhoaHoc);
             }
         } else {
-            adapterKhoaHoc = new KhoaHocRCAdapter(getActivity(), rsKhoaHocChinhXac, imageHandler, fragmentHandler);
+            adapterKhoaHoc = new KhoaHocRCAdapter(getActivity(), rsKhoaHocChinhXac, imageHandler, fragmentHandler,true);
             rcKetQua.setLayoutManager(new GridLayoutManager(getActivity(), 1));
             rcKetQua.setAdapter(adapterKhoaHoc);
         }

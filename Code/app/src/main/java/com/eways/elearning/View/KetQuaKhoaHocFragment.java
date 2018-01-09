@@ -78,12 +78,13 @@ public class KetQuaKhoaHocFragment extends Fragment implements KetQuaKhoaHocView
             if (rsKhoaHocGanChinhXac == null || rsKhoaHocGanChinhXac.size()==0) {
 //                Toast.makeText(getActivity(), "Không tìm thấy kết quả phù hợp!", Toast.LENGTH_SHORT).show();
             } else {
-                adapterKhoaHoc = new KhoaHocRCAdapter(getActivity(), rsKhoaHocGanChinhXac, imageHandler, fragmentHandler);
+                //False là tìm học viên ( Khóa học tìm học viên) - tức là tìm gia sư
+                adapterKhoaHoc = new KhoaHocRCAdapter(getActivity(), rsKhoaHocGanChinhXac, imageHandler, fragmentHandler,false);
                 rcvKhoaHoc.setLayoutManager(new GridLayoutManager(getActivity(), 1));
                 rcvKhoaHoc.setAdapter(adapterKhoaHoc);
             }
         } else {
-            adapterKhoaHoc = new KhoaHocRCAdapter(getActivity(), rsKhoaHocChinhXac, imageHandler, fragmentHandler);
+            adapterKhoaHoc = new KhoaHocRCAdapter(getActivity(), rsKhoaHocChinhXac, imageHandler, fragmentHandler,false);
             rcvKhoaHoc.setLayoutManager(new GridLayoutManager(getActivity(), 1));
             rcvKhoaHoc.setAdapter(adapterKhoaHoc);
         }

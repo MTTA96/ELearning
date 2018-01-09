@@ -29,7 +29,7 @@ public class KhoaHoc implements Serializable {
     private LichHoc LichHoc;
     private DiaDiem DiaDiem;
     private DanhSachYeuCau danhSachYeuCau;
-    private String loaiKhoaHoc;
+    private boolean loaiKhoaHoc;
 
     private NumberFormat formatGia = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
 
@@ -37,7 +37,7 @@ public class KhoaHoc implements Serializable {
     public KhoaHoc() {
     }
 
-    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem, DanhSachYeuCau danhSachYeuCau, String loaiKhoaHoc, NumberFormat formatGia) {
+    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem, DanhSachYeuCau danhSachYeuCau, boolean loaiKhoaHoc, NumberFormat formatGia) {
         Avatar = avatar;
         Rating = rating;
         HoTen = hoTen;
@@ -60,12 +60,20 @@ public class KhoaHoc implements Serializable {
         this.formatGia = formatGia;
     }
 
-    public String getLoaiKhoaHoc() {
+    public boolean isLoaiKhoaHoc() {
         return loaiKhoaHoc;
     }
 
-    public void setLoaiKhoaHoc(String loaiKhoaHoc) {
+    public void setLoaiKhoaHoc(boolean loaiKhoaHoc) {
         this.loaiKhoaHoc = loaiKhoaHoc;
+    }
+
+    public NumberFormat getFormatGia() {
+        return formatGia;
+    }
+
+    public void setFormatGia(NumberFormat formatGia) {
+        this.formatGia = formatGia;
     }
 
     //    public KhoaHoc(String avatar, String rating, String hoTen, String nguoiDang, String soBuoiHoc, String soLuongHocVien, String gioiTinh, String ngayDang, String gioDang, String thoiLuongBuoiHoc, String hocPhi, String thongTinKhac, ArrayList<String> bangCap, ArrayList<String> mon, ArrayList<String> linhVuc, com.eways.elearning.DataModel.KhoaHoc.LichHoc lichHoc, com.eways.elearning.DataModel.KhoaHoc.DiaDiem diaDiem) {

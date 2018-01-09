@@ -16,13 +16,12 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.eways.elearning.DataModel.KhoaHoc.DanhSachYeuCau;
 import com.eways.elearning.DataModel.KhoaHoc.DiaDiem;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.DataModel.KhoaHoc.LichHoc;
-import com.eways.elearning.DataModel.Other.KhuVuc;
 import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.DataModel.LinhVuc.Mon;
+import com.eways.elearning.DataModel.Other.KhuVuc;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaoKhoaHoc.TaoKhoaHocPresenter;
@@ -184,6 +183,9 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     private KhoaHoc setUpData() {
         KhoaHoc khoaHoc = new KhoaHoc();
         ArrayList dataKhoaHoc = new ArrayList<>();
+
+        //Loai
+        khoaHoc.setLoaiKhoaHoc(switchTaoKhoaHoc.isChecked());
 
         //NguoiDang;
         khoaHoc.setNguoiDang(sharedPreferencesHandler.getID());

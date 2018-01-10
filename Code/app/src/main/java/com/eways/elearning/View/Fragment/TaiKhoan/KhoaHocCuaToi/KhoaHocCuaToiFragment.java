@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaiKhoan.KhoaHocCuaToi.KhoaHocCuaToiPresenter;
@@ -19,6 +20,8 @@ import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Activity.MainActivity;
 import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocTimGiaSuFragment;
 import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocTimHocVienFragment;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,16 +70,20 @@ public class KhoaHocCuaToiFragment extends Fragment implements KhoaHocCuaToiView
 //        khoaHocChoDuyetFragment=new KhoaHocChoDuyetFragment();
 //        khoaHocDangThamGiaFragment=new KhoaHocDangThamGiaFragment();
         ((MainActivity)getActivity()).tvScreenTitle.setText(getResources().getString(R.string.title_danh_sach_khoa_hoc));
-        setUpViewPager(viewPagerKhoaHoc);
         getActivity().supportInvalidateOptionsMenu();
         khoaHocCuaToiPresenterImp.YeuCauDataKhoaHocDaDangKy(sharedPreferencesHandler.getID(),getActivity(),khoaHocChoDuyetFragment,khoaHocDangThamGiaFragment);
         return root;
     }
 
-    private void setUpViewPager(ViewPager pager) {
+    private void setUpViewPager(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocThamGiaDangCho, ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaTao, ArrayList<CustomModelKhoaHoc> danhSachKhoaHocThamGiaDaDuyet) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(khoaHocDangThamGiaFragment, titleTab1);
-        adapter.addFragment(khoaHocChoDuyetFragment, titleTab2);
-        pager.setAdapter(adapter);
+        adapter.addFragment(KhoaHocDangThamGiaFragment.newInstance(danhSachKhoaHocDaTao, danhSachKhoaHocThamGiaDaDuyet), titleTab1);
+        adapter.addFragment(KhoaHocChoDuyetFragment.newInstance(danhSachKhoaHocThamGiaDangCho), titleTab2);
+        viewPagerKhoaHoc.setAdapter(adapter);
+    }
+
+    @Override
+    public void sendData(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocThamGiaDangCho, ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaTao, ArrayList<CustomModelKhoaHoc> danhSachKhoaHocThamGiaDaDuyet) {
+        setUpViewPager(danhSachKhoaHocThamGiaDangCho, danhSachKhoaHocDaTao, danhSachKhoaHocThamGiaDaDuyet);
     }
 }

@@ -42,9 +42,11 @@ public class KhoaHocDangThamGiaFragment extends Fragment implements KhoaHocDangT
         // Required empty public constructor
     }
 
-    public  static KhoaHocDangThamGiaFragment newInstance(ArrayList<CustomModelKhoaHoc> customModelKhoaHocs){
+    public  static KhoaHocDangThamGiaFragment newInstance(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaTao, ArrayList<CustomModelKhoaHoc> danhSachKhoaHocThamGiaDaDuyet){
         Bundle args = new Bundle();
-        args.putSerializable(paramDanhSachKhoaHocDangThamGia, customModelKhoaHocs);
+        danhSachKhoaHocDaTao.addAll(danhSachKhoaHocDaTao);
+        danhSachKhoaHocDaTao.addAll(danhSachKhoaHocThamGiaDaDuyet);
+        args.putSerializable(paramDanhSachKhoaHocDangThamGia, danhSachKhoaHocDaTao);
         KhoaHocDangThamGiaFragment fragment = new KhoaHocDangThamGiaFragment();
         fragment.setArguments(args);
         return fragment;

@@ -82,9 +82,7 @@ public class KhoaHocCuaToiPresenter implements KhoaHocCuaToiPresenterImp {
             }
         }
 //        khoaHocChoDuyetViewImp.DataKhoaHocDangChoDuyet(danhSachKhoaHocThamGiaDangCho);
-//        khoaHocDangThamGiaViewImp.DataKhoaHocDangThamGia(danhSachKhoaHocDaTao,danhSachKhoaHocThamGiaDaDuyet);
-        khoaHocChoDuyetFragment.newInstance(danhSachKhoaHocThamGiaDangCho);
-        khoaHocDangThamGiaFragment.newInstance(danhSachKhoaHocDaTao);
+        khoaHocCuaToiViewImp.sendData(danhSachKhoaHocThamGiaDangCho, danhSachKhoaHocDaTao,danhSachKhoaHocThamGiaDaDuyet);
 
     }
 

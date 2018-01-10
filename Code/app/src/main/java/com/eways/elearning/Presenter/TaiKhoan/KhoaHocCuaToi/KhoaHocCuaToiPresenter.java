@@ -26,6 +26,9 @@ public class KhoaHocCuaToiPresenter implements KhoaHocCuaToiPresenterImp {
     KhoaHocChoDuyetViewImp khoaHocChoDuyetViewImp=new KhoaHocChoDuyetFragment();
     KhoaHocCuaToiViewImp khoaHocCuaToiViewImp;
     KhoaHocDangThamGiaViewImp khoaHocDangThamGiaViewImp=new KhoaHocDangThamGiaFragment();
+    ArrayList<CustomModelKhoaHoc> danhSachKhoaHocThamGiaDangCho=new ArrayList<>();
+    ArrayList<CustomModelKhoaHoc> danhSachKhoaHocThamGiaDaDuyet=new ArrayList<>();
+    ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaTao=new ArrayList<>();
 
     public KhoaHocCuaToiPresenter(KhoaHocCuaToiViewImp khoaHocCuaToiViewImp) {
         this.khoaHocCuaToiViewImp = khoaHocCuaToiViewImp;
@@ -38,9 +41,7 @@ public class KhoaHocCuaToiPresenter implements KhoaHocCuaToiPresenterImp {
 
     @Override
     public void NhanDataKhoaHocDaDangKy(ArrayList<KhoaHoc> khoaHoc,String idUser) {
-        ArrayList<CustomModelKhoaHoc> danhSachKhoaHocThamGiaDangCho=new ArrayList<>();
-        ArrayList<CustomModelKhoaHoc> danhSachKhoaHocThamGiaDaDuyet=new ArrayList<>();
-        ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaTao=new ArrayList<>();
+
         ArrayList<String> listDanhSachYeuCauTamDuyet=new ArrayList<>();
         ArrayList<String> listDanhSachYeuCauDangCho=new ArrayList<>();
 
@@ -80,8 +81,10 @@ public class KhoaHocCuaToiPresenter implements KhoaHocCuaToiPresenterImp {
                 }
             }
         }
-        khoaHocChoDuyetViewImp.DataKhoaHocDangChoDuyet(danhSachKhoaHocThamGiaDangCho);
-        khoaHocDangThamGiaViewImp.DataKhoaHocDangThamGia(danhSachKhoaHocDaTao,danhSachKhoaHocThamGiaDaDuyet);
+//        khoaHocChoDuyetViewImp.DataKhoaHocDangChoDuyet(danhSachKhoaHocThamGiaDangCho);
+//        khoaHocDangThamGiaViewImp.DataKhoaHocDangThamGia(danhSachKhoaHocDaTao,danhSachKhoaHocThamGiaDaDuyet);
+        KhoaHocDangThamGiaFragment.newInstance(danhSachKhoaHocDaTao);
+        KhoaHocChoDuyetFragment.newInstance(danhSachKhoaHocThamGiaDangCho);
 
     }
 
@@ -107,6 +110,6 @@ public class KhoaHocCuaToiPresenter implements KhoaHocCuaToiPresenterImp {
         customModelKhoaHoc.setSoLuongHocVien(khoaHoc.getSoLuongHocVien());
         customModelKhoaHoc.setThoiLuongBuoiHoc(khoaHoc.getThoiLuongBuoiHoc());
         customModelKhoaHoc.setThongTinKhac(khoaHoc.getThongTinKhac());
-        return null;
+        return customModelKhoaHoc;
     }
 }

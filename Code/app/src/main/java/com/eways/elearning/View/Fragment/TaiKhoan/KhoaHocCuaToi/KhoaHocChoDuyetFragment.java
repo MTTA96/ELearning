@@ -2,6 +2,7 @@ package com.eways.elearning.View.Fragment.TaiKhoan.KhoaHocCuaToi;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -32,11 +33,29 @@ public class KhoaHocChoDuyetFragment extends Fragment implements KhoaHocChoDuyet
     private DatabaseReference mDatabase;
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
+    private static final String paramDanhSachKhoaHocChoDuyet = "paramDanhSachKhoaHocChoDuyet";
 
     public KhoaHocChoDuyetFragment() {
         // Required empty public constructor
     }
 
+    public static KhoaHocChoDuyetFragment newInstance(ArrayList<CustomModelKhoaHoc> customModelKhoaHocs){
+        Bundle args = new Bundle();
+        args.putSerializable(paramDanhSachKhoaHocChoDuyet, customModelKhoaHocs);
+        KhoaHocChoDuyetFragment fragment = new KhoaHocChoDuyetFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments()!=null){
+            danhSachKhoaHoc= (ArrayList<CustomModelKhoaHoc>) getArguments().getSerializable(paramDanhSachKhoaHocChoDuyet);
+            showData();
+        }
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,11 +85,11 @@ public class KhoaHocChoDuyetFragment extends Fragment implements KhoaHocChoDuyet
         rvKhoaHocChoDuyet.setAdapter(khoaHocAdapter);
     }
 
-    @Override
-    public void DataKhoaHocDangChoDuyet(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocChoDuyet) {
-        if (danhSachKhoaHocChoDuyet!=null){
-            danhSachKhoaHoc=danhSachKhoaHocChoDuyet;
-            showData();
-        }
-    }
+//    @Override
+//    public void DataKhoaHocDangChoDuyet(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocChoDuyet) {
+//        if (danhSachKhoaHocChoDuyet!=null){
+//            danhSachKhoaHoc=danhSachKhoaHocChoDuyet;
+//            showData();
+//        }
+//    }
 }

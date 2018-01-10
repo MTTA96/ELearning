@@ -5,5 +5,5 @@ package com.eways.elearning.Model.KhoaHoc.ListKhoaHoc;
  */
 
 public interface ListKhoaHocTimGiaSuImpModel {
-    public void getDanhSachKhoaHocTimGiaSu();
+    public void getDanhSachKhoaHocTimGiaSu(String linhVuc);
 }

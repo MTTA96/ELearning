@@ -9,5 +9,5 @@ import java.util.ArrayList;
  */
 
 public interface KhoaHocDangThamGiaViewImp {
-    public void DataKhoaHocDangThamGia(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaTao,ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaDuyet);
+//    public void DataKhoaHocDangThamGia(ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaTao,ArrayList<CustomModelKhoaHoc> danhSachKhoaHocDaDuyet);
 }

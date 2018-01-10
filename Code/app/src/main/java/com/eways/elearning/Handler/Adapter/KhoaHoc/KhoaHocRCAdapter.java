@@ -69,8 +69,14 @@ public class KhoaHocRCAdapter extends RecyclerView.Adapter<ItemListCustomKhoaHoc
         //Rating
         if(khoaHoc.getRating() != null)
         {
-            float rt = Float.parseFloat(khoaHoc.getRating());
-            holder.rtbDanhGia.setRating(rt);
+            try {
+                float rt = Float.parseFloat(khoaHoc.getRating());
+                holder.rtbDanhGia.setRating(rt);
+            }catch (NumberFormatException e)
+            {
+                float rt = 0;
+                holder.rtbDanhGia.setRating(rt);
+            }
         }
         else
         {

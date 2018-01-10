@@ -43,40 +43,46 @@ public class ListKhoaHocTimGiaSuModel implements ListKhoaHocTimGiaSuImpModel {
     /**Dùng code Firebase
      * implements DataCallBack ở view*/
     @Override
-    public void getDanhSachKhoaHocTimGiaSu() {
+    public void getDanhSachKhoaHocTimGiaSu(final String linhVuc) {
         listKhoaHoc.clear();
         mData.child(SupportKeysList.CHILD_KHOAHOC).child(SupportKeysList.CHILD_KHOAHOC_TIMGIASU).child(SupportKeysList.CHILD_KHOAHOC_CHUAHOANTAT).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 final KhoaHoc khoaHoc=dataSnapshot.getValue(KhoaHoc.class);
-                mData.child("TaiKhoan").orderByKey().equalTo(khoaHoc.getNguoiDang().toString().trim()).addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        CustomModelKhoaHoc ckh = new CustomModelKhoaHoc(dataSnapshot.getValue(TaiKhoan.class).getAvatar(),dataSnapshot.getValue(TaiKhoan.class).getRating(),dataSnapshot.getValue(TaiKhoan.class).getHo()+dataSnapshot.getValue(TaiKhoan.class).getTen(),khoaHoc.getNguoiDang(),khoaHoc.getSoBuoiHoc(),khoaHoc.getSoLuongHocVien(),khoaHoc.getGioiTinh(),khoaHoc.getNgayDang(),khoaHoc.getGioDang(),khoaHoc.getThoiLuongBuoiHoc(),khoaHoc.getHocPhi(),khoaHoc.getThongTinKhac(),khoaHoc.getBangCap(),khoaHoc.getMon(),khoaHoc.getLinhVuc(),khoaHoc.getLichHoc(),khoaHoc.getDiaDiem(),khoaHoc.getDanhSachYeuCau(),dataSnapshot.getKey());
-                        listKhoaHoc.add(ckh);
-                        listKhoaHocTimGiaSuPresenterImp.nhanDanhSachKhoaHoc(listKhoaHoc);
-                    }
+                for(String linhvuc : khoaHoc.getLinhVuc())
+                {
+                  if(linhvuc.equals(linhVuc)) {
+                      mData.child("TaiKhoan").orderByKey().equalTo(khoaHoc.getNguoiDang().toString().trim()).addChildEventListener(new ChildEventListener() {
+                          @Override
+                          public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                              CustomModelKhoaHoc ckh = new CustomModelKhoaHoc(dataSnapshot.getValue(TaiKhoan.class).getAvatar(), dataSnapshot.getValue(TaiKhoan.class).getRating(), dataSnapshot.getValue(TaiKhoan.class).getHo() + dataSnapshot.getValue(TaiKhoan.class).getTen(), khoaHoc.getNguoiDang(), khoaHoc.getSoBuoiHoc(), khoaHoc.getSoLuongHocVien(), khoaHoc.getGioiTinh(), khoaHoc.getNgayDang(), khoaHoc.getGioDang(), khoaHoc.getThoiLuongBuoiHoc(), khoaHoc.getHocPhi(), khoaHoc.getThongTinKhac(), khoaHoc.getBangCap(), khoaHoc.getMon(), khoaHoc.getLinhVuc(), khoaHoc.getLichHoc(), khoaHoc.getDiaDiem(), khoaHoc.getDanhSachYeuCau(), dataSnapshot.getKey());
+                              listKhoaHoc.add(ckh);
+                              listKhoaHocTimGiaSuPresenterImp.nhanDanhSachKhoaHoc(listKhoaHoc);
+                          }
 
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                          @Override
+                          public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-                    }
+                          }
 
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+                          @Override
+                          public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-                    }
+                          }
 
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                          @Override
+                          public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                    }
+                          }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                          @Override
+                          public void onCancelled(DatabaseError databaseError) {
 
-                    }
-                });
+                          }
+                      });
+                  }
+                }
+
             }
 
             @Override

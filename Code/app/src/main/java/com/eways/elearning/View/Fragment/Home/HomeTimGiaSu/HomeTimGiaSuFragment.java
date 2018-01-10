@@ -21,7 +21,7 @@ import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragmentImp;
-import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocFragment;
+import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocTimGiaSuFragment;
 
 import java.util.ArrayList;
 
@@ -92,13 +92,13 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.textView_XemDanhSachKhoaHocKhac_HomeTimGiaSu:
-                fragmentHandler.ChuyenFragment(ListKhoaHocFragment.newInstance(linhVucOther, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
+                fragmentHandler.ChuyenFragment(ListKhoaHocTimGiaSuFragment.newInstance(linhVucOther, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
                 break;
             case R.id.textView_XemDanhSachKhoaHocToan_HomeTimGiaSu:
-                fragmentHandler.ChuyenFragment(ListKhoaHocFragment.newInstance(linhVucToan, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
+                fragmentHandler.ChuyenFragment(ListKhoaHocTimGiaSuFragment.newInstance(linhVucToan, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
                 break;
             case R.id.textView_XemDanhSachKhoaHocAnhVan_HomeTimGiaSu:
-                fragmentHandler.ChuyenFragment(ListKhoaHocFragment.newInstance(linhVucAnhVan, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
+                fragmentHandler.ChuyenFragment(ListKhoaHocTimGiaSuFragment.newInstance(linhVucAnhVan, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
                 break;
         }
     }

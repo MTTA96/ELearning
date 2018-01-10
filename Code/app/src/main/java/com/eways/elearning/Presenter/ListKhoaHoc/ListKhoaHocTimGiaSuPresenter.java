@@ -26,7 +26,7 @@ public class ListKhoaHocTimGiaSuPresenter implements ListKhoaHocTimGiaSuPresente
     }
 
     @Override
-    public void yeuCauDanhSachKhoaHoc() {
-        listKhoaHocTimGiaSuImpModel.getDanhSachKhoaHocTimGiaSu();
+    public void yeuCauDanhSachKhoaHoc(String linhVuc) {
+        listKhoaHocTimGiaSuImpModel.getDanhSachKhoaHocTimGiaSu(linhVuc);
     }
 }

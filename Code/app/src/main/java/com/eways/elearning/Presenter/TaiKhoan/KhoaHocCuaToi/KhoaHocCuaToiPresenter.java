@@ -35,12 +35,12 @@ public class KhoaHocCuaToiPresenter implements KhoaHocCuaToiPresenterImp {
     }
 
     @Override
-    public void YeuCauDataKhoaHocDaDangKy(String idUser, Activity activity) {
-        khoaHocCuaToiModelImp.NhanYeuCauLayDataDanhSachKhoaHocDangKy(idUser,activity);
+    public void YeuCauDataKhoaHocDaDangKy(String idUser, Activity activity,KhoaHocChoDuyetFragment khoaHocChoDuyetFragment,KhoaHocDangThamGiaFragment khoaHocDangThamGiaFragment) {
+        khoaHocCuaToiModelImp.NhanYeuCauLayDataDanhSachKhoaHocDangKy(idUser,activity,khoaHocChoDuyetFragment,khoaHocDangThamGiaFragment);
     }
 
     @Override
-    public void NhanDataKhoaHocDaDangKy(ArrayList<KhoaHoc> khoaHoc,String idUser) {
+    public void NhanDataKhoaHocDaDangKy(ArrayList<KhoaHoc> khoaHoc,String idUser,KhoaHocChoDuyetFragment khoaHocChoDuyetFragment,KhoaHocDangThamGiaFragment khoaHocDangThamGiaFragment) {
 
         ArrayList<String> listDanhSachYeuCauTamDuyet=new ArrayList<>();
         ArrayList<String> listDanhSachYeuCauDangCho=new ArrayList<>();
@@ -83,8 +83,8 @@ public class KhoaHocCuaToiPresenter implements KhoaHocCuaToiPresenterImp {
         }
 //        khoaHocChoDuyetViewImp.DataKhoaHocDangChoDuyet(danhSachKhoaHocThamGiaDangCho);
 //        khoaHocDangThamGiaViewImp.DataKhoaHocDangThamGia(danhSachKhoaHocDaTao,danhSachKhoaHocThamGiaDaDuyet);
-        KhoaHocDangThamGiaFragment.newInstance(danhSachKhoaHocDaTao);
-        KhoaHocChoDuyetFragment.newInstance(danhSachKhoaHocThamGiaDangCho);
+        khoaHocChoDuyetFragment.newInstance(danhSachKhoaHocThamGiaDangCho);
+        khoaHocDangThamGiaFragment.newInstance(danhSachKhoaHocDaTao);
 
     }
 

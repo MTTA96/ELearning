@@ -5,6 +5,8 @@ import android.app.Activity;
 import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.Presenter.TaiKhoan.KhoaHocCuaToi.KhoaHocCuaToiPresenter;
 import com.eways.elearning.Presenter.TaiKhoan.KhoaHocCuaToi.KhoaHocCuaToiPresenterImp;
+import com.eways.elearning.View.Fragment.TaiKhoan.KhoaHocCuaToi.KhoaHocChoDuyetFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.KhoaHocCuaToi.KhoaHocDangThamGiaFragment;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +28,7 @@ public class KhoaHocCuaToiModel implements KhoaHocCuaToiModelImp {
     }
 
     @Override
-    public void NhanYeuCauLayDataDanhSachKhoaHocDangKy(final String idUser, Activity activity) {
+    public void NhanYeuCauLayDataDanhSachKhoaHocDangKy(final String idUser, Activity activity, final KhoaHocChoDuyetFragment khoaHocChoDuyetFragment, final KhoaHocDangThamGiaFragment khoaHocDangThamGiaFragment) {
         mData=FirebaseDatabase.getInstance(FirebaseApp.initializeApp(activity));
         final ArrayList<KhoaHoc> danhSachKhoaHocDangKy=new ArrayList<>();
         mData.getReference().child("DanhSachDangKyKhoaHoc").child(idUser).addChildEventListener(new ChildEventListener() {
@@ -37,7 +39,7 @@ public class KhoaHocCuaToiModel implements KhoaHocCuaToiModelImp {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                         danhSachKhoaHocDangKy.add(dataSnapshot.getValue(KhoaHoc.class));
-                        khoaHocCuaToiPresenterImp.NhanDataKhoaHocDaDangKy(danhSachKhoaHocDangKy,idUser);
+                        khoaHocCuaToiPresenterImp.NhanDataKhoaHocDaDangKy(danhSachKhoaHocDangKy,idUser,khoaHocChoDuyetFragment,khoaHocDangThamGiaFragment);
                      }
 
                     @Override

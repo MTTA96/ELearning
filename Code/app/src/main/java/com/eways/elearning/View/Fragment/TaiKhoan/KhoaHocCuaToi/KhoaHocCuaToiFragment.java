@@ -29,6 +29,9 @@ public class KhoaHocCuaToiFragment extends Fragment implements KhoaHocCuaToiView
     private KhoaHocCuaToiPresenterImp khoaHocCuaToiPresenterImp;
     SharedPreferencesHandler sharedPreferencesHandler;
 
+    KhoaHocChoDuyetFragment khoaHocChoDuyetFragment=new KhoaHocChoDuyetFragment();
+    KhoaHocDangThamGiaFragment khoaHocDangThamGiaFragment=new KhoaHocDangThamGiaFragment();
+
     private final String titleTab1 = "Khóa học đang tham gia";
     private final String titleTab2 = "Khóa học chờ duyệt";
 
@@ -49,6 +52,7 @@ public class KhoaHocCuaToiFragment extends Fragment implements KhoaHocCuaToiView
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferencesHandler=new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
+
         khoaHocCuaToiPresenterImp=new KhoaHocCuaToiPresenter(this);
     }
 
@@ -60,18 +64,19 @@ public class KhoaHocCuaToiFragment extends Fragment implements KhoaHocCuaToiView
 
         viewPagerKhoaHoc = (ViewPager) root.findViewById(R.id.viewpager_KhoaHocCuaToi);
         tabLayoutKhoaHoc = (TabLayout)root.findViewById(R.id.tabLayout_KhoaHocCuaToi);
-
+//        khoaHocChoDuyetFragment=new KhoaHocChoDuyetFragment();
+//        khoaHocDangThamGiaFragment=new KhoaHocDangThamGiaFragment();
         ((MainActivity)getActivity()).tvScreenTitle.setText(getResources().getString(R.string.title_danh_sach_khoa_hoc));
         setUpViewPager(viewPagerKhoaHoc);
         getActivity().supportInvalidateOptionsMenu();
-        khoaHocCuaToiPresenterImp.YeuCauDataKhoaHocDaDangKy(sharedPreferencesHandler.getID(),getActivity());
+        khoaHocCuaToiPresenterImp.YeuCauDataKhoaHocDaDangKy(sharedPreferencesHandler.getID(),getActivity(),khoaHocChoDuyetFragment,khoaHocDangThamGiaFragment);
         return root;
     }
 
     private void setUpViewPager(ViewPager pager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new KhoaHocDangThamGiaFragment(), titleTab1);
-        adapter.addFragment(new KhoaHocDangThamGiaFragment(), titleTab2);
+        adapter.addFragment(khoaHocDangThamGiaFragment, titleTab1);
+        adapter.addFragment(khoaHocChoDuyetFragment, titleTab2);
         pager.setAdapter(adapter);
     }
 }

@@ -52,10 +52,7 @@ public class KhoaHocDangThamGiaFragment extends Fragment implements KhoaHocDangT
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getArguments()!=null){
-            danhSachKhoaHoc= (ArrayList<CustomModelKhoaHoc>) getArguments().getSerializable(paramDanhSachKhoaHocDangThamGia);
-            showData();
-        }
+
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
     }
 
@@ -78,7 +75,10 @@ public class KhoaHocDangThamGiaFragment extends Fragment implements KhoaHocDangT
                 refreshLayout.setRefreshing(false);
             }
         });
-
+        if(getArguments()!=null){
+            danhSachKhoaHoc= (ArrayList<CustomModelKhoaHoc>) getArguments().getSerializable(paramDanhSachKhoaHocDangThamGia);
+            showData();
+        }
         return root;
     }
 

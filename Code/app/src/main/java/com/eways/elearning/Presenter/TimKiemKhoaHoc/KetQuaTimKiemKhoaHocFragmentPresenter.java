@@ -8,8 +8,8 @@ import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc.KetQuaTimKiemFragmentModel;
 import com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc.KetQuatimKiemFragmentModelImp;
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.KetQuaTimKiemFragmentViewImp;
-import com.eways.elearning.View.KetQuaKhoaHocViewImp;
-import com.eways.elearning.View.KetQuaNguoiViewImp;
+import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.KetQuaKhoaHocViewImp;
+import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.KetQuaNguoiViewImp;
 
 import java.util.ArrayList;
 

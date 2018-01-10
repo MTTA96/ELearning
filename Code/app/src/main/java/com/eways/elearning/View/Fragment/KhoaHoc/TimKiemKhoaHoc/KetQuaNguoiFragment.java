@@ -1,4 +1,4 @@
-package com.eways.elearning.View;
+package com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

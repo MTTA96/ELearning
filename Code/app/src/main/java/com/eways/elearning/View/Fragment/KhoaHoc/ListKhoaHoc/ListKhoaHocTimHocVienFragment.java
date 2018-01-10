@@ -18,6 +18,7 @@ import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenter;
 import com.eways.elearning.Presenter.ListKhoaHoc.ListKhoaHocTimHocVienPresenterImp;
 import com.eways.elearning.R;
+import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -38,15 +39,34 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
 
+    private static final String param1 = "param1";
+    private static final String param2 = "param2";
+    private String linhVuc;
+    private boolean loaiTimKiem;
+
     public ListKhoaHocTimHocVienFragment() {
         // Required empty public constructor
     }
 
+    public static ListKhoaHocTimHocVienFragment newInstance(String linhVuc, boolean loaiTimKiem) {
+
+        Bundle args = new Bundle();
+        args.putString(param1, linhVuc);
+        args.putBoolean(param2, loaiTimKiem);
+        ListKhoaHocTimHocVienFragment fragment = new ListKhoaHocTimHocVienFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            linhVuc = getArguments().getString(param1);
+            loaiTimKiem = getArguments().getBoolean(param2);
+        }
         listKhoaHocTimHocVienPresenterImp = new ListKhoaHocTimHocVienPresenter(this);
-
+        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+        LoadingDialog.showDialog();
     }
 
     @Override
@@ -62,7 +82,7 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         khoaHocArrayListhv = new ArrayList<CustomModelKhoaHoc>();
-        listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc();
+        listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc(linhVuc);
 
 
         srlKhoaHocTimHocVien.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -71,7 +91,7 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
 
                 srlKhoaHocTimHocVien.setRefreshing(true);
                 khoaHocArrayListhv.clear();
-                listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc();
+                listKhoaHocTimHocVienPresenterImp.yeuCauDanhSachKhoaHoc(linhVuc);
                 srlKhoaHocTimHocVien.setRefreshing(false);
             }
         });
@@ -86,5 +106,6 @@ public class ListKhoaHocTimHocVienFragment extends Fragment implements ListKhoaH
         khoaHocAdapterhv = new KhoaHocRCAdapter(getActivity(), khoaHocArrayListhv, imageHandler, fragmentHandler);
         rvKhoaHocTimHocVien.setLayoutManager(new GridLayoutManager(getActivity(),1));
         rvKhoaHocTimHocVien.setAdapter(khoaHocAdapterhv);
+        LoadingDialog.dismissDialog();
     }
 }

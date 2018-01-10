@@ -26,7 +26,7 @@ public class ListKhoaHocTimHocVienPresenter implements ListKhoaHocTimHocVienPres
     }
 
     @Override
-    public void yeuCauDanhSachKhoaHoc() {
-        listKhoaHocTimHocVienImpModel.getDanhSachKhoaHocTimHocVien();
+    public void yeuCauDanhSachKhoaHoc(String linhVuc) {
+        listKhoaHocTimHocVienImpModel.getDanhSachKhoaHocTimHocVien(linhVuc);
     }
 }

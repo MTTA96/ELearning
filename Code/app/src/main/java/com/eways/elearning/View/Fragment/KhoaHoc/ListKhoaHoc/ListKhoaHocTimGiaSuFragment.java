@@ -39,13 +39,31 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
     private ImageHandler imageHandler;
     private FragmentHandler fragmentHandler;
 
+    private static final String param1 = "param1";
+    private static final String param2 = "param2";
+    private String linhVuc;
+    private boolean loaiTimKiem;
+
     public ListKhoaHocTimGiaSuFragment() {
         // Required empty public constructor
     }
 
+    public static ListKhoaHocTimGiaSuFragment newInstance(String linhVuc, boolean loaiTimKiem) {
+
+        Bundle args = new Bundle();
+        args.putString(param1, linhVuc);
+        args.putBoolean(param2, loaiTimKiem);
+        ListKhoaHocTimGiaSuFragment fragment = new ListKhoaHocTimGiaSuFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            linhVuc = getArguments().getString(param1);
+            loaiTimKiem = getArguments().getBoolean(param2);
+        }
         listKhoaHocTimGiaSuPresenterImp = new ListKhoaHocTimGiaSuPresenter(this);
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         LoadingDialog.showDialog();
@@ -64,7 +82,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         khoaHocArrayList = new ArrayList<CustomModelKhoaHoc>();
-        listKhoaHocTimGiaSuPresenterImp.yeuCauDanhSachKhoaHoc();
+        listKhoaHocTimGiaSuPresenterImp.yeuCauDanhSachKhoaHoc(linhVuc);
 
         srlKhoaHocTimGiaSu.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -72,7 +90,7 @@ public class ListKhoaHocTimGiaSuFragment extends Fragment implements ListKhoaHoc
 
                 srlKhoaHocTimGiaSu.setRefreshing(true);
                 khoaHocArrayList.clear();
-                listKhoaHocTimGiaSuPresenterImp.yeuCauDanhSachKhoaHoc();
+                listKhoaHocTimGiaSuPresenterImp.yeuCauDanhSachKhoaHoc(linhVuc);
                 srlKhoaHocTimGiaSu.setRefreshing(false);
             }
         });

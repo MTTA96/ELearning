@@ -10,5 +10,5 @@ import java.util.ArrayList;
 
 public interface ListKhoaHocTimHocVienPresenterImp {
     public void nhanDanhSachKhoaHoc(ArrayList<CustomModelKhoaHoc> listKhoaHoc);
-    public void yeuCauDanhSachKhoaHoc();
+    public void yeuCauDanhSachKhoaHoc(String linhVuc);
 }

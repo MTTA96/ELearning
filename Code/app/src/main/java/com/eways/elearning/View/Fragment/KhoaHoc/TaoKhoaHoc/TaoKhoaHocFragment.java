@@ -174,6 +174,9 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
                 LoadingDialog.showDialog();
                 KhoaHoc khoaHoc = setUpData();
                 taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc, switchTaoKhoaHoc.isChecked(), getActivity());
+                fragmentHandler.ChuyenFragment(NewHomeFragment.newInstance(),false,SupportKeysList.TAG_TAO_KHOA_HOC);
+                LoadingDialog.dismissDialog();
+
             } else
                 Toast.makeText(getActivity(), "Thiếu thông tin!", Toast.LENGTH_LONG).show();
 

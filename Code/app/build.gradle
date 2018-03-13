@@ -42,5 +42,8 @@ dependencies {
     compile 'com.google.android.gms:play-services-auth:11.0.1'
     testCompile 'junit:junit:4.12'
     compile 'br.com.mauker.materialsearchview:materialsearchview:1.2.2' //Search dialog
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
 }
 apply plugin: 'com.google.gms.google-services'

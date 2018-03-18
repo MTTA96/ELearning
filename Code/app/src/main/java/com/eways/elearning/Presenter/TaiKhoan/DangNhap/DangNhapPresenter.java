@@ -2,10 +2,10 @@ package com.eways.elearning.Presenter.TaiKhoan.DangNhap;
 
 import android.app.Activity;
 
-import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
-import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapImpModel;
-import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapModel;
-import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Data.Model.TaiKhoan.DangNhap.DangNhapImpModel;
+import com.eways.elearning.Data.Model.TaiKhoan.DangNhap.DangNhapModel;
+import com.eways.elearning.Data.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapViewImp;

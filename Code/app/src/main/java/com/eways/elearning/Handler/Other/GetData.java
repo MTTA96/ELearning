@@ -3,7 +3,7 @@ package com.eways.elearning.Handler.Other;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Data.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.Util.SupportKeysList;
 
 import org.json.JSONException;

@@ -3,7 +3,7 @@ package com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan;
 import android.app.Activity;
 import android.widget.ImageView;
 
-import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
 
 /**
  * Created by ADMIN on 11/19/2017.

@@ -2,7 +2,7 @@ package com.eways.elearning.Presenter.TaiKhoan.KhoaHocCuaToi;
 
 import android.app.Activity;
 
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.Data.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.View.Fragment.TaiKhoan.KhoaHocCuaToi.KhoaHocChoDuyetFragment;
 import com.eways.elearning.View.Fragment.TaiKhoan.KhoaHocCuaToi.KhoaHocDangThamGiaFragment;
 

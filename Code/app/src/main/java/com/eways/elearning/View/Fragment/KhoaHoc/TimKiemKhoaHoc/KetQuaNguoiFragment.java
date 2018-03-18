@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Data.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Handler.Adapter.TaiKhoan.TaiKhoanRCAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;

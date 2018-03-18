@@ -33,7 +33,11 @@ import com.google.android.gms.common.SignInButton;
  * 1. Chặn lỗi đăng nhập
  * 2. Chuyển thông báo vào string.xml.
  */
-public class DangNhapFragment extends Fragment implements View.OnClickListener,DangNhapViewImp{
+public class
+
+
+
+DangNhapFragment extends Fragment implements View.OnClickListener,DangNhapViewImp{
     Button btnDangky,btnDangNhap;
     EditText etEmailDN,etPasswordDN;
     DangNhapPresenterImp dangNhapImpPresenter;

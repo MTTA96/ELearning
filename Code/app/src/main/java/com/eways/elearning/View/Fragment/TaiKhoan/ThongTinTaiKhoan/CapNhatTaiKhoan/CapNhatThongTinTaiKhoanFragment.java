@@ -19,13 +19,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.eways.elearning.DataModel.Other.LayHinhModel;
-import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Data.DataModel.Other.LayHinhModel;
+import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Handler.Adapter.ChonHinhAdapter;
 import com.eways.elearning.Handler.DialogPlusHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
-import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Data.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPresenter;
 import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPresenterImp;
 import com.eways.elearning.R;

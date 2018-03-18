@@ -1,15 +1,12 @@
 package com.eways.elearning.Handler.Adapter.TaiLieuChuyenMon;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.MonTaiLieuChuyenMon;
-import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
-import com.eways.elearning.Handler.Adapter.DanhSachBangCapAdapter;
+import com.eways.elearning.Data.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Handler.ViewHolder.LinhVucChuyenMonViewHolder;
 import com.eways.elearning.R;
 

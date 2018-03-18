@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.eways.elearning.DataModel.Other.LayHinhModel;
+import com.eways.elearning.Data.DataModel.Other.LayHinhModel;
 import com.eways.elearning.R;
 
 import java.util.ArrayList;

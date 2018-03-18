@@ -1,6 +1,5 @@
 package com.eways.elearning.Handler;
 
-import android.accounts.Account;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,22 +7,18 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
-import com.eways.elearning.Model.Database.SharedPreferencesHandler;
-import com.eways.elearning.Model.TaiKhoan.DangKy.DangKyImpModel;
-import com.eways.elearning.Model.TaiKhoan.DangKy.DangKyModel;
-import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapImpModel;
-import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapModel;
+import com.eways.elearning.Data.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Data.Model.TaiKhoan.DangNhap.DangNhapImpModel;
+import com.eways.elearning.Data.Model.TaiKhoan.DangNhap.DangNhapModel;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
-import com.google.android.gms.auth.account.WorkAccountApi;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 

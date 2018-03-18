@@ -2,7 +2,7 @@ package com.eways.elearning.Handler.Other;
 
 import android.util.Log;
 
-import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Data.DataModel.KhoaHoc.CustomModelKhoaHoc;
 
 import org.json.JSONArray;
 import org.json.JSONException;

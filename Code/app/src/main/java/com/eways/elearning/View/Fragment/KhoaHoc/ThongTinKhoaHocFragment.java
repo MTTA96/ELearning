@@ -11,12 +11,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
-import com.eways.elearning.DataModel.KhoaHoc.ThongTinChiTietKhoaHoc;
+import com.eways.elearning.Data.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Data.DataModel.KhoaHoc.ThongTinChiTietKhoaHoc;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
-import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Data.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.KhoaHoc.GuiYeuCau.GuiYeuCauPresenter;
 import com.eways.elearning.Presenter.KhoaHoc.GuiYeuCau.GuiYeuCauPresenterImp;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinKhoaHoc.ThongTinKhoaHocPresenter;

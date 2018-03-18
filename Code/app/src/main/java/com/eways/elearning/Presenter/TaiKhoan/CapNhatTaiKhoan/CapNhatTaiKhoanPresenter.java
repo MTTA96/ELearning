@@ -3,13 +3,12 @@ package com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan;
 import android.app.Activity;
 import android.widget.ImageView;
 
-import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Handler.XuLyHinhAnh_FirebaseStorage;
-import com.eways.elearning.Model.Database.SharedPreferencesHandler;
-import com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModel;
-import com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModelImp;
+import com.eways.elearning.Data.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Data.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModel;
+import com.eways.elearning.Data.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanModelImp;
 import com.eways.elearning.Util.SupportKeysList;
-import com.eways.elearning.View.Fragment.DieuKhoan.DieuKhoanGiaSuFragment;
 import com.eways.elearning.View.Fragment.DieuKhoan.DieuKhoanGiaSuViewImp;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment;
 

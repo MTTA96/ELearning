@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
-import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Data.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.DanhSachMon.DanhSachMonPresenter;
 import com.eways.elearning.Presenter.DanhSachMon.DanhSachMonPresenterImp;
 import com.eways.elearning.R;

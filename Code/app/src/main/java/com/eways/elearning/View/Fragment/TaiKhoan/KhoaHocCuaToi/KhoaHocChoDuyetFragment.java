@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Data.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.Handler.Adapter.KhoaHoc.KhoaHocRCAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;

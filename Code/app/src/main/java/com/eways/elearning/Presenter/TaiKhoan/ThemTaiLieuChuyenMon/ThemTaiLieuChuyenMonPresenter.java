@@ -2,11 +2,10 @@ package com.eways.elearning.Presenter.TaiKhoan.ThemTaiLieuChuyenMon;
 
 import android.app.Activity;
 
-import com.eways.elearning.DataModel.LinhVuc.LinhVuc;
-import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
-import com.eways.elearning.Model.LinhVuc.LinhVucModelImp;
-import com.eways.elearning.Model.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonModel;
-import com.eways.elearning.Model.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonModelImp;
+import com.eways.elearning.Data.DataModel.LinhVuc.LinhVuc;
+import com.eways.elearning.Data.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
+import com.eways.elearning.Data.Model.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonModel;
+import com.eways.elearning.Data.Model.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonModelImp;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.ThemLinhVucChuyenMonFragment;
 
 import java.util.ArrayList;

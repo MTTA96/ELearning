@@ -1,16 +1,13 @@
 package com.eways.elearning.Handler.Adapter.LinhVucQuanTam;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 
-import com.eways.elearning.DataModel.BaiDang.LinhVucBaiDang;
+import com.eways.elearning.Data.DataModel.BaiDang.LinhVucBaiDang;
 import com.eways.elearning.R;
 
 import java.util.ArrayList;

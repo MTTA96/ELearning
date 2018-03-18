@@ -1,7 +1,5 @@
 package com.eways.elearning.Handler.Adapter.LinhVucQuanTam;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,12 +10,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.eways.elearning.DataModel.BaiDang.LinhVucBaiDang;
+import com.eways.elearning.Data.DataModel.BaiDang.LinhVucBaiDang;
 import com.eways.elearning.R;
 
 import java.util.ArrayList;

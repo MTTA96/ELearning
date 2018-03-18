@@ -11,11 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Data.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachKhoaHocHomeAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
-import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Data.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.Home.NewHomeFragmentPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;

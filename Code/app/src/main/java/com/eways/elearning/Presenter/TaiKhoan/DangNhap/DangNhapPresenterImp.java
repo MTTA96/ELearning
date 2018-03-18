@@ -2,7 +2,7 @@ package com.eways.elearning.Presenter.TaiKhoan.DangNhap;
 
 import android.app.Activity;
 
-import com.eways.elearning.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseUser;
 

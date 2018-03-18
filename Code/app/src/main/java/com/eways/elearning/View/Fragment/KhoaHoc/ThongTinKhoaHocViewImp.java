@@ -1,8 +1,8 @@
 package com.eways.elearning.View.Fragment.KhoaHoc;
 
 
-import com.eways.elearning.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.DataModel.KhoaHoc.ThongTinChiTietKhoaHoc;
+import com.eways.elearning.Data.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.Data.DataModel.KhoaHoc.ThongTinChiTietKhoaHoc;
 
 
 /**

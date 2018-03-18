@@ -1,9 +1,8 @@
 package com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan;
 
-import android.accounts.Account;
 import android.app.Activity;
 
-import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
+import com.eways.elearning.Data.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 
 import java.util.ArrayList;
 

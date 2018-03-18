@@ -16,12 +16,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.eways.elearning.DataModel.BaiDang.LinhVucBaiDang;
-import com.eways.elearning.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
+import com.eways.elearning.Data.DataModel.BaiDang.LinhVucBaiDang;
 import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucDialog;
 import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucQuanTamAdapter;
 import com.eways.elearning.Handler.ImageHandler;
-import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Data.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;

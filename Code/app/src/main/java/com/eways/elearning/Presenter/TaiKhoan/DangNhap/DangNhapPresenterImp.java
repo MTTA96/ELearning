@@ -2,7 +2,7 @@ package com.eways.elearning.Presenter.TaiKhoan.DangNhap;
 
 import android.app.Activity;
 
-import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Model.DataModel.TaiKhoan.TaiKhoan;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseUser;
  */
 
 public interface DangNhapPresenterImp {
-    public void NhanThongTinDN(String email, String Password, Activity activity);
-    public void ChuyenTaiKhoanGmai(GoogleSignInAccount account,Activity activity);
+    public void userData(GoogleSignInAccount account, Activity activity);
     public void KetQuaDangNhap(String ketqua, FirebaseUser user, GoogleSignInAccount Guser, Activity activity, TaiKhoan taiKhoan);
 }

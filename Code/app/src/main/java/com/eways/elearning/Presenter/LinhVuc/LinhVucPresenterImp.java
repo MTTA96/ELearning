@@ -1,6 +1,6 @@
 package com.eways.elearning.Presenter.LinhVuc;
 
-import com.eways.elearning.Data.DataModel.LinhVuc.LinhVuc;
+import com.eways.elearning.Model.DataModel.LinhVuc.LinhVuc;
 
 import java.util.ArrayList;
 

@@ -1,8 +1,8 @@
 package com.eways.elearning.Presenter.Home;
 
-import com.eways.elearning.Data.DataModel.KhoaHoc.CustomModelKhoaHoc;
-import com.eways.elearning.Data.Model.Home.NewHomeFragmentModel;
-import com.eways.elearning.Data.Model.Home.NewHomeFragmentModelImp;
+import com.eways.elearning.Model.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Model.Home.NewHomeFragmentModel;
+import com.eways.elearning.Model.Home.NewHomeFragmentModelImp;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragmentImp;
 
 import java.util.ArrayList;

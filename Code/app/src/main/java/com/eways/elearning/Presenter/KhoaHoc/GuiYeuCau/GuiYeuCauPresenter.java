@@ -2,9 +2,9 @@ package com.eways.elearning.Presenter.KhoaHoc.GuiYeuCau;
 
 import android.app.Activity;
 
-import com.eways.elearning.Data.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.Data.Model.KhoaHoc.GuiYeuCau.GuiYeuCauModel;
-import com.eways.elearning.Data.Model.KhoaHoc.GuiYeuCau.GuiYeuCauModelImp;
+import com.eways.elearning.Model.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.Model.KhoaHoc.GuiYeuCau.GuiYeuCauModel;
+import com.eways.elearning.Model.KhoaHoc.GuiYeuCau.GuiYeuCauModelImp;
 import com.eways.elearning.View.Fragment.KhoaHoc.ThongTinKhoaHocViewImp;
 
 /**

@@ -1,6 +1,6 @@
 package com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc;
 
-import com.eways.elearning.Data.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Model.DataModel.KhoaHoc.CustomModelKhoaHoc;
 
 import java.util.ArrayList;
 

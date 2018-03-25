@@ -10,9 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.Data.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Model.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
-import com.eways.elearning.Data.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaiKhoan.KhoaHocCuaToi.KhoaHocCuaToiPresenter;
 import com.eways.elearning.Presenter.TaiKhoan.KhoaHocCuaToi.KhoaHocCuaToiPresenterImp;
 import com.eways.elearning.R;

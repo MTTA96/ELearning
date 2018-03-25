@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Model.DataModel.TaiKhoan.TaiKhoan;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinNguoiDang.ThongTinNguoiDangPresenter;
 import com.eways.elearning.Presenter.KhoaHoc.ThongTinNguoiDang.ThongTinNguoiDangPresenterImp;

@@ -2,7 +2,7 @@ package com.eways.elearning.Presenter.KhoaHoc.GuiYeuCau;
 
 import android.app.Activity;
 
-import com.eways.elearning.Data.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.Model.DataModel.KhoaHoc.KhoaHoc;
 
 /**
  * Created by ADMIN on 12/31/2017.

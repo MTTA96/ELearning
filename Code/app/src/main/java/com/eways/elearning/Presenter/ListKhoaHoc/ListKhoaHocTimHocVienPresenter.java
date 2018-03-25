@@ -1,8 +1,8 @@
 package com.eways.elearning.Presenter.ListKhoaHoc;
 
-import com.eways.elearning.Data.DataModel.KhoaHoc.CustomModelKhoaHoc;
-import com.eways.elearning.Data.Model.KhoaHoc.ListKhoaHoc.ListKhoaHocTimHocVienImpModel;
-import com.eways.elearning.Data.Model.KhoaHoc.ListKhoaHoc.ListKhoaHocTimHocVienModel;
+import com.eways.elearning.Model.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Model.KhoaHoc.ListKhoaHoc.ListKhoaHocTimHocVienImpModel;
+import com.eways.elearning.Model.KhoaHoc.ListKhoaHoc.ListKhoaHocTimHocVienModel;
 import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocTimHocVienImpView;
 
 import java.util.ArrayList;

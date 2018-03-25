@@ -2,9 +2,9 @@ package com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan;
 
 import android.app.Activity;
 
-import com.eways.elearning.Data.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
-import com.eways.elearning.Data.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiLieuChuyenMonModel;
-import com.eways.elearning.Data.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiLieuChuyenMonModelImp;
+import com.eways.elearning.Model.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
+import com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiLieuChuyenMonModel;
+import com.eways.elearning.Model.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatTaiLieuChuyenMonModelImp;
 import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon.CapNhatTaiLieuChuyenMonViewImp;
 
 import java.util.ArrayList;

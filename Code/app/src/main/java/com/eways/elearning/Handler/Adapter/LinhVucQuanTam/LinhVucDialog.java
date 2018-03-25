@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import com.eways.elearning.Data.DataModel.BaiDang.LinhVucBaiDang;
+import com.eways.elearning.Model.DataModel.BaiDang.LinhVucBaiDang;
 import com.eways.elearning.R;
 
 import java.util.ArrayList;

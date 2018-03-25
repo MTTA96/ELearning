@@ -2,8 +2,8 @@ package com.eways.elearning.Presenter.TimKiemKhoaHoc;
 
 import android.app.Activity;
 
-import com.eways.elearning.Data.DataModel.Other.KhuVuc;
-import com.eways.elearning.Data.DataModel.LinhVuc.LinhVuc;
+import com.eways.elearning.Model.DataModel.Other.KhuVuc;
+import com.eways.elearning.Model.DataModel.LinhVuc.LinhVuc;
 
 import java.util.ArrayList;
 

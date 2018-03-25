@@ -1,7 +1,7 @@
 package com.eways.elearning.Presenter.DanhSachMon;
 
-import com.eways.elearning.Data.Model.DanhSachMon.DanhSachMonModel;
-import com.eways.elearning.Data.Model.DanhSachMon.DanhSachMonModelImp;
+import com.eways.elearning.Model.DanhSachMon.DanhSachMonModel;
+import com.eways.elearning.Model.DanhSachMon.DanhSachMonModelImp;
 import com.eways.elearning.View.Activity.MainActivityImp;
 
 import java.util.ArrayList;

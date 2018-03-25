@@ -1,6 +1,6 @@
 package com.eways.elearning.View.Fragment.KhoaHoc.ThongTinNguoiDang;
 
-import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Model.DataModel.TaiKhoan.TaiKhoan;
 
 /**
  * Created by ADMIN on 12/7/2017.

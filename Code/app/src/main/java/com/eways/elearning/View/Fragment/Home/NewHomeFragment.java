@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
-import com.eways.elearning.Data.Model.CustomClasses.CustomViewPager;
-import com.eways.elearning.Data.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Model.CustomClasses.CustomViewPager;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;

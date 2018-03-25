@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.eways.elearning.Data.DataModel.BaiDang.LinhVucBaiDang;
+import com.eways.elearning.Model.DataModel.BaiDang.LinhVucBaiDang;
 import com.eways.elearning.R;
 
 import java.util.ArrayList;

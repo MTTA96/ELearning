@@ -2,8 +2,8 @@ package com.eways.elearning.Presenter.TaiKhoan.ThemTaiLieuChuyenMon;
 
 import android.app.Activity;
 
-import com.eways.elearning.Data.DataModel.LinhVuc.LinhVuc;
-import com.eways.elearning.Data.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
+import com.eways.elearning.Model.DataModel.LinhVuc.LinhVuc;
+import com.eways.elearning.Model.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 
 import java.util.ArrayList;
 

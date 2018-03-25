@@ -2,11 +2,11 @@ package com.eways.elearning.Presenter.TimKiemKhoaHoc;
 
 import android.app.Activity;
 
-import com.eways.elearning.Data.DataModel.KhoaHoc.CustomModelKhoaHoc;
-import com.eways.elearning.Data.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
-import com.eways.elearning.Data.Model.KhoaHoc.TimKiemKhoaHoc.KetQuaTimKiemFragmentModel;
-import com.eways.elearning.Data.Model.KhoaHoc.TimKiemKhoaHoc.KetQuatimKiemFragmentModelImp;
+import com.eways.elearning.Model.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Model.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.Model.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc.KetQuaTimKiemFragmentModel;
+import com.eways.elearning.Model.KhoaHoc.TimKiemKhoaHoc.KetQuatimKiemFragmentModelImp;
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.KetQuaTimKiemFragmentViewImp;
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.KetQuaKhoaHocViewImp;
 import com.eways.elearning.View.Fragment.KhoaHoc.TimKiemKhoaHoc.KetQuaNguoiViewImp;

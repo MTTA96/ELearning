@@ -2,9 +2,9 @@ package com.eways.elearning.Presenter.TimKiemKhoaHoc;
 
 import android.app.Activity;
 
-import com.eways.elearning.Data.DataModel.KhoaHoc.CustomModelKhoaHoc;
-import com.eways.elearning.Data.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.Data.DataModel.TaiKhoan.TaiKhoan;
+import com.eways.elearning.Model.DataModel.KhoaHoc.CustomModelKhoaHoc;
+import com.eways.elearning.Model.DataModel.KhoaHoc.KhoaHoc;
+import com.eways.elearning.Model.DataModel.TaiKhoan.TaiKhoan;
 
 import java.util.ArrayList;
 

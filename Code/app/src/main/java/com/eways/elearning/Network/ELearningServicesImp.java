@@ -10,9 +10,7 @@ import retrofit2.http.POST;
  */
 
 public interface ELearningServicesImp {
-    @POST("/market/ETH/AUD/tick?since=now")
+    @POST()
     @FormUrlEncoded
-    Call<POST> login(@Field("title") String title,
-                        @Field("body") String body,
-                        @Field("userId") long userId);
+    Call<POST> login(@Field("userId") String userId);
 }

@@ -1,15 +1,14 @@
 package com.eways.elearning.Handler;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
-import com.eways.elearning.Data.Model.Database.SharedPreferencesHandler;
-import com.eways.elearning.Data.Model.TaiKhoan.DangNhap.DangNhapImpModel;
-import com.eways.elearning.Data.Model.TaiKhoan.DangNhap.DangNhapModel;
+import com.eways.elearning.Model.Database.SharedPreferencesHandler;
+import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapImpModel;
+import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapModel;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
@@ -38,8 +37,6 @@ public class LoginGmailHandler   {
     private DangNhapImpModel dangNhapImpModel=new DangNhapModel(dangNhapPresenterImp);
 
     private FirebaseDatabase mData;
-
-
 
     private static final int RC_SIGN_IN=1;
     private GoogleApiClient mGoogleApiClient;
@@ -95,7 +92,7 @@ public class LoginGmailHandler   {
                 sharedPreferencesHandler=new SharedPreferencesHandler(activity, SupportKeysList.SHARED_PREF_FILE_NAME);
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
-                dangNhapPresenterImp.ChuyenTaiKhoanGmai(account,activity);
+                dangNhapPresenterImp.userData(account,activity);
 
             } else {
                 // Google Sign In failed, update UI appropriately
@@ -107,10 +104,10 @@ public class LoginGmailHandler   {
         this.resultCode=resultCode;
     }
 
-    public void onStop(Context context){
-        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.stopAutoManage((FragmentActivity) context);
-            mGoogleApiClient.disconnect();
-        }
-    }
+//    public void onStop(Context context){
+//        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+//            mGoogleApiClient.stopAutoManage((FragmentActivity) context);
+//            mGoogleApiClient.disconnect();
+//        }
+//    }
 }

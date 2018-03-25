@@ -8,8 +8,10 @@ package com.eways.elearning.Util;
 
 public class ServerUrl {
     //Link server
-    public static final String ServerUrl = "https://us-central1-elearning-da847.cloudfunctions.net";
+    public static final String ServerUrl = "https://ewayslearn.000webhostapp.com";
 
+    /** User */
+    public static final String LOGIN_URL = ServerUrl + "/API/User/Student/AddNewStudent.php";
     //Url api
     public static final String ApiHelloWorld = ServerUrl + "/helloWorld";
     public static final String ApiGetKhoaHocGS = "https://us-central1-elearning-da847.cloudfunctions.net/GetListAllTimGiaSu";

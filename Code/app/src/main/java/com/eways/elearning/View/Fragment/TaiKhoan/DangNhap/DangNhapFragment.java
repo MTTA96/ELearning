@@ -18,12 +18,10 @@ import android.widget.TextView;
 import com.eways.elearning.Handler.LoginGmailHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenter;
-import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
-import com.eways.elearning.View.Fragment.TaiKhoan.DangKy.DangKyFragment;
 import com.google.android.gms.common.SignInButton;
 
 /**

@@ -11,7 +11,7 @@ public class ServerUrl {
     public static final String ServerUrl = "https://ewayslearn.000webhostapp.com";
 
     /** User */
-    public static final String LOGIN_URL = ServerUrl + "/API/User/Student/AddNewStudent.php";
+    public static final String LOGIN_URL = ServerUrl + "/API/GetStudentByUid.php";
     //Url api
     public static final String ApiHelloWorld = ServerUrl + "/helloWorld";
     public static final String ApiGetKhoaHocGS = "https://us-central1-elearning-da847.cloudfunctions.net/GetListAllTimGiaSu";

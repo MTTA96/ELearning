@@ -7,8 +7,6 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
-import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapImpModel;
-import com.eways.elearning.Model.TaiKhoan.DangNhap.DangNhapModel;
 import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenterImp;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Fragment.TaiKhoan.DangNhap.DangNhapFragment;
@@ -34,7 +32,6 @@ public class LoginGmailHandler   {
     private SharedPreferencesHandler sharedPreferencesHandler;
 
     private DangNhapPresenterImp dangNhapPresenterImp;
-    private DangNhapImpModel dangNhapImpModel=new DangNhapModel(dangNhapPresenterImp);
 
     private FirebaseDatabase mData;
 

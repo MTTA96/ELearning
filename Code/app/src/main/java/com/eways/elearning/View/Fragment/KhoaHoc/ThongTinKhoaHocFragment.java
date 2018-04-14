@@ -105,7 +105,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         root.findViewById(R.id.button_XemThemThongTinNguoiDang).setOnClickListener(this);
         root.findViewById(R.id.button_YeuCau_ThongTinKhoaHoc).setOnClickListener(this);
 
-        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(param2),sharedPreferencesHandler.getID(),getActivity(),true);
+        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(param2),sharedPreferencesHandler.getUID(),getActivity(),true);
         return root;
     }
 
@@ -183,7 +183,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                 @Override
                 public void onClick(View view) {
                     if (btnGuiYeuCau.getText().toString().compareTo("Gửi yêu cầu") == 0) {
-                        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(param2), sharedPreferencesHandler.getID(), getActivity(), false);
+                        guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(param2), sharedPreferencesHandler.getUID(), getActivity(), false);
                     }
                 }
             });
@@ -196,14 +196,14 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                     listDanhSachYeuCauDangChoKey.add(q.getKey().toString());
                 }
                 for (int i=0;i<listDanhSachYeuCauDangCho.size();i++){
-                    if(listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getID())==0){
+                    if(listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getUID())==0){
                         btnGuiYeuCau.setText("Hủy");
                         final int finalI = i;
                         btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 if (btnGuiYeuCau.getText().toString().compareTo("Hủy")==0){
-                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(param2),listDanhSachYeuCauDangChoKey.get(finalI),"dangCho",sharedPreferencesHandler.getID(),getActivity());
+                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(param2),listDanhSachYeuCauDangChoKey.get(finalI),"dangCho",sharedPreferencesHandler.getUID(),getActivity());
 
                                 }
                             }
@@ -216,7 +216,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                     @Override
                     public void onClick(View view) {
                         if (btnGuiYeuCau.getText().toString().compareTo("Gửi yêu cầu") == 0) {
-                            guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(param2), sharedPreferencesHandler.getID(), getActivity(), false);
+                            guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(param2), sharedPreferencesHandler.getUID(), getActivity(), false);
                         }
                     }
                 });
@@ -231,13 +231,13 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                     listDanhSachYeuCauTamDuyetKey.add(p.getKey().toString());
                 }
                 for (int i=0;i<listDanhSachYeuCauDangCho.size();i++){
-                    if(listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getID())==0){
+                    if(listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getUID())==0){
                         btnGuiYeuCau.setText("Hủy");
                         final int finalI = i;
                         btnGuiYeuCau.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(param2),listDanhSachYeuCauTamDuyetKey.get(finalI),"tamDuyet",sharedPreferencesHandler.getID(),getActivity());
+                                guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(param2),listDanhSachYeuCauTamDuyetKey.get(finalI),"tamDuyet",sharedPreferencesHandler.getUID(),getActivity());
                             }
                         });
                         return;
@@ -248,7 +248,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                     @Override
                     public void onClick(View view) {
                         if (btnGuiYeuCau.getText().toString().compareTo("Gửi yêu cầu") == 0) {
-                            guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(param2), sharedPreferencesHandler.getID(), getActivity(), false);
+                            guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(param2), sharedPreferencesHandler.getUID(), getActivity(), false);
                         }
                     }
                 });
@@ -271,7 +271,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                 }
 
                 for (int i=0;i<listDanhSachYeuCauDangCho.size();i++){
-                    if (listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getID())==0){
+                    if (listDanhSachYeuCauDangCho.get(i).compareTo(sharedPreferencesHandler.getUID())==0){
                         count++;
                         vitri=i;
                     }
@@ -285,7 +285,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                             public void onClick(View view) {
                                 if (btnGuiYeuCau.getText().toString().compareTo("Hủy") == 0) {
 
-                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(param2), listDanhSachYeuCauDangChoKey.get(vttemp),"dangCho",sharedPreferencesHandler.getID(),getActivity());
+                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(param2), listDanhSachYeuCauDangChoKey.get(vttemp),"dangCho",sharedPreferencesHandler.getUID(),getActivity());
 
                                 }
                             }
@@ -296,7 +296,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                     count =0;
                     vitri=-1;
                     for (int j=0;j<listDanhSachYeuCauTamDuyet.size();j++){
-                        if (listDanhSachYeuCauTamDuyet.get(j).compareTo(sharedPreferencesHandler.getID())==0){
+                        if (listDanhSachYeuCauTamDuyet.get(j).compareTo(sharedPreferencesHandler.getUID())==0){
                             count++;
                             vitri=j;
                         }
@@ -309,7 +309,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                                 @Override
                                 public void onClick(View view) {
 
-                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(param2), listDanhSachYeuCauTamDuyetKey.get(vttemp),"tamDuyet",sharedPreferencesHandler.getID(),getActivity());
+                                    guiYeuCauPresenterImp.HuyYeuCau(getArguments().getString(param2), listDanhSachYeuCauTamDuyetKey.get(vttemp),"tamDuyet",sharedPreferencesHandler.getUID(),getActivity());
                                 }
                             });
                         }
@@ -320,7 +320,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
                             @Override
                             public void onClick(View view) {
                                 if (btnGuiYeuCau.getText().toString().compareTo("Gửi yêu cầu") == 0) {
-                                    guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(param2), sharedPreferencesHandler.getID(), getActivity(), false);
+                                    guiYeuCauPresenterImp.TruyenYeuCau(getArguments().getString(param2), sharedPreferencesHandler.getUID(), getActivity(), false);
                                 }
                             }
                         });

@@ -6,7 +6,7 @@ import com.eways.elearning.Model.DataModel.LinhVuc.LinhVuc;
 import com.eways.elearning.Model.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
 import com.eways.elearning.Model.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonModel;
 import com.eways.elearning.Model.TaiKhoan.ThemTaiLieuChuyenMon.ThemTaiLieuChuyenMonModelImp;
-import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.ThemLinhVucChuyenMonFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon.ThemLinhVucChuyenMonFragment;
 
 import java.util.ArrayList;
 

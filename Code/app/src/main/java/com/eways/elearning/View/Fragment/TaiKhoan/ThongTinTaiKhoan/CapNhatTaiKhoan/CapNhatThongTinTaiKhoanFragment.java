@@ -106,7 +106,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         imTaiLieuXacMinh_ms.setOnClickListener(this);
         imAvarta.setOnClickListener(this);
 
-        LoadData();
+//        LoadData();
         //cai đặt dialogplus
         danhSachChon = new ArrayList<>();
         danhSachChon.add(new LayHinhModel(1, R.drawable.camera_icon, "Máy ảnh"));
@@ -135,29 +135,29 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnLuuCNTTTK:
-                if (checkData()) {
-                    LoadingDialog.showDialog();
-                    capNhatTaiKhoanPresenterImp.NhanDataUpdate(new TaiKhoan(SetStringNull(sharedPreferencesHandler.getID()),
-                            SetStringNull(sharedPreferencesHandler.getEmail()),
-                            SetStringNull(sharedPreferencesHandler.getHo()),
-                            SetStringNull(etHoTen.getText().toString()),
-                            sharedPreferencesHandler.getTenTaiKhoan(),
-                            sharedPreferencesHandler.getDaDangNhap(),
-                            SetStringNull(sharedPreferencesHandler.getLoaiTaiKhoan()),
-                            SetStringNull(sharedPreferencesHandler.getMatKhau()),
-                            SetStringNull(etNgheNghiep.getText().toString()),
-                            SetStringNull(spNamsinh.getSelectedItem().toString()),
-                            SetStringNull(spGiotinh.getSelectedItem().toString()),
-                            SetStringNull(sharedPreferencesHandler.getTaiLieuXacMinh_mt()),
-                            SetStringNull(sharedPreferencesHandler.getTaiLieuXacMinh_ms()),
-                            SetStringNull(etTrinhDo.getText().toString()),
-                            SetStringNull(etDiaChi.getText().toString()),
-                            SetStringNull(etSoDienThoai.getText().toString()),
-                            SetStringNull(sharedPreferencesHandler.getAvatar()),
-                            true, SetStringNull(sharedPreferencesHandler.getRating()),sharedPreferencesHandler.getTaiKhoanGiaSu()), getActivity(), imTaiLieuXacMinh_mt, imTaiLieuXacMinh_ms, imAvarta);
-                }
-                else
-                    Toast.makeText(getActivity(), "Chưa điền đủ thông tin!", Toast.LENGTH_LONG).show();
+//                if (checkData()) {
+//                    LoadingDialog.showDialog();
+//                    capNhatTaiKhoanPresenterImp.NhanDataUpdate(new TaiKhoan(SetStringNull(sharedPreferencesHandler.getID()),
+//                            SetStringNull(sharedPreferencesHandler.getEmail()),
+//                            SetStringNull(sharedPreferencesHandler.getHo()),
+//                            SetStringNull(etHoTen.getText().toString()),
+//                            sharedPreferencesHandler.getTenTaiKhoan(),
+//                            sharedPreferencesHandler.getDaDangNhap(),
+//                            SetStringNull(sharedPreferencesHandler.getLoaiTaiKhoan()),
+//                            SetStringNull(sharedPreferencesHandler.getMatKhau()),
+//                            SetStringNull(etNgheNghiep.getText().toString()),
+//                            SetStringNull(spNamsinh.getSelectedItem().toString()),
+//                            SetStringNull(spGiotinh.getSelectedItem().toString()),
+//                            SetStringNull(sharedPreferencesHandler.getTaiLieuXacMinh_mt()),
+//                            SetStringNull(sharedPreferencesHandler.getTaiLieuXacMinh_ms()),
+//                            SetStringNull(etTrinhDo.getText().toString()),
+//                            SetStringNull(etDiaChi.getText().toString()),
+//                            SetStringNull(etSoDienThoai.getText().toString()),
+//                            SetStringNull(sharedPreferencesHandler.getAvatar()),
+//                            true, SetStringNull(sharedPreferencesHandler.getRating()),sharedPreferencesHandler.getTaiKhoanGiaSu()), getActivity(), imTaiLieuXacMinh_mt, imTaiLieuXacMinh_ms, imAvarta);
+//                }
+//                else
+//                    Toast.makeText(getActivity(), "Chưa điền đủ thông tin!", Toast.LENGTH_LONG).show();
                 break;
             case R.id.ivTaiLieuXacMinh_mt:
                 dialogPlusHandler.ShowDialogChonHinh(0);
@@ -171,21 +171,21 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
         }
     }
 
-    private boolean checkData() {
-        if (!etHoTen.getText().toString().isEmpty() && !etDiaChi.getText().toString().isEmpty() && !etNgheNghiep.getText().toString().isEmpty()
-                && !etSoDienThoai.getText().toString().isEmpty() && !etTrinhDo.getText().toString().isEmpty())
-            if(spNamsinh.getSelectedItemPosition()!=-1)
-                if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null") == 0
-                        && sharedPreferencesHandler.getTaiLieuXacMinh_ms().toString().trim().compareTo("null") == 0
-                        && sharedPreferencesHandler.getAvatar().toString().trim().compareTo("null") == 0) {
-                    if (checkHinhMatTruoc && checkHinhMatSau && checkAvatar)
-                        return true;
-                    else
-                        return false;
-                } else
-                    return true;
-        return false;
-    }
+//    private boolean checkData() {
+//        if (!etHoTen.getText().toString().isEmpty() && !etDiaChi.getText().toString().isEmpty() && !etNgheNghiep.getText().toString().isEmpty()
+//                && !etSoDienThoai.getText().toString().isEmpty() && !etTrinhDo.getText().toString().isEmpty())
+//            if(spNamsinh.getSelectedItemPosition()!=-1)
+//                if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null") == 0
+//                        && sharedPreferencesHandler.getTaiLieuXacMinh_ms().toString().trim().compareTo("null") == 0
+//                        && sharedPreferencesHandler.getAvatar().toString().trim().compareTo("null") == 0) {
+//                    if (checkHinhMatTruoc && checkHinhMatSau && checkAvatar)
+//                        return true;
+//                    else
+//                        return false;
+//                } else
+//                    return true;
+//        return false;
+//    }
 
     //Kiem tra rong va set "null"
     public String SetStringNull(String text) {
@@ -200,102 +200,102 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     }
 
     //Load Data tài khoản
-    public void LoadData() {
-        //Họ tên
-        if (sharedPreferencesHandler.getHo().isEmpty() && sharedPreferencesHandler.getTen().isEmpty()) {
-            etHoTen.setText("");
-        } else
-            etHoTen.setText(sharedPreferencesHandler.getHo().toString() + sharedPreferencesHandler.getTen().toString());
-
-        //Năm sinh
-        if (sharedPreferencesHandler.getNamSinh().toString().compareTo("null") == 0) {
-            calendar = Calendar.getInstance();
-            int currentYear = calendar.get(Calendar.YEAR);
-            for (int i = 1960; i <= currentYear; i++) {
-                danhsachNam.add(String.valueOf(i));
-            }
-            ArrayAdapter adDanhSachNam = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, danhsachNam);
-            spNamsinh.setAdapter(adDanhSachNam);
-
-        } else {
-            calendar = Calendar.getInstance();
-            int currentYear = calendar.get(Calendar.YEAR);
-            for (int i = 1960; i <= currentYear; i++) {
-                danhsachNam.add(String.valueOf(i));
-            }
-            ArrayAdapter adDanhSachNam = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, danhsachNam);
-            spNamsinh.setAdapter(adDanhSachNam);
-            int spinnerPosition = adDanhSachNam.getPosition(sharedPreferencesHandler.getNamSinh().toString());
-            spNamsinh.setSelection(spinnerPosition);
-        }
-
-        //Giới tính
-        if (sharedPreferencesHandler.getGioiTinh().compareTo("null") == 0) {
-            ArrayAdapter adDanhSachGioiTinh = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ListGioiTinh));
-            spGiotinh.setAdapter(adDanhSachGioiTinh);
-        } else {
-            ArrayAdapter adDanhSachGioiTinh = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ListGioiTinh));
-            spGiotinh.setAdapter(adDanhSachGioiTinh);
-            int spinnerPosition = adDanhSachGioiTinh.getPosition(sharedPreferencesHandler.getGioiTinh());
-            spGiotinh.setSelection(spinnerPosition);
-        }
-
-        //Nghề nghiệp
-        if (sharedPreferencesHandler.getNgheNghiep().compareTo("null") == 0) {
-            etNgheNghiep.setText("");
-        } else {
-            etNgheNghiep.setText(sharedPreferencesHandler.getNgheNghiep().toString());
-        }
-
-        //Avatar
-        imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(), imAvarta);
-        if (sharedPreferencesHandler.getTrinhDo().compareTo("null") == 0)
-            etTrinhDo.setText("");
-        else
-            etTrinhDo.setText(sharedPreferencesHandler.getTrinhDo().toString());
-
-        //Địa chỉ
-        if (sharedPreferencesHandler.getDiaChi().compareTo("null") == 0)
-            etTrinhDo.setText("");
-        else
-            etDiaChi.setText(sharedPreferencesHandler.getDiaChi().toString());
-
-        //Số điện thoại
-        if (sharedPreferencesHandler.getSoDienThoai().compareTo("null") == 0)
-            etSoDienThoai.setText("");
-        else
-            etSoDienThoai.setText(sharedPreferencesHandler.getSoDienThoai());
-
-        //Email
-        etEmail.setText(sharedPreferencesHandler.getEmail());
-
-        //Tài liệu xác minh
-        if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().toString().trim().compareTo("null") == 0) {
-            return;
-        } else {
-            if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") != 0) {
-                view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
-                imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(), imTaiLieuXacMinh_ms);
-            } else {
-                if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") != 0) {
-                    view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
-                    imageHandler.loadImageSquare(sharedPreferencesHandler.getTaiLieuXacMinh_ms(), imTaiLieuXacMinh_ms);
-                    return;
-                }
-                if (sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null") != 0) {
-                    view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
-                    imageHandler.loadImageSquare(sharedPreferencesHandler.getTaiLieuXacMinh_mt(), imTaiLieuXacMinh_mt);
-                    return;
-                }
-                if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null") != 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") != 0) {
-                    view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
-                    view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
-                    imageHandler.loadImageSquare(sharedPreferencesHandler.getTaiLieuXacMinh_mt(), imTaiLieuXacMinh_mt);
-                    imageHandler.loadImageSquare(sharedPreferencesHandler.getTaiLieuXacMinh_ms(), imTaiLieuXacMinh_ms);
-                }
-            }
-        }
-    }
+//    public void LoadData() {
+//        //Họ tên
+//        if (sharedPreferencesHandler.getHo().isEmpty() && sharedPreferencesHandler.getTen().isEmpty()) {
+//            etHoTen.setText("");
+//        } else
+//            etHoTen.setText(sharedPreferencesHandler.getHo().toString() + sharedPreferencesHandler.getTen().toString());
+//
+//        //Năm sinh
+//        if (sharedPreferencesHandler.getNamSinh().toString().compareTo("null") == 0) {
+//            calendar = Calendar.getInstance();
+//            int currentYear = calendar.get(Calendar.YEAR);
+//            for (int i = 1960; i <= currentYear; i++) {
+//                danhsachNam.add(String.valueOf(i));
+//            }
+//            ArrayAdapter adDanhSachNam = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, danhsachNam);
+//            spNamsinh.setAdapter(adDanhSachNam);
+//
+//        } else {
+//            calendar = Calendar.getInstance();
+//            int currentYear = calendar.get(Calendar.YEAR);
+//            for (int i = 1960; i <= currentYear; i++) {
+//                danhsachNam.add(String.valueOf(i));
+//            }
+//            ArrayAdapter adDanhSachNam = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, danhsachNam);
+//            spNamsinh.setAdapter(adDanhSachNam);
+//            int spinnerPosition = adDanhSachNam.getPosition(sharedPreferencesHandler.getNamSinh().toString());
+//            spNamsinh.setSelection(spinnerPosition);
+//        }
+//
+//        //Giới tính
+//        if (sharedPreferencesHandler.getGioiTinh().compareTo("null") == 0) {
+//            ArrayAdapter adDanhSachGioiTinh = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ListGioiTinh));
+//            spGiotinh.setAdapter(adDanhSachGioiTinh);
+//        } else {
+//            ArrayAdapter adDanhSachGioiTinh = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ListGioiTinh));
+//            spGiotinh.setAdapter(adDanhSachGioiTinh);
+//            int spinnerPosition = adDanhSachGioiTinh.getPosition(sharedPreferencesHandler.getGioiTinh());
+//            spGiotinh.setSelection(spinnerPosition);
+//        }
+//
+//        //Nghề nghiệp
+//        if (sharedPreferencesHandler.getNgheNghiep().compareTo("null") == 0) {
+//            etNgheNghiep.setText("");
+//        } else {
+//            etNgheNghiep.setText(sharedPreferencesHandler.getNgheNghiep().toString());
+//        }
+//
+//        //Avatar
+//        imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(), imAvarta);
+//        if (sharedPreferencesHandler.getTrinhDo().compareTo("null") == 0)
+//            etTrinhDo.setText("");
+//        else
+//            etTrinhDo.setText(sharedPreferencesHandler.getTrinhDo().toString());
+//
+//        //Địa chỉ
+//        if (sharedPreferencesHandler.getDiaChi().compareTo("null") == 0)
+//            etTrinhDo.setText("");
+//        else
+//            etDiaChi.setText(sharedPreferencesHandler.getDiaChi().toString());
+//
+//        //Số điện thoại
+//        if (sharedPreferencesHandler.getSoDienThoai().compareTo("null") == 0)
+//            etSoDienThoai.setText("");
+//        else
+//            etSoDienThoai.setText(sharedPreferencesHandler.getSoDienThoai());
+//
+//        //Email
+//        etEmail.setText(sharedPreferencesHandler.getEmail());
+//
+//        //Tài liệu xác minh
+//        if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().toString().trim().compareTo("null") == 0) {
+//            return;
+//        } else {
+//            if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().toString().trim().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") != 0) {
+//                view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
+//                imageHandler.loadImageRound(sharedPreferencesHandler.getTaiLieuXacMinh_ms(), imTaiLieuXacMinh_ms);
+//            } else {
+//                if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") != 0) {
+//                    view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
+//                    imageHandler.loadImageSquare(sharedPreferencesHandler.getTaiLieuXacMinh_ms(), imTaiLieuXacMinh_ms);
+//                    return;
+//                }
+//                if (sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") == 0 && sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null") != 0) {
+//                    view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
+//                    imageHandler.loadImageSquare(sharedPreferencesHandler.getTaiLieuXacMinh_mt(), imTaiLieuXacMinh_mt);
+//                    return;
+//                }
+//                if (sharedPreferencesHandler.getTaiLieuXacMinh_mt().compareTo("null") != 0 && sharedPreferencesHandler.getTaiLieuXacMinh_ms().compareTo("null") != 0) {
+//                    view.findViewById(R.id.textView_HinhXacMinhMatTruoc_CapNhatThongTinCaNhan).setVisibility(View.GONE);
+//                    view.findViewById(R.id.textView_HinhXacMinhMatSau_CapNhatThongTinCaNhan).setVisibility(View.GONE);
+//                    imageHandler.loadImageSquare(sharedPreferencesHandler.getTaiLieuXacMinh_mt(), imTaiLieuXacMinh_mt);
+//                    imageHandler.loadImageSquare(sharedPreferencesHandler.getTaiLieuXacMinh_ms(), imTaiLieuXacMinh_ms);
+//                }
+//            }
+//        }
+//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

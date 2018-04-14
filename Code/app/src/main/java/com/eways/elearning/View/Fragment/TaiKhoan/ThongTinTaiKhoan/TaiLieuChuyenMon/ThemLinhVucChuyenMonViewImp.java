@@ -1,4 +1,4 @@
-package com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan;
+package com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon;
 
 import com.eways.elearning.Model.DataModel.LinhVuc.LinhVuc;
 

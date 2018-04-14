@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     if (mySharedPref.getDaDangNhap()) {
                         imageHandler.loadImageRound(mySharedPref.getAvatar(), imgUser);
                         tvUserEmail.setText(mySharedPref.getEmail());
-                        tvUserName.setText(mySharedPref.getHo() + " " + mySharedPref.getTen());
+                        tvUserName.setText(mySharedPref.getLastName() + " " + mySharedPref.getFirstName());
                     } else {
                         tvUserName.setText(R.string.header_msg_chua_dang_nhap);
                         tvUserEmail.setText("");
@@ -204,12 +204,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (!mySharedPref.getDaDangNhap())
                     fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
                 else {
-                    if (mySharedPref.getDaCapNhat())
-                        fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
-                    else {
-                        Toast.makeText(this, getResources().getString(R.string.msg_cap_nhat_thong_tin), Toast.LENGTH_SHORT).show();
-                        fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), true, SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
-                    }
+//                    if (mySharedPref.i())
+//                        fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
+//                    else {
+//                        Toast.makeText(this, getResources().getString(R.string.msg_cap_nhat_thong_tin), Toast.LENGTH_SHORT).show();
+//                        fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), true, SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
+//                    }
                 }
                 break;
         }

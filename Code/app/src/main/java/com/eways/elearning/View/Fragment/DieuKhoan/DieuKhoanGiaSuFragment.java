@@ -62,7 +62,7 @@ public class DieuKhoanGiaSuFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.button_DongYDieuKhoan_DieuKhoanGiaSu){
-            capNhatTaiKhoanPresenterImp.NhanDataCapNhatTaiKhoanGiaSu(sharedPreferencesHandler.getID(),getActivity());
+            capNhatTaiKhoanPresenterImp.NhanDataCapNhatTaiKhoanGiaSu(sharedPreferencesHandler.getUID(),getActivity());
             //Xử lý cập nhật tài khoản
             //Xử lý sharedpref
             //Xử lý server
@@ -72,12 +72,12 @@ public class DieuKhoanGiaSuFragment extends Fragment implements View.OnClickList
     @Override
     public void NhanKetQuaCapNhatTaiKhoanGiaSu(String ketQuaCapNhat) {
         if (ketQuaCapNhat.compareTo("CapNhatTaiKhoanGiaSuThanhCong")==0){
-            if (sharedPreferencesHandler.getDaCapNhat())
-                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(CapNhatTaiLieuChuyenMonFragment.TYPE_EDIT), false, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
-            else {
-                Toast.makeText(getActivity(), getResources().getString(R.string.msg_cap_nhat_thong_tin), Toast.LENGTH_SHORT).show();
-                fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), false, SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
-            }
+//            if (sharedPreferencesHandler.getDaCapNhat())
+//                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(CapNhatTaiLieuChuyenMonFragment.TYPE_EDIT), false, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
+//            else {
+//                Toast.makeText(getActivity(), getResources().getString(R.string.msg_cap_nhat_thong_tin), Toast.LENGTH_SHORT).show();
+//                fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), false, SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
+//            }
         }
         Toast.makeText(getActivity(),"Cập nhật thành công",Toast.LENGTH_SHORT).show();
     }

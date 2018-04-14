@@ -69,7 +69,7 @@ public class KhoaHocCuaToiFragment extends Fragment implements KhoaHocCuaToiView
 //        khoaHocDangThamGiaFragment=new KhoaHocDangThamGiaFragment();
         ((MainActivity)getActivity()).tvScreenTitle.setText(getResources().getString(R.string.title_danh_sach_khoa_hoc));
         getActivity().supportInvalidateOptionsMenu();
-        khoaHocCuaToiPresenterImp.YeuCauDataKhoaHocDaDangKy(sharedPreferencesHandler.getID(),getActivity(),khoaHocChoDuyetFragment,khoaHocDangThamGiaFragment);
+        khoaHocCuaToiPresenterImp.YeuCauDataKhoaHocDaDangKy(sharedPreferencesHandler.getUID(),getActivity(),khoaHocChoDuyetFragment,khoaHocDangThamGiaFragment);
         return root;
     }
 

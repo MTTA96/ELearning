@@ -86,33 +86,33 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
         root.findViewById(R.id.LoKhoaHocCuaToi).setOnClickListener(this);
         root.findViewById(R.id.linearLayout_DangKyGiaSu).setOnClickListener(this);
 
-        setUpData();
+//        setUpData();
 
         return root;
     }
-
-    private void setUpData() {
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
-        //Avatar
-        if (sharedPreferencesHandler.getAvatar() != null && sharedPreferencesHandler.getAvatar().compareTo("") != 0)
-            imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(), imgUser);
-
-        //Email
-        tvUserEmail.setText(sharedPreferencesHandler.getEmail());
-
-        //Họ tên
-        if (sharedPreferencesHandler.getTen().length()==0)
-            tvTenUser.setVisibility(View.GONE);
-        else
-            tvTenUser.setText(sharedPreferencesHandler.getHo() + " " + sharedPreferencesHandler.getTen());
-
-        //Chức năng gia sư
-        if (sharedPreferencesHandler.getTaiKhoanGiaSu())
-            tvChucNangGiaSu.setText(getString(R.string.tai_lieu_chuyen_mon));
-        else
-            tvChucNangGiaSu.setText(getString(R.string.dang_ky_lam_gia_su));
-        LoadingDialog.dismissDialog();
-    }
+//
+//    private void setUpData() {
+//        ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
+//        //Avatar
+//        if (sharedPreferencesHandler.getAvatar() != null && sharedPreferencesHandler.getAvatar().compareTo("") != 0)
+//            imageHandler.loadImageRound(sharedPreferencesHandler.getAvatar(), imgUser);
+//
+//        //Email
+//        tvUserEmail.setText(sharedPreferencesHandler.getEmail());
+//
+//        //Họ tên
+//        if (sharedPreferencesHandler.getTen().length()==0)
+//            tvTenUser.setVisibility(View.GONE);
+//        else
+//            tvTenUser.setText(sharedPreferencesHandler.getHo() + " " + sharedPreferencesHandler.getTen());
+//
+//        //Chức năng gia sư
+//        if (sharedPreferencesHandler.getTaiKhoanGiaSu())
+//            tvChucNangGiaSu.setText(getString(R.string.tai_lieu_chuyen_mon));
+//        else
+//            tvChucNangGiaSu.setText(getString(R.string.dang_ky_lam_gia_su));
+//        LoadingDialog.dismissDialog();
+//    }
 
     @Override
     public void onClick(View v) {
@@ -167,10 +167,10 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
                 fragmentHandler.ChuyenFragment(KhoaHocCuaToiFragment.newInstance(), true, SupportKeysList.TAG_KHOA_HOC_CUA_TOI);
                 break;
             case R.id.linearLayout_DangKyGiaSu:
-                if (!sharedPreferencesHandler.getTaiKhoanGiaSu())
-                    fragmentHandler.ChuyenFragment(DieuKhoanGiaSuFragment.newInstance(), true, SupportKeysList.TAG_DIEU_KHOAN_GIA_SU);
-                else
-                    fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(CapNhatTaiLieuChuyenMonFragment.TYPE_EDIT), true, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
+//                if (!sharedPreferencesHandler.getTaiKhoanGiaSu())
+//                    fragmentHandler.ChuyenFragment(DieuKhoanGiaSuFragment.newInstance(), true, SupportKeysList.TAG_DIEU_KHOAN_GIA_SU);
+//                else
+//                    fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(CapNhatTaiLieuChuyenMonFragment.TYPE_EDIT), true, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
                 break;
         }
     }

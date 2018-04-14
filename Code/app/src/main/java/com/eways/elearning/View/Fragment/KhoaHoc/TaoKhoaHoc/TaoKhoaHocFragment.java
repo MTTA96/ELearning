@@ -139,10 +139,6 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         taoKhoaHocPresenterImp.loaddataKhuVuc(getActivity());
         ((MainActivity) getActivity()).tvScreenTitle.setText("Tạo khóa học");
 
-        //Loại
-        if (sharedPreferencesHandler.getTaiKhoanGiaSu())
-            switchTaoKhoaHoc.setVisibility(View.VISIBLE);
-        else
             switchTaoKhoaHoc.setVisibility(View.GONE);
     }
 
@@ -191,7 +187,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         khoaHoc.setLoaiKhoaHoc(switchTaoKhoaHoc.isChecked());
 
         //NguoiDang;
-        khoaHoc.setNguoiDang(sharedPreferencesHandler.getID());
+        khoaHoc.setNguoiDang(sharedPreferencesHandler.getUID());
 
         //SoBuoiHoc;
         khoaHoc.setSoBuoiHoc(etSoBuoi.getText().toString());

@@ -1,4 +1,4 @@
-package com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan;
+package com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -125,7 +125,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
             //Chưa có danh sách bằng cấp
             //Chỉ có tên lĩnh vực chưa có id lĩnh vực
             taiLieuChuyenMon = new TaiLieuChuyenMon(null, spinner.getSelectedItem().toString(), danhSachBangCap, danhSachMon);
-            themTaiLieuChuyenMonPresenterImp.NhanDataCapNhatTaiLieuChuyenMon(taiLieuChuyenMon,sharedPreferencesHandler.getID(),getActivity());
+            themTaiLieuChuyenMonPresenterImp.NhanDataCapNhatTaiLieuChuyenMon(taiLieuChuyenMon,sharedPreferencesHandler.getUID(),getActivity());
 
         }
         return super.onOptionsItemSelected(item);

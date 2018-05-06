@@ -12,6 +12,8 @@ public class ServerUrl {
 
     /** User */
     public static final String LOGIN_URL = ServerUrl + "/API/GetStudentByUid.php";
+    public static final String SIGN_UP_URL = ServerUrl + "/API/AddNewUser.php";
+
     //Url api
     public static final String ApiHelloWorld = ServerUrl + "/helloWorld";
     public static final String ApiGetKhoaHocGS = "https://us-central1-elearning-da847.cloudfunctions.net/GetListAllTimGiaSu";

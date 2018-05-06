@@ -3,8 +3,16 @@ package com.eways.elearning.Model.TaiKhoan;
 /**
  * Created by zzzzz on 3/18/2018.
  */
+import com.eways.elearning.Handler.Other.DataCallBack;
+import com.eways.elearning.Network.BaseResponse;
+import com.eways.elearning.Network.UserServicesImp;
+import com.eways.elearning.Util.ApiUtils;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class User {
 
@@ -32,6 +40,9 @@ public class User {
     @SerializedName("Phone")
     @Expose
     private String phone;
+    @SerializedName("Skype")
+    @Expose
+    private String skype;
     @SerializedName("Address")
     @Expose
     private String address;
@@ -53,6 +64,14 @@ public class User {
     @SerializedName("DateRegisted")
     @Expose
     private String dateRegisted;
+
+    public String getSkype() {
+        return skype;
+    }
+
+    public void setSkype(String skype) {
+        this.skype = skype;
+    }
 
     public String getUid() {
         return uid;
@@ -174,5 +193,26 @@ public class User {
         this.dateRegisted = dateRegisted;
     }
 
+    /** Methods*/
+
+    public static void signUp(String jsonData, final DataCallBack dataCallBack) {
+        UserServicesImp userServices = ApiUtils.userServices();
+        userServices.signUp(jsonData).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.body().getErrorCode() == 200)
+                    if (response.body().getStatus() == "Success") {
+                        dataCallBack.dataCallBack("Success", null);
+                        return;
+                    }
+                dataCallBack.dataCallBack("Failed", null);
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+
+            }
+        });
+    }
 }
 

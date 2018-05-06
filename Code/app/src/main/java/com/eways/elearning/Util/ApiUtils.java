@@ -10,7 +10,7 @@ import com.eways.elearning.Network.UserServicesImp;
 public class ApiUtils {
     public static final String BASE_URL = ServerUrl.ServerUrl;
 
-    public static UserServicesImp loginService() {
+    public static UserServicesImp userServices() {
         return RetrofitClient.getClient(BASE_URL).create(UserServicesImp.class);
     }
 }

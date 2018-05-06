@@ -31,6 +31,7 @@ public class SupportKeysList {
     public static final String TAG_THONG_TIN_NGUOI_DANG="thong_tin_nguoi_dang_fragment";
     public static final String TAG_KET_QUA_TIM_KIEM = "ket_qua_tim_kiem_fragment";
     public static final String TAG_DIEU_KHOAN_GIA_SU = "dieu_khoan_gia_su_fragment";
+    public static final String TAG_THONG_TIN_DANG_KY = "thong_tin_dnag_ky_fragment";
 
     //Key child database
     public static final String CHILD_KHOAHOC = "KhoaHoc";

@@ -90,7 +90,7 @@ public class GetData extends AsyncTask<String, Void, String> {
                 dataKhoaHoc.putSerializable(SupportKeysList.API_GET_KHOAHOC, khoaHocArrayList);
 
                 //Dùng interface trả kết quả cho class
-                dataCallBack.KetQua(SupportKeysList.GET_DATA_THANHCONG, dataKhoaHoc);
+                dataCallBack.dataCallBack(SupportKeysList.GET_DATA_THANHCONG, dataKhoaHoc);
                 break;
         }
     }

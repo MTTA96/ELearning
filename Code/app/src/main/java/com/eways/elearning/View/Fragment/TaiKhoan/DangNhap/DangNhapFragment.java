@@ -5,23 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.InputType;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.eways.elearning.Handler.LoginGmailHandler;
 import com.eways.elearning.Handler.FragmentHandler;
-import com.eways.elearning.Presenter.TaiKhoan.DangNhap.DangNhapPresenter;
+import com.eways.elearning.Model.TaiKhoan.User;
+import com.eways.elearning.Presenter.TaiKhoan.DangNhap.SignInPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
+import com.eways.elearning.View.Fragment.TaiKhoan.SignUpFragment;
 import com.google.android.gms.common.SignInButton;
 
 /**
@@ -31,15 +28,11 @@ import com.google.android.gms.common.SignInButton;
  * 1. Chặn lỗi đăng nhập
  * 2. Chuyển thông báo vào string.xml.
  */
-public class
-
-
-
-DangNhapFragment extends Fragment implements View.OnClickListener,DangNhapViewImp{
+public class DangNhapFragment extends Fragment implements View.OnClickListener,DangNhapViewImp{
     SignInButton btnGmailLogin;
     CheckBox cbDieuKhoan;
 
-    private DangNhapPresenter dangNhapPresenter;
+    private SignInPresenter signInPresenter;
     private FragmentHandler fragmentHandler;
     public static final String LOGIN_SUCCESS = "login_success";
     public static final String LOGIN_FAILED = "login_failed";
@@ -47,7 +40,7 @@ DangNhapFragment extends Fragment implements View.OnClickListener,DangNhapViewIm
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dangNhapPresenter = new DangNhapPresenter(getActivity(), this, this);
+        signInPresenter = new SignInPresenter(getActivity(), this, this);
         fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
     }
 
@@ -65,7 +58,7 @@ DangNhapFragment extends Fragment implements View.OnClickListener,DangNhapViewIm
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnLoginGmail){
-            dangNhapPresenter.login();
+            signInPresenter.login();
             LoadingDialog.showDialog();
         }
 
@@ -75,19 +68,20 @@ DangNhapFragment extends Fragment implements View.OnClickListener,DangNhapViewIm
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        dangNhapPresenter.onGmailResult(requestCode,resultCode,data);
+        signInPresenter.onGmailResult(requestCode,resultCode,data);
     }
 
     @Override
-    public void NhanKetQuaDN(String ketqua) {
+    public void NhanKetQuaDN(String ketqua, User user) {
         if (ketqua.compareTo(LOGIN_SUCCESS)==0){
-            fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
+            if (!user.getDateRegisted().isEmpty())
+                fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
+            else
+                fragmentHandler.ChuyenFragment(SignUpFragment.newInstance(), false, SupportKeysList.TAG_THONG_TIN_DANG_KY);
+        } else {
+            signInPresenter.logoutGmail();
+            Toast.makeText(getActivity(), ketqua, Toast.LENGTH_SHORT).show();
+            LoadingDialog.dismissDialog();
         }
     }
-
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        loginGmailHandler.onStop(getContext());
-//    }
 }

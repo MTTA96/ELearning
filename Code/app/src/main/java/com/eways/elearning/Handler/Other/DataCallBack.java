@@ -8,5 +8,5 @@ import android.support.annotation.Nullable;
  */
 
 public interface DataCallBack {
-    public void KetQua(String result, @Nullable Bundle bundle); //Dùng cho code node JS
+    public void dataCallBack(String result, @Nullable Bundle bundle); //Dùng cho code node JS
 }

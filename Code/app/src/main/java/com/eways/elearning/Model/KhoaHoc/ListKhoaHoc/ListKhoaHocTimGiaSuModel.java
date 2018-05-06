@@ -35,7 +35,7 @@ public class ListKhoaHocTimGiaSuModel implements ListKhoaHocTimGiaSuImpModel {
 //    }
 //
 //    @Override
-//    public void KetQua(String result, @Nullable Bundle bundle) {
+//    public void dataCallBack(String result, @Nullable Bundle bundle) {
 //        ArrayList<CustomModelKhoaHoc> khoaHocArrayList = (ArrayList<CustomModelKhoaHoc>) bundle.getSerializable(SupportKeysList.API_GET_KHOAHOC);
 //        listKhoaHocTimGiaSuPresenterImp.nhanDanhSachKhoaHoc(khoaHocArrayList);
 //    }

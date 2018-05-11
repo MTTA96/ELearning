@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.eways.elearning.Model.DataModel.TaiKhoan.TaiLieu.TaiLieuChuyenMon.TaiLieuChuyenMon;
-import com.eways.elearning.Handler.Adapter.TaiLieuChuyenMon.DanhSachLinhVucChuyenMonAdapter;
+import com.eways.elearning.Adapter.TaiLieuChuyenMon.DanhSachLinhVucChuyenMonAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiLieuChuyenMonPresenter;
@@ -61,7 +61,7 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
             type = getArguments().getString(param1);
         sharedPreferencesHandler=new SharedPreferencesHandler(getActivity(),SupportKeysList.SHARED_PREF_FILE_NAME);
         capNhatTaiLieuChuyenMonPresenterImp=new CapNhatTaiLieuChuyenMonPresenter(this);
-        fragmentHandler = new FragmentHandler(getContext(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getContext(), getActivity().getSupportFragmentManager());
     }
 
     @Override
@@ -101,7 +101,7 @@ public class CapNhatTaiLieuChuyenMonFragment extends Fragment implements View.On
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_ThemLinhVucChuyenMon:
-                fragmentHandler.ChuyenFragment(ThemLinhVucChuyenMonFragment.newInstance(null), true, SupportKeysList.TAG_THEM_LINH_VUC_CHUYEN_MON);
+//                fragmentHandler.ChuyenFragment(ThemLinhVucChuyenMonFragment.newInstance(null), true, SupportKeysList.TAG_THEM_LINH_VUC_CHUYEN_MON);
                 break;
         }
     }

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.eways.elearning.Model.DataModel.KhoaHoc.CustomModelKhoaHoc;
 import com.eways.elearning.Model.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.Handler.Adapter.KhoaHoc.KhoaHocRCAdapter;
+import com.eways.elearning.Adapter.KhoaHoc.KhoaHocRCAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.TimKiemKhoaHoc.KetQuaTimKiemKhoaHocFragmentPresenter;
@@ -52,7 +52,7 @@ public class KetQuaKhoaHocFragment extends Fragment implements KetQuaKhoaHocView
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestKhoaHoc = (KhoaHoc) getArguments().getSerializable(paramRequestThongTinTimKiem);
-        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         ketQuaTimKiemKhoaHocFragmentPresenterImp = new KetQuaTimKiemKhoaHocFragmentPresenter(this);
     }
 

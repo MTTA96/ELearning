@@ -41,7 +41,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         signInPresenter = new SignInPresenter(getActivity(), this, this);
-        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
     }
 
     @Override
@@ -73,15 +73,15 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener,D
 
     @Override
     public void NhanKetQuaDN(String ketqua, User user) {
-        if (ketqua.compareTo(LOGIN_SUCCESS)==0){
-            if (!user.getDateRegisted().isEmpty())
-                fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
-            else
-                fragmentHandler.ChuyenFragment(SignUpFragment.newInstance(), false, SupportKeysList.TAG_THONG_TIN_DANG_KY);
-        } else {
-            signInPresenter.logoutGmail();
-            Toast.makeText(getActivity(), ketqua, Toast.LENGTH_SHORT).show();
-            LoadingDialog.dismissDialog();
-        }
+//        if (ketqua.compareTo(LOGIN_SUCCESS)==0){
+//            if (!user.getDateRegisted().isEmpty())
+//                fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
+//            else
+//                fragmentHandler.ChuyenFragment(SignUpFragment.newInstance(), false, SupportKeysList.TAG_THONG_TIN_DANG_KY);
+//        } else {
+//            signInPresenter.logoutGmail();
+//            Toast.makeText(getActivity(), ketqua, Toast.LENGTH_SHORT).show();
+//            LoadingDialog.dismissDialog();
+//        }
     }
 }

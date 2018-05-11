@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Model.DataModel.KhoaHoc.CustomModelKhoaHoc;
-import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
+import com.eways.elearning.Adapter.ViewPagerAdapter;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Presenter.TaiKhoan.KhoaHocCuaToi.KhoaHocCuaToiPresenter;
 import com.eways.elearning.Presenter.TaiKhoan.KhoaHocCuaToi.KhoaHocCuaToiPresenterImp;

@@ -44,7 +44,7 @@ public class DieuKhoanGiaSuFragment extends Fragment implements View.OnClickList
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         sharedPreferencesHandler = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
         capNhatTaiKhoanPresenterImp=new CapNhatTaiKhoanPresenter(this);
         getActivity().invalidateOptionsMenu();

@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         danhSachMonPresenterImp.guiYeuCau();
         mySharedPref = new SharedPreferencesHandler(this, SupportKeysList.SHARED_PREF_FILE_NAME);
         imageHandler = new ImageHandler(this);
-        fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
-        fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
+//        fragmentHandler = new FragmentHandler(this, getSupportFragmentManager());
+//        fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
     }
 
     private void setUpActionBar(DrawerLayout drawer, Toolbar myToolbar) {
@@ -188,29 +188,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Set event cho slide menu
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        fragmentHandler.XoaTatCaFragment();
+//        fragmentHandler.XoaTatCaFragment();
 
         switch (item.getItemId()) {
             case R.id.nav_home:
-                fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
+//                fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
                 break;
             case R.id.nav_quan_ly_tai_khoan:
-                if (mySharedPref.getDaDangNhap())
-                    fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
-                else
-                    fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
+//                if (mySharedPref.getDaDangNhap())
+//                    fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
+//                else
+//                    fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
                 break;
             case R.id.nav_tao_khoa_hoc:
-                if (!mySharedPref.getDaDangNhap())
-                    fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
-                else {
-//                    if (mySharedPref.i())
-//                        fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
-//                    else {
-//                        Toast.makeText(this, getResources().getString(R.string.msg_cap_nhat_thong_tin), Toast.LENGTH_SHORT).show();
-//                        fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), true, SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
-//                    }
-                }
+//                if (!mySharedPref.getDaDangNhap())
+//                    fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
+//                else {
+////                    if (mySharedPref.i())
+////                        fragmentHandler.ChuyenFragment(new TaoKhoaHocFragment(), true, SupportKeysList.TAG_TAO_KHOA_HOC);
+////                    else {
+////                        Toast.makeText(this, getResources().getString(R.string.msg_cap_nhat_thong_tin), Toast.LENGTH_SHORT).show();
+////                        fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(), true, SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
+////                    }
+//                }
                 break;
         }
 
@@ -228,11 +228,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     ((DrawerLayout) findViewById(R.id.drawer_layout)).openDrawer(Gravity.START);
                 break;
             case R.id.nav_header:
-                if (mySharedPref.getDaDangNhap())
-                    fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
-                else
-                    fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
-                ((DrawerLayout) findViewById(R.id.drawer_layout)).closeDrawer(Gravity.START);
+//                if (mySharedPref.getDaDangNhap())
+//                    fragmentHandler.ChuyenFragment(new QuanLyTaiKhoanFragment(), true, SupportKeysList.TAG_QUAN_LY_TAI_KHOAN_FRAGMENT);
+//                else
+//                    fragmentHandler.ChuyenFragment(new DangNhapFragment(), true, SupportKeysList.TAG_DANG_NHAP_FRAGMENT);
+//                ((DrawerLayout) findViewById(R.id.drawer_layout)).closeDrawer(Gravity.START);
                 break;
             case R.id.nav_menu_home:
                 ((DrawerLayout) findViewById(R.id.drawer_layout)).openDrawer(Gravity.START);
@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 searchView.openSearch();
                 break;
             case R.id.search_home:
-                fragmentHandler.ChuyenFragment(new TimKiemFragment(), true, SupportKeysList.TAG_TIM_KIEM);
+//                fragmentHandler.ChuyenFragment(new TimKiemFragment(), true, SupportKeysList.TAG_TIM_KIEM);
                 break;
         }
     }
@@ -250,10 +250,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_main);
         if (fragment.getTag() != null)
-            if (fragment.getTag().compareTo(SupportKeysList.TAG_KET_QUA_TIM_KIEM) == 0) {
-                fragmentHandler.XoaTatCaFragment();
-                ((TextView) findViewById(R.id.text_Search_Actionbar)).setHint(getResources().getString(R.string.app_name));
-            }
+//            if (fragment.getTag().compareTo(SupportKeysList.TAG_KET_QUA_TIM_KIEM) == 0) {
+//                fragmentHandler.XoaTatCaFragment();
+//                ((TextView) findViewById(R.id.text_Search_Actionbar)).setHint(getResources().getString(R.string.app_name));
+//            }
         if (searchView.isOpen()) {
             // Close the search on the back button press.
             searchView.closeSearch();
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         String suggestion = searchView.getSuggestionAtPosition(position);
-        fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(suggestion), true, SupportKeysList.TAG_KET_QUA_TIM_KIEM);
+//        fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(suggestion), true, SupportKeysList.TAG_KET_QUA_TIM_KIEM);
         searchView.closeSearch();
         ((TextView) findViewById(R.id.text_Search_Actionbar)).setHint(suggestion);
     }

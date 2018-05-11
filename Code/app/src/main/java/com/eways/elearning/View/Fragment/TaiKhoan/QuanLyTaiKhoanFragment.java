@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,19 +16,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.eways.elearning.Model.DataModel.BaiDang.LinhVucBaiDang;
-import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucDialog;
-import com.eways.elearning.Handler.Adapter.LinhVucQuanTam.LinhVucQuanTamAdapter;
+import com.eways.elearning.Adapter.LinhVucQuanTam.LinhVucDialog;
+import com.eways.elearning.Adapter.LinhVucQuanTam.LinhVucQuanTamAdapter;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
-import com.eways.elearning.View.Dialog.LoadingDialog;
-import com.eways.elearning.View.Fragment.DieuKhoan.DieuKhoanGiaSuFragment;
-import com.eways.elearning.View.Fragment.Home.NewHomeFragment;
-import com.eways.elearning.View.Fragment.TaiKhoan.KhoaHocCuaToi.KhoaHocCuaToiFragment;
-import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.CapNhatTaiKhoan.CapNhatThongTinTaiKhoanFragment;
-import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon.CapNhatTaiLieuChuyenMonFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -62,7 +55,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferencesHandler = new SharedPreferencesHandler(getContext(), SupportKeysList.SHARED_PREF_FILE_NAME);
-        fragmentHandler = new FragmentHandler(getContext(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getContext(), getActivity().getSupportFragmentManager());
         imageHandler = new ImageHandler(getActivity());
         accountManager = AccountManager.get(getActivity());
 
@@ -146,7 +139,7 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         FirebaseAuth.getInstance().signOut();
-                        fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
+//                        fragmentHandler.ChuyenFragment(new NewHomeFragment(), false, SupportKeysList.TAG_HOME_FRAGMENT);
                         sharedPreferencesHandler.DangXuat();
                     }
                 });
@@ -161,10 +154,10 @@ public class QuanLyTaiKhoanFragment extends Fragment implements View.OnClickList
                 dialog.show();
                 break;
             case R.id.LoThongTinCaNhan:
-                fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(),true,SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
+//                fragmentHandler.ChuyenFragment(new CapNhatThongTinTaiKhoanFragment(),true,SupportKeysList.TAG_CAP_NHAT_THONG_TIN_CA_NHAN);
                 break;
             case R.id.LoKhoaHocCuaToi:
-                fragmentHandler.ChuyenFragment(KhoaHocCuaToiFragment.newInstance(), true, SupportKeysList.TAG_KHOA_HOC_CUA_TOI);
+//                fragmentHandler.ChuyenFragment(KhoaHocCuaToiFragment.newInstance(), true, SupportKeysList.TAG_KHOA_HOC_CUA_TOI);
                 break;
             case R.id.linearLayout_DangKyGiaSu:
 //                if (!sharedPreferencesHandler.getTaiKhoanGiaSu())

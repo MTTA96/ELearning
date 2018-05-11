@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Model.DataModel.KhoaHoc.KhoaHoc;
-import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
+import com.eways.elearning.Adapter.ViewPagerAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 
@@ -69,7 +69,7 @@ public class KetQuaTimKiemGiaSuFragment extends Fragment {
             requestKhoaHoc = (KhoaHoc) getArguments().getSerializable(paramRequestKhoaHoc);
             requestGiaSu = getArguments().getBoolean(paramRequestGiaSu);
             requestBangCap = getArguments().getString(paramRequestBangCap, null);
-            fragmentHandler = new FragmentHandler(getActivity(), getChildFragmentManager());
+//            fragmentHandler = new FragmentHandler(getActivity(), getChildFragmentManager());
 //            ketQuaTimKiemKhoaHocFragmentPresenterImp = new KetQuaTimKiemKhoaHocFragmentPresenter(this);
 
             //Request môn

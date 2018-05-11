@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.eways.elearning.Model.DataModel.KhoaHoc.KhoaHoc;
 import com.eways.elearning.Model.DataModel.TaiKhoan.TaiKhoan;
-import com.eways.elearning.Handler.Adapter.TaiKhoan.TaiKhoanRCAdapter;
+import com.eways.elearning.Adapter.TaiKhoan.TaiKhoanRCAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.TimKiemKhoaHoc.KetQuaTimKiemKhoaHocFragmentPresenter;
@@ -51,7 +51,7 @@ public class KetQuaNguoiFragment extends Fragment implements KetQuaNguoiViewImp 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestKhoaHoc = (KhoaHoc) getArguments().getSerializable(paramRequestThongTinTimKiem);
-        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         ketQuaTimKiemKhoaHocFragmentPresenterImp = new KetQuaTimKiemKhoaHocFragmentPresenter(this);
     }
 

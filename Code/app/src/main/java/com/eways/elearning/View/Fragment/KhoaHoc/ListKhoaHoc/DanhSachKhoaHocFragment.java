@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Model.DataModel.KhoaHoc.CustomModelKhoaHoc;
-import com.eways.elearning.Handler.Adapter.KhoaHoc.KhoaHocRCAdapter;
+import com.eways.elearning.Adapter.KhoaHoc.KhoaHocRCAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Presenter.ListKhoaHoc.DanhSachKhoaHocPresenter;
@@ -63,7 +63,7 @@ public class DanhSachKhoaHocFragment extends Fragment implements DanhSachKhoaHoc
             loaiTimKiem = getArguments().getBoolean(param2);
         }
         danhSachKhoaHocPresenterImp = new DanhSachKhoaHocPresenter(this);
-        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
 //        LoadingDialog.showDialog();
     }
 

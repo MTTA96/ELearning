@@ -80,7 +80,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
         }
         taoKhoaHocPresenterImp = new TaoKhoaHocPresenter(this);
         sharedPreferencesHandler = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
-        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         getActivity().supportInvalidateOptionsMenu();
     }
 
@@ -170,7 +170,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
                 LoadingDialog.showDialog();
                 KhoaHoc khoaHoc = setUpData();
                 taoKhoaHocPresenterImp.nhanThongTinKhoaHoc(khoaHoc, switchTaoKhoaHoc.isChecked(), getActivity());
-                fragmentHandler.ChuyenFragment(NewHomeFragment.newInstance(),false,SupportKeysList.TAG_TAO_KHOA_HOC);
+//                fragmentHandler.ChuyenFragment(NewHomeFragment.newInstance(),false,SupportKeysList.TAG_TAO_KHOA_HOC);
                 LoadingDialog.dismissDialog();
 
             } else
@@ -282,7 +282,7 @@ public class TaoKhoaHocFragment extends Fragment implements CompoundButton.OnChe
     @Override
     public void KetQuaTaoKhoaHoc(String result) {
         if (result.compareTo(TaoKhoaHocPresenter.RESULT_CODE_SUCCESS) == 0) {
-            fragmentHandler.ChuyenFragment(NewHomeFragment.newInstance(), false, SupportKeysList.TAG_HOME_FRAGMENT);
+//            fragmentHandler.ChuyenFragment(NewHomeFragment.newInstance(), false, SupportKeysList.TAG_HOME_FRAGMENT);
         }
     }
 

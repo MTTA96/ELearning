@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Model.DataModel.KhoaHoc.CustomModelKhoaHoc;
-import com.eways.elearning.Handler.Adapter.KhoaHoc.DanhSachKhoaHocHomeAdapter;
+import com.eways.elearning.Adapter.KhoaHoc.DanhSachKhoaHocHomeAdapter;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
 import com.eways.elearning.Model.Database.SharedPreferencesHandler;
@@ -21,7 +21,6 @@ import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
 import com.eways.elearning.View.Dialog.LoadingDialog;
 import com.eways.elearning.View.Fragment.Home.NewHomeFragmentImp;
-import com.eways.elearning.View.Fragment.KhoaHoc.ListKhoaHoc.ListKhoaHocTimGiaSuFragment;
 
 import java.util.ArrayList;
 
@@ -51,7 +50,7 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         newHomeFragmentPresenter = new NewHomeFragmentPresenter(this);
         mySharedPref = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
         imageHandler = new ImageHandler(getActivity());
@@ -92,13 +91,13 @@ public class HomeTimGiaSuFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.textView_XemDanhSachKhoaHocKhac_HomeTimGiaSu:
-                fragmentHandler.ChuyenFragment(ListKhoaHocTimGiaSuFragment.newInstance(linhVucOther, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
+//                fragmentHandler.ChuyenFragment(ListKhoaHocTimGiaSuFragment.newInstance(linhVucOther, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
                 break;
             case R.id.textView_XemDanhSachKhoaHocToan_HomeTimGiaSu:
-                fragmentHandler.ChuyenFragment(ListKhoaHocTimGiaSuFragment.newInstance(linhVucToan, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
+//                fragmentHandler.ChuyenFragment(ListKhoaHocTimGiaSuFragment.newInstance(linhVucToan, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
                 break;
             case R.id.textView_XemDanhSachKhoaHocAnhVan_HomeTimGiaSu:
-                fragmentHandler.ChuyenFragment(ListKhoaHocTimGiaSuFragment.newInstance(linhVucAnhVan, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
+//                fragmentHandler.ChuyenFragment(ListKhoaHocTimGiaSuFragment.newInstance(linhVucAnhVan, !SupportKeysList.TYPE_TIM_GIA_SU), true, SupportKeysList.TAG_DANH_SACH_KHOA_HOC);
                 break;
         }
     }

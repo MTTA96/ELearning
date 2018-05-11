@@ -76,7 +76,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
         }
         else
             REQUEST = CREATE;
-        fragmentHandler = new FragmentHandler(getContext(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getContext(), getActivity().getSupportFragmentManager());
         getActivity().invalidateOptionsMenu();
         setHasOptionsMenu(true);
     }
@@ -146,7 +146,7 @@ public class ThemLinhVucChuyenMonFragment extends Fragment implements View.OnCli
     @Override
     public void KetQuaThemTaiLieuChuyenMon(String ketQuaCapNhat) {
         if (ketQuaCapNhat.compareTo("CapNhatTaiLieuChuyenMonThanhCong")==0){
-            fragmentHandler.XoaFragment();
+//            fragmentHandler.XoaFragment();
         }
     }
 }

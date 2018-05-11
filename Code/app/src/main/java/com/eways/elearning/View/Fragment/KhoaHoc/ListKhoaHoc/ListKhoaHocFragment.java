@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.eways.elearning.Handler.Adapter.ViewPagerAdapter;
+import com.eways.elearning.Adapter.ViewPagerAdapter;
 import com.eways.elearning.R;
 import com.eways.elearning.View.Activity.MainActivity;
 

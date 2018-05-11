@@ -72,7 +72,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
         sharedPreferencesHandler=new SharedPreferencesHandler(getContext(),SupportKeysList.SHARED_PREF_FILE_NAME);
         guiYeuCauPresenterImp=new GuiYeuCauPresenter(this);
         imageHandler = new ImageHandler(getActivity());
-        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         if (getArguments() != null) {
             thongTinKhoaHocPresenterImp.YeuCauLayThongTinKhoaHoc(getActivity(), SupportKeysList.GET_DATA_TIMGIASU, getArguments().getString(param1), getArguments().getString(param2));
         }
@@ -112,7 +112,7 @@ public class ThongTinKhoaHocFragment extends Fragment implements ThongTinKhoaHoc
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.button_XemThemThongTinNguoiDang){
-            fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(thongTinChiTietKhoaHoc.getTaiKhoan().getId(), thongTinChiTietKhoaHoc.getKhoaHoc().isLoaiKhoaHoc()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
+//            fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(thongTinChiTietKhoaHoc.getTaiKhoan().getId(), thongTinChiTietKhoaHoc.getKhoaHoc().isLoaiKhoaHoc()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
         }
     }
 

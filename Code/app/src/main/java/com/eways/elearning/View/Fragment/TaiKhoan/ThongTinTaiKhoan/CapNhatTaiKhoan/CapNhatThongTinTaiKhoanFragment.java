@@ -12,16 +12,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.eways.elearning.Model.DataModel.Other.LayHinhModel;
-import com.eways.elearning.Model.DataModel.TaiKhoan.TaiKhoan;
-import com.eways.elearning.Handler.Adapter.ChonHinhAdapter;
+import com.eways.elearning.Adapter.ChonHinhAdapter;
 import com.eways.elearning.Handler.DialogPlusHandler;
 import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.Handler.ImageHandler;
@@ -30,8 +27,6 @@ import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPre
 import com.eways.elearning.Presenter.TaiKhoan.CapNhatTaiKhoan.CapNhatTaiKhoanPresenterImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Util.SupportKeysList;
-import com.eways.elearning.View.Dialog.LoadingDialog;
-import com.eways.elearning.View.Fragment.TaiKhoan.ThongTinTaiKhoan.TaiLieuChuyenMon.CapNhatTaiLieuChuyenMonFragment;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -76,7 +71,7 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         danhsachNam = new ArrayList<>();
-        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         sharedPreferencesHandler = new SharedPreferencesHandler(getContext(), SupportKeysList.SHARED_PREF_FILE_NAME);
         imageHandler = new ImageHandler(getActivity());
         capNhatTaiKhoanPresenterImp = new CapNhatTaiKhoanPresenter(this);
@@ -121,14 +116,14 @@ public class CapNhatThongTinTaiKhoanFragment extends Fragment implements CapNhat
 
     @Override
     public void KetQuaCapNhat(String ketQuaCapNhat) {
-        if (ketQuaCapNhat.compareTo(SupportKeysList.TAG_CAPNHATTHANHCONG) == 0) {
-            if (fragmentHandler.getPreviousFragmentTag().compareTo(SupportKeysList.TAG_DIEU_KHOAN_GIA_SU) == 0)
-                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(CapNhatTaiLieuChuyenMonFragment.TYPE_EDIT), true, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
-            else {
-//                Toast.makeText(getActivity(), "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
-                fragmentHandler.XoaFragment();
-            }
-        }
+//        if (ketQuaCapNhat.compareTo(SupportKeysList.TAG_CAPNHATTHANHCONG) == 0) {
+////            if (fragmentHandler.getPreviousFragmentTag().compareTo(SupportKeysList.TAG_DIEU_KHOAN_GIA_SU) == 0)
+////                fragmentHandler.ChuyenFragment(CapNhatTaiLieuChuyenMonFragment.newInstance(CapNhatTaiLieuChuyenMonFragment.TYPE_EDIT), true, SupportKeysList.TAG_CAP_NHAT_TAI_LIEU_CHUYEN_MON);
+//            else {
+////                Toast.makeText(getActivity(), "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
+//                fragmentHandler.XoaFragment();
+//            }
+//        }
     }
 
     @Override

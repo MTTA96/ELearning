@@ -1,0 +1,122 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="@color/colorWhite"
+    tools:context="com.eways.elearning.Fragment.FragmentEnterPhone">
+
+    <!--fake space-->
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="20" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_weight="35"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <!-- Guide text -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textSize="17sp"
+            android:layout_weight="30"
+            android:text="@string/guide_enter_phone"
+            android:textColor="@color/colorBlack" />
+
+
+
+        <!-- Phone -->
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="35"
+            android:weightSum="100"
+            android:background="@drawable/edittext_shape_3"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="90"
+                android:inputType="phone"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGrey"
+                android:singleLine="true"
+                android:padding="7dp"
+                android:textSize="18sp"
+                android:hint="@string/phone"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10">
+                <ImageView
+                    android:id="@+id/clear_phone_text"
+                    android:visibility="invisible"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+
+                    android:background="@drawable/icn_delete"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!-- Password-->
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="35"
+            android:weightSum="100"
+            android:background="@drawable/edittext_shape_3"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/pass"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="90"
+                android:inputType="phone"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGrey"
+                android:singleLine="true"
+                android:padding="7dp"
+                android:textSize="18sp"
+                android:hint="@string/hint_password"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10">
+                <ImageView
+                    android:id="@+id/clear_pass"
+                    android:visibility="invisible"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+
+                    android:background="@drawable/icn_delete"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

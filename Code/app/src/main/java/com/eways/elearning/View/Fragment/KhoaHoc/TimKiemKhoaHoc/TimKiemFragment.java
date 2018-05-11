@@ -64,7 +64,7 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
+//        fragmentHandler = new FragmentHandler(getActivity(), getActivity().getSupportFragmentManager());
         sharedPreferencesHandler = new SharedPreferencesHandler(getActivity(), SupportKeysList.SHARED_PREF_FILE_NAME);
         timKiemPresenterImp = new TimKiemPresenter(this);
     }
@@ -147,24 +147,24 @@ public class TimKiemFragment extends Fragment implements CompoundButton.OnChecke
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_Cancel_TimKiem:
-                fragmentHandler.XoaFragment();
+//                fragmentHandler.XoaFragment();
                 break;
             case R.id.button_Tim_Kiem:
                 if (checkData()) {
-                    if(switchTimKiem.isChecked() == true)
-                    {
-                        KhoaHoc requestKhoaHoc = new KhoaHoc();
-                        setUpDataRequestKhoaHoc(requestKhoaHoc);
-                        String bangCap = etBangCap.getText() != null ? etBangCap.getText().toString() : null;
-                        fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(switchTimKiem.isChecked(), requestKhoaHoc, bangCap), false, null);
-                    }
-                    else
-                    {
-                        KhoaHoc requestKhoaHoc = new KhoaHoc();
-                        setUpDataRequestKhoaHoc(requestKhoaHoc);
-                        String bangCap = etBangCap.getText() != null ? etBangCap.getText().toString() : null;
-                        fragmentHandler.ChuyenFragment(KetQuaTimKiemGiaSuFragment.newInstance(switchTimKiem.isChecked(), requestKhoaHoc, bangCap), false, null);
-                    }
+//                    if(switchTimKiem.isChecked() == true)
+//                    {
+//                        KhoaHoc requestKhoaHoc = new KhoaHoc();
+//                        setUpDataRequestKhoaHoc(requestKhoaHoc);
+//                        String bangCap = etBangCap.getText() != null ? etBangCap.getText().toString() : null;
+//                        fragmentHandler.ChuyenFragment(KetQuaTimKiemFragment.newInstance(switchTimKiem.isChecked(), requestKhoaHoc, bangCap), false, null);
+//                    }
+//                    else
+//                    {
+//                        KhoaHoc requestKhoaHoc = new KhoaHoc();
+//                        setUpDataRequestKhoaHoc(requestKhoaHoc);
+//                        String bangCap = etBangCap.getText() != null ? etBangCap.getText().toString() : null;
+//                        fragmentHandler.ChuyenFragment(KetQuaTimKiemGiaSuFragment.newInstance(switchTimKiem.isChecked(), requestKhoaHoc, bangCap), false, null);
+//                    }
 
                 } else
                     Toast.makeText(getActivity(), getString(R.string.thieu_thong_tin), Toast.LENGTH_LONG).show();

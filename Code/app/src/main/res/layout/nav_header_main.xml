@@ -12,7 +12,7 @@
         android:id="@+id/user_ava_nav_menu"
         android:layout_width="@dimen/avatar_menu_width"
         android:layout_height="match_parent"
-        android:background="@drawable/avatar_shape"
+        android:background="@drawable/avarta_shape"
         android:layout_marginTop="@dimen/avatar_menu_vertical_margin"
         android:layout_marginBottom="@dimen/avatar_menu_vertical_margin"/>
 

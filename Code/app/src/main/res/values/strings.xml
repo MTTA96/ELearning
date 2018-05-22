@@ -1,13 +1,76 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">ELearning</string>
+<resources>
+    <string name="app_name">ETutor</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Messages -->
+    <string name="msg_unknow_error">Lỗi!</string>
+    <string name="msg_missing_info">Thiếu thông tin</string>
+    <string name="msg_wrong_info">Sai thông tin</string>
+    <string name="msg_phone_verifying_failed">Không thể xác minh số điện thoại</string>
+    <string name="msg_existing_user">Số điện thoại đã tồn tại</string>
+    <string name="msg_sign_in_success">Xin chào </string>
+    <string name="msg_sign_in_failed">Đăng nhập thất bại</string>
+    <string name="msg_account_has_not_sign_up">Tài khoản chưa đăng ký</string>
+    <string name="msg_banned_account">Tài khoản đã bị khóa</string>
+    <string name="msg_loading">Loading…</string>
+
+    <!-- Strings relatedsignInogin -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!-- Messages -->
-    <string name="msg_dang_nhap_thanh_cong">Xin chào </string>
-    <string name="thieu_thong_tin">Thiếu thông tin</string>
-    <string name="msg_loading">Loading…</string>
+    <!-- Rules -->
+    <string name="title_rules">Điều Khoản</string>
+
+    <!-- Information -->
+    <string name="title_information">Thông tin</string>
+
+    <!-- Welcome -->
+    <string name="title_welcome"><b>Xin Chào</b></string>
+
+    <!-- Login -->
+    <string name="title_login">ELearing</string>
+    <string name="skip">Bỏ qua</string>
+    <string name="phone">Số điện thoại</string>
+
+    <!--Sign Up-->
+    <string name="hint_username">Họ và tên...</string>
+    <string name="hint_phone">Số điện thoại...</string>
+    <string name="previous">Trở lại</string>
+    <string name="next">Tiếp tục</string>
+    <string name="finish">Hoàn tất</string>
+    <string name="hint_password">Mật khẩu</string>
+    <string name="guide_enter_phone"><b>Số điện thoại:</b></string>
+    <string name="guide_enter_info">Cho xin tý thông tin</string>
+
+    <!--Update infomation-->
+    <string name="save">Lưu</string>
+    <string name="hint_first_name">Họ</string>
+    <string name="hint_last_name">Tên</string>
+    <string name="hint_phone_number">Số điện thoại</string>
+    <string name="hint_male">Nam</string>
+    <string name="hint_female">Nữ</string>
+    <string name="hint_birthday">Ngày/Tháng/Năm</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_address">Địa chỉ</string>
+    <string name="hint_career">Nghề nghiệp</string>
+    <string name="hint_degree">Bằng cấp</string>
+
+    <!-- Verify -->
+    <string name="verify_code">Code</string>
+    <string name="verify_guide">Nhập mã xác nhận</string>
+    <string name="verify_resend"><u>Gửi lại mã</u></string>
 
     <!-- Nav Menu -->
     <string name="header_msg_chua_dang_nhap">Đăng nhập</string>
@@ -142,63 +205,5 @@
 
     <!--fragment thong tin nguoi dang-->
     <string name="text_ChuaCapNhat_ThongTinNguoiDang">Chưa cập nhật</string>
-
-    <string name="title_activity_login">Sign in</string>
-
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
-
-    <!-- Rules -->
-    <string name="title_rules">Điều Khoản</string>
-
-    <!-- Information -->
-    <string name="title_information">Thông tin</string>
-
-    <!-- Welcome -->
-    <string name="title_welcome">Xin chào</string>
-
-    <!-- Login -->
-    <string name="title_login">Etutor</string>
-    <string name="skip">Bỏ qua</string>
-    <string name="phone">Số điện thoại</string>
-
-    <!--Sign Up-->
-    <string name="hint_username">Họ và tên...</string>
-    <string name="hint_phone">Số điện thoại...</string>
-    <string name="previous">Trở lại</string>
-    <string name="next">Tiếp tục</string>
-    <string name="finish">Hoàn tất</string>
-    <string name="hint_password">Mật khẩu</string>
-    <string name="guide_enter_phone">Nhập số điển thoại để đăng nhập</string>
-    <string name="guide_enter_info">Cho xin tý thông tin</string>
-
-    <!--Update infomation-->
-    <string name="save">Lưu</string>
-    <string name="hint_first_name">Họ</string>
-    <string name="hint_last_name">Tên</string>
-    <string name="hint_phone_number">Số điện thoại</string>
-    <string name="hint_male">Nam</string>
-    <string name="hint_female">Nữ</string>
-    <string name="hint_birthday">Ngày/Tháng/Năm</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_address">Địa chỉ</string>
-    <string name="hint_career">Nghề nghiệp</string>
-    <string name="hint_degree">Bằng cấp</string>
-
-    <!-- Verify -->
-    <string name="verify_code">Code</string>
-    <string name="verify_guide">Nhập mã xác nhận</string>
-    <string name="verify_resend"><u>Gửi lại mã</u></string>
-
 
 </resources>

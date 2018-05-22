@@ -3,115 +3,226 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="100"
-    tools:context="com.eways.elearning.Fragment.FragmentLogin">
+    tools:context=".Views.Fragment.Authentication.LoginFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorBlue">
 
-        <!-- Background -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/city"
-            android:scaleType="fitXY"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="@color/colorScrim"
             android:orientation="vertical"
+
             android:weightSum="100">
-
-            <!-- Title -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:textSize="60sp"
-                android:textColor="@color/colorWhite"
-                android:text="@string/title_login"
-                android:gravity="center"
-                android:layout_weight="30"
-                android:textStyle="bold"/>
-
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="2"/>
+                android:layout_weight="7" />
 
-            <!-- Button login Gmail -->
-            <RelativeLayout
+            <!--Tên đăng nhập-->
+            <TextView
+                android:id="@+id/etUsername"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="10">
+                android:layout_weight="25"
+                android:gravity="center"
+                android:text="@string/title_login"
+                android:textColor="@color/colorWhite"
+                android:textSize="60sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="7" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="9"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:weightSum="100"
-                    android:orientation="horizontal">
+
+                    android:layout_weight="80"
+                    android:background="@drawable/edittext_shape_4"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="19"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="+84"
+                            android:textColor="@color/colorBlue"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="6"/>
+                        android:layout_weight="1"
+                        android:background="@color/colorLightBlue" />
 
-                    <Button
+                    <EditText
+                        android:id="@+id/phone"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/btn_phone_shape"
-                        android:layout_weight="88"
-                        android:textColor="@color/colorWhite"
-                        android:text="@string/phone"
-                        android:textStyle="bold"/>
+                        android:layout_weight="75"
+                        android:background="@drawable/btn_login_shape5"
+                        android:hint="@string/phone"
+                        android:inputType="phone"
+                        android:padding="7dp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorGrey"
+                        android:textSize="17sp" />
+
                 </LinearLayout>
 
-                <View
-                    android:id="@+id/btn_sdt"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-            </RelativeLayout>
+            </LinearLayout>
 
-
-
-
-            <!-- fake space -->
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="2"/>
+                android:layout_weight="2" />
 
-            <!--Skip-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="10"
-                android:weightSum="100"
-                android:orientation="horizontal">
+                android:layout_weight="9"
+                android:orientation="horizontal"
+                android:weightSum="100">
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="35"/>
+                    android:layout_weight="10" />
 
-                <Button
-                    android:id="@+id/skip"
+                <EditText
+                    android:id="@+id/password_login"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="30"
-                    android:text="@string/skip"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:background="@color/colorTransparent"/>
+                    android:layout_weight="80"
+                    android:background="@drawable/edittext_shape_4"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/colorGrey"
+                    android:textSize="17sp" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="40">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="Quên mật khẩu?"
+                        android:textColor="@color/colorWhite"
+
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="4" />
+
+            <!-- Sign in button -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="9">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10" />
+
+                    <Button
+                        android:id="@+id/sign_in_button"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="80"
+                        android:background="@drawable/btn_login_shape1"
+                        android:text="Đăng nhập"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true" />
+
+            </RelativeLayout>
 
 
         </LinearLayout>
+
+        <!--Create account button-->
+        <TextView
+            android:id="@+id/sign_up_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:text="Tạo tài khoản"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:textStyle="bold|italic" />
+
     </RelativeLayout>
-
 </LinearLayout>
-
-
-

@@ -1,0 +1,204 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">ELearning</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Messages -->
+    <string name="msg_dang_nhap_thanh_cong">Xin chào </string>
+    <string name="thieu_thong_tin">Thiếu thông tin</string>
+    <string name="msg_loading">Loading…</string>
+
+    <!-- Nav Menu -->
+    <string name="header_msg_chua_dang_nhap">Đăng nhập</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_quan_ly_tai_khoan">Quản lý tài khoản</string>
+    <string name="nav_tao_khoa_hoc">Tạo khóa học</string>
+
+    <!-- Home -->
+    <string name="xem_danh_sach_bai_dang">Danh sách khóa học</string>
+    <string name="tao_khoa_hoc">Tạo khóa học</string>
+    <string name="hoi_dap">Hỏi - Đáp</string>
+    <string name="msg_cap_nhat_thong_tin">Cập nhật thông tin trước khi đăng ký!</string>
+    <string name="button_xem_them_thong_tin">Xem thêm</string>
+
+    <!--Fragment đăng nhập-->
+    <string name="Tittle_Login"><b>Đăng Nhập</b></string>
+    <string name="Hint_username">Tên đăng nhập</string>
+    <string name="Hint_password">Mật khẩu</string>
+    <string name="ForgerPass"><b><u>Quên mật khẩu ?</u></b></string>
+    <string name="btnLogin">Đăng Nhập</string>
+    <string name="btnSignup">Đăng Ký</string>
+
+    <string name="loi_EmailDN">Chưa đăng nhập Email</string>
+    <string name="loi_PasswordDN">Chưa nhập mật khẩu</string>
+    <string name="loi_SaiDinhDangEmailDN">Email không đúng</string>
+    <string name="loi_SaiMatKhauDN">Mật khẩu không hợp lệ </string>
+    <string name="loi_EmailPasswordDN">Chưa nhập Email và mật khẩu</string>
+
+    <!--Fragment đăng ký-->
+    <string name="Tittle_Signup"><b>Đăng Ký</b></string>
+    <string name="Hint_EmailDK">Email</string>
+    <string name="Hint_passwordDK">Mật khẩu</string>
+    <string name="Hint_Hoten">Họ và tên</string>
+    <string name="Hint_confirmpasswordDK">Nhập lại mật khẩu</string>
+    <string name="tv_dieukhoan1">Đồng ý với</string>
+    <string name="tv_dieukhoan2"><u><i>điều khoản</i></u></string>
+    <string name="tv_dieukhoan3">ELearning</string>
+    <string name="btn_signup_DK">Xác nhận</string>
+    <string name="btn_huy_DK">Hủy</string>
+    <string name="emtyEmailDK">*Chưa nhập Email</string>
+    <string name="emtyPasswordDK">*Chưa nhập mật khẩu</string>
+    <string name="emtyCPasswordDK">*Chưa xác nhận mật khẩu</string>
+    <string name="SaiEmailDK">*Email không đúng định dạng</string>
+    <string name="SaiXacNhanMatKhauDK">*Xác nhận mật không đúng</string>
+    <string name="SaiMatKhauDK">*Mật khẩu phải từ 6 ký tự trở lên</string>
+    <string name="thieu_hoten">*Chưa nhập họ tên</string>
+
+    <!-- Điều khoản -->
+    <string name="title_dieu_khoan_gia_su">ĐIỀU KHOẢN GIA SƯ</string>
+    <string name="dieu_khoan_gia_su"> </string>
+
+    <!-- Danh sách khóa học -->
+    <string name="title_danh_sach_khoa_hoc">Danh sách khóa học</string>
+
+    <!-- Tạo khóa học -->
+    <string name="title_tao_khoa_hoc">Tạo khóa học</string>
+    <string name="title_linh_vuc">Lĩnh vực:</string>
+    <string name="title_ten_mon">Môn:</string>
+    <string name="title_dia_diem">Địa điểm:</string>
+    <string name="title_hoc_phi">Học phí:</string>
+    <string name="title_gioi_tinh">Giới tính:</string>
+    <string name="title_bang_cap">Bằng cấp:</string>
+    <string name="title_so_hoc_vien">Số học viên:</string>
+    <string name="title_so_buoi">Số buổi:</string>
+    <string name="title_thoi_lượng">Thời lượng:</string>
+    <string name="title_buoi">Buổi:</string>
+    <string name="title_thu">Thứ:</string>
+    <string name="title_thong_tin_them_tao_khoa_hoc">Thông tin thêm:</string>
+    <string name="button_tiep_tuc_tao_khoa_hoc">Tiếp tục</string>
+    <string name="hin_dia_chi">Số nhà, đường, phường</string>
+    <string name="text_gioi_tinh_nam">Nam</string>
+    <string name="text_gioi_tinh_nu">Nữ</string>
+    <string name="text_buoi_sang">Sáng</string>
+    <string name="text_buoi_chieu">Chiều</string>
+    <string name="text_buoi_toi">Tối</string>
+    <string name="text_thu_2">T2</string>
+    <string name="text_thu_3">T3</string>
+    <string name="text_thu_4">T4</string>
+    <string name="text_thu_5">T5</string>
+    <string name="text_thu_6">T6</string>
+    <string name="text_thu_7">T7</string>
+    <string name="text_chu_nhat">CN</string>
+    <!-- Tìm gia sư -->
+    <string name="title_tim_gia_su">Tìm gia sư</string>
+    <!-- Tìm học viên -->
+    <string name="title_tim_hoc_vien">Tìm học viên</string>
+
+    <!--Fragment Gia Sư-->
+    <string name="Xem_ChiTiet"><b>Chi tiết...</b></string>
+    <string name="Xem_Ten"><b>Tên: </b></string>
+    <string name="Xem_Mon"><b>Môn: </b></string>
+    <string name="Xem_Buoi"><b>Buổi: </b></string>
+    <string name="Xem_Gia">Học phí: </string>
+
+    <!--Fragment QLTK-->
+    <string name="Dang_xuat_QLTK"><i><u>Đăng xuất</u></i></string>
+    <string name="ThongTinCaNhan">Thông tin cá nhân</string>
+    <string name="KhoaHocCuaToi">Khóa học của tôi</string>
+    <string name="dang_ky_lam_gia_su">Đăng ký làm gia sư</string>
+    <string name="tai_lieu_chuyen_mon">Tài liệu chuyên môn</string>
+    <string name="LinhVucQuanTam">Lĩnh vực quan tâm  </string>
+    <string name="MoiBanBe">Mời bạn bè</string>
+    <string name="TaiKhoanKhac">Tài khoản khác</string>
+    <string name="DiaLogDangXuat">Bạn có muốn thoát</string>
+    <string name="BtnDongY_DX">Đồng ý</string>
+    <string name="BtnHuy_DX">Hủy</string>
+    <!--Fragment Cập nhật thông tin tài khoản-->
+    <string name="ho_ten_cap_nhat_thong_tin_ca_nhan"><b>Họ tên:</b></string>
+    <string name="nam_sinh_cap_nhat_thong_tin_ca_nhan"><b>Năm sinh:</b></string>
+    <string name="gioi_tinh_cap_nhat_thong_tin_ca_nhan"><b>Giới tính:</b></string>
+    <string name="nghe_nghiep_cap_nhat_thong_tin_ca_nhan"><b>Công việc:</b></string>
+    <string name="trinh_do_cap_nhat_thong_tin_ca_nhan"><b>Trình độ:</b></string>
+    <string name="dia_chi_cap_nhat_thong_tin_ca_nhan"><b>Địa chỉ:</b></string>
+    <string name="sdt_cap_nhat_thong_tin_ca_nhan"><b>Sđt:</b></string>
+    <string name="email_cap_nhat_thong_tin_ca_nhan"><b>Email:</b></string>
+    <string name="tai_lieu_xac_minh_thong_tin_ca_nhan"><b>Tài liệu xác minh:</b></string>
+    <!--Fragment CNTTTK-->
+    <string name="Title_CNTTTK"><b>Thông tin cá nhân</b></string>
+    <string-array name="ListGioiTinh">
+        <item>Nam</item>
+        <item>Nữ</item>
+    </string-array>
+    <string name="Message_CapNhatThanhCong">Cập nhật thành công</string>
+    <!--Dialog Lĩnh vực yêu thích-->
+
+    <!--Fragment thông tin khóa hoc-->
+    <string name="text_GuiYeuCau"><b>Gửi Yêu Cầu</b></string>
+    <string name="text_HuyYeuCau"><b>Hủy Yêu Cầu</b></string>
+    <string name="title_thong_tin_gia_su">Thông tin gia sư</string>
+    <string name="title_thong_tin_hoc_vien">Thông tin học viên</string>
+    <string name="title_thong_tin_khoa_hoc">Thông tin khóa học</string>
+
+    <!--fragment thong tin nguoi dang-->
+    <string name="text_ChuaCapNhat_ThongTinNguoiDang">Chưa cập nhật</string>
+
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- Rules -->
+    <string name="title_rules">Điều Khoản</string>
+
+    <!-- Information -->
+    <string name="title_information">Thông tin</string>
+
+    <!-- Welcome -->
+    <string name="title_welcome">Xin chào</string>
+
+    <!-- Login -->
+    <string name="title_login">Etutor</string>
+    <string name="skip">Bỏ qua</string>
+    <string name="phone">Số điện thoại</string>
+
+    <!--Sign Up-->
+    <string name="hint_username">Họ và tên...</string>
+    <string name="hint_phone">Số điện thoại...</string>
+    <string name="previous">Trở lại</string>
+    <string name="next">Tiếp tục</string>
+    <string name="finish">Hoàn tất</string>
+    <string name="hint_password">Mật khẩu</string>
+    <string name="guide_enter_phone">Nhập số điển thoại để đăng nhập</string>
+    <string name="guide_enter_info">Cho xin tý thông tin</string>
+
+    <!--Update infomation-->
+    <string name="save">Lưu</string>
+    <string name="hint_first_name">Họ</string>
+    <string name="hint_last_name">Tên</string>
+    <string name="hint_phone_number">Số điện thoại</string>
+    <string name="hint_male">Nam</string>
+    <string name="hint_female">Nữ</string>
+    <string name="hint_birthday">Ngày/Tháng/Năm</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_address">Địa chỉ</string>
+    <string name="hint_career">Nghề nghiệp</string>
+    <string name="hint_degree">Bằng cấp</string>
+
+    <!-- Verify -->
+    <string name="verify_code">Code</string>
+    <string name="verify_guide">Nhập mã xác nhận</string>
+    <string name="verify_resend"><u>Gửi lại mã</u></string>
+
+
+</resources>

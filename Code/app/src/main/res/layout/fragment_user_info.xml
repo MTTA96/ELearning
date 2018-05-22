@@ -3,122 +3,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context="com.eways.elearning.Fragment.FragmentUserInfo">
+    tools:context=".Views.Fragment.Authentication.FragmentUserInfo">
 
     <!--fake space-->
     <View
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="20" />
+        android:layout_weight="10" />
 
-    <LinearLayout
+
+    <!-- username -->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_weight="35"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:weightSum="100">
+        android:layout_height="wrap_content"
+        android:text="Họ tên:"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlue"
+        android:textSize="19sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="20"
-            android:text="@string/guide_enter_info"
-            android:textColor="@color/colorBlack"
-            android:textSize="17sp" />
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:hint="@string/hint_username"
+        android:padding="7dp"
+        android:singleLine="true"
+        android:background="@drawable/edittext_shape_3"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorGrey"
+        android:textSize="18sp" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="5" />
+    <!--Password-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Mật khẩu"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlue"
+        android:textSize="19sp" />
 
-        <!-- username -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="15dp"
-            android:layout_weight="35"
-            android:background="@drawable/edittext_shape_3"
-            android:orientation="horizontal"
-            android:weightSum="100">
-
-
-            <EditText
-                android:id="@+id/name"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="90"
-                android:hint="@string/hint_username"
-                android:padding="7dp"
-                android:singleLine="true"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorGrey"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="10">
-
-                <ImageView
-                    android:id="@+id/clear_name_text"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center_vertical"
-
-                    android:background="@drawable/icn_delete"
-                    android:visibility="invisible" />
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <!-- password -->
-        <LinearLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="15dp"
-            android:layout_weight="35"
-            android:background="@drawable/edittext_shape_3"
-            android:orientation="horizontal"
-            android:weightSum="100">
-
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="90"
-                android:hint="@string/hint_password"
-                android:padding="7dp"
-                android:singleLine="true"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorGrey"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="10">
-
-                <ImageView
-                    android:id="@+id/clear_phone_text"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center_vertical"
-
-                    android:background="@drawable/icn_delete"
-                    android:visibility="invisible" />
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:inputType="textPassword"
+        android:background="@drawable/edittext_shape_3"
+        android:hint="@string/hint_password"
+        android:padding="7dp"
+        android:singleLine="true"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorGrey"
+        android:textSize="18sp" />
 </LinearLayout>

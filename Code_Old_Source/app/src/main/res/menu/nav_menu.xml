@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Action home -->
+    <item
+        android:id="@+id/nav_home"
+        android:title="@string/nav_home"
+        android:icon="@mipmap/ic_launcher" />
+
+    <!-- Quản lý tài khoản -->
+    <item
+        android:id="@+id/nav_quan_ly_tai_khoan"
+        android:title="@string/nav_quan_ly_tai_khoan"
+        android:icon="@mipmap/ic_launcher"/>
+
+    <!-- Tạo khóa học -->
+    <item
+        android:id="@+id/nav_tao_khoa_hoc"
+        android:title="@string/nav_tao_khoa_hoc"
+        android:icon="@mipmap/ic_launcher"/>
+</menu>

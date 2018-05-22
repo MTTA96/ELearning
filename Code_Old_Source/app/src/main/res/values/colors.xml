@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorMain">#00A6FF</color>
+    <color name="Title_Color">#fafafa</color>
+    <color name="colorHint">#cecece</color>
+    <color name="textColorDark">#343F4B</color>
+    <color name="White">#fcfcfc</color>
+    <color name="Scrim">#66000000</color>
+    <color name="colorError">#ff0505</color>
+    <color name="colorEnable">#b5cddb</color>
+    <color name="Black">#000000</color>
+    <color name="invisible">#00000000</color>
+    <!--Fragment đăng nhập-->
+    <color name="colorDivider">#cecece</color>
+    <color name="colorTextBtnDkDn">#fcfcfc</color>
+
+    <!--Fragment Gia Sư -->
+    <color name="textColor">#FFFFFF</color>
+
+
+
+    <color name="colorBlue">#2f88d1</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorScrim">#749dc8fe</color>
+    <color name="colorTransparent">#00ffffff</color>
+    <color name="colorLightBlue">#40c2e5ff</color>
+    <color name="colorGrey">#a4a0a0</color>
+    <color name="colorHightBlue">#1788d9</color>
+
+</resources>

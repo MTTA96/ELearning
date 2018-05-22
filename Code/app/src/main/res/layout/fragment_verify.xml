@@ -1,86 +1,81 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
-    tools:context="com.eways.elearning.Fragment.FragmentVerify">
+    tools:context=".Views.Fragment.Authentication.FragmentVerify">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp"
         android:orientation="vertical"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:weightSum="100">
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="15" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:gravity="center"
-            android:text="@string/verify_guide"
-            android:textColor="@color/colorBlack"
-            android:textSize="17sp" />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="3" />
+            android:layout_weight="20"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
-            android:orientation="horizontal"
-            android:weightSum="100">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="30" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="40"
-                android:background="@drawable/edittext_shape_3"
-                android:hint="Code"
-                android:inputType="number"
-                android:padding="10dp"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorGrey"
-                android:textSize="17sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:orientation="horizontal"
-            android:weightSum="100">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="25" />
+            android:weightSum="100"
+            android:orientation="vertical"
+            android:layout_weight="50">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="50"
-                android:gravity="center"
-                android:text="@string/verify_resend"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20"
+                android:text="@string/verify_guide"
                 android:textColor="@color/colorBlue"
-                android:textSize="17sp" />
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
 
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="10"/>
+
+            <com.eways.elearning.Views.VerificationCodeView
+                android:id="@+id/code"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="40"
+                app:vcodeTextSize="10sp"></com.eways.elearning.Views.VerificationCodeView>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="10"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="25"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"/>
+
+                <TextView
+                    android:id="@+id/resent_code_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:text="@string/verify_resend"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="18sp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
         </LinearLayout>
+
 
 
     </LinearLayout>

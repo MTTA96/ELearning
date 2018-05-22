@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrey"
+    android:orientation="vertical"
+    tools:context="com.eways.elearning.Views.Fragment.SearchResultsFragment">
+
+    <!-- Tutors list -->
+    <LinearLayout
+        android:id="@+id/tutor_search_result_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Gia sư"
+            android:textColor="@color/colorMain"
+            android:textSize="@dimen/default_text_size"
+            android:textStyle="bold|italic" />
+
+        <!--Divider-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGrey" />
+        <!-- List -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/tutor_search_results_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Load more -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="Xem thêm"
+            android:textColor="@color/colorMain" />
+    </LinearLayout>
+
+    <!-- Courses list -->
+    <LinearLayout
+        android:id="@+id/courses_search_result_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Khóa học"
+            android:textColor="@color/colorMain"
+            android:textSize="@dimen/default_text_size"
+            android:textStyle="bold|italic" />
+
+        <!--Divider-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGrey" />
+
+        <!-- List -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/course_search_results_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Load more -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="Xem thêm"
+            android:textColor="@color/colorMain" />
+    </LinearLayout>
+</LinearLayout>

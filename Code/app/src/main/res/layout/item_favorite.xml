@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img_shape"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp">
+
+            <ImageView
+                android:id="@+id/img_favorite"
+                android:layout_width="140dp"
+                android:layout_height="140dp" />
+
+            <RelativeLayout
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:background="@color/colorLightScrim">
+
+                <TextView
+                    android:id="@+id/text_favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="test"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="30sp"/>
+
+                <CheckBox
+                    android:id="@+id/seclect_favorite"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:buttonTint="@color/colorBlue"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/touch_favorite"
+                android:layout_width="140dp"
+                android:layout_height="140dp"/>
+
+        </RelativeLayout>
+
+</RelativeLayout>

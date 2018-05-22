@@ -1,0 +1,212 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".Views.Fragment.Authentication.FragmentEnterPhone">
+
+    <!--fake space-->
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="10" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_weight="85"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <!-- Guide text -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/guide_enter_phone"
+            android:textColor="@color/colorBlue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
+
+        <!-- phone -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="17"
+            android:background="@drawable/edittext_shape_3"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="19"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="+84"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorLightBlue" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="80"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:padding="7dp"
+                android:singleLine="true"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGrey"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/policy_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Điều khoản"
+            android:textSize="16sp"
+            android:textColor="@color/colorMain"/>
+        <!-- *** DON'T NEED PASSWORD IN THIS SCREEN *** -->
+
+        <!--<View-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="4"/>-->
+
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:textSize="18sp"-->
+        <!--android:layout_weight="8"-->
+        <!--android:textStyle="bold"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:text="Mật khẩu:"-->
+        <!--android:textColor="@color/colorBlue" />-->
+
+        <!--<View-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="2"/>-->
+
+        <!--<LinearLayout-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+
+        <!--android:layout_weight="17"-->
+        <!--android:weightSum="100"-->
+        <!--android:background="@drawable/edittext_shape_3"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<EditText-->
+        <!--android:id="@+id/password"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="85"-->
+        <!--android:inputType="textPassword"-->
+        <!--android:textColor="@color/colorBlack"-->
+        <!--android:textColorHint="@color/colorGrey"-->
+        <!--android:singleLine="true"-->
+        <!--android:padding="7dp"-->
+        <!--android:textSize="18sp"-->
+        <!--android:hint="@string/hint_password"/>-->
+
+        <!--<View-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:background="@color/colorLightBlue"/>-->
+
+        <!--<RelativeLayout-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="14"-->
+        <!--android:gravity="center">-->
+
+        <!--<ImageView-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp" />-->
+        <!--</RelativeLayout>-->
+
+        <!--</LinearLayout>-->
+
+        <!--<View-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="4"/>-->
+
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:textSize="18sp"-->
+        <!--android:layout_weight="8"-->
+        <!--android:textStyle="bold"-->
+        <!--android:text="Xác nhận mật khẩu:"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:textColor="@color/colorBlue" />-->
+
+        <!--<View-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="2"/>-->
+
+        <!--<LinearLayout-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+
+        <!--android:layout_weight="17"-->
+        <!--android:weightSum="100"-->
+        <!--android:background="@drawable/edittext_shape_3"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<EditText-->
+        <!--android:id="@+id/confirm_pass"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="100"-->
+        <!--android:inputType="textPassword"-->
+        <!--android:textColor="@color/colorBlack"-->
+        <!--android:textColorHint="@color/colorGrey"-->
+        <!--android:singleLine="true"-->
+        <!--android:padding="7dp"-->
+        <!--android:textSize="18sp"-->
+        <!--android:hint="Nhập lại mật khẩu"/>-->
+
+
+        <!--</LinearLayout>-->
+
+
+    </LinearLayout>
+</LinearLayout>
+
+
+

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SearchResultsFragment extends Fragment {
+public class SearchFragment extends Fragment {
 
     /** VIEWS */
     LinearLayout tutorResultView, couseResultView; // These views will be hidden if its result is empty
@@ -26,15 +26,15 @@ public class SearchResultsFragment extends Fragment {
     private ArrayList tutorList = new ArrayList();
     private ArrayList courseList = new ArrayList();
 
-    public SearchResultsFragment() {
+    public SearchFragment() {
         // Required empty public constructor
     }
 
-    public static SearchResultsFragment newInstance() {
+    public static SearchFragment newInstance() {
         
         Bundle args = new Bundle();
         
-        SearchResultsFragment fragment = new SearchResultsFragment();
+        SearchFragment fragment = new SearchFragment();
         fragment.setArguments(args);
         return fragment;
     }

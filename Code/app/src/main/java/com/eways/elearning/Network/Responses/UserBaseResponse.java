@@ -1,4 +1,4 @@
-package com.eways.elearning.Network;
+package com.eways.elearning.Network.Responses;
 
 /**
  * Created by ADMIN on 3/18/2018.

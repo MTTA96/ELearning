@@ -1,19 +1,22 @@
-package com.eways.elearning.Network;
+package com.eways.elearning.Network.Responses;
 
+/**
+ * Created by ADMIN on 5/20/2018.
+ */
+
+
+import java.util.ArrayList;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by zzzzz on 5/6/2018.
- */
+public class ListResponse {
 
-public class BaseResponse {
     @SerializedName("errorCode")
     @Expose
     private Integer errorCode;
-    @SerializedName("status")
+    @SerializedName("results")
     @Expose
-    private String status;
+    private ArrayList results = null;
 
     public Integer getErrorCode() {
         return errorCode;
@@ -23,11 +26,12 @@ public class BaseResponse {
         this.errorCode = errorCode;
     }
 
-    public String getStatus() {
-        return status;
+    public ArrayList getResults() {
+        return results;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setResults(ArrayList results) {
+        this.results = results;
     }
+
 }

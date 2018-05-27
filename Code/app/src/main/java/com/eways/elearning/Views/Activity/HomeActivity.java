@@ -15,22 +15,19 @@ import android.widget.RelativeLayout;
 
 import com.eways.elearning.Adapter.Search.SearchAdapter;
 import com.eways.elearning.Interfaces.DataCallBack;
-import com.eways.elearning.Model.Course;
 import com.eways.elearning.Presenter.HomePresenter;
 import com.eways.elearning.R;
 
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKey;
-import com.eways.elearning.Utils.params.GlobalParams;
 import com.eways.elearning.Views.Fragment.HomeFragment;
-import com.eways.elearning.Views.Fragment.SearchResultsFragment;
-import com.google.gson.JsonObject;
+import com.eways.elearning.Views.Fragment.SearchFragment;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, DataCallBack {
 
-    /* VIEWS */
+    /** VIEWS */
     Toolbar toolbar;
     RelativeLayout content;
     RecyclerView listSearch;
@@ -39,39 +36,45 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private HomePresenter homePresenter;
     private FragmentHandler fragmentHandler;
     private SearchAdapter searchAdapter;
-    private ArrayList<Course> listCourse;
+    private ArrayList suggestionsList;
+
+    // Identify current search type
+    public static int currentSearchType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        declare_views();
-        Handle();
+        declareViews();
+        handle();
 
         homePresenter = new HomePresenter(this);
     }
 
-    public void Handle(){
+    public void declareViews(){
+        toolbar = findViewById(R.id.toolbar);
+        content = findViewById(R.id.content);
+        listSearch = findViewById(R.id.list_search);
+
+    }
+
+    public void handle(){
         fragmentHandler = new FragmentHandler(this, R.id.home_content_view);
         setUpToolBar();
-        listCourse = new ArrayList<>();
-        searchAdapter = new SearchAdapter(listCourse, R.layout.item_search);
+        suggestionsList = new ArrayList<>();
+        searchAdapter = new SearchAdapter(suggestionsList, R.layout.item_search);
         listSearch.setLayoutManager(new LinearLayoutManager(getParent(), LinearLayoutManager.VERTICAL, false));
         listSearch.hasFixedSize();
         listSearch.setAdapter(searchAdapter);
 
         // Move to home
         fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKey.HOME_FRAGMENT_TAG, 0, 0);
+        currentSearchType = SupportKey.SEARCH_SUBJECTS;
 
     }
 
-    public void declare_views(){
-        toolbar = findViewById(R.id.toolbar);
-        content = findViewById(R.id.content);
-        listSearch = findViewById(R.id.list_search);
-
-    }
+    /** EVENTS */
 
     @Override
     public void onClick(View view) {
@@ -96,10 +99,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public boolean onQueryTextChange(String newText) {
                 if (newText.compareTo("")==0){
-                    listCourse.clear();
+                    suggestionsList.clear();
                     searchAdapter.notifyDataSetChanged();
                 }
-                homePresenter.searchCorese(newText, "");
+                homePresenter.searchSuggestions(newText);
                 return true;
             }
         });
@@ -111,7 +114,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_search) {
-            fragmentHandler.changeFragment(SearchResultsFragment.newInstance(), SupportKey.SEARCH_RESULTS_TAG, 0, 0);
+            fragmentHandler.changeFragment(SearchFragment.newInstance(), SupportKey.SEARCH_RESULTS_TAG, 0, 0);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -122,64 +125,20 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
-    public void setResultSearch(String tutorName, String subjectName, int courseType){
-        final ArrayList<Course> courses = new ArrayList<>();
-//        String condition = "{\"TutorName\":\"" + tutorName + "\",\"SubjectName\":\"" + subjectName + "\",\"CourseType\":\""+ courseType +"\"}";
-//        apiHandler.getCourseSearch(condition).enqueue(new Callback<String>() {
-//            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-//            @Override
-//            public void onResponse(Call<String> call, Response<String> response) {
-//                if (response.isSuccessful()){
-//                    try {
-//                        JSONObject jsonObject = new JSONObject(response.body());
-//                        if(jsonObject.get("errorCode").toString().compareTo("200") == 0){
-//                            JSONArray jsonArray = new JSONArray(jsonObject.get("listC"));
-//
-//                            for (int i = 0; i < jsonArray.length(); i++){
-//                                courses.add(GlobalParams.getInstance().getGSon().fromJson(jsonArray.get(i).toString(), Course.class));
-//                            }
-//
-//                            ArrayList<Course> temp = courses;
-//                        }
-//
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<String> call, Throwable t) {
-//
-//            }
-//        });
-
-    }
-
     /** Handle result from server */
     @Override
     public void dataCallBack(int result, @Nullable Bundle bundle) {
-        // Handle errors
+        // handle errors
         if (result == SupportKey.FAILED_CODE) {
-            Log.d("Search results:", "failed!");
+            Log.d("SearchSuggestionsAct:", "search failed!");
             return;
         }
 
         // Get data success
         ArrayList resultsList = (ArrayList) bundle.getSerializable(null);
 
-        if (resultsList.size() > 0) {
-            listCourse.clear();
-            for (int i = 0; i < resultsList.size(); i++) {
-
-                JsonObject jsonObject = GlobalParams.getInstance().getGSon().toJsonTree(resultsList.get(i)).getAsJsonObject();
-                listCourse.add(GlobalParams.getInstance().getGSon().fromJson(jsonObject.toString(), Course.class));
-
-            }
-            searchAdapter.notifyDataSetChanged();
-
-        }
-
+        suggestionsList = resultsList;
+        searchAdapter.notifyDataSetChanged();
     }
 }
 

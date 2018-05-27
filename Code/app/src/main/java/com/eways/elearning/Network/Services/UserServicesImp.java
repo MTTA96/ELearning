@@ -1,6 +1,7 @@
-package com.eways.elearning.Network;
+package com.eways.elearning.Network.Services;
 
-import com.eways.elearning.Utils.ServerUrl;
+import com.eways.elearning.Network.Responses.BaseResponse;
+import com.eways.elearning.Network.ServerUrl;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -17,7 +18,7 @@ public interface UserServicesImp {
     @POST(ServerUrl.LOGIN_URL)
     @FormUrlEncoded
     Call<BaseResponse> signIn(@Field("Phone") String userId,
-                                  @Field("Password") String password);
+                              @Field("Password") String password);
 
     /** Sign up */
     @POST(ServerUrl.SIGN_UP_URL)

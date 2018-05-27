@@ -13,23 +13,23 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".Utils.params.GlobalParams"
+        android:name="com.eways.elearning.Utils.params.GlobalParams"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Views.Activity.SplashActivity">
+        <activity android:name="com.eways.elearning.Views.Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.Activity.HomeActivity"/>
-        <activity android:name=".Views.Activity.MainActivity"/>
-        <activity android:name=".Views.Activity.WelcomeActivity"></activity>
+        <activity android:name="com.eways.elearning.Views.Activity.HomeActivity"/>
+        <activity android:name="com.eways.elearning.Views.Activity.MainActivity"/>
+        <activity android:name="com.eways.elearning.Views.Activity.WelcomeActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    
+    <RelativeLayout
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="17sp"
+            android:textColor="@color/colorBlack"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/tv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xem thêm"
+            android:textSize="17sp"
+            android:textColor="@color/colorBlue"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divide"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/title_bar"
+        android:background="@color/colorGrey"
+        android:layout_marginBottom="5dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rc_item_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divide"/>
+
+
+    
+
+</RelativeLayout>

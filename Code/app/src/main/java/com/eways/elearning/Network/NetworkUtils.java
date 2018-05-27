@@ -1,4 +1,4 @@
-package com.eways.elearning.Utils;
+package com.eways.elearning.Network;
 
 import android.content.Context;
 import android.graphics.Bitmap;

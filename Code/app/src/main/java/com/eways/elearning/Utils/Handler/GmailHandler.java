@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.eways.elearning.Views.Fragment.Authentication.LoginFragment;
-import com.eways.elearning.Network.UserBaseResponse;
+import com.eways.elearning.Network.Responses.UserBaseResponse;
 import com.eways.elearning.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

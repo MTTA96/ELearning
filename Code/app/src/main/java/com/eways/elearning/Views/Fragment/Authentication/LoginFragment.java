@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eways.elearning.Interfaces.DataCallBack;
-import com.eways.elearning.Presenter.SignInPresenter;
+import com.eways.elearning.Presenter.Authentication.SignInPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKey;
@@ -78,7 +78,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
         btnLogin = root.findViewById(R.id.sign_in_button);
     }
 
-    /** Handle views */
+    /** handle views */
     public void handle() {
         btnLogin.setOnClickListener(this);
         tvSignup.setOnClickListener(this);
@@ -112,10 +112,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
         }
     }
 
-    /** Handle result from presenter */
+    /** handle result from presenter */
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
-        // Handle error
+        // handle error
         if (resultCode == SupportKey.FAILED_CODE) {
             Toast.makeText(getContext(), R.string.msg_sign_in_failed, Toast.LENGTH_SHORT).show();
             return;
@@ -148,7 +148,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
         }
     }
 
-    /** Handle result from Gmail */
+    /** handle result from Gmail */
     @Override
     public void onStart() {
         super.onStart();

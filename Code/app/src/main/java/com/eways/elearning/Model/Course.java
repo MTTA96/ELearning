@@ -4,22 +4,8 @@ package com.eways.elearning.Model;
  * Created by ADMIN on 5/20/2018.
  */
 
-import android.os.Bundle;
-import android.util.Log;
-
-import com.eways.elearning.Interfaces.DataCallBack;
-import com.eways.elearning.Network.ListResponse;
-import com.eways.elearning.Utils.Api.ApiUtils;
-import com.eways.elearning.Utils.Api.CourseServicesImp;
-import com.eways.elearning.Utils.SupportKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.io.Serializable;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Course {
 
@@ -220,36 +206,5 @@ public class Course {
 
     public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
-    }
-
-    /** METHODS */
-    /** Search course */
-    public static void searchCourses(String keyWord, String filters, final DataCallBack dataCallBack) {
-        CourseServicesImp courseServicesImp = ApiUtils.courseServices();
-        String condition = "{\"TutorName\":\"" + keyWord + "\",\"SubjectName\":\"" + keyWord + "\",\"CourseType\":\""+ 0 +"\"}";
-        courseServicesImp.getCourseSearch(condition).enqueue(new Callback<ListResponse>() {
-            @Override
-            public void onResponse(Call<ListResponse> call, Response<ListResponse> response) {
-                Log.d("searchCourses:", call.request().toString());
-                // Handle errors
-                if (!response.isSuccessful()) {
-                    Log.d("searchCourse:", " Connect Failed");
-                    dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
-                    return;
-                }
-
-                // Get data success
-                // Prepare data
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(null, (Serializable) response.body().getListC());
-                dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, bundle);
-            }
-
-            @Override
-            public void onFailure(Call<ListResponse> call, Throwable t) {
-                Log.d("searchCourse:", "Search failed");
-                dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
-            }
-        });
     }
 }

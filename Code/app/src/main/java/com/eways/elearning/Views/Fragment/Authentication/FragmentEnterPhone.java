@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 
 import com.eways.elearning.Interfaces.DataCallBack;
-import com.eways.elearning.Presenter.EnterPhonePresenter;
+import com.eways.elearning.Presenter.Authentication.EnterPhonePresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 //import com.eways.etutor.Utils.Handler.SharedPreferencesHandler;
@@ -65,7 +65,7 @@ public class FragmentEnterPhone extends Fragment implements View.OnClickListener
 
     /** Check phone's status */
     private void checkPhone(String phoneNumber) {
-        // Handle errors
+        // handle errors
         if (phoneNumber.isEmpty() || phoneNumber.length() < 9 || phoneNumber.length() > 10) {
             Toast.makeText(getContext(), getString(R.string.msg_wrong_info), Toast.LENGTH_SHORT).show();
             return;
@@ -94,16 +94,16 @@ public class FragmentEnterPhone extends Fragment implements View.OnClickListener
     }
 
 
-    /** Handle result from presenter */
+    /** handle result from presenter */
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
-        // Handle error
+        // handle error
         if (resultCode == SupportKey.FAILED_CODE) {
             Toast.makeText(getContext(), R.string.msg_unknow_error, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Handle result
+        // handle result
         int status = bundle.getInt(null);
 
         // If phone is not available

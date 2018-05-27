@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ETutor</string>
+    <string name="app_name">ELearning</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Messages -->
@@ -40,7 +40,7 @@
     <string name="title_welcome"><b>Xin Chào</b></string>
 
     <!-- Login -->
-    <string name="title_login">ELearing</string>
+    <string name="title_login">ELearning</string>
     <string name="skip">Bỏ qua</string>
     <string name="phone">Số điện thoại</string>
 

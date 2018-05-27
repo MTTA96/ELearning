@@ -1,4 +1,4 @@
-package com.eways.elearning.Presenter;
+package com.eways.elearning.Presenter.Authentication;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,41 +6,33 @@ import android.support.annotation.Nullable;
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Model.User;
 import com.eways.elearning.Utils.SupportKey;
-import com.google.gson.Gson;
 
 /**
- * Created by zzzzz on 5/13/2018.
+ * Created by zzzzz on 5/20/2018.
  */
 
-public class SignUpInfoPresenter implements DataCallBack {
+public class EnterPhonePresenter implements DataCallBack {
     private DataCallBack dataCallBack;
 
-    public SignUpInfoPresenter(DataCallBack dataCallBack) {
+    public EnterPhonePresenter(DataCallBack dataCallBack) {
         this.dataCallBack = dataCallBack;
     }
 
-    /** Sign up */
-    public void signUp(User user) {
-        Gson gson = new Gson();
-
-        // Parse obj to json
-        String jsonData = gson.toJson(user);
-
-        // Send to server
-        User.signUp(jsonData, this);
+    /** Check phone's status on server */
+    public void checkPhoneStatus(String phoneNumber) {
+        User.checkPhoneNumber(phoneNumber, this);
     }
 
-    /** handle results from database */
+    /** Handle results from database */
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
-        // handle error
+        // Handle error
         if (resultCode == SupportKey.FAILED_CODE) {
             dataCallBack.dataCallBack(resultCode, null);
             return;
         }
 
-        // handle data
+        // Handle data
         dataCallBack.dataCallBack(resultCode, bundle);
     }
-
 }

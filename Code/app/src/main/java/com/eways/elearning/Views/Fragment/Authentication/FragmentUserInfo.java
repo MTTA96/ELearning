@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Model.User;
-import com.eways.elearning.Presenter.SignUpInfoPresenter;
+import com.eways.elearning.Presenter.Authentication.SignUpInfoPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKey;
@@ -219,7 +219,7 @@ public class FragmentUserInfo extends Fragment implements View.OnClickListener, 
     }
 
     /**
-     * Handle results from presenter
+     * handle results from presenter
      * */
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {

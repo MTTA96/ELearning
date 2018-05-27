@@ -23,4 +23,8 @@ public class SupportKey {
     public static final String HOME_FRAGMENT_TAG = "HomeFragmentTag";
     public static final String SEARCH_RESULTS_TAG = "SearchResultsTag";
     public static final String UPDATE_DETAILs_FRAGMENT_TAG = "UpdateDetailsFragmentTag";
+
+    /** KEYS */
+    public static final int SEARCH_SUBJECTS = 0;
+    public static final int SEARCH_STUDENTS = 1;
 }

@@ -1,22 +1,20 @@
 package com.eways.elearning.Network.Responses;
 
-/**
- * Created by ADMIN on 5/20/2018.
- */
-
-
-import java.util.ArrayList;
+import com.eways.elearning.Model.SearchResults;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ListResponse {
+/**
+ * Created by zzzzz on 5/27/2018.
+ */
 
+public class SearchBaseResponse {
     @SerializedName("errorCode")
     @Expose
     private Integer errorCode;
     @SerializedName("results")
     @Expose
-    private ArrayList results = null;
+    private SearchResults results;
 
     public Integer getErrorCode() {
         return errorCode;
@@ -26,12 +24,11 @@ public class ListResponse {
         this.errorCode = errorCode;
     }
 
-    public ArrayList getResults() {
+    public SearchResults getResults() {
         return results;
     }
 
-    public void setResults(ArrayList results) {
+    public void setResults(SearchResults results) {
         this.results = results;
     }
-
 }

@@ -15,6 +15,9 @@ import android.widget.RelativeLayout;
 
 import com.eways.elearning.Adapter.Search.SearchAdapter;
 import com.eways.elearning.Interfaces.DataCallBack;
+import com.eways.elearning.Model.Course;
+import com.eways.elearning.Model.SearchResults;
+import com.eways.elearning.Model.SearchSuggestions;
 import com.eways.elearning.Presenter.HomePresenter;
 import com.eways.elearning.R;
 
@@ -30,13 +33,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     /** VIEWS */
     Toolbar toolbar;
     RelativeLayout content;
-    RecyclerView listSearch;
+    RecyclerView rvSuggestionsList;
 
     /** MODELS */
     private HomePresenter homePresenter;
     private FragmentHandler fragmentHandler;
     private SearchAdapter searchAdapter;
-    private ArrayList suggestionsList;
+    private ArrayList<SearchSuggestions> suggestionsList = new ArrayList<>();
 
     // Identify current search type
     public static int currentSearchType;
@@ -55,23 +58,30 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void declareViews(){
         toolbar = findViewById(R.id.toolbar);
         content = findViewById(R.id.content);
-        listSearch = findViewById(R.id.list_search);
+        rvSuggestionsList = findViewById(R.id.list_search);
 
     }
 
     public void handle(){
         fragmentHandler = new FragmentHandler(this, R.id.home_content_view);
         setUpToolBar();
-        suggestionsList = new ArrayList<>();
-        searchAdapter = new SearchAdapter(suggestionsList, R.layout.item_search);
-        listSearch.setLayoutManager(new LinearLayoutManager(getParent(), LinearLayoutManager.VERTICAL, false));
-        listSearch.hasFixedSize();
-        listSearch.setAdapter(searchAdapter);
+        searchAdapter = new SearchAdapter(suggestionsList, fragmentHandler, R.layout.item_search);
+
+        // Configure suggestions view
+        rvSuggestionsList.setLayoutManager(new LinearLayoutManager(getParent(), LinearLayoutManager.VERTICAL, false));
+        rvSuggestionsList.hasFixedSize();
+        rvSuggestionsList.setAdapter(searchAdapter);
 
         // Move to home
         fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKey.HOME_FRAGMENT_TAG, 0, 0);
         currentSearchType = SupportKey.SEARCH_SUBJECTS;
 
+    }
+
+    public void setUpToolBar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     /** EVENTS */
@@ -93,6 +103,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                fragmentHandler.changeFragment(SearchFragment.newInstance(query), SupportKey.SEARCH_RESULTS_TAG, 0, 0);
                 return false;
             }
 
@@ -101,8 +112,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 if (newText.compareTo("")==0){
                     suggestionsList.clear();
                     searchAdapter.notifyDataSetChanged();
-                }
-                homePresenter.searchSuggestions(newText);
+                } else
+                    homePresenter.searchSuggestions(newText);
                 return true;
             }
         });
@@ -113,32 +124,27 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     /** Handle options menu item selected */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_search) {
-            fragmentHandler.changeFragment(SearchFragment.newInstance(), SupportKey.SEARCH_RESULTS_TAG, 0, 0);
-        }
+//        if (item.getItemId() == R.id.action_search) {
+//            fragmentHandler.changeFragment(SearchFragment.newInstance(), SupportKey.SEARCH_RESULTS_TAG, 0, 0);
+//        }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void setUpToolBar(){
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     /** Handle result from server */
     @Override
     public void dataCallBack(int result, @Nullable Bundle bundle) {
-        // handle errors
+        // Handle errors
         if (result == SupportKey.FAILED_CODE) {
-            Log.d("SearchSuggestionsAct:", "search failed!");
+            Log.d(getClass().getName(), "Search failed!");
             return;
         }
 
         // Get data success
-        ArrayList resultsList = (ArrayList) bundle.getSerializable(null);
+        ArrayList resultsList = (ArrayList<SearchResults>) bundle.getSerializable(null);
 
-        suggestionsList = resultsList;
+        suggestionsList.addAll(resultsList);
         searchAdapter.notifyDataSetChanged();
+
     }
 }
 

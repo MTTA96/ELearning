@@ -10,13 +10,13 @@
         android:orientation="horizontal"
         android:layout_marginBottom="4dp"
         android:background="@drawable/course_shape"
-        android:elevation="5dp"
         android:weightSum="100">
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="18">
+            android:layout_weight="18"
+            android:visibility="invisible">
             <ImageView
                 android:id="@+id/img_avarta"
                 android:layout_width="50dp"
@@ -34,10 +34,10 @@
             <TextView
                 android:id="@+id/student_name"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="50"
+                android:layout_height="match_parent"
                 android:textSize="18sp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:textColor="@color/colorBlue"
                 android:textStyle="bold"
                 android:text="Student Name"/>
@@ -45,8 +45,7 @@
             <TextView
                 android:id="@+id/subject"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="50"
+                android:layout_height="match_parent"
                 android:textSize="15sp"
                 android:gravity="center"
                 android:textColor="@color/colorBlue"

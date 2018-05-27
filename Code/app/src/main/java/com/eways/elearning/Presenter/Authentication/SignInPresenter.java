@@ -1,10 +1,12 @@
 package com.eways.elearning.Presenter.Authentication;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Model.User;
+import com.eways.elearning.R;
 import com.eways.elearning.Utils.SupportKey;
 
 /**
@@ -12,9 +14,11 @@ import com.eways.elearning.Utils.SupportKey;
  */
 
 public class SignInPresenter implements DataCallBack {
+    private Context context;
     private DataCallBack dataCallBack;
 
-    public SignInPresenter(DataCallBack dataCallBack) {
+    public SignInPresenter(Context context, DataCallBack dataCallBack) {
+        this.context = context;
         this.dataCallBack = dataCallBack;
     }
 
@@ -34,6 +38,33 @@ public class SignInPresenter implements DataCallBack {
         }
 
         // Get data success
+        int status = Integer.parseInt(bundle.getString(null));
+        String msg = "";
+        switch (status) {
+            // Sign in success
+            case 0:
+                dataCallBack.dataCallBack(resultCode, bundle);
+                break;
+
+            // User existed in ETutor
+            case 1:
+                msg = context.getString(R.string.msg_account_has_not_signed_up);
+                break;
+
+            // Wrong info
+            case 2:
+                msg = context.getString(R.string.msg_wrong_info);
+                break;
+
+            // Banned account
+            case 3:
+                msg = context.getString(R.string.msg_banned_account);
+                break;
+        }
+
+        bundle.putString(SupportKey.BUNDLE_MSG, msg);
+
+        // Send result to view
         dataCallBack.dataCallBack(resultCode, bundle);
     }
 }

@@ -18,7 +18,7 @@ public class ServerUrl {
     public static final String CHECK_PHONE_NUMBER_URL = UserAPIRoot + "UserIsExisted.php";
 
     /** Search */
-    public static final String SEARCH_URL = ServerAPIURL + "Course/SearchCoursesResult.php";
-    public static final String SEARCH_SUGGESTIONS_URL = ServerAPIURL + "Course/SearchCourses.php";
+    public static final String SEARCH_URL = ServerAPIURL + "Course/SearchResults.php";
+    public static final String SEARCH_TUTOR_SUGGESTIONS_URL = ServerAPIURL + "Course/SearchSuggestion.php";
 
 }

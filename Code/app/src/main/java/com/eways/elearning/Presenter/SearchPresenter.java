@@ -1,12 +1,15 @@
 package com.eways.elearning.Presenter;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Model.SearchResults;
 import com.eways.elearning.Utils.SupportKey;
 import com.eways.elearning.Views.Activity.HomeActivity;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -16,15 +19,16 @@ import java.util.ArrayList;
  */
 
 public class SearchPresenter implements DataCallBack {
-
+    private Context context;
     private DataCallBack dataCallBack;
 
-    public SearchPresenter(DataCallBack dataCallBack) {
+    public SearchPresenter(Context context, DataCallBack dataCallBack) {
+        this.context = context;
         this.dataCallBack = dataCallBack;
     }
 
     /** Get search results */
-    public void search(String keyword, String filter) {
+    public void search(String keyword) {
 
         // Check current type for searching
         switch (HomeActivity.currentSearchType) {
@@ -38,10 +42,14 @@ public class SearchPresenter implements DataCallBack {
 
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
-        ArrayList resultsList = (ArrayList) bundle.getSerializable(null);
-
-        if (resultsList.size() > 0) {
-
+        // Handle error
+        if (resultCode == SupportKey.FAILED_CODE) {
+            Log.d("Search presenter", "Search failed!");
+            dataCallBack.dataCallBack(resultCode, null);
+            return;
         }
+
+        // Get data success
+        dataCallBack.dataCallBack(resultCode, bundle);
     }
 }

@@ -2,6 +2,7 @@ package com.eways.elearning.Presenter;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Model.Course;
@@ -37,27 +38,17 @@ public class HomePresenter implements DataCallBack {
         }
     }
 
-    /** handle data from server */
+    /** Handle data from server */
     @Override
-    public void dataCallBack(int result, @Nullable Bundle bundle) {
+    public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
         // handle errors
-        if (result == SupportKey.FAILED_CODE) {
-            dataCallBack.dataCallBack(result, null);
+        if (resultCode == SupportKey.FAILED_CODE) {
+            Log.d(getClass().getSimpleName(), "Search error!");
+            dataCallBack.dataCallBack(resultCode, null);
             return;
         }
 
         // Get data success
-        ArrayList tempList = (ArrayList) bundle.getSerializable(null);
-        ArrayList results = new ArrayList();
-
-        for (int i = 0; i < tempList.size(); i++) {
-
-            JsonObject jsonObject = GlobalParams.getInstance().getGSon().toJsonTree(tempList.get(i)).getAsJsonObject();
-            results.add(GlobalParams.getInstance().getGSon().fromJson(jsonObject.toString(), Course.class));
-
-        }
-        bundle.clear();
-        bundle.putSerializable(null, result);
-        dataCallBack.dataCallBack(result, bundle);
+        dataCallBack.dataCallBack(resultCode, bundle);
     }
 }

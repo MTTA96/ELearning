@@ -54,7 +54,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        signInPresenter = new SignInPresenter(this);
+        signInPresenter = new SignInPresenter(getContext(), this);
         fragmentHandler = new FragmentHandler(getActivity(), R.id.content_user);
     }
 
@@ -112,43 +112,30 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
         }
     }
 
-    /** handle result from presenter */
+    /** Handle result from presenter */
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
-        // handle error
+        // Handle error
         if (resultCode == SupportKey.FAILED_CODE) {
             Toast.makeText(getContext(), R.string.msg_sign_in_failed, Toast.LENGTH_SHORT).show();
             return;
         }
 
+        // Check sign in result
         int status = Integer.parseInt(bundle.getString(null));
-        switch (status) {
-            // Sign in success
-            case 0:
-                // Move to home
-                Intent homeIntent = new Intent(getActivity(), HomeActivity.class);
-                startActivity(homeIntent);
-                getActivity().finish();
-                break;
-
-            // User existed in elearning
-            case 1:
-                Toast.makeText(getContext(), R.string.msg_account_has_not_sign_up, Toast.LENGTH_SHORT).show();
-                break;
-
-            // Wrong info
-            case 2:
-                Toast.makeText(getContext(), R.string.msg_wrong_info, Toast.LENGTH_SHORT).show();
-                break;
-
-            // Banned account
-            case 3:
-                Toast.makeText(getContext(), R.string.msg_banned_account, Toast.LENGTH_SHORT).show();
-                break;
+        if (status == 0) {
+            // Move to home
+            Intent homeIntent = new Intent(getActivity(), HomeActivity.class);
+            startActivity(homeIntent);
+            getActivity().finish();
+            return;
         }
+
+        // Show msg result to user
+        Toast.makeText(getContext(), bundle.getString(SupportKey.BUNDLE_MSG), Toast.LENGTH_SHORT).show();
     }
 
-    /** handle result from Gmail */
+    /** Handle result from Gmail */
     @Override
     public void onStart() {
         super.onStart();

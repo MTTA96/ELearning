@@ -47,7 +47,7 @@ public class FragmentRules extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_fragment_rules, container, false);
+        View root = inflater.inflate(R.layout.fragment_rules, container, false);
         declare_views(root);
         handle_views();
         return root;

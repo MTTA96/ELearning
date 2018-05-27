@@ -1,6 +1,7 @@
 package com.eways.elearning.Network.Services;
 
-import com.eways.elearning.Network.Responses.ListResponse;
+import com.eways.elearning.Network.Responses.SearchBaseResponse;
+import com.eways.elearning.Network.Responses.SearchSuggestionsBaseResponse;
 import com.eways.elearning.Network.ServerUrl;
 
 import retrofit2.Call;
@@ -15,11 +16,9 @@ public interface ETutorServicesImp {
 
     /** Search */
     @GET(ServerUrl.SEARCH_URL)
-    Call<ListResponse> search(@Query("CourseType") String type,
-                              @Query("SubjectName") String subjectName);
+    Call<SearchBaseResponse> search(@Query("keyword") String keyWord);
 
     /** Search suggestions */
-    @GET(ServerUrl.SEARCH_SUGGESTIONS_URL)
-    Call<ListResponse> searchSuggestions(@Query("CourseType") String type,
-                              @Query("SubjectName") String subjectName);
+    @GET(ServerUrl.SEARCH_TUTOR_SUGGESTIONS_URL)
+    Call<SearchSuggestionsBaseResponse> searchSuggestions(@Query("keyword") String keyWord);
 }

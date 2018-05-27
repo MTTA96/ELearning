@@ -1,9 +1,17 @@
 package com.eways.elearning.Utils.Handler;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.widget.ImageView;
 
+import com.eways.elearning.R;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
+
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
+import jp.wasabeef.picasso.transformations.CropSquareTransformation;
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 
 /**
@@ -11,13 +19,40 @@ import com.squareup.picasso.Picasso;
  */
 
 public class ImageHandler {
-    Context context;
+    private Context context;
+    private Transformation transformationRound = new RoundedCornersTransformation(5, 0);
+    private Transformation transformationSquared = new CropSquareTransformation();
 
-    public ImageHandler(Context context) {
+    public ImageHandler(Context context){
         this.context = context;
     }
 
-    public void LoadImage(ImageView imageView, int res) {
-        Picasso.with(context).load(res).into(imageView);
+    @TargetApi(16)
+    public void loadImageRound(String url, ImageView imageView){
+        if (Build.VERSION.SDK_INT > 15)
+            imageView.setBackground(null);
+
+        if (url != null) {
+            if (url.compareTo("null") != 0)
+                Picasso.with(context).load(url).transform(transformationRound).transform(new CropCircleTransformation()).into(imageView);
+            else
+                imageView.setBackgroundResource(R.drawable.default_avatar);
+        }
+        else
+            imageView.setBackgroundResource(R.drawable.default_avatar);
+    }
+
+    @TargetApi(16)
+    public void loadImageSquare(String url, ImageView imageView){
+        if (Build.VERSION.SDK_INT > 15)
+            imageView.setBackground(null);
+        if (url != null) {
+            if (url.compareTo("null") != 0)
+                Picasso.with(context).load(url).transform(transformationSquared).resize(180,180).centerCrop().into(imageView);
+            else
+                imageView.setBackgroundResource(R.drawable.default_avatar);
+        }
+        else
+            imageView.setBackgroundResource(R.drawable.default_avatar);
     }
 }

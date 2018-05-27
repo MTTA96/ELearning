@@ -54,7 +54,7 @@ public class FragmentEnterPhone extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_fragment_enter_phone, container, false);
+        View root = inflater.inflate(R.layout.fragment_enter_phone, container, false);
         tvPhoneNumber = root.findViewById(R.id.phone);
 
         // Events

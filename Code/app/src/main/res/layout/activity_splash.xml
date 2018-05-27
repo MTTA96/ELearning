@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:textSize="75sp"
         android:textColor="@color/colorWhite"
-        android:text="Etutor"
+        android:text="@string/app_name"
         android:textStyle="bold"/>
 
 </RelativeLayout>

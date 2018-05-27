@@ -10,7 +10,7 @@
     <string name="msg_existing_user">Số điện thoại đã tồn tại</string>
     <string name="msg_sign_in_success">Xin chào </string>
     <string name="msg_sign_in_failed">Đăng nhập thất bại</string>
-    <string name="msg_account_has_not_sign_up">Tài khoản chưa đăng ký</string>
+    <string name="msg_account_has_not_signed_up">Tài khoản chưa đăng ký</string>
     <string name="msg_banned_account">Tài khoản đã bị khóa</string>
     <string name="msg_loading">Loading…</string>
 

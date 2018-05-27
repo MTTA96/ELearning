@@ -212,7 +212,7 @@ public class FragmentUserInfo extends Fragment implements View.OnClickListener, 
             tempUser.setFirstName(name);
             tempUser.setPassword(password);
             tempUser.setPhone("+84" + FragmentEnterPhone.tvPhoneNumber.getText().toString());
-            tempUser.setAuthorization("1");
+            tempUser.setAuthorization(SupportKey.USER_AUTHORIZATION);
             return tempUser;
         }
         return null;

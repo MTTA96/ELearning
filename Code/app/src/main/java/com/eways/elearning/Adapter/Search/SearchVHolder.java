@@ -18,9 +18,10 @@ public class SearchVHolder extends RecyclerView.ViewHolder {
     public SearchVHolder(View itemView) {
         super(itemView);
 
-        avarta = itemView.findViewById(R.id.avarta);
-        nameStudent = itemView.findViewById(R.id.student_name);
+//        avarta = itemView.findViewById(R.id.avarta);
+//        nameStudent = itemView.findViewById(R.id.student_name);
         subject = itemView.findViewById(R.id.subject);
+
 
     }
 }

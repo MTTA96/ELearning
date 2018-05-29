@@ -19,6 +19,7 @@ import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKey;
 import com.eways.elearning.Views.Activity.HomeActivity;
+import com.eways.elearning.Views.Dialog.LoadingDialog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +31,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
     Button btnLogin;
     TextView  tvRules;
     View tvSignup;
+    LoadingDialog loadingDialog;
 
     /** MODELS */
     private FragmentHandler fragmentHandler;
@@ -97,6 +99,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
         switch (view.getId()) {
             // Sign in
             case R.id.sign_in_button:
+                loadingDialog = LoadingDialog.getInstance(getContext());
+                loadingDialog.show();
                 userName = edtPhone.getText().toString();
                 password = edtPass.getText().toString();
                 if (checkInfo())
@@ -131,6 +135,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
             return;
         }
 
+        loadingDialog.dismiss();
+        
         // Show msg result to user
         Toast.makeText(getContext(), bundle.getString(SupportKey.BUNDLE_MSG), Toast.LENGTH_SHORT).show();
     }

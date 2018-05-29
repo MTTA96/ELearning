@@ -65,12 +65,6 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
         // Name
         holder.tvName.setText(user.getFirstName() + " " + user.getLastName());
 
-        // Birthday
-        holder.tvBirthday.setText(holder.tvBirthday.getText().toString() + user.getBirthday());
-        if(user.getBirthday()!=null) {
-            String birthDay = "<b>Năm sinh: </b>" + " " + user.getBirthday();
-            holder.tvBirthday.setText(Html.fromHtml(birthDay));
-        }
         // Rating
 //        if(user.getRating() != null)
 //        {

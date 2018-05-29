@@ -1,17 +1,16 @@
-package com.eways.elearning.View.Dialog;
+package com.eways.elearning.Views.Dialog;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 
-import com.eways.elearning.Handler.FragmentHandler;
 import com.eways.elearning.R;
 
 /**
  * Created by zzzzz on 12/29/2017.
  */
 
-public class LoadingDialog extends ProgressDialog{
-    private static LoadingDialog loadingDialog;
+public class LoadingDialog extends ProgressDialog {
+    private static LoadingDialog loadingDialog = null;
 
     private LoadingDialog(Context context) {
         super(context);

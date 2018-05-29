@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.textservice.SuggestionsInfo;
 import android.widget.RelativeLayout;
 
 import com.eways.elearning.Adapter.Search.SearchSuggestionsAdapter;
@@ -132,8 +133,16 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
                 if (newText.compareTo("")==0){
                     suggestionsList.clear();
                     searchSuggestionsAdapter.notifyDataSetChanged();
-                } else
+                } else {
+                    // Show loading when inputting
+                    SearchSuggestions loadingSuggestions = new SearchSuggestions();
+                    loadingSuggestions.setSubjectName(getResources().getString(R.string.msg_loading));
+                    suggestionsList.add(loadingSuggestions);
+                    searchSuggestionsAdapter.notifyDataSetChanged();
+
+                    // Call api
                     homePresenter.searchSuggestions(newText);
+                }
                 return true;
             }
         });
@@ -162,6 +171,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         // Get data success
         ArrayList resultsList = (ArrayList<SearchResults>) bundle.getSerializable(null);
 
+        suggestionsList.clear();
         suggestionsList.addAll(resultsList);
         searchSuggestionsAdapter.notifyDataSetChanged();
 

@@ -47,7 +47,7 @@
                 android:layout_height="match_parent"
                 android:textSize="15sp"
                 android:gravity="center|left"
-                android:textColor="@color/colorBlue"
+                android:textColor="@color/colorGrey"
                 android:textStyle="bold"
                 android:text="Subject"/>
 

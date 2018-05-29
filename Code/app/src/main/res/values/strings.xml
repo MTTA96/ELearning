@@ -45,8 +45,8 @@
     <string name="phone">Số điện thoại</string>
 
     <!--Sign Up-->
-    <string name="hint_username">Họ và tên...</string>
-    <string name="hint_phone">Số điện thoại...</string>
+    <string name="hint_username">Họ và tên</string>
+    <string name="hint_phone">Số điện thoại</string>
     <string name="previous">Trở lại</string>
     <string name="next">Tiếp tục</string>
     <string name="finish">Hoàn tất</string>

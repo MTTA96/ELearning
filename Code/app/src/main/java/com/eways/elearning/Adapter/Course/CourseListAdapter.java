@@ -85,6 +85,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 //        }
 
         //Họ tên
+        holder.tvTen.setText("Mai Tran Tuan Anh");
 //        if(course.getHoTen()!=null) {
 //            String ten = "<b>Tên: </b>" + course.getHoTen();
 //            holder.tvTen.setText(Html.fromHtml(ten));
@@ -128,15 +129,15 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 
         //Học phí
         if(course.getTuition() != null) {
-            String hocPhi = "<b>Học phí: <b>" + formatter(Double.parseDouble(course.getTuition()), "VND");
-            holder.tvHocPhi.setText(Html.fromHtml(hocPhi));
+            holder.tvHocPhi.setText(Html.fromHtml(formatter(Double.parseDouble(course.getTuition()), "VND")));
         }
-        else
-        {
+        else {
             holder.tvHocPhi.setText(Html.fromHtml("Thỏa thuận"));
         }
 
     }
+
+    /** Convert string to currency */
     public static String formatter(double currency, String type) {
         NumberFormat format = NumberFormat.getCurrencyInstance();
         format.setCurrency(Currency.getInstance(type));

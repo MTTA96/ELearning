@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
 <!--<<<<<<< HEAD-->
-    <dimen name="default_text_size" >18sp</dimen>
+    <dimen name="default_text_size" >17sp</dimen>
     <dimen name="vcode_text_size" >18sp</dimen>
     <dimen name="vcode_bottom_icon_height">6dp</dimen>
     <dimen name="vcode_bottom_icon_width">48dp</dimen>
@@ -48,7 +48,7 @@
     <!--<dimen name="email_text_size">12sp</dimen>-->
 
     <!--Tutor list item-->
-    <dimen name="avatar_height_tutor_list_item">120dp</dimen>
+    <dimen name="height_tutor_list_item">120dp</dimen>
     <dimen name="horizontal_padding_user_info_list_item">7dp</dimen>
 
     <!--&lt;!&ndash; Home &ndash;&gt;-->
@@ -113,7 +113,7 @@
     <dimen name="TextSize_KhoaHoc">15sp</dimen>
     <dimen name="TextSizeCT_KhoaHoc">12sp</dimen>
     <dimen name="MarginLeft_BtnChat_KhoaHoc">105dp</dimen>
-    <dimen name="MarginTop_Tv_KhoaHoc">2dp</dimen>
+    <dimen name="MarginTop_Tv_KhoaHoc">4dp</dimen>
     <dimen name="MarginLeft_Tv_KhoaHoc">5dp</dimen>
     <!--<dimen name="MarginBottom_Rtb">12dp</dimen>-->
     <!--<dimen name="MarginLeft_Rtb">17dp</dimen>-->
@@ -170,8 +170,8 @@
     <dimen name="layoutOption_width">330dp</dimen>
     <dimen name="ItemQLTK_paddingLeft">15dp</dimen>
     <dimen name="username_action_bar_margin_top">10dp</dimen>
-    <dimen name="normal_text_size">17sp</dimen>
+    <dimen name="normal_text_size">15sp</dimen>
     <dimen name="text_thong_tin_them_height">120dp</dimen>
     <dimen name="text_padding_left">10dp</dimen>
-    <dimen name="title_text_size">20sp</dimen>
+    <dimen name="title_text_size">17sp</dimen>
 </resources>

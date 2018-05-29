@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_item_user_list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="5dp"
@@ -8,16 +9,15 @@
     android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
     android:orientation="horizontal">
 
-    <!--User info-->
+    <!--User avatar-->
     <LinearLayout
-        android:id="@+id/view_UserInfo_DanhSachKhoaHoc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/MarginBottom_itemKhoaHoc"
         android:layout_marginLeft="@dimen/MarginLeft_itemKhoaHoc_BlockImg"
         android:layout_marginRight="@dimen/MarginRight_itemKhoaHoc_BlockImg"
         android:layout_marginTop="@dimen/MarginTop_itemKhoaHoc"
-        android:layout_weight="1.5"
+        android:layout_weight="1.7"
         android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
         android:orientation="vertical"
         android:paddingLeft="5dp"
@@ -25,30 +25,17 @@
         android:paddingTop="5dp">
 
         <ImageView
-            android:id="@+id/img_KhoaHoc"
+            android:id="@+id/avatar_item_user_list"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/Height_KhoaHoc"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop" />
-
-        <RatingBar
-            android:id="@+id/rtb_KhoaHoc"
-            style="@style/ratingbarCustom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="9dp"
-            android:layout_marginTop="5dp"
-            android:isIndicator="true"
-            android:numStars="5"
-            android:stepSize="0.5" />
 
     </LinearLayout>
 
-    <!--Course info-->
+    <!--User info-->
     <LinearLayout
-        android:id="@+id/loChiTietKhoaHoc_ListKhoaHoc"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/Height_BlockInfo_KhoaHoc"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/MarginBottom_itemKhoaHoc"
         android:layout_marginLeft="@dimen/MarginLeft_itemKhoaHoc_BlockInfo"
         android:layout_marginRight="@dimen/MarginRight_itemKhoaHoc_BlockInfo"
@@ -57,30 +44,28 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/view_CourseInfo_DanhSachKhoaHoc"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/Height_KhoaHoc"
+            android:layout_height="match_parent"
             android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="@dimen/horizontal_padding_user_info_list_item">
 
-            <!--Course's name-->
+            <!--User name-->
             <TextView
-                android:id="@+id/tvTen_KhoaHoc"
+                android:id="@+id/user_name_item_user_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
                 android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
                 android:text="@string/Xem_Ten"
-                android:textSize="@dimen/TextSize_KhoaHoc"
+                android:textStyle="bold"
+                android:textSize="@dimen/normal_text_size"
                 android:textColor="@color/colorMain"/>
 
             <!--Subject's name-->
             <TextView
-                android:id="@+id/tvMon_KhoaHoc"
+                android:id="@+id/subject_item_user_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
                 android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
                 android:text="@string/Xem_Mon"
                 android:textSize="@dimen/TextSize_KhoaHoc"
@@ -88,43 +73,25 @@
 
             <!--Period-->
             <TextView
-                android:id="@+id/tvBuoi_KhoaHoc"
+                android:id="@+id/birthday_item_user_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
                 android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
-                android:text="@string/Xem_Buoi"
+                android:text="@string/nam_sinh_cap_nhat_thong_tin_ca_nhan"
                 android:textSize="@dimen/TextSize_KhoaHoc"
                 android:textColor="@color/colorMain" />
 
-            <TextView
-                android:id="@+id/tvChiTiet_KhoaHoc"
-                android:layout_width="match_parent"
+            <!--Rating-->
+            <RatingBar
+                android:id="@+id/rtb_item_user_list"
+                style="@style/ratingbarCustom"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
                 android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
-                android:text="@string/Xem_ChiTiet"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/TextSizeCT_KhoaHoc" />
-
-            <!--Tuition-->
-            <TextView
-                android:id="@+id/tvGia_KhoaHoc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
-                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
-                android:text="@string/Xem_Gia"
-                android:textSize="@dimen/TextSize_KhoaHoc"
-                android:textColor="@color/colorMain"/>
-
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.5" />
         </LinearLayout>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/MarginLeft_BtnChat_KhoaHoc"
-            android:visibility="invisible"/>
 
     </LinearLayout>
 

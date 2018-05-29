@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 import com.eways.elearning.Interfaces.OnItemClickListener;
 import com.eways.elearning.Model.SearchSuggestions;
 import com.eways.elearning.R;
-import com.eways.elearning.Utils.Handler.FragmentHandler;
-import com.eways.elearning.Utils.SupportKey;
-import com.eways.elearning.Views.Fragment.SearchFragment;
 
 import java.util.ArrayList;
 
@@ -33,7 +30,7 @@ public class SearchSuggestionsAdapter extends RecyclerView.Adapter<SearchVHolder
     @Override
     public SearchVHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_search,parent,false);
+                .inflate(R.layout.item_search_suggestions,parent,false);
         return new SearchVHolder(view);
     }
 

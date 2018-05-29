@@ -37,7 +37,7 @@
     <dimen name="user_avatar_size">110dp</dimen>
     <!--<dimen name="username_action_bar_margin_top">10dp</dimen>-->
 
-    <!--&lt;!&ndash; Slide menu &ndash;&gt;-->
+    <!-- Slide menu -->
     <!--<dimen name="nav_header_main_height">160dp</dimen>-->
     <!--<dimen name="nav_header_horizontal_padding">14dp</dimen>-->
     <!--<dimen name="avatar_menu_width">100dp</dimen>-->
@@ -46,6 +46,10 @@
     <!--<dimen name="info_header_menu_horizontal_padding">9dp</dimen>-->
     <!--<dimen name="name_size">16sp</dimen>-->
     <!--<dimen name="email_text_size">12sp</dimen>-->
+
+    <!--Tutor list item-->
+    <dimen name="avatar_height_tutor_list_item">120dp</dimen>
+    <dimen name="horizontal_padding_user_info_list_item">7dp</dimen>
 
     <!--&lt;!&ndash; Home &ndash;&gt;-->
     <!--<dimen name="avatar_main_size">135dp</dimen>-->

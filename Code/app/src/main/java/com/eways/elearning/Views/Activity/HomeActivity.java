@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
     Toolbar toolbar;
     RelativeLayout content;
     RecyclerView rvSuggestionsList;
+    SearchView mSearchView;
 
     /** MODELS */
     private HomePresenter homePresenter;
@@ -66,7 +67,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
     public void handle(){
         fragmentHandler = new FragmentHandler(this, R.id.home_content_view);
         setUpToolBar();
-        searchSuggestionsAdapter = new SearchSuggestionsAdapter(suggestionsList, this, R.layout.item_search);
+        searchSuggestionsAdapter = new SearchSuggestionsAdapter(suggestionsList, this, R.layout.item_search_suggestions);
 
         // Configure suggestions view
         rvSuggestionsList.setLayoutManager(new LinearLayoutManager(getParent(), LinearLayoutManager.VERTICAL, false));
@@ -85,19 +86,25 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
+    /**
+     * Hide suggestions when the query is submitted
+     * */
     private void updateSuggestionsViewState() {
         if (shouldSuggestionViewVisible)
-            rvSuggestionsList.setVisibility(View.GONE);
-        else
             rvSuggestionsList.setVisibility(View.VISIBLE);
+        else
+            rvSuggestionsList.setVisibility(View.GONE);
     }
+
     /** EVENTS */
 
     @Override
     public void onItemClick(Bundle bundle) {
+        String keyword = bundle.getString("keyword");
         shouldSuggestionViewVisible = false;
         updateSuggestionsViewState();
-        fragmentHandler.changeFragment(SearchFragment.newInstance(bundle.getString("keyword")), SupportKey.SEARCH_RESULTS_TAG, 0, 0);
+        mSearchView.setQuery(keyword, true);
+        fragmentHandler.changeFragment(SearchFragment.newInstance(keyword), null, 0, 0);
     }
 
     @Override
@@ -106,7 +113,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
 
         MenuItem mSearch = menu.findItem(R.id.action_search);
 
-        SearchView mSearchView = (SearchView) mSearch.getActionView();
+        mSearchView = (SearchView) mSearch.getActionView();
         mSearchView.setQueryHint("Search");
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -114,7 +121,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
             public boolean onQueryTextSubmit(String query) {
                 shouldSuggestionViewVisible = false;
                 updateSuggestionsViewState();
-                fragmentHandler.changeFragment(SearchFragment.newInstance(query), SupportKey.SEARCH_RESULTS_TAG, 0, 0);
+                fragmentHandler.changeFragment(SearchFragment.newInstance(query), null, 0, 0);
                 return false;
             }
 

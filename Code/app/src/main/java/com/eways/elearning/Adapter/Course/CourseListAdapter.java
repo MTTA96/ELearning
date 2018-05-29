@@ -11,7 +11,9 @@ import com.eways.elearning.Model.Course;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 
 /**
  * Created by zzzzz on 5/27/2018.
@@ -105,7 +107,8 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 //        {
 //            holder.tvMon.setText(Html.fromHtml("Tùy ý"));
 //        }
-        holder.tvMon.setText(course.getSubjectName());
+        String mon = "<b>Môn: </b>" + " " + course.getSubjectName();
+        holder.tvMon.setText(Html.fromHtml(mon));
 
         //Buổi
 //        if(course.getLichHoc().getThoiGian()!=null) {
@@ -113,18 +116,19 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 //            for (String buoi : course.getLichHoc().getThoiGian()) {
 //                danhSachBuoi += buoi;
 //            }
-//            String buoi = "<b>Buổi: </b>" + " " + danhSachBuoi;
+//
 //            holder.tvBuoi.setText(Html.fromHtml(buoi));
 //        }
 //        else
 //        {
 //            holder.tvBuoi.setText(Html.fromHtml("Tùy ý"));
 //        }
-        holder.tvBuoi.setText(course.getSchedule());
+        String buoi = "<b>Buổi: </b>" + " " + course.getSchedule();
+        holder.tvBuoi.setText(Html.fromHtml(buoi));
 
         //Học phí
         if(course.getTuition() != null) {
-            String hocPhi = "<b>Học phí: <b>" + course.getTuition();
+            String hocPhi = "<b>Học phí: <b>" + formatter(Double.parseDouble(course.getTuition()), "VND");
             holder.tvHocPhi.setText(Html.fromHtml(hocPhi));
         }
         else
@@ -132,5 +136,11 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
             holder.tvHocPhi.setText(Html.fromHtml("Thỏa thuận"));
         }
 
+    }
+    public static String formatter(double currency, String type) {
+        NumberFormat format = NumberFormat.getCurrencyInstance();
+        format.setCurrency(Currency.getInstance(type));
+        format.setMinimumFractionDigits(0);
+        return format.format(currency);
     }
 }

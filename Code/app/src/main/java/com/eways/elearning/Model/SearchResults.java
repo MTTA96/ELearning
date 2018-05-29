@@ -68,7 +68,7 @@ public class SearchResults {
                 // Prepare data
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("param1", response.body().getResults().getListUser());
-                bundle.putSerializable("param2", response.body().getResults().getListUser());
+                bundle.putSerializable("param2", response.body().getResults().getListCourse());
                 dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, bundle);
             }
 

@@ -13,6 +13,7 @@ import com.eways.elearning.Utils.Handler.FragmentHandler;
 //        import com.eways.etutor.Utils.SupportKey;
 //>>>>>>> 0ae5b509ad329b50db0111083a03465365a181c2
 import com.eways.elearning.Views.Fragment.Authentication.LoginFragment;
+import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
 

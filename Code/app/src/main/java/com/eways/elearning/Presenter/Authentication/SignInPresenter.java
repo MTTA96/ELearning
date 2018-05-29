@@ -53,7 +53,7 @@ public class SignInPresenter implements DataCallBack {
 
             // Wrong info
             case 2:
-                msg = context.getString(R.string.msg_wrong_info);
+                msg = context.getString(R.string.msg_wrong_info_or_has_not_signed_up);
                 break;
 
             // Banned account

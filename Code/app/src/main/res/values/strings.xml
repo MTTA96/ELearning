@@ -5,7 +5,7 @@
     <!-- Messages -->
     <string name="msg_unknow_error">Lỗi!</string>
     <string name="msg_missing_info">Thiếu thông tin</string>
-    <string name="msg_wrong_info">Sai thông tin</string>
+    <string name="msg_wrong_info_or_has_not_signed_up">Sai thông tin hoặc chưa đăng ký</string>
     <string name="msg_phone_verifying_failed">Không thể xác minh số điện thoại</string>
     <string name="msg_existing_user">Số điện thoại đã tồn tại</string>
     <string name="msg_sign_in_success">Xin chào </string>

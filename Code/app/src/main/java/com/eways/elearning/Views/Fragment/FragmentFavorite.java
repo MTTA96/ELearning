@@ -35,6 +35,7 @@ public class FragmentFavorite extends Fragment implements View.OnClickListener {
 
     /** MODELS */
     private FragmentHandler fragmentHandler;
+    private ArrayList<Favorite> listFavorite = new ArrayList<>();
 
     public FragmentFavorite() {
         // Required empty public constructor
@@ -81,22 +82,10 @@ public class FragmentFavorite extends Fragment implements View.OnClickListener {
     }
 
     public void setUpListFavorite(){
-        try {
-            JSONArray jsonArray = new JSONArray(FileUtils.loadJSONFromAsset(getContext(), "favorite.json"));
-            ArrayList<Favorite> listFavorite = new ArrayList<>();
-            for (int i = 0; i < jsonArray.length(); i++){
-                listFavorite.add(GlobalParams.getInstance().getGSon().fromJson(jsonArray.getJSONObject(i).toString(), Favorite.class));
-            }
-
-            FavoriteAdapter favoriteAdapter = new FavoriteAdapter(listFavorite, R.layout.item_favorite);
-            rcFavorite.hasFixedSize();
-            rcFavorite.setLayoutManager(new GridLayoutManager(getContext(), 2));
-            rcFavorite.setAdapter(favoriteAdapter);
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        FavoriteAdapter favoriteAdapter = new FavoriteAdapter(listFavorite, R.layout.item_favorite);
+        rcFavorite.hasFixedSize();
+        rcFavorite.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        rcFavorite.setAdapter(favoriteAdapter);
     }
 
     @Override
@@ -106,6 +95,7 @@ public class FragmentFavorite extends Fragment implements View.OnClickListener {
             {
                 switch (v.getId()) {
                     case R.id.btn_next:
+                        SignupFragment.btnNext.setText("Hoàn tất");
                         fragmentHandler.changeFragment(FragmentWelcome.newInstance(), SupportKey.WELCOME_FRAGMENT_TAG, 0, 0);
                         break;
                 }

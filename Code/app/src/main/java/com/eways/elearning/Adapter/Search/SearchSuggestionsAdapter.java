@@ -1,13 +1,12 @@
 package com.eways.elearning.Adapter.Search;
 
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.eways.elearning.Model.Course;
-import com.eways.elearning.Model.SearchResults;
+import com.eways.elearning.Interfaces.OnItemClickListener;
 import com.eways.elearning.Model.SearchSuggestions;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
@@ -20,13 +19,13 @@ import java.util.ArrayList;
  * Created by ADMIN on 5/20/2018.
  */
 
-public class SearchAdapter extends RecyclerView.Adapter<SearchVHolder> {
-    private FragmentHandler fragmentHandler;
+public class SearchSuggestionsAdapter extends RecyclerView.Adapter<SearchVHolder> {
+    private OnItemClickListener onItemClickListener;
     private ArrayList<SearchSuggestions> list;
     int res;
 
-    public SearchAdapter(ArrayList<SearchSuggestions> list, FragmentHandler fragmentHandler, int res) {
-        this.fragmentHandler = fragmentHandler;
+    public SearchSuggestionsAdapter(ArrayList<SearchSuggestions> list, OnItemClickListener onItemClickListener, int res) {
+        this.onItemClickListener = onItemClickListener;
         this.list = list;
         this.res = res;
     }
@@ -47,7 +46,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchVHolder> {
         holder.subject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                fragmentHandler.changeFragment(SearchFragment.newInstance(item.getSubjectName()), SupportKey.SEARCH_RESULTS_TAG, 0, 0);
+                Bundle itemBundle = new Bundle();
+                itemBundle.putString("keyword", item.getSubjectName());
+                onItemClickListener.onItemClick(itemBundle);
             }
         });
     }

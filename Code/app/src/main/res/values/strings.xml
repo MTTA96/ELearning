@@ -66,6 +66,7 @@
     <string name="hint_address">Địa chỉ</string>
     <string name="hint_career">Nghề nghiệp</string>
     <string name="hint_degree">Bằng cấp</string>
+    <string name="chose_your_favorite_subject">Môn học bạn quan tâm</string>
 
     <!-- Verify -->
     <string name="verify_code">Code</string>

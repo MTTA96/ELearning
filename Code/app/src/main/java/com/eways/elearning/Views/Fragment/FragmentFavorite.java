@@ -78,7 +78,7 @@ public class FragmentFavorite extends Fragment implements View.OnClickListener {
 
         // Configure views
         setUpListFavorite();
-        SignupFragment.btnNext.setText("Bỏ qua");
+        SignupFragment.btnNext.setText(R.string.skip);
     }
 
     public void setUpListFavorite(){
@@ -95,7 +95,6 @@ public class FragmentFavorite extends Fragment implements View.OnClickListener {
             {
                 switch (v.getId()) {
                     case R.id.btn_next:
-                        SignupFragment.btnNext.setText("Hoàn tất");
                         fragmentHandler.changeFragment(FragmentWelcome.newInstance(), SupportKey.WELCOME_FRAGMENT_TAG, 0, 0);
                         break;
                 }

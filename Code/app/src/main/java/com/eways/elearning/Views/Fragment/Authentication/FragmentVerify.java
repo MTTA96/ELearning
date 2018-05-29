@@ -14,7 +14,6 @@ import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 //import com.eways.etutor.Utils.Handler.SharedPreferencesHandler;
 import com.eways.elearning.Views.VerificationCodeView;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -117,7 +116,7 @@ public class FragmentVerify extends Fragment implements View.OnClickListener, Ve
             FragmentVerify.credential = credential;
 
             // Move to next step
-            fragmentHandler.changeFragment(FragmentUserInfo.newInstance(), null, R.anim.slide_from_left, 0);
+            fragmentHandler.changeFragment(FragmentUserSignUpInfo.newInstance(), null, R.anim.slide_from_left, 0);
             SignupFragment.btnNext.setVisibility(View.VISIBLE);
         }
 

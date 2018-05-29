@@ -7,7 +7,7 @@
     android:paddingRight="16dp"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context=".Views.Fragment.Authentication.FragmentUserInfo">
+    tools:context=".Views.Fragment.Authentication.FragmentUserSignUpInfo">
 
     <!--fake space-->
     <View
@@ -22,9 +22,9 @@
         android:layout_height="wrap_content"
         android:text="Họ tên:"
         android:textStyle="bold"
-        android:gravity="center"
         android:textColor="@color/colorBlue"
-        android:textSize="19sp" />
+        android:textSize="19sp"
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/name"
@@ -49,7 +49,7 @@
         android:textStyle="bold"
         android:textColor="@color/colorBlue"
         android:textSize="19sp"
-        android:gravity="center" />
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/password"

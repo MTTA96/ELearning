@@ -11,11 +11,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.textservice.SuggestionsInfo;
 import android.widget.RelativeLayout;
 
-import com.eways.elearning.Adapter.Search.SearchAdapter;
+import com.eways.elearning.Adapter.Search.SearchSuggestionsAdapter;
 import com.eways.elearning.Interfaces.DataCallBack;
-import com.eways.elearning.Model.Course;
+import com.eways.elearning.Interfaces.OnItemClickListener;
 import com.eways.elearning.Model.SearchResults;
 import com.eways.elearning.Model.SearchSuggestions;
 import com.eways.elearning.Presenter.HomePresenter;
@@ -28,18 +29,20 @@ import com.eways.elearning.Views.Fragment.SearchFragment;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener, DataCallBack {
+public class HomeActivity extends AppCompatActivity implements DataCallBack, OnItemClickListener {
 
     /** VIEWS */
     Toolbar toolbar;
     RelativeLayout content;
     RecyclerView rvSuggestionsList;
+    SearchView mSearchView;
 
     /** MODELS */
     private HomePresenter homePresenter;
     private FragmentHandler fragmentHandler;
-    private SearchAdapter searchAdapter;
+    private SearchSuggestionsAdapter searchSuggestionsAdapter;
     private ArrayList<SearchSuggestions> suggestionsList = new ArrayList<>();
+    private boolean shouldSuggestionViewVisible = true;
 
     // Identify current search type
     public static int currentSearchType;
@@ -65,12 +68,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void handle(){
         fragmentHandler = new FragmentHandler(this, R.id.home_content_view);
         setUpToolBar();
-        searchAdapter = new SearchAdapter(suggestionsList, fragmentHandler, R.layout.item_search);
+        searchSuggestionsAdapter = new SearchSuggestionsAdapter(suggestionsList, this, R.layout.item_search_suggestions);
 
         // Configure suggestions view
         rvSuggestionsList.setLayoutManager(new LinearLayoutManager(getParent(), LinearLayoutManager.VERTICAL, false));
         rvSuggestionsList.hasFixedSize();
-        rvSuggestionsList.setAdapter(searchAdapter);
+        rvSuggestionsList.setAdapter(searchSuggestionsAdapter);
 
         // Move to home
         fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKey.HOME_FRAGMENT_TAG, 0, 0);
@@ -84,11 +87,25 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
+    /**
+     * Hide suggestions when the query is submitted
+     * */
+    private void updateSuggestionsViewState() {
+        if (shouldSuggestionViewVisible)
+            rvSuggestionsList.setVisibility(View.VISIBLE);
+        else
+            rvSuggestionsList.setVisibility(View.GONE);
+    }
+
     /** EVENTS */
 
     @Override
-    public void onClick(View view) {
-
+    public void onItemClick(Bundle bundle) {
+        String keyword = bundle.getString("keyword");
+        shouldSuggestionViewVisible = false;
+        updateSuggestionsViewState();
+        mSearchView.setQuery(keyword, true);
+        fragmentHandler.changeFragment(SearchFragment.newInstance(keyword), null, 0, 0);
     }
 
     @Override
@@ -97,23 +114,35 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         MenuItem mSearch = menu.findItem(R.id.action_search);
 
-        SearchView mSearchView = (SearchView) mSearch.getActionView();
+        mSearchView = (SearchView) mSearch.getActionView();
         mSearchView.setQueryHint("Search");
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                fragmentHandler.changeFragment(SearchFragment.newInstance(query), SupportKey.SEARCH_RESULTS_TAG, 0, 0);
+                shouldSuggestionViewVisible = false;
+                updateSuggestionsViewState();
+                fragmentHandler.changeFragment(SearchFragment.newInstance(query), null, 0, 0);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                shouldSuggestionViewVisible = true;
+                updateSuggestionsViewState();
                 if (newText.compareTo("")==0){
                     suggestionsList.clear();
-                    searchAdapter.notifyDataSetChanged();
-                } else
+                    searchSuggestionsAdapter.notifyDataSetChanged();
+                } else {
+                    // Show loading when inputting
+                    SearchSuggestions loadingSuggestions = new SearchSuggestions();
+                    loadingSuggestions.setSubjectName(getResources().getString(R.string.msg_loading));
+                    suggestionsList.add(loadingSuggestions);
+                    searchSuggestionsAdapter.notifyDataSetChanged();
+
+                    // Call api
                     homePresenter.searchSuggestions(newText);
+                }
                 return true;
             }
         });
@@ -142,9 +171,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         // Get data success
         ArrayList resultsList = (ArrayList<SearchResults>) bundle.getSerializable(null);
 
+        suggestionsList.clear();
         suggestionsList.addAll(resultsList);
-        searchAdapter.notifyDataSetChanged();
+        searchSuggestionsAdapter.notifyDataSetChanged();
 
     }
+
 }
 

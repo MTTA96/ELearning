@@ -47,7 +47,7 @@ public class ImageHandler {
         if (Build.VERSION.SDK_INT > 15)
             imageView.setBackground(null);
         if (url != null) {
-            if (url.compareTo("null") != 0)
+            if (url.compareTo("null") != 0 && url.compareTo("") !=0)
                 Picasso.with(context).load(url).transform(transformationSquared).resize(180,180).centerCrop().into(imageView);
             else
                 imageView.setBackgroundResource(R.drawable.default_avatar);

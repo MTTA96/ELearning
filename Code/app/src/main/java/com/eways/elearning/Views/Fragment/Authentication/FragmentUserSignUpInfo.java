@@ -36,7 +36,7 @@ import static android.content.ContentValues.TAG;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentUserInfo extends Fragment implements View.OnClickListener, DataCallBack {
+public class FragmentUserSignUpInfo extends Fragment implements View.OnClickListener, DataCallBack {
 
     /**
      * VIEWS
@@ -58,12 +58,12 @@ public class FragmentUserInfo extends Fragment implements View.OnClickListener, 
     // Params
     private static final String credentialParam = "credential";
 
-    public static FragmentUserInfo newInstance() {
+    public static FragmentUserSignUpInfo newInstance() {
 
         Bundle args = new Bundle();
 //        args.putSerializable(credentialParam, (Serializable) credential);
 //
-        FragmentUserInfo fragment = new FragmentUserInfo();
+        FragmentUserSignUpInfo fragment = new FragmentUserSignUpInfo();
         fragment.setArguments(args);
         return fragment;
     }

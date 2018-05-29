@@ -6,88 +6,104 @@
     android:orientation="vertical"
     tools:context="com.eways.elearning.Views.Fragment.SearchFragment">
 
-    <!-- Tutors list -->
-    <LinearLayout
-        android:id="@+id/tutor_search_result_view"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <!-- Title -->
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:text="Gia sư"
-            android:textColor="@color/colorGrey"
-            android:textSize="@dimen/normal_text_size"
-            android:textStyle="bold|italic" />
+            android:orientation="vertical">
+            <!-- Tutors list -->
+            <LinearLayout
+                android:id="@+id/tutor_search_result_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/elevation"
+                android:orientation="vertical">
 
-        <!--Divider-->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGrey"
-            android:elevation="@dimen/elevation"/>
+                <!-- Title -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Gia sư"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="@dimen/title_text_size"
+                    android:textStyle="bold|italic" />
 
-        <!-- List -->
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/tutor_search_results_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <!--Divider-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorScrim"  />
 
-        <!-- Load more -->
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:text="Xem thêm"
-            android:textColor="@color/colorMain" />
-    </LinearLayout>
+                <!-- List -->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/tutor_search_results_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-    <!-- Courses list -->
-    <LinearLayout
-        android:id="@+id/courses_search_result_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+                <!-- Load more -->
+                <Button
+                    android:id="@+id/button_load_more_tutor_search_results"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:text="Xem thêm"
+                    android:textColor="@color/colorMain" />
+            </LinearLayout>
 
-        <!-- Title -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:text="Khóa học"
-            android:textColor="@color/colorGrey"
-            android:textSize="@dimen/normal_text_size"
-            android:textStyle="bold|italic" />
+            <!--Divider-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/colorScrim"   />
 
-        <!--Divider-->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGrey"
-            android:elevation="@dimen/elevation" />
+            <!-- Courses list -->
+            <LinearLayout
+                android:id="@+id/courses_search_result_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:elevation="@dimen/elevation"
+                android:orientation="vertical">
 
-        <!-- List -->
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/course_search_results_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <!-- Title -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Khóa học"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="@dimen/title_text_size"
+                    android:textStyle="bold|italic" />
 
-        <!-- Load more -->
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:text="Xem thêm"
-            android:textColor="@color/colorMain" />
-    </LinearLayout>
+                <!--Divider-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorScrim" />
+
+                <!-- List -->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/course_search_results_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <!-- Load more -->
+                <Button
+                    android:id="@+id/button_load_more_course_search_results"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:text="Xem thêm"
+                    android:textColor="@color/colorMain" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

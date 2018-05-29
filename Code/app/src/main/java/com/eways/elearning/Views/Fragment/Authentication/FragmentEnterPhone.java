@@ -67,7 +67,7 @@ public class FragmentEnterPhone extends Fragment implements View.OnClickListener
     private void checkPhone(String phoneNumber) {
         // handle errors
         if (phoneNumber.isEmpty() || phoneNumber.length() < 9 || phoneNumber.length() > 10) {
-            Toast.makeText(getContext(), getString(R.string.msg_wrong_info), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.msg_wrong_info_or_has_not_signed_up), Toast.LENGTH_SHORT).show();
             return;
         }
 

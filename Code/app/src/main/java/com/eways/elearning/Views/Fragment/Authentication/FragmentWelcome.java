@@ -45,7 +45,7 @@ public class FragmentWelcome extends Fragment implements View.OnClickListener {
         View root = inflater.inflate(R.layout.fragment_welcome, container, false);
         SignupFragment.btnNext.setOnClickListener(this);
 
-        SignupFragment.btnNext.setText(R.string.next);
+        SignupFragment.btnNext.setText(R.string.finish);
         return root;
     }
 

@@ -1,13 +1,23 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.Fragment.FragmentFavorite">
+    android:orientation="vertical"
+    tools:context=".Views.Fragment.FragmentFavorite"
+    android:background="@color/White">
 
+    <!--Title-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/chose_your_favorite_subject"
+        android:padding="@dimen/horizontal_padding"
+        android:gravity="center"
+        android:textColor="@color/colorMain"
+        android:textStyle="bold|italic"
+        android:textSize="@dimen/default_text_size"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"></android.support.v7.widget.RecyclerView>
-</RelativeLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

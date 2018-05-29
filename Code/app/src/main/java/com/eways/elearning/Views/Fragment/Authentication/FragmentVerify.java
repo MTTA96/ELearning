@@ -1,6 +1,5 @@
 package com.eways.elearning.Views.Fragment.Authentication;
 
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -85,7 +84,6 @@ public class FragmentVerify extends Fragment implements View.OnClickListener, Ve
 
         SignupFragment.btnNext.setVisibility(View.INVISIBLE);
         verifyPhoneNumber();
-
         return root;
     }
 
@@ -118,7 +116,7 @@ public class FragmentVerify extends Fragment implements View.OnClickListener, Ve
             FragmentVerify.credential = credential;
 
             // Move to next step
-            fragmentHandler.changeFragment(FragmentUserInfo.newInstance(), null, R.anim.slide_from_left, 0);
+            fragmentHandler.changeFragment(FragmentUserSignUpInfo.newInstance(), null, R.anim.slide_from_left, 0);
             SignupFragment.btnNext.setVisibility(View.VISIBLE);
         }
 

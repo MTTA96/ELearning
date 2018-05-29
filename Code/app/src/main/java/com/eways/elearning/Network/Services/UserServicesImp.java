@@ -30,6 +30,6 @@ public interface UserServicesImp {
     @FormUrlEncoded
     Call<BaseResponse> checkPhoneNumber(@Field("Phone") String phone);
 
-    /** Add majors */
+    /** Add favorite subjects */
 
 }

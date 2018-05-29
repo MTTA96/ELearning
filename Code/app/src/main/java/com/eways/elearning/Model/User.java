@@ -299,7 +299,7 @@ public class User {
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 // handle error
                 if (!response.isSuccessful()) {
-                    Log.d("checkPhoneNumber:", "connect failed");
+                    Log.d("CheckPhoneNumberModel:", "connect failed");
                     dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
                     return;
                 }
@@ -312,7 +312,7 @@ public class User {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Log.d("checkPhoneNumber:", t.getLocalizedMessage());
+                Log.d("CheckPhoneNumberModel:", t.getLocalizedMessage());
                 dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
             }
         });

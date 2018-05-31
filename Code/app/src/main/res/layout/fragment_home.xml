@@ -16,6 +16,7 @@
 
             <!-- Banner -->
             <RelativeLayout
+                android:id="@+id/banner"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"></RelativeLayout>
 
@@ -28,21 +29,21 @@
                 android:layout_marginStart="10dp">
 
                 <RelativeLayout
-                    android:id="@+id/title_bar"
+                    android:id="@+id/title_bar_trending"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/title_subject"
+                        android:id="@+id/title_trending"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Title"
+                        android:text="Trending"
                         android:textSize="17sp"
                         android:textColor="@color/colorBlue"
                         android:layout_alignParentLeft="true"/>
 
                     <TextView
-                        android:id="@+id/tv_more"
+                        android:id="@+id/more_trending"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Xem thêm"
@@ -53,18 +54,18 @@
                 </RelativeLayout>
 
                 <View
-                    android:id="@+id/divide"
+                    android:id="@+id/divide1"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/title_bar"
+                    android:layout_below="@+id/title_bar_trending"
                     android:background="@color/colorGrey"
                     android:layout_marginBottom="5dp"/>
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rc_item_subject"
+                    android:id="@+id/item_trending"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/divide"/>
+                    android:layout_below="@+id/divide1"/>
 
 
 
@@ -80,21 +81,21 @@
                 android:layout_marginStart="10dp">
 
                 <RelativeLayout
-                    android:id="@+id/title_bar"
+                    android:id="@+id/title_bar_toptutor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/title_subject"
+                        android:id="@+id/title_toptutor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Title"
+                        android:text="Top gia sư"
                         android:textSize="17sp"
                         android:textColor="@color/colorBlue"
                         android:layout_alignParentLeft="true"/>
 
                     <TextView
-                        android:id="@+id/tv_more"
+                        android:id="@+id/tv_toptutor_more"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Xem thêm"
@@ -108,12 +109,12 @@
                     android:id="@+id/divide"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/title_bar"
+                    android:layout_below="@+id/title_bar_toptutor"
                     android:background="@color/colorGrey"
                     android:layout_marginBottom="5dp"/>
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rc_item_subject"
+                    android:id="@+id/item_toptutor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/divide"/>
@@ -125,6 +126,7 @@
 
             <!-- Subject -->
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/rc_subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

@@ -1,4 +1,4 @@
-package com.eways.elearning.Adapter.Home.Subject;
+package com.eways.elearning.Adapter.Home;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

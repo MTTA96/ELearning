@@ -57,7 +57,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 
     @Override
     public int getItemCount() {
-        return list.size() <= 5 ? list.size():5;
+        return list.size() <= 3 ? list.size():3;
     }
 
     public void loadData(CourseViewHolder holder, int position) {
@@ -96,20 +96,17 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 //        }
 
         //Môn
-//        if(course.getSubjectName()!=null) {
-//            String danhSachMon = "";
+        if(course.getSubjectName()!=null) {
+            String danhSachMon = "";
 //            for (String mon : course.getSubjectName()) {
 //                danhSachMon += mon;
 //            }
-//            String mon = "<b>Môn: </b>" + " " + danhSachMon;
-//            holder.tvMon.setText(Html.fromHtml(mon));
-//        }
-//        else
-//        {
-//            holder.tvMon.setText(Html.fromHtml("Tùy ý"));
-//        }
-        String mon = "<b>Môn: </b>" + " " + course.getSubjectName();
-        holder.tvMon.setText(Html.fromHtml(mon));
+            String mon = "<b>Môn: </b>" + " " + course.getSubjectName();
+            holder.tvMon.setText(Html.fromHtml(mon));
+        }
+        else {
+            holder.tvMon.setText(Html.fromHtml("Tùy ý"));
+        }
 
         //Buổi
 //        if(course.getLichHoc().getThoiGian()!=null) {

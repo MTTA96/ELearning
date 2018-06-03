@@ -7,12 +7,11 @@ import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Network.ApiUtils;
 import com.eways.elearning.Network.Responses.SearchBaseResponse;
 import com.eways.elearning.Network.Responses.SearchSuggestionsBaseResponse;
-import com.eways.elearning.Network.Services.ETutorServicesImp;
+import com.eways.elearning.Network.Services.ELearningServicesImp;
 import com.eways.elearning.Utils.SupportKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -52,8 +51,8 @@ public class SearchResults {
 
     /** Sign in */
     public static void search(String keyWord, final DataCallBack dataCallBack) {
-        ETutorServicesImp eTutorServicesImp = ApiUtils.eTutorServices();
-        eTutorServicesImp.search(keyWord).enqueue(new Callback<SearchBaseResponse>() {
+        ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
+        eLearningServicesImp.search(keyWord).enqueue(new Callback<SearchBaseResponse>() {
             @Override
             public void onResponse(Call<SearchBaseResponse> call, Response<SearchBaseResponse> response) {
                 Log.d("search:", call.request().toString());
@@ -82,8 +81,8 @@ public class SearchResults {
 
     /** Search subject suggestions */
     public static void searchSubjectSuggestions(String keyWord, final DataCallBack dataCallBack) {
-        ETutorServicesImp eTutorServicesImp = ApiUtils.eTutorServices();
-        eTutorServicesImp.searchSuggestions(keyWord).enqueue(new Callback<SearchSuggestionsBaseResponse>() {
+        ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
+        eLearningServicesImp.searchSuggestions(keyWord).enqueue(new Callback<SearchSuggestionsBaseResponse>() {
             @Override
             public void onResponse(Call<SearchSuggestionsBaseResponse> call, Response<SearchSuggestionsBaseResponse> response) {
                 Log.d("SearchSubSuggestions:", call.request().toString());
@@ -97,7 +96,7 @@ public class SearchResults {
                 // Get data success
                 // Prepare data
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(null, response.body().getResults());
+                bundle.putSerializable(null, response.body().getSuggestionLsit());
                 dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, bundle);
             }
 
@@ -111,8 +110,8 @@ public class SearchResults {
 
     /** Search user suggestions */
     public static void searchUserSuggestions(String keyWord, final DataCallBack dataCallBack) {
-        ETutorServicesImp eTutorServicesImp = ApiUtils.eTutorServices();
-        eTutorServicesImp.searchSuggestions(keyWord).enqueue(new Callback<SearchSuggestionsBaseResponse>() {
+        ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
+        eLearningServicesImp.searchSuggestions(keyWord).enqueue(new Callback<SearchSuggestionsBaseResponse>() {
             @Override
             public void onResponse(Call<SearchSuggestionsBaseResponse> call, Response<SearchSuggestionsBaseResponse> response) {
                 Log.d("SearchResults:", call.request().toString());
@@ -126,7 +125,7 @@ public class SearchResults {
                 // Get data success
                 // Prepare data
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(null, response.body().getResults());
+                bundle.putSerializable(null, response.body().getSuggestionLsit());
 
                 // Response to presenter
                 dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, bundle);

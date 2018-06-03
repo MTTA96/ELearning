@@ -6,9 +6,7 @@ package com.eways.elearning.Network.Responses;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
-import com.eways.elearning.Model.SearchResults;
 import com.eways.elearning.Model.SearchSuggestions;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -18,9 +16,9 @@ public class SearchSuggestionsBaseResponse {
     @SerializedName("errorCode")
     @Expose
     private Integer errorCode;
-    @SerializedName("results")
+    @SerializedName("suggestionLsit")
     @Expose
-    private ArrayList<SearchSuggestions> results = null;
+    private ArrayList<SearchSuggestions> suggestionLsit = null;
 
     public Integer getErrorCode() {
         return errorCode;
@@ -30,12 +28,12 @@ public class SearchSuggestionsBaseResponse {
         this.errorCode = errorCode;
     }
 
-    public ArrayList<SearchSuggestions> getResults() {
-        return results;
+    public ArrayList<SearchSuggestions> getSuggestionLsit() {
+        return suggestionLsit;
     }
 
-    public void setResults(ArrayList<SearchSuggestions> results) {
-        this.results = results;
+    public void setSuggestionLsit(ArrayList<SearchSuggestions> suggestionLsit) {
+        this.suggestionLsit = suggestionLsit;
     }
 
 

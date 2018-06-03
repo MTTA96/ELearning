@@ -64,7 +64,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
         course = list.get(position);
 
         //Avartar
-//        imageHandler.loadImageRound(course.getAvatar(),holder.imgDaiDien);
+        imageHandler.loadImageRound(course.getAvatar(),holder.imgDaiDien);
 
         //Rating
 //        if(course.getRating() != null)
@@ -85,15 +85,14 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 //        }
 
         //Họ tên
-        holder.tvTen.setText("Mai Tran Tuan Anh");
-//        if(course.getHoTen()!=null) {
-//            String ten = "<b>Tên: </b>" + course.getHoTen();
-//            holder.tvTen.setText(Html.fromHtml(ten));
-//        }
-//        else
-//        {
-//            holder.tvTen.setText(Html.fromHtml("Unknown"));
-//        }
+        if(course.getFirstName()!=null) {
+            String ten = "<b>Tên: </b>" + course.getFirstName() + course.getLastName();
+            holder.tvTen.setText(Html.fromHtml(ten));
+        }
+        else
+        {
+            holder.tvTen.setText(Html.fromHtml("Unknown"));
+        }
 
         //Môn
         if(course.getSubjectName()!=null) {

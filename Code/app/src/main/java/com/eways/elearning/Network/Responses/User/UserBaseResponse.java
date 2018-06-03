@@ -1,21 +1,21 @@
-package com.eways.elearning.Network.Responses;
+package com.eways.elearning.Network.Responses.User;
 
 /**
- * Created by zzzzz on 3/25/2018.
+ * Created by ADMIN on 3/18/2018.
  */
 
 import com.eways.elearning.Model.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BaseUserResponse {
+public class UserBaseResponse {
 
     @SerializedName("errorCode")
     @Expose
     private Integer errorCode;
-    @SerializedName("user")
+    @SerializedName("teacher")
     @Expose
-    private User user;
+    private User teacher;
 
     public Integer getErrorCode() {
         return errorCode;
@@ -25,12 +25,13 @@ public class BaseUserResponse {
         this.errorCode = errorCode;
     }
 
-    public User getUser() {
-        return user;
+    public User getTeacher() {
+        return teacher;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setTeacher(User teacher) {
+        this.teacher = teacher;
     }
 
 }
+

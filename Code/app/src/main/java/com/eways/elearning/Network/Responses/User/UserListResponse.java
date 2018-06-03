@@ -1,4 +1,4 @@
-package com.eways.elearning.Network.Responses;
+package com.eways.elearning.Network.Responses.User;
 
 /**
  * Created by ADMIN on 3/18/2018.
@@ -8,14 +8,16 @@ import com.eways.elearning.Model.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserBaseResponse {
+import java.util.ArrayList;
+
+public class UserListResponse {
 
     @SerializedName("errorCode")
     @Expose
     private Integer errorCode;
-    @SerializedName("teacher")
+    @SerializedName("userList")
     @Expose
-    private User teacher;
+    private ArrayList<User> userList = null;
 
     public Integer getErrorCode() {
         return errorCode;
@@ -25,12 +27,12 @@ public class UserBaseResponse {
         this.errorCode = errorCode;
     }
 
-    public User getTeacher() {
-        return teacher;
+    public ArrayList<User> getUserList() {
+        return userList;
     }
 
-    public void setTeacher(User teacher) {
-        this.teacher = teacher;
+    public void setUserList(ArrayList<User> userList) {
+        this.userList = userList;
     }
 
 }

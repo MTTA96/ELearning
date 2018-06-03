@@ -120,17 +120,17 @@
     <!--<dimen name="MarginTop_Rtb">10dp</dimen>-->
 
     <!--&lt;!&ndash; Tạo/Tìm kiếm khóa học &ndash;&gt;-->
-    <!--<dimen name="tao_khoa_hoc_vertical_padding">30dp</dimen>-->
-    <!--<dimen name="tao_khoa_hoc_horizontal_padding">25dp</dimen>-->
-    <!--<dimen name="khung_content_tao_khoa_hoc_margin_top">40dp</dimen>-->
-    <!--<dimen name="info_quan_thanh_pho_tao_khoa_hoc_margin_top">10dp</dimen>-->
-    <!--<dimen name="info_quan_thanh_pho_tao_khoa_hoc_horizontal_margin">2.5dp</dimen>-->
-    <!--<dimen name="view_tao_khoa_hoc_margin_top">25dp</dimen>-->
-    <!--<dimen name="button_thu_margin_top">10dp</dimen>-->
-    <!--<dimen name="button_buoi_va_thu_margin_left">10dp</dimen>-->
-    <!--<dimen name="button_buoi_va_thu_width">45dp</dimen>-->
-    <!--<dimen name="button_buoi_va_thu_height">30dp</dimen>-->
-    <!--<dimen name="text_thong_tin_them_height">120dp</dimen>-->
+    <dimen name="tao_khoa_hoc_vertical_padding">35dp</dimen>
+    <dimen name="tao_khoa_hoc_horizontal_padding">15dp</dimen>
+    <dimen name="khung_content_tao_khoa_hoc_margin_top">40dp</dimen>
+    <dimen name="info_quan_thanh_pho_tao_khoa_hoc_margin_top">10dp</dimen>
+    <dimen name="info_quan_thanh_pho_tao_khoa_hoc_horizontal_margin">2.5dp</dimen>
+    <dimen name="view_tao_khoa_hoc_margin_top">25dp</dimen>
+    <dimen name="button_thu_margin_top">10dp</dimen>
+    <dimen name="button_buoi_va_thu_margin_left">10dp</dimen>
+    <dimen name="button_buoi_va_thu_width">45dp</dimen>
+    <dimen name="button_buoi_va_thu_height">30dp</dimen>
+    <dimen name="text_thong_tin_them_height">120dp</dimen>
 
     <!--&lt;!&ndash;Chi tiết khóa học&ndash;&gt;-->
 
@@ -171,7 +171,7 @@
     <dimen name="ItemQLTK_paddingLeft">15dp</dimen>
     <dimen name="username_action_bar_margin_top">10dp</dimen>
     <dimen name="normal_text_size">15sp</dimen>
-    <dimen name="text_thong_tin_them_height">120dp</dimen>
+
     <dimen name="text_padding_left">10dp</dimen>
     <dimen name="title_text_size">17sp</dimen>
 </resources>

@@ -26,7 +26,7 @@ public class SubjectItemAdapter extends RecyclerView.Adapter<HomeVHolder>{
 
     public SubjectItemAdapter(int res, List<Course> courses) {
         this.res = res;
-        this.courses = courses;
+        this.courses = (ArrayList<Course>) courses;
 
         imageHandler = new ImageHandler(GlobalParams.getInstance());
     }

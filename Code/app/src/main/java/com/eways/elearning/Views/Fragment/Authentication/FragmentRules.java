@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.eways.elearning.R;
+import com.joanzapata.pdfview.PDFView;
 //<<<<<<< HEAD
 //=======
 //import com.eways.etutor.Utils.Handler.FragmentHandler;
@@ -23,15 +24,7 @@ import com.eways.elearning.R;
 public class FragmentRules extends Fragment implements View.OnClickListener {
 
     /** Views */
-    TextView rules;
-
-//<<<<<<< HEAD
-//
-//=======
-//    /** Models */
-//    private FragmentHandler fragmentHandler;
-//    private ReadTextHandler readTextHandler;
-//>>>>>>> origin/master
+    PDFView pdfView ;
 
     public FragmentRules() {
         // Required empty public constructor
@@ -54,16 +47,11 @@ public class FragmentRules extends Fragment implements View.OnClickListener {
     }
 
     public void declare_views(View root){
-        rules = root.findViewById(R.id.tvRules);
+        pdfView = root.findViewById(R.id.pdf_rules);
     }
 
     public void handle_views(){
-//        SignupFragment.btnNext.setOnClickListener(this);
-
-        //read and set text for rules
-//        readTextHandler = new ReadTextHandler(getActivity());
-//        String rulesText = readTextHandler.readTxt("rules.txt");
-//        rules.setText(rulesText);
+        pdfView.fromAsset("dieukhoansudung.pdf").pages(0,2,1,3,3,3).defaultPage(1).showMinimap(false).enableSwipe(true).load();
     }
 
     /** MARK: - EVENTS */

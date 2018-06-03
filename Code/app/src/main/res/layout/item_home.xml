@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:text="Title"
             android:textSize="17sp"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorBlue"
             android:layout_alignParentLeft="true"/>
 
         <TextView

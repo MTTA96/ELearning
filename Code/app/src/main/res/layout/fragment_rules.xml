@@ -7,19 +7,9 @@
     android:weightSum="100"
     tools:context=".Views.Fragment.Authentication.FragmentRules">
 
-    <android.support.v4.widget.NestedScrollView
+    <com.joanzapata.pdfview.PDFView
+        android:id="@+id/pdf_rules"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:fillViewport="true">
-
-        <TextView
-            android:id="@+id/tvRules"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorBlack"
-            android:gravity="left"/>
-    </android.support.v4.widget.NestedScrollView>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

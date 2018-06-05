@@ -24,10 +24,10 @@ import retrofit2.Response;
 
 public class SearchResults {
 
-    @SerializedName("listUser")
+    @SerializedName("Users")
     @Expose
     private ArrayList<User> listUser = null;
-    @SerializedName("listCourse")
+    @SerializedName("Courses")
     @Expose
     private ArrayList<Course> listCourse = null;
 
@@ -96,7 +96,7 @@ public class SearchResults {
                 // Get data success
                 // Prepare data
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(null, response.body().getSuggestionLsit());
+                bundle.putSerializable(null, response.body().getSuggestionList());
                 dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, bundle);
             }
 
@@ -125,7 +125,7 @@ public class SearchResults {
                 // Get data success
                 // Prepare data
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(null, response.body().getSuggestionLsit());
+                bundle.putSerializable(null, response.body().getSuggestionList());
 
                 // Response to presenter
                 dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, bundle);

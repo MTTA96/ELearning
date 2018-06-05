@@ -16,9 +16,9 @@ public class SearchSuggestionsBaseResponse {
     @SerializedName("errorCode")
     @Expose
     private Integer errorCode;
-    @SerializedName("suggestionLsit")
+    @SerializedName("results")
     @Expose
-    private ArrayList<SearchSuggestions> suggestionLsit = null;
+    private ArrayList<SearchSuggestions> suggestionList = null;
 
     public Integer getErrorCode() {
         return errorCode;
@@ -28,12 +28,12 @@ public class SearchSuggestionsBaseResponse {
         this.errorCode = errorCode;
     }
 
-    public ArrayList<SearchSuggestions> getSuggestionLsit() {
-        return suggestionLsit;
+    public ArrayList<SearchSuggestions> getSuggestionList() {
+        return suggestionList;
     }
 
-    public void setSuggestionLsit(ArrayList<SearchSuggestions> suggestionLsit) {
-        this.suggestionLsit = suggestionLsit;
+    public void setSuggestionList(ArrayList<SearchSuggestions> suggestionList) {
+        this.suggestionList = suggestionList;
     }
 
 

@@ -136,6 +136,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
                 } else {
                     // Show loading when inputting
                     SearchSuggestions loadingSuggestions = new SearchSuggestions();
+                    suggestionsList.clear();
                     loadingSuggestions.setSubjectName(getResources().getString(R.string.msg_loading));
                     suggestionsList.add(loadingSuggestions);
                     searchSuggestionsAdapter.notifyDataSetChanged();

@@ -29,6 +29,10 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
     private TrendingSubjectCallBack trendingSubjectCallBack;
     private FavSubjectWithCoursesCallBack favSubjectWithCoursesCallBack;
 
+    public HomePresenter() {
+
+    }
+
     public HomePresenter(DataCallBack dataCallBack) {
         this.dataCallBack = dataCallBack;
     }
@@ -48,21 +52,25 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
 
     /** Get Banners */
     public void getBanners(BannerCallBack bannerCallBack) {
+        this.bannerCallBack = bannerCallBack;
         Banner.getBanners(this);
     }
 
     /** Get top tutors */
     public void getTopTutors(TopTutorsCallBack topTutorsCallBack) {
+        this.topTutorsCallBack = topTutorsCallBack;
         User.getTopTutors(this);
     }
 
     /** Get trending subjects */
     public void getTrendingSubjects(TrendingSubjectCallBack trendingSubjectCallBack) {
+        this.trendingSubjectCallBack = trendingSubjectCallBack;
         Subject.getTrendingSubjects(this);
     }
 
     /** Get user favorite subjects list */
     public void getUserFavoriteSubjects(FavSubjectWithCoursesCallBack favSubjectWithCoursesCallBack) {
+        this.favSubjectWithCoursesCallBack = favSubjectWithCoursesCallBack;
         User.getUserFavoriteSubjectsWithCourses("", this);
     }
 

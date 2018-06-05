@@ -207,9 +207,11 @@ public class Course {
 //    public void setSubjectName(String subjectName) {
 //        this.subjectName = subjectName;
 //    }
-@SerializedName("IdCourse")
-@Expose
-private String idCourse;
+
+
+    @SerializedName("IdCourse")
+    @Expose
+    private String idCourse;
     @SerializedName("CourseName")
     @Expose
     private String courseName;

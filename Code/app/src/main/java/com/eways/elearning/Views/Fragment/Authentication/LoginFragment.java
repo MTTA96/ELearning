@@ -129,13 +129,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
         int status = Integer.parseInt(bundle.getString(null));
         if (status == 0) {
             // Move to home
+            loadingDialog.dismiss();
             Intent homeIntent = new Intent(getActivity(), HomeActivity.class);
             startActivity(homeIntent);
             getActivity().finish();
             return;
         }
 
-        loadingDialog.dismiss();
         
         // Show msg result to user
         Toast.makeText(getContext(), bundle.getString(SupportKey.BUNDLE_MSG), Toast.LENGTH_SHORT).show();

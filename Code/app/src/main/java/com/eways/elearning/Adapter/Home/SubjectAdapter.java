@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Model.Course;
-import com.eways.elearning.Model.CourseHome;
+import com.eways.elearning.Model.FavoriteSubjectWithCourses;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.params.GlobalParams;
 
@@ -20,9 +20,9 @@ import java.util.List;
 
 public class SubjectAdapter extends RecyclerView.Adapter<SubjectVHolder> {
     int res;
-    ArrayList<CourseHome> courseHomes;
+    ArrayList<FavoriteSubjectWithCourses> courseHomes;
 
-    public SubjectAdapter(int res, ArrayList<CourseHome> courseHomes) {
+    public SubjectAdapter(int res, ArrayList<FavoriteSubjectWithCourses> courseHomes) {
         this.res = res;
         this.courseHomes = courseHomes;
     }
@@ -36,13 +36,10 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectVHolder> {
 
     @Override
     public void onBindViewHolder(SubjectVHolder holder, int position) {
-        final CourseHome courseHome = courseHomes.get(position);
+        final FavoriteSubjectWithCourses courseHome = courseHomes.get(position);
 
         holder.tvTitle.setText(courseHome.getSubject());
         holder.tvMore.setText("Thêm");
-
-        ArrayList<Course> temp1 = new ArrayList<>();
-        List<Course> temp2 = new ArrayList<>();
 
         SubjectItemAdapter subjectItemAdapter = new SubjectItemAdapter(R.layout.item_home_detail, courseHome.getListCourses());
         holder.rcSubject.setHasFixedSize(true);

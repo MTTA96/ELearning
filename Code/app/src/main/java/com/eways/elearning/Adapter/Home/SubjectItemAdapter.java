@@ -20,13 +20,13 @@ import java.util.List;
  */
 
 public class SubjectItemAdapter extends RecyclerView.Adapter<HomeVHolder>{
-    int res;
-    ArrayList<Course> courses;
-    ImageHandler imageHandler;
+    private int res;
+    private ArrayList<Course> courses = new ArrayList<>();
+    private ImageHandler imageHandler;
 
-    public SubjectItemAdapter(int res, List<Course> courses) {
+    public SubjectItemAdapter(int res, ArrayList<Course> courses) {
         this.res = res;
-        this.courses = (ArrayList<Course>) courses;
+        this.courses = courses;
 
         imageHandler = new ImageHandler(GlobalParams.getInstance());
     }

@@ -86,8 +86,8 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 
         //Họ tên
         if(course.getFirstName()!=null) {
-            String ten = "<b>Tên: </b>" + course.getFirstName() + course.getLastName();
-            holder.tvTen.setText(Html.fromHtml(ten));
+            //String ten = "<b>Tên: </b>" + course.getFirstName() + course.getLastName();
+            holder.tvTen.setText(Html.fromHtml(course.getFirstName() + course.getLastName()));
         }
         else
         {

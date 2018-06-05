@@ -15,7 +15,7 @@ public class UserListResponse {
     @SerializedName("errorCode")
     @Expose
     private Integer errorCode;
-    @SerializedName("userList")
+    @SerializedName("results")
     @Expose
     private ArrayList<User> userList = null;
 

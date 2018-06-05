@@ -1,13 +1,11 @@
 package com.eways.elearning.Adapter.Home;
 
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.Model.Trending;
-import com.eways.elearning.Model.Tutor;
+import com.eways.elearning.Model.User;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.params.GlobalParams;
@@ -21,11 +19,11 @@ import java.util.ArrayList;
 public class TopTutorAdapter extends RecyclerView.Adapter<HomeVHolder> {
 
     int res;
-    ArrayList<Tutor> tutors;
+    ArrayList<User> tutors;
 
     ImageHandler imageHandler;
 
-    public TopTutorAdapter(int res, ArrayList<Tutor> tutors) {
+    public TopTutorAdapter(int res, ArrayList<User> tutors) {
         this.res = res;
         this.tutors = tutors;
 
@@ -41,7 +39,7 @@ public class TopTutorAdapter extends RecyclerView.Adapter<HomeVHolder> {
 
     @Override
     public void onBindViewHolder(HomeVHolder holder, int position) {
-        final Tutor tutor = tutors.get(position);
+        final User tutor = tutors.get(position);
         //load image
         imageHandler.loadImageRound(tutor.getAvatar(), holder.ivHomeDetail);
         holder.tvTitle.setText(tutor.getFirstName() + " " + tutor.getLastName());

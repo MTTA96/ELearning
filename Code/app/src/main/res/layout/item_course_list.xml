@@ -24,6 +24,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/img_KhoaHoc"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Height_KhoaHoc"
+                android:scaleType="centerCrop" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,12 +40,6 @@
                 android:padding="@dimen/min_vertical_padding"
                 android:text="5.0"
                 android:textColor="@color/colorWhite" />
-
-            <ImageView
-                android:id="@+id/img_KhoaHoc"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/Height_KhoaHoc"
-                android:scaleType="centerCrop" />
         </FrameLayout>
 
         <!--<RatingBar-->

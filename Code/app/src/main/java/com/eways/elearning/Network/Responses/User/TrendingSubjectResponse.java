@@ -14,7 +14,7 @@ public class TrendingSubjectResponse {
     @SerializedName("errorCode")
     @Expose
     private Integer errorCode;
-    @SerializedName("trendingList")
+    @SerializedName("results")
     @Expose
     private ArrayList<Subject> trendingList = null;
 

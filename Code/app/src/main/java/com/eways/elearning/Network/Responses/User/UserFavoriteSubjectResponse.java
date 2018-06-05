@@ -14,7 +14,7 @@ public class UserFavoriteSubjectResponse {
     @SerializedName("errorCode")
     @Expose
     private Integer errorCode;
-    @SerializedName("favSubjectWithCourseList")
+    @SerializedName("results")
     @Expose
     private ArrayList<FavoriteSubjectWithCourses> favSubjectWithCourseList = null;
 

@@ -333,7 +333,7 @@ public class User {
             public void onResponse(Call<UserListResponse> call, Response<UserListResponse> response) {
                 // handle error
                 if (!response.isSuccessful()) {
-                    Log.d("CheckPhoneNumberModel:", "connect failed");
+                    Log.d("Get top tutors model:", "connect failed");
                     topTutorsCallBack.topTutorCallBack(SupportKey.FAILED_CODE, null);
                     return;
                 }
@@ -344,7 +344,7 @@ public class User {
 
             @Override
             public void onFailure(Call<UserListResponse> call, Throwable t) {
-                Log.d("CheckPhoneNumberModel:", t.getLocalizedMessage());
+                Log.d("Get top tutors model:", t.getLocalizedMessage());
                 topTutorsCallBack.topTutorCallBack(SupportKey.FAILED_CODE, null);
             }
         });

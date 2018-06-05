@@ -3,6 +3,7 @@ package com.eways.elearning.Views.Fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,6 +32,8 @@ public class HomeFragment extends Fragment {
     /* VIEWS */
     RecyclerView rcTrending, rcToptutor, rcSubject;
     TextView tvToptutorMore, tvToptutorTitle;
+
+    SwipeRefreshLayout swrRefreshHome;
 
     ArrayList<Trending> trendings;
     ArrayList<Tutor> tutors;
@@ -65,6 +68,8 @@ public class HomeFragment extends Fragment {
         rcTrending = root.findViewById(R.id.item_trending);
         rcToptutor = root.findViewById(R.id.item_toptutor);
         rcSubject = root.findViewById(R.id.rc_subject);
+        swrRefreshHome = root.findViewById(R.id.swr_refresh_home_data);
+
     }
 
     public void handle_views(){
@@ -75,6 +80,8 @@ public class HomeFragment extends Fragment {
         SetUpTrending();
         SetUpToptutor();
         SetUpSubject();
+
+        SetUpPullToRefresh();
     }
 
     public void SetUpTrending(){
@@ -83,6 +90,7 @@ public class HomeFragment extends Fragment {
         rcTrending.setHasFixedSize(true);
         rcTrending.setLayoutManager(layoutManager);
         rcTrending.setAdapter(trendingAdapter);
+
     }
 
     public void SetUpToptutor(){
@@ -99,6 +107,16 @@ public class HomeFragment extends Fragment {
         rcSubject.setHasFixedSize(true);
         rcSubject.setLayoutManager(layoutManager);
         rcSubject.setAdapter(subjectAdapter);
+    }
+
+    public void SetUpPullToRefresh(){
+        swrRefreshHome.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // set func refresh data at here
+
+            }
+        });
     }
 
 }

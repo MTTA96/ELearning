@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
+    android:orientation="horizontal">
+
+    <!--User info-->
+    <LinearLayout
+        android:id="@+id/view_UserInfo_DanhSachKhoaHoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/MarginBottom_itemKhoaHoc"
+        android:layout_marginLeft="@dimen/MarginLeft_itemKhoaHoc_BlockImg"
+        android:layout_marginRight="@dimen/MarginRight_itemKhoaHoc_BlockImg"
+        android:layout_marginTop="@dimen/MarginTop_itemKhoaHoc"
+        android:layout_weight="1.5"
+        android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp">
+
+        <ImageView
+            android:id="@+id/iv_course"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/Height_KhoaHoc"
+            android:scaleType="centerCrop" />
+
+        <RatingBar
+            android:id="@+id/rtb_KhoaHoc"
+            style="@style/ratingbarCustom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="5dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="0.5" />
+
+    </LinearLayout>
+
+    <!--Course info-->
+    <LinearLayout
+        android:id="@+id/loChiTietKhoaHoc_ListKhoaHoc"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/Height_BlockInfo_KhoaHoc"
+        android:layout_marginBottom="@dimen/MarginBottom_itemKhoaHoc"
+        android:layout_marginLeft="@dimen/MarginLeft_itemKhoaHoc_BlockInfo"
+        android:layout_marginRight="@dimen/MarginRight_itemKhoaHoc_BlockInfo"
+        android:layout_marginTop="@dimen/MarginTop_itemKhoaHoc"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/view_CourseInfo_DanhSachKhoaHoc"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/Height_KhoaHoc"
+            android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/tv_course_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                android:text="@string/Xem_Ten"
+                android:textSize="@dimen/TextSize_KhoaHoc" />
+
+            <TextView
+                android:id="@+id/tv_subject_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                android:text="@string/Xem_Mon"
+                android:textSize="@dimen/TextSize_KhoaHoc" />
+
+            <TextView
+                android:id="@+id/tv_session"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                android:text="@string/Xem_Buoi"
+                android:textSize="@dimen/TextSize_KhoaHoc" />
+
+            <TextView
+                android:id="@+id/tv_detail_course"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                android:text="@string/Xem_ChiTiet"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/TextSizeCT_KhoaHoc" />
+
+            <TextView
+                android:id="@+id/tv_tuition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                android:text="@string/Xem_Gia"
+                android:textSize="@dimen/TextSize_KhoaHoc" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/MarginLeft_BtnChat_KhoaHoc"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

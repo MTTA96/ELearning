@@ -29,4 +29,7 @@ public class SupportKey {
     public static final int SEARCH_SUBJECTS = 0;
     public static final int SEARCH_STUDENTS = 1;
     public static final String BUNDLE_MSG = "BundleMSG";
+
+    /** KEY SHARED */
+    public static final String UID = "uid";
 }

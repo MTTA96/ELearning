@@ -4,136 +4,144 @@
     android:layout_height="match_parent"
     tools:context="com.eways.elearning.Views.Fragment.HomeFragment">
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-        
-        <LinearLayout
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swr_refresh_home_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:fillViewport="true">
 
-            <!-- Banner -->
-            <RelativeLayout
-                android:id="@+id/banner"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"></RelativeLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <!-- Top tutor -->
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp">
-
+                <!-- Banner -->
                 <RelativeLayout
-                    android:id="@+id/title_bar_trending"
+                    android:id="@+id/banner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="150dp"></RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/title_trending"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Trending"
-                        android:textSize="17sp"
-                        android:textColor="@color/colorBlue"
-                        android:layout_alignParentLeft="true"/>
+                <!-- Top tutor -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp">
 
-                    <TextView
-                        android:id="@+id/more_trending"
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:id="@+id/title_bar_trending"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/title_trending"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Trending"
+                            android:textSize="17sp"
+                            android:textColor="@color/colorBlue"
+                            android:layout_alignParentLeft="true"/>
+
+                        <TextView
+                            android:id="@+id/more_trending"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Xem thêm"
+                            android:textSize="17sp"
+                            android:textColor="@color/colorBlue"
+                            android:layout_alignParentRight="true"/>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/divide1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/title_bar_trending"
+                        android:background="@color/colorGrey"
+                        android:layout_marginBottom="5dp"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/item_trending"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Xem thêm"
-                        android:textSize="17sp"
-                        android:textColor="@color/colorBlue"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_below="@+id/divide1"/>
+
+
+
 
                 </RelativeLayout>
 
-                <View
-                    android:id="@+id/divide1"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/title_bar_trending"
-                    android:background="@color/colorGrey"
-                    android:layout_marginBottom="5dp"/>
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/item_trending"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/divide1"/>
-
-
-
-
-            </RelativeLayout>
-
-            <!-- Trending -->
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp">
-
+                <!-- Trending -->
                 <RelativeLayout
-                    android:id="@+id/title_bar_toptutor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp">
 
-                    <TextView
-                        android:id="@+id/title_toptutor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Top gia sư"
-                        android:textSize="17sp"
-                        android:textColor="@color/colorBlue"
-                        android:layout_alignParentLeft="true"/>
+                    <RelativeLayout
+                        android:id="@+id/title_bar_toptutor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/tv_toptutor_more"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/title_toptutor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Top gia sư"
+                            android:textSize="17sp"
+                            android:textColor="@color/colorBlue"
+                            android:layout_alignParentLeft="true"/>
+
+                        <TextView
+                            android:id="@+id/tv_toptutor_more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Xem thêm"
+                            android:textSize="17sp"
+                            android:textColor="@color/colorBlue"
+                            android:layout_alignParentRight="true"/>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/divide"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/title_bar_toptutor"
+                        android:background="@color/colorGrey"
+                        android:layout_marginBottom="5dp"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/item_toptutor"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Xem thêm"
-                        android:textSize="17sp"
-                        android:textColor="@color/colorBlue"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_below="@+id/divide"/>
+
+
+
 
                 </RelativeLayout>
 
-                <View
-                    android:id="@+id/divide"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/title_bar_toptutor"
-                    android:background="@color/colorGrey"
-                    android:layout_marginBottom="5dp"/>
-
+                <!-- Subject -->
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/item_toptutor"
+                    android:id="@+id/rc_subject"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/divide"/>
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"/>
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
-
-
-            </RelativeLayout>
-
-            <!-- Subject -->
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rc_subject"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"/>
-        </LinearLayout>
-        
-    </android.support.v4.widget.NestedScrollView>
 
 </RelativeLayout>

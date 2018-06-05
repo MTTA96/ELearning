@@ -12,6 +12,9 @@ public class Course {
     @SerializedName("IdCourse")
     @Expose
     private String idCourse;
+    @SerializedName("CourseName")
+    @Expose
+    private String courseName;
     @SerializedName("Uid")
     @Expose
     private String uid;
@@ -57,6 +60,9 @@ public class Course {
     @SerializedName("LastName")
     @Expose
     private String lastName;
+    @SerializedName("Avatar")
+    @Expose
+    private String avatar;
     @SerializedName("FirstName")
     @Expose
     private String firstName;
@@ -70,6 +76,14 @@ public class Course {
 
     public void setIdCourse(String idCourse) {
         this.idCourse = idCourse;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public String getUid() {
@@ -192,6 +206,14 @@ public class Course {
         this.lastName = lastName;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -207,4 +229,5 @@ public class Course {
     public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
     }
+
 }

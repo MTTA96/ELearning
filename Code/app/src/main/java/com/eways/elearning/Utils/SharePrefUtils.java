@@ -9,10 +9,9 @@ import com.eways.elearning.Utils.params.GlobalParams;
 import java.util.HashSet;
 import java.util.Set;
 
-public class
-SharePrefUtils {
+public class SharePrefUtils {
 	private final SharedPreferences preferences;
-	private final String sharedPreferenceName = "basf";
+	private final String sharedPreferenceName = "elearning_user";
 	private SharedPreferences.Editor editor;
 
 	public interface OnChangeListener{

@@ -8,7 +8,7 @@ import com.eways.elearning.Network.ApiUtils;
 import com.eways.elearning.Network.Responses.SearchBaseResponse;
 import com.eways.elearning.Network.Responses.SearchSuggestionsBaseResponse;
 import com.eways.elearning.Network.Services.ELearningServicesImp;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -59,7 +59,7 @@ public class SearchResults {
                 // handle errors
                 if (!response.isSuccessful()) {
                     Log.d("search:", " Connect Failed");
-                    dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                    dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
@@ -68,13 +68,13 @@ public class SearchResults {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("param1", response.body().getResults().getListUser());
                 bundle.putSerializable("param2", response.body().getResults().getListCourse());
-                dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, bundle);
+                dataCallBack.dataCallBack(SupportKeys.SUCCESS_CODE, bundle);
             }
 
             @Override
             public void onFailure(Call<SearchBaseResponse> call, Throwable t) {
                 Log.d("search:", "Connect Failed - " + t.getLocalizedMessage());
-                dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }
         });
     }
@@ -89,7 +89,7 @@ public class SearchResults {
                 // handle errors
                 if (!response.isSuccessful()) {
                     Log.d("SearchSubSuggestions:", " Connect Failed");
-                    dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                    dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
@@ -97,13 +97,13 @@ public class SearchResults {
                 // Prepare data
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(null, response.body().getSuggestionList());
-                dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, bundle);
+                dataCallBack.dataCallBack(SupportKeys.SUCCESS_CODE, bundle);
             }
 
             @Override
             public void onFailure(Call<SearchSuggestionsBaseResponse> call, Throwable t) {
                 Log.d("SearchSubSuggestions:", t.getLocalizedMessage());
-                dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }
         });
     }
@@ -118,7 +118,7 @@ public class SearchResults {
                 // handle errors
                 if (!response.isSuccessful()) {
                     Log.d("SearchResults:", " Connect Failed");
-                    dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                    dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
@@ -128,13 +128,13 @@ public class SearchResults {
                 bundle.putSerializable(null, response.body().getSuggestionList());
 
                 // Response to presenter
-                dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, bundle);
+                dataCallBack.dataCallBack(SupportKeys.SUCCESS_CODE, bundle);
             }
 
             @Override
             public void onFailure(Call<SearchSuggestionsBaseResponse> call, Throwable t) {
                 Log.d("SearchResults:", "Connect Failed");
-                dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }
         });
     }

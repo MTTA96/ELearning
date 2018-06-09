@@ -1,13 +1,12 @@
 package com.eways.elearning.Model;
 
-import android.os.Bundle;
 import android.util.Log;
 
 import com.eways.elearning.Interfaces.DataCallback.Subject.TrendingSubjectCallBack;
 import com.eways.elearning.Network.ApiUtils;
 import com.eways.elearning.Network.Responses.User.TrendingSubjectResponse;
 import com.eways.elearning.Network.Services.ELearningServicesImp;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -65,18 +64,18 @@ public class Subject {
                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("CheckPhoneNumberModel:", "connect failed");
-                    trendingSubjectCallBack.trendingSubjectsCallBack(SupportKey.FAILED_CODE, null);
+                    trendingSubjectCallBack.trendingSubjectsCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
                 // Prepare data
-                trendingSubjectCallBack.trendingSubjectsCallBack(SupportKey.SUCCESS_CODE, response.body().getTrendingList());
+                trendingSubjectCallBack.trendingSubjectsCallBack(SupportKeys.SUCCESS_CODE, response.body().getTrendingList());
             }
 
             @Override
             public void onFailure(Call<TrendingSubjectResponse> call, Throwable t) {
                 Log.d("CheckPhoneNumberModel:", t.getLocalizedMessage());
-                trendingSubjectCallBack.trendingSubjectsCallBack(SupportKey.FAILED_CODE, null);
+                trendingSubjectCallBack.trendingSubjectsCallBack(SupportKeys.FAILED_CODE, null);
             }
         });
     }

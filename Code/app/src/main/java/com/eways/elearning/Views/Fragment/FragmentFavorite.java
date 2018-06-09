@@ -13,15 +13,10 @@ import android.view.ViewGroup;
 import com.eways.elearning.Adapter.Favorite.FavoriteAdapter;
 import com.eways.elearning.Model.Favorite;
 import com.eways.elearning.R;
-import com.eways.elearning.Utils.FileUtils;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
-import com.eways.elearning.Utils.SupportKey;
-import com.eways.elearning.Utils.params.GlobalParams;
+import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Fragment.Authentication.FragmentWelcome;
 import com.eways.elearning.Views.Fragment.Authentication.SignupFragment;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -95,7 +90,7 @@ public class FragmentFavorite extends Fragment implements View.OnClickListener {
             {
                 switch (v.getId()) {
                     case R.id.btn_next:
-                        fragmentHandler.changeFragment(FragmentWelcome.newInstance(), SupportKey.WELCOME_FRAGMENT_TAG, 0, 0);
+                        fragmentHandler.changeFragment(FragmentWelcome.newInstance(), SupportKeys.WELCOME_FRAGMENT_TAG, 0, 0);
                         break;
                 }
             }

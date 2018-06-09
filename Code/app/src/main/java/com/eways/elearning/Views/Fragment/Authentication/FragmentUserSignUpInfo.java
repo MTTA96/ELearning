@@ -21,7 +21,7 @@ import com.eways.elearning.Model.User;
 import com.eways.elearning.Presenter.Authentication.SignUpInfoPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Fragment.FragmentFavorite;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -212,7 +212,7 @@ public class FragmentUserSignUpInfo extends Fragment implements View.OnClickList
             tempUser.setFirstName(name);
             tempUser.setPassword(password);
             tempUser.setPhone("+84" + FragmentEnterPhone.tvPhoneNumber.getText().toString());
-            tempUser.setAuthorization(SupportKey.USER_AUTHORIZATION);
+            tempUser.setAuthorization(SupportKeys.USER_AUTHORIZATION);
             return tempUser;
         }
         return null;
@@ -224,13 +224,13 @@ public class FragmentUserSignUpInfo extends Fragment implements View.OnClickList
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
         // handle error
-        if (resultCode == SupportKey.FAILED_CODE) {
+        if (resultCode == SupportKeys.FAILED_CODE) {
             Toast.makeText(getContext(), getString(R.string.msg_unknow_error), Toast.LENGTH_SHORT).show();
             return;
         }
 
         // User signed up success
-        fragmentHandler.changeFragment(FragmentFavorite.newInstance(), SupportKey.ENTER_PHONE_FRAGMENT_TAG, R.anim.slide_from_left, 0);
+        fragmentHandler.changeFragment(FragmentFavorite.newInstance(), SupportKeys.ENTER_PHONE_FRAGMENT_TAG, R.anim.slide_from_left, 0);
 
     }
 }

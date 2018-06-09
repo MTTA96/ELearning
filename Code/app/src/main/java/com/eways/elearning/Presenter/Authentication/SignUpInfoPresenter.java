@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Model.User;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 import com.google.gson.Gson;
 
 /**
@@ -34,7 +34,7 @@ public class SignUpInfoPresenter implements DataCallBack {
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
         // handle error
-        if (resultCode == SupportKey.FAILED_CODE) {
+        if (resultCode == SupportKeys.FAILED_CODE) {
             dataCallBack.dataCallBack(resultCode, null);
             return;
         }

@@ -7,7 +7,9 @@ import android.support.annotation.Nullable;
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Model.User;
 import com.eways.elearning.R;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SharedPreferences.SharedPrefSupportKeys;
+import com.eways.elearning.Utils.SharedPreferences.SharedPrefUtils;
+import com.eways.elearning.Utils.SupportKeys;
 
 /**
  * Created by zzzzz on 5/20/2018.
@@ -16,23 +18,33 @@ import com.eways.elearning.Utils.SupportKey;
 public class SignInPresenter implements DataCallBack {
     private Context context;
     private DataCallBack dataCallBack;
+    private SharedPrefUtils sharedPreferencesUtils;
+    private String userName, password;
 
     public SignInPresenter(Context context, DataCallBack dataCallBack) {
         this.context = context;
         this.dataCallBack = dataCallBack;
+        sharedPreferencesUtils = new SharedPrefUtils(context, SharedPrefSupportKeys.SHARED_PREF_FILE_NAME);
     }
 
-    /** Sign in */
+    /**
+     * Sign in
+     */
     public void signIn(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+
         // Verify user with server
         User.signIn(userName, password, this);
     }
 
-    /** Handle data from server */
+    /**
+     * Handle data from server
+     */
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
         // Handle errors
-        if (resultCode == SupportKey.FAILED_CODE) {
+        if (resultCode == SupportKeys.FAILED_CODE) {
             dataCallBack.dataCallBack(resultCode, null);
             return;
         }
@@ -43,6 +55,9 @@ public class SignInPresenter implements DataCallBack {
         switch (status) {
             // Sign in success
             case 0:
+                //sharedPreferencesUtils.putString();
+                sharedPreferencesUtils.putString(SharedPrefSupportKeys.userName, userName, true);
+                sharedPreferencesUtils.putString(SharedPrefSupportKeys.password, password, true);
                 dataCallBack.dataCallBack(resultCode, bundle);
                 break;
 
@@ -62,7 +77,7 @@ public class SignInPresenter implements DataCallBack {
                 break;
         }
 
-        bundle.putString(SupportKey.BUNDLE_MSG, msg);
+        bundle.putString(SupportKeys.BUNDLE_MSG, msg);
 
         // Send result to view
         dataCallBack.dataCallBack(resultCode, bundle);

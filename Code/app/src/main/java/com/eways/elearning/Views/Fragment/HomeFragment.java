@@ -24,7 +24,7 @@ import com.eways.elearning.Model.Subject;
 import com.eways.elearning.Model.User;
 import com.eways.elearning.Presenter.HomePresenter;
 import com.eways.elearning.R;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 
 import java.util.ArrayList;
 
@@ -151,7 +151,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
     @Override
     public void topTutorCallBack(int errorCode, ArrayList result) {
         // Handle error
-        if(errorCode == SupportKey.FAILED_CODE) {
+        if(errorCode == SupportKeys.FAILED_CODE) {
             Log.d(this.getTag(), "Get top tutors failed!");
             return;
         }
@@ -166,7 +166,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
     @Override
     public void trendingSubjectsCallBack(int errorCode, ArrayList result) {
         // Handle error
-        if(errorCode == SupportKey.FAILED_CODE) {
+        if(errorCode == SupportKeys.FAILED_CODE) {
             Log.d(this.getTag(), "Get top tutors failed!");
             return;
         }
@@ -181,7 +181,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
     @Override
     public void favSubjectsCourseCallBack(int errorCode, ArrayList result) {
         // Handle error
-        if(errorCode == SupportKey.FAILED_CODE) {
+        if(errorCode == SupportKeys.FAILED_CODE) {
             Log.d(this.getTag(), "Get top tutors failed!");
             return;
         }

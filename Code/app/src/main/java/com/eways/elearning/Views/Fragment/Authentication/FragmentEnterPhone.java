@@ -16,7 +16,7 @@ import com.eways.elearning.Presenter.Authentication.EnterPhonePresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 //import com.eways.etutor.Utils.Handler.SharedPreferencesHandler;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -98,7 +98,7 @@ public class FragmentEnterPhone extends Fragment implements View.OnClickListener
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
         // handle error
-        if (resultCode == SupportKey.FAILED_CODE) {
+        if (resultCode == SupportKeys.FAILED_CODE) {
             Toast.makeText(getContext(), R.string.msg_unknow_error, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -113,7 +113,7 @@ public class FragmentEnterPhone extends Fragment implements View.OnClickListener
         }
 
         // Phone is available to use now
-        fragmentHandler.changeFragment(FragmentVerify.newInstance(phoneNumber), SupportKey.VERIFY_FRAGMENT_TAG, R.anim.slide_from_left, 0);
+        fragmentHandler.changeFragment(FragmentVerify.newInstance(phoneNumber), SupportKeys.VERIFY_FRAGMENT_TAG, R.anim.slide_from_left, 0);
     }
 
 }

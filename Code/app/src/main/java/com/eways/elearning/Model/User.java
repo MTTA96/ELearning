@@ -12,7 +12,7 @@ import com.eways.elearning.Network.Responses.User.UserFavoriteSubjectResponse;
 import com.eways.elearning.Network.Responses.User.UserListResponse;
 import com.eways.elearning.Network.Services.ELearningServicesImp;
 import com.eways.elearning.Network.Services.UserServicesImp;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -245,25 +245,25 @@ public class User {
                 Log.d("signUpFirebase:", call.request().toString());
                 if (!response.isSuccessful()) {
                     Log.d("signUp:", "connect failed");
-                    dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                    dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
                 // handle result
                 if (Integer.parseInt(response.body().getStatus()) == 0) {
                     Log.d("signUp:", "sign up failed");
-                    dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                    dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
                 // Sign up success
-                dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, null);
+                dataCallBack.dataCallBack(SupportKeys.SUCCESS_CODE, null);
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Log.d("signUp:", t.getLocalizedMessage());
-                dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }
         });
     }
@@ -279,20 +279,20 @@ public class User {
                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("Sign in", "Connect failed");
-                    dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                    dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
                 // Connect success
                 Bundle bundle = new Bundle();
                 bundle.putString(null, response.body().getStatus());
-                dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, bundle);
+                dataCallBack.dataCallBack(SupportKeys.SUCCESS_CODE, bundle);
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Log.d("Sign in", "Connect failed");
-                dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }
         });
     }
@@ -306,20 +306,20 @@ public class User {
                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("CheckPhoneNumberModel:", "connect failed");
-                    dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                    dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
                 // Prepare data
                 Bundle bundle = new Bundle();
                 bundle.putInt(null, Integer.parseInt(response.body().getStatus()));
-                dataCallBack.dataCallBack(SupportKey.SUCCESS_CODE, bundle);
+                dataCallBack.dataCallBack(SupportKeys.SUCCESS_CODE, bundle);
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Log.d("CheckPhoneNumberModel:", t.getLocalizedMessage());
-                dataCallBack.dataCallBack(SupportKey.FAILED_CODE, null);
+                dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }
         });
     }
@@ -334,18 +334,18 @@ public class User {
                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("Get top tutors model:", "connect failed");
-                    topTutorsCallBack.topTutorCallBack(SupportKey.FAILED_CODE, null);
+                    topTutorsCallBack.topTutorCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
                 // Prepare data
-                topTutorsCallBack.topTutorCallBack(SupportKey.SUCCESS_CODE, response.body().getUserList());
+                topTutorsCallBack.topTutorCallBack(SupportKeys.SUCCESS_CODE, response.body().getUserList());
             }
 
             @Override
             public void onFailure(Call<UserListResponse> call, Throwable t) {
                 Log.d("Get top tutors model:", t.getLocalizedMessage());
-                topTutorsCallBack.topTutorCallBack(SupportKey.FAILED_CODE, null);
+                topTutorsCallBack.topTutorCallBack(SupportKeys.FAILED_CODE, null);
             }
         });
     }
@@ -353,24 +353,24 @@ public class User {
     /** Get user's favorite subjects with courses */
     public static void getUserFavoriteSubjectsWithCourses(String uId, final FavSubjectWithCoursesCallBack favoriteSubjectWithCourseList) {
         ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
-        eLearningServicesImp.getUserFavoriteSubjects(uId, SupportKey.APP_AUTHENTICATION).enqueue(new Callback<UserFavoriteSubjectResponse>() {
+        eLearningServicesImp.getUserFavoriteSubjects(uId, SupportKeys.APP_AUTHENTICATION).enqueue(new Callback<UserFavoriteSubjectResponse>() {
             @Override
             public void onResponse(Call<UserFavoriteSubjectResponse> call, Response<UserFavoriteSubjectResponse> response) {
                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("CheckPhoneNumberModel:", "connect failed");
-                    favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKey.FAILED_CODE, null);
+                    favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
                 // Prepare data
-                favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKey.SUCCESS_CODE, response.body().getFavSubjectWithCourseList());
+                favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKeys.SUCCESS_CODE, response.body().getFavSubjectWithCourseList());
             }
 
             @Override
             public void onFailure(Call<UserFavoriteSubjectResponse> call, Throwable t) {
                 Log.d("CheckPhoneNumberModel:", t.getLocalizedMessage());
-                favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKey.FAILED_CODE, null);
+                favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
             }
         });
     }

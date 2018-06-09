@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
 
     /** MODELS */
     private HomePresenter homePresenter;
-    private ArrayList<Subject> trendings = new ArrayList<>();
+    private ArrayList<Subject> trending = new ArrayList<>();
     private ArrayList<User> tutors = new ArrayList<>();
     private ArrayList<FavoriteSubjectWithCourses> favCourses = new ArrayList<>();
     private TopTutorAdapter topTutorAdapter;
@@ -61,14 +61,13 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         return fragment;
     }
 
+    /** LIFECYCLE */
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homePresenter = new HomePresenter();
-        //homePresenter.getBanners(this);
-        homePresenter.getTopTutors(this);
-        homePresenter.getTrendingSubjects(this);
-        //homePresenter.getUserFavoriteSubjects(this);
+        requestData();
     }
 
     @Override
@@ -83,28 +82,30 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         return root;
     }
 
+    /** CONFIGURE */
+
     public void declare_views(View root){
         rcTrending = root.findViewById(R.id.item_trending);
-        rcToptutor = root.findViewById(R.id.item_toptutor);
+        rcToptutor = root.findViewById(R.id.item_top_tutors);
         rcSubject = root.findViewById(R.id.rc_subject);
         swrRefreshHome = root.findViewById(R.id.swr_refresh_home_data);
 
     }
 
     public void handle_views(){
-        trendings = new ArrayList<>();
+        trending = new ArrayList<>();
         tutors = new ArrayList<>();
         favCourses = new ArrayList<>();
 
-        SetUpTrending();
-        SetUpToptutor();
-        SetUpSubject();
+        setUpTrending();
+        setUpToptutor();
+        setUpSubject();
 
-        SetUpPullToRefresh();
+        setUpPullToRefresh();
     }
 
-    public void SetUpTrending(){
-        trendingAdapter = new TrendingAdapter(R.layout.item_home_detail, trendings);
+    public void setUpTrending() {
+        trendingAdapter = new TrendingAdapter(R.layout.item_home_detail, trending);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,true);
         rcTrending.setHasFixedSize(true);
         rcTrending.setLayoutManager(layoutManager);
@@ -112,7 +113,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
 
     }
 
-    public void SetUpToptutor(){
+    public void setUpToptutor() {
         topTutorAdapter = new TopTutorAdapter(R.layout.item_home_detail, tutors);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,true);
         rcToptutor.setHasFixedSize(true);
@@ -120,12 +121,29 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         rcToptutor.setAdapter(topTutorAdapter);
     }
 
-    public void SetUpSubject(){
+    public void setUpSubject() {
         favSubjectCoursesAdapter = new SubjectAdapter(R.layout.item_home_detail, favCourses);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,true);
         rcSubject.setHasFixedSize(true);
         rcSubject.setLayoutManager(layoutManager);
         rcSubject.setAdapter(favSubjectCoursesAdapter);
+    }
+
+    public void setUpPullToRefresh() {
+        swrRefreshHome.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                requestData();
+            }
+        });
+    }
+
+    /** Request data from server */
+    private void requestData() {
+        //homePresenter.getBanners(this);
+        homePresenter.getTopTutors(this);
+        homePresenter.getTrendingSubjects(this);
+        //homePresenter.getUserFavoriteSubjects(this);
     }
 
     /** HANDLE RESULTS FROM SERVER */
@@ -142,18 +160,8 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         tutors.clear();
         tutors.addAll(result);
         topTutorAdapter.notifyDataSetChanged();
+        swrRefreshHome.setRefreshing(false);
     }
-
-    public void SetUpPullToRefresh(){
-        swrRefreshHome.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                // set func refresh data at here
-
-            }
-        });
-    }
-
 
     @Override
     public void trendingSubjectsCallBack(int errorCode, ArrayList result) {
@@ -164,9 +172,10 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         }
 
         // Get data success
-        trendings.clear();
-        trendings.addAll(result);
+        trending.clear();
+        trending.addAll(result);
         trendingAdapter.notifyDataSetChanged();
+        swrRefreshHome.setRefreshing(false);
     }
 
     @Override
@@ -181,6 +190,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         favCourses.clear();
         favCourses.addAll(result);
         favSubjectCoursesAdapter.notifyDataSetChanged();
+        swrRefreshHome.setRefreshing(false);
     }
 
 }

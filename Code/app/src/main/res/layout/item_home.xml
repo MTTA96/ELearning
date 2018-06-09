@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-    
+
     <RelativeLayout
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/horizontal_padding">
 
         <TextView
             android:id="@+id/title_subject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:text="Title"
-            android:textSize="17sp"
             android:textColor="@color/colorBlue"
-            android:layout_alignParentLeft="true"/>
+            android:textSize="@dimen/normal_text_size" />
 
         <TextView
             android:id="@+id/tv_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:text="Xem thêm"
-            android:textSize="17sp"
             android:textColor="@color/colorBlue"
-            android:layout_alignParentRight="true"/>
+            android:textSize="@dimen/normal_text_size"  />
 
     </RelativeLayout>
 
@@ -34,16 +34,15 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/title_bar"
-        android:background="@color/colorGrey"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorLightScrim" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rc_item_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/divide"/>
+        android:layout_below="@+id/divide"
+        android:paddingVertical="@dimen/min_vertical_padding" />
 
-
-    
 
 </RelativeLayout>

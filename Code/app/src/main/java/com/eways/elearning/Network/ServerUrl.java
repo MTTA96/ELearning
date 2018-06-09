@@ -17,8 +17,19 @@ public class ServerUrl {
     public static final String SIGN_UP_URL = UserAPIRoot + "AddNewUser.php";
     public static final String CHECK_PHONE_NUMBER_URL = UserAPIRoot + "UserIsExisted.php";
 
+    /** Tutors */
+    public static final String TOP_TUTORS = ServerAPIURL + "Home/TopTutor.php";
+
+    /** Subjects */
+    public static final String TRENDING_SUBJECTS = ServerAPIURL + "Home/TrendingSubject.php";
+    public static final String USER_FAVORITE_SUBJECTS = ServerAPIURL + "Home/TopTutor.php";
+
     /** Search */
-    public static final String SEARCH_URL = ServerAPIURL + "Course/SearchResults.php";
-    public static final String SEARCH_TUTOR_SUGGESTIONS_URL = ServerAPIURL + "Course/SearchSuggestion.php";
+    public static final String SEARCH_URL = ServerAPIURL + "Search/AppStudentSearchResults.php";
+    public static final String SEARCH_TUTOR_SUGGESTIONS_URL = ServerAPIURL + "Search/AppStudentSearchSuggestion.php";
+
+    /** Banner */
+    public static final String BANNER_URL = ServerAPIURL + "";
+
 
 }

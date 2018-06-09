@@ -33,7 +33,7 @@ public class ImageHandler {
             imageView.setBackground(null);
 
         if (url != null) {
-            if (url.compareTo("null") != 0)
+            if (url.compareTo("null") != 0 && url.compareTo("") != 0)
                 Picasso.with(context).load(url).transform(transformationRound).transform(new CropCircleTransformation()).into(imageView);
             else
                 imageView.setBackgroundResource(R.drawable.default_avatar);

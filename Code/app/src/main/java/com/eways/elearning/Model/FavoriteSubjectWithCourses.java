@@ -1,21 +1,22 @@
 package com.eways.elearning.Model;
 
-/**
- * Created by ADMIN on 5/29/2018.
- */
-
-import java.util.List;
+import com.eways.elearning.Model.Course;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CourseHome {
+import java.util.ArrayList;
 
+/**
+ * Created by zzzzz on 6/2/2018.
+ */
+
+public class FavoriteSubjectWithCourses {
     @SerializedName("Subject")
     @Expose
     private String subject;
     @SerializedName("listCourses")
     @Expose
-    private List<Course> listCourses = null;
+    private ArrayList<Course> listCourses = null;
 
     public String getSubject() {
         return subject;
@@ -25,12 +26,11 @@ public class CourseHome {
         this.subject = subject;
     }
 
-    public List<Course> getListCourses() {
+    public ArrayList<Course> getListCourses() {
         return listCourses;
     }
 
-    public void setListCourses(List<Course> listCourses) {
+    public void setListCourses(ArrayList<Course> listCourses) {
         this.listCourses = listCourses;
     }
-
 }

@@ -1,17 +1,14 @@
 package com.eways.elearning.Adapter.Home;
 
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.Adapter.Search.SearchVHolder;
-import com.eways.elearning.Model.Trending;
+import com.eways.elearning.Model.Subject;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.params.GlobalParams;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -21,11 +18,11 @@ import java.util.ArrayList;
 
 public class TrendingAdapter extends RecyclerView.Adapter<HomeVHolder> {
     int res;
-    ArrayList<Trending> trendings;
+    ArrayList<Subject> trendings;
 
     ImageHandler imageHandler;
 
-    public TrendingAdapter(int res, ArrayList<Trending> trendings) {
+    public TrendingAdapter(int res, ArrayList<Subject> trendings) {
         this.res = res;
         this.trendings = trendings;
 
@@ -41,10 +38,10 @@ public class TrendingAdapter extends RecyclerView.Adapter<HomeVHolder> {
 
     @Override
     public void onBindViewHolder(HomeVHolder holder, int position) {
-        final Trending trending = trendings.get(position);
+        final Subject subject = trendings.get(position);
 
-        imageHandler.loadImageRound(trending.getImg(), holder.ivHomeDetail);
-        holder.tvTitle.setText(trending.getSubjectName());
+        imageHandler.loadImageRound(subject.getImg(), holder.ivHomeDetail);
+        holder.tvTitle.setText(subject.getSubjectName());
     }
 
     @Override

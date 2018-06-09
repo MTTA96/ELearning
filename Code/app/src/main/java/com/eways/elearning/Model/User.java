@@ -4,8 +4,13 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.eways.elearning.Interfaces.DataCallBack;
+import com.eways.elearning.Interfaces.DataCallback.Subject.FavSubjectWithCoursesCallBack;
+import com.eways.elearning.Interfaces.DataCallback.User.TopTutorsCallBack;
 import com.eways.elearning.Network.ApiUtils;
 import com.eways.elearning.Network.Responses.BaseResponse;
+import com.eways.elearning.Network.Responses.User.UserFavoriteSubjectResponse;
+import com.eways.elearning.Network.Responses.User.UserListResponse;
+import com.eways.elearning.Network.Services.ELearningServicesImp;
 import com.eways.elearning.Network.Services.UserServicesImp;
 import com.eways.elearning.Utils.SupportKey;
 import com.google.gson.annotations.Expose;
@@ -229,6 +234,7 @@ public class User {
 
     /** MARK: - METHODS */
 
+    /** [START - Authentication] */
     /** Sign up*/
     public static void signUp(String jsonData, final DataCallBack dataCallBack) {
         UserServicesImp userServices = ApiUtils.userServices();
@@ -317,6 +323,56 @@ public class User {
             }
         });
     }
+    /** [END - Authentication] */
 
+    /** Get top tutors */
+    public static void getTopTutors(final TopTutorsCallBack topTutorsCallBack) {
+        ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
+        eLearningServicesImp.getTopTutors().enqueue(new Callback<UserListResponse>() {
+            @Override
+            public void onResponse(Call<UserListResponse> call, Response<UserListResponse> response) {
+                // handle error
+                if (!response.isSuccessful()) {
+                    Log.d("Get top tutors model:", "connect failed");
+                    topTutorsCallBack.topTutorCallBack(SupportKey.FAILED_CODE, null);
+                    return;
+                }
+
+                // Prepare data
+                topTutorsCallBack.topTutorCallBack(SupportKey.SUCCESS_CODE, response.body().getUserList());
+            }
+
+            @Override
+            public void onFailure(Call<UserListResponse> call, Throwable t) {
+                Log.d("Get top tutors model:", t.getLocalizedMessage());
+                topTutorsCallBack.topTutorCallBack(SupportKey.FAILED_CODE, null);
+            }
+        });
+    }
+
+    /** Get user's favorite subjects with courses */
+    public static void getUserFavoriteSubjectsWithCourses(String uId, final FavSubjectWithCoursesCallBack favoriteSubjectWithCourseList) {
+        ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
+        eLearningServicesImp.getUserFavoriteSubjects(uId, SupportKey.APP_AUTHENTICATION).enqueue(new Callback<UserFavoriteSubjectResponse>() {
+            @Override
+            public void onResponse(Call<UserFavoriteSubjectResponse> call, Response<UserFavoriteSubjectResponse> response) {
+                // handle error
+                if (!response.isSuccessful()) {
+                    Log.d("CheckPhoneNumberModel:", "connect failed");
+                    favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKey.FAILED_CODE, null);
+                    return;
+                }
+
+                // Prepare data
+                favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKey.SUCCESS_CODE, response.body().getFavSubjectWithCourseList());
+            }
+
+            @Override
+            public void onFailure(Call<UserFavoriteSubjectResponse> call, Throwable t) {
+                Log.d("CheckPhoneNumberModel:", t.getLocalizedMessage());
+                favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKey.FAILED_CODE, null);
+            }
+        });
+    }
 }
 

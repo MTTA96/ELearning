@@ -4,11 +4,8 @@ package com.eways.elearning.Utils;
  * Created by zzzzz on 5/6/2018.
  */
 
-public class SupportKey {
+public class SupportKeys {
     public static final String APP_AUTHENTICATION = "1";
-
-    // SharedPreference file's name
-    public static String SHARED_PREF_FILE_NAME = "SharedPreferDB";
 
     /** ERRORS CODE */
     public static final int FAILED_CODE = 0;
@@ -32,6 +29,4 @@ public class SupportKey {
     public static final int SEARCH_STUDENTS = 1;
     public static final String BUNDLE_MSG = "BundleMSG";
 
-    /** KEY SHARED */
-    public static final String UID = "uid";
 }

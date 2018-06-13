@@ -4,7 +4,6 @@ package com.eways.elearning.Views.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,11 +16,10 @@ import com.eways.elearning.Adapter.Course.CourseListAdapter;
 import com.eways.elearning.Adapter.User.UserListAdapter;
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Model.Course;
-import com.eways.elearning.Model.SearchResults;
 import com.eways.elearning.Model.User;
 import com.eways.elearning.Presenter.SearchPresenter;
 import com.eways.elearning.R;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 
 import java.util.ArrayList;
 
@@ -117,7 +115,7 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
         // Handle errors
-        if (resultCode == SupportKey.FAILED_CODE) {
+        if (resultCode == SupportKeys.FAILED_CODE) {
             Log.d(getClass().getName(), "Search failed!");
             return;
         }

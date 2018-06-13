@@ -7,11 +7,8 @@ import android.util.Log;
 
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Model.SearchResults;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Activity.HomeActivity;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 
 /**
@@ -32,10 +29,10 @@ public class SearchPresenter implements DataCallBack {
 
         // Check current type for searching
         switch (HomeActivity.currentSearchType) {
-            case SupportKey.SEARCH_SUBJECTS:
+            case SupportKeys.SEARCH_SUBJECTS:
                 SearchResults.search(keyword, this);
                 break;
-            case SupportKey.SEARCH_STUDENTS:
+            case SupportKeys.SEARCH_STUDENTS:
                 break;
         }
     }
@@ -43,7 +40,7 @@ public class SearchPresenter implements DataCallBack {
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
         // Handle error
-        if (resultCode == SupportKey.FAILED_CODE) {
+        if (resultCode == SupportKeys.FAILED_CODE) {
             Log.d("Search presenter", "Search failed!");
             dataCallBack.dataCallBack(resultCode, null);
             return;

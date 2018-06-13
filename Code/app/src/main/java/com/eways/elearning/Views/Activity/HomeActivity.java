@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.textservice.SuggestionsInfo;
 import android.widget.RelativeLayout;
 
 import com.eways.elearning.Adapter.Search.SearchSuggestionsAdapter;
@@ -23,7 +22,7 @@ import com.eways.elearning.Presenter.HomePresenter;
 import com.eways.elearning.R;
 
 import com.eways.elearning.Utils.Handler.FragmentHandler;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Fragment.HomeFragment;
 import com.eways.elearning.Views.Fragment.SearchFragment;
 
@@ -76,8 +75,8 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         rvSuggestionsList.setAdapter(searchSuggestionsAdapter);
 
         // Move to home
-        fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKey.HOME_FRAGMENT_TAG, 0, 0);
-        currentSearchType = SupportKey.SEARCH_SUBJECTS;
+        fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKeys.HOME_FRAGMENT_TAG, 0, 0);
+        currentSearchType = SupportKeys.SEARCH_SUBJECTS;
 
     }
 
@@ -155,7 +154,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 //        if (item.getItemId() == R.id.action_search) {
-//            fragmentHandler.changeFragment(SearchFragment.newInstance(), SupportKey.SEARCH_RESULTS_TAG, 0, 0);
+//            fragmentHandler.changeFragment(SearchFragment.newInstance(), SupportKeys.SEARCH_RESULTS_TAG, 0, 0);
 //        }
         return super.onOptionsItemSelected(item);
     }
@@ -164,7 +163,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
     @Override
     public void dataCallBack(int result, @Nullable Bundle bundle) {
         // Handle errors
-        if (result == SupportKey.FAILED_CODE) {
+        if (result == SupportKeys.FAILED_CODE) {
             Log.d(getClass().getName(), "Search failed!");
             return;
         }

@@ -6,13 +6,25 @@ import android.os.Bundle;
 
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
+import com.eways.elearning.Utils.SharedPreferences.SharedPrefSupportKeys;
+import com.eways.elearning.Utils.SharedPreferences.SharedPrefUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
-    /* Handler */
-    FragmentHandler fragmentHandler;
+
+    /**
+     * VARS
+     */
+
+    private FragmentHandler fragmentHandler;
+    private SharedPrefUtils sharedPrefUtils;
+
+    /**
+     * LIFECYCLE
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +33,10 @@ public class SplashActivity extends AppCompatActivity {
         handle_views();
     }
 
-    public void handle_views(){
+    /**
+     * CONFIG
+     */
+    public void handle_views() {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -37,4 +52,5 @@ public class SplashActivity extends AppCompatActivity {
         }, 1000);
 
     }
+
 }

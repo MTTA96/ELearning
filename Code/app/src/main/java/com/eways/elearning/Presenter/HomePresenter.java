@@ -13,7 +13,7 @@ import com.eways.elearning.Interfaces.DataCallback.User.TopTutorsCallBack;
 import com.eways.elearning.Model.SearchResults;
 import com.eways.elearning.Model.Subject;
 import com.eways.elearning.Model.User;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Activity.HomeActivity;
 
 import java.util.ArrayList;
@@ -41,10 +41,10 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
     public void searchSuggestions(String keyWord) {
         // Check current type for searching
         switch (HomeActivity.currentSearchType) {
-            case SupportKey.SEARCH_SUBJECTS:
+            case SupportKeys.SEARCH_SUBJECTS:
                 SearchResults.searchSubjectSuggestions(keyWord, this);
                 break;
-            case SupportKey.SEARCH_STUDENTS:
+            case SupportKeys.SEARCH_STUDENTS:
                 SearchResults.searchSubjectSuggestions(keyWord, this);
                 break;
         }
@@ -83,7 +83,7 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
 
         // handle errors
-        if (resultCode == SupportKey.FAILED_CODE) {
+        if (resultCode == SupportKeys.FAILED_CODE) {
             Log.d(getClass().getSimpleName(), "Search error!");
             dataCallBack.dataCallBack(resultCode, null);
             return;
@@ -97,7 +97,7 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
     @Override
     public void bannersCallBack(int resultCode, ArrayList<Banner> banners) {
         // Handle errors
-        if (resultCode == SupportKey.FAILED_CODE) {
+        if (resultCode == SupportKeys.FAILED_CODE) {
             Log.d(getClass().getSimpleName(), "Error!");
             bannerCallBack.bannersCallBack(resultCode, null);
             return;
@@ -111,7 +111,7 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
     @Override
     public void topTutorCallBack(int errorCode, ArrayList result) {
         // Handle errors
-        if (errorCode == SupportKey.FAILED_CODE) {
+        if (errorCode == SupportKeys.FAILED_CODE) {
             Log.d(getClass().getSimpleName(), "Error!");
             topTutorsCallBack.topTutorCallBack(errorCode, null);
             return;
@@ -125,7 +125,7 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
     @Override
     public void trendingSubjectsCallBack(int errorCode, ArrayList result) {
         // Handle errors
-        if (errorCode == SupportKey.FAILED_CODE) {
+        if (errorCode == SupportKeys.FAILED_CODE) {
             Log.d(getClass().getSimpleName(), "Error!");
             trendingSubjectCallBack.trendingSubjectsCallBack(errorCode, null);
             return;
@@ -139,7 +139,7 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
     @Override
     public void favSubjectsCourseCallBack(int errorCode, ArrayList result) {
         // Handle errors
-        if (errorCode == SupportKey.FAILED_CODE) {
+        if (errorCode == SupportKeys.FAILED_CODE) {
             Log.d(getClass().getSimpleName(), "Error!");
             favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(errorCode, null);
             return;

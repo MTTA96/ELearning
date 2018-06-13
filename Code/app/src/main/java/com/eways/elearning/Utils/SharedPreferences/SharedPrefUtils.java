@@ -1,4 +1,4 @@
-package com.eways.elearning.Utils;
+package com.eways.elearning.Utils.SharedPreferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,7 +9,7 @@ import com.eways.elearning.Utils.params.GlobalParams;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SharePrefUtils {
+public class SharedPrefUtils {
 	private final SharedPreferences preferences;
 	private final String sharedPreferenceName = "elearning_user";
 	private SharedPreferences.Editor editor;
@@ -30,7 +30,7 @@ public class SharePrefUtils {
 		}
 	};
 
-	public SharePrefUtils(Context context) {
+	public SharedPrefUtils(Context context) {
 		this.preferences = context.getSharedPreferences(sharedPreferenceName,
 				Context.MODE_PRIVATE);
 		this.editor = preferences.edit();
@@ -38,8 +38,8 @@ public class SharePrefUtils {
 		this.preferences.registerOnSharedPreferenceChangeListener(listener);
 	}
 
-	public SharePrefUtils(Context context, String name) {
-		this.preferences = context.getSharedPreferences(name,
+	public SharedPrefUtils(Context context, String fileName) {
+		this.preferences = context.getSharedPreferences(fileName,
 				Context.MODE_PRIVATE);
 
 		this.editor = preferences.edit();

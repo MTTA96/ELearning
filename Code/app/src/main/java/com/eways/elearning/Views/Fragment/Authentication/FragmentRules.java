@@ -15,7 +15,7 @@ import com.joanzapata.pdfview.PDFView;
 //=======
 //import com.eways.etutor.Utils.Handler.FragmentHandler;
 //import com.eways.etutor.Utils.Handler.ReadTextHandler;
-//import com.eways.etutor.Utils.SupportKey;
+//import com.eways.etutor.Utils.SupportKeys;
 //>>>>>>> origin/master
 
 /**
@@ -59,7 +59,7 @@ public class FragmentRules extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
 //        if (getActivity().getSupportFragmentManager().findFragmentById(R.id.childSignUpContentView) == this) {
 //            if (v.getId() == R.id.btn_next) {
-////                fragmentHandler.changeFragment(FragmentEnterPhone.newInstance(), SupportKey.ENTER_PHONE_FRAGMENT_TAG, R.anim.slide_from_left, 0);
+////                fragmentHandler.changeFragment(FragmentEnterPhone.newInstance(), SupportKeys.ENTER_PHONE_FRAGMENT_TAG, R.anim.slide_from_left, 0);
 //            }
 //        }
     }

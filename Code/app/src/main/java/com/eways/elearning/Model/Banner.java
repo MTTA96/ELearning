@@ -6,7 +6,7 @@ import com.eways.elearning.Interfaces.DataCallback.BannerCallBack;
 import com.eways.elearning.Network.ApiUtils;
 import com.eways.elearning.Network.Responses.BannerResponse;
 import com.eways.elearning.Network.Services.ELearningServicesImp;
-import com.eways.elearning.Utils.SupportKey;
+import com.eways.elearning.Utils.SupportKeys;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +27,7 @@ public class Banner {
                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("CheckPhoneNumberModel:", "connect failed");
-                    dataCallBack.bannersCallBack(SupportKey.FAILED_CODE, null);
+                    dataCallBack.bannersCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
@@ -38,7 +38,7 @@ public class Banner {
             @Override
             public void onFailure(Call<BannerResponse> call, Throwable t) {
                 Log.d("CheckPhoneNumberModel:", t.getLocalizedMessage());
-                dataCallBack.bannersCallBack(SupportKey.FAILED_CODE, null);
+                dataCallBack.bannersCallBack(SupportKeys.FAILED_CODE, null);
             }
         });
 

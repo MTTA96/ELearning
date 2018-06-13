@@ -2,20 +2,15 @@ package com.eways.elearning.Adapter.User;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.Adapter.Course.CourseViewHolder;
-import com.eways.elearning.Model.Course;
 import com.eways.elearning.Model.User;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Currency;
 
 /**
  * Created by zzzzz on 5/27/2018.

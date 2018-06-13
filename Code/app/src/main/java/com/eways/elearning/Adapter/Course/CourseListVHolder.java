@@ -12,14 +12,14 @@ import com.eways.elearning.R;
  * Created by zzzzz on 5/27/2018.
  */
 
-public class CourseViewHolder extends RecyclerView.ViewHolder {
+public class CourseListVHolder extends RecyclerView.ViewHolder {
 
     public LinearLayout vUserInfo, vCourseInfo;
     public ImageView imgDaiDien;
     public TextView tvTen,tvMon,tvBuoi,tvHocPhi;
 //    public RatingBar rtbDanhGia;
 
-    public CourseViewHolder(View itemView) {
+    public CourseListVHolder(View itemView) {
         super(itemView);
 
         vUserInfo = (LinearLayout) itemView.findViewById(R.id.view_UserInfo_DanhSachKhoaHoc);

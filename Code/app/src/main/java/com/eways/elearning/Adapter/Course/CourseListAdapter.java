@@ -19,7 +19,7 @@ import java.util.Currency;
  * Created by zzzzz on 5/27/2018.
  */
 
-public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
+public class CourseListAdapter extends RecyclerView.Adapter<CourseListVHolder> {
     private Context context;
     private ArrayList<Course> list = new ArrayList<>();
     private ImageHandler imageHandler;
@@ -32,13 +32,13 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
     }
 
     @Override
-    public CourseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CourseListVHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_course_list, parent,false);
-        return new CourseViewHolder(view);
+        return new CourseListVHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CourseViewHolder holder, int position) {
+    public void onBindViewHolder(CourseListVHolder holder, int position) {
         holder.vUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +60,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseViewHolder> {
         return list.size() <= 3 ? list.size():3;
     }
 
-    public void loadData(CourseViewHolder holder, int position) {
+    public void loadData(CourseListVHolder holder, int position) {
         course = list.get(position);
 
         //Avartar

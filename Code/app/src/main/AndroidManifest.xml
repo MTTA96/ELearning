@@ -20,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Views.Activity.SplashActivity" >
+        <activity android:name=".Views.Activity.HomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +31,7 @@
         <activity android:name=".Views.Activity.MainActivity" />
         <activity android:name=".Views.Activity.UpdateInfoActivity"/>
         <activity android:name=".Views.Activity.WelcomeActivity" />
-        <activity android:name=".Views.Activity.HomeActivity"></activity>
+        <activity android:name=".Views.Activity.SplashActivity"></activity>
     </application>
 
 </manifest>

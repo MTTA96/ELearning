@@ -204,6 +204,12 @@
                                 android:text="Khóa học của tôi"/>
 
                         </LinearLayout>
+
+                        <View
+                            android:id="@+id/btn_my_course"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
                     </RelativeLayout>
 
                     <View
@@ -245,6 +251,11 @@
                                 android:text="Xử lý yêu cầu"/>
 
                         </LinearLayout>
+
+                        <View
+                            android:id="@+id/btn_handle_request"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
                     </RelativeLayout>
 
                     <View
@@ -289,9 +300,14 @@
                                 android:textColor="@color/colorBlack"
                                 android:layout_gravity="center_vertical"
                                 android:textSize="18.5sp"
-                                android:text="Đăng xuất"/>
+                                android:text="Đăng xuất" />
 
                         </LinearLayout>
+
+                        <View
+                            android:id="@+id/btn_logout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
                     </RelativeLayout>
 
                 </LinearLayout>

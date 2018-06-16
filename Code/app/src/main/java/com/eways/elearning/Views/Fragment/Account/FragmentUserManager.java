@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
@@ -15,7 +17,10 @@ import com.eways.elearning.Utils.Handler.FragmentHandler;
  */
 public class FragmentUserManager extends Fragment implements View.OnClickListener{
     /* VIEWS */
-    View btnInfo;
+
+    ImageView avarta;
+    TextView userName, userEmail;
+    View btnInfo, btnMyCourse, btnHandleRequest, btnLogout;
 
     FragmentHandler fragmentHandler;
 
@@ -37,12 +42,20 @@ public class FragmentUserManager extends Fragment implements View.OnClickListene
 
     public void declare_views(View root){
         btnInfo = root.findViewById(R.id.btn_info);
+        avarta = root.findViewById(R.id.avarta);
+        userName = root.findViewById(R.id.userName);
+        userEmail = root.findViewById(R.id.userEmail);
+        btnHandleRequest = root.findViewById(R.id.btn_handle_request);
+        btnLogout = root.findViewById(R.id.btn_logout);
+        btnMyCourse = root.findViewById(R.id.btn_my_course);
     }
 
     public void handle_views(){
 //        fragmentHandler = new FragmentHandler(getActivity(), R.id.content_course);
 
         btnInfo.setOnClickListener(this);
+        btnHandleRequest.setOnClickListener(this);
+        btnLogout.setOnClickListener(this);
     }
 
     @Override

@@ -82,7 +82,6 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
 
     public void setUpToolBar(){
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 

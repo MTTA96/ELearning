@@ -20,6 +20,7 @@ import com.eways.elearning.Model.User;
 import com.eways.elearning.Presenter.SearchPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.SupportKeys;
+import com.eways.elearning.Views.Activity.HomeActivity;
 
 import java.util.ArrayList;
 
@@ -57,6 +58,9 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        //set button back
+        ((HomeActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         super.onCreate(savedInstanceState);
         searchPresenter = new SearchPresenter(getContext(), this);
 

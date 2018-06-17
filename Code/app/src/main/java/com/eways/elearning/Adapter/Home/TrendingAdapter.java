@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.Model.Subject;
+import com.eways.elearning.Model.Subject.Subject;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.params.GlobalParams;

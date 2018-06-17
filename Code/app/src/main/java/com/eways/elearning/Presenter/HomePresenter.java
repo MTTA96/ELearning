@@ -10,9 +10,9 @@ import com.eways.elearning.Interfaces.DataCallback.BannerCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Subject.FavSubjectWithCoursesCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Subject.TrendingSubjectCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.TopTutorsCallBack;
-import com.eways.elearning.Model.SearchResults;
-import com.eways.elearning.Model.Subject;
-import com.eways.elearning.Model.User;
+import com.eways.elearning.Model.Search.SearchResults;
+import com.eways.elearning.Model.Subject.Subject;
+import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Activity.HomeActivity;
 

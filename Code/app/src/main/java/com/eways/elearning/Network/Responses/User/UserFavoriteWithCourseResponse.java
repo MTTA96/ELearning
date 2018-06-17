@@ -1,7 +1,6 @@
 package com.eways.elearning.Network.Responses.User;
 
-import com.eways.elearning.Model.Subject;
-import com.eways.elearning.Model.User;
+import com.eways.elearning.Model.Subject.Subject;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

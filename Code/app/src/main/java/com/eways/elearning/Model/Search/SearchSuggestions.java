@@ -1,4 +1,4 @@
-package com.eways.elearning.Model;
+package com.eways.elearning.Model.Search;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

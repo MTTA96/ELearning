@@ -7,7 +7,7 @@ package com.eways.elearning.Network.Responses;
 
 import java.util.ArrayList;
 
-import com.eways.elearning.Model.SearchSuggestions;
+import com.eways.elearning.Model.Search.SearchSuggestions;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

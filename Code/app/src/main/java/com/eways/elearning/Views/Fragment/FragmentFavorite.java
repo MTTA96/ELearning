@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Adapter.Favorite.FavoriteAdapter;
-import com.eways.elearning.Model.Favorite;
+import com.eways.elearning.Model.Subject.Favorite;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKeys;

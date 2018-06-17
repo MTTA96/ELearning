@@ -16,8 +16,8 @@ import android.widget.RelativeLayout;
 import com.eways.elearning.Adapter.Search.SearchSuggestionsAdapter;
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Interfaces.OnItemClickListener;
-import com.eways.elearning.Model.SearchResults;
-import com.eways.elearning.Model.SearchSuggestions;
+import com.eways.elearning.Model.Search.SearchResults;
+import com.eways.elearning.Model.Search.SearchSuggestions;
 import com.eways.elearning.Presenter.HomePresenter;
 import com.eways.elearning.R;
 

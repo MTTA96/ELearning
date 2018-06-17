@@ -1,6 +1,6 @@
-package com.eways.elearning.Model;
+package com.eways.elearning.Model.Subject;
 
-import com.eways.elearning.Model.Course;
+import com.eways.elearning.Model.Course.Course;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

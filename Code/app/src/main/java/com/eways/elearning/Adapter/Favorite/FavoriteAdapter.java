@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.Model.Favorite;
+import com.eways.elearning.Model.Subject.Favorite;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.params.GlobalParams;
 

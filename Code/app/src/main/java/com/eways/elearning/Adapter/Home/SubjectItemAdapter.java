@@ -5,15 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.Adapter.Home.HomeVHolder;
-import com.eways.elearning.Model.Course;
+import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.params.GlobalParams;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ADMIN on 5/30/2018.

@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.eways.elearning.Interfaces.DataCallBack;
-import com.eways.elearning.Model.User;
+import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.Presenter.Authentication.SignUpInfoPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;

@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Adapter.Course.CourseMore.CourseMoreAdapter;
-import com.eways.elearning.Model.Course;
+import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.R;
 
 import java.util.ArrayList;

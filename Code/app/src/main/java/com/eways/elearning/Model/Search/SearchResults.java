@@ -1,9 +1,11 @@
-package com.eways.elearning.Model;
+package com.eways.elearning.Model.Search;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import com.eways.elearning.Interfaces.DataCallBack;
+import com.eways.elearning.Model.Course.Course;
+import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.Network.ApiUtils;
 import com.eways.elearning.Network.Responses.SearchBaseResponse;
 import com.eways.elearning.Network.Responses.SearchSuggestionsBaseResponse;

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.eways.elearning.Interfaces.DataCallBack;
-import com.eways.elearning.Model.User;
+import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.SharedPreferences.SharedPrefSupportKeys;
 import com.eways.elearning.Utils.SharedPreferences.SharedPrefUtils;

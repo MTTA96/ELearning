@@ -1,6 +1,6 @@
 package com.eways.elearning.Network.Responses;
 
-import com.eways.elearning.Model.SearchResults;
+import com.eways.elearning.Model.Search.SearchResults;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

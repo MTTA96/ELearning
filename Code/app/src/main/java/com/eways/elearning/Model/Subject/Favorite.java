@@ -1,4 +1,4 @@
-package com.eways.elearning.Model;
+package com.eways.elearning.Model.Subject;
 
 /**
  * Created by ADMIN on 5/17/2018.

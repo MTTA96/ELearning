@@ -1,6 +1,6 @@
 package com.eways.elearning.Network.Responses.User;
 
-import com.eways.elearning.Model.FavoriteSubjectWithCourses;
+import com.eways.elearning.Model.Subject.FavoriteSubjectWithCourses;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

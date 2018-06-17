@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.eways.elearning.Interfaces.DataCallBack;
-import com.eways.elearning.Model.SearchResults;
+import com.eways.elearning.Model.Search.SearchResults;
 import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Activity.HomeActivity;
 

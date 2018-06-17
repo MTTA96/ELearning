@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.eways.elearning.Interfaces.DataCallBack;
-import com.eways.elearning.Model.User;
+import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.Utils.SupportKeys;
 import com.google.gson.Gson;
 

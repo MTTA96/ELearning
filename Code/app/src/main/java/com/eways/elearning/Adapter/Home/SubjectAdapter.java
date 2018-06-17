@@ -6,13 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.eways.elearning.Model.Course;
-import com.eways.elearning.Model.FavoriteSubjectWithCourses;
+import com.eways.elearning.Model.Subject.FavoriteSubjectWithCourses;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.params.GlobalParams;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ADMIN on 5/29/2018.

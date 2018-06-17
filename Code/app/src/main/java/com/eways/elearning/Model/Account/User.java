@@ -1,4 +1,4 @@
-package com.eways.elearning.Model;
+package com.eways.elearning.Model.Account;
 
 import android.os.Bundle;
 import android.util.Log;

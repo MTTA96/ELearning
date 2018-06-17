@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Interfaces.OnItemClickListener;
-import com.eways.elearning.Model.SearchSuggestions;
+import com.eways.elearning.Model.Search.SearchSuggestions;
 import com.eways.elearning.R;
 
 import java.util.ArrayList;

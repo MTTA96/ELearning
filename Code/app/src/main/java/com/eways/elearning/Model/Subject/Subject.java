@@ -1,4 +1,4 @@
-package com.eways.elearning.Model;
+package com.eways.elearning.Model.Subject;
 
 import android.util.Log;
 

@@ -145,6 +145,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
 
     /** ACTIONS */
 
+    /** Search suggestion selected */
     @Override
     public void onItemClick(Bundle bundle) {
         String keyword = bundle.getString("keyword");

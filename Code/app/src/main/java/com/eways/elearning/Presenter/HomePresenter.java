@@ -88,7 +88,7 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
     }
 
     /**
-     *  MARK: - Handle data from server
+     *  MARK: - HANDLE DATA FROM SERVER
      *  */
 
     /** Search */
@@ -119,7 +119,7 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
         }
 
         // Get data success
-//        bannerCallBack.bannersCallBack(resultCode, bundle);
+        bannerCallBack.bannersCallBack(resultCode, banners);
     }
 
     /** Top tutors */

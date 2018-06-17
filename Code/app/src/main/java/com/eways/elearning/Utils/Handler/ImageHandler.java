@@ -12,13 +12,14 @@ import com.squareup.picasso.Transformation;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 import jp.wasabeef.picasso.transformations.CropSquareTransformation;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
+import ss.com.bannerslider.ImageLoadingService;
 
 
 /**
  * Created by ADMIN on 5/26/2018.
  */
 
-public class ImageHandler {
+public class ImageHandler implements ImageLoadingService {
     private Context context;
     private Transformation transformationRound = new RoundedCornersTransformation(5, 0);
     private Transformation transformationSquared = new CropSquareTransformation();
@@ -54,5 +55,21 @@ public class ImageHandler {
         }
         else
             imageView.setBackgroundResource(R.drawable.default_avatar);
+    }
+
+    /** Image slider show */
+    @Override
+    public void loadImage(String url, ImageView imageView) {
+        Picasso.with(context).load(url).into(imageView);
+    }
+
+    @Override
+    public void loadImage(int resource, ImageView imageView) {
+        Picasso.with(context).load(resource).into(imageView);
+    }
+
+    @Override
+    public void loadImage(String url, int placeHolder, int errorDrawable, ImageView imageView) {
+        Picasso.with(context).load(url).placeholder(placeHolder).error(errorDrawable).into(imageView);
     }
 }

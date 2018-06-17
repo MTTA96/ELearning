@@ -17,37 +17,46 @@ import android.widget.TextView;
 import com.eways.elearning.Adapter.Home.SubjectAdapter;
 import com.eways.elearning.Adapter.Home.TopTutorAdapter;
 import com.eways.elearning.Adapter.Home.TrendingAdapter;
+import com.eways.elearning.Adapter.ImageSliderShowAdapter;
+import com.eways.elearning.Interfaces.DataCallback.BannerCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Subject.FavSubjectWithCoursesCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Subject.TrendingSubjectCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.TopTutorsCallBack;
+import com.eways.elearning.Model.Banner;
 import com.eways.elearning.Model.Subject.FavoriteSubjectWithCourses;
 import com.eways.elearning.Model.Subject.Subject;
 import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.Presenter.HomePresenter;
 import com.eways.elearning.R;
+import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.SupportKeys;
 
 import java.util.ArrayList;
 
+import ss.com.bannerslider.Slider;
+import ss.com.bannerslider.event.OnSlideClickListener;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements TopTutorsCallBack, TrendingSubjectCallBack, FavSubjectWithCoursesCallBack {
-    /* VIEWS */
+public class HomeFragment extends Fragment implements TopTutorsCallBack, TrendingSubjectCallBack, FavSubjectWithCoursesCallBack, BannerCallBack, OnSlideClickListener {
+    /** VIEWS */
     RecyclerView rcTrending, rcToptutor, rcSubject;
     TextView tvToptutorMore, tvToptutorTitle;
+    Slider banner;
 
     SwipeRefreshLayout swrRefreshHome;
 
     /** MODELS */
     private HomePresenter homePresenter;
+    private ArrayList<Banner> bannerList = new ArrayList<>();
     private ArrayList<Subject> trending = new ArrayList<>();
     private ArrayList<User> tutors = new ArrayList<>();
     private ArrayList<FavoriteSubjectWithCourses> favCourses = new ArrayList<>();
     private TopTutorAdapter topTutorAdapter;
     private TrendingAdapter trendingAdapter;
     private SubjectAdapter favSubjectCoursesAdapter;
-
+    private ImageHandler imageHandler;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -68,6 +77,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homePresenter = new HomePresenter(getContext());
+        imageHandler = new ImageHandler(getContext());
         requestData();
     }
 
@@ -96,6 +106,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         rcToptutor = root.findViewById(R.id.item_top_tutors);
         rcSubject = root.findViewById(R.id.rc_subject);
         swrRefreshHome = root.findViewById(R.id.swr_refresh_home_data);
+        banner = root.findViewById(R.id.banner);
 
     }
 
@@ -109,6 +120,8 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         setUpSubject();
 
         setUpPullToRefresh();
+
+        banner.setOnSlideClickListener(this);
     }
 
     public void setUpTrending() {
@@ -145,15 +158,32 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         });
     }
 
+    /** ACTIONS */
+
+    @Override
+    public void onSlideClick(int position) {
+
+    }
+
     /** Request data from server */
     private void requestData() {
-        //homePresenter.getBanners(this);
+        homePresenter.getBanners(this);
         homePresenter.getTopTutors(this);
         homePresenter.getTrendingSubjects(this);
         //homePresenter.getUserFavoriteSubjects(this);
     }
 
     /** HANDLE RESULTS FROM SERVER */
+
+    @Override
+    public void bannersCallBack(int resultCode, ArrayList<Banner> banners) {
+
+        this.bannerList = banners;
+        Slider.init(imageHandler);
+        banner.setInterval(5000);
+        banner.setAdapter(new ImageSliderShowAdapter(getContext(), banners));
+
+    }
 
     @Override
     public void topTutorCallBack(int errorCode, ArrayList result) {

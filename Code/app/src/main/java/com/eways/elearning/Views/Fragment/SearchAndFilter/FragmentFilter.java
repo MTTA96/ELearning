@@ -1,4 +1,4 @@
-package com.eways.elearning.Views.Fragment;
+package com.eways.elearning.Views.Fragment.SearchAndFilter;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.eways.elearning.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentCourses extends Fragment {
+public class FragmentFilter extends Fragment {
 
 
-    public FragmentCourses() {
+    public FragmentFilter() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class FragmentCourses extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_courses, container, false);
+        return inflater.inflate(R.layout.fragment_filter, container, false);
     }
 
 }

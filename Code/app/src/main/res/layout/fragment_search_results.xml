@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/White"
     android:orientation="vertical"
-    tools:context="com.eways.elearning.Views.Fragment.SearchFragment">
+    tools:context="com.eways.elearning.Views.Fragment.SearchAndFilter.SearchFragment">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"

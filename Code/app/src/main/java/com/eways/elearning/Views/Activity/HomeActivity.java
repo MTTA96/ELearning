@@ -24,7 +24,7 @@ import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Fragment.HomeFragment;
-import com.eways.elearning.Views.Fragment.SearchFragment;
+import com.eways.elearning.Views.Fragment.SearchAndFilter.SearchFragment;
 
 import java.util.ArrayList;
 

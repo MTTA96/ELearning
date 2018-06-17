@@ -94,6 +94,9 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListVHolder> {
             holder.tvTen.setText(Html.fromHtml("Unknown"));
         }
 
+        //Course name
+        holder.tvCourseName.setText(course.getCourseName());
+
         //Môn
         if(course.getSubjectName()!=null) {
             String danhSachMon = "";

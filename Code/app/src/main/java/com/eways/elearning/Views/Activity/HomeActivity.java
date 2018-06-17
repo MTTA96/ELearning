@@ -1,6 +1,8 @@
 package com.eways.elearning.Views.Activity;
 
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -58,55 +60,6 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         homePresenter = new HomePresenter(this, this);
     }
 
-    public void declareViews(){
-        toolbar = findViewById(R.id.toolbar);
-        content = findViewById(R.id.content);
-        rvSuggestionsList = findViewById(R.id.list_search);
-
-    }
-
-    public void handle(){
-        fragmentHandler = new FragmentHandler(this, R.id.home_content_view);
-        setUpToolBar();
-        searchSuggestionsAdapter = new SearchSuggestionsAdapter(suggestionsList, this, R.layout.item_search_suggestions);
-
-        // Configure suggestions view
-        rvSuggestionsList.setLayoutManager(new LinearLayoutManager(getParent(), LinearLayoutManager.VERTICAL, false));
-        rvSuggestionsList.hasFixedSize();
-        rvSuggestionsList.setAdapter(searchSuggestionsAdapter);
-
-        // Move to home
-        fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKeys.HOME_FRAGMENT_TAG, 0, 0);
-        currentSearchType = SupportKeys.SEARCH_SUBJECTS;
-
-    }
-
-    public void setUpToolBar(){
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }
-
-    /**
-     * Hide suggestions when the query is submitted
-     * */
-    private void updateSuggestionsViewState() {
-        if (shouldSuggestionViewVisible)
-            rvSuggestionsList.setVisibility(View.VISIBLE);
-        else
-            rvSuggestionsList.setVisibility(View.GONE);
-    }
-
-    /** EVENTS */
-
-    @Override
-    public void onItemClick(Bundle bundle) {
-        String keyword = bundle.getString("keyword");
-        shouldSuggestionViewVisible = false;
-        updateSuggestionsViewState();
-        mSearchView.setQuery(keyword, true);
-        fragmentHandler.changeFragment(SearchFragment.newInstance(keyword), null, 0, 0);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
@@ -150,7 +103,57 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         return super.onCreateOptionsMenu(menu);
     }
 
-    /** Handle options menu item selected */
+    /** CONFIG */
+
+    public void declareViews(){
+        toolbar = findViewById(R.id.toolbar);
+        content = findViewById(R.id.content);
+        rvSuggestionsList = findViewById(R.id.list_search);
+
+    }
+
+    public void handle(){
+        fragmentHandler = new FragmentHandler(this, R.id.home_content_view);
+        setUpToolBar();
+        searchSuggestionsAdapter = new SearchSuggestionsAdapter(suggestionsList, this, R.layout.item_search_suggestions);
+
+        // Configure suggestions view
+        rvSuggestionsList.setLayoutManager(new LinearLayoutManager(getParent(), LinearLayoutManager.VERTICAL, false));
+        rvSuggestionsList.hasFixedSize();
+        rvSuggestionsList.setAdapter(searchSuggestionsAdapter);
+
+        // Move to home
+        fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKeys.HOME_FRAGMENT_TAG, 0, 0);
+        currentSearchType = SupportKeys.SEARCH_SUBJECTS;
+
+    }
+
+    public void setUpToolBar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    /**
+     * Hide suggestions when the query is submitted
+     * */
+    private void updateSuggestionsViewState() {
+        if (shouldSuggestionViewVisible)
+            rvSuggestionsList.setVisibility(View.VISIBLE);
+        else
+            rvSuggestionsList.setVisibility(View.GONE);
+    }
+
+    /** ACTIONS */
+
+    @Override
+    public void onItemClick(Bundle bundle) {
+        String keyword = bundle.getString("keyword");
+        shouldSuggestionViewVisible = false;
+        updateSuggestionsViewState();
+        mSearchView.setQuery(keyword, true);
+        fragmentHandler.changeFragment(SearchFragment.newInstance(keyword), null, 0, 0);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 //        if (item.getItemId() == R.id.action_search) {
@@ -159,7 +162,15 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         return super.onOptionsItemSelected(item);
     }
 
-    /** Handle result from server */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.home_content_view);
+        if (currentFragment instanceof SearchFragment)
+            fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKeys.HOME_FRAGMENT_TAG, 0, 0);
+    }
+
+    /** HANDLE DATA FROM SERVER */
     @Override
     public void dataCallBack(int result, @Nullable Bundle bundle) {
 

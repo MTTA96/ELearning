@@ -83,6 +83,12 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        requestData();
+    }
+
     /** CONFIGURE */
 
     public void declare_views(View root){

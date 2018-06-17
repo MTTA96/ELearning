@@ -1,12 +1,14 @@
 package com.eways.elearning.Network.Services;
 
-import com.eways.elearning.Network.Responses.BannerResponse;
+import com.eways.elearning.Model.Banner;
 import com.eways.elearning.Network.Responses.SearchBaseResponse;
 import com.eways.elearning.Network.Responses.SearchSuggestionsBaseResponse;
 import com.eways.elearning.Network.Responses.User.TrendingSubjectResponse;
 import com.eways.elearning.Network.Responses.User.UserFavoriteSubjectResponse;
 import com.eways.elearning.Network.Responses.User.UserListResponse;
 import com.eways.elearning.Network.ServerUrl;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -28,7 +30,7 @@ public interface ELearningServicesImp {
 
     /** Banner */
     @GET(ServerUrl.BANNER_URL)
-    Call<BannerResponse> getBanners();
+    Call<ArrayList<Banner>> getBanners();
 
     /** Top tutors */
     @GET(ServerUrl.TOP_TUTORS)

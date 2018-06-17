@@ -44,8 +44,10 @@ public class SearchSuggestionsAdapter extends RecyclerView.Adapter<SearchVHolder
             @Override
             public void onClick(View v) {
                 Bundle itemBundle = new Bundle();
-                itemBundle.putString("keyword", item.getSubjectName());
-                onItemClickListener.onItemClick(itemBundle);
+                if (item.getSubjectName() != "Loading..." && item.getSubjectName() != "Không có kết quả") {
+                    itemBundle.putString("keyword", item.getSubjectName());
+                    onItemClickListener.onItemClick(itemBundle);
+                }
             }
         });
     }

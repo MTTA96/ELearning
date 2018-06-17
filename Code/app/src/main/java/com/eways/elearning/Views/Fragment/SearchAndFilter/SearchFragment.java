@@ -20,7 +20,6 @@ import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.Presenter.SearchPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.SupportKeys;
-import com.eways.elearning.Views.Activity.HomeActivity;
 
 import java.util.ArrayList;
 
@@ -29,18 +28,25 @@ import java.util.ArrayList;
  */
 public class SearchFragment extends Fragment implements DataCallBack, View.OnClickListener {
 
-    /** VIEWS */
-    LinearLayout tutorResultView, couseResultView; // These views will be hidden if its result is empty
+    /**
+     * VIEWS
+     */
+    LinearLayout tutorResultView, courseResultView; // These views will be hidden if its result is empty
     RecyclerView rvTutorResults, rvCourseResults;
+    View divider;
 
-    /** MODELS */
+    /**
+     * MODELS
+     */
     private SearchPresenter searchPresenter;
     private UserListAdapter userListAdapter;
     private CourseListAdapter courseListAdapter;
     private ArrayList<User> tutorList = new ArrayList();
     private ArrayList<Course> courseList = new ArrayList();
 
-    /** Params */
+    /**
+     * Params
+     */
     public static final String param1 = "Keyword";
 
     public SearchFragment() {
@@ -48,7 +54,7 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
     }
 
     public static SearchFragment newInstance(String keyword) {
-        
+
         Bundle args = new Bundle();
         args.putString(param1, keyword);
         SearchFragment fragment = new SearchFragment();
@@ -59,7 +65,7 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         //set button back
-        ((HomeActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //((HomeActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         super.onCreate(savedInstanceState);
         searchPresenter = new SearchPresenter(getContext(), this);
@@ -78,9 +84,10 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_search_results, container, false);
         tutorResultView = root.findViewById(R.id.tutor_search_result_view);
-        couseResultView = root.findViewById(R.id.courses_search_result_view);
+        courseResultView = root.findViewById(R.id.courses_search_result_view);
         rvTutorResults = root.findViewById(R.id.tutor_search_results_recycler_view);
         rvCourseResults = root.findViewById(R.id.course_search_results_recycler_view);
+        divider = root.findViewById(R.id.divider_search_result);
 
         root.findViewById(R.id.button_load_more_course_search_results).setOnClickListener(this);
         root.findViewById(R.id.button_load_more_tutor_search_results).setOnClickListener(this);
@@ -92,30 +99,50 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
         return root;
     }
 
+    /** CONFIG */
     private void setupResultsListView() {
         userListAdapter = new UserListAdapter(getContext(), tutorList);
-        courseListAdapter = new CourseListAdapter(getContext(), courseList);
-
         rvTutorResults.setLayoutManager(new GridLayoutManager(getContext(), 1));
         rvTutorResults.hasFixedSize();
         rvTutorResults.setNestedScrollingEnabled(false);
         rvTutorResults.setAdapter(userListAdapter);
+
+        courseListAdapter = new CourseListAdapter(getContext(), courseList);
         rvCourseResults.setLayoutManager(new GridLayoutManager(getContext(), 1));
         rvCourseResults.hasFixedSize();
         rvCourseResults.setNestedScrollingEnabled(false);
         rvCourseResults.setAdapter(courseListAdapter);
     }
 
-    /** Update result list visibility depend on their data
-     *  @Gone when they don't have data
-     *  @Visible when they have data
-     * */
+    /**
+     * Update result list visibility depend on their data
+     *
+     * @Gone when they don't have data
+     * @Visible when they have data
+     */
     private void updateResultViewVisibility() {
-        couseResultView.setVisibility(courseList.size() > 0 ? View.VISIBLE : View.GONE);
+
+        courseResultView.setVisibility(courseList.size() > 0 ? View.VISIBLE : View.GONE);
         tutorResultView.setVisibility(tutorList.size() > 0 ? View.VISIBLE : View.GONE);
+
+        if (courseList.size() != 0 && tutorList.size() != 0) {
+            divider.setVisibility(View.VISIBLE);
+        } else {
+            if (courseList.size() == 0) {
+                divider.setVisibility(View.GONE);
+                return;
+            }
+            if (tutorList.size() == 0) {
+                divider.setVisibility(View.GONE);
+                return;
+            }
+        }
+
     }
 
-    /** EVENTS */
+    /**
+     * HANDLE DATA FROM SEVER
+     */
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
         // Handle errors
@@ -126,15 +153,18 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
 
         // Get data success
         tutorList.clear();
-        courseList.clear();
         tutorList.addAll((ArrayList<User>) bundle.getSerializable("param1"));
+
+        courseList.clear();
         courseList.addAll((ArrayList<Course>) bundle.getSerializable("param2"));
 
-        updateResultViewVisibility();
         courseListAdapter.notifyDataSetChanged();
+        userListAdapter.notifyDataSetChanged();
+        updateResultViewVisibility();
 
     }
 
+    /** ACTIONS */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -144,4 +174,5 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
                 break;
         }
     }
+
 }

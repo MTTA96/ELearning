@@ -93,6 +93,16 @@
             android:paddingLeft="@dimen/horizontal_padding_user_info_list_item"
             android:paddingRight="@dimen/horizontal_padding_user_info_list_item">
 
+            <!--Course name-->
+            <TextView
+                android:id="@+id/course_name_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/MarginLeft_Tv_KhoaHoc"
+                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                android:textColor="@color/colorGrey"
+                android:textSize="@dimen/TextSize_KhoaHoc" />
+
             <!--Subject's name-->
             <TextView
                 android:id="@+id/tvMon_KhoaHoc"

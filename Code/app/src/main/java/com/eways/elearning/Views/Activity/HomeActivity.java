@@ -1,6 +1,8 @@
 package com.eways.elearning.Views.Activity;
 
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -62,7 +64,52 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         homePresenter = new HomePresenter(this, this);
     }
 
-    public void declareViews() {
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+//
+//        MenuItem mSearch = menu.findItem(R.id.action_search);
+//
+//        mSearchView = (SearchView) mSearch.getActionView();
+//        mSearchView.setQueryHint("Search");
+//
+//        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                shouldSuggestionViewVisible = false;
+//                updateSuggestionsViewState();
+//                fragmentHandler.changeFragment(SearchFragment.newInstance(query), null, 0, 0);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                shouldSuggestionViewVisible = true;
+//                updateSuggestionsViewState();
+//                if (newText.compareTo("")==0){
+//                    suggestionsList.clear();
+//                    searchSuggestionsAdapter.notifyDataSetChanged();
+//                } else {
+//                    // Show loading when inputting
+//                    SearchSuggestions loadingSuggestions = new SearchSuggestions();
+//                    suggestionsList.clear();
+//                    loadingSuggestions.setSubjectName(getResources().getString(R.string.msg_loading));
+//                    suggestionsList.add(loadingSuggestions);
+//                    searchSuggestionsAdapter.notifyDataSetChanged();
+//
+//                    // Call api
+//                    homePresenter.searchSuggestions(newText);
+//                }
+//                return true;
+//            }
+//        });
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
+
+    /** CONFIG */
+
+    public void declareViews(){
         toolbar = findViewById(R.id.toolbar);
         content = findViewById(R.id.content);
         rvSuggestionsList = findViewById(R.id.list_search);
@@ -100,10 +147,8 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
             rvSuggestionsList.setVisibility(View.GONE);
     }
 
-    /**
-     * EVENTS
-     */
 
+    /** Search suggestion selected */
     @Override
     public void onItemClick(Bundle bundle) {
         String keyword = bundle.getString("keyword");
@@ -114,14 +159,17 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
     }
 
     @Override
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
 
         MenuItem mSearch = menu.findItem(R.id.action_search);
-        mSearch.setShowAsAction(1);
+        mSearch.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         mSearchView = (SearchView) mSearch.getActionView();
         mSearchView.setQueryHint("Search");
         mSearchView.onActionViewExpanded();
+        mSearchView.clearFocus();
+
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -161,6 +209,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
      * Handle options menu item selected
      */
     @Override
+
     public boolean onOptionsItemSelected(MenuItem item) {
 //        if (item.getItemId() == R.id.action_search) {
 //            fragmentHandler.changeFragment(SearchFragment.newInstance(), SupportKeys.SEARCH_RESULTS_TAG, 0, 0);
@@ -168,9 +217,16 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Handle result from server
-     */
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.home_content_view);
+        if (currentFragment instanceof SearchFragment)
+            fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKeys.HOME_FRAGMENT_TAG, 0, 0);
+    }
+
+    /** HANDLE DATA FROM SERVER */
     @Override
     public void dataCallBack(int result, @Nullable Bundle bundle) {
 

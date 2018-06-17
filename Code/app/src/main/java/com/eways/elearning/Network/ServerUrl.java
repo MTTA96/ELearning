@@ -31,7 +31,6 @@ public class ServerUrl {
     public static final String SEARCH_TUTOR_SUGGESTIONS_URL = ServerAPIURL + "Search/AppStudentSearchSuggestion.php";
 
     /** Banner */
-    public static final String BANNER_URL = ServerAPIURL + "";
-
+    public static final String BANNER_URL = ServerAPIURL + "Home/GetBanner.php";
 
 }

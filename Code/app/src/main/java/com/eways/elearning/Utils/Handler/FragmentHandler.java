@@ -31,4 +31,5 @@ public class FragmentHandler {
     public void deleteCurrentFragment() {
         ((AppCompatActivity) context).getSupportFragmentManager().popBackStack();
     }
+
 }

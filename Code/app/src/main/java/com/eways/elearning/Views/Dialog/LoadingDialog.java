@@ -13,7 +13,7 @@ public class LoadingDialog extends ProgressDialog {
     private static LoadingDialog loadingDialog = null;
 
     private LoadingDialog(Context context) {
-        super(context);
+        super(context, R.style.Theme_AppCompat_Light_Dialog);
     }
 
     public static LoadingDialog getInstance(Context context){

@@ -31,13 +31,17 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity implements DataCallBack, OnItemClickListener, SearchSuggestionCallBack {
 
-    /** VIEWS */
+    /**
+     * VIEWS
+     */
     Toolbar toolbar;
     RelativeLayout content;
     RecyclerView rvSuggestionsList;
     SearchView mSearchView;
 
-    /** MODELS */
+    /**
+     * MODELS
+     */
     private HomePresenter homePresenter;
     private FragmentHandler fragmentHandler;
     private SearchSuggestionsAdapter searchSuggestionsAdapter;
@@ -58,14 +62,14 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         homePresenter = new HomePresenter(this, this);
     }
 
-    public void declareViews(){
+    public void declareViews() {
         toolbar = findViewById(R.id.toolbar);
         content = findViewById(R.id.content);
         rvSuggestionsList = findViewById(R.id.list_search);
 
     }
 
-    public void handle(){
+    public void handle() {
         fragmentHandler = new FragmentHandler(this, R.id.home_content_view);
         setUpToolBar();
         searchSuggestionsAdapter = new SearchSuggestionsAdapter(suggestionsList, this, R.layout.item_search_suggestions);
@@ -81,14 +85,14 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
 
     }
 
-    public void setUpToolBar(){
+    public void setUpToolBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     /**
      * Hide suggestions when the query is submitted
-     * */
+     */
     private void updateSuggestionsViewState() {
         if (shouldSuggestionViewVisible)
             rvSuggestionsList.setVisibility(View.VISIBLE);
@@ -96,7 +100,9 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
             rvSuggestionsList.setVisibility(View.GONE);
     }
 
-    /** EVENTS */
+    /**
+     * EVENTS
+     */
 
     @Override
     public void onItemClick(Bundle bundle) {
@@ -112,9 +118,10 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
 
         MenuItem mSearch = menu.findItem(R.id.action_search);
-
+        mSearch.setShowAsAction(1);
         mSearchView = (SearchView) mSearch.getActionView();
         mSearchView.setQueryHint("Search");
+        mSearchView.onActionViewExpanded();
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -129,7 +136,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
             public boolean onQueryTextChange(String newText) {
                 shouldSuggestionViewVisible = true;
                 updateSuggestionsViewState();
-                if (newText.compareTo("")==0){
+                if (newText.compareTo("") == 0) {
                     suggestionsList.clear();
                     searchSuggestionsAdapter.notifyDataSetChanged();
                 } else {
@@ -150,7 +157,9 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         return super.onCreateOptionsMenu(menu);
     }
 
-    /** Handle options menu item selected */
+    /**
+     * Handle options menu item selected
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 //        if (item.getItemId() == R.id.action_search) {
@@ -159,7 +168,9 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         return super.onOptionsItemSelected(item);
     }
 
-    /** Handle result from server */
+    /**
+     * Handle result from server
+     */
     @Override
     public void dataCallBack(int result, @Nullable Bundle bundle) {
 

@@ -1,6 +1,7 @@
 package com.eways.elearning.Network.Services;
 
 import com.eways.elearning.Network.Responses.BaseResponse;
+import com.eways.elearning.Network.Responses.User.SignInResponse;
 import com.eways.elearning.Network.ServerUrl;
 
 import java.util.ArrayList;
@@ -19,8 +20,8 @@ public interface UserServicesImp {
     /** Sign in */
     @POST(ServerUrl.LOGIN_URL)
     @FormUrlEncoded
-    Call<BaseResponse> signIn(@Field("Phone") String userId,
-                              @Field("Password") String password);
+    Call<SignInResponse> signIn(@Field("Phone") String userId,
+                                @Field("Password") String password);
 
     /** Sign up */
     @POST(ServerUrl.SIGN_UP_URL)

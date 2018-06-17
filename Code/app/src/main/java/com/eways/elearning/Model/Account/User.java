@@ -9,10 +9,13 @@ import com.eways.elearning.Interfaces.DataCallback.User.TopTutorsCallBack;
 import com.eways.elearning.Model.Subject.FavoriteSubjectWithCourses;
 import com.eways.elearning.Network.ApiUtils;
 import com.eways.elearning.Network.Responses.BaseResponse;
+import com.eways.elearning.Network.Responses.User.SignInResponse;
 import com.eways.elearning.Network.Responses.User.UserFavoriteSubjectResponse;
 import com.eways.elearning.Network.Responses.User.UserListResponse;
 import com.eways.elearning.Network.Services.ELearningServicesImp;
 import com.eways.elearning.Network.Services.UserServicesImp;
+import com.eways.elearning.R;
+import com.eways.elearning.Utils.SharedPreferences.SharedPrefSupportKeys;
 import com.eways.elearning.Utils.SupportKeys;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -274,9 +277,9 @@ public class User {
     /** Sign in */
     public static void signIn(String userName, String password, final DataCallBack dataCallBack) {
         UserServicesImp userServicesImp = ApiUtils.userServices();
-        userServicesImp.signIn(userName, password).enqueue(new Callback<BaseResponse>() {
+        userServicesImp.signIn(userName, password).enqueue(new Callback<SignInResponse>() {
             @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+            public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                 Log.d("Sign in", call.request().toString());
 
                 // handle error
@@ -288,12 +291,19 @@ public class User {
 
                 // Connect success
                 Bundle bundle = new Bundle();
+
+                int status = Integer.parseInt(response.body().getStatus());
+                if (status == 0) {
+                        bundle.putString("uID", response.body().getUId());
+                }
+
                 bundle.putString(null, response.body().getStatus());
                 dataCallBack.dataCallBack(SupportKeys.SUCCESS_CODE, bundle);
+
             }
 
             @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
+            public void onFailure(Call<SignInResponse> call, Throwable t) {
                 Log.d("Sign in", "Connect failed");
                 dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }
@@ -326,6 +336,7 @@ public class User {
             }
         });
     }
+
     /** [END - Authentication] */
 
     /** Get top tutors */

@@ -84,7 +84,7 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
     /** Get user favorite subjects list */
     public void getUserFavoriteSubjects(FavSubjectWithCoursesCallBack favSubjectWithCoursesCallBack) {
         this.favSubjectWithCoursesCallBack = favSubjectWithCoursesCallBack;
-        User.getUserFavoriteSubjectsWithCourses( sharedPrefUtils.getString(SharedPrefSupportKeys.UID), this);
+        User.getUserFavoriteSubjectsWithCourses(sharedPrefUtils.getString(SharedPrefSupportKeys.UID), this);
     }
 
     /**

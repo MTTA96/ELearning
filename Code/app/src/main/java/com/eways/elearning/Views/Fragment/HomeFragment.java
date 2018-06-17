@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -43,20 +42,23 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
     /** VIEWS */
     RecyclerView rcTrending, rcToptutor, rcSubject;
     TextView tvToptutorMore, tvToptutorTitle;
-    Slider banner;
+    Slider bannerSlider;
 
     SwipeRefreshLayout swrRefreshHome;
 
     /** MODELS */
     private HomePresenter homePresenter;
+    private ImageHandler imageHandler;
+
     private ArrayList<Banner> bannerList = new ArrayList<>();
     private ArrayList<Subject> trending = new ArrayList<>();
     private ArrayList<User> tutors = new ArrayList<>();
     private ArrayList<FavoriteSubjectWithCourses> favCourses = new ArrayList<>();
+
     private TopTutorAdapter topTutorAdapter;
     private TrendingAdapter trendingAdapter;
     private SubjectAdapter favSubjectCoursesAdapter;
-    private ImageHandler imageHandler;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -87,8 +89,8 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        declare_views(root);
-        handle_views();
+        declareViews(root);
+        handleViews();
 
         return root;
     }
@@ -101,16 +103,16 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
 
     /** CONFIGURE */
 
-    public void declare_views(View root){
+    public void declareViews(View root){
         rcTrending = root.findViewById(R.id.item_trending);
         rcToptutor = root.findViewById(R.id.item_top_tutors);
         rcSubject = root.findViewById(R.id.rc_subject);
         swrRefreshHome = root.findViewById(R.id.swr_refresh_home_data);
-        banner = root.findViewById(R.id.banner);
+        bannerSlider = root.findViewById(R.id.banner);
 
     }
 
-    public void handle_views(){
+    public void handleViews(){
         trending = new ArrayList<>();
         tutors = new ArrayList<>();
         favCourses = new ArrayList<>();
@@ -121,11 +123,11 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
 
         setUpPullToRefresh();
 
-        banner.setOnSlideClickListener(this);
+        bannerSlider.setOnSlideClickListener(this);
     }
 
     public void setUpTrending() {
-        trendingAdapter = new TrendingAdapter(R.layout.item_home_detail, trending);
+        trendingAdapter = new TrendingAdapter(getContext(), R.layout.item_home_detail, trending);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,false);
         rcTrending.setHasFixedSize(true);
         rcTrending.setLayoutManager(layoutManager);
@@ -170,7 +172,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         homePresenter.getBanners(this);
         homePresenter.getTopTutors(this);
         homePresenter.getTrendingSubjects(this);
-        //homePresenter.getUserFavoriteSubjects(this);
+        homePresenter.getUserFavoriteSubjects(this);
     }
 
     /** HANDLE RESULTS FROM SERVER */
@@ -180,8 +182,8 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
 
         this.bannerList = banners;
         Slider.init(imageHandler);
-        banner.setInterval(5000);
-        banner.setAdapter(new ImageSliderShowAdapter(getContext(), banners));
+        bannerSlider.setInterval(5000);
+        bannerSlider.setAdapter(new ImageSliderShowAdapter(getContext(), banners));
 
     }
 

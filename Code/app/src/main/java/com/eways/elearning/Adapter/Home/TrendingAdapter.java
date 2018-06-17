@@ -1,5 +1,7 @@
 package com.eways.elearning.Adapter.Home;
 
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,8 +9,11 @@ import android.view.ViewGroup;
 
 import com.eways.elearning.Model.Subject.Subject;
 import com.eways.elearning.R;
+import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.Handler.ImageHandler;
+import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Utils.params.GlobalParams;
+import com.eways.elearning.Views.Fragment.SearchAndFilter.SearchFragment;
 
 import java.util.ArrayList;
 
@@ -17,16 +22,20 @@ import java.util.ArrayList;
  */
 
 public class TrendingAdapter extends RecyclerView.Adapter<HomeVHolder> {
-    int res;
-    ArrayList<Subject> trendings;
 
-    ImageHandler imageHandler;
+    private Context context;
+    private int res;
+    private ArrayList<Subject> trendings;
+    private ImageHandler imageHandler;
+    private FragmentHandler fragmentHandler;
 
-    public TrendingAdapter(int res, ArrayList<Subject> trendings) {
+    public TrendingAdapter(Context context, int res, ArrayList<Subject> trending) {
+        this.context = context;
         this.res = res;
-        this.trendings = trendings;
+        this.trendings = trending;
 
         imageHandler = new ImageHandler(GlobalParams.getInstance());
+        fragmentHandler = new FragmentHandler(context, R.id.home_content_view);
     }
 
     @Override
@@ -42,10 +51,18 @@ public class TrendingAdapter extends RecyclerView.Adapter<HomeVHolder> {
 
         imageHandler.loadImageRound(subject.getImg(), holder.ivHomeDetail);
         holder.tvTitle.setText(subject.getSubjectName());
+
+        holder.ivHomeDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentHandler.changeFragment(SearchFragment.newInstance(subject.getSubjectName()), SupportKeys.SEARCH_RESULTS_TAG, R.anim.slide_from_left, R.anim.slide_out_top);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return trendings.size();
     }
+
 }

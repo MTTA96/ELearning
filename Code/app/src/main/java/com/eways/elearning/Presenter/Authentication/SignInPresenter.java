@@ -55,7 +55,7 @@ public class SignInPresenter implements DataCallBack {
         switch (status) {
             // Sign in success
             case 0:
-                //sharedPreferencesUtils.putString();
+                sharedPreferencesUtils.putString(SharedPrefSupportKeys.UID, bundle.getString("uID"), true);
                 sharedPreferencesUtils.putString(SharedPrefSupportKeys.userName, userName, true);
                 sharedPreferencesUtils.putString(SharedPrefSupportKeys.password, password, true);
                 dataCallBack.dataCallBack(resultCode, bundle);

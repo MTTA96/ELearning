@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -106,7 +107,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
 
     public void setUpTrending() {
         trendingAdapter = new TrendingAdapter(R.layout.item_home_detail, trending);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,false);
         rcTrending.setHasFixedSize(true);
         rcTrending.setLayoutManager(layoutManager);
         rcTrending.setAdapter(trendingAdapter);
@@ -115,7 +116,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
 
     public void setUpToptutor() {
         topTutorAdapter = new TopTutorAdapter(R.layout.item_home_detail, tutors);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,false);
         rcToptutor.setHasFixedSize(true);
         rcToptutor.setLayoutManager(layoutManager);
         rcToptutor.setAdapter(topTutorAdapter);
@@ -123,7 +124,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
 
     public void setUpSubject() {
         favSubjectCoursesAdapter = new SubjectAdapter(R.layout.item_home_detail, favCourses);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false);
         rcSubject.setHasFixedSize(true);
         rcSubject.setLayoutManager(layoutManager);
         rcSubject.setAdapter(favSubjectCoursesAdapter);
@@ -161,6 +162,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
         tutors.addAll(result);
         topTutorAdapter.notifyDataSetChanged();
         swrRefreshHome.setRefreshing(false);
+
     }
 
     @Override

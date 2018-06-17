@@ -2,6 +2,7 @@ package com.eways.elearning.Network.Services;
 
 import com.eways.elearning.Network.Responses.BaseResponse;
 import com.eways.elearning.Network.Responses.User.SignInResponse;
+import com.eways.elearning.Network.Responses.User.UserFavoriteSubjectResponse;
 import com.eways.elearning.Network.ServerUrl;
 
 import java.util.ArrayList;
@@ -9,7 +10,9 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 
 /**
@@ -38,5 +41,10 @@ public interface UserServicesImp {
     @FormUrlEncoded
     Call<BaseResponse> addUserFavoriteUrl(@Field("uID") String data,
                                           @Field("listFavoriteSubject") ArrayList<String> listFavorite);
+
+
+    /** Get favorite subject */
+    @GET(ServerUrl.GET_USER_FAVORITE_SUBJECTS)
+    Call<UserFavoriteSubjectResponse> getUserFavoriteSubjects(@Query("Uid") String uID);
 
 }

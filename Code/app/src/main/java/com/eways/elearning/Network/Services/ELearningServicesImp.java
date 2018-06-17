@@ -1,6 +1,8 @@
 package com.eways.elearning.Network.Services;
 
+import com.eways.elearning.Adapter.Course.CourseAdapter;
 import com.eways.elearning.Model.Banner;
+import com.eways.elearning.Network.Responses.CourseListResponse;
 import com.eways.elearning.Network.Responses.SearchBaseResponse;
 import com.eways.elearning.Network.Responses.SearchSuggestionsBaseResponse;
 import com.eways.elearning.Network.Responses.User.TrendingSubjectResponse;
@@ -40,8 +42,10 @@ public interface ELearningServicesImp {
     @GET(ServerUrl.TRENDING_SUBJECTS)
     Call<TrendingSubjectResponse> getTrendingSubjects();
 
-    /** User's favorite subject */
-    @GET(ServerUrl.GET_USER_FAVORITE_SUBJECTS)
-    Call<UserFavoriteSubjectResponse> getUserFavoriteSubjects(@Query("Uid") String uID);
+    /** Get course list */
+    @GET(ServerUrl.GET_COURSE_LIST_BY_SUBJECT_URL)
+    Call<CourseListResponse> getCourseListBySubject(@Query("IdSubject") String subjectId,
+                                                    @Query("CourseType") String courseType);
+
 
 }

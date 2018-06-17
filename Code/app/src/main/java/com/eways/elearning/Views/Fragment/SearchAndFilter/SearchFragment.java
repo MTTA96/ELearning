@@ -19,7 +19,9 @@ import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.Presenter.SearchPresenter;
 import com.eways.elearning.R;
+import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKeys;
+import com.eways.elearning.Views.Fragment.Course.CourseListFragment;
 
 import java.util.ArrayList;
 
@@ -38,6 +40,7 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
     /**
      * MODELS
      */
+    private FragmentHandler fragmentHandler;
     private SearchPresenter searchPresenter;
     private UserListAdapter userListAdapter;
     private CourseListAdapter courseListAdapter;
@@ -62,12 +65,15 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
         return fragment;
     }
 
+    /** ----- LIFECYCLE ----- */
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         //set button back
         //((HomeActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         super.onCreate(savedInstanceState);
+
+        fragmentHandler = new FragmentHandler(getContext(), R.id.home_content_view);
         searchPresenter = new SearchPresenter(getContext(), this);
 
         if (getArguments() != null) {
@@ -107,7 +113,7 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
         rvTutorResults.setNestedScrollingEnabled(false);
         rvTutorResults.setAdapter(userListAdapter);
 
-        courseListAdapter = new CourseListAdapter(getContext(), courseList);
+        courseListAdapter = new CourseListAdapter(getContext(), courseList, false);
         rvCourseResults.setLayoutManager(new GridLayoutManager(getContext(), 1));
         rvCourseResults.hasFixedSize();
         rvCourseResults.setNestedScrollingEnabled(false);
@@ -168,9 +174,10 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button_load_more_course_search_results:
-                break;
             case R.id.button_load_more_tutor_search_results:
+                break;
+            case R.id.button_load_more_course_search_results:
+                fragmentHandler.changeFragment(CourseListFragment.newInstance(courseList.get(0).getIdSubject()), SupportKeys.COURSE_LIST_FRAGMENT_TAG, R.anim.slide_from_left, R.anim.slide_out_top);
                 break;
         }
     }

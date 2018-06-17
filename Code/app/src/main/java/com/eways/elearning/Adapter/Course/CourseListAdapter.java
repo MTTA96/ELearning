@@ -24,10 +24,12 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListVHolder> {
     private ArrayList<Course> list = new ArrayList<>();
     private ImageHandler imageHandler;
     private Course course;
+    private boolean shouldShowMax = false;
 
-    public CourseListAdapter(Context context, ArrayList<Course> list) {
+    public CourseListAdapter(Context context, ArrayList<Course> list, boolean shouldShowMax) {
         this.context = context;
         this.list = list;
+        this.shouldShowMax = shouldShowMax;
         imageHandler = new ImageHandler(context);
     }
 
@@ -57,7 +59,10 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListVHolder> {
 
     @Override
     public int getItemCount() {
-        return list.size() <= 3 ? list.size():3;
+        if (!shouldShowMax)
+            return list.size() <= 3 ? list.size():3;
+        else
+            return list.size();
     }
 
     public void loadData(CourseListVHolder holder, int position) {

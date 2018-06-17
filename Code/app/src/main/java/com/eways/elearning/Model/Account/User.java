@@ -366,8 +366,8 @@ public class User {
 
     /** Get user's favorite subjects with courses */
     public static void getUserFavoriteSubjectsWithCourses(String uId, final FavSubjectWithCoursesCallBack favoriteSubjectWithCourseList) {
-        ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
-        eLearningServicesImp.getUserFavoriteSubjects(uId).enqueue(new Callback<UserFavoriteSubjectResponse>() {
+        UserServicesImp userServicesImp = ApiUtils.userServices();
+        userServicesImp.getUserFavoriteSubjects(uId).enqueue(new Callback<UserFavoriteSubjectResponse>() {
             @Override
             public void onResponse(Call<UserFavoriteSubjectResponse> call, Response<UserFavoriteSubjectResponse> response) {
                 // handle error

@@ -39,8 +39,7 @@ public interface ELearningServicesImp {
     Call<TrendingSubjectResponse> getTrendingSubjects();
 
     /** User's favorite subject */
-    @GET(ServerUrl.USER_FAVORITE_SUBJECTS)
-    Call<UserFavoriteSubjectResponse> getUserFavoriteSubjects(@Query("Uid") String uID,
-                                                              @Query("CourseType") String type);
+    @GET(ServerUrl.GET_USER_FAVORITE_SUBJECTS)
+    Call<UserFavoriteSubjectResponse> getUserFavoriteSubjects(@Query("Uid") String uID);
 
 }

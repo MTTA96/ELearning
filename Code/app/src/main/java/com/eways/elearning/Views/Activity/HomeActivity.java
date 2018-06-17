@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 
 import com.eways.elearning.Adapter.Search.SearchSuggestionsAdapter;
 import com.eways.elearning.Interfaces.DataCallBack;
+import com.eways.elearning.Interfaces.DataCallback.SearchSuggestion.SearchSuggestionCallBack;
 import com.eways.elearning.Interfaces.OnItemClickListener;
 import com.eways.elearning.Model.Search.SearchResults;
 import com.eways.elearning.Model.Search.SearchSuggestions;
@@ -28,7 +29,7 @@ import com.eways.elearning.Views.Fragment.SearchAndFilter.SearchFragment;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity implements DataCallBack, OnItemClickListener {
+public class HomeActivity extends AppCompatActivity implements DataCallBack, OnItemClickListener, SearchSuggestionCallBack {
 
     /** VIEWS */
     Toolbar toolbar;
@@ -54,7 +55,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         declareViews();
         handle();
 
-        homePresenter = new HomePresenter(this);
+        homePresenter = new HomePresenter(this, this);
     }
 
     public void declareViews(){
@@ -161,17 +162,29 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
     /** Handle result from server */
     @Override
     public void dataCallBack(int result, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void searchSuggestionCallBack(int errorCode, ArrayList result) {
+
         // Handle errors
-        if (result == SupportKeys.FAILED_CODE) {
+        if (errorCode == SupportKeys.FAILED_CODE) {
             Log.d(getClass().getName(), "Search failed!");
             return;
         }
 
         // Get data success
-        ArrayList resultsList = (ArrayList<SearchResults>) bundle.getSerializable(null);
-
         suggestionsList.clear();
-        suggestionsList.addAll(resultsList);
+
+        if (result.size() != 0) {
+            suggestionsList.addAll(result);
+        } else {
+            SearchSuggestions noResults = new SearchSuggestions();
+            noResults.setSubjectName("Không có kết quả");
+            suggestionsList.add(noResults);
+        }
+
         searchSuggestionsAdapter.notifyDataSetChanged();
 
     }

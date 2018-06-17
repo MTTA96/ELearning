@@ -11,7 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Adapter.Favorite.FavoriteAdapter;
+import com.eways.elearning.Interfaces.DataCallback.Subject.FavSubjectWithCoursesCallBack;
+import com.eways.elearning.Interfaces.OnItemClickListener;
 import com.eways.elearning.Model.Subject.Favorite;
+import com.eways.elearning.Presenter.FavoritePresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKeys;
@@ -23,14 +26,16 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentFavorite extends Fragment implements View.OnClickListener {
+public class FragmentFavorite extends Fragment implements View.OnClickListener, OnItemClickListener, FavSubjectWithCoursesCallBack {
 
     /** VIEWS */
     RecyclerView rcFavorite;
 
     /** MODELS */
     private FragmentHandler fragmentHandler;
+    private FavoritePresenter favoritePresenter;
     private ArrayList<Favorite> listFavorite = new ArrayList<>();
+    private ArrayList<String> selectedFavoriteList = new ArrayList<>();
 
     public FragmentFavorite() {
         // Required empty public constructor
@@ -49,6 +54,7 @@ public class FragmentFavorite extends Fragment implements View.OnClickListener {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fragmentHandler = new FragmentHandler(getContext(), R.id.content_signup);
+        favoritePresenter = new FavoritePresenter(getContext());
     }
 
     @Override
@@ -77,11 +83,13 @@ public class FragmentFavorite extends Fragment implements View.OnClickListener {
     }
 
     public void setUpListFavorite(){
-        FavoriteAdapter favoriteAdapter = new FavoriteAdapter(listFavorite, R.layout.item_favorite);
+        FavoriteAdapter favoriteAdapter = new FavoriteAdapter(listFavorite, R.layout.item_favorite, this);
         rcFavorite.hasFixedSize();
         rcFavorite.setLayoutManager(new GridLayoutManager(getContext(), 2));
         rcFavorite.setAdapter(favoriteAdapter);
     }
+
+    /** ACTIONS */
 
     @Override
     public void onClick(View v) {
@@ -90,10 +98,39 @@ public class FragmentFavorite extends Fragment implements View.OnClickListener {
             {
                 switch (v.getId()) {
                     case R.id.btn_next:
-                        fragmentHandler.changeFragment(FragmentWelcome.newInstance(), SupportKeys.WELCOME_FRAGMENT_TAG, 0, 0);
+                        //if (selectedFavoriteList.size() != 0) {
+                            fragmentHandler.changeFragment(FragmentWelcome.newInstance(), SupportKeys.WELCOME_FRAGMENT_TAG, 0, 0);
+//                        } else {
+//                            favoritePresenter.addFavorite(selectedFavoriteList, this);
+//                        }
                         break;
                 }
             }
         }
     }
+
+    @Override
+    public void onItemClick(Bundle bundle) {
+
+       if (bundle.getBoolean("Selected"))
+           selectedFavoriteList.add(bundle.getString("FavoriteId"));
+       else
+           selectedFavoriteList.remove(bundle.getString("FavoriteId"));
+
+       SignupFragment.btnNext.setText(selectedFavoriteList.size() == 0 ? R.string.skip : R.string.next);
+
+    }
+
+    /** DATA RESULTS */
+
+    @Override
+    public void favSubjectsCourseCallBack(int errorCode, ArrayList result) {
+        if (errorCode == SupportKeys.FAILED_CODE) {
+            return;
+        }
+
+        fragmentHandler.changeFragment(FragmentWelcome.newInstance(), SupportKeys.WELCOME_FRAGMENT_TAG, 0, 0);
+
+    }
+
 }

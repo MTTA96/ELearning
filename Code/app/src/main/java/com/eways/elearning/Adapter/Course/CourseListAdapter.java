@@ -64,7 +64,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListVHolder> {
         course = list.get(position);
 
         //Avartar
-        imageHandler.loadImageRound(course.getAvatar(),holder.imgDaiDien);
+        imageHandler.loadImageSquare(course.getAvatar(),holder.imgDaiDien);
 
         //Rating
 //        if(course.getRating() != null)

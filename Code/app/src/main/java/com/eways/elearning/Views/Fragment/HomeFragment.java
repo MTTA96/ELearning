@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        homePresenter = new HomePresenter();
+        homePresenter = new HomePresenter(getContext());
         requestData();
     }
 

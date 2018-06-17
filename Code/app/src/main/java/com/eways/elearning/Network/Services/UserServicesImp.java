@@ -3,6 +3,8 @@ package com.eways.elearning.Network.Services;
 import com.eways.elearning.Network.Responses.BaseResponse;
 import com.eways.elearning.Network.ServerUrl;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -30,6 +32,10 @@ public interface UserServicesImp {
     @FormUrlEncoded
     Call<BaseResponse> checkPhoneNumber(@Field("Phone") String phone);
 
-    /** Add favorite subjects */
+    /** Add favorite */
+    @POST(ServerUrl.ADD_USER_FAVORITE_URL)
+    @FormUrlEncoded
+    Call<BaseResponse> addUserFavoriteUrl(@Field("uID") String data,
+                                          @Field("listFavoriteSubject") ArrayList<String> listFavorite);
 
 }

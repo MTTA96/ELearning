@@ -1,18 +1,23 @@
 package com.eways.elearning.Presenter;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.eways.elearning.Interfaces.DataCallBack;
+import com.eways.elearning.Interfaces.DataCallback.SearchSuggestion.SearchSuggestionCallBack;
 import com.eways.elearning.Model.Banner;
 import com.eways.elearning.Interfaces.DataCallback.BannerCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Subject.FavSubjectWithCoursesCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Subject.TrendingSubjectCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.TopTutorsCallBack;
 import com.eways.elearning.Model.Search.SearchResults;
+import com.eways.elearning.Model.Search.SearchSuggestions;
 import com.eways.elearning.Model.Subject.Subject;
 import com.eways.elearning.Model.Account.User;
+import com.eways.elearning.Utils.SharedPreferences.SharedPrefSupportKeys;
+import com.eways.elearning.Utils.SharedPreferences.SharedPrefUtils;
 import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Activity.HomeActivity;
 
@@ -23,22 +28,29 @@ import java.util.ArrayList;
  */
 
 public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubjectCallBack, TopTutorsCallBack, FavSubjectWithCoursesCallBack {
+
     private DataCallBack dataCallBack;
+    private SearchSuggestionCallBack searchSuggestionCallBack;
     private BannerCallBack bannerCallBack;
     private TopTutorsCallBack topTutorsCallBack;
     private TrendingSubjectCallBack trendingSubjectCallBack;
     private FavSubjectWithCoursesCallBack favSubjectWithCoursesCallBack;
+    private SharedPrefUtils sharedPrefUtils;
 
-    public HomePresenter() {
-
+    /** For home fragment */
+    public HomePresenter(Context context) {
+        sharedPrefUtils = new SharedPrefUtils(context, SharedPrefSupportKeys.SHARED_PREF_FILE_NAME);
     }
 
-    public HomePresenter(DataCallBack dataCallBack) {
-        this.dataCallBack = dataCallBack;
+    /** For home activity */
+    public HomePresenter(Context context, SearchSuggestionCallBack searchSuggestionCallBack) {
+        this.searchSuggestionCallBack = searchSuggestionCallBack;
+        sharedPrefUtils = new SharedPrefUtils(context, SharedPrefSupportKeys.SHARED_PREF_FILE_NAME);
     }
 
     /** Search suggestions */
     public void searchSuggestions(String keyWord) {
+
         // Check current type for searching
         switch (HomeActivity.currentSearchType) {
             case SupportKeys.SEARCH_SUBJECTS:
@@ -48,6 +60,7 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
                 SearchResults.searchSubjectSuggestions(keyWord, this);
                 break;
         }
+
     }
 
     /** Get Banners */
@@ -71,7 +84,7 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
     /** Get user favorite subjects list */
     public void getUserFavoriteSubjects(FavSubjectWithCoursesCallBack favSubjectWithCoursesCallBack) {
         this.favSubjectWithCoursesCallBack = favSubjectWithCoursesCallBack;
-        User.getUserFavoriteSubjectsWithCourses("", this);
+        User.getUserFavoriteSubjectsWithCourses( sharedPrefUtils.getString(SharedPrefSupportKeys.UID), this);
     }
 
     /**
@@ -90,7 +103,9 @@ public class HomePresenter implements DataCallBack, BannerCallBack, TrendingSubj
         }
 
         // Get data success
-        dataCallBack.dataCallBack(resultCode, bundle);
+        ArrayList<SearchSuggestions> results = (ArrayList<SearchSuggestions>) bundle.getSerializable(null);
+        searchSuggestionCallBack.searchSuggestionCallBack(SupportKeys.SUCCESS_CODE, results);
+
     }
 
     /** Banner */

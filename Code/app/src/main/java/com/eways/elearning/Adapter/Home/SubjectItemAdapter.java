@@ -47,4 +47,5 @@ public class SubjectItemAdapter extends RecyclerView.Adapter<HomeVHolder>{
     public int getItemCount() {
         return courses.size();
     }
+
 }

@@ -100,6 +100,7 @@ public class SearchResults {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(null, response.body().getSuggestionList());
                 dataCallBack.dataCallBack(SupportKeys.SUCCESS_CODE, bundle);
+                Log.d("SearchSubSuggestions:", "Get success!");
             }
 
             @Override

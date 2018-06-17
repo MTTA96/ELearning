@@ -6,7 +6,7 @@
     android:layout_marginRight="5dp"
     android:orientation="horizontal"
     android:layout_margin="@dimen/horizontal_padding"
-    android:padding="@dimen/min_vertical_padding"
+    android:padding="7dp"
     android:background="@drawable/white_rectangle_corner_main_color_stroke_shape">
 
     <!--User info-->

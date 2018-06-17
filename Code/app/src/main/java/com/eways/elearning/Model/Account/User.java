@@ -6,6 +6,7 @@ import android.util.Log;
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Subject.FavSubjectWithCoursesCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.TopTutorsCallBack;
+import com.eways.elearning.Model.Subject.FavoriteSubjectWithCourses;
 import com.eways.elearning.Network.ApiUtils;
 import com.eways.elearning.Network.Responses.BaseResponse;
 import com.eways.elearning.Network.Responses.User.UserFavoriteSubjectResponse;
@@ -15,6 +16,8 @@ import com.eways.elearning.Network.Services.UserServicesImp;
 import com.eways.elearning.Utils.SupportKeys;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -353,12 +356,12 @@ public class User {
     /** Get user's favorite subjects with courses */
     public static void getUserFavoriteSubjectsWithCourses(String uId, final FavSubjectWithCoursesCallBack favoriteSubjectWithCourseList) {
         ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
-        eLearningServicesImp.getUserFavoriteSubjects(uId, SupportKeys.APP_AUTHENTICATION).enqueue(new Callback<UserFavoriteSubjectResponse>() {
+        eLearningServicesImp.getUserFavoriteSubjects(uId).enqueue(new Callback<UserFavoriteSubjectResponse>() {
             @Override
             public void onResponse(Call<UserFavoriteSubjectResponse> call, Response<UserFavoriteSubjectResponse> response) {
                 // handle error
                 if (!response.isSuccessful()) {
-                    Log.d("CheckPhoneNumberModel:", "connect failed");
+                    Log.d("GetUserFavModel:", "connect failed");
                     favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
@@ -369,10 +372,40 @@ public class User {
 
             @Override
             public void onFailure(Call<UserFavoriteSubjectResponse> call, Throwable t) {
-                Log.d("CheckPhoneNumberModel:", t.getLocalizedMessage());
+                Log.d("GetUserFavModel:", t.getLocalizedMessage());
                 favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
             }
         });
     }
+
+    /** Update user favorite */
+    public static void addFavorite(String uID, ArrayList<String> listFavorite, final FavSubjectWithCoursesCallBack favSubjectWithCoursesCallBack) {
+        UserServicesImp userServicesImp = ApiUtils.userServices();
+        userServicesImp.addUserFavoriteUrl(uID, listFavorite).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                // Handle error
+                if (!response.isSuccessful()) {
+                    Log.d("Update favorite to sv:", "Update failed!");
+                    favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
+                    return;
+                }
+
+                // Prepare data
+                if (Integer.parseInt(response.body().getStatus()) == 1)
+                    favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.SUCCESS_CODE, null);
+                else
+                    favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.d("Update favorite to sv:", "Update failed!");
+                favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
+            }
+
+        });
+    }
+
 }
 

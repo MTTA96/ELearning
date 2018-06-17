@@ -31,8 +31,9 @@
         <activity android:name=".Views.Activity.HomeActivity" />
         <activity android:name=".Views.Activity.UpdateInfoActivity" />
         <activity android:name=".Views.Activity.WelcomeActivity" />
-        <activity android:name=".Views.Activity.SplashActivity" />
-        <activity android:name=".Views.Activity.CourseManager"></activity>
+        <activity android:name=".Views.Activity.SplashActivity"/>
+        <activity android:name=".Views.Activity.CourseManager" />
+        <activity android:name=".Views.Activity.RequestActivity"></activity>
     </application>
 
 </manifest>

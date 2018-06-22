@@ -1,8 +1,20 @@
 package com.eways.elearning.Views.Activity;
 
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,10 +22,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eways.elearning.Adapter.Search.SearchSuggestionsAdapter;
 import com.eways.elearning.Interfaces.DataCallBack;
@@ -24,8 +41,11 @@ import com.eways.elearning.Model.Search.SearchSuggestions;
 import com.eways.elearning.Presenter.HomePresenter;
 import com.eways.elearning.R;
 
+import com.eways.elearning.Utils.ActivityUtils;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKeys;
+import com.eways.elearning.Utils.ViewUtils;
+import com.eways.elearning.Utils.params.GlobalParams;
 import com.eways.elearning.Views.Fragment.HomeFragment;
 import com.eways.elearning.Views.Fragment.SearchAndFilter.SearchFragment;
 
@@ -40,6 +60,10 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
     RelativeLayout content;
     RecyclerView rvSuggestionsList;
     SearchView mSearchView;
+    DrawerLayout mDrawerLayout;
+    NavigationView mNavigationView;
+    ImageView mUserNameAvarta;
+    TextView mUserNameHeader, mUserEmailHeader;
 
     /**
      * MODELS
@@ -114,6 +138,13 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         content = findViewById(R.id.content);
         rvSuggestionsList = findViewById(R.id.list_search);
 
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        mNavigationView = findViewById(R.id.nav_view);
+
+//        mUserNameAvarta = findViewById(R.id)
+
+//        mMenu = findViewById(R.id.menu);
+
     }
 
     public void handle() {
@@ -121,6 +152,12 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         setUpToolBar();
         searchSuggestionsAdapter = new SearchSuggestionsAdapter(suggestionsList, this, R.layout.item_search_suggestions);
 
+//        mMenu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                mDrawerLayout.openDrawer(Gravity.LEFT);
+//            }
+//        });
         // Configure suggestions view
         rvSuggestionsList.setLayoutManager(new LinearLayoutManager(getParent(), LinearLayoutManager.VERTICAL, false));
         rvSuggestionsList.hasFixedSize();
@@ -130,11 +167,56 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKeys.HOME_FRAGMENT_TAG, 0, 0);
         currentSearchType = SupportKeys.SEARCH_SUBJECTS;
 
+        mNavigationView.setBackgroundColor(getColor(R.color.colorWhite));
+
+
+
+//        mNavigationView.setBackgroundColor(GlobalParams.getInstance().getColor(R.color.colorWhite));
+        mNavigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        switch (menuItem.getItemId()){
+                            case R.id.nav_Home:
+
+
+                                break;
+
+                            case R.id.nav_quan_ly_tai_khoan:
+
+                                ActivityUtils.ChangeActivity(HomeActivity.this, UserManagerActivity.class);
+                                mDrawerLayout.closeDrawers();
+
+                                break;
+
+                            case R.id.nav_tao_khoa_hoc:
+
+                                ActivityUtils.ChangeActivity(HomeActivity.this, CreateActivity.class);
+                                break;
+                        }
+
+                        return true;
+                    }
+                });
+
+
     }
 
     public void setUpToolBar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setContentInsetStartWithNavigation(0);
+        toolbar.setContentInsetsRelative(0,0);
+        if(getSupportActionBar()!=null){
+            Drawable drawable= getResources().getDrawable(R.drawable.icn_menu);
+            Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+            Drawable newdrawable = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 60, 60, true));
+//            newdrawable.setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_ATOP);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(newdrawable);
+
+        }
+
+
     }
 
     /**
@@ -158,6 +240,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         fragmentHandler.changeFragment(SearchFragment.newInstance(keyword), null, 0, 0);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -165,10 +248,12 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
 
         MenuItem mSearch = menu.findItem(R.id.action_search);
         mSearch.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
         mSearchView = (SearchView) mSearch.getActionView();
         mSearchView.setQueryHint("Search");
         mSearchView.onActionViewExpanded();
         mSearchView.clearFocus();
+        mSearchView.setMaxWidth(ViewUtils.dpToPx(300));
 
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -214,6 +299,18 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
 //        if (item.getItemId() == R.id.action_search) {
 //            fragmentHandler.changeFragment(SearchFragment.newInstance(), SupportKeys.SEARCH_RESULTS_TAG, 0, 0);
 //        }
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+
+            case R.id.action_filter:
+                ActivityUtils.ChangeActivity(HomeActivity.this, FilterActivity.class);
+
+                break;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

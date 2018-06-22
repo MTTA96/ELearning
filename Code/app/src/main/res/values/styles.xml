@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <!-- Ratingbar -->
@@ -14,4 +15,5 @@
         <item name="android:minHeight">30dip</item>
         <item name="android:maxHeight">30dip</item>
     </style>
+
 </resources>

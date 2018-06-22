@@ -20,7 +20,17 @@
             android:layout_height="wrap_content"
             android:background="@color/colorBlue"
             android:minHeight="?attr/actionBarSize"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            android:contentInsetRight="0dp"
+            android:contentInsetEnd="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetEnd="0dp"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark" >
+
+        </android.support.v7.widget.Toolbar>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -50,6 +60,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        app:itemTextColor="@color/colorBlue"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/nav_menu" />
 </android.support.v4.widget.DrawerLayout>

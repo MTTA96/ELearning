@@ -6,14 +6,12 @@
         android:id="@+id/action_search"
         android:icon="@android:drawable/ic_menu_search"
         android:title="Search"
-        app:actionViewClass="android.support.v7.widget.SearchView"
-        app:showAsAction="ifRoom|collapseActionView" />
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+
 
     <item
         android:id="@+id/action_filter"
-        android:icon="@android:drawable/ic_menu_compass"
+        android:icon="@drawable/icn_filter"
         android:title="Filter"
-        app:actionViewClass="android.support.v7.widget.SearchView"
-        app:showAsAction="ifRoom|collapseActionView" />
-
+        app:showAsAction="always" />
 </menu>

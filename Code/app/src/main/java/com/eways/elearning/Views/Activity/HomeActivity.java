@@ -237,6 +237,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         shouldSuggestionViewVisible = false;
         updateSuggestionsViewState();
         mSearchView.setQuery(keyword, true);
+        mSearchView.setBackgroundColor(GlobalParams.getInstance().getColor(R.color.colorWhite));
         fragmentHandler.changeFragment(SearchFragment.newInstance(keyword), null, 0, 0);
     }
 
@@ -253,7 +254,8 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         mSearchView.setQueryHint("Search");
         mSearchView.onActionViewExpanded();
         mSearchView.clearFocus();
-        mSearchView.setMaxWidth(ViewUtils.dpToPx(300));
+
+        mSearchView.setMaxWidth((ViewUtils.getScreenWidth(this)*70)/100);
 
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

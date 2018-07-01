@@ -16,12 +16,12 @@ public class LoadingDialog extends ProgressDialog {
         super(context, R.style.Theme_AppCompat_Light_Dialog);
     }
 
-    public static LoadingDialog getInstance(Context context){
-        if (loadingDialog == null){
+    public static LoadingDialog getInstance(Context context) {
+        //if (loadingDialog == null){
             loadingDialog = new LoadingDialog(context);
             loadingDialog.setMessage(context.getString(R.string.msg_loading));
             loadingDialog.setCanceledOnTouchOutside(false);
-        }
+        //}
         return loadingDialog;
     }
 

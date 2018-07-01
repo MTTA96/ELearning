@@ -1,18 +1,22 @@
 package com.eways.elearning.Views.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.eways.elearning.Model.Account.User;
+import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Presenter.Authentication.UserPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.ActivityUtils;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
+import com.eways.elearning.Utils.SupportKeys;
+import com.eways.elearning.Views.Dialog.LoadingDialog;
 
-public class UserManagerActivity extends Activity implements View.OnClickListener{
+public class UserManagerActivity extends Activity implements View.OnClickListener, DataCallBack {
     /* VIEWS */
 
     ImageView avarta;
@@ -21,6 +25,7 @@ public class UserManagerActivity extends Activity implements View.OnClickListene
 
     FragmentHandler fragmentHandler;
     private UserPresenter userPresenter;
+    private LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,8 @@ public class UserManagerActivity extends Activity implements View.OnClickListene
 
         declare_views();
         handle_views();
+        userPresenter = new UserPresenter(this);
+        loadingDialog = LoadingDialog.getInstance(this);
     }
 
     public void declare_views(){
@@ -66,6 +73,27 @@ public class UserManagerActivity extends Activity implements View.OnClickListene
             case R.id.btn_my_course:
 
                 break;
+
+            case R.id.btn_logout:
+                loadingDialog.show();
+                userPresenter.signOut(this);
+                break;
         }
     }
+
+    @Override
+    public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
+
+        loadingDialog.dismiss();
+
+        if (resultCode == SupportKeys.FAILED_CODE) {
+            return;
+        }
+
+        Intent signInIntent = new Intent(this, AuthenticationActivity.class);
+        signInIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(signInIntent);
+
+    }
+
 }

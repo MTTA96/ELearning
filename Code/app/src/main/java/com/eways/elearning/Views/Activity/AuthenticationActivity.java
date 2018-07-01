@@ -15,7 +15,7 @@ import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Views.Fragment.Authentication.LoginFragment;
 import com.google.firebase.FirebaseApp;
 
-public class MainActivity extends AppCompatActivity {
+public class AuthenticationActivity extends AppCompatActivity {
 
     /*---- FRAGMENT HANDLE -----*/
     FragmentHandler fragmentHandler;
@@ -46,9 +46,4 @@ public class MainActivity extends AppCompatActivity {
         fragmentHandler.changeFragment(new LoginFragment(), null, R.anim.slide_from_left, 0);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-    }
 }

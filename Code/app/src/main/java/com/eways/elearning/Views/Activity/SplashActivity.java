@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
-import com.eways.elearning.Utils.SharedPreferences.SharedPrefSupportKeys;
 import com.eways.elearning.Utils.SharedPreferences.SharedPrefUtils;
 
 import java.util.Timer;
@@ -43,7 +42,7 @@ public class SplashActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        startActivity(new Intent(SplashActivity.this, AuthenticationActivity.class));
                         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_from_left);
                         finish();
                     }

@@ -21,13 +21,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,7 +55,7 @@ import com.eways.elearning.Views.Fragment.SearchAndFilter.SearchFragment;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity implements DataCallBack, OnItemClickListener, SearchSuggestionCallBack {
+public class HomeActivity extends AppCompatActivity implements  DataCallBack, OnItemClickListener, View.OnClickListener, SearchSuggestionCallBack {
 
     /**
      * VIEWS
@@ -59,8 +63,9 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
     Toolbar toolbar;
     RelativeLayout content;
     RecyclerView rvSuggestionsList;
-    SearchView mSearchView;
     DrawerLayout mDrawerLayout;
+    EditText etSearch;
+    ImageView ivMenu, ivFIlter;
     NavigationView mNavigationView;
     ImageView mUserNameAvarta;
     TextView mUserNameHeader, mUserEmailHeader;
@@ -88,49 +93,6 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         homePresenter = new HomePresenter(this, this);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
-//
-//        MenuItem mSearch = menu.findItem(R.id.action_search);
-//
-//        mSearchView = (SearchView) mSearch.getActionView();
-//        mSearchView.setQueryHint("Search");
-//
-//        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                shouldSuggestionViewVisible = false;
-//                updateSuggestionsViewState();
-//                fragmentHandler.changeFragment(SearchFragment.newInstance(query), null, 0, 0);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                shouldSuggestionViewVisible = true;
-//                updateSuggestionsViewState();
-//                if (newText.compareTo("")==0){
-//                    suggestionsList.clear();
-//                    searchSuggestionsAdapter.notifyDataSetChanged();
-//                } else {
-//                    // Show loading when inputting
-//                    SearchSuggestions loadingSuggestions = new SearchSuggestions();
-//                    suggestionsList.clear();
-//                    loadingSuggestions.setSubjectName(getResources().getString(R.string.msg_loading));
-//                    suggestionsList.add(loadingSuggestions);
-//                    searchSuggestionsAdapter.notifyDataSetChanged();
-//
-//                    // Call api
-//                    homePresenter.searchSuggestions(newText);
-//                }
-//                return true;
-//            }
-//        });
-//
-//        return super.onCreateOptionsMenu(menu);
-//    }
-
     /** CONFIG */
 
     public void declareViews(){
@@ -141,6 +103,10 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mNavigationView = findViewById(R.id.nav_view);
 
+        ivFIlter = findViewById(R.id.iv_filter);
+        ivMenu = findViewById(R.id.iv_menu);
+        etSearch = findViewById(R.id.et_search);
+
 //        mUserNameAvarta = findViewById(R.id)
 
 //        mMenu = findViewById(R.id.menu);
@@ -149,9 +115,8 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
 
     public void handle() {
         fragmentHandler = new FragmentHandler(this, R.id.home_content_view);
-        setUpToolBar();
         searchSuggestionsAdapter = new SearchSuggestionsAdapter(suggestionsList, this, R.layout.item_search_suggestions);
-
+        SetUpActionBar();
 //        mMenu.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -199,24 +164,8 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
                     }
                 });
 
-
-    }
-
-    public void setUpToolBar() {
-        setSupportActionBar(toolbar);
-        toolbar.setContentInsetStartWithNavigation(0);
-        toolbar.setContentInsetsRelative(0,0);
-        if(getSupportActionBar()!=null){
-            Drawable drawable= getResources().getDrawable(R.drawable.icn_menu);
-            Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-            Drawable newdrawable = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 60, 60, true));
-//            newdrawable.setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_ATOP);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(newdrawable);
-
-        }
-
-
+        ivMenu.setOnClickListener(this);
+        ivFIlter.setOnClickListener(this);
     }
 
     /**
@@ -236,42 +185,33 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
         String keyword = bundle.getString("keyword");
         shouldSuggestionViewVisible = false;
         updateSuggestionsViewState();
-        mSearchView.setQuery(keyword, true);
-        mSearchView.setBackgroundColor(GlobalParams.getInstance().getColor(R.color.colorWhite));
         fragmentHandler.changeFragment(SearchFragment.newInstance(keyword), null, 0, 0);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    @Override
+    //set up toolbar
+    private void SetUpActionBar(){
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp.width = (ViewUtils.getScreenWidth(this)*67)/100;
+        etSearch.setLayoutParams(lp);
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        etSearch.clearFocus();
 
-        MenuItem mSearch = menu.findItem(R.id.action_search);
-        mSearch.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-
-        mSearchView = (SearchView) mSearch.getActionView();
-        mSearchView.setQueryHint("Search");
-        mSearchView.onActionViewExpanded();
-        mSearchView.clearFocus();
-
-        mSearchView.setMaxWidth((ViewUtils.getScreenWidth(this)*70)/100);
-
-
-        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        etSearch.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                shouldSuggestionViewVisible = false;
-                updateSuggestionsViewState();
-                fragmentHandler.changeFragment(SearchFragment.newInstance(query), null, 0, 0);
-                return false;
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
                 shouldSuggestionViewVisible = true;
                 updateSuggestionsViewState();
-                if (newText.compareTo("") == 0) {
+                if (editable.toString().compareTo("") == 0) {
                     suggestionsList.clear();
                     searchSuggestionsAdapter.notifyDataSetChanged();
                 } else {
@@ -283,13 +223,10 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
                     searchSuggestionsAdapter.notifyDataSetChanged();
 
                     // Call api
-                    homePresenter.searchSuggestions(newText);
+                    homePresenter.searchSuggestions(editable.toString());
                 }
-                return true;
             }
         });
-
-        return super.onCreateOptionsMenu(menu);
     }
 
     /**
@@ -302,16 +239,7 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
 //            fragmentHandler.changeFragment(SearchFragment.newInstance(), SupportKeys.SEARCH_RESULTS_TAG, 0, 0);
 //        }
 
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
 
-            case R.id.action_filter:
-                ActivityUtils.ChangeActivity(HomeActivity.this, FilterActivity.class);
-
-                break;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -355,5 +283,19 @@ public class HomeActivity extends AppCompatActivity implements DataCallBack, OnI
 
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.iv_menu:
+
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            break;
+
+            case R.id.iv_filter:
+
+                ActivityUtils.ChangeActivity(HomeActivity.this, FilterActivity.class);
+                break;
+        }
+    }
 }
 

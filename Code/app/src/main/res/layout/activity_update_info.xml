@@ -57,12 +57,14 @@
                         android:layout_height="match_parent">
 
                         <ImageView
+                            android:id="@+id/iv_back"
                             android:layout_width="15dp"
                             android:layout_height="25dp"
                             android:layout_centerVertical="true"
                             android:background="@drawable/btn_back_white" />
 
                         <TextView
+                            android:id="@+id/tv_save"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -80,225 +82,19 @@
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true"
 
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
 
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="100">
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tbl_user_manager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1.5" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="7"
-                        android:orientation="horizontal"
-                        android:weightSum="100">
-
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="48"
-                            android:background="@drawable/edittext_shape_3"
-                            android:hint="@string/hint_first_name"
-                            android:padding="10dp"
-                            android:textColor="@color/colorBlack"
-                            android:textColorHint="@color/colorGrey"
-                            android:textSize="17sp" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="4" />
-
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="48"
-                            android:background="@drawable/edittext_shape_3"
-                            android:hint="@string/hint_last_name"
-                            android:padding="10dp"
-                            android:textColor="@color/colorBlack"
-                            android:textColorHint="@color/colorGrey"
-                            android:textSize="17sp" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1.5" />
-
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginEnd="40dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_weight="7"
-                        android:orientation="horizontal"
-                        android:weightSum="100">
-
-                        <RadioButton
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="40"
-                            android:buttonTint="@color/colorBlue"
-                            android:text="@string/hint_male"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="17sp" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="20" />
-
-                        <RadioButton
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="40"
-                            android:buttonTint="@color/colorBlue"
-                            android:text="Nữ"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="17sp" />
-                    </RadioGroup>
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1.5" />
-
-                    <EditText
-                        android:id="@+id/skype_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="7"
-                        android:background="@drawable/edittext_shape_3"
-                        android:focusableInTouchMode="false"
-                        android:hint="Skype"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:textColorHint="@color/colorGrey" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1.5" />
-
-                    <EditText
-                        android:id="@+id/cmnd"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="7"
-                        android:background="@drawable/edittext_shape_3"
-                        android:focusableInTouchMode="false"
-                        android:hint="Số chứng minh"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:textColorHint="@color/colorGrey" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1.5" />
-
-                    <EditText
-                        android:id="@+id/date_picker"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="7"
-                        android:background="@drawable/edittext_shape_3"
-                        android:focusableInTouchMode="false"
-                        android:hint="@string/hint_birthday"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:textColorHint="@color/colorGrey" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1.5" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="7"
-                        android:background="@drawable/edittext_shape_3"
-                        android:hint="@string/hint_email"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:textColorHint="@color/colorGrey" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1.5" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="7"
-                        android:background="@drawable/edittext_shape_3"
-                        android:hint="@string/hint_phone_number"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:textColorHint="@color/colorGrey" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1.5" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="7"
-                        android:background="@drawable/edittext_shape_3"
-                        android:hint="@string/hint_address"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:textColorHint="@color/colorGrey" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1.5" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="7"
-                        android:background="@drawable/edittext_shape_3"
-                        android:hint="@string/hint_degree"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:textColorHint="@color/colorGrey" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1.5" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="7"
-                        android:background="@drawable/edittext_shape_3"
-                        android:hint="@string/hint_career"
-                        android:padding="10dp"
-                        android:textColor="@color/colorBlack"
-                        android:textColorHint="@color/colorGrey" />
-
-                </LinearLayout>
+            </android.support.design.widget.TabLayout>
 
         </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>

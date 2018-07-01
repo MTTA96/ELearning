@@ -145,6 +145,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
         // Handle error
         if (resultCode == SupportKeys.FAILED_CODE) {
             Toast.makeText(getContext(), R.string.msg_sign_in_failed, Toast.LENGTH_SHORT).show();
+            loadingDialog.dismiss();
             return;
         }
 

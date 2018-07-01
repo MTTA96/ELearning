@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eways.elearning.Model.Account.User;
+import com.eways.elearning.Presenter.Authentication.UserPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.ActivityUtils;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
@@ -19,6 +20,7 @@ public class UserManagerActivity extends Activity implements View.OnClickListene
     View btnInfo, btnMyCourse, btnCourseTutor, btnLogout;
 
     FragmentHandler fragmentHandler;
+    private UserPresenter userPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

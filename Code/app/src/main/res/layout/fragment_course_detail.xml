@@ -104,8 +104,6 @@
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:layout_marginStart="15dp"
             android:fillViewport="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -292,7 +290,28 @@
                                 android:textStyle="bold" />
                         </LinearLayout>
 
-                        <!--Thời gian-->
+                        <!--Ngày bắt đầu-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ngày bắt đầu: "
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:id="@+id/textView_NgayBatDau_ThongTinKhoaHoc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!--Thứ-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -349,6 +368,27 @@
 
                             <TextView
                                 android:id="@+id/textView_SoBuoi_ThongTinKhoaHoc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!--Thời lượng-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Thời lượng: "
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:id="@+id/textView_ThoiLuong_ThongTinKhoaHoc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"

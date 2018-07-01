@@ -6,11 +6,11 @@ package com.eways.elearning.Model.Course;
 
 import android.util.Log;
 
-import com.eways.elearning.Interfaces.DataCallback.Subject.CourseCallBack;
-import com.eways.elearning.Interfaces.DataCallback.Subject.FavSubjectWithCoursesCallBack;
+import com.eways.elearning.Interfaces.DataCallback.Course.CourseDetailsCallBack;
+import com.eways.elearning.Interfaces.DataCallback.Course.CourseListCallBack;
 import com.eways.elearning.Network.ApiUtils;
-import com.eways.elearning.Network.Responses.CourseListResponse;
-import com.eways.elearning.Network.Responses.User.UserFavoriteSubjectResponse;
+import com.eways.elearning.Network.Responses.Course.CourseListResponse;
+import com.eways.elearning.Network.Responses.Course.CourseRespsonse;
 import com.eways.elearning.Network.Services.ELearningServicesImp;
 import com.eways.elearning.Utils.SupportKeys;
 import com.google.gson.annotations.Expose;
@@ -246,8 +246,37 @@ public class Course {
 
     /** ----- METHODS ----- */
 
+    /** Get course details */
+
+    public static void getCourseDetails(String courseId, final CourseDetailsCallBack courseDetailsCallBack) {
+
+        ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
+        eLearningServicesImp.getCourseById(courseId).enqueue(new Callback<CourseRespsonse>() {
+            @Override
+            public void onResponse(Call<CourseRespsonse> call, Response<CourseRespsonse> response) {
+                // handle error
+                if (!response.isSuccessful()) {
+                    Log.d("CourseDetailsModel:", "connect failed");
+                    courseDetailsCallBack.courseDetailsCallBack(SupportKeys.FAILED_CODE, null);
+                    return;
+                }
+
+                // Prepare data
+                courseDetailsCallBack.courseDetailsCallBack(SupportKeys.SUCCESS_CODE, response.body().getCourse());
+            }
+
+            @Override
+            public void onFailure(Call<CourseRespsonse> call, Throwable t) {
+                Log.d("CourseDetailsModel:", t.getLocalizedMessage());
+                courseDetailsCallBack.courseDetailsCallBack(SupportKeys.FAILED_CODE, null);
+            }
+        });
+
+    }
+
     /** Get course list */
-    public static void getCourseList(String subjectId, final CourseCallBack courseCallBack) {
+
+    public static void getCourseList(String subjectId, final CourseListCallBack courseCallBack) {
 
         ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
         eLearningServicesImp.getCourseListBySubject(subjectId, SupportKeys.APP_AUTHENTICATION).enqueue(new Callback<CourseListResponse>() {

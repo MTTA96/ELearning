@@ -1,8 +1,8 @@
-package com.eways.elearning.Presenter;
+package com.eways.elearning.Presenter.Course;
 
 import android.content.Context;
 
-import com.eways.elearning.Interfaces.DataCallback.Subject.CourseCallBack;
+import com.eways.elearning.Interfaces.DataCallback.Course.CourseListCallBack;
 import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.Utils.SupportKeys;
 
@@ -12,17 +12,17 @@ import java.util.ArrayList;
  * Created by zzzzz on 6/17/2018.
  */
 
-public class CourseListPresenter implements CourseCallBack {
+public class CourseListPresenter implements CourseListCallBack {
 
     private Context context;
-    private CourseCallBack courseCallBack;
+    private CourseListCallBack courseCallBack;
 
     public CourseListPresenter(Context context) {
         this.context = context;
     }
 
     /** Get course list  */
-    public void getCourseList(String subjectId, CourseCallBack courseCallBack) {
+    public void getCourseList(String subjectId, CourseListCallBack courseCallBack) {
 
         this.courseCallBack = courseCallBack;
         Course.getCourseList(subjectId, this);
@@ -38,4 +38,5 @@ public class CourseListPresenter implements CourseCallBack {
 
         courseCallBack.courseCallBack(errorCode, result);
     }
+
 }

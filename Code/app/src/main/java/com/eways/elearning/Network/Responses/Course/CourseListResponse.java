@@ -1,4 +1,4 @@
-package com.eways.elearning.Network.Responses;
+package com.eways.elearning.Network.Responses.Course;
 
 import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.Model.Search.SearchSuggestions;

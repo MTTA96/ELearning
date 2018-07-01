@@ -11,10 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Adapter.Course.CourseListAdapter;
-import com.eways.elearning.Adapter.Course.CourseMore.CourseMoreAdapter;
-import com.eways.elearning.Interfaces.DataCallback.Subject.CourseCallBack;
+import com.eways.elearning.Interfaces.DataCallback.Course.CourseListCallBack;
 import com.eways.elearning.Model.Course.Course;
-import com.eways.elearning.Presenter.CourseListPresenter;
+import com.eways.elearning.Presenter.Course.CourseListPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.SupportKeys;
 
@@ -23,7 +22,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CourseListFragment extends Fragment implements CourseCallBack {
+public class CourseListFragment extends Fragment implements CourseListCallBack {
 
     /** VIEWS */
     RecyclerView rcListCourse;

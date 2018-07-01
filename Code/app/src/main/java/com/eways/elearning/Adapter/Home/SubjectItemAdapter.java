@@ -45,7 +45,10 @@ public class SubjectItemAdapter extends RecyclerView.Adapter<HomeVHolder>{
 
     @Override
     public int getItemCount() {
-        return courses.size();
+        if (courses != null) {
+            return courses.size();
+        } else
+            return 0;
     }
 
 }

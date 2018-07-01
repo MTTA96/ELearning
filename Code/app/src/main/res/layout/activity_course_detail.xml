@@ -1,10 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/White"
-    tools:context="com.eways.elearning.Views.Fragment.Course.FragmentCourseDetail">
+    tools:context="com.eways.elearning.Views.Activity.CourseDetailActivity">
 
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -41,7 +43,7 @@
                     android:orientation="vertical">
                     <!--User avatar-->
                     <ImageView
-                        android:id="@+id/imageView_UserAvatar_ThongTinKhoaHoc"
+                        android:id="@+id/iv_avarta"
                         android:layout_width="@dimen/avarta_size_QLTK"
                         android:layout_height="@dimen/avarta_size_QLTK"
                         android:layout_gravity="center"
@@ -81,19 +83,21 @@
                         android:layout_height="match_parent">
 
                         <ImageView
+                            android:id="@+id/iv_back"
                             android:layout_width="15dp"
                             android:layout_height="25dp"
                             android:layout_centerVertical="true"
                             android:background="@drawable/btn_back_white" />
 
                         <TextView
+                            android:id="@+id/tv_save"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:layout_marginRight="15dp"
-                            android:textColor="@color/colorWhite"
                             android:text="@string/save"
+                            android:textColor="@color/colorWhite"
                             android:textSize="22sp" />
                     </RelativeLayout>
                 </android.support.v7.widget.Toolbar>
@@ -142,7 +146,7 @@
                                 android:textColor="@color/colorBlack" />
 
                             <TextView
-                                android:id="@+id/textView_NamSinh_ThongTinKhoaHoc"
+                                android:id="@+id/tv_birthday"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -163,7 +167,7 @@
                                 android:textColor="@color/colorBlack" />
 
                             <TextView
-                                android:id="@+id/textView_GioiTinh_ThongTinKhoaHoc"
+                                android:id="@+id/tv_gender"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -185,7 +189,7 @@
                                 android:textColor="@color/colorBlack" />
 
                             <TextView
-                                android:id="@+id/textView_NgheNghiep_ThongTinKhoaHoc"
+                                android:id="@+id/tv_job"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -206,7 +210,7 @@
                                 android:textColor="@color/colorBlack" />
 
                             <TextView
-                                android:id="@+id/textView_TrinhDo_ThongTin_KhoaHoc"
+                                android:id="@+id/tv_level"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -214,7 +218,7 @@
                         </LinearLayout>
 
                         <TextView
-                            android:id="@+id/button_XemThemThongTinNguoiDang"
+                            android:id="@+id/tv_more"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -264,7 +268,7 @@
                                 android:textColor="@color/colorBlack" />
 
                             <TextView
-                                android:id="@+id/textView_Mon_ThongTinKhoaHoc"
+                                android:id="@+id/tv_subject"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -285,7 +289,7 @@
                                 android:textColor="@color/colorBlack" />
 
                             <TextView
-                                android:id="@+id/textView_DiaDiem_ThongTinKhoaHoc"
+                                android:id="@+id/tv_address"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -306,7 +310,7 @@
                                 android:textColor="@color/colorBlack" />
 
                             <TextView
-                                android:id="@+id/textView_Thu_ThongTinKhoaHoc"
+                                android:id="@+id/tv_weekday"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -327,7 +331,7 @@
                                 android:textColor="@color/colorBlack" />
 
                             <TextView
-                                android:id="@+id/textView_Buoi_ThongTinKhoaHoc"
+                                android:id="@+id/tv_session"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -348,7 +352,7 @@
                                 android:textColor="@color/colorBlack" />
 
                             <TextView
-                                android:id="@+id/textView_SoBuoi_ThongTinKhoaHoc"
+                                android:id="@+id/tv_amount_session"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -369,7 +373,7 @@
                                 android:textColor="@color/colorBlack" />
 
                             <TextView
-                                android:id="@+id/textView_SoHocVien_ThongTinKhoaHoc"
+                                android:id="@+id/tv_amount_attender"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -386,7 +390,7 @@
                             android:textColor="@color/colorBlack" />
 
                         <TextView
-                            android:id="@+id/textView_ThongTinKhac_ThongTinKhoaHoc"
+                            android:id="@+id/tv_info_more"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/text_thong_tin_them_height"
                             android:layout_marginRight="@dimen/text_padding_left"
@@ -411,6 +415,10 @@
                         android:textSize="@dimen/normal_text_size" />
                 </FrameLayout>
 
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"/>
+
             </LinearLayout>
 
         </android.support.v4.widget.NestedScrollView>
@@ -421,6 +429,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/btn_send_request"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
@@ -429,12 +438,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Gửi yêu cầu"
             android:textColor="@color/White"
             android:textSize="18sp"
-            android:text="Gửi yêu cầu"
-            android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 </RelativeLayout>
 

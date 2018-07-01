@@ -136,7 +136,7 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
     }
 
     public void setUpToptutor() {
-        topTutorAdapter = new TopTutorAdapter(R.layout.item_home_detail, tutors);
+        topTutorAdapter = new TopTutorAdapter(getActivity() ,R.layout.item_home_detail, tutors);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,false);
         rcToptutor.setHasFixedSize(true);
         rcToptutor.setLayoutManager(layoutManager);

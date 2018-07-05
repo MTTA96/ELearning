@@ -55,16 +55,16 @@ public class UpdateInfoActivity extends AppCompatActivity implements View.OnClic
     public void declare_views(){
         ivAvarta = findViewById(R.id.avarta);
 
-//        etFirstName = findViewById(R.id.et_first_name);
-//        etLastName = findViewById(R.id.et_last_name);
-//        etSkype = findViewById(R.id.skype_id);
-//        etCmnd = findViewById(R.id.cmnd);
-//        etBirthDay = findViewById(R.id.date_picker);
-//        etEmail = findViewById(R.id.et_email);
-//        etPhone = findViewById(R.id.et_phone);
-//        etAddress = findViewById(R.id.et_address);
-//        etJob = findViewById(R.id.et_job);
-//        ivBack = findViewById(R.id.iv_back);
+        etFirstName = findViewById(R.id.et_first_name);
+        etLastName = findViewById(R.id.et_last_name);
+        etSkype = findViewById(R.id.skype_id);
+        etCmnd = findViewById(R.id.cmnd);
+        etBirthDay = findViewById(R.id.date_picker);
+        etEmail = findViewById(R.id.et_email);
+        etPhone = findViewById(R.id.et_phone);
+        etAddress = findViewById(R.id.et_address);
+        etJob = findViewById(R.id.et_job);
+        ivBack = findViewById(R.id.iv_back);
     }
 
     public void handle_views(){

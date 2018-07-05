@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/btn_add_certi"
+    android:layout_width="170dp"
+    android:layout_height="140dp"
+    android:background="@drawable/add_certificate_shape">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@android:drawable/ic_input_add"/>
+
+</RelativeLayout>

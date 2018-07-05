@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White"
+    android:weightSum="100"
+    android:orientation="vertical"
+    tools:context="com.eways.elearning.Views.Activity.SpecialDocumentActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="35"
+        android:elevation="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/title_certi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bằng cấp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/colorBlue"/>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/icn_filter_black"
+            android:layout_alignParentRight="true"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_below="@+id/title_certi"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorBlue"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/line"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rc_certificate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+
+                <RelativeLayout
+                    android:id="@+id/btn_add_certi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/add_certificate_shape">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@android:drawable/ic_input_add" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="65"/>
+
+</LinearLayout>

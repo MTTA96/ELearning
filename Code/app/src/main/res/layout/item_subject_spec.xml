@@ -2,7 +2,104 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="400dp"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:text="Mon"
+            android:textColor="@color/colorBlue"
+            android:layout_alignParentLeft="true"/>
+
+        <ImageView
+            android:id="@+id/btn_edit"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@android:drawable/ic_menu_edit"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_below="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorBlue"/>
+
+    <LinearLayout
+        android:id="@+id/area_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+        <VideoView
+            android:id="@+id/video"
+            android:layout_width="300dp"
+            android:layout_height="200dp" />
+        <ImageView
+            android:id="@+id/btn_edit_video"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:visibility="gone"
+            android:background="@android:drawable/ic_menu_edit"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/area_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/colorBlue"
+            android:text="Hình ảnh: "/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="45dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rc_item_subject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/btn_add_subject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/add_certificate_shape">
+
+                </RelativeLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+    </LinearLayout>
 </RelativeLayout>

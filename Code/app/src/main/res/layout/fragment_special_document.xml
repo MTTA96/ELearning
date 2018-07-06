@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/White"
-    android:weightSum="100"
     android:orientation="vertical"
-    tools:context="com.eways.elearning.Views.Activity.SpecialDocumentActivity">
+    android:weightSum="100"
+    tools:context="com.eways.elearning.Views.Fragment.SpecialDocumentFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="35"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_weight="35"
         android:background="#f1f1f1"
         android:elevation="10dp">
 
@@ -24,31 +24,31 @@
             android:id="@+id/title_certi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bằng cấp"
-            android:textStyle="bold"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textSize="18sp"
+            android:text="Bằng cấp"
+            android:textColor="@color/colorBlue"
 
-            android:layout_alignParentLeft="true"
-            android:textColor="@color/colorBlue"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <View
             android:id="@+id/line"
-            android:layout_below="@+id/title_certi"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="8dp"
+            android:layout_below="@+id/title_certi"
             android:layout_marginBottom="8dp"
-            android:background="@color/colorBlue"/>
+            android:layout_marginTop="8dp"
+            android:background="@color/colorBlue" />
 
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/line"
             android:layout_marginBottom="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp">
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                     android:id="@+id/rc_certificate"
                     android:layout_width="wrap_content"
                     android:layout_height="130dp"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical" />
 
                 <RelativeLayout
                     android:id="@+id/btn_add_certi"
@@ -72,8 +72,8 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
                         android:background="@android:drawable/ic_input_add" />
 
                 </RelativeLayout>
@@ -91,28 +91,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:orientation="vertical">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rc_subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#f1f1f1"
-                android:elevation="10dp"/>
+                android:elevation="10dp" />
 
             <Button
                 android:id="@+id/btn_add_subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:text="Thêm môn +"/>
+                android:text="Thêm môn +"
+                android:textSize="16sp" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
 
-
 </LinearLayout>
+

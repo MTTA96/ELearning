@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,11 +26,13 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
-public class PopUpAddImageActivity extends Activity implements View.OnClickListener{
+public class PopUpAddImageActivity extends Activity implements View.OnClickListener {
 
-    /** VIEWS */
+    /**
+     * VIEWS
+     */
     ImageView ivImage;
-    TextView tvName;
+    EditText tvName;
     Button btnConfirm;
 
     DialogPlusHandler dialogPlusHandler;
@@ -37,6 +40,7 @@ public class PopUpAddImageActivity extends Activity implements View.OnClickListe
     ArrayList<ImageSelect> imageSelects;
     ImageHandler mImageHandle;
     Certificate mCerti;
+    com.eways.elearning.Model.Image mImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,33 +51,43 @@ public class PopUpAddImageActivity extends Activity implements View.OnClickListe
         handle_views();
     }
 
-    private void declare_views(){
+    private void declare_views() {
         ivImage = findViewById(R.id.iv_image_spec);
         tvName = findViewById(R.id.tv_name_spec);
         btnConfirm = findViewById(R.id.btn_confirm);
     }
 
-    private void handle_views(){
+    private void handle_views() {
         SetUpDialog();
+
+        btnConfirm.setVisibility(View.GONE);
+        tvName.setEnabled(false);
+        tvName.setFocusable(false);
 
         mImageHandle = new ImageHandler(this);
         ivImage.setOnClickListener(this);
         btnConfirm.setOnClickListener(this);
 
-       if (this.getIntent().getExtras() != null){
-           mCerti = GlobalParams.getInstance().getGSon().fromJson(this.getIntent().getExtras().get("item_certi").toString(), Certificate.class);
-           mImageHandle.loadImageRound(mCerti.getImage(), ivImage);
-           tvName.setText(mCerti.getName());
-       }
+        if (this.getIntent().getExtras() != null) {
+            if (this.getIntent().getExtras().get("item_certi") != null) {
+                mCerti = GlobalParams.getInstance().getGSon().fromJson(this.getIntent().getExtras().get("item_certi").toString(), Certificate.class);
+                mImageHandle.loadImageRound(mCerti.getImage(), ivImage);
+                tvName.setText(mCerti.getName());
+            } else {
+                mImage = GlobalParams.getInstance().getGSon().fromJson(this.getIntent().getExtras().get("item_subject").toString(), com.eways.elearning.Model.Image.class);
+                mImageHandle.loadImageRound(mImage.getImage(), ivImage);
+                tvName.setVisibility(View.GONE);
+            }
+        }
 
     }
 
-    public void SetUpDialog(){
+    public void SetUpDialog() {
         imageSelects = new ArrayList<>();
 
         try {
             JSONArray jsonArray = new JSONArray(FileUtils.loadJSONFromAsset(this, "image_choose"));
-            for (int i = 0; i < jsonArray.length(); i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
                 imageSelects.add(GlobalParams.getInstance().getGSon().fromJson(jsonArray.get(i).toString(), ImageSelect.class));
             }
             imageChooseAdapter = new ImageChooseAdapter(this, R.layout.item_image_select, imageSelects);
@@ -87,7 +101,7 @@ public class PopUpAddImageActivity extends Activity implements View.OnClickListe
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch (requestCode){
+        switch (requestCode) {
             case DialogPlusHandler.REQUEST_CODE_CAMERA:
                 Uri captureImage = data.getData();
                 mImageHandle.loadImageSquare(String.valueOf(captureImage), ivImage);
@@ -105,7 +119,7 @@ public class PopUpAddImageActivity extends Activity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.iv_image_spec:
 
                 dialogPlusHandler.ShowDiglogPlus();

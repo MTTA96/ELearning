@@ -87,6 +87,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
         btnLogin = root.findViewById(R.id.sign_in_button);
         
         loadingDialog = LoadingDialog.getInstance(getContext());
+
+        SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(getContext(), SharedPrefSupportKeys.SHARED_PREF_FILE_NAME);
+        if (sharedPrefUtils.getString(SharedPrefSupportKeys.userName) != null) {
+
+            String sdt = sharedPrefUtils.getString(SharedPrefSupportKeys.userName);
+
+            String withoutCountryCode = sdt.substring(3);
+
+            edtPhone.setText(withoutCountryCode);
+
+        }
     }
 
     public void handle() {

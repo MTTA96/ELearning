@@ -110,7 +110,6 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
 //        mUserNameAvarta = findViewById(R.id)
 
 //        mMenu = findViewById(R.id.menu);
-
     }
 
     public void handle() {
@@ -166,6 +165,7 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
 
         ivMenu.setOnClickListener(this);
         ivFIlter.setOnClickListener(this);
+
     }
 
     /**
@@ -193,8 +193,6 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.width = (ViewUtils.getScreenWidth(this)*67)/100;
         etSearch.setLayoutParams(lp);
-
-        etSearch.clearFocus();
 
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override

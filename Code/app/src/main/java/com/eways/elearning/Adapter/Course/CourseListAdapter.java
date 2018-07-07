@@ -1,6 +1,8 @@
 package com.eways.elearning.Adapter.Course;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
+import com.eways.elearning.Views.Activity.CourseDetailActivity;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -50,7 +53,9 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListVHolder> {
         holder.vCourseInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHocArrayList.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
+                Intent courseDetailsIntent = new Intent(((Activity) context), CourseDetailActivity.class);
+                context.startActivity(courseDetailsIntent);
+                 //fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHocArrayList.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
             }
         });
 

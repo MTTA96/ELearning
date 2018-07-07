@@ -28,13 +28,17 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class SpecialDocumentFragment extends Fragment implements View.OnClickListener {
-    /** VIEWS */
+    /**
+     * VIEWS
+     */
     RecyclerView rcCertificate;
     View btnAddCerti;
     RecyclerView rcSubject;
     Button btnAddSubject;
 
-    /** ACCESSORIES */
+    /**
+     * ACCESSORIES
+     */
     ArrayList<Certificate> mListCerti;
     SpecialAdapter mSpecialAdapter;
 
@@ -57,14 +61,14 @@ public class SpecialDocumentFragment extends Fragment implements View.OnClickLis
         return view;
     }
 
-    private void declare_views(View root){
+    private void declare_views(View root) {
         rcCertificate = root.findViewById(R.id.rc_certificate);
         btnAddCerti = root.findViewById(R.id.btn_add_certi);
         rcSubject = root.findViewById(R.id.rc_subject);
         btnAddSubject = root.findViewById(R.id.btn_add_subject);
     }
 
-    private void handle_views(){
+    private void handle_views() {
         SetUpListCerti();
         SetUpSubject();
 
@@ -77,7 +81,7 @@ public class SpecialDocumentFragment extends Fragment implements View.OnClickLis
 
     }
 
-    private void SetUpListCerti(){
+    private void SetUpListCerti() {
         mListCerti = new ArrayList<>();
 
         mListCerti.add(new Certificate(0, "https://static1.squarespace.com/static/56f5fdc7c2ea5119892e22c2/571a3e70b654f9dd5cc18184/571a47c601dbae832ce3b2f6/1461340111262/DOGFACE-Chase-024AFP.jpg?format=750w", "ielts"));
@@ -93,7 +97,7 @@ public class SpecialDocumentFragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_add_certi:
 
                 Intent i = new Intent(getActivity(), PopUpAddImageActivity.class);
@@ -110,13 +114,14 @@ public class SpecialDocumentFragment extends Fragment implements View.OnClickLis
     public void onResume() {
         super.onResume();
 
-        if (getActivity().getIntent().getExtras() != null){
-            mListCerti.add(GlobalParams.getInstance().getGSon().fromJson(getActivity().getIntent().getExtras().get("item_certi_add").toString(), Certificate.class));
-
+        if (getActivity().getIntent().getExtras() != null) {
+            if (this.getActivity().getIntent().getExtras().get("item_certi_add") != null) {
+                mListCerti.add(GlobalParams.getInstance().getGSon().fromJson(getActivity().getIntent().getExtras().get("item_certi_add").toString(), Certificate.class));
+            }
         }
     }
 
-    private void SetUpSubject(){
+    private void SetUpSubject() {
         mListSubject = new ArrayList<>();
         List<Image> images = new ArrayList<>();
         images.add(new Image(0, "https://static1.squarespace.com/static/56f5fdc7c2ea5119892e22c2/571a3e70b654f9dd5cc18184/571a47c601dbae832ce3b2f6/1461340111262/DOGFACE-Chase-024AFP.jpg?format=750w"));

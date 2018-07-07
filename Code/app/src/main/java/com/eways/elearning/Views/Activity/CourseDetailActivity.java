@@ -3,12 +3,13 @@ package com.eways.elearning.Views.Activity;
 import android.app.Activity;
 import android.media.Image;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eways.elearning.R;
 
-public class CourseDetailActivity extends Activity {
+public class CourseDetailActivity extends AppCompatActivity {
     /** VIEWS */
     TextView tvBirthDay, tvGender, tvJob, tvSubject, tvAddress, tvWeekday, tvSession, tvAmountSession, tvAmountAttender, tvInfoMore, tvSave;
     ImageView ivAvarta, ivBack;

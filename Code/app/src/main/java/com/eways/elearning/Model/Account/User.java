@@ -6,10 +6,12 @@ import android.util.Log;
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Subject.FavSubjectWithCoursesCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.TopTutorsCallBack;
+import com.eways.elearning.Interfaces.DataCallback.User.UserCallBack;
 import com.eways.elearning.Model.Subject.FavoriteSubjectWithCourses;
 import com.eways.elearning.Network.ApiUtils;
 import com.eways.elearning.Network.Responses.BaseResponse;
 import com.eways.elearning.Network.Responses.User.SignInResponse;
+import com.eways.elearning.Network.Responses.User.UserBaseResponse;
 import com.eways.elearning.Network.Responses.User.UserFavoriteSubjectResponse;
 import com.eways.elearning.Network.Responses.User.UserListResponse;
 import com.eways.elearning.Network.Services.ELearningServicesImp;
@@ -239,6 +241,33 @@ public class User {
     }
 
     /** MARK: - METHODS */
+
+    public static void getUserInfo(String uId, final UserCallBack userCallBack) {
+
+        UserServicesImp userServices = ApiUtils.userServices();
+        userServices.getUserDetails(uId).enqueue(new Callback<UserBaseResponse>() {
+            @Override
+            public void onResponse(Call<UserBaseResponse> call, Response<UserBaseResponse> response) {
+                // handle errors
+                Log.d("userDetails:", call.request().toString());
+                if (!response.isSuccessful()) {
+                    Log.d("userDetails:", "connect failed");
+                    userCallBack.userCallBack(SupportKeys.FAILED_CODE, null);
+                    return;
+                }
+
+                // Sign up success
+                userCallBack.userCallBack(SupportKeys.SUCCESS_CODE, response.body().getTeacher());
+            }
+
+            @Override
+            public void onFailure(Call<UserBaseResponse> call, Throwable t) {
+                Log.d("userDetails:", t.getLocalizedMessage());
+                userCallBack.userCallBack(SupportKeys.FAILED_CODE, null);
+            }
+        });
+
+    }
 
     /** [START - Authentication] */
     /** Sign up*/

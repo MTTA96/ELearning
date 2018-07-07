@@ -43,10 +43,14 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListVHolder> {
     }
 
     @Override
-    public void onBindViewHolder(CourseListVHolder holder, int position) {
+    public void onBindViewHolder(final CourseListVHolder holder, final int position) {
         holder.vUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent courseDetailsIntent = new Intent(((Activity) context), CourseDetailActivity.class);
+                context.startActivity(courseDetailsIntent);
+
 //                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHoc.isLoaiKhoaHoc()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
             }
         });
@@ -54,6 +58,8 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListVHolder> {
             @Override
             public void onClick(View view) {
                 Intent courseDetailsIntent = new Intent(((Activity) context), CourseDetailActivity.class);
+                courseDetailsIntent.putExtra("CourseId", list.get(position).getIdCourse());
+                courseDetailsIntent.putExtra("UserId", list.get(position).getUid());
                 context.startActivity(courseDetailsIntent);
                  //fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHocArrayList.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
             }

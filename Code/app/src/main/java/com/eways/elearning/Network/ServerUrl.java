@@ -13,8 +13,10 @@ public class ServerUrl {
 
     /** ACCOUNT */
     public static final String UserAPIRoot = ServerAPIURL + "User/";
+
     public static final String LOGIN_URL = UserAPIRoot + "Tutor/TutorLogin.php";
     public static final String SIGN_UP_URL = UserAPIRoot + "AddNewUser.php";
+    public static final String GET_USER_INFO_URL = UserAPIRoot + "Tutor/GetTutorByUid.php";
     public static final String CHECK_PHONE_NUMBER_URL = UserAPIRoot + "UserIsExisted.php";
     public static final String ADD_USER_FAVORITE_URL = UserAPIRoot + "FavoriteSubject/AddListFavoriteSubject.php";
     //public static final String UPDATE_FAVORITE_URL = UserAPIRoot + "FavoriteSubject/";

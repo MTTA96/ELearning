@@ -2,6 +2,7 @@ package com.eways.elearning.Network.Services;
 
 import com.eways.elearning.Network.Responses.BaseResponse;
 import com.eways.elearning.Network.Responses.User.SignInResponse;
+import com.eways.elearning.Network.Responses.User.UserBaseResponse;
 import com.eways.elearning.Network.Responses.User.UserFavoriteSubjectResponse;
 import com.eways.elearning.Network.ServerUrl;
 
@@ -30,6 +31,10 @@ public interface UserServicesImp {
     @POST(ServerUrl.SIGN_UP_URL)
     @FormUrlEncoded
     Call<BaseResponse> signUp(@Field("mydata") String data);
+
+    /** Get user info */
+    @GET(ServerUrl.GET_USER_INFO_URL)
+    Call<UserBaseResponse> getUserDetails(@Query("Uid") String uID);
 
     /** Check phone number */
     @POST(ServerUrl.CHECK_PHONE_NUMBER_URL)

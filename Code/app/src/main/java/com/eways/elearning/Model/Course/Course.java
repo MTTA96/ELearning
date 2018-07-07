@@ -254,6 +254,7 @@ public class Course {
         eLearningServicesImp.getCourseById(courseId).enqueue(new Callback<CourseRespsonse>() {
             @Override
             public void onResponse(Call<CourseRespsonse> call, Response<CourseRespsonse> response) {
+                Log.d("CourseDetailsModel", call.request().toString());
                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("CourseDetailsModel:", "connect failed");
@@ -267,7 +268,7 @@ public class Course {
 
             @Override
             public void onFailure(Call<CourseRespsonse> call, Throwable t) {
-                Log.d("CourseDetailsModel:", t.getLocalizedMessage());
+                Log.d("CourseDetailsModel", call.request().toString() + "--- Error msg: " + t.getLocalizedMessage());
                 courseDetailsCallBack.courseDetailsCallBack(SupportKeys.FAILED_CODE, null);
             }
         });

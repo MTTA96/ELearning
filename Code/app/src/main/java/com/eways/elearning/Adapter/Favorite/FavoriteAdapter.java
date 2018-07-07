@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 
 import com.eways.elearning.Interfaces.OnItemClickListener;
 import com.eways.elearning.Model.Subject.Favorite;
+import com.eways.elearning.Model.Subject.Subject;
 import com.eways.elearning.R;
+import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.params.GlobalParams;
 
 import java.util.ArrayList;
@@ -18,14 +20,16 @@ import java.util.ArrayList;
  */
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteViewHolder> {
-    private ArrayList<Favorite> listFavorite ;
+    private ArrayList<Subject> listFavorite ;
     private int res;
+    private ImageHandler imageHandler;
     private OnItemClickListener onItemClickListener;
 
-    public FavoriteAdapter(ArrayList<Favorite> listFavorite, int res, OnItemClickListener onItemClickListener) {
+    public FavoriteAdapter(ArrayList<Subject> listFavorite, int res, ImageHandler imageHandler, OnItemClickListener onItemClickListener) {
         this.listFavorite = listFavorite;
         this.res = res;
         this.onItemClickListener = onItemClickListener;
+        this.imageHandler = imageHandler;
     }
 
     @Override
@@ -39,11 +43,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteViewHolder> {
 
     @Override
     public void onBindViewHolder(final FavoriteViewHolder holder, int position) {
-        final Favorite favorite = listFavorite.get(position);
+        final Subject favorite = listFavorite.get(position);
 
-        int drawableResId = GlobalParams.getInstance().get_resId_by_name(favorite.getImage(), "drawable");
-        holder.image.setImageResource(drawableResId);
-        holder.text.setText(favorite.getText());
+//        int drawableResId = GlobalParams.getInstance().get_resId_by_name(favorite.getImage(), "drawable");
+//        holder.image.setImageResource(drawableResId);
+        imageHandler.loadImageSquare(favorite.getImg(), holder.image);
+        holder.text.setText(favorite.getSubjectName());
 
         final Bundle dataBundle = new Bundle();
 
@@ -53,12 +58,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteViewHolder> {
                 if (holder.selected.isChecked()){
                     holder.selected.setChecked(false);
                     dataBundle.putBoolean("Selected", false);
-                    dataBundle.putString("FavoriteId", favorite.getId());
+                    dataBundle.putString("FavoriteId", favorite.getIdSubject());
                     onItemClickListener.onItemClick(dataBundle);
                 }else {
                     holder.selected.setChecked(true);
                     dataBundle.putBoolean("Selected", true);
-                    dataBundle.putString("FavoriteId", favorite.getId());
+                    dataBundle.putString("FavoriteId", favorite.getIdSubject());
                     onItemClickListener.onItemClick(dataBundle);
                 }
             }

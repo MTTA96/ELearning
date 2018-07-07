@@ -6,9 +6,12 @@ import com.eways.elearning.Interfaces.DataCallback.Subject.TrendingSubjectCallBa
 import com.eways.elearning.Network.ApiUtils;
 import com.eways.elearning.Network.Responses.User.TrendingSubjectResponse;
 import com.eways.elearning.Network.Services.ELearningServicesImp;
+import com.eways.elearning.Network.Subject.SubjectListCallBack;
 import com.eways.elearning.Utils.SupportKeys;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,6 +22,7 @@ import retrofit2.Response;
  */
 
 public class Subject {
+
     @SerializedName("SubjectName")
     @Expose
     private String subjectName;
@@ -28,6 +32,12 @@ public class Subject {
     @SerializedName("Img")
     @Expose
     private String img;
+
+    public Subject(String subjectName, String idSubject, String img) {
+        this.subjectName = subjectName;
+        this.idSubject = idSubject;
+        this.img = img;
+    }
 
     public String getSubjectName() {
         return subjectName;
@@ -55,6 +65,33 @@ public class Subject {
 
     /** METHODS */
 
+    /** Get subject list */
+    public static void getSubjectList(final SubjectListCallBack subjectListCallBack) {
+
+        ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
+        eLearningServicesImp.getSubjectList().enqueue(new Callback<ArrayList<Subject>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Subject>> call, Response<ArrayList<Subject>> response) {
+                // handle error
+                if (!response.isSuccessful()) {
+                    Log.d("subjectListModel:", "connect failed");
+                    subjectListCallBack.subjectListCallBack(SupportKeys.FAILED_CODE, null);
+                    return;
+                }
+
+                // Prepare data
+                subjectListCallBack.subjectListCallBack(SupportKeys.SUCCESS_CODE, response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Subject>> call, Throwable t) {
+                Log.d("subjectListModel:", t.getLocalizedMessage());
+                subjectListCallBack.subjectListCallBack(SupportKeys.FAILED_CODE, null);
+            }
+        });
+
+    }
+
     /** Get trending subjects */
     public static void getTrendingSubjects(final TrendingSubjectCallBack trendingSubjectCallBack) {
         ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
@@ -79,4 +116,5 @@ public class Subject {
             }
         });
     }
+
 }

@@ -44,6 +44,8 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         coursePresenter = new CoursePresenter(this);
         userPresenter = new UserPresenter(this);
 
+        // Call apis
+
         String courseId = getIntent().getStringExtra(paramCourseId);
         coursePresenter.getCourseDetails(courseId, this);
 
@@ -138,11 +140,13 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void userCallBack(int errorCode, User user) {
+
         if (errorCode == SupportKeys.FAILED_CODE) {
 
         }
 
         this.user = user;
         loadUserInfo();
+
     }
 }

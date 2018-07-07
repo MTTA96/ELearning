@@ -26,6 +26,7 @@ public class ServerUrl {
     public static final String TOP_TUTORS = ServerAPIURL + "Home/TopTutor.php";
 
     /** Subjects */
+    public static final String GET_SUBJECT_LIST_URL = ServerAPIURL + "Subject/GetSubject.php";
     public static final String TRENDING_SUBJECTS = ServerAPIURL + "Home/TrendingSubject.php";
 
     /** Search */

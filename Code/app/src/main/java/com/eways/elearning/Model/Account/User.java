@@ -248,10 +248,11 @@ public class User {
         userServices.getUserDetails(uId).enqueue(new Callback<UserBaseResponse>() {
             @Override
             public void onResponse(Call<UserBaseResponse> call, Response<UserBaseResponse> response) {
+                Log.d("User Details", call.request().toString());
                 // handle errors
-                Log.d("userDetails:", call.request().toString());
+                Log.d("User Details:", call.request().toString());
                 if (!response.isSuccessful()) {
-                    Log.d("userDetails:", "connect failed");
+                    Log.d("User Details:", "connect failed");
                     userCallBack.userCallBack(SupportKeys.FAILED_CODE, null);
                     return;
                 }
@@ -262,7 +263,7 @@ public class User {
 
             @Override
             public void onFailure(Call<UserBaseResponse> call, Throwable t) {
-                Log.d("userDetails:", t.getLocalizedMessage());
+                Log.d("User Details", call.request().toString() + "Error msg: " + t.getLocalizedMessage());
                 userCallBack.userCallBack(SupportKeys.FAILED_CODE, null);
             }
         });

@@ -5,7 +5,7 @@
     android:background="@color/colorWhite"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context="com.eways.elearning.Views.Activity.UserManagerActivity">
+    tools:context="com.eways.elearning.Views.Activity.Account.UserManagerActivity">
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

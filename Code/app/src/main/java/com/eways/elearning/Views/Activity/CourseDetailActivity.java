@@ -159,4 +159,5 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         loadUserInfo();
 
     }
+
 }

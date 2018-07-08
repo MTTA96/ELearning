@@ -1,4 +1,4 @@
-package com.eways.elearning.Views.Activity;
+package com.eways.elearning.Views.Activity.Account;
 
 import android.app.Activity;
 import android.os.Bundle;

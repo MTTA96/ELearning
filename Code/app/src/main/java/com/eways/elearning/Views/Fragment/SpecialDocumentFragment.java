@@ -19,7 +19,6 @@ import com.eways.elearning.Model.SubjectSpec;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.params.GlobalParams;
 import com.eways.elearning.Views.Activity.PopUpAddImageActivity;
-import com.eways.elearning.Views.Activity.SpecialDocumentActivity;
 
 import java.util.ArrayList;
 import java.util.List;

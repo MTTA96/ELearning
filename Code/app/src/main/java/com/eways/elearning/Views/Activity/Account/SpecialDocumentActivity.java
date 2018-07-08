@@ -1,36 +1,21 @@
-package com.eways.elearning.Views.Activity;
+package com.eways.elearning.Views.Activity.Account;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.app.Notification;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 
-import com.eways.elearning.Adapter.ImageChooseAdapter;
 import com.eways.elearning.Adapter.ImageSpecAdapter;
 import com.eways.elearning.Adapter.SpecialAdapter.SpecialAdapter;
 import com.eways.elearning.Model.Certificate;
 import com.eways.elearning.Model.Image;
-import com.eways.elearning.Model.ImageSelect;
 import com.eways.elearning.Model.SubjectSpec;
 import com.eways.elearning.R;
-import com.eways.elearning.Utils.DialogPlusHandler;
-import com.eways.elearning.Utils.FileUtils;
-import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.params.GlobalParams;
-import com.google.android.gms.common.internal.GmsLogger;
-import com.orhanobut.dialogplus.DialogPlusBuilder;
-
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.eways.elearning.Views.Activity.PopUpAddImageActivity;
 
 import java.util.ArrayList;
 import java.util.List;

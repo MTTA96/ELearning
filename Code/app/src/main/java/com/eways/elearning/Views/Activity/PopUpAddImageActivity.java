@@ -2,15 +2,12 @@ package com.eways.elearning.Views.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.eways.elearning.Adapter.ImageChooseAdapter;
 import com.eways.elearning.Model.Certificate;
@@ -20,6 +17,7 @@ import com.eways.elearning.Utils.DialogPlusHandler;
 import com.eways.elearning.Utils.FileUtils;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.params.GlobalParams;
+import com.eways.elearning.Views.Activity.Account.SpecialDocumentActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eways.elearning.Adapter.Home.SubjectVHolder;
-import com.eways.elearning.Model.Request;
+import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 
@@ -19,12 +19,12 @@ import java.util.ArrayList;
 
 public class RequestAdapter extends RecyclerView.Adapter<RequestVHolder> {
     Activity activity;
-    ArrayList<Request> mListRequest;
+    ArrayList<Course> mListRequest;
 
     ImageHandler imageHandler;
 
 
-    public RequestAdapter(Activity activity, ArrayList<Request> mListRequest) {
+    public RequestAdapter(Activity activity, ArrayList mListRequest) {
         this.activity = activity;
         this.mListRequest = mListRequest;
 
@@ -40,7 +40,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestVHolder> {
 
     @Override
     public void onBindViewHolder(RequestVHolder holder, int position) {
-        final Request mRequest = mListRequest.get(position);
+        final Course mRequest = mListRequest.get(position);
 
         imageHandler.loadImageRound(mRequest.getAvatar(), holder.avarta);
         holder.tutorName.setText(mRequest.getFirstName() + " " + mRequest.getLastName());

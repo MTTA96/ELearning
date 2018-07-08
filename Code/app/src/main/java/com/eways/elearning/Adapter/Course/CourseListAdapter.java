@@ -44,11 +44,15 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListVHolder> {
 
     @Override
     public void onBindViewHolder(final CourseListVHolder holder, final int position) {
+        course = list.get(position);
+
         holder.vUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent courseDetailsIntent = new Intent(((Activity) context), CourseDetailActivity.class);
+                courseDetailsIntent.putExtra("CourseId", course.getIdCourse());
+                courseDetailsIntent.putExtra("UserId", course.getUid());
                 context.startActivity(courseDetailsIntent);
 
 //                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHoc.isLoaiKhoaHoc()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
@@ -58,14 +62,14 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListVHolder> {
             @Override
             public void onClick(View view) {
                 Intent courseDetailsIntent = new Intent(((Activity) context), CourseDetailActivity.class);
-                courseDetailsIntent.putExtra("CourseId", list.get(position).getIdCourse());
-                courseDetailsIntent.putExtra("UserId", list.get(position).getUid());
+                courseDetailsIntent.putExtra("CourseId", course.getIdCourse());
+                courseDetailsIntent.putExtra("UserId", course.getUid());
                 context.startActivity(courseDetailsIntent);
                  //fragmentHandler.ChuyenFragment(ThongTinKhoaHocFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHocArrayList.get(holder.getLayoutPosition()).KeyKhoaHoc), true, SupportKeysList.TAG_THONG_TIN_KHOA_HOC);
             }
         });
 
-        loadData(holder, position);
+        loadData(holder, course);
     }
 
     @Override
@@ -76,8 +80,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListVHolder> {
             return list.size();
     }
 
-    public void loadData(CourseListVHolder holder, int position) {
-        course = list.get(position);
+    public void loadData(CourseListVHolder holder, Course course) {
 
         //Avartar
         imageHandler.loadImageSquare(course.getAvatar(),holder.imgDaiDien);

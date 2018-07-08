@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.eways.elearning.Adapter.Request.RequestAdapter;
-import com.eways.elearning.Model.Request;
+import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.R;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class RequestActivity extends AppCompatActivity {
     RecyclerView rcRequestion;
 
     /** ACCESSORIES */
-    private ArrayList<Request> mListRequest;
+    private ArrayList<Course> mListRequest;
     private RequestAdapter mRequestAdapter;
 
     @Override

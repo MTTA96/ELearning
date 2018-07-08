@@ -1,6 +1,7 @@
 package com.eways.elearning.Views.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +13,12 @@ import com.eways.elearning.Interfaces.DataCallback.Course.CourseDetailsCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.UserCallBack;
 import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.Model.Course.Course;
+import com.eways.elearning.Model.Degree.Degree;
 import com.eways.elearning.Presenter.Authentication.UserPresenter;
 import com.eways.elearning.Presenter.Course.CoursePresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.SupportKeys;
+import com.eways.elearning.Utils.params.GlobalParams;
 import com.eways.elearning.Views.Dialog.LoadingDialog;
 
 public class CourseDetailActivity extends AppCompatActivity implements View.OnClickListener, CourseDetailsCallBack, UserCallBack {
@@ -88,7 +91,10 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
             tvBirthDay.setText(user.getBirthday());
             tvGender.setText(user.getSex());
             tvJob.setText(user.getCareer());
-            tvDegree.setText(user.getDegree());
+
+            Degree degree = Degree.getInstance();
+
+            tvDegree.setText(degree.getDegreeById(user.getDegree()));
 
         }
 
@@ -119,6 +125,10 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
 
         switch (v.getId()) {
             case R.id.btn_user_info:
+
+                Intent userInfoIntent = new Intent(this, InfoUserViewerActivity.class);
+                userInfoIntent.putExtra(InfoUserViewerActivity.paramUId, user.getUid());
+                startActivity(userInfoIntent);
                 break;
         }
 

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.eways.elearning.Adapter.Search.SearchVHolder;
 import com.eways.elearning.Model.Image;
@@ -25,6 +26,8 @@ public class ImageSucjectAdapter extends RecyclerView.Adapter<ImageSubjectVHolde
     Activity mActivity;
     List<Image> mListImage;
 
+    boolean mOpen;
+
     ImageHandler mImageViewHandle;
 
     public ImageSucjectAdapter(Activity mActivity, List<Image> mListImage) {
@@ -38,14 +41,17 @@ public class ImageSucjectAdapter extends RecyclerView.Adapter<ImageSubjectVHolde
     public ImageSubjectVHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_image_subject,parent,false);
+
+        mOpen = true;
         return new ImageSubjectVHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ImageSubjectVHolder holder, int position) {
+    public void onBindViewHolder(final ImageSubjectVHolder holder, int position) {
         final Image mImage = mListImage.get(position);
 
         mImageViewHandle.loadImageSquare(mImage.getImage(), holder.ivSubject);
+
 
         holder.ivSubject.setOnClickListener(new View.OnClickListener() {
             @Override

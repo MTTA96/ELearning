@@ -37,8 +37,9 @@
         <activity android:name=".Views.Activity.UserManagerActivity" />
         <activity android:name=".Views.Activity.FilterActivity" />
         <activity android:name=".Views.Activity.CreateActivity" />
-        <activity android:name=".Views.Activity.InfoUserViewerActivity"/>
-        <activity android:name= ".Views.Activity.SpecialDocumentActivity"/>
+        <activity android:name= ".Views.Activity.InfoUserViewerActivity"/>
+        <activity android:name=".Views.Activity.SpecialDocumentActivity"/>
+        <activity android:name= ".Views.Activity.CourseDetailActivity"/>
         <activity android:name=".Views.Activity.PopUpAddImageActivity"
             android:theme="@android:style/Theme.Material.Light.Dialog" ></activity>
     </application>

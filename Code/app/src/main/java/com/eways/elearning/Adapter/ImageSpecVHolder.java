@@ -16,7 +16,8 @@ import com.eways.elearning.R;
 public class ImageSpecVHolder extends RecyclerView.ViewHolder {
     TextView tvTitle;
     ImageView ivEditTitle;
-    ImageView ivEditVideo;
+    ImageView ivEditVideo, ivMini;
+    View areaVideo, areaImage;
     VideoView video;
     RecyclerView rcImage;
 
@@ -24,9 +25,11 @@ public class ImageSpecVHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         tvTitle = itemView.findViewById(R.id.title);
-        ivEditTitle = itemView.findViewById(R.id.btn_edit);
         ivEditVideo = itemView.findViewById(R.id.btn_edit_video);
         video = itemView.findViewById(R.id.video);
         rcImage = itemView.findViewById(R.id.rc_item_subject);
+        ivMini = itemView.findViewById(R.id.btn_mini);
+        areaVideo = itemView.findViewById(R.id.area_video);
+        areaImage = itemView.findViewById(R.id.subject_image);
     }
 }

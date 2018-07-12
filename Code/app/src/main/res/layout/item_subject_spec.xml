@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -15,40 +15,39 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:text="Mon"
+            android:layout_centerVertical="true"
             android:textColor="@color/colorBlue"
             android:layout_alignParentLeft="true"/>
 
         <ImageView
-            android:id="@+id/btn_edit"
+            android:id="@+id/btn_mini"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_alignBottom="@+id/title"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:background="@android:drawable/ic_menu_edit"/>
+            android:layout_marginRight="10dp"
+            android:background="@android:drawable/ic_lock_lock" />
 
     </RelativeLayout>
-
-    <View
-        android:id="@+id/line"
-        android:layout_below="@+id/bar"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorBlue"/>
 
     <LinearLayout
         android:id="@+id/area_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/line"
+        android:layout_below="@+id/bar"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true">
+
         <VideoView
             android:id="@+id/video"
             android:layout_width="300dp"
-            android:layout_height="200dp" />
+            android:layout_height="200dp"
+            android:layout_alignTop="@+id/title"
+            android:layout_centerHorizontal="true" />
         <ImageView
             android:id="@+id/btn_edit_video"
             android:layout_width="30dp"
@@ -59,6 +58,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/subject_image"
         android:layout_below="@+id/area_video"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

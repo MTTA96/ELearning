@@ -12,7 +12,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import com.eways.elearning.Adapter.ImageChooseAdapter;
 import com.eways.elearning.Adapter.ImageSpecAdapter;
@@ -36,15 +38,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpecialDocumentActivity extends Activity implements View.OnClickListener {
-    /** VIEWS */
+    /**
+     * VIEWS
+     */
     RecyclerView rcCertificate;
     View btnAddCerti;
     RecyclerView rcSubject;
     Button btnAddSubject;
+    HorizontalScrollView scrView;
+    ImageView ivMiniCerti;
 
-    /** ACCESSORIES */
+    /**
+     * ACCESSORIES
+     */
     ArrayList<Certificate> mListCerti;
     SpecialAdapter mSpecialAdapter;
+    boolean mOpen;
 
     ArrayList<SubjectSpec> mListSubject;
     ImageSpecAdapter mImageSpecAdapter;
@@ -59,14 +68,16 @@ public class SpecialDocumentActivity extends Activity implements View.OnClickLis
 
     }
 
-    private void declare_views(){
+    private void declare_views() {
         rcCertificate = findViewById(R.id.rc_certificate);
         btnAddCerti = findViewById(R.id.btn_add_certi);
         rcSubject = findViewById(R.id.rc_subject);
         btnAddSubject = findViewById(R.id.btn_add_subject);
+        scrView = findViewById(R.id.scr_certi);
+        ivMiniCerti = findViewById(R.id.iv_mini_certi);
     }
 
-    private void handle_views(){
+    private void handle_views() {
         SetUpListCerti();
         SetUpSubject();
 
@@ -77,9 +88,13 @@ public class SpecialDocumentActivity extends Activity implements View.OnClickLis
 
         btnAddSubject.setVisibility(View.GONE);
 
+        ivMiniCerti.setOnClickListener(this);
+
+        mOpen = true;
+
     }
 
-    private void SetUpListCerti(){
+    private void SetUpListCerti() {
         mListCerti = new ArrayList<>();
 
         mListCerti.add(new Certificate(0, "https://static1.squarespace.com/static/56f5fdc7c2ea5119892e22c2/571a3e70b654f9dd5cc18184/571a47c601dbae832ce3b2f6/1461340111262/DOGFACE-Chase-024AFP.jpg?format=750w", "ielts"));
@@ -95,7 +110,7 @@ public class SpecialDocumentActivity extends Activity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_add_certi:
 
                 Intent i = new Intent(SpecialDocumentActivity.this, PopUpAddImageActivity.class);
@@ -105,12 +120,22 @@ public class SpecialDocumentActivity extends Activity implements View.OnClickLis
             case R.id.btn_add_subject:
 
                 break;
+
+            case R.id.iv_mini_certi:
+                if (mOpen) {
+                    scrView.setVisibility(View.GONE);
+                    mOpen = false;
+                }else {
+                    scrView.setVisibility(View.VISIBLE);
+                    mOpen = true;
+                }
+                break;
         }
     }
 
     @Override
     protected void onResume() {
-        if (SpecialDocumentActivity.this.getIntent().getExtras() != null){
+        if (SpecialDocumentActivity.this.getIntent().getExtras() != null) {
             mListCerti.add(GlobalParams.getInstance().getGSon().fromJson(this.getIntent().getExtras().get("item_certi_add").toString(), Certificate.class));
 
         }
@@ -118,7 +143,7 @@ public class SpecialDocumentActivity extends Activity implements View.OnClickLis
 
     }
 
-    private void SetUpSubject(){
+    private void SetUpSubject() {
         mListSubject = new ArrayList<>();
         List<Image> images = new ArrayList<>();
         images.add(new Image(0, "https://static1.squarespace.com/static/56f5fdc7c2ea5119892e22c2/571a3e70b654f9dd5cc18184/571a47c601dbae832ce3b2f6/1461340111262/DOGFACE-Chase-024AFP.jpg?format=750w"));

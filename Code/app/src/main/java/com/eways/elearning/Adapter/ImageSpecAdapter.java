@@ -24,6 +24,8 @@ public class ImageSpecAdapter extends RecyclerView.Adapter<ImageSpecVHolder> {
     Activity mActivity;
     List<SubjectSpec> mList;
 
+    boolean mOpen;
+
     public ImageSpecAdapter(Activity mActivity, List<SubjectSpec> mList) {
         this.mActivity = mActivity;
         this.mList = mList;
@@ -33,14 +35,16 @@ public class ImageSpecAdapter extends RecyclerView.Adapter<ImageSpecVHolder> {
     public ImageSpecVHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_subject_spec,parent,false);
+
+        mOpen = true;
         return new ImageSpecVHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ImageSpecVHolder holder, int position) {
+    public void onBindViewHolder(final ImageSpecVHolder holder, int position) {
         final  SubjectSpec mSubjectSPec = mList.get(position);
-        holder.ivEditVideo.setVisibility(View.GONE);
-        holder.ivEditTitle.setVisibility(View.GONE);
+//        holder.ivEditVideo.setVisibility(View.GONE);
+//        holder.ivEditTitle.setVisibility(View.GONE);
 
         holder.tvTitle.setText(mSubjectSPec.getTitle());
 
@@ -55,6 +59,21 @@ public class ImageSpecAdapter extends RecyclerView.Adapter<ImageSpecVHolder> {
         holder.video.setMediaController(mediaController);
         holder.video.setVideoURI(Uri.parse(mSubjectSPec.getVideo()));
         holder.video.start();
+
+        holder.ivMini.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mOpen){
+                    holder.areaImage.setVisibility(View.GONE);
+                    holder.areaVideo.setVisibility(View.GONE);
+                    mOpen = false;
+                }else {
+                    holder.areaImage.setVisibility(View.VISIBLE);
+                    holder.areaVideo.setVisibility(View.VISIBLE);
+                    mOpen = true;
+                }
+            }
+        });
 
     }
 

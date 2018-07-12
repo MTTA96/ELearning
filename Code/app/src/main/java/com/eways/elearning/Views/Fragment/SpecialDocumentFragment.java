@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 
 import com.eways.elearning.Adapter.ImageSpecAdapter;
 import com.eways.elearning.Adapter.SpecialAdapter.SpecialAdapter;
@@ -35,6 +37,7 @@ public class SpecialDocumentFragment extends Fragment implements View.OnClickLis
     View btnAddCerti;
     RecyclerView rcSubject;
     Button btnAddSubject;
+    HorizontalScrollView scrollView;
 
     /**
      * ACCESSORIES
@@ -44,6 +47,10 @@ public class SpecialDocumentFragment extends Fragment implements View.OnClickLis
 
     ArrayList<SubjectSpec> mListSubject;
     ImageSpecAdapter mImageSpecAdapter;
+
+    ImageView ivMiniCerti;
+
+    boolean mOpen;
 
     public SpecialDocumentFragment() {
         // Required empty public constructor
@@ -66,11 +73,16 @@ public class SpecialDocumentFragment extends Fragment implements View.OnClickLis
         btnAddCerti = root.findViewById(R.id.btn_add_certi);
         rcSubject = root.findViewById(R.id.rc_subject);
         btnAddSubject = root.findViewById(R.id.btn_add_subject);
+        ivMiniCerti = root.findViewById(R.id.iv_mini_certi);
+        scrollView = root.findViewById(R.id.scr_certi);
+
     }
 
     private void handle_views() {
         SetUpListCerti();
         SetUpSubject();
+
+        mOpen = true;
 
         btnAddCerti.setVisibility(View.GONE);
 
@@ -78,6 +90,9 @@ public class SpecialDocumentFragment extends Fragment implements View.OnClickLis
         btnAddSubject.setOnClickListener(this);
 
         btnAddSubject.setVisibility(View.GONE);
+
+        ivMiniCerti.setOnClickListener(this);
+
 
     }
 
@@ -106,6 +121,16 @@ public class SpecialDocumentFragment extends Fragment implements View.OnClickLis
                 break;
             case R.id.btn_add_subject:
 
+                break;
+
+            case R.id.iv_mini_certi:
+                if (mOpen){
+                    scrollView.setVisibility(View.GONE);
+                    mOpen = false;
+                }else {
+                    scrollView.setVisibility(View.VISIBLE);
+                    mOpen = true;
+                }
                 break;
         }
     }

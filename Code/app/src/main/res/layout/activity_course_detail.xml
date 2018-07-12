@@ -18,13 +18,13 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:background="@color/colorBlue">
 
             <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/collapsingToolbarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:contentScrim="?attr/colorPrimary"
+                app:contentScrim="@color/colorBlue"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <ImageView
@@ -59,14 +59,39 @@
                         android:text="Elearning"
                         android:textColor="@color/White"
                         android:textSize="@dimen/normal_text_size" />
-                    <!--Email-->
-                    <TextView
-                        android:id="@+id/textView_EmailNguoiDang_ThongTinKhoaHoc"
-                        android:layout_width="wrap_content"
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="eways.elearning.com"
-                        android:textColor="@color/White" />
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="sdt"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/White" />
+                        <TextView
+                            android:id="@+id/tv_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="09099999999"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/White" />
+
+                        <!--Email-->
+                        <TextView
+                            android:id="@+id/tv_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="eways.elearning.com"
+                            android:textColor="@color/White"
+                            android:layout_marginLeft="120dp"/>
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <android.support.v7.widget.Toolbar
@@ -89,16 +114,6 @@
                             android:layout_centerVertical="true"
                             android:background="@drawable/btn_back_white" />
 
-                        <TextView
-                            android:id="@+id/tv_save"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="15dp"
-                            android:text="@string/save"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="22sp" />
                     </RelativeLayout>
                 </android.support.v7.widget.Toolbar>
             </android.support.design.widget.CollapsingToolbarLayout>
@@ -265,12 +280,10 @@
                                 android:text="Môn: "
                                 android:textColor="@color/colorBlack" />
 
-                            <TextView
-                                android:id="@+id/tv_subject"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textStyle="bold" />
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/rc_subject"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
                         </LinearLayout>
 
                         <!--Địa điểm-->
@@ -328,12 +341,10 @@
                                 android:text="Thứ: "
                                 android:textColor="@color/colorBlack" />
 
-                            <TextView
-                                android:id="@+id/tv_weekday"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textStyle="bold" />
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/rc_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
                         </LinearLayout>
 
                         <!--Buổi-->
@@ -457,33 +468,69 @@
 
                 <View
                     android:layout_width="wrap_content"
-                    android:layout_height="70dp"/>
+                    android:layout_height="110dp"/>
 
             </LinearLayout>
 
         </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>
 
-
     <!--Big actionbar-->
 
-
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/btn_send_request"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:background="@color/colorBlue">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Gửi yêu cầu"
-            android:textColor="@color/White"
+            android:text="100.000"
             android:textSize="18sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/White"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/Buổi"
+            android:textSize="18sp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/White"/>
+
+        <RelativeLayout
+            android:id="@+id/bg_send_request"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="160dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/send_request">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:text="Gửi yêu cầu"
+                android:textColor="@color/White"/>
+
+            <View
+                android:id="@+id/btn_request_send"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
+        </RelativeLayout>
+    </LinearLayout>
 </RelativeLayout>
 

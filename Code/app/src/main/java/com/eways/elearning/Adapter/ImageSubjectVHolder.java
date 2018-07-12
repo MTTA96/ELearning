@@ -13,9 +13,11 @@ import com.eways.elearning.R;
 
 public class ImageSubjectVHolder extends RecyclerView.ViewHolder {
     ImageView ivSubject;
+
     public ImageSubjectVHolder(View itemView) {
         super(itemView);
 
         ivSubject = itemView.findViewById(R.id.iv_sucject);
+
     }
 }

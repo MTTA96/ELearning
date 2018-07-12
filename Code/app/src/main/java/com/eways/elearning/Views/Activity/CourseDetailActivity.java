@@ -103,7 +103,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         tvSession = findViewById(R.id.tv_amount_session);
         tvAmountSession = findViewById(R.id.tv_amount_attender);
         tvAmountAttender = findViewById(R.id.tv_amount_attender);
-        tvInfoMore = findViewById(R.id.tv_more);
+        tvInfoMore = findViewById(R.id.tv_info_more);
         ivBack = findViewById(R.id.iv_back);
         ivAvarta = findViewById(R.id.iv_avarta);
         toolBar = findViewById(R.id.toolbar);
@@ -117,7 +117,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
     private void handle_views(){
         ivBack.setOnClickListener(this);
         btnRequest.setOnClickListener(this);
-        tvInfoMore.setOnClickListener(this);
+        findViewById(R.id.btn_user_info).setOnClickListener(this);
 
         SetUpList();
     }

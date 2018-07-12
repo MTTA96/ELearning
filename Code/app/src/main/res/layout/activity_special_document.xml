@@ -7,7 +7,7 @@
     android:background="@color/White"
     android:weightSum="100"
     android:orientation="vertical"
-    tools:context="com.eways.elearning.Views.Activity.SpecialDocumentActivity">
+    tools:context="com.eways.elearning.Views.Activity.Account.SpecialDocumentActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

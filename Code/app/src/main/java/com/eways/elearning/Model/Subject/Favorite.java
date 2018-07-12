@@ -19,6 +19,12 @@ public class Favorite {
     @Expose
     private String text;
 
+    public Favorite(String id, String image, String text) {
+        this.id = id;
+        this.image = image;
+        this.text = text;
+    }
+
     public String getId() {
         return id;
     }

@@ -15,7 +15,7 @@ public class CourseRespsonse {
     @SerializedName("errorCode")
     @Expose
     private Integer errorCode;
-    @SerializedName("results")
+    @SerializedName("result")
     @Expose
     private Course course = null;
 

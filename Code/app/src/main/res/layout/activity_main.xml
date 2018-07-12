@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:weightSum="100"
     android:orientation="vertical"
-    tools:context=".Views.Activity.AuthenticationActivity">
+    tools:context=".Views.Activity.Account.AuthenticationActivity">
 
 
     <LinearLayout

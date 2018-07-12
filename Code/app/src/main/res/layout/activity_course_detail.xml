@@ -230,12 +230,14 @@
                                 android:textStyle="bold" />
                         </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/tv_more"
+                        <Button
+                            android:id="@+id/btn_user_info"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
+                            android:background="@null"
+                            android:textSize="14dp"
                             android:text="@string/button_xem_them_thong_tin"
                             android:textColor="@color/colorMain" />
                     </LinearLayout>

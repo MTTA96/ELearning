@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SharedPreferences.SharedPrefUtils;
+import com.eways.elearning.Views.Activity.Account.AuthenticationActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;

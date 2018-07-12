@@ -6,7 +6,7 @@
     android:background="@color/colorWhite"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context="com.eways.elearning.Views.Activity.RequestActivity">
+    tools:context="com.eways.elearning.Views.Activity.Account.RequestActivity">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package com.eways.elearning.Network.Services;
 
 import com.eways.elearning.Model.Banner;
+import com.eways.elearning.Model.Subject.Subject;
 import com.eways.elearning.Network.Responses.Course.CourseListResponse;
 import com.eways.elearning.Network.Responses.Course.CourseRespsonse;
 import com.eways.elearning.Network.Responses.SearchBaseResponse;
@@ -20,6 +21,10 @@ import retrofit2.http.Query;
  */
 
 public interface ELearningServicesImp {
+
+    /** Get subject list */
+    @GET(ServerUrl.GET_SUBJECT_LIST_URL)
+    Call<ArrayList<Subject>> getSubjectList();
 
     /** Search */
     @GET(ServerUrl.SEARCH_URL)

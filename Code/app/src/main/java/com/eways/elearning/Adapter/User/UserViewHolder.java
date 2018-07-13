@@ -2,6 +2,7 @@ package com.eways.elearning.Adapter.User;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -19,6 +20,7 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
     public ImageView userAvatar;
     public TextView tvName,tvSubject;
     public RatingBar rtbRating;
+    public Button btnRequest;
 
     public UserViewHolder(View itemView) {
         super(itemView);
@@ -28,5 +30,7 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
         tvName = (TextView)itemView.findViewById(R.id.user_name_item_user_list);
         tvSubject = (TextView)itemView.findViewById(R.id.subject_item_user_list);
         rtbRating = (RatingBar)itemView.findViewById(R.id.rtb_item_user_list);
+        btnRequest = itemView.findViewById(R.id.btn_request_tutor_item);
+
     }
 }

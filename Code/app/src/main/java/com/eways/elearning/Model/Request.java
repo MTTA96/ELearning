@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class Request {
+
     @SerializedName("IdCourse")
     @Expose
     private String idCourse;
@@ -23,48 +24,14 @@ public class Request {
     @SerializedName("Message")
     @Expose
     private String message;
-    @SerializedName("Avatar")
-    @Expose
-    private String avatar;
-    @SerializedName("FirstName")
-    @Expose
-    private String firstName;
-    @SerializedName("LastName")
-    @Expose
-    private String lastName;
-    @SerializedName("Sex")
-    @Expose
-    private String sex;
-    @SerializedName("Birthday")
-    @Expose
-    private String birthday;
-    @SerializedName("Email")
-    @Expose
-    private String email;
-    @SerializedName("Phone")
-    @Expose
-    private String phone;
-    @SerializedName("Skype")
-    @Expose
-    private String skype;
-    @SerializedName("Address")
-    @Expose
-    private String address;
-    @SerializedName("Degree")
-    @Expose
-    private String degree;
-    @SerializedName("Career")
-    @Expose
-    private String career;
-    @SerializedName("Verification")
-    @Expose
-    private String verification;
-    @SerializedName("Authorization")
-    @Expose
-    private String authorization;
-    @SerializedName("DateRegistered")
-    @Expose
-    private String dateRegistered;
+
+    public Request(String idCourse, String uid, String sentDate, String status, String message) {
+        this.idCourse = idCourse;
+        this.uid = uid;
+        this.sentDate = sentDate;
+        this.status = status;
+        this.message = message;
+    }
 
     public String getIdCourse() {
         return idCourse;
@@ -106,115 +73,4 @@ public class Request {
         this.message = message;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getSkype() {
-        return skype;
-    }
-
-    public void setSkype(String skype) {
-        this.skype = skype;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getDegree() {
-        return degree;
-    }
-
-    public void setDegree(String degree) {
-        this.degree = degree;
-    }
-
-    public String getCareer() {
-        return career;
-    }
-
-    public void setCareer(String career) {
-        this.career = career;
-    }
-
-    public String getVerification() {
-        return verification;
-    }
-
-    public void setVerification(String verification) {
-        this.verification = verification;
-    }
-
-    public String getAuthorization() {
-        return authorization;
-    }
-
-    public void setAuthorization(String authorization) {
-        this.authorization = authorization;
-    }
-
-    public String getDateRegistered() {
-        return dateRegistered;
-    }
-
-    public void setDateRegistered(String dateRegistered) {
-        this.dateRegistered = dateRegistered;
-    }
 }

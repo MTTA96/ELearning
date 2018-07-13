@@ -30,4 +30,7 @@ public class SupportKeys {
     public static final int SEARCH_STUDENTS = 1;
     public static final String BUNDLE_MSG = "BundleMSG";
 
+    /** INTENT PARAM */
+    public static final String USER_ID_INTENT_PARAM = "UserIDIntentParam";
+
 }

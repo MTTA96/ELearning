@@ -7,6 +7,7 @@ import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Subject.FavSubjectWithCoursesCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.TopTutorsCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.UserCallBack;
+import com.eways.elearning.Model.Request;
 import com.eways.elearning.Model.Subject.FavoriteSubjectWithCourses;
 import com.eways.elearning.Network.ApiUtils;
 import com.eways.elearning.Network.Responses.BaseResponse;
@@ -19,6 +20,7 @@ import com.eways.elearning.Network.Services.UserServicesImp;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.SharedPreferences.SharedPrefSupportKeys;
 import com.eways.elearning.Utils.SupportKeys;
+import com.eways.elearning.Utils.params.GlobalParams;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -433,10 +435,15 @@ public class User {
                 }
 
                 // Prepare data
-                if (Integer.parseInt(response.body().getStatus()) == 1)
+                if (Integer.parseInt(response.body().getStatus()) == 1) {
+                    Log.d("Update favorite to sv:", "Update success!");
                     favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.SUCCESS_CODE, null);
-                else
+                }
+                else {
+                    Log.d("Update favorite to sv:", "Update failed!");
                     favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
+                }
+                
             }
 
             @Override
@@ -446,6 +453,36 @@ public class User {
             }
 
         });
+    }
+
+    public static void sendRequest(String jsonRequest, final DataCallBack requestCallBack) {
+
+        UserServicesImp userServicesImp = ApiUtils.userServices();
+        userServicesImp.sendRequest(jsonRequest).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                // Handle error
+                if (!response.isSuccessful()) {
+                    Log.d("Send request to sv:", "Update failed!");
+                    requestCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
+                    return;
+                }
+
+                // Prepare data
+                if (Integer.parseInt(response.body().getStatus()) == 1)
+                    requestCallBack.dataCallBack(SupportKeys.SUCCESS_CODE, null);
+                else
+                    requestCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.d("Send request to sv:", "Update failed!");
+                requestCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
+            }
+
+        });
+
     }
 
 }

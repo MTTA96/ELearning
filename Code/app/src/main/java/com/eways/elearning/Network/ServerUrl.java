@@ -21,6 +21,7 @@ public class ServerUrl {
     public static final String ADD_USER_FAVORITE_URL = UserAPIRoot + "FavoriteSubject/AddListFavoriteSubject.php";
     //public static final String UPDATE_FAVORITE_URL = UserAPIRoot + "FavoriteSubject/";
     public static final String GET_USER_FAVORITE_SUBJECTS = ServerAPIURL + "FavoriteSubject/GetFavoriteSubjectByUid.php";
+    public static final String SEND_REQUEST_URL = ServerAPIURL + "Requestion/AddNewRequestion.php";
 
     /** Tutors */
     public static final String TOP_TUTORS = ServerAPIURL + "Home/TopTutor.php";

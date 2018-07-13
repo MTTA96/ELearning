@@ -1,7 +1,6 @@
 package com.eways.elearning.Adapter.Home;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,7 @@ import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Utils.params.GlobalParams;
+import com.eways.elearning.Views.Activity.HomeActivity;
 import com.eways.elearning.Views.Fragment.SearchAndFilter.SearchFragment;
 
 import java.util.ArrayList;
@@ -56,6 +56,7 @@ public class TrendingAdapter extends RecyclerView.Adapter<HomeVHolder> {
             @Override
             public void onClick(View v) {
                 fragmentHandler.changeFragment(SearchFragment.newInstance(subject.getSubjectName()), SupportKeys.SEARCH_RESULTS_TAG, R.anim.slide_from_left, R.anim.slide_out_top);
+                ((HomeActivity) context).HideSearchBar();
             }
         });
     }

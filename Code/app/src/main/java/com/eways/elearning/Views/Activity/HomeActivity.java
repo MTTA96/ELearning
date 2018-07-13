@@ -54,6 +54,8 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
     NavigationView mNavigationView;
     ImageView mUserNameAvarta;
     TextView mUserNameHeader, mUserEmailHeader;
+    ImageView ivBack;
+    View bgToolBar;
 
     /**
      * MODELS
@@ -91,6 +93,8 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
         ivFIlter = findViewById(R.id.iv_filter);
         ivMenu = findViewById(R.id.iv_menu);
         etSearch = findViewById(R.id.et_search);
+        ivBack = findViewById(R.id.iv_back);
+        bgToolBar = findViewById(R.id.bg_toolbar);
 
 //        mUserNameAvarta = findViewById(R.id)
 
@@ -111,6 +115,8 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
         rvSuggestionsList.setLayoutManager(new LinearLayoutManager(getParent(), LinearLayoutManager.VERTICAL, false));
         rvSuggestionsList.hasFixedSize();
         rvSuggestionsList.setAdapter(searchSuggestionsAdapter);
+
+        ivBack.setOnClickListener(this);
 
         // Move to home
         fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKeys.HOME_FRAGMENT_TAG, 0, 0);
@@ -278,7 +284,33 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
 
                 ActivityUtils.ChangeActivity(HomeActivity.this, FilterActivity.class);
                 break;
+
+            case R.id.iv_back:
+
+                getSupportFragmentManager().popBackStack();
+                ShowSearchBar();
+
+                break;
         }
     }
+
+    public void HideSearchBar(){
+        ivFIlter.setVisibility(View.GONE);
+        ivMenu.setVisibility(View.GONE);
+        etSearch.setVisibility(View.GONE);
+        ivBack.setVisibility(View.VISIBLE);
+        bgToolBar.setBackgroundColor(getColor(R.color.colorBlue));
+    }
+
+    public void ShowSearchBar(){
+        ivFIlter.setVisibility(View.VISIBLE);
+        ivMenu.setVisibility(View.VISIBLE);
+        etSearch.setVisibility(View.VISIBLE);
+        ivBack.setVisibility(View.GONE);
+        bgToolBar.setBackgroundResource(R.drawable.search_shape);
+
+    }
+
+
 }
 

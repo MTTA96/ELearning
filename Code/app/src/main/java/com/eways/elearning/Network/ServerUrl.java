@@ -38,6 +38,7 @@ public class ServerUrl {
     public static final String BANNER_URL = ServerAPIURL + "Home/GetBanner.php";
 
     /** Course */
+    public static final String CREATE_COURSE_URL = ServerAPIURL + "Course/AddNewCourse.php";
     public static final String GET_COURSE_LIST_BY_SUBJECT_URL = ServerAPIURL + "Course/GetCoursesBySubject.php";
     public static final String GET_COURSE_BY_ID_URL = ServerAPIURL + "Course/GetCourseByIdCourse.php";
 

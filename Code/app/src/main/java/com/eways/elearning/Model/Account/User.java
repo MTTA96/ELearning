@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Subject.FavSubjectWithCoursesCallBack;
+import com.eways.elearning.Interfaces.DataCallback.User.SendRequestCallback;
 import com.eways.elearning.Interfaces.DataCallback.User.TopTutorsCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.UserCallBack;
 import com.eways.elearning.Model.Request;
@@ -443,7 +444,7 @@ public class User {
                     Log.d("Update favorite to sv:", "Update failed!");
                     favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
                 }
-                
+
             }
 
             @Override
@@ -455,7 +456,7 @@ public class User {
         });
     }
 
-    public static void sendRequest(String jsonRequest, final DataCallBack requestCallBack) {
+    public static void sendRequest(String jsonRequest, final SendRequestCallback requestCallBack) {
 
         UserServicesImp userServicesImp = ApiUtils.userServices();
         userServicesImp.sendRequest(jsonRequest).enqueue(new Callback<BaseResponse>() {
@@ -464,21 +465,21 @@ public class User {
                 // Handle error
                 if (!response.isSuccessful()) {
                     Log.d("Send request to sv:", "Update failed!");
-                    requestCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
+                    requestCallBack.sendRequestCallback(SupportKeys.FAILED_CODE, null);
                     return;
                 }
 
                 // Prepare data
                 if (Integer.parseInt(response.body().getStatus()) == 1)
-                    requestCallBack.dataCallBack(SupportKeys.SUCCESS_CODE, null);
+                    requestCallBack.sendRequestCallback(SupportKeys.SUCCESS_CODE, null);
                 else
-                    requestCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
+                    requestCallBack.sendRequestCallback(SupportKeys.FAILED_CODE, null);
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Log.d("Send request to sv:", "Update failed!");
-                requestCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
+                requestCallBack.sendRequestCallback(SupportKeys.FAILED_CODE, null);
             }
 
         });

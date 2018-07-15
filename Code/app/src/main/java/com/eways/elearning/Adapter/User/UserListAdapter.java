@@ -2,11 +2,15 @@ package com.eways.elearning.Adapter.User;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.eways.elearning.Interfaces.DataCallBack;
+import com.eways.elearning.Interfaces.DataCallback.User.SendRequestCallback;
 import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.Presenter.Authentication.UserPresenter;
 import com.eways.elearning.R;
@@ -20,7 +24,7 @@ import java.util.ArrayList;
  * Created by zzzzz on 5/27/2018.
  */
 
-public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implements View.OnClickListener {
+public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implements View.OnClickListener, DataCallBack, SendRequestCallback {
     private Context context;
     private ArrayList<User> list = new ArrayList<>();
     private ImageHandler imageHandler;
@@ -108,8 +112,27 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
                 context.startActivity(userInfoIntent);
                 break;
             case R.id.btn_request_tutor_item:
-//                userPresenter.sendRequestToCourse();
+
+                //****************** Change subject name when server updated model user
+
+                userPresenter.sendRequestToCourse(null, "av", this);
                 break;
         }
     }
+
+    @Override
+    public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void sendRequestCallback(int resultCode, @Nullable String msg) {
+        // handle error
+        if (resultCode == SupportKeys.FAILED_CODE) {
+            return;
+        }
+
+        // success
+    }
+
 }

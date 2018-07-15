@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.eways.elearning.Interfaces.DataCallBack;
+import com.eways.elearning.Interfaces.DataCallback.CreateCourseCallBack;
+import com.eways.elearning.Interfaces.DataCallback.User.SendRequestCallback;
 import com.eways.elearning.Interfaces.DataCallback.User.UserCallBack;
 import com.eways.elearning.Model.Account.User;
+import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.Model.Request;
 import com.eways.elearning.Utils.SharedPreferences.SharedPrefSupportKeys;
 import com.eways.elearning.Utils.SharedPreferences.SharedPrefUtils;
@@ -24,12 +27,13 @@ import java.util.Date;
  * Created by zzzzz on 7/1/2018.
  */
 
-public class UserPresenter implements UserCallBack, DataCallBack {
+public class UserPresenter implements UserCallBack, DataCallBack, CreateCourseCallBack, SendRequestCallback {
 
     private Context context;
     private SharedPrefUtils sharedPreferencesUtils;
     private UserCallBack userCallBack;
     private DataCallBack dataCallBack;
+    private SendRequestCallback sendRequestCallback;
 
     public UserPresenter(Context context) {
         this.context = context;
@@ -51,9 +55,9 @@ public class UserPresenter implements UserCallBack, DataCallBack {
 
     }
 
-    public void sendRequestToCourse(String courseId, DataCallBack dataCallBack) {
+    public void sendRequestToCourse(String courseId, String subjectName, SendRequestCallback sendRequestCallback) {
 
-        this.dataCallBack = dataCallBack;
+        this.sendRequestCallback = sendRequestCallback;
 
         // Prepare data
 
@@ -69,12 +73,23 @@ public class UserPresenter implements UserCallBack, DataCallBack {
 
         // Call API
 
-        User.sendRequest(jsonRequest, this);
+        if (courseId != null) {
+            User.sendRequest(jsonRequest, this);
+        } else {
+
+            Course newCourse = new Course();
+            newCourse.setSubjectName(subjectName);
+
+            String jsonCourse = gson.toJson(newCourse);
+
+            Course.createCourse(jsonCourse, this);
+        }
 
     }
 
     @Override
     public void userCallBack(int errorCode, User user) {
+
         if (errorCode == SupportKeys.FAILED_CODE) {
             userCallBack.userCallBack(errorCode, null);
             return;
@@ -94,5 +109,32 @@ public class UserPresenter implements UserCallBack, DataCallBack {
 
         // handle data
         dataCallBack.dataCallBack(resultCode, bundle);
+    }
+
+    @Override
+    public void createCourseCallback(int errorCode, String msg) {
+
+        if (errorCode == SupportKeys.FAILED_CODE) {
+
+            sendRequestCallback.sendRequestCallback(SupportKeys.FAILED_CODE, null);
+            return;
+        }
+
+        User.sendRequest(msg, this);
+
+    }
+
+    @Override
+    public void sendRequestCallback(int resultCode, @Nullable String msg) {
+
+        // handle error
+        if (resultCode == SupportKeys.FAILED_CODE) {
+            sendRequestCallback.sendRequestCallback(SupportKeys.FAILED_CODE, null);
+            return;
+        }
+
+        // handle data
+        sendRequestCallback.sendRequestCallback(SupportKeys.SUCCESS_CODE, null);
+
     }
 }

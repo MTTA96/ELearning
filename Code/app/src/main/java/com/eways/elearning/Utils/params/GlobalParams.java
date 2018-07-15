@@ -1,6 +1,7 @@
 package com.eways.elearning.Utils.params;
 
 import android.app.Application;
+import android.support.multidex.MultiDex;
 
 import com.google.gson.Gson;
 
@@ -16,6 +17,7 @@ public class GlobalParams extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        MultiDex.install(this);
         instance = this;
         gson = new Gson();
     }

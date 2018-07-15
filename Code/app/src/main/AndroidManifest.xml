@@ -29,7 +29,7 @@
         </activity>
         <activity android:name=".Views.Activity.TestActivity" />
         <activity android:name=".Views.Activity.HomeActivity" />
-        <activity android:name=".Views.Activity.Account.UpdateInfoActivity" />
+        <activity android:name=".Views.Activity.CourseDetailActivity" />
         <activity android:name=".Views.Activity.WelcomeActivity" />
         <activity android:name=".Views.Activity.SplashActivity" />
         <activity android:name=".Views.Activity.Account.CourseManager" />
@@ -42,12 +42,26 @@
         <!--<activity android:name=".Views.Activity.SpecialDocumentActivity"/>-->
         <!--<activity android:name= ".Views.Activity.CourseDetailActivity"/>-->
 <!--=======-->
-        <activity android:name=".Views.Activity.CourseDetailActivity"/>
+        <activity android:name=".Views.Activity.Account.UpdateInfoActivity"/>
         <activity android:name=".Views.Activity.InfoUserViewerActivity"/>
         <activity android:name= ".Views.Activity.Account.SpecialDocumentActivity"/>
 <!--&gt;>>>>>> dc9ef1a378ec70773c2aa2f1fc765f45a94531a0-->
         <activity android:name=".Views.Activity.PopUpAddImageActivity"
             android:theme="@android:style/Theme.Material.Light.Dialog" ></activity>
+
+        <service android:name=".Notification.FireBaseMessagingService">
+
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service android:name=".Notification.FireBaseInstanceIDService">
+
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

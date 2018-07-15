@@ -100,8 +100,7 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    app:title="">
+                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -483,31 +482,42 @@
         android:id="@+id/btn_send_request"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:weightSum="100"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:background="@color/colorBlue">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="100.000"
-            android:textSize="18sp"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/White"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/Buổi"
-            android:textSize="18sp"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/White"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100.000"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/White"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/Buổi"
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/White"/>
+        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/bg_send_request"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="160dp"
+            android:layout_weight="50"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/send_request">
 

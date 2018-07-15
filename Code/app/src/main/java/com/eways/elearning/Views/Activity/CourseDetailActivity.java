@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +34,7 @@ import com.eways.elearning.Presenter.Authentication.UserPresenter;
 import com.eways.elearning.Presenter.Course.CoursePresenter;
 
 import com.eways.elearning.R;
+import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Utils.params.GlobalParams;
 import com.eways.elearning.Views.Dialog.LoadingDialog;
@@ -41,7 +43,7 @@ import java.util.ArrayList;
 
 public class CourseDetailActivity extends AppCompatActivity implements View.OnClickListener, CourseDetailsCallBack, UserCallBack {
     /** VIEWS */
-    TextView tvName, tvEmail, tvBirthDay, tvGender, tvJob, tvDegree, tvSubject, tvAddress, tvWeekday, tvStartDay, tvSession, tvAmountSession, tvAmountAttender, tvDuration, tvInfoMore, tvSave;
+    TextView tvName, tvEmail, tvBirthDay, tvPhone, tvGender, tvJob, tvDegree, tvSubject, tvAddress, tvWeekday, tvStartDay, tvSession, tvAmountSession, tvAmountAttender, tvDuration, tvInfoMore, tvSave;
     ImageView ivAvarta, ivBack;
     android.support.v7.widget.Toolbar toolBar;
     RecyclerView rcSubject, rcTime;
@@ -58,6 +60,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
     /** ACCESSORIES */
     ArrayList<String> mListTime;
     ArrayList<String> mListSubject;
+    ImageHandler mImageHandle;
 
     private CoursePresenter coursePresenter;
     private UserPresenter userPresenter;
@@ -99,7 +102,8 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         tvJob = findViewById(R.id.tv_job);
 //        tvSubject = findViewById(R.id.tv_subject);
         tvAddress = findViewById(R.id.tv_address);
-//        tvWeekday = findViewById(R.id.tv_weekday);
+        tvSubject = findViewById(R.id.tv_subject_name);
+        tvWeekday = findViewById(R.id.tv_weekday);
         tvSession = findViewById(R.id.tv_amount_session);
         tvAmountSession = findViewById(R.id.tv_amount_attender);
         tvAmountAttender = findViewById(R.id.tv_amount_attender);
@@ -109,17 +113,23 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         toolBar = findViewById(R.id.toolbar);
         btnRequest = findViewById(R.id.btn_request_send);
         rcSubject = findViewById(R.id.rc_subject);
-        rcTime  = findViewById(R.id.rc_time);
         tvSendRequest = findViewById(R.id.text);
         bgSendRequest = findViewById(R.id.bg_send_request);
+        tvDegree = findViewById(R.id.tv_level);
+        tvSession = findViewById(R.id.tv_amount_session);
+        tvPhone = findViewById(R.id.tv_phone);
     }
 
     private void handle_views(){
+        mImageHandle = new ImageHandler(this);
+
         ivBack.setOnClickListener(this);
         btnRequest.setOnClickListener(this);
         findViewById(R.id.btn_user_info).setOnClickListener(this);
 
-        SetUpList();
+        tvPhone.setOnClickListener(this);
+
+//        SetUpList();
     }
 
     @Override
@@ -148,6 +158,13 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                 Intent userInfoIntent = new Intent(this, InfoUserViewerActivity.class);
                 userInfoIntent.putExtra(InfoUserViewerActivity.paramUId, user.getUid());
                 startActivity(userInfoIntent);
+                break;
+
+            case R.id.tv_phone:
+
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + user.getPhone()));
+                startActivity(intent);
                 break;
         }
     }
@@ -197,15 +214,22 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
 
         if (user != null) {
 
+
             tvName.setText(user.getFirstName() + user.getLastName());
+
             tvEmail.setText(user.getEmail());
             tvBirthDay.setText(user.getBirthday());
             tvGender.setText(user.getSex());
             tvJob.setText(user.getCareer());
 
+            mImageHandle.loadImageRound(user.getAvatar(), ivAvarta);
+
             Degree degree = Degree.getInstance();
 
             tvDegree.setText(degree.getDegreeById(user.getDegree()));
+
+            tvPhone.setText(user.getPhone());
+
 
         }
 
@@ -222,8 +246,9 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
             tvAmountSession.setText(course.getNumberOfSessions());
             tvAmountAttender.setText(course.getStudentNumber());
             tvInfoMore.setText(course.getDescription());
-            tvStartDay.setText(course.getTimeStart());
-            tvDuration.setText(course.getTimePerSession());
+            tvSession.setText(course.getNumberOfSessions());
+//            tvStartDay.setText(course.getTimeStart());
+//            tvDuration.setText(course.getTimePerSession());
         }
 
         LoadingDialog.dismissDialog();

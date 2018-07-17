@@ -1,14 +1,22 @@
 package com.eways.elearning.Adapter.User;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.eways.elearning.Interfaces.DataCallBack;
+import com.eways.elearning.Interfaces.DataCallback.User.SendRequestCallback;
 import com.eways.elearning.Model.Account.User;
+import com.eways.elearning.Presenter.Authentication.UserPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
+import com.eways.elearning.Utils.SupportKeys;
+import com.eways.elearning.Views.Activity.InfoUserViewerActivity;
 
 import java.util.ArrayList;
 
@@ -16,16 +24,18 @@ import java.util.ArrayList;
  * Created by zzzzz on 5/27/2018.
  */
 
-public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
+public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implements View.OnClickListener, DataCallBack, SendRequestCallback {
     private Context context;
     private ArrayList<User> list = new ArrayList<>();
     private ImageHandler imageHandler;
     private User user;
+    private UserPresenter userPresenter;
 
     public UserListAdapter(Context context, ArrayList<User> list) {
         this.context = context;
         this.list = list;
         imageHandler = new ImageHandler(context);
+        userPresenter = new UserPresenter(context);
     }
 
     @Override
@@ -36,14 +46,12 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
 
     @Override
     public void onBindViewHolder(UserViewHolder holder, int position) {
-        holder.vUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                fragmentHandler.ChuyenFragment(ThongTinNguoiDangFragment.newInstance(khoaHocArrayList.get(holder.getLayoutPosition()).getNguoiDang(), khoaHoc.isLoaiKhoaHoc()), true, SupportKeysList.TAG_THONG_TIN_NGUOI_DANG);
-            }
-        });
+        user = list.get(position);
 
-        loadData(holder, position);
+        holder.vUser.setOnClickListener(this);
+        holder.btnRequest.setOnClickListener(this);
+
+        loadData(holder, user);
     }
 
     @Override
@@ -51,8 +59,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
         return list.size() <= 5 ? list.size():5;
     }
 
-    public void loadData(UserViewHolder holder, int position) {
-        user = list.get(position);
+    public void loadData(UserViewHolder holder, User user) {
 
         // Avatar
         imageHandler.loadImageSquare(user.getAvatar(), holder.userAvatar);
@@ -95,4 +102,37 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
 //        holder.tvMon.setText(Html.fromHtml(mon));
 
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.view_item_user_list:
+                Intent userInfoIntent = new Intent(context, InfoUserViewerActivity.class);
+                userInfoIntent.putExtra(SupportKeys.USER_ID_INTENT_PARAM, user.getUid());
+                context.startActivity(userInfoIntent);
+                break;
+            case R.id.btn_request_tutor_item:
+
+                //****************** Change subject name when server updated model user
+
+                userPresenter.sendRequestToCourse(null, "av", this);
+                break;
+        }
+    }
+
+    @Override
+    public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void sendRequestCallback(int resultCode, @Nullable String msg) {
+        // handle error
+        if (resultCode == SupportKeys.FAILED_CODE) {
+            return;
+        }
+
+        // success
+    }
+
 }

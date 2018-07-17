@@ -37,44 +37,63 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/horizontal_padding_user_info_list_item"
-            android:paddingRight="@dimen/horizontal_padding_user_info_list_item">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <!--User name-->
-            <TextView
-                android:id="@+id/user_name_item_user_list"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
-                android:text="@string/Xem_Ten"
-                android:textColor="@color/colorGrey"
-                android:textSize="@dimen/normal_text_size"
-                android:textStyle="bold" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/horizontal_padding_user_info_list_item"
+                android:paddingRight="@dimen/horizontal_padding_user_info_list_item">
 
-            <!--Subject's name-->
-            <TextView
-                android:id="@+id/subject_item_user_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
-                android:text="@string/Xem_Mon"
-                android:textColor="@color/colorGrey" />
+                <!--User name-->
+                <TextView
+                    android:id="@+id/user_name_item_user_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                    android:text="@string/Xem_Ten"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="@dimen/normal_text_size"
+                    android:textStyle="bold" />
 
-            <!--Rating-->
-            <!--<RatingBar-->
-                <!--android:id="@+id/rtb_item_user_list"-->
-                <!--style="@style/ratingbarCustom"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"-->
-                <!--android:isIndicator="true"-->
-                <!--android:numStars="5"-->
-                <!--android:stepSize="0.5" />-->
+                <!--Subject's name-->
+                <TextView
+                    android:id="@+id/subject_item_user_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                    android:text="@string/Xem_Mon"
+                    android:textColor="@color/colorGrey" />
+
+                <!--Rating-->
+                <RatingBar
+                    android:id="@+id/rtb_item_user_list"
+                    style="@style/ratingbarCustom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.5"
+                    android:visibility="gone" />
+            </LinearLayout>
+
         </LinearLayout>
 
+        <!--Request button-->
+        <Button
+            android:id="@+id/btn_request_tutor_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
+            android:paddingHorizontal="@dimen/min_horizontal_padding"
+            android:text="Gửi yêu cầu"
+            android:textColor="@color/colorGrey" />
     </LinearLayout>
-
 
 </LinearLayout>

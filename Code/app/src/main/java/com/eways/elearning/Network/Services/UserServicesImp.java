@@ -52,4 +52,9 @@ public interface UserServicesImp {
     @GET(ServerUrl.GET_USER_FAVORITE_SUBJECTS)
     Call<UserFavoriteSubjectResponse> getUserFavoriteSubjects(@Query("Uid") String uID);
 
+    /** Add favorite */
+    @POST(ServerUrl.SEND_REQUEST_URL)
+    @FormUrlEncoded
+    Call<BaseResponse> sendRequest(@Field("mydata") String myData);
+
 }

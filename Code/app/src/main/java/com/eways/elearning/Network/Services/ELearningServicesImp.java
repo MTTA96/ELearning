@@ -2,6 +2,7 @@ package com.eways.elearning.Network.Services;
 
 import com.eways.elearning.Model.Banner;
 import com.eways.elearning.Model.Subject.Subject;
+import com.eways.elearning.Network.Responses.BaseResponse;
 import com.eways.elearning.Network.Responses.Course.CourseListResponse;
 import com.eways.elearning.Network.Responses.Course.CourseRespsonse;
 import com.eways.elearning.Network.Responses.SearchBaseResponse;
@@ -13,7 +14,10 @@ import com.eways.elearning.Network.ServerUrl;
 import java.util.ArrayList;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -46,14 +50,20 @@ public interface ELearningServicesImp {
     @GET(ServerUrl.TRENDING_SUBJECTS)
     Call<TrendingSubjectResponse> getTrendingSubjects();
 
-    /** Get course list */
+    /** ----- COURSE ----- */
+
+    /** Get course by ID */
     @GET(ServerUrl.GET_COURSE_BY_ID_URL)
     Call<CourseRespsonse> getCourseById(@Query("IdCourse") String courseId);
 
-    /** Get course list */
+    /** Get course list by subject */
     @GET(ServerUrl.GET_COURSE_LIST_BY_SUBJECT_URL)
     Call<CourseListResponse> getCourseListBySubject(@Query("IdSubject") String subjectId,
                                                     @Query("CourseType") String courseType);
 
+    /** Create course */
+    @POST(ServerUrl.CREATE_COURSE_URL)
+    @FormUrlEncoded
+    Call<BaseResponse> createCourse(@Field("mydata") String myData);
 
 }

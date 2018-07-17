@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +27,7 @@ import android.widget.Toolbar;
 import com.eways.elearning.Adapter.TagAdapter;
 
 import com.eways.elearning.Interfaces.DataCallback.Course.CourseDetailsCallBack;
+import com.eways.elearning.Interfaces.DataCallback.User.SendRequestCallback;
 import com.eways.elearning.Interfaces.DataCallback.User.UserCallBack;
 import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.Model.Course.Course;
@@ -42,7 +44,7 @@ import com.eways.elearning.Views.Dialog.LoadingDialog;
 
 import java.util.ArrayList;
 
-public class CourseDetailActivity extends AppCompatActivity implements View.OnClickListener, CourseDetailsCallBack, UserCallBack {
+public class CourseDetailActivity extends AppCompatActivity implements View.OnClickListener, CourseDetailsCallBack, UserCallBack, SendRequestCallback {
     /** VIEWS */
     TextView tvName, tvEmail, tvBirthDay, tvPhone, tvGender, tvJob, tvDegree, tvSubject, tvAddress, tvWeekday, tvStartDay, tvSession, tvAmountSession, tvAmountAttender, tvDuration, tvInfoMore, tvSave;
     ImageView ivAvarta, ivBack;
@@ -148,7 +150,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                     status = true;
                     ActivityUtils.ChangeActivity(this, CourseAttendManagerActivity.class);
                 }
-
+                userPresenter.sendRequestToCourse(course.getIdCourse(), null, this);
                 break;
 
             case R.id.tv_more:
@@ -306,4 +308,13 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         loadUserInfo();
     }
 
+    @Override
+    public void sendRequestCallback(int resultCode, @Nullable String msg) {
+        if (resultCode == SupportKeys.FAILED_CODE) {
+            return;
+        }
+
+        // Request success
+
+    }
 }

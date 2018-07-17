@@ -6,12 +6,16 @@ package com.eways.elearning.Model.Course;
 
 import android.util.Log;
 
+import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Course.CourseDetailsCallBack;
 import com.eways.elearning.Interfaces.DataCallback.Course.CourseListCallBack;
+import com.eways.elearning.Interfaces.DataCallback.CreateCourseCallBack;
 import com.eways.elearning.Network.ApiUtils;
+import com.eways.elearning.Network.Responses.BaseResponse;
 import com.eways.elearning.Network.Responses.Course.CourseListResponse;
 import com.eways.elearning.Network.Responses.Course.CourseRespsonse;
 import com.eways.elearning.Network.Services.ELearningServicesImp;
+import com.eways.elearning.Network.Services.UserServicesImp;
 import com.eways.elearning.Utils.SupportKeys;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -247,6 +251,44 @@ public class Course {
     /** ----- METHODS ----- */
 
     /** Get course details */
+
+    public static void createCourse(String jsonCourse, final CreateCourseCallBack createCourseCallBack) {
+
+        ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
+        eLearningServicesImp.createCourse(jsonCourse).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+
+                Log.d("createCourse:", call.request().toString());
+
+                // handle errors
+
+                if (!response.isSuccessful()) {
+                    Log.d("createCourse:", "connect failed");
+                    createCourseCallBack.createCourseCallback(SupportKeys.FAILED_CODE, null);
+                    return;
+                }
+
+                // handle result
+                if (Integer.parseInt(response.body().getStatus()) == 0) {
+                    Log.d("createCourse:", "Create failed");
+                    createCourseCallBack.createCourseCallback(SupportKeys.FAILED_CODE, null);
+                    return;
+                }
+
+                // Sign up success
+                createCourseCallBack.createCourseCallback(SupportKeys.SUCCESS_CODE, null);
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.d("createCourse:", t.getLocalizedMessage());
+                createCourseCallBack.createCourseCallback(SupportKeys.FAILED_CODE, null);
+            }
+
+        });
+
+    }
 
     public static void getCourseDetails(String courseId, final CourseDetailsCallBack courseDetailsCallBack) {
 

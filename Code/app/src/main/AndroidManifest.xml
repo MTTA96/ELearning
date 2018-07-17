@@ -11,7 +11,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
@@ -39,31 +38,32 @@
         <activity android:name=".Views.Activity.Account.UserManagerActivity" />
         <activity android:name=".Views.Activity.FilterActivity" />
         <activity android:name=".Views.Activity.CreateActivity" />
-<!--<<<<<<< HEAD-->
-        <!--<activity android:name= ".Views.Activity.InfoUserViewerActivity"/>-->
-        <!--<activity android:name=".Views.Activity.SpecialDocumentActivity"/>-->
-        <!--<activity android:name= ".Views.Activity.CourseDetailActivity"/>-->
-<!--=======-->
-        <activity android:name=".Views.Activity.Account.UpdateInfoActivity"/>
-        <activity android:name=".Views.Activity.InfoUserViewerActivity"/>
-        <activity android:name= ".Views.Activity.Account.SpecialDocumentActivity"/>
-<!--&gt;>>>>>> dc9ef1a378ec70773c2aa2f1fc765f45a94531a0-->
-        <activity android:name=".Views.Activity.PopUpAddImageActivity"
-            android:theme="@android:style/Theme.Material.Light.Dialog" ></activity>
+        <!-- <<<<<<< HEAD -->
+        <!-- <activity android:name= ".Views.Activity.InfoUserViewerActivity"/> -->
+        <!-- <activity android:name=".Views.Activity.SpecialDocumentActivity"/> -->
+        <!-- <activity android:name= ".Views.Activity.CourseDetailActivity"/> -->
+        <!-- ======= -->
+        <activity android:name=".Views.Activity.Account.UpdateInfoActivity" />
+        <activity android:name=".Views.Activity.InfoUserViewerActivity" />
+        <activity android:name=".Views.Activity.Account.SpecialDocumentActivity" />
+        <!-- &gt;>>>>>> dc9ef1a378ec70773c2aa2f1fc765f45a94531a0 -->
+        <activity
+            android:name=".Views.Activity.PopUpAddImageActivity"
+            android:theme="@android:style/Theme.Material.Light.Dialog" />
 
         <service android:name=".Notification.FireBaseMessagingService">
-
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <service android:name=".Notification.FireBaseInstanceIDService">
-
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".Views.Activity.CourseAttendManagerActivity" />
+        <activity android:name=".Views.Activity.RequestManagerActivity"></activity>
     </application>
 
 </manifest>

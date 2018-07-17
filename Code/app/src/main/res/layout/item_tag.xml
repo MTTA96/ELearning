@@ -3,17 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginRight="5dp"
     android:background="@drawable/tag_shape">
-
     <TextView
         android:id="@+id/tv_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
         android:text="t2"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
         android:textColor="@color/White"/>
 </RelativeLayout>

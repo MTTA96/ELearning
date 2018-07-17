@@ -8,8 +8,11 @@ import android.view.ViewGroup;
 
 import com.eways.elearning.Adapter.Home.SubjectVHolder;
 import com.eways.elearning.Model.Course.Course;
+import com.eways.elearning.Model.Requestion;
 import com.eways.elearning.R;
+import com.eways.elearning.Utils.ActivityUtils;
 import com.eways.elearning.Utils.Handler.ImageHandler;
+import com.eways.elearning.Views.Activity.InfoUserViewerActivity;
 
 import java.util.ArrayList;
 
@@ -19,7 +22,7 @@ import java.util.ArrayList;
 
 public class RequestAdapter extends RecyclerView.Adapter<RequestVHolder> {
     Activity activity;
-    ArrayList<Course> mListRequest;
+    ArrayList<Requestion> mListRequest;
 
     ImageHandler imageHandler;
 
@@ -40,31 +43,24 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestVHolder> {
 
     @Override
     public void onBindViewHolder(RequestVHolder holder, int position) {
-        final Course mRequest = mListRequest.get(position);
+        final Requestion mRequest = mListRequest.get(position);
 
-        imageHandler.loadImageRound(mRequest.getAvatar(), holder.avarta);
-        holder.tutorName.setText(mRequest.getFirstName() + " " + mRequest.getLastName());
+//        imageHandler.loadImageRound(mRequest.getAvatar(), holder.avarta);
+//        holder.tutorName.setText(mRequest.getFirstName() + " " + mRequest.getLastName());
 
-        holder.tvMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        holder.btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        holder.btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+//        holder.tvMore.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ActivityUtils.ChangeActivity(activity, InfoUserViewerActivity.class);
+//            }
+//        });
+//
+//        holder.btnConfirm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
 
     }
 

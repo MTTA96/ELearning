@@ -71,7 +71,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="sdt"
-                            android:layout_weight="6"
+                            android:layout_weight="8"
                             android:layout_alignParentLeft="true"
                             android:layout_marginLeft="10dp"
                             android:textColor="@color/White" />
@@ -254,7 +254,7 @@
                         android:background="@color/White"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/title_thong_tin_gia_su"
+                        android:text="THÔNG TIN GIA SƯ"
                         android:textColor="@color/colorBlue"
                         android:textSize="@dimen/normal_text_size" />
                 </FrameLayout>
@@ -287,55 +287,18 @@
                                 android:text="Môn: "
                                 android:textColor="@color/colorBlack" />
 
-                            <TextView
-                                android:id="@+id/tv_subject_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Môn: "
-                                android:textStyle="bold"
-                                android:textColor="@color/colorBlack" />
-                        </LinearLayout>
+                            <!--<TextView-->
+                                <!--android:id="@+id/tv_subject_name"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:text="Môn: "-->
+                                <!--android:textStyle="bold"-->
+                                <!--android:textColor="@color/colorBlack" />-->
 
-                        <!--Địa điểm-->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Địa điểm: "
-                                android:textColor="@color/colorBlack" />
-
-                            <TextView
-                                android:id="@+id/tv_address"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <!--Ngày bắt đầu-->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Ngày bắt đầu: "
-                                android:textColor="@color/colorBlack" />
-
-                            <TextView
-                                android:id="@+id/textView_NgayBatDau_ThongTinKhoaHoc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textStyle="bold" />
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/rc_subject"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
                         </LinearLayout>
 
                         <!--Thứ-->
@@ -351,13 +314,10 @@
                                 android:text="Thứ: "
                                 android:textColor="@color/colorBlack" />
 
-                            <TextView
-                                android:id="@+id/tv_weekday"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Thứ: "
-                                android:textStyle="bold"
-                                android:textColor="@color/colorBlack" />
+                           <android.support.v7.widget.RecyclerView
+                               android:id="@+id/rc_time"
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"/>
                         </LinearLayout>
 
                         <!--Buổi-->
@@ -373,33 +333,18 @@
                                 android:text="Buổi: "
                                 android:textColor="@color/colorBlack" />
 
-                            <TextView
-                                android:id="@+id/tv_session"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textStyle="bold" />
-                        </LinearLayout>
+                            <!--<TextView-->
+                                <!--android:id="@+id/tv_session"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:textColor="@color/colorBlack"-->
+                                <!--android:textStyle="bold" />-->
 
-                        <!--Số Buổi-->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:orientation="horizontal">
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/rc_session"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Số buổi: "
-                                android:textColor="@color/colorBlack" />
-
-                            <TextView
-                                android:id="@+id/tv_amount_session"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <!--Thời lượng-->
@@ -417,6 +362,27 @@
 
                             <TextView
                                 android:id="@+id/textView_ThoiLuong_ThongTinKhoaHoc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!--Địa điểm-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Địa điểm: "
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:id="@+id/tv_address"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -444,27 +410,91 @@
                                 android:textStyle="bold" />
                         </LinearLayout>
 
-                        <!-- Thông tin thêm -->
-                        <TextView
+                        <!--Ngày bắt đầu-->
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_weight="3"
-                            android:text="@string/title_thong_tin_them_tao_khoa_hoc"
-                            android:textColor="@color/colorBlack" />
+                            android:orientation="horizontal"
+                            android:visibility="gone">
 
-                        <TextView
-                            android:id="@+id/tv_info_more"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ngày bắt đầu: "
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:id="@+id/textView_NgayBatDau_ThongTinKhoaHoc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+
+
+
+
+                        <!--Số Buổi-->
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/text_thong_tin_them_height"
-                            android:layout_marginRight="@dimen/text_padding_left"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/et_shape"
-                            android:inputType="textMultiLine"
-                            android:lines="8"
-                            android:paddingLeft="@dimen/text_padding_left"
-                            android:scrollbars="vertical" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Số buổi: "
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:id="@+id/tv_amount_session"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/tv_info_more"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/text_thong_tin_them_height"
+                                android:layout_marginRight="@dimen/text_padding_left"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="1"
+                                android:inputType="textMultiLine"
+                                android:lines="8"
+                                android:background="@drawable/et_shape"
+                                android:paddingLeft="@dimen/text_padding_left"
+                                android:scrollbars="vertical" />
+
+                            <!-- Thông tin thêm -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:layout_marginTop="-5dp"
+                                android:background="@color/colorWhite"
+                                android:layout_centerHorizontal="true"
+                                android:text="Ghi chú khác"
+                                android:textColor="@color/colorBlack" />
+                        </RelativeLayout>
+
+
+
+
                     </LinearLayout>
 
                     <TextView
@@ -474,7 +504,7 @@
                         android:background="@color/White"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/title_thong_tin_khoa_hoc"
+                        android:text="THÔNG TIN KHÓA HỌC"
                         android:textColor="@color/colorBlue"
                         android:textSize="@dimen/normal_text_size" />
                 </FrameLayout>

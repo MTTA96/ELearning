@@ -117,7 +117,7 @@
                         android:padding="10dp"
                         android:textColor="@color/colorBlack"
                         android:textColorHint="@color/colorGrey"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <View
                         android:layout_width="0dp"
@@ -132,9 +132,9 @@
                         android:background="@drawable/edittext_shape_3"
                         android:hint="@string/hint_last_name"
                         android:padding="10dp"
+                        android:textSize="15sp"
                         android:textColor="@color/colorBlack"
-                        android:textColorHint="@color/colorGrey"
-                        android:textSize="17sp" />
+                        android:textColorHint="@color/colorGrey" />
 
                 </LinearLayout>
 
@@ -189,6 +189,7 @@
                     android:background="@drawable/edittext_shape_3"
                     android:focusableInTouchMode="false"
                     android:hint="Skype"
+                    android:textSize="15sp"
                     android:padding="10dp"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorGrey" />
@@ -207,6 +208,7 @@
                     android:focusableInTouchMode="false"
                     android:hint="Số chứng minh"
                     android:padding="10dp"
+                    android:textSize="15sp"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorGrey" />
 
@@ -224,6 +226,7 @@
                     android:focusableInTouchMode="false"
                     android:hint="@string/hint_birthday"
                     android:padding="10dp"
+                    android:textSize="15sp"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorGrey" />
 
@@ -240,6 +243,7 @@
                     android:background="@drawable/edittext_shape_3"
                     android:hint="@string/hint_email"
                     android:padding="10dp"
+                    android:textSize="15sp"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorGrey" />
 
@@ -256,6 +260,7 @@
                     android:background="@drawable/edittext_shape_3"
                     android:hint="@string/hint_phone_number"
                     android:padding="10dp"
+                    android:textSize="15sp"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorGrey" />
 
@@ -272,6 +277,7 @@
                     android:background="@drawable/edittext_shape_3"
                     android:hint="@string/hint_address"
                     android:padding="10dp"
+                    android:textSize="15sp"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorGrey" />
 
@@ -289,6 +295,7 @@
                     android:hint="@string/hint_degree"
                     android:padding="10dp"
                     android:textColor="@color/colorBlack"
+                    android:textSize="15sp"
                     android:textColorHint="@color/colorGrey" />
 
                 <View
@@ -305,6 +312,7 @@
                     android:hint="@string/hint_career"
                     android:padding="10dp"
                     android:textColor="@color/colorBlack"
+                    android:textSize="15sp"
                     android:textColorHint="@color/colorGrey" />
 
             </LinearLayout>

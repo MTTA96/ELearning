@@ -8,79 +8,54 @@ import android.view.ViewGroup;
 
 import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.R;
+import com.eways.elearning.Utils.ActivityUtils;
 import com.eways.elearning.Utils.Handler.ImageHandler;
+import com.eways.elearning.Views.Activity.RequestManagerActivity;
 
 import java.util.ArrayList;
 
 /**
- * Created by ADMIN on 6/17/2018.
+ * Created by ADMIN on 7/17/2018.
  */
 
 public class CourseManagerAdapter extends RecyclerView.Adapter<CourseManagerVHolder> {
-    Activity activity;
-    ArrayList<Course> mCourseManagers;
+    ArrayList<Course> mListCourse;
+    Activity mActivity;
 
-    ImageHandler imageHandler;
+    ImageHandler mImageHandle;
 
-    public CourseManagerAdapter(ArrayList<Course> mCourseManagers, Activity activity) {
-        this.mCourseManagers = mCourseManagers;
-        this.activity = activity;
+    public CourseManagerAdapter(ArrayList<Course> mListCourse, Activity mActivity) {
+        this.mListCourse = mListCourse;
+        this.mActivity = mActivity;
 
-        imageHandler = new ImageHandler(activity);
+        mImageHandle = new ImageHandler(mActivity);
     }
 
     @Override
     public CourseManagerVHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_course_manager,parent,false);
+                .inflate(R.layout.item_course,parent,false);
         return new CourseManagerVHolder(view);
     }
 
     @Override
     public void onBindViewHolder(CourseManagerVHolder holder, int position) {
-        final Course mCourseManager = mCourseManagers.get(position);
+        final Course mCourse = mListCourse.get(position);
 
-        holder.tvTuition.setText(mCourseManager.getTuition());
-        holder.tvNumberSession.setText(mCourseManager.getNumberOfSessions());
-        holder.tvSchedule.setText(mCourseManager.getSchedule());
-        holder.tvAddress.setText(mCourseManager.getAddress());
-        holder.tvTime.setText(mCourseManager.getTimeStart() + " - " + mCourseManager.getTimeEnd());
-        holder.tvNote.setText(mCourseManager.getDescription());
+        holder.tvSubject.setText(mCourse.getSubjectName());
+        holder.tvEndDate.setText(mCourse.getTimeEnd());
+        holder.tvStartDate.setText(mCourse.getTimeStart());
 
-        imageHandler.loadImageRound(mCourseManager.getAvatar(), holder.ivAvarta);
-
-        if (Integer.parseInt(mCourseManager.getStatus()) == 0 ){
-            holder.status.setBackgroundResource(R.drawable.no_active_shape);
-        }else {
-            holder.status.setBackgroundResource(R.drawable.active_shape);
-        }
-
-        holder.btnRequest.setOnClickListener(new View.OnClickListener() {
+        holder.btnRequestManager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //request
+                ActivityUtils.ChangeActivity(mActivity, RequestManagerActivity.class);
             }
         });
-
-        holder.btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //edit
-            }
-        });
-
-        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //delete
-            }
-        });
-
-
     }
 
     @Override
     public int getItemCount() {
-        return mCourseManagers.size();
+        return mListCourse.size();
     }
 }

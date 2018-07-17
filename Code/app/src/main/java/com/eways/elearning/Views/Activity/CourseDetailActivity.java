@@ -34,6 +34,7 @@ import com.eways.elearning.Presenter.Authentication.UserPresenter;
 import com.eways.elearning.Presenter.Course.CoursePresenter;
 
 import com.eways.elearning.R;
+import com.eways.elearning.Utils.ActivityUtils;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Utils.params.GlobalParams;
@@ -46,7 +47,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
     TextView tvName, tvEmail, tvBirthDay, tvPhone, tvGender, tvJob, tvDegree, tvSubject, tvAddress, tvWeekday, tvStartDay, tvSession, tvAmountSession, tvAmountAttender, tvDuration, tvInfoMore, tvSave;
     ImageView ivAvarta, ivBack;
     android.support.v7.widget.Toolbar toolBar;
-    RecyclerView rcSubject, rcTime;
+    RecyclerView rcSubject, rcTime, rcSession;
     View btnRequest;
     RelativeLayout bgSendRequest;
     TextView tvSendRequest;
@@ -59,7 +60,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
 
     /** ACCESSORIES */
     ArrayList<String> mListTime;
-    ArrayList<String> mListSubject;
+    ArrayList<String> mListSubject, mListSession;
     ImageHandler mImageHandle;
 
     private CoursePresenter coursePresenter;
@@ -103,7 +104,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
 //        tvSubject = findViewById(R.id.tv_subject);
         tvAddress = findViewById(R.id.tv_address);
         tvSubject = findViewById(R.id.tv_subject_name);
-        tvWeekday = findViewById(R.id.tv_weekday);
+//        tvWeekday = findViewById(R.id.tv_weekday);
         tvSession = findViewById(R.id.tv_amount_session);
         tvAmountSession = findViewById(R.id.tv_amount_attender);
         tvAmountAttender = findViewById(R.id.tv_amount_attender);
@@ -118,6 +119,8 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         tvDegree = findViewById(R.id.tv_level);
         tvSession = findViewById(R.id.tv_amount_session);
         tvPhone = findViewById(R.id.tv_phone);
+        rcTime = findViewById(R.id.rc_time);
+        rcSession = findViewById(R.id.rc_session);
     }
 
     private void handle_views(){
@@ -128,8 +131,6 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         findViewById(R.id.btn_user_info).setOnClickListener(this);
 
         tvPhone.setOnClickListener(this);
-
-//        SetUpList();
     }
 
     @Override
@@ -145,6 +146,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                     status = false;
                 }else {
                     status = true;
+                    ActivityUtils.ChangeActivity(this, CourseAttendManagerActivity.class);
                 }
 
                 break;
@@ -171,12 +173,31 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
 
     private void SetUpList(){
         mListSubject = new ArrayList<>();
+        String tmp = course.getSubjectName();
+        String[] mSubjectArray = course.getSubjectName().split(",");
+        for (int i = 0; i < mSubjectArray.length; i++){
+            mListSubject.add(mSubjectArray[i]);
+        }
         mSubjectAdapter = new TagAdapter(this, mListSubject);
         rcSubject.hasFixedSize();
         rcSubject.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         rcSubject.setAdapter(mSubjectAdapter);
 
         mListTime = new ArrayList<>();
+        String[] mTimeArray = course.getSchedule().split(",");
+        for (int i = 0; i < mSubjectArray.length; i++){
+            mListTime.add(mTimeArray[i]);
+        }
+        mTimeAdapter = new TagAdapter(this, mListTime);
+        rcTime.hasFixedSize();
+        rcTime.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        rcTime.setAdapter(mTimeAdapter);
+
+        mListSession = new ArrayList<>();
+        String[] mSessionArray = course.getTimePerSession().split(",");
+        for (int i = 0; i < mSessionArray.length; i++){
+            mListSession.add(mTimeArray[i]);
+        }
         mTimeAdapter = new TagAdapter(this, mListTime);
         rcTime.hasFixedSize();
         rcTime.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -239,9 +260,9 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
     private void loadCourseInfo() {
 
         if (course != null) {
-            tvSubject.setText(course.getSubjectName());
+//            tvSubject.setText(course.getSubjectName());
             tvAddress.setText(course.getAddress());
-            tvWeekday.setText(course.getSchedule());
+//            tvWeekday.setText(course.getSchedule());
             tvSession.setText(course.getTimePerSession());
             tvAmountSession.setText(course.getNumberOfSessions());
             tvAmountAttender.setText(course.getStudentNumber());
@@ -249,6 +270,8 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
             tvSession.setText(course.getNumberOfSessions());
 //            tvStartDay.setText(course.getTimeStart());
 //            tvDuration.setText(course.getTimePerSession());
+
+            SetUpList();
         }
 
         LoadingDialog.dismissDialog();

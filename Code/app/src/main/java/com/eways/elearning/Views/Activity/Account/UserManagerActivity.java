@@ -14,6 +14,7 @@ import com.eways.elearning.R;
 import com.eways.elearning.Utils.ActivityUtils;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKeys;
+import com.eways.elearning.Views.Activity.CourseAttendManagerActivity;
 import com.eways.elearning.Views.Dialog.LoadingDialog;
 
 public class UserManagerActivity extends Activity implements View.OnClickListener, DataCallBack {
@@ -21,7 +22,7 @@ public class UserManagerActivity extends Activity implements View.OnClickListene
 
     ImageView avarta;
     TextView userName, userEmail;
-    View btnInfo, btnMyCourse, btnCourseTutor, btnLogout;
+    View btnInfo, btnMyCourse, btnCourseTutor, btnLogout, btnCourseAttend;
 
     FragmentHandler fragmentHandler;
     private UserPresenter userPresenter;
@@ -43,18 +44,18 @@ public class UserManagerActivity extends Activity implements View.OnClickListene
         avarta = findViewById(R.id.avarta);
         userName = findViewById(R.id.userName);
         userEmail = findViewById(R.id.userEmail);
-        btnCourseTutor = findViewById(R.id.btn_course_tutor);
         btnLogout = findViewById(R.id.btn_logout);
         btnMyCourse = findViewById(R.id.btn_my_course);
+        btnCourseAttend = findViewById(R.id.btn_course_attend);
     }
 
     public void handle_views(){
 //        fragmentHandler = new FragmentHandler(getActivity(), R.id.content_course);
 
         btnInfo.setOnClickListener(this);
-        btnCourseTutor.setOnClickListener(this);
         btnMyCourse.setOnClickListener(this);
         btnLogout.setOnClickListener(this);
+        btnCourseAttend.setOnClickListener(this);
     }
 
     @Override
@@ -65,13 +66,14 @@ public class UserManagerActivity extends Activity implements View.OnClickListene
 
                 break;
 
-            case R.id.btn_course_tutor:
-
+            case R.id.btn_my_course:
                 ActivityUtils.ChangeActivity(UserManagerActivity.this, CourseManager.class);
+
                 break;
 
-            case R.id.btn_my_course:
+            case R.id.btn_course_attend:
 
+                ActivityUtils.ChangeActivity(this, CourseAttendManagerActivity.class);
                 break;
 
             case R.id.btn_logout:

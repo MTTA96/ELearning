@@ -1,47 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginBottom="10dp"
         android:background="@drawable/course_shape"
         android:elevation="10dp"
+        android:orientation="horizontal"
         android:weightSum="100">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="32"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:id="@+id/img_avarta"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:weightSum="100"
-            android:layout_marginLeft="15dp"
+            android:layout_weight="58"
             android:orientation="vertical"
-            android:layout_weight="58">
+            android:weightSum="100">
 
             <TextView
-                android:id="@+id/tv_subject"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="30"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="@color/colorBlue"
-                android:textStyle="bold"
-                android:text="Tutor Name"/>
-
-            <TextView
+                android:id="@+id/tutor_name"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="20"
-                android:textSize="13sp"
                 android:gravity="center"
+                android:text="Student Name"
                 android:textColor="@color/colorBlue"
-                android:textStyle="bold"
-                android:text="Subject"
-                android:visibility="invisible"/>
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/subject_name"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="15"
+                android:gravity="center"
+                android:text="Student Name"
+                android:textColor="@color/colorBlue"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,78 +67,86 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="37"
-                    android:textStyle="bold"
-                    android:gravity="center"
                     android:background="@drawable/date_shape"
+                    android:gravity="center"
+                    android:text="18/05/2018"
                     android:textColor="@color/colorWhite"
-                    android:text="18/05/2018"/>
+                    android:textStyle="bold" />
 
                 <TextView
-
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
-                    android:textStyle="bold"
                     android:gravity="center"
+                    android:text="-"
                     android:textColor="@color/colorBlack"
-                    android:text="-"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/end_date"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="37"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
                     android:background="@drawable/date_shape"
+                    android:gravity="center"
+                    android:text="18/05/2018"
                     android:textColor="@color/colorWhite"
-                    android:text="18/05/2018"/>
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
             </LinearLayout>
-            
+
+            <RelativeLayout
+                android:id="@+id/bg_status"
+                android:layout_width="65dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="20"
+                android:background="@drawable/status_shape"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/text_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="kết thúc"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="30"
-                android:layout_marginTop="10dp"
+                android:layout_weight="25"
+                android:layout_marginTop="5dp"
+
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_request_manager"
+                    android:id="@+id/btn_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chi Tiết"
-                    android:layout_marginRight="10dp"
+                    android:text="Hủy"
                     android:background="@drawable/btn_confirm_shape"/>
 
-                <Button
-                    android:id="@+id/btn_delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Xóa"
-                    android:textColor="@color/colorBlue"
-                    android:background="@drawable/btn_delete_white_shape"/>
-
-
             </LinearLayout>
-
-
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="42">
+            android:layout_weight="10"
+            android:gravity="center">
 
             <ImageView
-                android:id="@+id/btn_manager_request"
+                android:id="@+id/to_detail"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/btn_next_white"/>
-
-        </RelativeLayout>
+                android:background="@drawable/btn_next_white" />
+        </LinearLayout>
     </LinearLayout>
+
+
 
 </RelativeLayout>

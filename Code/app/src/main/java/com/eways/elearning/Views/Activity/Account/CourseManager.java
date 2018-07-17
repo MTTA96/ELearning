@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.eways.elearning.Adapter.Course.CourseManager.CourseAttendAdapter;
 import com.eways.elearning.Adapter.Course.CourseManager.CourseManagerAdapter;
 import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.R;
@@ -25,12 +26,13 @@ public class CourseManager extends Activity implements View.OnClickListener{
     private ArrayList<Course> mListCourseShow;
     private CourseManagerAdapter mCourseAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_manager);
 
+        declare_views();
+        handle_views();
 
     }
 
@@ -38,9 +40,6 @@ public class CourseManager extends Activity implements View.OnClickListener{
         tvPending = findViewById(R.id.tv_pending);
         tvJoined = findViewById(R.id.tv_joined);
         tvAll = findViewById(R.id.tv_all);
-
-        declare_views();
-        handle_views();
 
     }
 
@@ -96,9 +95,12 @@ public class CourseManager extends Activity implements View.OnClickListener{
         mListCourse = new ArrayList<>();
         mListCourseShow = new ArrayList<>();
 
+        mListCourseShow.add(new Course());
+
         rcCourse.setHasFixedSize(true);
         LinearLayoutManager lm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mCourseAdapter = new CourseManagerAdapter(mListCourse, this);
+        mCourseAdapter = new CourseManagerAdapter(mListCourseShow, this);
+        rcCourse.setLayoutManager(lm);
         rcCourse.setAdapter(mCourseAdapter);
     }
 

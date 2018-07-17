@@ -23,7 +23,7 @@ public class RequestVHolder extends RecyclerView.ViewHolder{
         btnCancel = itemView.findViewById(R.id.btn_cancel);
         btnConfirm = itemView.findViewById(R.id.btn_confirm);
         avarta = itemView.findViewById(R.id.iv_avarta);
-        tutorName = itemView.findViewById(R.id.tv_user_name);
+        tutorName = itemView.findViewById(R.id.student_name);
         tvMore = itemView.findViewById(R.id.tv_more);
     }
 }

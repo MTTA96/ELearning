@@ -1,19 +1,14 @@
 package com.eways.elearning.Views.Activity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import android.content.Intent;
-import android.media.Image;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import android.view.View;
@@ -21,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 
 import com.eways.elearning.Adapter.TagAdapter;
@@ -39,7 +33,6 @@ import com.eways.elearning.R;
 import com.eways.elearning.Utils.ActivityUtils;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.SupportKeys;
-import com.eways.elearning.Utils.params.GlobalParams;
 import com.eways.elearning.Views.Dialog.LoadingDialog;
 
 import java.util.ArrayList;
@@ -148,7 +141,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                     status = false;
                 }else {
                     status = true;
-                    ActivityUtils.ChangeActivity(this, CourseAttendManagerActivity.class);
+                    ActivityUtils.ChangeActivity(this, CourseRequestManagerActivity.class);
                 }
                 userPresenter.sendRequestToCourse(course.getIdCourse(), null, this);
                 break;

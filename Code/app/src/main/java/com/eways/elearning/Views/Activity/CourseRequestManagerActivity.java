@@ -11,7 +11,7 @@ import com.eways.elearning.R;
 
 import java.util.ArrayList;
 
-public class CourseAttendManagerActivity extends Activity {
+public class CourseRequestManagerActivity extends Activity {
     RecyclerView rcCourseAttend;
     CourseAttendAdapter mCourseAttendAdapter;
     ArrayList<RequestSend> mListRequestSend;
@@ -20,7 +20,7 @@ public class CourseAttendManagerActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_attend_manager);
+        setContentView(R.layout.activity_course_request_manager);
 
         declare_views();
         handle_views();

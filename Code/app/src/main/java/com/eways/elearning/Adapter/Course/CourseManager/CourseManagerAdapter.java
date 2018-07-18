@@ -10,9 +10,11 @@ import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.ActivityUtils;
 import com.eways.elearning.Utils.Handler.ImageHandler;
+import com.eways.elearning.Views.Activity.AttendancesManagerActivity;
 import com.eways.elearning.Views.Activity.RequestManagerActivity;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by ADMIN on 7/17/2018.
@@ -49,7 +51,12 @@ public class CourseManagerAdapter extends RecyclerView.Adapter<CourseManagerVHol
         holder.btnRequestManager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityUtils.ChangeActivity(mActivity, RequestManagerActivity.class);
+                if (!CheckTimeStart(mCourse.getTimeStart())){
+                    ActivityUtils.ChangeActivity(mActivity, RequestManagerActivity.class);
+                }else {
+                    ActivityUtils.ChangeActivity(mActivity, AttendancesManagerActivity.class);
+
+                }
             }
         });
     }
@@ -57,5 +64,26 @@ public class CourseManagerAdapter extends RecyclerView.Adapter<CourseManagerVHol
     @Override
     public int getItemCount() {
         return mListCourse.size();
+    }
+
+    private boolean CheckTimeStart(String time){
+        String[] timeArray = time.split("-");
+        int[] timeInt = new int[3];
+        for (int i = 0; i < timeArray.length; i++){
+            timeInt[i] = Integer.parseInt(timeArray[i]);
+        }
+
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int month = Calendar.getInstance().get(Calendar.MONTH);
+        int date = Calendar.getInstance().get(Calendar.DATE);
+
+        if (timeInt[2] >= year){
+            if (timeInt[1] > month){
+                if (timeInt[0] > date){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

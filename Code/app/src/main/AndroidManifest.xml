@@ -62,8 +62,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".Views.Activity.CourseAttendManagerActivity" />
-        <activity android:name=".Views.Activity.RequestManagerActivity"></activity>
+        <activity android:name=".Views.Activity.CourseRequestManagerActivity" />
+        <activity android:name=".Views.Activity.RequestManagerActivity" />
+        <activity android:name=".Views.Activity.AttendancesManagerActivity"></activity>
     </application>
 
 </manifest>

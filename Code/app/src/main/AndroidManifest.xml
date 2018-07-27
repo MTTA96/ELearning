@@ -27,6 +27,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".Views.Activity.TestActivity" />
         <activity android:name=".Views.Activity.HomeActivity" />
@@ -36,7 +37,9 @@
         <activity android:name=".Views.Activity.Account.CourseManager" />
         <activity android:name=".Views.Activity.Account.RequestActivity" />
         <activity android:name=".Views.Activity.Account.UserManagerActivity" />
-        <activity android:name=".Views.Activity.FilterActivity" />
+        <activity
+            android:name=".Views.Activity.FilterActivity"
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity android:name=".Views.Activity.CreateActivity" />
         <!-- <<<<<<< HEAD -->
         <!-- <activity android:name= ".Views.Activity.InfoUserViewerActivity"/> -->
@@ -49,7 +52,7 @@
         <!-- &gt;>>>>>> dc9ef1a378ec70773c2aa2f1fc765f45a94531a0 -->
         <activity
             android:name=".Views.Activity.PopUpAddImageActivity"
-            android:theme="@android:style/Theme.Material.Light.Dialog" />
+            android:theme="@style/Base.V7.ThemeOverlay.AppCompat.Dialog" />
 
         <service android:name=".Notification.FireBaseMessagingService">
             <intent-filter>
@@ -64,7 +67,12 @@
 
         <activity android:name=".Views.Activity.CourseRequestManagerActivity" />
         <activity android:name=".Views.Activity.RequestManagerActivity" />
-        <activity android:name=".Views.Activity.AttendancesManagerActivity"></activity>
+        <activity android:name=".Views.Activity.AttendancesManagerActivity" />
+        <activity android:name=".Views.Activity.CreateCourseActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar">
+
+
+        </activity>
     </application>
 
 </manifest>

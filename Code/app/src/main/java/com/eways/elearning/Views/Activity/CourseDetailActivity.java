@@ -136,7 +136,6 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.btn_request_send:
 
-                SetStatusSendRQ(!status);
                 if (status){
                     status = false;
                 }else {
@@ -204,13 +203,13 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         if (status){
             tvSendRequest.setText("Hủy");
             tvSendRequest.setTextColor(this.getColor(R.color.colorBlue));
-            bgSendRequest.setBackgroundResource(R.drawable.cancel_request);
+//            bgSendRequest.setBackgroundResource(R.drawable.cancel_request);
 
         }else {
             tvSendRequest.setText("Gửi yêu cầu");
             tvSendRequest.setTextColor(this.getColor(R.color.White));
 
-            bgSendRequest.setBackgroundResource(R.drawable.send_request);
+//            bgSendRequest.setBackgroundResource(R.drawable.send_request);
         }
 
         tvInfoMore = findViewById(R.id.tv_info_more);

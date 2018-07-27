@@ -131,7 +131,7 @@
     <dimen name="view_tao_khoa_hoc_margin_top">25dp</dimen>
     <dimen name="button_thu_margin_top">10dp</dimen>
     <dimen name="button_buoi_va_thu_margin_left">10dp</dimen>
-    <dimen name="button_buoi_va_thu_width">45dp</dimen>
+    <dimen name="button_buoi_va_thu_width">43dp</dimen>
     <dimen name="button_buoi_va_thu_height">30dp</dimen>
     <dimen name="text_thong_tin_them_height">120dp</dimen>
 

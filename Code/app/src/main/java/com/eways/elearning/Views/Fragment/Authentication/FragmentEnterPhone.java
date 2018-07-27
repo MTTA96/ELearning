@@ -107,7 +107,7 @@ public class FragmentEnterPhone extends Fragment implements View.OnClickListener
         int status = bundle.getInt(null);
 
         // If phone is not available
-        if (status == 0) {
+        if (status != 0) {
             Toast.makeText(getContext(), R.string.msg_existing_user, Toast.LENGTH_LONG).show();
             return;
         }

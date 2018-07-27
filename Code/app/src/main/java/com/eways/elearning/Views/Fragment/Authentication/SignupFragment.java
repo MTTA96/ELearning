@@ -68,7 +68,6 @@ public class SignupFragment extends Fragment implements View.OnClickListener, Ca
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_next:
-//                clickNext();
                 break;
 
             case R.id.btn_back:
@@ -77,24 +76,6 @@ public class SignupFragment extends Fragment implements View.OnClickListener, Ca
         }
     }
 
-
-
-//    public void clickNext(){
-//        if (curPosition == listFragment.size() - 1) {
-//            startActivity(new Intent(getActivity(), WelcomeActivity.class));
-//            getActivity().overridePendingTransition(R.anim.slide_from_left, R.anim.slide_from_left);
-//        } else {
-//            if (curPosition + 1 == 1){
-//                FragmentVerify.callParentFragment = this;
-//                btnNext.setVisibility(View.INVISIBLE);
-//            }else {
-//                btnNext.setVisibility(View.VISIBLE);
-//            }
-//            fragmentHandler.changeFragment(listFragment.get(curPosition + 1), R.anim.slide_from_left, 0);
-//            curPosition++;
-//
-//        }
-//    }
 
     public void clickBack(){
         fragmentHandler.deleteCurrentFragment();

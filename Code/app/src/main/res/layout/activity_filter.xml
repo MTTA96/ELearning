@@ -21,33 +21,6 @@
             android:paddingLeft="@dimen/tao_khoa_hoc_horizontal_padding"
             android:paddingRight="@dimen/tao_khoa_hoc_horizontal_padding">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/white_rectangle_corner_main_color_stroke_shape">
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Thoát"
-                    android:textColor="@color/colorMain"
-                    android:background="@null"/>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorLightScrim"/>
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Xác nhận"
-                    android:textColor="@color/colorMain"
-                    android:background="@null"/>
-            </LinearLayout>
-
             <!-- Lĩnh vực -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -439,10 +412,44 @@
                 </LinearLayout>
             </LinearLayout>
 
+
+
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="60dp" />
+                android:layout_height="80dp" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/white_rectangle_corner_main_color_stroke_shape">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Thoát"
+            android:textColor="@color/colorMain"
+            android:background="@null"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorLightScrim"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Xác nhận"
+            android:textColor="@color/colorMain"
+            android:background="@null"/>
+    </LinearLayout>
 
 </RelativeLayout>

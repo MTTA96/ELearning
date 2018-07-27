@@ -8,6 +8,6 @@
     tools:context="com.eways.elearning.Views.Activity.TestActivity">
 
     <include
-        layout="@layout/fragment_home"/>
+        layout="@layout/activity_create_course"/>
 
 </RelativeLayout>

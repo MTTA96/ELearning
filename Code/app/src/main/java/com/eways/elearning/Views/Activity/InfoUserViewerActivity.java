@@ -63,7 +63,7 @@ public class InfoUserViewerActivity extends FragmentActivity implements UserCall
                 InfoUserViewerActivity.this.finish();
             }
         });
-        mToolbar.setBackgroundColor(getColor(R.color.colorBlue));
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.colorBlue));
     }
 
     private void SetUpViewPager(){

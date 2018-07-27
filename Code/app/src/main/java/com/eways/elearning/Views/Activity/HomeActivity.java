@@ -122,7 +122,7 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
         fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKeys.HOME_FRAGMENT_TAG, 0, 0);
         currentSearchType = SupportKeys.SEARCH_SUBJECTS;
 
-        mNavigationView.setBackgroundColor(getColor(R.color.colorWhite));
+        mNavigationView.setBackgroundColor(getResources().getColor(R.color.colorWhite));
 
 
 
@@ -299,7 +299,7 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
         ivMenu.setVisibility(View.GONE);
         etSearch.setVisibility(View.GONE);
         ivBack.setVisibility(View.VISIBLE);
-        bgToolBar.setBackgroundColor(getColor(R.color.colorBlue));
+        bgToolBar.setBackgroundColor(getResources().getColor(R.color.colorBlue));
     }
 
     public void ShowSearchBar(){

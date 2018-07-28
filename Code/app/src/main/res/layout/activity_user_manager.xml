@@ -147,7 +147,7 @@
                                 <ImageView
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
-                                    android:background="@mipmap/ic_launcher" />
+                                    android:background="@drawable/icn_info" />
                             </RelativeLayout>
 
                             <TextView
@@ -193,7 +193,7 @@
                                 <ImageView
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
-                                    android:background="@mipmap/ic_launcher" />
+                                    android:background="@drawable/icn_attendance" />
                             </RelativeLayout>
 
                             <TextView
@@ -240,7 +240,7 @@
                                 <ImageView
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
-                                    android:background="@mipmap/ic_launcher" />
+                                    android:background="@drawable/icn_search_tutor" />
                             </RelativeLayout>
 
                             <TextView
@@ -295,7 +295,7 @@
                                 <ImageView
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
-                                    android:background="@mipmap/ic_launcher" />
+                                    android:background="@drawable/icn_logout" />
                             </RelativeLayout>
 
                             <TextView

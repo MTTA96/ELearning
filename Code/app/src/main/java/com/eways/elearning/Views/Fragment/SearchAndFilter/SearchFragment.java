@@ -90,12 +90,12 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_search_results, container, false);
         tutorResultView = root.findViewById(R.id.tutor_search_result_view);
-        courseResultView = root.findViewById(R.id.courses_search_result_view);
+//        courseResultView = root.findViewById(R.id.courses_search_result_view);
         rvTutorResults = root.findViewById(R.id.tutor_search_results_recycler_view);
-        rvCourseResults = root.findViewById(R.id.course_search_results_recycler_view);
-        divider = root.findViewById(R.id.divider_search_result);
+//        rvCourseResults = root.findViewById(R.id.course_search_results_recycler_view);
+//        divider = root.findViewById(R.id.divider_search_result);
 
-        root.findViewById(R.id.button_load_more_course_search_results).setOnClickListener(this);
+//        root.findViewById(R.id.button_load_more_course_search_results).setOnClickListener(this);
         root.findViewById(R.id.button_load_more_tutor_search_results).setOnClickListener(this);
 
         // Setup results list
@@ -113,11 +113,11 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
         rvTutorResults.setNestedScrollingEnabled(false);
         rvTutorResults.setAdapter(userListAdapter);
 
-        courseListAdapter = new CourseListAdapter(getContext(), courseList, false);
-        rvCourseResults.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        rvCourseResults.hasFixedSize();
-        rvCourseResults.setNestedScrollingEnabled(false);
-        rvCourseResults.setAdapter(courseListAdapter);
+//        courseListAdapter = new CourseListAdapter(getContext(), courseList, false);
+//        rvCourseResults.setLayoutManager(new GridLayoutManager(getContext(), 1));
+//        rvCourseResults.hasFixedSize();
+//        rvCourseResults.setNestedScrollingEnabled(false);
+//        rvCourseResults.setAdapter(courseListAdapter);
     }
 
     /**
@@ -128,14 +128,14 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
      */
     private void updateResultViewVisibility() {
 
-        courseResultView.setVisibility(courseList.size() > 0 ? View.VISIBLE : View.GONE);
+//        courseResultView.setVisibility(courseList.size() > 0 ? View.VISIBLE : View.GONE);
         tutorResultView.setVisibility(tutorList.size() > 0 ? View.VISIBLE : View.GONE);
 
         if (courseList.size() != 0 && tutorList.size() != 0) {
-            divider.setVisibility(View.VISIBLE);
+//            divider.setVisibility(View.VISIBLE);
         } else {
             if (courseList.size() == 0) {
-                divider.setVisibility(View.GONE);
+//                divider.setVisibility(View.GONE);
                 return;
             }
             if (tutorList.size() == 0) {
@@ -164,7 +164,7 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
         courseList.clear();
         courseList.addAll((ArrayList<Course>) bundle.getSerializable("param2"));
 
-        courseListAdapter.notifyDataSetChanged();
+//        courseListAdapter.notifyDataSetChanged();
         userListAdapter.notifyDataSetChanged();
         updateResultViewVisibility();
 
@@ -176,9 +176,9 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
         switch (v.getId()) {
             case R.id.button_load_more_tutor_search_results:
                 break;
-            case R.id.button_load_more_course_search_results:
-                fragmentHandler.changeFragment(CourseListFragment.newInstance(courseList.get(0).getIdSubject()), SupportKeys.COURSE_LIST_FRAGMENT_TAG, R.anim.slide_from_left, R.anim.slide_out_top);
-                break;
+//            case R.id.button_load_more_course_search_results:
+//                fragmentHandler.changeFragment(CourseListFragment.newInstance(courseList.get(0).getIdSubject()), SupportKeys.COURSE_LIST_FRAGMENT_TAG, R.anim.slide_from_left, R.anim.slide_out_top);
+//                break;
         }
     }
 

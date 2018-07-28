@@ -22,15 +22,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".Views.Activity.Account.AuthenticationActivity">
+
+
+        </activity>
+        <activity android:name=".Views.Activity.TestActivity" />
+        <activity android:name=".Views.Activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".Views.Activity.TestActivity" />
-        <activity android:name=".Views.Activity.HomeActivity" />
         <activity android:name=".Views.Activity.CourseDetailActivity" />
         <activity android:name=".Views.Activity.WelcomeActivity" />
         <activity android:name=".Views.Activity.SplashActivity" />

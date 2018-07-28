@@ -8,17 +8,19 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
             <!-- Tutors list -->
             <LinearLayout
                 android:id="@+id/tutor_search_result_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <!-- Title -->
@@ -31,13 +33,15 @@
                     android:text="Gia sư"
                     android:textColor="@color/colorGrey"
                     android:textSize="@dimen/title_text_size"
-                    android:textStyle="bold|italic" />
+                    android:textStyle="bold|italic"
+                    android:visibility="gone"/>
 
                 <!--Divider-->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/colorScrim" />
+                    android:background="@color/colorScrim"
+                    android:visibility="gone"/>
 
                 <!-- List -->
                 <android.support.v7.widget.RecyclerView
@@ -49,63 +53,13 @@
                 <Button
                     android:id="@+id/button_load_more_tutor_search_results"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:background="@android:color/white"
                     android:text="Xem thêm"
+                    
                     android:textColor="@color/colorMain" />
             </LinearLayout>
 
-
-            <!--Divider-->
-            <View
-                android:id="@+id/divider_search_result"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/colorScrim" />
-
-            <!-- Courses list -->
-            <LinearLayout
-                android:id="@+id/courses_search_result_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-
-                <!-- Title -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Khóa học"
-                    android:textColor="@color/colorGrey"
-                    android:textSize="@dimen/title_text_size"
-                    android:textStyle="bold|italic" />
-
-                <!--Divider-->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/colorScrim" />
-
-                <!-- List -->
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/course_search_results_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <!-- Load more -->
-                <Button
-                    android:id="@+id/button_load_more_course_search_results"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/white"
-                    android:text="Xem thêm"
-                    android:textColor="@color/colorMain" />
-            </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

@@ -6,10 +6,12 @@
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     android:orientation="horizontal"
-    android:paddingBottom="@dimen/vertical_padding"
-    android:paddingLeft="@dimen/horizontal_padding"
-    android:paddingRight="@dimen/horizontal_padding"
-    android:paddingTop="@dimen/vertical_padding">
+    android:elevation="10dp"
+    android:background="#f9f9f9"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp">
 
     <!--User avatar-->
     <LinearLayout
@@ -65,6 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/MarginTop_Tv_KhoaHoc"
                     android:text="@string/Xem_Mon"
+                    android:visibility="invisible"
                     android:textColor="@color/colorGrey" />
 
                 <!--Rating-->
@@ -88,12 +91,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:background="@drawable/white_rectangle_corner_main_color_stroke_shape"
             android:paddingHorizontal="@dimen/min_horizontal_padding"
             android:text="Gửi yêu cầu"
-            android:textColor="@color/colorGrey" />
+            android:textColor="@color/colorWhite" />
     </LinearLayout>
 
 </LinearLayout>

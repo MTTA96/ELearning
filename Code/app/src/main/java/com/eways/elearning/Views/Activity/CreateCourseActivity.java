@@ -5,13 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.ViewUtils;
 
 public class CreateCourseActivity extends Activity {
-    View formCreate;
+    EditText etSubject, etAddress, etTuition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +23,7 @@ public class CreateCourseActivity extends Activity {
         handle_views();
     }
 
-    private void declare_views(){
-        formCreate = findViewById(R.id.form_create);
-    }
+    private void declare_views(){}
 
     private void handle_views(){
     }

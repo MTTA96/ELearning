@@ -14,14 +14,14 @@ public class ServerUrl {
     /** ACCOUNT */
     public static final String UserAPIRoot = ServerAPIURL + "User/";
 
-    public static final String LOGIN_URL = UserAPIRoot + "Tutor/TutorLogin.php";
+    public static final String LOGIN_URL = UserAPIRoot + "Student/StudentLogin.php";
     public static final String SIGN_UP_URL = UserAPIRoot + "AddNewUser.php";
     public static final String GET_USER_INFO_URL = UserAPIRoot + "Tutor/GetTutorByUid.php";
     public static final String CHECK_PHONE_NUMBER_URL = UserAPIRoot + "UserIsExisted.php";
     public static final String ADD_USER_FAVORITE_URL = UserAPIRoot + "FavoriteSubject/AddListFavoriteSubject.php";
     //public static final String UPDATE_FAVORITE_URL = UserAPIRoot + "FavoriteSubject/";
     public static final String GET_USER_FAVORITE_SUBJECTS = ServerAPIURL + "FavoriteSubject/GetFavoriteSubjectByUid.php";
-    public static final String SEND_REQUEST_URL = ServerAPIURL + "Requestion/AddNewRequestion.php";
+    public static final String SEND_REQUEST_URL = ServerAPIURL + "RequisitionCourse/AddNewRequisitionCourse.php";
 
     /** Tutors */
     public static final String TOP_TUTORS = ServerAPIURL + "Home/TopTutor.php";

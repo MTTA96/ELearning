@@ -349,6 +349,9 @@ public class User {
         userServicesImp.checkPhoneNumber(phoneNumber).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+
+                Log.d("CheckPhone: request -", call.request().toString());
+
                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("CheckPhoneNumberModel:", "connect failed");
@@ -456,6 +459,8 @@ public class User {
         });
     }
 
+    /** Send request to tutor */
+
     public static void sendRequest(String jsonRequest, final SendRequestCallback requestCallBack) {
 
         UserServicesImp userServicesImp = ApiUtils.userServices();
@@ -470,7 +475,9 @@ public class User {
                 }
 
                 // Prepare data
-                if (Integer.parseInt(response.body().getStatus()) == 1)
+                int status = Integer.parseInt(response.body().getStatus());
+
+                if (status == 1)
                     requestCallBack.sendRequestCallback(SupportKeys.SUCCESS_CODE, null);
                 else
                     requestCallBack.sendRequestCallback(SupportKeys.FAILED_CODE, null);

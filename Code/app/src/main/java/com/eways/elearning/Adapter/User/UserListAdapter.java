@@ -19,6 +19,7 @@ import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Activity.InfoUserViewerActivity;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by zzzzz on 5/27/2018.
@@ -30,10 +31,12 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
     private ImageHandler imageHandler;
     private User user;
     private UserPresenter userPresenter;
+    private String subjectName = "";
 
-    public UserListAdapter(Context context, ArrayList<User> list) {
+    public UserListAdapter(Context context, ArrayList<User> list, String subjectName) {
         this.context = context;
         this.list = list;
+        this.subjectName = subjectName;
         imageHandler = new ImageHandler(context);
         userPresenter = new UserPresenter(context);
     }
@@ -112,10 +115,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
                 context.startActivity(userInfoIntent);
                 break;
             case R.id.btn_request_tutor_item:
-
-                //****************** Change subject name when server updated model user
-
-                userPresenter.sendRequestToCourse(null, "av", this);
+                userPresenter.sendRequestToTutor(subjectName, user.getUid(), this);
                 break;
         }
     }

@@ -1,4 +1,4 @@
-package com.eways.elearning.Views.Activity;
+package com.eways.elearning.Views.Activity.Course;
 
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;

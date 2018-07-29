@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import com.eways.elearning.Model.Course.Course;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
-import com.eways.elearning.Views.Activity.CourseDetailActivity;
+import com.eways.elearning.Views.Activity.Course.CourseDetailActivity;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;

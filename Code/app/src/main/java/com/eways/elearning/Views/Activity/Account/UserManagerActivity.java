@@ -14,7 +14,7 @@ import com.eways.elearning.R;
 import com.eways.elearning.Utils.ActivityUtils;
 import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKeys;
-import com.eways.elearning.Views.Activity.CourseRequestManagerActivity;
+import com.eways.elearning.Views.Activity.Course.CourseRequestManagerActivity;
 import com.eways.elearning.Views.Dialog.LoadingDialog;
 
 public class UserManagerActivity extends Activity implements View.OnClickListener, DataCallBack {

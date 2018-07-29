@@ -33,7 +33,7 @@
         <activity android:name=".Views.Activity.TestActivity" />
         <activity android:name=".Views.Activity.HomeActivity">
         </activity>
-        <activity android:name=".Views.Activity.CourseDetailActivity" />
+        <activity android:name=".Views.Activity.Course.CourseDetailActivity" />
         <activity android:name=".Views.Activity.WelcomeActivity" />
         <activity android:name=".Views.Activity.SplashActivity" />
         <activity android:name=".Views.Activity.Account.CourseManager" />
@@ -42,7 +42,7 @@
         <activity
             android:name=".Views.Activity.FilterActivity"
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity android:name=".Views.Activity.CreateActivity" />
+        <activity android:name=".Views.Activity.Course.CreateActivity" />
         <!-- <<<<<<< HEAD -->
         <!-- <activity android:name= ".Views.Activity.InfoUserViewerActivity"/> -->
         <!-- <activity android:name=".Views.Activity.SpecialDocumentActivity"/> -->
@@ -67,10 +67,10 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".Views.Activity.CourseRequestManagerActivity" />
+        <activity android:name=".Views.Activity.Course.CourseRequestManagerActivity" />
         <activity android:name=".Views.Activity.RequestManagerActivity" />
         <activity android:name=".Views.Activity.AttendancesManagerActivity" />
-        <activity android:name=".Views.Activity.CreateCourseActivity"
+        <activity android:name=".Views.Activity.Course.CreateCourseActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar">
 
 

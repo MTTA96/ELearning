@@ -1,4 +1,4 @@
-package com.eways.elearning.Views.Activity;
+package com.eways.elearning.Views.Activity.Course;
 
 import android.annotation.SuppressLint;
 
@@ -33,6 +33,7 @@ import com.eways.elearning.R;
 import com.eways.elearning.Utils.ActivityUtils;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.SupportKeys;
+import com.eways.elearning.Views.Activity.InfoUserViewerActivity;
 import com.eways.elearning.Views.Dialog.LoadingDialog;
 
 import java.util.ArrayList;
@@ -142,7 +143,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                     status = true;
                     ActivityUtils.ChangeActivity(this, CourseRequestManagerActivity.class);
                 }
-                userPresenter.sendRequestToCourse(course.getIdCourse(), null, this);
+                userPresenter.sendRequestToTutor(course.getIdCourse(), null, this);
                 break;
 
             case R.id.tv_more:

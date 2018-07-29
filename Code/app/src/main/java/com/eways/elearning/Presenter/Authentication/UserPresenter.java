@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 
 /**
@@ -55,7 +56,7 @@ public class UserPresenter implements UserCallBack, DataCallBack, CreateCourseCa
 
     }
 
-    public void sendRequestToCourse(String courseId, String subjectName, SendRequestCallback sendRequestCallback) {
+    public void sendRequestToTutor(String subjectName, String tutorId, SendRequestCallback sendRequestCallback) {
 
         this.sendRequestCallback = sendRequestCallback;
 
@@ -66,26 +67,48 @@ public class UserPresenter implements UserCallBack, DataCallBack, CreateCourseCa
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
         String sentDate = df.format(c);
 
-        Request request = new Request(courseId, sharedPreferencesUtils.getString(SharedPrefSupportKeys.UID), sentDate, "", "");
-
+//        Request request = new Request(courseId, sharedPreferencesUtils.getString(SharedPrefSupportKeys.UID), sentDate, "", "");
+        Request request = new Request(String.valueOf(UUID.randomUUID()),
+                sharedPreferencesUtils.getString(SharedPrefSupportKeys.UID),
+                tutorId,
+                sentDate,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+                );
         Gson gson = new Gson();
         String jsonRequest = gson.toJson(request);
 
         // Call API
 
-        if (courseId != null) {
-            User.sendRequest(jsonRequest, this);
-        } else {
+        User.sendRequest(jsonRequest, this);
 
-            Course newCourse = new Course();
-            newCourse.setSubjectName(subjectName);
-
-            String jsonCourse = gson.toJson(newCourse);
-
-            Course.createCourse(jsonCourse, this);
-        }
+//        if (courseId != null) {
+//            User.sendRequest(jsonRequest, this);
+//        } else {
+//
+//            Course newCourse = new Course();
+//            newCourse.setSubjectName(subjectName);
+//
+//            String jsonCourse = gson.toJson(newCourse);
+//
+//            Course.createCourse(jsonCourse, this);
+//        }
 
     }
+
+
+    /** ----- HANDLE RESULT FROM DB ----- */
+
+    /** Get user info */
 
     @Override
     public void userCallBack(int errorCode, User user) {
@@ -99,6 +122,8 @@ public class UserPresenter implements UserCallBack, DataCallBack, CreateCourseCa
 
     }
 
+    /** Sign out */
+
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
         // handle error
@@ -110,6 +135,8 @@ public class UserPresenter implements UserCallBack, DataCallBack, CreateCourseCa
         // handle data
         dataCallBack.dataCallBack(resultCode, bundle);
     }
+
+    /** Create course */
 
     @Override
     public void createCourseCallback(int errorCode, String msg) {
@@ -123,6 +150,8 @@ public class UserPresenter implements UserCallBack, DataCallBack, CreateCourseCa
         User.sendRequest(msg, this);
 
     }
+
+    /** Send request */
 
     @Override
     public void sendRequestCallback(int resultCode, @Nullable String msg) {

@@ -153,6 +153,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
 
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
+        loadingDialog.dismiss();
         // Handle error
         if (resultCode == SupportKeys.FAILED_CODE) {
             Toast.makeText(getContext(), R.string.msg_sign_in_failed, Toast.LENGTH_SHORT).show();
@@ -164,7 +165,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
         int status = Integer.parseInt(bundle.getString(null));
         if (status == 0) {
             // Move to home
-            loadingDialog.dismiss();
             Intent homeIntent = new Intent(getActivity(), HomeActivity.class);
             startActivity(homeIntent);
             getActivity().finish();

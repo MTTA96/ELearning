@@ -9,44 +9,92 @@ import com.google.gson.annotations.SerializedName;
 
 public class Request {
 
-    @SerializedName("IdCourse")
+    @SerializedName("IdRequisitionCourse")
     @Expose
-    private String idCourse;
-    @SerializedName("Uid")
+    private String idRequisitionCourse;
+    @SerializedName("UidStudent")
     @Expose
-    private String uid;
+    private String uidStudent;
+    @SerializedName("UidTutor")
+    @Expose
+    private String uidTutor;
     @SerializedName("SentDate")
     @Expose
     private String sentDate;
-    @SerializedName("Status")
+    @SerializedName("NameCourse")
     @Expose
-    private String status;
-    @SerializedName("Message")
+    private String nameCourse;
+    @SerializedName("IdSubject")
     @Expose
-    private String message;
+    private String idSubject;
+    @SerializedName("Tuition")
+    @Expose
+    private String tuition;
+    @SerializedName("Address")
+    @Expose
+    private String address;
+    @SerializedName("NumberOfSession")
+    @Expose
+    private String numberOfSession;
+    @SerializedName("TimePerSession")
+    @Expose
+    private String timePerSession;
+    @SerializedName("StudentNumber")
+    @Expose
+    private String studentNumber;
+    @SerializedName("Schedule")
+    @Expose
+    private String schedule;
+    @SerializedName("Description")
+    @Expose
+    private String description;
+    @SerializedName("TutorConfirm")
+    @Expose
+    private String tutorConfirm;
+    @SerializedName("Comment")
+    @Expose
+    private String comment;
 
-    public Request(String idCourse, String uid, String sentDate, String status, String message) {
-        this.idCourse = idCourse;
-        this.uid = uid;
+    public Request(String idRequisitionCourse, String uidStudent, String uidTutor, String sentDate, String nameCourse, String idSubject, String tuition, String address, String numberOfSession, String timePerSession, String studentNumber, String schedule, String description, String tutorConfirm, String comment) {
+        this.idRequisitionCourse = idRequisitionCourse;
+        this.uidStudent = uidStudent;
+        this.uidTutor = uidTutor;
         this.sentDate = sentDate;
-        this.status = status;
-        this.message = message;
+        this.nameCourse = nameCourse;
+        this.idSubject = idSubject;
+        this.tuition = tuition;
+        this.address = address;
+        this.numberOfSession = numberOfSession;
+        this.timePerSession = timePerSession;
+        this.studentNumber = studentNumber;
+        this.schedule = schedule;
+        this.description = description;
+        this.tutorConfirm = tutorConfirm;
+        this.comment = comment;
     }
 
-    public String getIdCourse() {
-        return idCourse;
+    public String getIdRequisitionCourse() {
+        return idRequisitionCourse;
     }
 
-    public void setIdCourse(String idCourse) {
-        this.idCourse = idCourse;
+    public void setIdRequisitionCourse(String idRequisitionCourse) {
+        this.idRequisitionCourse = idRequisitionCourse;
     }
 
-    public String getUid() {
-        return uid;
+    public String getUidStudent() {
+        return uidStudent;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setUidStudent(String uidStudent) {
+        this.uidStudent = uidStudent;
+    }
+
+    public String getUidTutor() {
+        return uidTutor;
+    }
+
+    public void setUidTutor(String uidTutor) {
+        this.uidTutor = uidTutor;
     }
 
     public String getSentDate() {
@@ -57,20 +105,91 @@ public class Request {
         this.sentDate = sentDate;
     }
 
-    public String getStatus() {
-        return status;
+    public String getNameCourse() {
+        return nameCourse;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setNameCourse(String nameCourse) {
+        this.nameCourse = nameCourse;
     }
 
-    public String getMessage() {
-        return message;
+    public String getIdSubject() {
+        return idSubject;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setIdSubject(String idSubject) {
+        this.idSubject = idSubject;
     }
 
+    public String getTuition() {
+        return tuition;
+    }
+
+    public void setTuition(String tuition) {
+        this.tuition = tuition;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getNumberOfSession() {
+        return numberOfSession;
+    }
+
+    public void setNumberOfSession(String numberOfSession) {
+        this.numberOfSession = numberOfSession;
+    }
+
+    public String getTimePerSession() {
+        return timePerSession;
+    }
+
+    public void setTimePerSession(String timePerSession) {
+        this.timePerSession = timePerSession;
+    }
+
+    public String getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(String studentNumber) {
+        this.studentNumber = studentNumber;
+    }
+
+    public String getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTutorConfirm() {
+        return tutorConfirm;
+    }
+
+    public void setTutorConfirm(String tutorConfirm) {
+        this.tutorConfirm = tutorConfirm;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }

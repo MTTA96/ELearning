@@ -47,14 +47,13 @@ public interface UserServicesImp {
     Call<BaseResponse> addUserFavoriteUrl(@Field("uID") String data,
                                           @Field("listFavoriteSubject") ArrayList<String> listFavorite);
 
-
     /** Get favorite subject */
     @GET(ServerUrl.GET_USER_FAVORITE_SUBJECTS)
     Call<UserFavoriteSubjectResponse> getUserFavoriteSubjects(@Query("Uid") String uID);
 
-    /** Add favorite */
+    /** Send requisition */
     @POST(ServerUrl.SEND_REQUEST_URL)
     @FormUrlEncoded
-    Call<BaseResponse> sendRequest(@Field("mydata") String myData);
+    Call<BaseResponse> sendRequest(@Field("request ") String request);
 
 }

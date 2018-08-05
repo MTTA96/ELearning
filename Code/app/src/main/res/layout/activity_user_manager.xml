@@ -201,7 +201,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="80"
-                                android:text="Khóa học tham gia"
+                                android:text="Quản lý yêu cầu"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="18.5sp" />
 
@@ -219,10 +219,12 @@
                         android:layout_height="0dp"
                         android:layout_weight="2" />
 
+                    <!--Tìm gia su-->
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="20">
+                        android:layout_weight="20"
+                        android:visibility="gone">
 
                         <LinearLayout
                             android:layout_width="match_parent"

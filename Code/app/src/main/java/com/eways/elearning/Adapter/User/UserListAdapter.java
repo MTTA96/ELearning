@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
     private UserPresenter userPresenter;
     private String subjectName = "";
 
+
     public UserListAdapter(Context context, ArrayList<User> list, String subjectName) {
         this.context = context;
         this.list = list;
@@ -59,7 +61,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
 
     @Override
     public int getItemCount() {
-        return list.size() <= 5 ? list.size():5;
+        return list.size();
+//        return list.size() <= 5 ? list.size():5;
     }
 
     public void loadData(UserViewHolder holder, User user) {
@@ -101,8 +104,11 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
 //        {
 //            holder.tvMon.setText(Html.fromHtml("Tùy ý"));
 //        }
-//        String mon = "<b>Môn: </b>" + " " + course.getSubjectName();
-//        holder.tvMon.setText(Html.fromHtml(mon));
+        String mon = "<b>Môn: </b>" + " " + subjectName;
+        holder.tvSubject.setText(Html.fromHtml(mon));
+
+        String skype = "<b>Skype: </b>" + " " + user.getSkype();
+        holder.tvSkype.setText(Html.fromHtml(skype));
 
     }
 

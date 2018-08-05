@@ -59,6 +59,8 @@ public class Banner {
         eLearningServicesImp.getBanners().enqueue(new Callback<ArrayList<Banner>>() {
             @Override
             public void onResponse(Call<ArrayList<Banner>> call, Response<ArrayList<Banner>> response) {
+
+                Log.i("GetBannerModel:", call.request().toString());
                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("GetBannerModel:", "connect failed");
@@ -72,6 +74,7 @@ public class Banner {
 
             @Override
             public void onFailure(Call<ArrayList<Banner>> call, Throwable t) {
+                Log.i("GetBannerModel:", call.request().toString());
                 Log.d("GetBannerModel:", t.getLocalizedMessage());
                 dataCallBack.bannersCallBack(SupportKeys.FAILED_CODE, null);
             }

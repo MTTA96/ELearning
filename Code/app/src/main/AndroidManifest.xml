@@ -40,8 +40,7 @@
         <activity android:name=".Views.Activity.Account.RequestActivity" />
         <activity android:name=".Views.Activity.Account.UserManagerActivity" />
         <activity
-            android:name=".Views.Activity.FilterActivity"
-            android:theme="@style/Theme.AppCompat.Dialog" />
+            android:name=".Views.Activity.FilterActivity" />
         <activity android:name=".Views.Activity.Course.CreateActivity" />
         <!-- <<<<<<< HEAD -->
         <!-- <activity android:name= ".Views.Activity.InfoUserViewerActivity"/> -->

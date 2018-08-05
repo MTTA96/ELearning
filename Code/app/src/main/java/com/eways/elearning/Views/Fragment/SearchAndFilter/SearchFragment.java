@@ -148,7 +148,7 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
     }
 
     /**
-     * HANDLE DATA FROM SEVER
+     * HANDLE DATA FROM SERVER
      */
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
@@ -162,8 +162,8 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
         tutorList.clear();
         tutorList.addAll((ArrayList<User>) bundle.getSerializable("param1"));
 
-        courseList.clear();
-        courseList.addAll((ArrayList<Course>) bundle.getSerializable("param2"));
+//        courseList.clear();
+//        courseList.addAll((ArrayList<Course>) bundle.getSerializable("param2"));
 
 //        courseListAdapter.notifyDataSetChanged();
         userListAdapter.notifyDataSetChanged();

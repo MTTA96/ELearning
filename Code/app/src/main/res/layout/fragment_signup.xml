@@ -52,7 +52,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_weight="10"
-        android:text="Tiếp theo"
+        android:text="Tiếp tục"
         android:textStyle="bold"
         android:textSize="15sp"
         android:background="@drawable/btn_login_shape1"/>

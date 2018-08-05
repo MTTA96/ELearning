@@ -63,6 +63,7 @@
                             android:background="@drawable/btn_back_white" />
 
                         <TextView
+                            android:id="@+id/save_update_info"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -111,6 +112,7 @@
                         android:weightSum="100">
 
                         <EditText
+                            android:id="@+id/et_first_name_update_info"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="48"
@@ -127,6 +129,7 @@
                             android:layout_weight="4" />
 
                         <EditText
+                            android:id="@+id/et_last_name_update_info"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="48"
@@ -200,6 +203,7 @@
                         android:layout_weight="3" />
 
                     <EditText
+                        android:id="@+id/et_email_update_info"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="9"
@@ -215,6 +219,7 @@
                         android:layout_weight="3" />
 
                     <EditText
+                        android:id="@+id/et_sdt_update_info"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="9"
@@ -230,6 +235,7 @@
                         android:layout_weight="3" />
 
                     <EditText
+                        android:id="@+id/et_address_update_info"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="9"
@@ -252,7 +258,8 @@
                         android:hint="@string/hint_degree"
                         android:padding="10dp"
                         android:textColor="@color/colorBlack"
-                        android:textColorHint="@color/colorGrey" />
+                        android:textColorHint="@color/colorGrey"
+                        android:visibility="gone"/>
 
                     <View
                         android:layout_width="wrap_content"
@@ -265,6 +272,7 @@
                         android:layout_weight="9"
                         android:background="@drawable/edittext_shape_3"
                         android:hint="@string/hint_career"
+                        android:visibility="gone"
                         android:padding="10dp"
                         android:textColor="@color/colorBlack"
                         android:textColorHint="@color/colorGrey" />

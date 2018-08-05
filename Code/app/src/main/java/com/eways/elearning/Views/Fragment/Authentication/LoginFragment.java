@@ -133,13 +133,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
         switch (view.getId()) {
             // Sign in
             case R.id.sign_in_button:
-                loadingDialog.show();
-                userName = edtPhone.getText().toString();
-                password = edtPass.getText().toString();
-                if (checkInfo())
-                    signInPresenter.signIn("+84" + userName, password);
-                else
-                    Toast.makeText(getContext(), R.string.msg_missing_info, Toast.LENGTH_SHORT).show();
+//                loadingDialog.show();
+//                userName = edtPhone.getText().toString();
+//                password = edtPass.getText().toString();
+//                if (checkInfo())
+//                    signInPresenter.signIn("+84" + userName, password);
+//                else
+//                    Toast.makeText(getContext(), R.string.msg_missing_info, Toast.LENGTH_SHORT).show();
+
+                Intent homeIntent = new Intent(getActivity(), HomeActivity.class);
+                startActivity(homeIntent);
+                getActivity().finish();
                 break;
 
             // Sign up

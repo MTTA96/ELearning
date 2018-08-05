@@ -19,7 +19,15 @@ public class FragmentFilter extends Fragment {
         // Required empty public constructor
     }
 
-
+    public static FragmentFilter newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        FragmentFilter fragment = new FragmentFilter();
+        fragment.setArguments(args);
+        return fragment;
+    }
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -302,6 +302,7 @@ public class User {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.d("signUp: request -", call.request().toString());
                 Log.d("signUp:", t.getLocalizedMessage());
                 dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }
@@ -338,6 +339,7 @@ public class User {
 
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
+                Log.d("Sign in", call.request().toString());
                 Log.d("Sign in", "Connect failed");
                 dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }

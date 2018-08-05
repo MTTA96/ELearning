@@ -26,14 +26,30 @@
         android:textStyle="bold"
         android:visibility="invisible" />
 
+    <!--Họ-->
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/first_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_weight="2"
         android:background="@drawable/edittext_shape_3"
-        android:hint="@string/hint_username"
+        android:hint="Họ"
+        android:padding="7dp"
+        android:singleLine="true"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorGrey"
+        android:textSize="18sp" />
+
+    <!--Tên-->
+    <EditText
+        android:id="@+id/last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="2"
+        android:background="@drawable/edittext_shape_3"
+        android:hint="Tên"
         android:padding="7dp"
         android:singleLine="true"
         android:textColor="@color/colorBlack"

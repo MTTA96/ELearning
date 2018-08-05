@@ -9,12 +9,11 @@ package com.eways.elearning.Network;
 public class ServerUrl {
     //Link server
     public static final String ServerUrl = "https://ewayseducation.000webhostapp.com/";
-    public static final String ServerAPIURL = ServerUrl + "API/";
+    public static final String ServerAPIURL = ServerUrl + "api/";
 
     /** ACCOUNT */
-    public static final String UserAPIRoot = ServerAPIURL + "User/";
-
-    public static final String LOGIN_URL = UserAPIRoot + "Student/StudentLogin.php";
+    public static final String UserAPIRoot = ServerAPIURL + "user/";
+    public static final String LOGIN_URL = UserAPIRoot + "student/studentlogin.php";
     public static final String SIGN_UP_URL = UserAPIRoot + "AddNewUser.php";
     public static final String GET_USER_INFO_URL = UserAPIRoot + "Tutor/GetTutorByUid.php";
     public static final String CHECK_PHONE_NUMBER_URL = UserAPIRoot + "UserIsExisted.php";

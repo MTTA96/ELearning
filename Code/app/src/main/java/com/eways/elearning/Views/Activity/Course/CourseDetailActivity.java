@@ -153,7 +153,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
             case R.id.btn_user_info:
 
                 Intent userInfoIntent = new Intent(this, InfoUserViewerActivity.class);
-                userInfoIntent.putExtra(InfoUserViewerActivity.paramUId, user.getUid());
+                userInfoIntent.putExtra(InfoUserViewerActivity.paramUId, user.getId());
                 startActivity(userInfoIntent);
                 break;
 

@@ -117,11 +117,11 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
         switch (v.getId()) {
             case R.id.view_item_user_list:
                 Intent userInfoIntent = new Intent(context, InfoUserViewerActivity.class);
-                userInfoIntent.putExtra(SupportKeys.USER_ID_INTENT_PARAM, user.getUid());
+                userInfoIntent.putExtra(SupportKeys.USER_ID_INTENT_PARAM, user.getId());
                 context.startActivity(userInfoIntent);
                 break;
             case R.id.btn_request_tutor_item:
-                userPresenter.sendRequestToTutor(subjectName, user.getUid(), this);
+                userPresenter.sendRequestToTutor(subjectName, user.getId(), this);
                 break;
         }
     }

@@ -186,7 +186,7 @@ public class FragmentUserSignUpInfo extends Fragment implements View.OnClickList
                             Log.d(TAG, "signInWithCredential:success");
 
                             FirebaseUser fbUser = task.getResult().getUser();
-                            user.setUid(fbUser.getUid());
+                            user.setId(fbUser.getUid());
                             signUpInfoPresenter.signUp(user);
                             // ...
                         } else {

@@ -22,15 +22,14 @@ public class ServerUrl {
     public static final String SEND_REQUEST_URL = ServerAPIURL + "requisitioncourse/addrequisitioncourse.php";
 
     /** Tutors */
-//    https://ewayseducation.000webhostapp.com/api/home/toptutor.php
-    public static final String TOP_TUTORS = ServerAPIURL + "Home/TopTutor.php";
+    public static final String TOP_TUTORS = ServerAPIURL + "home/toptutor.php";
 
     /** Subjects */
-    public static final String GET_SUBJECT_LIST_URL = ServerAPIURL + "Subject/GetSubject.php";
-    public static final String TRENDING_SUBJECTS = ServerAPIURL + "Home/TrendingSubject.php";
+    public static final String GET_SUBJECT_LIST_URL = ServerAPIURL + "subject/getsubject.php";
+    public static final String TRENDING_SUBJECTS = ServerAPIURL + "home/trendingsubject.php";
 
     /** Search */
-    public static final String SEARCH_URL = ServerAPIURL + "Search/AppStudentSearchResults.php";
+    public static final String SEARCH_URL = ServerAPIURL + "search/appstudentsearchresults.php";
     public static final String SEARCH_TUTOR_SUGGESTIONS_URL = ServerAPIURL + "Search/AppStudentSearchSuggestion.php";
 
     /** Banner */

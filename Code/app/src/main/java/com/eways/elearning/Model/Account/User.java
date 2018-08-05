@@ -385,7 +385,9 @@ public class User {
         eLearningServicesImp.getTopTutors().enqueue(new Callback<UserListResponse>() {
             @Override
             public void onResponse(Call<UserListResponse> call, Response<UserListResponse> response) {
-                // handle error
+
+                Log.d("Top tutors: ", call.request().toString());
+                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("Get top tutors model:", "connect failed");
                     topTutorsCallBack.topTutorCallBack(SupportKeys.FAILED_CODE, null);
@@ -398,6 +400,7 @@ public class User {
 
             @Override
             public void onFailure(Call<UserListResponse> call, Throwable t) {
+                Log.d("Top tutors: ", call.request().toString());
                 Log.d("Get top tutors model:", t.getLocalizedMessage());
                 topTutorsCallBack.topTutorCallBack(SupportKeys.FAILED_CODE, null);
             }

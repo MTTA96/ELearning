@@ -133,17 +133,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
         switch (view.getId()) {
             // Sign in
             case R.id.sign_in_button:
-//                loadingDialog.show();
-//                userName = edtPhone.getText().toString();
-//                password = edtPass.getText().toString();
-//                if (checkInfo())
-//                    signInPresenter.signIn("+84" + userName, password);
-//                else
-//                    Toast.makeText(getContext(), R.string.msg_missing_info, Toast.LENGTH_SHORT).show();
+                loadingDialog.show();
+                userName = edtPhone.getText().toString();
+                password = edtPass.getText().toString();
+                if (checkInfo())
+                    signInPresenter.signIn("+84" + userName, password);
+                else
+                    Toast.makeText(getContext(), R.string.msg_missing_info, Toast.LENGTH_SHORT).show();
 
-                Intent homeIntent = new Intent(getActivity(), HomeActivity.class);
-                startActivity(homeIntent);
-                getActivity().finish();
                 break;
 
             // Sign up
@@ -157,7 +154,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
 
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
+
         loadingDialog.dismiss();
+
         // Handle error
         if (resultCode == SupportKeys.FAILED_CODE) {
             Toast.makeText(getContext(), R.string.msg_sign_in_failed, Toast.LENGTH_SHORT).show();
@@ -167,7 +166,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
 
         // Check sign in result
         int status = Integer.parseInt(bundle.getString(null));
-        if (status == 0) {
+        if (status == 1) {
             // Move to home
             Intent homeIntent = new Intent(getActivity(), HomeActivity.class);
             startActivity(homeIntent);
@@ -177,6 +176,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
 
         // Show msg result to user
         Toast.makeText(getContext(), bundle.getString(SupportKeys.BUNDLE_MSG), Toast.LENGTH_SHORT).show();
+
     }
 
     /** Handle RESULTS FROM GMAIL */

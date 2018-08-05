@@ -11,21 +11,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 public class UserListResponse {
-
-    @SerializedName("errorCode")
-    @Expose
-    private Integer errorCode;
-    @SerializedName("results")
+    @SerializedName("response")
     @Expose
     private ArrayList<User> userList = null;
-
-    public Integer getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
-    }
 
     public ArrayList<User> getUserList() {
         return userList;

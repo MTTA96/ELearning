@@ -181,6 +181,7 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
         etSearch.setText(keyword);
         shouldSuggestionViewVisible = false;
         updateSuggestionsViewState();
+        etSearch.endBatchEdit();
         fragmentHandler.changeFragment(SearchFragment.newInstance(keyword), null, 0, 0);
     }
 
@@ -242,6 +243,7 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        rvSuggestionsList.setVisibility(View.GONE);
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.home_content_view);
         if (currentFragment instanceof SearchFragment)
             fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKeys.HOME_FRAGMENT_TAG, 0, 0);

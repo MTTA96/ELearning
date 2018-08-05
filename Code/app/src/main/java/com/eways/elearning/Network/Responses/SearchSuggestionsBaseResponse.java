@@ -13,20 +13,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class SearchSuggestionsBaseResponse {
 
-    @SerializedName("errorCode")
-    @Expose
-    private Integer errorCode;
-    @SerializedName("results")
+    @SerializedName("response")
     @Expose
     private ArrayList<SearchSuggestions> suggestionList = null;
-
-    public Integer getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
-    }
 
     public ArrayList<SearchSuggestions> getSuggestionList() {
         return suggestionList;
@@ -35,6 +24,5 @@ public class SearchSuggestionsBaseResponse {
     public void setSuggestionList(ArrayList<SearchSuggestions> suggestionList) {
         this.suggestionList = suggestionList;
     }
-
 
 }

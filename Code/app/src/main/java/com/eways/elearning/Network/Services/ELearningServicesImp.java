@@ -32,11 +32,11 @@ public interface ELearningServicesImp {
 
     /** Search */
     @GET(ServerUrl.SEARCH_URL)
-    Call<SearchBaseResponse> search(@Query("keyword") String keyWord);
+    Call<SearchBaseResponse> search(@Query("request") String keyWord);
 
     /** Search suggestions */
     @GET(ServerUrl.SEARCH_TUTOR_SUGGESTIONS_URL)
-    Call<SearchSuggestionsBaseResponse> searchSuggestions(@Query("keyword") String keyWord);
+    Call<SearchSuggestionsBaseResponse> searchSuggestions(@Query("request") String keyWord);
 
     /** Banner */
     @GET(ServerUrl.BANNER_URL)

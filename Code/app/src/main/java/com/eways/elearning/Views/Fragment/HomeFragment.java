@@ -215,7 +215,10 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
 
         // Get data success
         trending.clear();
-        trending.addAll(result);
+
+        if (result != null)
+            trending.addAll(result);
+
         trendingAdapter.notifyDataSetChanged();
         swrRefreshHome.setRefreshing(false);
     }

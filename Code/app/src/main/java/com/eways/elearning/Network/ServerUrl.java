@@ -30,10 +30,10 @@ public class ServerUrl {
 
     /** Search */
     public static final String SEARCH_URL = ServerAPIURL + "search/appstudentsearchresults.php";
-    public static final String SEARCH_TUTOR_SUGGESTIONS_URL = ServerAPIURL + "Search/AppStudentSearchSuggestion.php";
+    public static final String SEARCH_TUTOR_SUGGESTIONS_URL = ServerAPIURL + "search/appstudentsearchsuggestion.php";
 
     /** Banner */
-    public static final String BANNER_URL = ServerAPIURL + "Home/GetBanner.php";
+    public static final String BANNER_URL = ServerAPIURL + "banner/getbanners.php";
 
     /** Course */
     public static final String CREATE_COURSE_URL = ServerAPIURL + "Course/AddNewCourse.php";

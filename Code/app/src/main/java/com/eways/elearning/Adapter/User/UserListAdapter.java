@@ -9,6 +9,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.SendRequestCallback;
@@ -18,6 +19,7 @@ import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Activity.InfoUserViewerActivity;
+import com.eways.elearning.Views.Dialog.LoadingDialog;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -28,6 +30,7 @@ import java.util.UUID;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implements View.OnClickListener, DataCallBack, SendRequestCallback {
     private Context context;
+    private LoadingDialog loadingDialog;
     private ArrayList<User> list = new ArrayList<>();
     private ImageHandler imageHandler;
     private User user;
@@ -121,6 +124,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
                 context.startActivity(userInfoIntent);
                 break;
             case R.id.btn_request_tutor_item:
+                loadingDialog = LoadingDialog.getInstance(context);
+                loadingDialog.show();
                 userPresenter.sendRequestToTutor(subjectName, user.getId(), this);
                 break;
         }
@@ -133,12 +138,14 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
 
     @Override
     public void sendRequestCallback(int resultCode, @Nullable String msg) {
+        loadingDialog.dismiss();
         // handle error
         if (resultCode == SupportKeys.FAILED_CODE) {
+            Toast.makeText(context, "Gửi thất bại!", Toast.LENGTH_SHORT);
             return;
         }
 
-        // success
+        // success=
     }
 
 }

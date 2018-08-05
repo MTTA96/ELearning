@@ -49,7 +49,7 @@ public class TrendingAdapter extends RecyclerView.Adapter<HomeVHolder> {
     public void onBindViewHolder(HomeVHolder holder, int position) {
         final Subject subject = trendings.get(position);
 
-        imageHandler.loadImageRound(subject.getImg(), holder.ivHomeDetail);
+        imageHandler.loadImageRound(subject.getImage(), holder.ivHomeDetail);
         holder.tvTitle.setText(subject.getSubjectName());
 
         holder.ivHomeDetail.setOnClickListener(new View.OnClickListener() {

@@ -28,6 +28,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/white_rectangle_corner_main_color_stroke_shape">
                 <Button
+                    android:id="@+id/btn_exit_filter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

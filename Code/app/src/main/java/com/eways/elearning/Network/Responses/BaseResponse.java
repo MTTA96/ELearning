@@ -8,20 +8,9 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class BaseResponse {
-    @SerializedName("errorCode")
-    @Expose
-    private Integer errorCode;
     @SerializedName("status")
     @Expose
     private String status;
-
-    public Integer getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
-    }
 
     public String getStatus() {
         return status;

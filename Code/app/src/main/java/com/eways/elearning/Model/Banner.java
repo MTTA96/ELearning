@@ -20,30 +20,31 @@ import retrofit2.Response;
  */
 
 public class Banner {
-    @SerializedName("IdBanner")
+
+    @SerializedName("id")
     @Expose
-    private String idBanner;
-    @SerializedName("Img")
+    private String id;
+    @SerializedName("image")
     @Expose
-    private String img;
-    @SerializedName("Link")
+    private String image;
+    @SerializedName("link")
     @Expose
     private String link;
 
-    public String getIdBanner() {
-        return idBanner;
+    public String getId() {
+        return id;
     }
 
-    public void setIdBanner(String idBanner) {
-        this.idBanner = idBanner;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getImg() {
-        return img;
+    public String getImage() {
+        return image;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getLink() {
@@ -53,12 +54,17 @@ public class Banner {
     public void setLink(String link) {
         this.link = link;
     }
+
     /** METHODS */
+
     public static void getBanners(final BannerCallBack dataCallBack) {
         ELearningServicesImp eLearningServicesImp = ApiUtils.eLearningServices();
         eLearningServicesImp.getBanners().enqueue(new Callback<ArrayList<Banner>>() {
             @Override
             public void onResponse(Call<ArrayList<Banner>> call, Response<ArrayList<Banner>> response) {
+
+                Log.d("GetBannerModel:", call.request().toString());
+
                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("GetBannerModel:", "connect failed");
@@ -72,6 +78,7 @@ public class Banner {
 
             @Override
             public void onFailure(Call<ArrayList<Banner>> call, Throwable t) {
+                Log.d("GetBannerModel:", call.request().toString());
                 Log.d("GetBannerModel:", t.getLocalizedMessage());
                 dataCallBack.bannersCallBack(SupportKeys.FAILED_CODE, null);
             }

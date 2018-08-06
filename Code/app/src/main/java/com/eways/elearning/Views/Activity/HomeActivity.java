@@ -1,5 +1,6 @@
 package com.eways.elearning.Views.Activity;
 
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -35,7 +37,9 @@ import com.eways.elearning.Utils.Handler.FragmentHandler;
 import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Utils.ViewUtils;
 import com.eways.elearning.Views.Activity.Account.UserManagerActivity;
+import com.eways.elearning.Views.Activity.Course.CreateActivity;
 import com.eways.elearning.Views.Fragment.HomeFragment;
+import com.eways.elearning.Views.Fragment.SearchAndFilter.FragmentFilter;
 import com.eways.elearning.Views.Fragment.SearchAndFilter.SearchFragment;
 
 import java.util.ArrayList;
@@ -174,8 +178,10 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
     @Override
     public void onItemClick(Bundle bundle) {
         String keyword = bundle.getString("keyword");
+        etSearch.setText(keyword);
         shouldSuggestionViewVisible = false;
         updateSuggestionsViewState();
+        etSearch.endBatchEdit();
         fragmentHandler.changeFragment(SearchFragment.newInstance(keyword), null, 0, 0);
     }
 
@@ -237,6 +243,7 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        rvSuggestionsList.setVisibility(View.GONE);
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.home_content_view);
         if (currentFragment instanceof SearchFragment)
             fragmentHandler.changeFragment(HomeFragment.newInstance(), SupportKeys.HOME_FRAGMENT_TAG, 0, 0);
@@ -282,7 +289,11 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
 
             case R.id.iv_filter:
 
-                ActivityUtils.ChangeActivity(HomeActivity.this, FilterActivity.class);
+//                ActivityUtils.ChangeActivity(HomeActivity.this, FilterActivity.class);
+                Intent filterIntent = new Intent(this, FilterActivity.class);
+//                startActivityForResult(filterIntent, 1);
+                startActivity(filterIntent);
+//                fragmentHandler.changeFragment(FragmentFilter.newInstance(), null,0, 0);
                 break;
 
             case R.id.iv_back:

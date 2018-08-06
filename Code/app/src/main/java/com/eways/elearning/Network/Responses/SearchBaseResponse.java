@@ -1,8 +1,11 @@
 package com.eways.elearning.Network.Responses;
 
+import com.eways.elearning.Model.Account.User;
 import com.eways.elearning.Model.Search.SearchResults;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 
 /**
  * Created by zzzzz on 5/27/2018.
@@ -12,9 +15,9 @@ public class SearchBaseResponse {
     @SerializedName("errorCode")
     @Expose
     private Integer errorCode;
-    @SerializedName("results")
+    @SerializedName("response")
     @Expose
-    private SearchResults results;
+    private ArrayList<User> results;
 
     public Integer getErrorCode() {
         return errorCode;
@@ -24,11 +27,11 @@ public class SearchBaseResponse {
         this.errorCode = errorCode;
     }
 
-    public SearchResults getResults() {
+    public ArrayList<User> getResults() {
         return results;
     }
 
-    public void setResults(SearchResults results) {
+    public void setResults( ArrayList<User>  results) {
         this.results = results;
     }
 }

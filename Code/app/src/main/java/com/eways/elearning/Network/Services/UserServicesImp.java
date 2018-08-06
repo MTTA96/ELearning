@@ -30,31 +30,29 @@ public interface UserServicesImp {
     /** Sign up */
     @POST(ServerUrl.SIGN_UP_URL)
     @FormUrlEncoded
-    Call<BaseResponse> signUp(@Field("mydata") String data);
+    Call<BaseResponse> signUp(@Field("request") String request);
 
     /** Get user info */
     @GET(ServerUrl.GET_USER_INFO_URL)
-    Call<UserBaseResponse> getUserDetails(@Query("Uid") String uID);
+    Call<UserBaseResponse> getUserDetails(@Query("id") String uID);
 
     /** Check phone number */
-    @POST(ServerUrl.CHECK_PHONE_NUMBER_URL)
-    @FormUrlEncoded
-    Call<BaseResponse> checkPhoneNumber(@Field("Phone") String phone);
+    @GET(ServerUrl.CHECK_PHONE_NUMBER_URL)
+    Call<BaseResponse> checkPhoneNumber(@Query("phone") String phone);
 
     /** Add favorite */
-    @POST(ServerUrl.ADD_USER_FAVORITE_URL)
-    @FormUrlEncoded
-    Call<BaseResponse> addUserFavoriteUrl(@Field("uID") String data,
-                                          @Field("listFavoriteSubject") ArrayList<String> listFavorite);
-
-
+//    @POST(ServerUrl.ADD_USER_FAVORITE_URL)
+//    @FormUrlEncoded
+//    Call<BaseResponse> addUserFavoriteUrl(@Field("uID") String data,
+//                                          @Field("listFavoriteSubject") ArrayList<String> listFavorite);
+//
     /** Get favorite subject */
-    @GET(ServerUrl.GET_USER_FAVORITE_SUBJECTS)
-    Call<UserFavoriteSubjectResponse> getUserFavoriteSubjects(@Query("Uid") String uID);
+//    @GET(ServerUrl.GET_USER_FAVORITE_SUBJECTS)
+//    Call<UserFavoriteSubjectResponse> getUserFavoriteSubjects(@Query("Uid") String uID);
 
-    /** Add favorite */
+    /** Send requisition */
     @POST(ServerUrl.SEND_REQUEST_URL)
     @FormUrlEncoded
-    Call<BaseResponse> sendRequest(@Field("mydata") String myData);
+    Call<BaseResponse> sendRequest(@Field("request") String request);
 
 }

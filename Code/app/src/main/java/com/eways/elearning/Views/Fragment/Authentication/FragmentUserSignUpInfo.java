@@ -41,7 +41,7 @@ public class FragmentUserSignUpInfo extends Fragment implements View.OnClickList
     /**
      * VIEWS
      */
-    EditText etName, etPassword;
+    EditText etFirstName, etLastName, etPassword;
     ImageView clear_name, clear_phone;
 
     /**
@@ -52,8 +52,7 @@ public class FragmentUserSignUpInfo extends Fragment implements View.OnClickList
     private SignUpInfoPresenter signUpInfoPresenter;
     private PhoneAuthCredential credential;
     private User user;
-    private String name;
-    private String password;
+    private String firstName, lastName, password;
 
     // Params
     private static final String credentialParam = "credential";
@@ -93,7 +92,8 @@ public class FragmentUserSignUpInfo extends Fragment implements View.OnClickList
     }
 
     public void declare_views(View root) {
-        etName = root.findViewById(R.id.name);
+        etFirstName = root.findViewById(R.id.first_name);
+        etLastName = root.findViewById(R.id.last_name);
         etPassword = root.findViewById(R.id.password);
     }
 
@@ -104,7 +104,7 @@ public class FragmentUserSignUpInfo extends Fragment implements View.OnClickList
 
     /** This function only need when having clearing content feature (Consider to delete it)*/
     public void setUpEditText() {
-        etName.addTextChangedListener(new TextWatcher() {
+        etFirstName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -112,7 +112,28 @@ public class FragmentUserSignUpInfo extends Fragment implements View.OnClickList
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (etName.getText().toString().compareTo("") != 0) {
+                if (etFirstName.getText().toString().compareTo("") != 0) {
+                    clear_name.setVisibility(View.VISIBLE);
+                } else {
+                    clear_name.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        etLastName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (etLastName.getText().toString().compareTo("") != 0) {
                     clear_name.setVisibility(View.VISIBLE);
                 } else {
                     clear_name.setVisibility(View.INVISIBLE);
@@ -186,7 +207,7 @@ public class FragmentUserSignUpInfo extends Fragment implements View.OnClickList
                             Log.d(TAG, "signInWithCredential:success");
 
                             FirebaseUser fbUser = task.getResult().getUser();
-                            user.setUid(fbUser.getUid());
+                            user.setId(fbUser.getUid());
                             signUpInfoPresenter.signUp(user);
                             // ...
                         } else {
@@ -205,11 +226,13 @@ public class FragmentUserSignUpInfo extends Fragment implements View.OnClickList
      * */
     private User prepareData() {
         User tempUser = new User();
-        name = etName.getText().toString();
+        firstName = etFirstName.getText().toString();
+        lastName = etLastName.getText().toString();
         password = etPassword.getText().toString();
 
-        if (!name.isEmpty() && !password.isEmpty()) {
-            tempUser.setFirstName(name);
+        if (!firstName.isEmpty() && !lastName.isEmpty() && !password.isEmpty()) {
+            tempUser.setFirstName(firstName);
+            tempUser.setLastName(lastName);
             tempUser.setPassword(password);
             tempUser.setPhone("+84" + FragmentEnterPhone.tvPhoneNumber.getText().toString());
             tempUser.setAuthorization(SupportKeys.USER_AUTHORIZATION);
@@ -230,7 +253,8 @@ public class FragmentUserSignUpInfo extends Fragment implements View.OnClickList
         }
 
         // User signed up success
-        fragmentHandler.changeFragment(FragmentFavorite.newInstance(), SupportKeys.ENTER_PHONE_FRAGMENT_TAG, R.anim.slide_from_left, 0);
+//        fragmentHandler.changeFragment(FragmentFavorite.newInstance(), SupportKeys.ENTER_PHONE_FRAGMENT_TAG, R.anim.slide_from_left, 0);
+        fragmentHandler.changeFragment(FragmentWelcome.newInstance(), null, R.anim.slide_from_left, 0);
 
     }
 }

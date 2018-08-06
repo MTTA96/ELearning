@@ -46,6 +46,7 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
     private CourseListAdapter courseListAdapter;
     private ArrayList<User> tutorList = new ArrayList();
     private ArrayList<Course> courseList = new ArrayList();
+    private String keyword = "";
 
     /**
      * Params
@@ -77,7 +78,7 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
         searchPresenter = new SearchPresenter(getContext(), this);
 
         if (getArguments() != null) {
-            String keyword = getArguments().getString(param1);
+            keyword = getArguments().getString(param1);
 
             // Call api
             searchPresenter.search(keyword);
@@ -107,7 +108,7 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
 
     /** CONFIG */
     private void setupResultsListView() {
-        userListAdapter = new UserListAdapter(getContext(), tutorList);
+        userListAdapter = new UserListAdapter(getContext(), tutorList, keyword);
         rvTutorResults.setLayoutManager(new GridLayoutManager(getContext(), 1));
         rvTutorResults.hasFixedSize();
         rvTutorResults.setNestedScrollingEnabled(false);
@@ -147,7 +148,7 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
     }
 
     /**
-     * HANDLE DATA FROM SEVER
+     * HANDLE DATA FROM SERVER
      */
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
@@ -161,8 +162,8 @@ public class SearchFragment extends Fragment implements DataCallBack, View.OnCli
         tutorList.clear();
         tutorList.addAll((ArrayList<User>) bundle.getSerializable("param1"));
 
-        courseList.clear();
-        courseList.addAll((ArrayList<Course>) bundle.getSerializable("param2"));
+//        courseList.clear();
+//        courseList.addAll((ArrayList<Course>) bundle.getSerializable("param2"));
 
 //        courseListAdapter.notifyDataSetChanged();
         userListAdapter.notifyDataSetChanged();

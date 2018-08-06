@@ -67,7 +67,7 @@ public class FragmentEnterPhone extends Fragment implements View.OnClickListener
     private void checkPhone(String phoneNumber) {
         // handle errors
         if (phoneNumber.isEmpty() || phoneNumber.length() < 9 || phoneNumber.length() > 10) {
-            Toast.makeText(getContext(), getString(R.string.msg_wrong_info_or_has_not_signed_up), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.msg_phone_number_incorrect), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -78,7 +78,8 @@ public class FragmentEnterPhone extends Fragment implements View.OnClickListener
         return;
     }
 
-    /** EVENTS */
+    /** ----- EVENTS ----- */
+
     @Override
     public void onClick(View v) {
         // Check if this fragment is the current fragment
@@ -94,7 +95,8 @@ public class FragmentEnterPhone extends Fragment implements View.OnClickListener
     }
 
 
-    /** handle result from presenter */
+    /** ----- Handle results from presenter ----- */
+
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
         // handle error

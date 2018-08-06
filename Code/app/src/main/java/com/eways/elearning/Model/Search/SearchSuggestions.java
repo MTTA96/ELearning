@@ -8,30 +8,23 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class SearchSuggestions {
-    @SerializedName("IdSubject")
+
+    @SerializedName("id")
     @Expose
-    private String idSubject;
-    @SerializedName("IdField")
-    @Expose
-    private String idField;
-    @SerializedName("SubjectName")
+    private String id;
+    @SerializedName("subject_name")
     @Expose
     private String subjectName;
+    @SerializedName("image")
+    @Expose
+    private String image;
 
-    public String getIdSubject() {
-        return idSubject;
+    public String getId() {
+        return id;
     }
 
-    public void setIdSubject(String idSubject) {
-        this.idSubject = idSubject;
-    }
-
-    public String getIdField() {
-        return idField;
-    }
-
-    public void setIdField(String idField) {
-        this.idField = idField;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getSubjectName() {
@@ -41,4 +34,13 @@ public class SearchSuggestions {
     public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
 }

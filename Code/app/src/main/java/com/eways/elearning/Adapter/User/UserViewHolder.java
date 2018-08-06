@@ -18,7 +18,7 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
 
     public LinearLayout vUser;
     public ImageView userAvatar;
-    public TextView tvName,tvSubject;
+    public TextView tvName,tvSubject, tvSkype;
     public RatingBar rtbRating;
     public Button btnRequest;
 
@@ -29,6 +29,7 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
         userAvatar = (ImageView)itemView.findViewById(R.id.avatar_item_user_list);
         tvName = (TextView)itemView.findViewById(R.id.user_name_item_user_list);
         tvSubject = (TextView)itemView.findViewById(R.id.subject_item_user_list);
+        tvSkype = itemView.findViewById(R.id.skype_item_user_list);
 //        rtbRating = (RatingBar)itemView.findViewById(R.id.rtb_item_user_list);
         btnRequest = itemView.findViewById(R.id.btn_request_tutor_item);
 

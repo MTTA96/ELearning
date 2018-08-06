@@ -180,10 +180,12 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
     @Override
     public void bannersCallBack(int resultCode, ArrayList<Banner> banners) {
 
-        this.bannerList = banners;
-        Slider.init(imageHandler);
-        bannerSlider.setInterval(5000);
-        bannerSlider.setAdapter(new ImageSliderShowAdapter(getContext(), banners));
+        if (banners != null) {
+            this.bannerList = banners;
+            Slider.init(imageHandler);
+            bannerSlider.setInterval(5000);
+            bannerSlider.setAdapter(new ImageSliderShowAdapter(getContext(), banners));
+        }
 
     }
 
@@ -213,7 +215,10 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
 
         // Get data success
         trending.clear();
-        trending.addAll(result);
+
+        if (result != null)
+            trending.addAll(result);
+
         trendingAdapter.notifyDataSetChanged();
         swrRefreshHome.setRefreshing(false);
     }

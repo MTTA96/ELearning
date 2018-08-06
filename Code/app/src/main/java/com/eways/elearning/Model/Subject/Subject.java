@@ -23,20 +23,28 @@ import retrofit2.Response;
 
 public class Subject {
 
-    @SerializedName("SubjectName")
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @SerializedName("subject_name")
     @Expose
     private String subjectName;
-    @SerializedName("IdSubject")
+    @SerializedName("image")
     @Expose
-    private String idSubject;
-    @SerializedName("Img")
-    @Expose
-    private String img;
+    private String image;
 
     public Subject(String subjectName, String idSubject, String img) {
         this.subjectName = subjectName;
-        this.idSubject = idSubject;
-        this.img = img;
+        this.id = idSubject;
+        this.image = img;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getSubjectName() {
@@ -47,20 +55,12 @@ public class Subject {
         this.subjectName = subjectName;
     }
 
-    public String getIdSubject() {
-        return idSubject;
+    public String getImage() {
+        return image;
     }
 
-    public void setIdSubject(String idSubject) {
-        this.idSubject = idSubject;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     /** METHODS */

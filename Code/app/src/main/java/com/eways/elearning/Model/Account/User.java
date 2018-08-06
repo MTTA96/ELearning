@@ -36,55 +36,56 @@ import retrofit2.Response;
  */
 
 public class User {
-    @SerializedName("Uid")
+
+    @SerializedName("id")
     @Expose
-    private String uid;
-    @SerializedName("Password")
+    private String id;
+    @SerializedName("password")
     @Expose
     private String password;
-    @SerializedName("Avatar")
+    @SerializedName("avatar")
     @Expose
     private String avatar;
-    @SerializedName("FirstName")
+    @SerializedName("first_name")
     @Expose
     private String firstName;
-    @SerializedName("LastName")
+    @SerializedName("last_name")
     @Expose
     private String lastName;
-    @SerializedName("Sex")
+    @SerializedName("sex")
     @Expose
     private String sex;
-    @SerializedName("Birthday")
+    @SerializedName("birthday")
     @Expose
     private String birthday;
-    @SerializedName("Email")
+    @SerializedName("email")
     @Expose
     private String email;
-    @SerializedName("Phone")
+    @SerializedName("phone")
     @Expose
     private String phone;
-    @SerializedName("Skype")
+    @SerializedName("skype")
     @Expose
     private String skype;
-    @SerializedName("Address")
+    @SerializedName("address")
     @Expose
     private String address;
-    @SerializedName("Degree")
+    @SerializedName("degree")
     @Expose
     private String degree;
-    @SerializedName("Career")
+    @SerializedName("career")
     @Expose
     private String career;
-    @SerializedName("Status")
+    @SerializedName("status")
     @Expose
     private String status;
-    @SerializedName("Verification")
+    @SerializedName("verification")
     @Expose
     private String verification;
-    @SerializedName("Authorization")
+    @SerializedName("authorization")
     @Expose
     private String authorization;
-    @SerializedName("DateRegistered")
+    @SerializedName("date_registered")
     @Expose
     private String dateRegistered;
 
@@ -107,12 +108,12 @@ public class User {
         this.dateRegistered = "";
     }
 
-    public String getUid() {
-        return uid;
+    public String getId() {
+        return id;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPassword() {
@@ -301,6 +302,7 @@ public class User {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.d("signUp: request -", call.request().toString());
                 Log.d("signUp:", t.getLocalizedMessage());
                 dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }
@@ -337,6 +339,7 @@ public class User {
 
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
+                Log.d("Sign in", call.request().toString());
                 Log.d("Sign in", "Connect failed");
                 dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }
@@ -349,6 +352,9 @@ public class User {
         userServicesImp.checkPhoneNumber(phoneNumber).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+
+                Log.d("CheckPhone: request -", call.request().toString());
+
                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("CheckPhoneNumberModel:", "connect failed");
@@ -364,6 +370,7 @@ public class User {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.d("CheckPhone: request -", call.request().toString());
                 Log.d("CheckPhoneNumberModel:", t.getLocalizedMessage());
                 dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }
@@ -378,7 +385,9 @@ public class User {
         eLearningServicesImp.getTopTutors().enqueue(new Callback<UserListResponse>() {
             @Override
             public void onResponse(Call<UserListResponse> call, Response<UserListResponse> response) {
-                // handle error
+
+                Log.d("Top tutors: ", call.request().toString());
+                 // handle error
                 if (!response.isSuccessful()) {
                     Log.d("Get top tutors model:", "connect failed");
                     topTutorsCallBack.topTutorCallBack(SupportKeys.FAILED_CODE, null);
@@ -391,6 +400,7 @@ public class User {
 
             @Override
             public void onFailure(Call<UserListResponse> call, Throwable t) {
+                Log.d("Top tutors: ", call.request().toString());
                 Log.d("Get top tutors model:", t.getLocalizedMessage());
                 topTutorsCallBack.topTutorCallBack(SupportKeys.FAILED_CODE, null);
             }
@@ -399,62 +409,64 @@ public class User {
 
     /** Get user's favorite subjects with courses */
     public static void getUserFavoriteSubjectsWithCourses(String uId, final FavSubjectWithCoursesCallBack favoriteSubjectWithCourseList) {
-        UserServicesImp userServicesImp = ApiUtils.userServices();
-        userServicesImp.getUserFavoriteSubjects(uId).enqueue(new Callback<UserFavoriteSubjectResponse>() {
-            @Override
-            public void onResponse(Call<UserFavoriteSubjectResponse> call, Response<UserFavoriteSubjectResponse> response) {
-                // handle error
-                if (!response.isSuccessful()) {
-                    Log.d("GetUserFavModel:", "connect failed");
-                    favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
-                    return;
-                }
-
-                // Prepare data
-                favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKeys.SUCCESS_CODE, response.body().getFavSubjectWithCourseList());
-            }
-
-            @Override
-            public void onFailure(Call<UserFavoriteSubjectResponse> call, Throwable t) {
-                Log.d("GetUserFavModel:", t.getLocalizedMessage());
-                favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
-            }
-        });
+//        UserServicesImp userServicesImp = ApiUtils.userServices();
+//        userServicesImp.getUserFavoriteSubjects(uId).enqueue(new Callback<UserFavoriteSubjectResponse>() {
+//            @Override
+//            public void onResponse(Call<UserFavoriteSubjectResponse> call, Response<UserFavoriteSubjectResponse> response) {
+//                // handle error
+//                if (!response.isSuccessful()) {
+//                    Log.d("GetUserFavModel:", "connect failed");
+//                    favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
+//                    return;
+//                }
+//
+//                // Prepare data
+//                favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKeys.SUCCESS_CODE, response.body().getFavSubjectWithCourseList());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UserFavoriteSubjectResponse> call, Throwable t) {
+//                Log.d("GetUserFavModel:", t.getLocalizedMessage());
+//                favoriteSubjectWithCourseList.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
+//            }
+//        });
     }
 
     /** Update user favorite */
     public static void addFavorite(String uID, ArrayList<String> listFavorite, final FavSubjectWithCoursesCallBack favSubjectWithCoursesCallBack) {
-        UserServicesImp userServicesImp = ApiUtils.userServices();
-        userServicesImp.addUserFavoriteUrl(uID, listFavorite).enqueue(new Callback<BaseResponse>() {
-            @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                // Handle error
-                if (!response.isSuccessful()) {
-                    Log.d("Update favorite to sv:", "Update failed!");
-                    favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
-                    return;
-                }
-
-                // Prepare data
-                if (Integer.parseInt(response.body().getStatus()) == 1) {
-                    Log.d("Update favorite to sv:", "Update success!");
-                    favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.SUCCESS_CODE, null);
-                }
-                else {
-                    Log.d("Update favorite to sv:", "Update failed!");
-                    favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Log.d("Update favorite to sv:", "Update failed!");
-                favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
-            }
-
-        });
+//        UserServicesImp userServicesImp = ApiUtils.userServices();
+//        userServicesImp.addUserFavoriteUrl(uID, listFavorite).enqueue(new Callback<BaseResponse>() {
+//            @Override
+//            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+//                // Handle error
+//                if (!response.isSuccessful()) {
+//                    Log.d("Update favorite to sv:", "Update failed!");
+//                    favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
+//                    return;
+//                }
+//
+//                // Prepare data
+//                if (Integer.parseInt(response.body().getStatus()) == 1) {
+//                    Log.d("Update favorite to sv:", "Update success!");
+//                    favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.SUCCESS_CODE, null);
+//                }
+//                else {
+//                    Log.d("Update favorite to sv:", "Update failed!");
+//                    favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<BaseResponse> call, Throwable t) {
+//                Log.d("Update favorite to sv:", "Update failed!");
+//                favSubjectWithCoursesCallBack.favSubjectsCourseCallBack(SupportKeys.FAILED_CODE, null);
+//            }
+//
+//        });
     }
+
+    /** Send request to tutor */
 
     public static void sendRequest(String jsonRequest, final SendRequestCallback requestCallBack) {
 
@@ -470,7 +482,9 @@ public class User {
                 }
 
                 // Prepare data
-                if (Integer.parseInt(response.body().getStatus()) == 1)
+                int status = Integer.parseInt(response.body().getStatus());
+
+                if (status == 1)
                     requestCallBack.sendRequestCallback(SupportKeys.SUCCESS_CODE, null);
                 else
                     requestCallBack.sendRequestCallback(SupportKeys.FAILED_CODE, null);

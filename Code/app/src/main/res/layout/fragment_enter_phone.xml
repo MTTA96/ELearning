@@ -24,14 +24,14 @@
         android:weightSum="100">
 
         <!-- Guide text -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/guide_enter_phone"
-            android:textColor="@color/colorBlue"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/guide_enter_phone"-->
+            <!--android:textColor="@color/colorBlue"-->
+            <!--android:textSize="18sp"-->
+            <!--android:textStyle="bold" />-->
 
         <View
             android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="+84"
-                    android:textColor="@color/colorBlue"
+                    android:textColor="@color/colorMain"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -88,19 +88,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:layout_weight="1"
+            android:gravity="center"
             android:textColor="#fc1515"
-            android:gravity="center" />
+            android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/policy_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Điều khoản"
-            android:textSize="16sp"
-            android:textColor="@color/colorMain"/>
+
         <!-- *** DON'T NEED PASSWORD IN THIS SCREEN *** -->
 
         <!--<View-->

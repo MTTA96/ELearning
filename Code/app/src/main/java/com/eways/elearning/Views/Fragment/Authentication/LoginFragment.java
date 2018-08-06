@@ -140,6 +140,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
                     signInPresenter.signIn("+84" + userName, password);
                 else
                     Toast.makeText(getContext(), R.string.msg_missing_info, Toast.LENGTH_SHORT).show();
+
                 break;
 
             // Sign up
@@ -153,6 +154,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
 
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
+
+        loadingDialog.dismiss();
+
         // Handle error
         if (resultCode == SupportKeys.FAILED_CODE) {
             Toast.makeText(getContext(), R.string.msg_sign_in_failed, Toast.LENGTH_SHORT).show();
@@ -162,9 +166,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
 
         // Check sign in result
         int status = Integer.parseInt(bundle.getString(null));
-        if (status == 0) {
+        if (status == 1) {
             // Move to home
-            loadingDialog.dismiss();
             Intent homeIntent = new Intent(getActivity(), HomeActivity.class);
             startActivity(homeIntent);
             getActivity().finish();
@@ -173,6 +176,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Dat
 
         // Show msg result to user
         Toast.makeText(getContext(), bundle.getString(SupportKeys.BUNDLE_MSG), Toast.LENGTH_SHORT).show();
+
     }
 
     /** Handle RESULTS FROM GMAIL */

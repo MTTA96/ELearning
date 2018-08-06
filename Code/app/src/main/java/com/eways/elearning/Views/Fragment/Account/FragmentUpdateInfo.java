@@ -11,7 +11,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.eways.elearning.Adapter.ImageChooseAdapter;
 import com.eways.elearning.Model.ImageSelect;
@@ -35,11 +37,12 @@ public class FragmentUpdateInfo extends Fragment{
     /* VIEWS */
     ImageView ivAvarta;
 
-
     ImageHandler imageHandler;
     DialogPlusHandler dialogPlusHandler;
     ImageChooseAdapter imageChooseAdapter;
     ArrayList<ImageSelect> imageSelects;
+    EditText etFirstName, etLastName, etAddress, etEmail, etPhoneNumber;
+    TextView tvSaveInfo;
 
     public FragmentUpdateInfo() {
         // Required empty public constructor
@@ -57,6 +60,12 @@ public class FragmentUpdateInfo extends Fragment{
 
     public void declare_views(View root){
         ivAvarta = root.findViewById(R.id.avarta);
+        etFirstName = root.findViewById(R.id.et_first_name_update_info);
+        etLastName = root.findViewById(R.id.et_last_name_update_info);
+        etAddress = root.findViewById(R.id.et_address_update_info);
+        etEmail = root.findViewById(R.id.et_email_update_info);
+        etPhoneNumber = root.findViewById(R.id.et_sdt_update_info);
+        tvSaveInfo = root.findViewById(R.id.save_update_info);
     }
 
     public void handle_views(){
@@ -66,6 +75,12 @@ public class FragmentUpdateInfo extends Fragment{
             @Override
             public void onClick(View view) {
                 dialogPlusHandler.ShowDiglogPlus();
+            }
+        });
+        tvSaveInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

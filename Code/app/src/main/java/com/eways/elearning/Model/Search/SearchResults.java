@@ -68,13 +68,16 @@ public class SearchResults {
                 // Get data success
                 // Prepare data
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("param1", response.body().getResults().getListUser());
-                bundle.putSerializable("param2", response.body().getResults().getListCourse());
+
+                if (response.body().getResults() != null)
+                    bundle.putSerializable("param1", response.body().getResults());
+                //bundle.putSerializable("param2", response.body().getResults().getListCourse());
                 dataCallBack.dataCallBack(SupportKeys.SUCCESS_CODE, bundle);
             }
 
             @Override
             public void onFailure(Call<SearchBaseResponse> call, Throwable t) {
+                Log.d("search:", call.request().toString());
                 Log.d("search:", "Connect Failed - " + t.getLocalizedMessage());
                 dataCallBack.dataCallBack(SupportKeys.FAILED_CODE, null);
             }

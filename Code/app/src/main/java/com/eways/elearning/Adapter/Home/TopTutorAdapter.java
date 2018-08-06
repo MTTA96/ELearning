@@ -54,7 +54,7 @@ public class TopTutorAdapter extends RecyclerView.Adapter<HomeVHolder> {
             @Override
             public void onClick(View view) {
                 Intent userInfoIntent = new Intent(activity, InfoUserViewerActivity.class);
-                userInfoIntent.putExtra(InfoUserViewerActivity.paramUId, tutor.getUid());
+                userInfoIntent.putExtra(InfoUserViewerActivity.paramUId, tutor.getId());
                 activity.startActivity(userInfoIntent);
             }
         });

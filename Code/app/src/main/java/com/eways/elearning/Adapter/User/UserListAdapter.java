@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.SendRequestCallback;
@@ -17,8 +19,10 @@ import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.SupportKeys;
 import com.eways.elearning.Views.Activity.InfoUserViewerActivity;
+import com.eways.elearning.Views.Dialog.LoadingDialog;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by zzzzz on 5/27/2018.
@@ -26,14 +30,18 @@ import java.util.ArrayList;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implements View.OnClickListener, DataCallBack, SendRequestCallback {
     private Context context;
+    private LoadingDialog loadingDialog;
     private ArrayList<User> list = new ArrayList<>();
     private ImageHandler imageHandler;
     private User user;
     private UserPresenter userPresenter;
+    private String subjectName = "";
 
-    public UserListAdapter(Context context, ArrayList<User> list) {
+
+    public UserListAdapter(Context context, ArrayList<User> list, String subjectName) {
         this.context = context;
         this.list = list;
+        this.subjectName = subjectName;
         imageHandler = new ImageHandler(context);
         userPresenter = new UserPresenter(context);
     }
@@ -56,7 +64,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
 
     @Override
     public int getItemCount() {
-        return list.size() <= 5 ? list.size():5;
+        return list.size();
+//        return list.size() <= 5 ? list.size():5;
     }
 
     public void loadData(UserViewHolder holder, User user) {
@@ -98,8 +107,11 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
 //        {
 //            holder.tvMon.setText(Html.fromHtml("Tùy ý"));
 //        }
-//        String mon = "<b>Môn: </b>" + " " + course.getSubjectName();
-//        holder.tvMon.setText(Html.fromHtml(mon));
+        String mon = "<b>Môn: </b>" + " " + subjectName;
+        holder.tvSubject.setText(Html.fromHtml(mon));
+
+        String skype = "<b>Skype: </b>" + " " + user.getSkype();
+        holder.tvSkype.setText(Html.fromHtml(skype));
 
     }
 
@@ -108,14 +120,13 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
         switch (v.getId()) {
             case R.id.view_item_user_list:
                 Intent userInfoIntent = new Intent(context, InfoUserViewerActivity.class);
-                userInfoIntent.putExtra(SupportKeys.USER_ID_INTENT_PARAM, user.getUid());
+                userInfoIntent.putExtra(SupportKeys.USER_ID_INTENT_PARAM, user.getId());
                 context.startActivity(userInfoIntent);
                 break;
             case R.id.btn_request_tutor_item:
-
-                //****************** Change subject name when server updated model user
-
-                userPresenter.sendRequestToCourse(null, "av", this);
+                loadingDialog = LoadingDialog.getInstance(context);
+                loadingDialog.show();
+                userPresenter.sendRequestToTutor(subjectName, user.getId(), this);
                 break;
         }
     }
@@ -127,12 +138,14 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
 
     @Override
     public void sendRequestCallback(int resultCode, @Nullable String msg) {
+        loadingDialog.dismiss();
         // handle error
         if (resultCode == SupportKeys.FAILED_CODE) {
+            Toast.makeText(context, "Gửi thất bại!", Toast.LENGTH_SHORT);
             return;
         }
 
-        // success
+        // success=
     }
 
 }

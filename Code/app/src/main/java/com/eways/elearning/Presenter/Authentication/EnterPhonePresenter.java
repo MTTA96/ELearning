@@ -19,11 +19,13 @@ public class EnterPhonePresenter implements DataCallBack {
     }
 
     /** Check phone's status on server */
+
     public void checkPhoneStatus(String phoneNumber) {
         User.checkPhoneNumber(phoneNumber, this);
     }
 
     /** Handle results from database */
+
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
         // Handle error

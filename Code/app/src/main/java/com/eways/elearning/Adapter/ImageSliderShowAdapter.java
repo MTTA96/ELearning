@@ -25,7 +25,7 @@ public class ImageSliderShowAdapter extends SliderAdapter {
 
     @Override
     public void onBindImageSlide(int position, ImageSlideViewHolder viewHolder) {
-        viewHolder.bindImageSlide((bannerList.get(position).getImg()));
+        viewHolder.bindImageSlide((bannerList.get(position).getImage()));
     }
 
     @Override

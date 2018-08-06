@@ -47,7 +47,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteViewHolder> {
 
 //        int drawableResId = GlobalParams.getInstance().get_resId_by_name(favorite.getImage(), "drawable");
 //        holder.image.setImageResource(drawableResId);
-        imageHandler.loadImageSquare(favorite.getImg(), holder.image);
+        imageHandler.loadImageSquare(favorite.getImage(), holder.image);
         holder.text.setText(favorite.getSubjectName());
 
         final Bundle dataBundle = new Bundle();
@@ -58,12 +58,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteViewHolder> {
                 if (holder.selected.isChecked()){
                     holder.selected.setChecked(false);
                     dataBundle.putBoolean("Selected", false);
-                    dataBundle.putString("FavoriteId", favorite.getIdSubject());
+                    dataBundle.putString("FavoriteId", favorite.getId());
                     onItemClickListener.onItemClick(dataBundle);
                 }else {
                     holder.selected.setChecked(true);
                     dataBundle.putBoolean("Selected", true);
-                    dataBundle.putString("FavoriteId", favorite.getIdSubject());
+                    dataBundle.putString("FavoriteId", favorite.getId());
                     onItemClickListener.onItemClick(dataBundle);
                 }
             }

@@ -11,20 +11,9 @@ import java.util.ArrayList;
  */
 
 public class TrendingSubjectResponse {
-    @SerializedName("errorCode")
-    @Expose
-    private Integer errorCode;
-    @SerializedName("results")
+    @SerializedName("response")
     @Expose
     private ArrayList<Subject> trendingList = null;
-
-    public Integer getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
-    }
 
     public ArrayList<Subject> getTrendingList() {
         return trendingList;

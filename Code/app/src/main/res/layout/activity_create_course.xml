@@ -57,7 +57,7 @@
                         android:text="@string/title_ten_mon"
                         android:textColor="@color/colorBlack" />
 
-                    <AutoCompleteTextView
+                    <Spinner
                         android:id="@+id/et_subject"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/text_height"

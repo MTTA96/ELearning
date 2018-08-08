@@ -56,7 +56,7 @@ public class UserPresenter implements UserCallBack, DataCallBack, CreateCourseCa
 
     }
 
-    public void sendRequestToTutor(String subjectName, String tutorId, SendRequestCallback sendRequestCallback) {
+    public void sendRequestToTutor(String subjectName, String tutorId, String nameCourse, String idSubject, String tuition, String address, String numberOfSession, String timePerSession, String studentNumber, String schedule, String desc,   SendRequestCallback sendRequestCallback) {
 
         this.sendRequestCallback = sendRequestCallback;
 
@@ -72,15 +72,15 @@ public class UserPresenter implements UserCallBack, DataCallBack, CreateCourseCa
                 sharedPreferencesUtils.getString(SharedPrefSupportKeys.UID),
                 tutorId,
                 sentDate,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
+                nameCourse,
+                idSubject,
+                tuition,
+                address,
+                numberOfSession,
+                timePerSession,
+                studentNumber,
+                schedule,
+                desc,
                 null,
                 null
                 );

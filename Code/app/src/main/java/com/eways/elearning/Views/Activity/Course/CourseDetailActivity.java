@@ -282,7 +282,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
     public void courseDetailsCallBack(int error, Course course) {
 
         if (error == SupportKeys.FAILED_CODE) {
-
+            String errors = "oo";
         }
 
         this.course = course;

@@ -113,7 +113,6 @@ public class HomeFragment extends Fragment implements TopTutorsCallBack, Trendin
     }
 
     public void handleViews(){
-        trending = new ArrayList<>();
         tutors = new ArrayList<>();
         favCourses = new ArrayList<>();
 

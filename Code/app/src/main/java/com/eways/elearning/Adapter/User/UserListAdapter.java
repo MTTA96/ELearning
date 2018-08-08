@@ -1,5 +1,6 @@
 package com.eways.elearning.Adapter.User;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,10 +15,12 @@ import android.widget.Toast;
 import com.eways.elearning.Interfaces.DataCallBack;
 import com.eways.elearning.Interfaces.DataCallback.User.SendRequestCallback;
 import com.eways.elearning.Model.Account.User;
+import com.eways.elearning.Model.CreateCourse;
 import com.eways.elearning.Presenter.Authentication.UserPresenter;
 import com.eways.elearning.R;
 import com.eways.elearning.Utils.Handler.ImageHandler;
 import com.eways.elearning.Utils.SupportKeys;
+import com.eways.elearning.Views.Activity.Course.CreateCourseActivity;
 import com.eways.elearning.Views.Activity.InfoUserViewerActivity;
 import com.eways.elearning.Views.Dialog.LoadingDialog;
 
@@ -28,7 +31,7 @@ import java.util.UUID;
  * Created by zzzzz on 5/27/2018.
  */
 
-public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implements View.OnClickListener, DataCallBack, SendRequestCallback {
+public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implements View.OnClickListener, DataCallBack {
     private Context context;
     private LoadingDialog loadingDialog;
     private ArrayList<User> list = new ArrayList<>();
@@ -36,6 +39,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
     private User user;
     private UserPresenter userPresenter;
     private String subjectName = "";
+
+    private UserViewHolder mUserviewHolder;
 
 
     public UserListAdapter(Context context, ArrayList<User> list, String subjectName) {
@@ -48,7 +53,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
 
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_tutor_list, parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_tutor_list, parent, false);
         return new UserViewHolder(view);
     }
 
@@ -68,13 +73,22 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
 //        return list.size() <= 5 ? list.size():5;
     }
 
-    public void loadData(UserViewHolder holder, User user) {
-
+    public void loadData(UserViewHolder holder, final User user) {
+        mUserviewHolder = holder;
         // Avatar
         imageHandler.loadImageSquare(user.getAvatar(), holder.userAvatar);
 
         // Name
         holder.tvName.setText(user.getFirstName() + " " + user.getLastName());
+
+        holder.btnRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, CreateCourseActivity.class);
+                i.putExtra("TUTOR_ID", user.getId());
+                context.startActivity(i);
+            }
+        });
 
         // Rating
 //        if(user.getRating() != null)
@@ -123,29 +137,12 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> implem
                 userInfoIntent.putExtra(SupportKeys.USER_ID_INTENT_PARAM, user.getId());
                 context.startActivity(userInfoIntent);
                 break;
-            case R.id.btn_request_tutor_item:
-                loadingDialog = LoadingDialog.getInstance(context);
-                loadingDialog.show();
-                userPresenter.sendRequestToTutor(subjectName, user.getId(), this);
-                break;
         }
     }
 
     @Override
     public void dataCallBack(int resultCode, @Nullable Bundle bundle) {
 
-    }
-
-    @Override
-    public void sendRequestCallback(int resultCode, @Nullable String msg) {
-        loadingDialog.dismiss();
-        // handle error
-        if (resultCode == SupportKeys.FAILED_CODE) {
-            Toast.makeText(context, "Gửi thất bại!", Toast.LENGTH_SHORT);
-            return;
-        }
-
-        // success=
     }
 
 }

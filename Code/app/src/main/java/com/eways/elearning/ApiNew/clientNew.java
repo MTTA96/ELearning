@@ -9,11 +9,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class clientNew {
 
-    public static String BASE_URL = "https://ewayseducation.000webhostapp.com/";
+    public static String BASE_URL = "http://ewayseducation.hostingerapp.com/api/";
 
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient(String baseUrl) {
+    public static Retrofit getClient() {
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)

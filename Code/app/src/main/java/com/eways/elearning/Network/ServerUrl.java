@@ -8,7 +8,7 @@ package com.eways.elearning.Network;
 
 public class ServerUrl {
     //Link server
-    public static final String ServerUrl = "https://ewayseducation.000webhostapp.com/";
+    public static final String ServerUrl = "http://ewayseducation.hostingerapp.com/";
     public static final String ServerAPIURL = ServerUrl + "api/";
 
     /** ACCOUNT */

@@ -129,7 +129,6 @@ public class HomeActivity extends AppCompatActivity implements  DataCallBack, On
         mNavigationView.setBackgroundColor(getResources().getColor(R.color.colorWhite));
 
 
-
 //        mNavigationView.setBackgroundColor(GlobalParams.getInstance().getColor(R.color.colorWhite));
         mNavigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {

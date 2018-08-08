@@ -8,74 +8,84 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class CreateCourse {
-    @SerializedName("IdRequisitionCourse")
+    @SerializedName("id")
     @Expose
-    private String idRequisitionCourse;
-    @SerializedName("UidStudent")
+    private String id;
+    @SerializedName("student_id")
     @Expose
-    private String uidStudent;
-    @SerializedName("UidTutor")
+    private String studentId;
+    @SerializedName("tutor_id")
     @Expose
-    private String uidTutor;
-    @SerializedName("SentDate")
+    private String tutorId;
+    @SerializedName("sent_date")
     @Expose
     private String sentDate;
-    @SerializedName("NameCourse")
+    @SerializedName("subject_id")
     @Expose
-    private String nameCourse;
-    @SerializedName("IdSubject")
-    @Expose
-    private String idSubject;
-    @SerializedName("Tuition")
+    private String subjectId;
+    @SerializedName("tuition")
     @Expose
     private String tuition;
-    @SerializedName("Address")
+    @SerializedName("total_session")
     @Expose
-    private String address;
-    @SerializedName("NumberOfSession")
+    private String totalSession;
+    @SerializedName("time_session")
     @Expose
-    private String numberOfSession;
-    @SerializedName("TimePerSession")
+    private String timeSession;
+    @SerializedName("total_student")
     @Expose
-    private String timePerSession;
-    @SerializedName("StudentNumber")
-    @Expose
-    private String studentNumber;
-    @SerializedName("Schedule")
+    private String totalStudent;
+    @SerializedName("schedule")
     @Expose
     private String schedule;
-    @SerializedName("Description")
+    @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("TutorConfirm")
+    @SerializedName("status")
     @Expose
-    private String tutorConfirm;
-    @SerializedName("Comment")
+    private String status;
+    @SerializedName("comment")
     @Expose
     private String comment;
 
-    public String getIdRequisitionCourse() {
-        return idRequisitionCourse;
+    public CreateCourse(String id, String studentId, String tutorId, String sentDate, String subjectId, String tuition, String totalSession, String timeSession, String totalStudent, String schedule, String description, String status, String comment) {
+        this.id = id;
+        this.studentId = studentId;
+        this.tutorId = tutorId;
+        this.sentDate = sentDate;
+        this.subjectId = subjectId;
+        this.tuition = tuition;
+        this.totalSession = totalSession;
+        this.timeSession = timeSession;
+        this.totalStudent = totalStudent;
+        this.schedule = schedule;
+        this.description = description;
+        this.status = status;
+        this.comment = comment;
     }
 
-    public void setIdRequisitionCourse(String idRequisitionCourse) {
-        this.idRequisitionCourse = idRequisitionCourse;
+    public String getId() {
+        return id;
     }
 
-    public String getUidStudent() {
-        return uidStudent;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setUidStudent(String uidStudent) {
-        this.uidStudent = uidStudent;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public String getUidTutor() {
-        return uidTutor;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
-    public void setUidTutor(String uidTutor) {
-        this.uidTutor = uidTutor;
+    public String getTutorId() {
+        return tutorId;
+    }
+
+    public void setTutorId(String tutorId) {
+        this.tutorId = tutorId;
     }
 
     public String getSentDate() {
@@ -86,20 +96,12 @@ public class CreateCourse {
         this.sentDate = sentDate;
     }
 
-    public String getNameCourse() {
-        return nameCourse;
+    public String getSubjectId() {
+        return subjectId;
     }
 
-    public void setNameCourse(String nameCourse) {
-        this.nameCourse = nameCourse;
-    }
-
-    public String getIdSubject() {
-        return idSubject;
-    }
-
-    public void setIdSubject(String idSubject) {
-        this.idSubject = idSubject;
+    public void setSubjectId(String subjectId) {
+        this.subjectId = subjectId;
     }
 
     public String getTuition() {
@@ -110,36 +112,28 @@ public class CreateCourse {
         this.tuition = tuition;
     }
 
-    public String getAddress() {
-        return address;
+    public String getTotalSession() {
+        return totalSession;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setTotalSession(String totalSession) {
+        this.totalSession = totalSession;
     }
 
-    public String getNumberOfSession() {
-        return numberOfSession;
+    public String getTimeSession() {
+        return timeSession;
     }
 
-    public void setNumberOfSession(String numberOfSession) {
-        this.numberOfSession = numberOfSession;
+    public void setTimeSession(String timeSession) {
+        this.timeSession = timeSession;
     }
 
-    public String getTimePerSession() {
-        return timePerSession;
+    public String getTotalStudent() {
+        return totalStudent;
     }
 
-    public void setTimePerSession(String timePerSession) {
-        this.timePerSession = timePerSession;
-    }
-
-    public String getStudentNumber() {
-        return studentNumber;
-    }
-
-    public void setStudentNumber(String studentNumber) {
-        this.studentNumber = studentNumber;
+    public void setTotalStudent(String totalStudent) {
+        this.totalStudent = totalStudent;
     }
 
     public String getSchedule() {
@@ -158,12 +152,12 @@ public class CreateCourse {
         this.description = description;
     }
 
-    public String getTutorConfirm() {
-        return tutorConfirm;
+    public String getStatus() {
+        return status;
     }
 
-    public void setTutorConfirm(String tutorConfirm) {
-        this.tutorConfirm = tutorConfirm;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getComment() {
